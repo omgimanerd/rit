@@ -1,0 +1,48 @@
+\documentclass[letterpaper, 12pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+
+\pgfplotsset{compat=1.10}
+
+\renewcommand*{\arcsin}{\sin^{-1}}
+\renewcommand*{\arccos}{\cos^{-1}}
+\renewcommand*{\arctan}{\tan^{-1}}
+\newcommand*{\arccot}{\cot^{-1}}
+\newcommand*{\arcsec}{\sec^{-1}}
+\newcommand*{\arccsc}{\csc^{-1}}
+\newcommand*{\diff}{\mathrm{d}}
+\newcommand*{\ddiff}[2]{\frac{\diff{#1}}{\diff{#2}}}
+\newcommand*{\Diff}[1]{\mathrm{d^#1}}
+\newcommand*{\e}{\mathrm{e}}
+
+\title{Series}
+\author{Alvin Lin}
+\date{Calculus II: August 2016 - December 2016}
+
+\begin{document}
+
+\maketitle
+
+\section*{Series}
+Sequence \( \bigg\{a_{1},...a_{n},...\bigg\}, \bigg\{a_{n}\bigg\} \).
+\[ \sum{a_{n}} = a_{1}+a_{2}+a_{3}+...+a_{n}+... = S_{n} \]
+\begin{align*}
+  If: & \quad \lim_{n\to\infty}{S_{n}} = S \\
+  Then: & \quad \sum{a_{n}} \mathrm{\ converges}, \quad \sum{a_{n}} = S,
+    \quad \sum{a_{n}}<\infty
+\end{align*}
+
+\subsection*{Geometric Series}
+\[ S_{n} = a+as+as^{2}+as^{3}+... \]
+\[ sS_{n} = as+as^{2}+as^{3}+... \]
+\[ S_{n}(1-s) = a-as^{n} \]
+\[ S_{n} = \frac{a(1-s^{n})}{1-s} \]
+\[ \lim_{n\to\infty}{S_{n}} = \lim_{n\to\infty}{\frac{a(1-s^{n})}{1-s}} \]
+\[ \lim_{n\to\infty}{S_{n}} = \frac{a}{1-r} \]
+
+\begin{center}
+  If any errors are found, please contact me at alvin.lin.dev@gmail.com
+\end{center}
+
+\end{document}
