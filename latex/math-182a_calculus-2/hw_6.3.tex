@@ -1,0 +1,77 @@
+\documentclass[letterpaper, 12pt]{article}
+\usepackage{geometry}
+
+\geometry{letterpaper, margin=1in}
+
+\renewcommand*{\arcsin}{\sin^{-1}}
+\renewcommand*{\arccos}{\cos^{-1}}
+\renewcommand*{\arctan}{\tan^{-1}}
+\newcommand*{\arccot}{\cot^{-1}}
+\newcommand*{\arcsec}{\sec^{-1}}
+\newcommand*{\arccsc}{\csc^{-1}}
+\newcommand*{\diff}{\mathrm{d}}
+\newcommand*{\Diff}[1]{\mathrm{d^#1}}
+\newcommand*{\e}{\mathrm{e}}
+
+\title{Section 6.3}
+\author{Alvin Lin}
+\date{Calculus II: August 2016 - December 2016}
+
+\begin{document}
+
+\maketitle
+
+\section*{Problem 1}
+\[ f(x) = x(x-1)^{2} \]
+\[ V = 2\pi\int_{a}^{b}{xf(x)\diff{x}} \]
+\[ V = 2\pi\int_{0}^{1}{x(x(x-1)^{2})\diff{x}} \]
+\[ V = 2\pi\int_{0}^{1}{x^{2}(x^{2}-2x+1)\diff{x}} \]
+\[ V = 2\pi\int_{0}^{1}{x^{4}-2x^{3}+x^{2}\diff{x}} \]
+\[ V = 2\pi\bigg[\frac{x^{5}}{5}-\frac{2x^{4}}{4}+
+   \frac{x^{3}}{3}\bigg]_{0}^{1} \]
+\[ V = \frac{\pi}{15} \]
+
+\section*{Problem 7}
+\[ f(x) = (6x-2x^{2})-x^{2} = 6x-3x^{2} \]
+\[ V = 2\pi\int_{a}^{b}{xf(x)\diff{x}} \]
+\[ V = 2\pi\int_{0}^{2}{x(6x-3x^{2})\diff{x}} \]
+\[ V = 2\pi\int_{0}^{2}{6x^{2}-3x^{3}\diff{x}} \]
+\[ V = 2\pi\bigg[\frac{6x^{3}}{3}-\frac{3x^{4}}{4}\bigg]_{0}^{2} \]
+\[ V = 8\pi \]
+
+\section*{Problem 15}
+\[ y = x^{3} \]
+\begin{center}
+  bounded by \( x = 0 \), \( y = 8 \), rotated about \( x = 3 \).
+\end{center}
+\[ f(x) = 8-x^{3} \quad r = 3-x \]
+\[ V = 2\pi\int_{a}^{b}{rf(x)\diff{x}} \]
+\[ V = 2\pi\int_{0}^{2}{(3-x)(8-x^{3})\diff{x}} \]
+\[ V = 2\pi\int_{0}^{2}{x^{4}-3x^{3}-8x+24\diff{x}} \]
+\[ V = 2\pi\bigg[\frac{x^{5}}{5}-\frac{3x^{4}}{4}-
+   \frac{8x^{2}}{2}+24x\bigg]_{0}^{2} \]
+\[ V = \frac{264\pi}{5} \]
+
+\section*{Problem 21a}
+\[ f(x) = x\e^{-x} \]
+\[ V = 2\pi\int_{a}^{b}{xf(x)\diff{x}} \]
+\[ V = 2\pi\int_{0}^{2}{x(x\e^{-x})\diff{x}} \]
+\[ V = 2\pi\int_{0}^{2}{x^{2}\e^{-x}\diff{x}} \]
+
+\section*{Problem 41}
+\[ x^{2}+(y-1)^{2} = 1 \]
+\[ f(x) = (1+\sqrt{1-x^{2}})-(1-\sqrt{1-x^{2}}) = 2\sqrt{1-x^{2}} \]
+\[ V = 2\pi\int_{a}^{b}{xf(x)\diff{x}} \]
+\[ V = 2\pi\int_{0}^{1}{x(2\sqrt{1-x^{2}})\diff{x}} \]
+\[ V = 4\pi\int_{0}^{1}{x\sqrt{1-x^{2}}\diff{x}} \]
+\[ Let: u = 1-x^{2} \]
+\[ \diff{u} = -2x\diff{x} \]
+\[ V = 4\pi\int{\sqrt{u}\diff{u}} \]
+\[ V = 4\pi\bigg[\frac{2}{3}(1-x^{2})^{\frac{3}{2}}\bigg]_{0}^{1} \]
+\[ V = \frac{4\pi}{3} \]
+
+\begin{center}
+  If any errors are found, please contact me at alvin.lin.dev@gmail.com
+\end{center}
+
+\end{document}

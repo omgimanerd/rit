@@ -1,0 +1,66 @@
+\documentclass[letterpaper, 12pt]{article}
+
+\renewcommand*{\arcsin}{\sin^{-1}}
+\renewcommand*{\arccos}{\cos^{-1}}
+\renewcommand*{\arctan}{\tan^{-1}}
+\newcommand*{\arccot}{\cot^{-1}}
+\newcommand*{\arcsec}{\sec^{-1}}
+\newcommand*{\arccsc}{\csc^{-1}}
+\newcommand*{\diff}{\mathrm{d}}
+\newcommand*{\Diff}[1]{\mathrm{d^#1}}
+\newcommand*{\e}{\mathrm{e}}
+
+\title{The Substitution Rule}
+\author{Alvin Lin}
+\date{Calculus II: August 2016 - December 2016}
+
+\begin{document}
+
+\maketitle
+
+\section*{The Substitution Rule}
+\[ \int{\sin(t)\sqrt{1+\cos(t)}\diff{t}} \]
+Substitute unsolvable terms with u to reduce the equation to something easier
+to integrate.
+\[ Let: \quad u = 1+\cos(t) \]
+\[ \diff{u} = -\sin(t)\diff{t} \]
+\[ \diff{t} = \frac{-\diff{u}}{\sin(t)} \]
+Substitute your new terms back into the original equation. The goal is to get
+a friendlier integral in terms of another variable. If the new integral has
+both \( x \) and \( u \) in it, then it may be advisable to try a different method
+of integration or substituting a different term.
+\[ \int{\sin(t)\sqrt{u}(\frac{-\diff{u}}{\sin(t)})} \]
+One we simplify the integral after substituting everything, it becomes much
+easier to integrate.
+\[ -\int{u^{\frac{1}{2}}\diff{u}} \]
+\[ -(\frac{u^{\frac{3}{2}}}{\frac{3}{2}})+C \]
+\[ = -\frac{2}{3}(1+\cos(t))^{\frac{3}{2}}+C \]
+
+\subsection*{Practice problem 30}
+\[ \int{\frac{sec^{2}(x)}{\tan^{2}(x)}\diff{x}} \]
+\[ Let: \quad u = \tan(x) \]
+\[ \diff{u} = sec^{2}(x)\diff{x} \]
+\[ \int{\frac{\diff{u}}{u^{2}}} \]
+\[ \int{u^{-2}\diff{u}} \]
+\[ \frac{u^{-1}}{-1}+C \]
+\[ = -\frac{1}{\tan(x)}+C \]
+
+\subsection*{Practice problem 31}
+\[ \int{\frac{\arctan(x^{2})}{1+x^{2}}\diff{x}} \]
+\[ Let: \quad u = \arctan(x) \]
+\[ \diff{u} = \frac{1}{1+x^{2}}\diff{x} \]
+\[ \int{u^{2}\diff{u}} \]
+\[ = \frac{u^{2}}{3}+C \]
+
+\subsection*{Practice problem 42}
+\[ \int{\frac{\cos(ln(t))}{t}\diff{t}} \]
+\[ Let: \quad u = ln(t) \]
+\[ \diff{u} = \frac{1}{t}\diff{t} \]
+\[ \int{\cos(u)\diff{u}} \]
+\[ = \sin(u)+C \]
+
+\begin{center}
+  If any errors are found, please contact me at alvin.lin.dev@gmail.com
+\end{center}
+
+\end{document}

@@ -1,0 +1,147 @@
+\documentclass[letterpaper, 12pt]{article}
+\usepackage{amsmath}
+\usepackage{geometry}
+
+\geometry{letterpaper, margin=1in}
+
+\renewcommand*{\arcsin}{\sin^{-1}}
+\renewcommand*{\arccos}{\cos^{-1}}
+\renewcommand*{\arctan}{\tan^{-1}}
+\newcommand*{\arccot}{\cot^{-1}}
+\newcommand*{\arcsec}{\sec^{-1}}
+\newcommand*{\arccsc}{\csc^{-1}}
+\newcommand*{\diff}{\mathrm{d}}
+\newcommand*{\Diff}[1]{\mathrm{d^#1}}
+\newcommand*{\e}{\mathrm{e}}
+
+\title{Section 8.2}
+\author{Alvin Lin}
+\date{Calculus II: August 2016 - December 2016}
+
+\begin{document}
+
+\maketitle
+
+\section*{Section 8.2}
+
+\subsection*{Problem 6}
+\[ y = \arctan(x) \quad \quad 0 \leq x \leq 2 \]
+\[ \frac{\diff{y}}{\diff{x}} = \frac{1}{1+x^{2}} \]
+Rotated about the x-axis:
+\begin{align*}
+  S &= \int{(2\pi y)\diff{S}} \\
+  &= 2\pi\int_{0}^{2}{y\sqrt{1+(\frac{\diff{y}}{\diff{x}})^{2}}\diff{x}} \\
+  &= 2\pi\int_{0}^{2}{\arctan(x)\sqrt{1+(\frac{1}{1+x^{2}})^{2}}\diff{x}} \\
+  & \approx 9.79564
+\end{align*}
+Rotated about the y-axis:
+\begin{align*}
+  S &= 2\pi\int_{0}^{2}{x\sqrt{1+(\frac{\diff{y}}{\diff{x}})^{2}}\diff{x}} \\
+  & \approx 13.721
+\end{align*}
+
+\subsection*{Problem 12}
+\[ y = \frac{x^{3}}{6}+\frac{1}{2x} \quad \quad \frac{1}{2} \leq x \leq 1 \]
+\[ y = \frac{x^{3}}{6}+\frac{1}{2x} = \frac{x^{4}+3}{6x} \]
+\[ \frac{\diff{y}}{\diff{x}} = \frac{x^{4}-1}{2x^{2}} \]
+Rotated about the x-axis:
+\begin{align*}
+  S &= \int(2\pi y)\diff{S} \\
+  &= 2\pi\int_{\frac{1}{2}}^{1}{
+    y\sqrt{1+(\frac{\diff{y}}{\diff{x}})^{2}}\diff{x}} \\
+  &= 2\pi\int_{\frac{1}{2}}^{1}{(\frac{x^{4}+3}{6x})
+    \sqrt{1+(\frac{x^{4}-1}{2x^{2}})^{2}}\diff{x}} \\
+  &= 2\pi\int_{\frac{1}{2}}^{1}{(\frac{x^{4}+3}{6x})
+    \sqrt{1+\frac{x^{8}-2x^{4}+1}{4x^{4}}}\diff{x}} \\
+  &= 2\pi\int_{\frac{1}{2}}^{1}{(\frac{x^{4}+3}{6x})
+    \sqrt{\frac{x^{8}-2x^{4}+4x^{4}+1}{4x^{4}}}\diff{x}} \\
+  &= 2\pi\int_{\frac{1}{2}}^{1}{(\frac{x^{4}+3}{6x})
+    \sqrt{\frac{x^{8}+2x^{4}+1}{4x^{4}}}\diff{x}} \\
+  &= 2\pi\int_{\frac{1}{2}}^{1}{(\frac{x^{4}+3}{6x})
+    \sqrt{\bigg(\frac{x^{4}+1}{2x^{2}}\bigg)^{2}\diff{x}}} \\
+  &= 2\pi\int_{\frac{1}{2}}^{1}{(\frac{x^{4}+3}{6x})
+    \frac{x^{4}+1}{2x^{2}}\diff{x}} \\
+  &= 2\pi\int_{\frac{1}{2}}^{2}{\frac{x^{8}+4x^{4}+3}{12x^{3}}\diff{x}} \\
+  &= 2\pi\int_{\frac{1}{2}}^{2}{
+    \frac{x^{8}}{12x^{3}}+\frac{4x^{4}}{12x^{3}}+\frac{3}{12x^{3}}\diff{x}} \\
+  &= 2\pi\int_{\frac{1}{2}}^{2}{
+    \frac{x^{5}}{12}+\frac{x}{3}+\frac{1}{4x^{3}}\diff{x}} \\
+  &= 2\pi\bigg[\frac{x^{6}}{72}+\frac{x^{2}}{6}-\frac{1}{8x^{2}}\bigg]
+    _{\frac{1}{2}}^{1} \\
+  &= \frac{263\pi}{256}
+\end{align*}
+
+\subsection*{Problem 14}
+\[ x = 1+2y^{2} \quad 1 \leq y \leq 2 \]
+\[ \frac{\diff{x}}{\diff{y}} = 4y \]
+Rotated about the x-axis:
+\begin{align*}
+  S &= \int(2\pi y)\diff{S} \\
+  &= 2\pi\int_{1}^{2}{ y\sqrt{1+(\frac{\diff{x}}{\diff{y}})^{2}}\diff{x}} \\
+  &= 2\pi\int_{1}^{2}{y\sqrt{1+(4y)^{2}}\diff{y}} \\
+  &= 2\pi\int_{1}^{2}{y\sqrt{1+16y^{2}}\diff{y}} \\
+  & Let: \quad u = 1+16y^{2} \quad \diff{u} = 32y\diff{y} \\
+  &= 2\pi\int{y\sqrt{u}\frac{\diff{u}}{32y}} \\
+  &= \frac{\pi}{16}\int{\sqrt{u}\diff{u}} \\
+  &= \frac{\pi}{16}\frac{2u^{\frac{3}{2}}}{3} \\
+  &= \frac{\pi}{24}\bigg[(1+8y^{2})^{\frac{3}{2}}\bigg]_{\frac{1}{2}}^{1} \\
+  & \approx 59.42
+\end{align*}
+
+\subsection*{Problem 17}
+\[ x = \sqrt{a^{2}-y^{2}} \quad 0 \leq y \leq \frac{a}{2} \]
+\[ \frac{\diff{x}}{\diff{y}} = \frac{1}{2}(a^{2}-y^{2})^{-\frac{1}{2}}(-2y)
+   = \frac{-y}{\sqrt{a^{2}-y^{2}}} \]
+Rotated about the y-axis:
+\begin{align*}
+  S &= \int{2\pi x\diff{S}} \\
+  &= 2\pi\int_{0}^{a/2}{
+    \sqrt{a^{2}-y^{2}}\sqrt{1+(\frac{\diff{x}}{\diff{y}})^{2}}\diff{x}} \\
+  &= 2\pi\int_{0}^{a/2}{
+    \sqrt{a^{2}-y^{2}}\sqrt{1+(\frac{-y}{\sqrt{a^{2}-y^{2}}})^{2}}\diff{x}} \\
+  &= 2\pi\int_{0}^{a/2}{
+    \sqrt{a^{2}-y^{2}}\sqrt{1+\frac{y^{2}}{a^{2}-y^{2}}}\diff{x}} \\
+  &= 2\pi\int_{0}^{a/2}{
+    \sqrt{a^{2}-y^{2}}\sqrt{\frac{a^{2}-y^{2}+y^{2}}{a^{2}-y^{2}}}\diff{x}} \\
+  &= 2\pi\int_{0}^{a/2}{
+    \sqrt{a^{2}-y^{2}}\sqrt{\frac{a^{2}}{a^{2}-y^{2}}}\diff{x}} \\
+  &= 2\pi\int_{0}^{a/2}{
+    \sqrt{a^{2}-y^{2}}\frac{\sqrt{a^{2}}}{\sqrt{a^{2}-y^{2}}}\diff{y}} \\
+  &= 2\pi\int_{0}^{a/2}{2\pi a\diff{y}} \\
+  &= 2\pi a\bigg[y\bigg]_{0}^{a/2} \\
+  &= 2\pi a(\frac{a}{2}) \\
+  &= \pi a^{2}
+\end{align*}
+
+\subsection*{Problem 19}
+\[ y = \frac{x^{5}}{5} \quad \quad 0 \leq x \leq 5 \]
+\[ \frac{\diff{x}}{\diff{y}} = x^{4} \]
+Rotated about the x-axis:
+\begin{align*}
+  S &= \int{2\pi y\diff{S}} \\
+  &= 2\pi\int_{0}^{5}{
+    \frac{x^{5}}{5}\sqrt{1+(\frac{\diff{x}}{\diff{y}})^{2}}\diff{x}} \\
+  &= 2\pi\int_{0}^{5}{\frac{x^{5}}{5}\sqrt{1+(x^{4})^{2}}\diff{x}} \\
+  &= \frac{2\pi}{5}\int_{0}^{5}{x^{5}\sqrt{1+x^{8}}\diff{x}} \\
+\end{align*}
+Using Simpson's Rule with n = 10:
+\[ S \approx \frac{2\pi}{5} \times 979206.52 \approx 1230506.16 \]
+
+\subsection*{Problem 22}
+\[ y = x\ln(x) \quad \quad 1 \leq x \leq 2 \]
+\[ \frac{\diff{y}}{\diff{x}} = 1+\ln(x) \]
+Rotated about the x-axis:
+\begin{align*}
+  S &= \int{2\pi y\diff{S}} \\
+  &= 2\pi\int_{0}^{2}{x\ln(x)\sqrt{1+(1+\ln(x))^{2}}\diff{x}} \\
+  &= 2\pi\int_{0}^{2}{x\ln(x)\sqrt{1+1+2\ln(x)+(\ln(x))^{2}}\diff{x}} \\
+  &= 2\pi\int_{0}^{2}{x\ln(x)\sqrt{(\ln(x))^{2}+2\ln(x)+2}\diff{x}}
+\end{align*}
+Using Simpson's Rule with n = 10:
+\[ S \approx 7.25 \]
+
+\begin{center}
+  If any errors are found, please contact me at alvin.lin.dev@gmail.com
+\end{center}
+
+\end{document}

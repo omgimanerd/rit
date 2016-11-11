@@ -1,0 +1,146 @@
+\documentclass[letterpaper, 12pt]{article}
+
+\renewcommand*{\arcsin}{\sin^{-1}}
+\renewcommand*{\arccos}{\cos^{-1}}
+\renewcommand*{\arctan}{\tan^{-1}}
+\newcommand*{\arccot}{\cot^{-1}}
+\newcommand*{\arcsec}{\sec^{-1}}
+\newcommand*{\arccsc}{\csc^{-1}}
+\newcommand*{\diff}{\mathrm{d}}
+\newcommand*{\Diff}[1]{\mathrm{d^#1}}
+\newcommand*{\e}{\mathrm{e}}
+
+\title{Improper Integrals}
+\author{Alvin Lin}
+\date{Calculus II: August 2016 - December 2016}
+
+\begin{document}
+
+\maketitle
+
+\section*{Improper Integrals}
+\[ \int_{0}^{1}x\diff{x} \]
+This is a proper integral. It represents the area under the curve of the
+function \( y=x \) from 0 to 1.
+\[ \int_{0}^{\infty}{x\diff{x}} \]
+This is an example of an improper integral. It has no proper meaning because
+you cannot take the area under the curve from 0 to \(\infty\). For any integral
+of this form, the problem is only as hard as is the integration of \(f(x)\). We
+can rewrite it as:
+\[ \lim_{b \to \infty}\int_{a}^{b}{f(x)\diff{x}} \]
+
+\subsection*{Practice Problem 5}
+\[ \int_{3}^{\infty}{\frac{1}{(x-2)^{3/2}}\diff{x}} \]
+\[ \lim_{b \to \infty}\int_{3}^{b}{\frac{1}{(x-2)^{3/2}}\diff{x}} \]
+\[ \lim_{b \to \infty}\int_{3}^{b}{(x-2)^{-3/2}\diff{x}} \]
+Solve it as an indefinite integral:
+\[ \int{(x-2)^{-3/2}\diff{x}} \]
+\[ Let: f'(x) = x^{-3/2}\diff{x} \quad g(x) = x-2 \]
+\[ f(x) = \frac{-2}{\sqrt{x}} \quad g'(x) = \diff{x} \]
+\[ f(g(x)) = \int{(x-2)^{-3/2}\diff{x}} = -\frac{2}{\sqrt{x-1}}+C \]
+Evaluate using the original limits:
+\[ -2\lim_{b \to \infty}\bigg[\frac{1}{\sqrt{x-1}}\diff{x}\bigg]_{3}^{b} \]
+\[ -2\lim_{b \to \infty}
+   \bigg[\frac{1}{\sqrt{b-2}}-\frac{1}{\sqrt{3-2}}\bigg] \]
+\[ -2(0-1) \]
+\[ = -2 \]
+
+\subsection*{Practice Problem 11}
+\[ \int_{0}^{\infty}{\frac{x^{2}}{\sqrt{1+x^{2}}}\diff{x}} \]
+\[ \lim_{b \to \infty}\int_{0}^{b}{\frac{x^{2}}{\sqrt{1+x^{2}}}\diff{x}} \]
+Solve it as an indefinite integral:
+\[ \int{\frac{x^{2}}{\sqrt{1+x^{2}}}\diff{x}} \]
+\[ Let: t = 1+x^{3} \]
+\[ \diff{t} = 3x^{2}\diff{x} \]
+\[ \int{\frac{x^{3}}{\sqrt{t}}\frac{\diff{t}}{3x^{2}}} \]
+\[ \frac{1}{3}\int{\frac{1}{\sqrt{t}}\diff{t}} \]
+\[ \frac{2}{3}\sqrt{t} \]
+\[ \frac{2}{3}\sqrt{1+x^{3}} \]
+Evaluate using the original limits:
+\[ \frac{2}{3}\lim_{b \to \infty}\bigg[\sqrt{1+x^{3}}\bigg]_{0}^{b} \]
+\[ \frac{2}{3}\lim_{b \to \infty}\bigg[\sqrt{1+b^{3}}-\sqrt{1+0^{3}}\bigg] \]
+\[ = \infty \]
+
+\subsection*{Practice Problem 21}
+\[ \int_{0}^{\infty}{\frac{\ln(x)}{x}\diff{x}} \]
+\[ \lim_{b \to \infty}\int_{1}^{b}{\frac{\ln(x)}{x}\diff{x}} \]
+Solve it as an indefinite integral:
+\[ \int{\frac{\ln(x)}{x}\diff{x}} \]
+\[ Let: t = \ln(x) \]
+\[ \diff{t} = \frac{1}{x}\diff{x} \]
+\[ \int{\frac{t}{x}x\diff{t}} \]
+\[ \int{t\diff{t}} \]
+\[ \frac{1}{2}t^{2} \]
+\[ \frac{(\ln(x))^{2}}{2} \]
+Evaluate using the original limits:
+\[ \lim_{b \to \infty}\bigg[\frac{(\ln(x))^{2}}{2}\bigg]_{1}^{b} \]
+\[ \lim_{b \to \infty}
+   \bigg[\frac{(\ln(b))^{2}}{2}-\frac{(\ln(1))^{2}}{2}\bigg] \]
+\[ = \infty \]
+
+\subsection*{Review}
+\[ \int_{-\infty}^{\infty}{\frac{x^{2}}{9+x^{6}}\diff{x}} \]
+\[ \int_{-\infty}^{0}{\frac{x^{2}}{9+x^{6}}\diff{x}}+
+   \int_{0}^{\infty}{\frac{x^{2}}{9+x^{6}}\diff{x}} \]
+Because \( \frac{x^{2}}{9+x^{6}} \) is an even function, we can rewrite this as:
+\[ 2\int_{0}^{\infty}{\frac{x^{2}}{9+x^{6}}\diff{x}} \]
+Solve it as an indefinite integral:
+\[ 2\int{\frac{x^{2}}{9+x^{6}}\diff{x}} \]
+\[ 2\int{\frac{x^{2}}{9+(x^{3})^{2}}\diff{x}} \]
+\[ Let: 3t = x^{3} \]
+\[ 3\diff{t} = 3x^{2}\diff{x} \]
+\[ \diff{t} = x^{2}\diff{x} \]
+\[ 2\int{\frac{x^{2}}{9+(3t)^{2}}x^{2}\diff{t}} \]
+\[ 2\int{\frac{1}{9+9t^{2}}\diff{t}} \]
+\[ \frac{2}{9}\int{\frac{1}{1+t^{2}}\diff{t}} \]
+\[ \frac{2}{9}\arctan(t)+C \]
+\[ \frac{2}{9}\arctan(\frac{x^{3}}{3})+C \]
+Evaluate using the original limits:
+\[ \frac{2}{9}\lim_{a \to \infty}\bigg[\arctan(\frac{x^{3}}{3})\bigg]_{0}^{a} \]
+\[ \frac{2}{9}\lim_{a \to \infty}\bigg[\arctan(\frac{a^{3}}{3})-
+   \frac{0^{3}}{3}\bigg] \]
+\[ \frac{2}{9}\lim_{a \to \infty}\bigg[\frac{\pi}{2}-0\bigg] \]
+\[ = \frac{\pi}{9} \]
+
+\subsection*{Review 2}
+\[ \int_{1}^{\infty}{\frac{1}{x^{1/2}+x^{3/2}}\diff{x}} \]
+\[ \int_{1}^{\infty}{\frac{1}{\sqrt{x}(1+x)}\diff{x}} \]
+Solve it as an indefinite integral:
+\[ \int{\frac{1}{\sqrt{x}(1+x)}\diff{x}} \]
+\[ Let: x = t^{2} \]
+\[ \diff{x} = 2t\diff{t} \]
+\[ \int{\frac{1}{t(1+t^{2})}2t\diff{t}} \]
+\[ 2\int{\frac{1}{1+t^{2}}\diff{t}} \]
+\[ 2\arctan(t) = 2\arctan(\sqrt{x}) \]
+Evaluate using the original limits:
+\[ \lim_{a \to \infty}\bigg[2\arctan(\sqrt{x})\bigg]_{1}^{a} \]
+\[ \lim_{a \to \infty}\bigg[2\arctan(\sqrt{a})-2\arctan(1)\bigg]_{1}^{a} \]
+\[ 2(\frac{\pi}{2})-2(\frac{\pi}{4}) \]
+\[ = \frac{\pi}{2} \]
+
+\subsection*{Review 3}
+\[ \int{\frac{x+4}{x^{2}+2x+5}\diff{x}} \]
+\[ \int{\frac{x+4}{x^{2}+2x+5}\diff{x}} \]
+\[ \int{\frac{x+4}{x^{2}+2x+5}\diff{x}} \]
+\[ \frac{1}{2}\int{\frac{2x+8}{x^{2}+2x+5}\diff{x}} \]
+\[ \frac{1}{2}\int{\frac{2x+2+6}{x^{2}+2x+5}\diff{x}} \]
+\[ \frac{1}{2}\int{\frac{2x+2}{x^{2}+2x+5}+\frac{6}{x^{2}+2x+5}\diff{x}} \]
+\[ \frac{1}{2}\ln|x^{2}+2x+5|+C+\frac{1}{2}\int{\frac{6}{x^{2}+2x+5}\diff{x}} \]
+\[ \frac{1}{2}\int{\frac{6}{x^{2}+2x+5}\diff{x}} =
+   3\int{\frac{1}{x^{2}+2x+1+4}\diff{x}} \]
+\[ 3\int{\frac{1}{(x+1)^{2}+4}\diff{x}} \]
+\[ Let: x+1 = 2\tan(\theta) \]
+\[ \diff{x} = 2\sec^{2}(\theta)\diff{\theta} \]
+\[ 3\int{\frac{1}{(2\tan(\theta))^{2}+4}2\sec^{2}(\theta)\diff{\theta}} \]
+\[ 3\int{\frac{2\sec^{2}(\theta)}{4(\tan^{2}(\theta)+1)}\diff{\theta}} \]
+\[ \frac{3}{2}\int{\frac{\sec^{2}(\theta)}{\sec^{2}(\theta)}\diff{\theta}} \]
+\[ \frac{3}{2}\int{1\diff{\theta}} \]
+\[ \frac{3}{2}\theta \]
+\[ x+1 = 2\tan(\theta) \quad \theta = \arctan(\frac{x+1}{2}) \]
+\[ = \frac{3}{2}\arctan(\frac{x+1}{2}) \]
+
+\begin{center}
+  If any errors are found, please contact me at alvin.lin.dev@gmail.com
+\end{center}
+
+\end{document}

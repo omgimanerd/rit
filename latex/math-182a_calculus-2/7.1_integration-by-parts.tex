@@ -1,0 +1,171 @@
+\documentclass[letterpaper, 12pt]{article}
+
+\renewcommand*{\arcsin}{\sin^{-1}}
+\renewcommand*{\arccos}{\cos^{-1}}
+\renewcommand*{\arctan}{\tan^{-1}}
+\newcommand*{\arccot}{\cot^{-1}}
+\newcommand*{\arcsec}{\sec^{-1}}
+\newcommand*{\arccsc}{\csc^{-1}}
+\newcommand*{\diff}{\mathrm{d}}
+\newcommand*{\Diff}[1]{\mathrm{d^#1}}
+\newcommand*{\e}{\mathrm{e}}
+
+\title{Integration By Parts}
+\author{Alvin Lin}
+\date{Calculus II: August 2016 - December 2016}
+
+\begin{document}
+
+\maketitle
+
+\section*{Integration By Parts}
+Product Formula:
+\[ \frac{\diff}{\diff{x}}(fg) = fg'+f'g \]
+Integrate on both sides:
+\[ fg = \int{fg'\diff{x}+\int f'g\diff{x}} \]
+\[ \int{fg'\diff{x} = fg-\int f'g\diff{x}} \]
+Or with \( uv \) as variables:
+\[ \int{u\diff{v} = uv-\int v\diff{u}} \]
+For difficult integrals, this method can be used to rewrite the integral
+into an friendlier form.
+
+\subsection*{Practice problem 1}
+\[ \int{x\cos(5x)\diff{x}} \]
+\[ Let: f(x) = x\quad g'(x) = \cos(5x)\diff{x} \]
+\[ f'(x) = \diff{x}\quad g(x) = \frac{\sin(5x)}{5} \]
+\[ \int{fg'\diff{x} = fg-\int f'g\diff{x}} \]
+\[ \int{x\cos(5x)\diff{x}} =
+   \frac{x\sin(5x)}{5}-\frac{1}{5}\int{\sin(5x)\diff{x}} \]
+\[ = \frac{x\sin(5x)}{5}-\frac{1}{5}(-\frac{\cos(5x)}{5})+C \]
+\[ = \frac{1}{5}x\sin(5x)+\frac{1}{25}\cos(5x)+C \]
+
+\subsection*{Practice problem 10}
+\[ \int{\ln(\sqrt{x})\diff{x}} \]
+\[ \frac{1}{2}\int{\ln(x)\diff{x}} = \frac{1}{2}\int{1\ln(x)\diff{x}} \]
+\[ Let: g'(x) = 1\diff{x} \quad f(x) = \ln(x) \]
+\[ g(x) = x \quad f'(x) = \frac{1}{x}\diff{x} \]
+\[ \int{\ln(\sqrt{x})\diff{x}} =
+   \frac{1}{2}\bigg(x\ln(x)-\int{x\frac{1}{x}\diff{x}}\bigg) \]
+\[ \frac{1}{2}\bigg(x\ln(x)-\int{1\diff{x}}\bigg) \]
+\[ = \frac{x\ln(x)-x}{2}+C \]
+
+\subsection*{Practice problem 12}
+\[ \int{\arctan{2u}\diff{u}} \]
+\[ \int{\arctan{2u}\diff{u}} = \int{1\arctan{2u}\diff{u}} \]
+\[ Let: g'(u) = 1\diff{u} \quad f(u) = \arctan{2u} \]
+\[ g(u) = u \quad f'(u) = 2\frac{1}{1+4u^{2}}\diff{u} \]
+\[ \int{\arctan{2u}\diff{u}} =
+   \bigg(u\arctan{2u}\bigg)-\int{\frac{2u}{1+4u^{2}}\diff{u}} \]
+After using integration by parts, we can solve the new integral with
+\( u \)-substitution.
+\[ \int{\frac{2u}{1+4u^{2}}\diff{u}} \]
+\[ Let: x = 1+4u^{2} \]
+\[ dx = 8u\diff{u} \]
+\[ \int{\frac{2u}{x}\frac{\diff{x}}{8u}} \]
+\[ \frac{1}{4}\int{\frac{\diff{x}}{x}} \]
+\[ \frac{1}{4}\ln(x)+C \]
+\[ = \frac{1}{4}\ln(1+4u^{2})+C \]
+Therefore:
+\[ \int{\arctan{2u}\diff{u}} \]
+\[ = u\arctan{2u} - \frac{1}{4}\ln(1+4u^{2})+C \]
+
+\subsection*{Practice problem 32}
+\[ \int_{1}^{2}{\frac{(\ln(x))^2}{x^{3}}\diff{x}} \]
+\[ Let: u = \ln(x) \]
+\[ \e^{u} = x \]
+The limit of the integral from 1 to 2 changes to \( \e^{1} \) to \( \e^{2} \)
+\[ \e^{u}\diff{u} = \diff{x} \]
+\[ \int_{\e}^{\e^{2}}{\frac{u^{2}\e^{u}\diff{u}}{(\e^{u})^{3}}} \]
+\[ = \int_{\e}^{\e^{2}}{u^{2}\e^{-2u}\diff{u}} \]
+Now we can use integration by parts:
+\[ Let: f(x) = u^{2} \quad g'(x) = \e^{-2u} \]
+\[ f'(x) = 2u\diff{u} \quad g(x) = \frac{\e^{-2u}}{-2} \]
+\[ \int_{\e}^{\e^{2}}{u^{2}\e^{-2u}\diff{u}} =
+   \bigg(u^{2}\frac{\e^{-2u}}{-2}\bigg)-\int{2u\frac{\e^{-2u}}{-2}\diff{u}} \]
+\[ = \frac{u^{2}\e^{-2u}}{-2}+\int{u\e^{-2u}\diff{u}} \]
+In order to solve the integral properly, you need to use integration by parts
+again:
+\[ Let: f(x) = u \quad g'(x) = \e^{-2u}\diff{u} \]
+\[ f'(x) = 1\diff{u} \quad g(x) = \frac{\e^{-2u}}{-2} \]
+\[ \frac{u^{2}\e^{-2u}}{-2}+
+   \bigg(\frac{u^{2}\e^{-2u}}{-2}-\int{(1)\frac{\e^{-2u}}{-2}\diff{u}}\bigg) \]
+\[ \frac{u^{2}\e^{-2u}}{-2}+
+   \bigg(\frac{u^{2}\e^{-2u}}{-2}+\frac{1}{2}\int{\e^{-2u}\diff{u}}\bigg) \]
+\[ -u^{2}\e^{-2u}+\bigg(\frac{1}{2}\int{\e^{-2u}\diff{u}}\bigg) \]
+\[ \bigg[-u^{2}\e^{-2u}+\frac{1}{2}(\frac{e^{-2u}}{-2})\bigg]_{\e}^{\e^{2}} \]
+\[ -\e^{4}\e^{-2e^{2}}-\frac{\e^{-2\e^{2}}}{4}-
+   \bigg[-\e^{2}\e^{-2e}-(\frac{e^{-2\e}}{4})\bigg] \]
+\[ -\e^{4}\e^{-2e^{2}}-\frac{\e^{-2\e^{2}}}{4}+
+   \e^{2}\e^{-2e}+\frac{e^{-2\e}}{4} \]
+\[ = -\e^{-8\e^{2}}+\e^{-4\e}+\frac{\e^{-2\e^{2}+\e^{-2\e}}}{4} \]
+
+\subsection*{Practice problem 38}
+\[ \int{\cos(\ln(x))\diff{x}} \]
+\[ Let: u = \ln(x) \]
+\[ x = \e^{u} \]
+\[ \diff{x} = \e^{u}\diff{u} \]
+\[ \int{\cos(u)\e^{u}\diff{u}} = \int{\e^{u}\cos(u)\diff{u}} \]
+We can describe this integral in a more general form as:
+\[ \mathrm{I} = \int{\e^{ax}\cos(bx)\diff{x}} \]
+where \( a \) and \( b \) are both 1. Using integration by parts where:
+\[ f(x) = \e^{ax} \quad g'(x) = \cos(bx)\diff(x) \]
+we can get:
+\[ \frac{\e^{ax}\sin(bx)}{b}-\int{\frac{a\e^{ax}\sin(bx)}{b}\diff{x}} \]
+\[ \frac{\e^{ax}\sin(bx)}{b}-\frac{a}{b}\int{\e^{ax}\sin(bx)\diff{x}} \]
+Using integration by parts again:
+\[ \frac{\e^{ax}\sin(bx)}{b}-\frac{a}{b}\bigg[\e^{ax}(\frac{-\cos(bx)}{b})-
+   \int{a\e^{ax}(\frac{-\cos(bx)}{b})\diff{x}}\bigg] \]
+\[ \mathrm{I} = \int{\e^{ax}\cos(bx)\diff{x}} =
+   \frac{\e^{ax}\sin(bx)}{b}+\frac{a}{b^{2}}\e^{ax}\cos(bx)-\frac{a^{2}}{b^{2}}
+   \int{\e^{ax}\cos(bx)\diff{x}} \]
+Rewriting this:
+\[ \int{\e^{ax}\cos(bx)\diff{x}}+
+   \frac{a^{2}}{b^{2}}\int{\e^{ax}\cos(bx)\diff{x}} =
+   \frac{\e^{ax}}{b^{2}}[b\sin(bx)+a\cos(bx)] \]
+\[ = \bigg(1+\frac{a^{2}}{b^{2}}\bigg)\int{\e^{ax}\cos(bx)\diff{x}} =
+   \frac{\e^{ax}}{b^{2}}[b\sin(bx)+a\cos(bx)] \]
+\[ (b^{2}+a^{2})\int{\e^{ax}\cos(bx)\diff{x}} = \e^{ax}[b\sin(bx)+a\cos(bx)] \]
+\[ \mathrm{I} = \int{\e^{ax}\cos(bx)\diff{x}} =
+   \frac{\e^{ax}}{a^{2}+b^{2}}[b\sin(bx)+a\cos(bx)] \]
+We can apply this general form back to the original integral.
+\[ \int{\e^{u}\cos(u)\diff{u}} \]
+For this case:
+\[ a = 1 \quad b = 1 \]
+\[ \int{\e^{u}\cos(u)\diff{u}} = \frac{\e^{x}}{1+1}[\sin(x)+\cos(x)] \]
+\[ = \frac{\e^{x}(\sin(x)+\cos(x))}{2} \]
+
+\subsection*{Practice Problem 39}
+\[ \int{\theta^{3}\cos(\theta^{2})\diff{\theta}} \]
+First we start with subsitution:
+\[ Let: \theta^{2} = x \]
+\[ 2\theta = \frac{\diff{x}}{\diff{\theta}} \quad
+   \frac{\diff{x}}{2} = \theta\diff{\theta} \]
+\[ \int{\theta^{2}\cos(\theta^{2})\theta\diff{\theta}} =
+   \frac{1}{2}\int{x\cos(x)\diff{x}} \]
+Then we can use integration by parts:
+\[ \int{x\cos(x)\diff{x}} \]
+\[ Let: u = x \quad \diff{v} = \cos(x)\diff{x} \]
+\[ \diff{u} = \diff{x} \quad v = \sin(x) \]
+\[ x\cos(x)\diff{x} = x\sin(x)-\int{\sin(x)\diff{x}} \]
+\[ x\sin(x)-\cos(x)+C \]
+Now we can substitute this back:
+\[ \frac{1}{2}\int{x\cos(x)\diff{x}} = \frac{1}{2}x\sin(x)-\cos(x)+C \]
+\[ = \frac{1}{2}\theta^{2}\sin(\theta^{2})-\cos(\theta^{2})+C \]
+
+\subsection*{Practice Problem 44}
+\[ \int{x^{\frac{3}{2}}\ln(x)\diff{x}} \]
+\[ Let: u = \ln(x) \quad \diff{v} = x^{\frac{3}{2}\diff{x}} \]
+\[ \diff{u} = \frac{1}{x}\diff{x} \quad v =
+   \frac{x^{\frac{5}{2}}}{\frac{5}{2}} \]
+\[ \int{x^{\frac{3}{2}}\ln(x)\diff{x}}=
+   \frac{x^{\frac{5}{2}}\ln(x)}{\frac{5}{2}}-
+   \int{\frac{1}{x}\frac{x^{\frac{5}{2}}}{\frac{5}{2}}\diff{x}} \]
+\[ \frac{2}{5}\ln(x)x^{\frac{5}{2}}-\frac{2}{5}\int{x^{\frac{3}{2}}\diff{x}} \]
+\[ \frac{2}{5}\ln(x)x^{\frac{5}{2}}-
+   \frac{2}{5}\frac{x^{\frac{5}{2}}}{\frac{5}{2}}\diff{x} \]
+
+\begin{center}
+  If any errors are found, please contact me at alvin.lin.dev@gmail.com
+\end{center}
+
+\end{document}

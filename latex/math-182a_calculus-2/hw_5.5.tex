@@ -1,0 +1,90 @@
+\documentclass[letterpaper, 12pt]{article}
+\usepackage{geometry}
+
+\geometry{letterpaper, margin=1in}
+
+\renewcommand*{\arcsin}{\sin^{-1}}
+\renewcommand*{\arccos}{\cos^{-1}}
+\renewcommand*{\arctan}{\tan^{-1}}
+\newcommand*{\arccot}{\cot^{-1}}
+\newcommand*{\arcsec}{\sec^{-1}}
+\newcommand*{\arccsc}{\csc^{-1}}
+\newcommand*{\diff}{\mathrm{d}}
+\newcommand*{\Diff}[1]{\mathrm{d^#1}}
+\newcommand*{\e}{\mathrm{e}}
+
+\title{Section 5.5}
+\author{Alvin Lin}
+\date{Calculus II: August 2016 - December 2016}
+
+\begin{document}
+
+\maketitle
+
+\section*{Section 5.5}
+
+\subsection*{Problem 7}
+\[ \int x\sqrt{1 - x^{2}}\diff{x} \]
+\[ Let: u = 1-x^{2} \]
+\[ \diff{u} = -2x\diff{x} \]
+\[ \int x\sqrt{u}\frac{\diff{u}}{-2x} \]
+\[ -\frac{1}{2} \int{}^{} \sqrt{u} \diff{u} \]
+\[ -\frac{1}{2} (\frac{2}{3} u^{\frac{3}{2}}) \]
+\[ = -\frac{1}{3}(1 - x^2)^\frac{2}{3} + C \]
+
+\subsection*{Problem 15}
+\[ \int{}^{} \cos^{3}(\theta)\sin(\theta)\diff{\theta} \]
+\[ Let: u = \cos(\theta) \]
+\[ \diff{u} = -\sin(\theta)\diff{\theta} \]
+\[ \int u^{3} \sin(\theta)\frac{\diff{u}}{-\sin(\theta)} \]
+\[ -\int u^{3}\diff{u} \]
+\[ -(\frac{u^4}{4}) \]
+\[ = -\frac{\cos^{4}\theta}{4} + C \]
+
+\subsection*{Problem 21}
+\[ \int{}^{} \frac{(\ln x)^{3}}{x} \diff{x} \]
+\[ Let: u = \ln x \]
+\[ \diff{u} = \frac{1}{x} \diff{x} \]
+\[ \int \frac{u^3}{x} x \diff{x} \]
+\[ \int u^{3} \diff{x} \]
+\[ (\frac{u^{4}}{4}) \]
+\[ = \frac{(\ln x)^4}{4} + C \]
+
+\subsection*{Problem 25}
+\[ \int \e^{x} \sqrt{1 + \e^{x}} \diff{x} \]
+\[ Let: u = 1 + \e^{x} \]
+\[ \diff{u} = e^{x} \diff{x} \]
+\[ \int e^{x} \sqrt{u} \frac{\diff{u}}{e^{x}} \]
+\[ \int \sqrt{u} \diff{u} \]
+\[ \frac{2}{3} u^{\frac{3}{2}} \]
+\[ = \frac{2}{3} (1 + \e^{x})^{\frac{3}{2}} + C \]
+
+\subsection*{Problem 45}
+\[ \int \frac{1 + x}{1 + x^{2}} \diff{x} \]
+\[ Let: u = 1 + x^{2} \]
+\[ \diff{u} = 2x \diff{x} \]
+\[ \int \frac{1 + x}{1 + x^{2}} =
+   \int \frac{1}{1 + x^{2}} \diff{x} +
+   \int \frac{x}{1 + x^{2}} \diff{x} \]
+\[ \int \frac{1}{1 + x^{2}} \diff{x} +
+   \int \frac{x}{u} \frac{\diff{u}}{2x} \]
+\[ \int \frac{1}{1 + x^{2}} \diff{x} +
+   \frac{1}{2} \int \frac{1}{u} \diff{u} \]
+\[ \arctan(x) + \frac{1}{2}\ln{u} \]
+\[ \arctan(x) + \frac{1}{2}\ln(1 + x^2) + C \]
+
+\subsection*{Problem 67}
+\[ \int_{1}^{2} x \sqrt{x - 1} \diff{x} \]
+\[ Let: u = x - 1 \]
+\[ \diff{u} = \diff{x} \]
+The integral from 1 to 2 becomes 0 to 1 in terms of \( u \).
+\[ \int_{0}^{1} (u + 1)\sqrt{u} \diff{u} \]
+\[ \int_{0}^{1} u^\frac{3}{2} + u^\frac{1}{2} \diff{u} \]
+\[ \bigg[ \frac{2}{5}u^{\frac{5}{2}} + \frac{2}{3}u^{\frac{3}{2}} \bigg]_0^1 \]
+\[ = \frac{2}{5} + \frac{2}{3} = \frac{16}{15} \]
+
+\begin{center}
+  If any errors are found, please contact me at alvin.lin.dev@gmail.com
+\end{center}
+
+\end{document}

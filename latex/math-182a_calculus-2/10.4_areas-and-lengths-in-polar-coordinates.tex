@@ -1,0 +1,135 @@
+\documentclass[letterpaper, 12pt]{article}
+\usepackage{amsmath}
+\usepackage{pgfplots}
+
+\pgfplotsset{compat=1.10}
+
+\renewcommand*{\arcsin}{\sin^{-1}}
+\renewcommand*{\arccos}{\cos^{-1}}
+\renewcommand*{\arctan}{\tan^{-1}}
+\newcommand*{\arccot}{\cot^{-1}}
+\newcommand*{\arcsec}{\sec^{-1}}
+\newcommand*{\arccsc}{\csc^{-1}}
+\newcommand*{\diff}{\mathrm{d}}
+\newcommand*{\ddiff}[2]{\frac{\diff{#1}}{\diff{#2}}}
+\newcommand*{\Diff}[1]{\mathrm{d^#1}}
+\newcommand*{\e}{\mathrm{e}}
+
+\title{Areas and Lengths in Polar Coordinates}
+\author{Alvin Lin}
+\date{Calculus II: August 2016 - December 2016}
+
+\begin{document}
+
+\maketitle
+
+\section*{Areas and Lengths in Polar Coordinates}
+
+\subsection*{Discrete Area}
+\begin{center}
+  \begin{tikzpicture}
+    \draw (0,0) -- node[below] {\( r \)}
+                   coordinate[](a)(4,2)
+                -- node[right] {}
+                   coordinate[](b)(2,4)
+                -- node[above] {\( \bar{r} \)}
+                   coordinate[](c)(0,0);
+    \draw (0.5,0.1) node[label={\( \theta \)}]{};
+  \end{tikzpicture}
+\end{center}
+\begin{align*}
+  A_{i} &= \frac{1}{2}r^{2}\theta \\
+  A &= \sum_{i=i}^{n}{A_{i}} \\
+  &= \sum_{i=1}^{n}{\frac{1}{2}r^{2}\Delta\theta} \\
+  &= \frac{1}{2}\int_{a}^{b}{r^{2}\diff{\theta}}
+\end{align*}
+
+\subsection*{Arc Length}
+\[ L = \int_{a}^{b}{\sqrt{x^{2}+y^{2}}\diff{\theta}} \]
+\[ r = f(\theta) \quad \mathrm{compared\ to\ } \quad y=f(x) \]
+\[ x = r\cos(\theta) = f(\theta)\cos(\theta) \Longrightarrow
+   \ddiff{x}{\theta} = -f(\theta)\sin(\theta)+f'(\theta)\cos(\theta) \]
+\[ y = r\sin(\theta) = f(\theta)\sin(\theta) \Longrightarrow
+   \ddiff{y}{\theta} = -f'(\theta)\sin(\theta)+f(\theta)\cos(\theta) \]
+\begin{align*}
+  x^{2}+y^{2} &= (-r\sin(\theta)+\ddiff{r}{\theta}\cos(\theta))^{2}
+    +(\ddiff{r}{\theta}\sin(\theta)+r\cos(\theta))^{2} \\
+  &= r^{2}\sin^{2}(\theta)+(\ddiff{r}{\theta})^{2}\cos^{2}(\theta)-
+    2r\ddiff{r}{\theta}\sin(\theta)\cos(\theta)+ \\
+  & \quad (\ddiff{r}{\theta})^{2}\sin^{2}(\theta)+r^{2}\cos^{2}(\theta)+
+    2r\ddiff{r}{\theta}\sin(\theta)\cos(\theta) \\
+  &= r^{2}(\cos^{2}(\theta)+\sin^{2}(\theta))+
+    (\ddiff{r}{\theta})^{2}(\cos^{2}(\theta)+\sin^{2}(\theta)) \\
+  &= r^{2}+(\ddiff{r}{\theta})^{2} \\
+  L &= \int_{a}^{b}{\sqrt{r^{2}+(\ddiff{r}{\theta})^{2}}\diff{\theta}}
+\end{align*}
+
+\subsection*{Example 1}
+\[ r = 2-\sin(\theta) \]
+\begin{align*}
+  A &= \frac{1}{2}\int_{0}^{2\pi}{r^{2}\diff{\theta}} \\
+  &= \frac{1}{2}\int_{0}^{2\pi}{(2-\sin(\theta))^{2}\diff{\theta}} \\
+  &= \frac{1}{2}\int_{0}^{2\pi}
+    {4+\sin^{2}(\theta)-4\sin(\theta)\diff{\theta}} \\
+  &= \frac{1}{2}\int_{0}^{2\pi}
+    {4+(\frac{1-\cos(2\theta)}{2})-4\sin(\theta)\diff{\theta}} \\
+  &= \frac{1}{2}\bigg[4\theta+\frac{\theta}{2}-
+    \frac{\sin(2\theta)}{4}+4\cos(\theta)\bigg]_{0}^{2\pi} \\
+  &= \frac{1}{2}\bigg[\frac{9}{2}{2\pi}-\frac{\sin{4\pi}}{4}+4\cos(2\pi)-
+    (-\frac{\sin(\theta)}{4}+4\cos(\theta))\bigg] \\
+  &= \frac{1}{2}\bigg[9\pi+4-4\bigg] \\
+  &= \frac{9\pi}{2}
+\end{align*}
+
+\subsection*{Problem 30}
+Find the integral for the area in common between the two functions:
+\[ r = 1+\cos(\theta) \quad r = 1-\cos(\theta) \]
+\begin{center}
+  \begin{tikzpicture}
+    \draw[thick,->,>=latex] (-4,0)--(4,0) node[above] {\( x \)};
+    \draw[thick,->,>=latex] (0,-4)--(0,4) node[left] {\( y \)};
+    \draw[domain=0:2*pi, samples=250] plot ({deg(\x)}:{1+cos(deg(\x))});
+    \draw[domain=0:2*pi, samples=250] plot ({deg(\x)}:{1-cos(deg(\x))});
+  \end{tikzpicture}
+\end{center}
+\[ A = (4)\frac{1}{2}\int_{0}^{\frac{\pi}{2}}
+   {(1-\cos(\theta))^{2}\diff{\theta}} \]
+
+\subsection*{Problem 35}
+Find the arc length:
+\[ r = 3\sin(\theta) \quad \theta\in\bigg[0,\frac{\pi}{3}\bigg] \]
+\begin{center}
+  \begin{tikzpicture}
+    \draw[thick,->,>=latex] (-4,0)--(4,0) node[above] {\( x \)};
+    \draw[thick,->,>=latex] (0,-4)--(0,4) node[left] {\( y \)};
+    \draw[domain=0:pi/3, samples=250] plot ({deg(\x)}:{3*sin(deg(\x))});
+  \end{tikzpicture}
+\end{center}
+\begin{align*}
+  L &= \int_{a}^{b}{\sqrt{r^{2}+(\ddiff{r}{\theta})^{2}}\diff{\theta}} \\
+  &= \int_{0}^{\frac{\pi}{3}}
+    {\sqrt{(3\sin(\theta))^{2}+(3\cos(\theta))^{2}}\diff{\theta}} \\
+  &= \int_{0}^{\frac{\pi}{3}}
+    {\sqrt{9(sin^{2}(\theta)+\cos^{2}(\theta))}\diff{\theta}} \\
+  &= \int_{0}^{\frac{\pi}{3}}{3\diff{\theta}} \\
+  &= \bigg[3\theta\bigg]_{0}^{\frac{\pi}{3}} \\
+  &= \pi
+\end{align*}
+
+\subsection*{Practice Problem 46}
+\[ r = \e^{2\theta} \quad \theta\in\bigg[0,2\pi\bigg] \]
+\begin{align*}
+  L &= \int_{a}^{b}{\sqrt{r^{2}+(\ddiff{r}{\theta})^{2}}\diff{\theta}} \\
+  &= \int_{0}^{2\pi}
+    {\sqrt{(e^{2\theta})^{2}+(2\e^{2\theta})^{2}}\diff{\theta}} \\
+  &= \int_{0}^{2\pi}{\sqrt{\e^{4\theta}+4\e^{4\theta}}\diff{\theta}} \\
+  &= \int_{0}^{2\pi}{\e^{2\theta}\sqrt{5}\diff{\theta}} \\
+  &= \bigg[\sqrt{5}\frac{e^{2\theta}}{2}\bigg]_{0}^{2\pi} \\
+  &= \frac{\e^{4\pi}\sqrt{5}}{2}-\frac{\sqrt{5}}{2}
+\end{align*}
+
+\begin{center}
+  If any errors are found, please contact me at alvin.lin.dev@gmail.com
+\end{center}
+
+\end{document}

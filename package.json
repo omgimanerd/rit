@@ -1,0 +1,24 @@
+{
+  "name": "rit-notes",
+  "version": "1.0.0",
+  "description": "RIT Class Notes",
+  "main": "template.tex",
+  "scripts": {
+    "compile": "cd latex && make"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/omgimanerd/rit-notes.git"
+  },
+  "author": "Alvin Lin (omgimanerd)",
+  "license": "WTFPL",
+  "bugs": {
+    "url": "https://github.com/omgimanerd/rit-notes/issues"
+  },
+  "homepage": "https://github.com/omgimanerd/rit-notes#readme",
+  "dependencies": {
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-shell": "^0.5.2"
+  }
+}

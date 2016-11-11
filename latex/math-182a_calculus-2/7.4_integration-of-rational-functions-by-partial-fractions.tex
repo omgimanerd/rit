@@ -1,0 +1,252 @@
+\documentclass[letterpaper, 12pt]{article}
+\usepackage{polynom}
+
+\renewcommand*{\arcsin}{\sin^{-1}}
+\renewcommand*{\arccos}{\cos^{-1}}
+\renewcommand*{\arctan}{\tan^{-1}}
+\newcommand*{\arccot}{\cot^{-1}}
+\newcommand*{\arcsec}{\sec^{-1}}
+\newcommand*{\arccsc}{\csc^{-1}}
+\newcommand*{\diff}{\mathrm{d}}
+\newcommand*{\Diff}[1]{\mathrm{d^#1}}
+\newcommand*{\e}{\mathrm{e}}
+
+\title{Integration of Rational Functions by Partial Fractions}
+\author{Alvin Lin}
+\date{Calculus II: August 2016 - December 2016}
+
+\begin{document}
+
+\maketitle
+
+\section*{Partial Fractions}
+A fraction is either a proper fraction or an improper fraction. In a
+\textbf{proper fraction}, the degree of the numerator is strictly less the
+degree of the denominator. In an \textbf{improper fraction}, the degree of
+the numerator is greater than or equal to the degree of the denominator.
+\[ \mathrm{Proper\ fraction}: \frac{x^{2}+1}{x^{3}+2x+4} \]
+\[ \mathrm{Improper\ fraction}: \frac{x^{3}+1}{x^{2}+2x+1} \]
+\[ \mathrm{Improper\ fraction}: \frac{x^{2}+1}{x^{2}+2x+1} \]
+The improper fraction \( \frac{9}{2} \) can be represented as \( 2\times4 \)
+remainder 1. The same concept can be applied to polynomials.
+\begin{center}
+  \polylongdiv{x^4}{x-1}
+\end{center}
+Therefore:
+\[ \int{\frac{x^{4}}{x-1}\diff{x}} \]
+can be represented as:
+\[ \int{\bigg(x^{3}+x^{2}+x+1+\frac{1}{x-1}\bigg)\diff{x}} \]
+\[ \int{\bigg(x^{3}+x^{2}+x+1\bigg)\diff{x}}+\int{\frac{1}{x-1}\diff{x}} \]
+\[ \frac{x^{4}}{4}+\frac{x^{3}}{3}+\frac{x^{2}}{2}+x+\ln|x-1|+C \]
+
+For proper fractions, we must do something else. As a general rule, if we
+have a polynomial of the form:
+\[ \frac{Ax+B}{(Cx+D)(Ex+F)} \]
+If we wanted to integrate this, we would have to break it up into the form:
+\[ \frac{Ax+B}{(Cx+D)(Ex+F)} = \frac{U}{Cx+D}+\frac{V}{Ex+F} \]
+where \( U \) and \( V \) are unknown. The unknown polynomial in the numerator
+follows the degree of the denominator:
+\[ \frac{Ax+C}{(Cx^{2}+D)(Ex+F)} = \frac{Ux+V}{Cx^{2}+D}+\frac{W}{Ex+F} \]
+\[ \frac{Ax+B}{(Cx^{3}+D)(Ex+F)} =
+   \frac{Tx^{2}+Ux+V}{Cx^{3}+D}+\frac{W}{Ex+F} \]
+\[ \frac{Ax+B}{(Cx^{4}+D)(Ex+F)} =
+   \frac{Sx^{3}+Tx^{2}+Ux+V}{Cx^{4}+D}+\frac{W}{Ex+F} \]
+\begin{center}
+  And so on. Note that you should avoid using C as a variable for a coefficient
+  if the problem involves integration so that you do not confuse it with the
+  constant of integration.
+\end{center}
+
+\noindent\rule{13.7cm}{0.4pt}
+
+For this example, both the terms in the denominator are of degree 1, so
+the polynomial in the numerator will be of degree 0:
+\[ \frac{4+x}{(1+2x)(3-x)} \]
+\[ \frac{4+x}{(1+2x)(3-x)} = \frac{A}{1+2x}+\frac{B}{3-x} \]
+If we take \( A \) and \( B \) as our unknowns, we can solve for them in terms
+of \( x \) by cross multiplying.
+\[ (1+2x)(3-x)\frac{4+x}{(1+2x)(3-x)} =
+   (\frac{A}{1+2x}+\frac{B}{3-x})(1+2x)(3-x) \]
+\[ 4+x = A(3-x)+B(1+2x) \]
+
+\subsubsection*{Method I}
+\[ 4+x = A(3-x)+B(1+2x) \]
+\[ 4+x = 3A-Ax+B+2Bx \]
+\[ 4+x = (3A+B)+(2B-A)x \]
+\[ 4+(1)x = (3A+B)+(2B-A)x \]
+\[ 4 = 3A+B \quad 1 = 2B-A \]
+\[ 6A+2B = 8 \]
+\[ -A+2B = 1 \]
+\[ 7A = 7 \quad A = 1 \]
+\[ B = 1 \]
+
+\subsubsection*{Method II}
+\[ 4+x = A(3-x)+B(1+2x) \]
+\[ Let: x = 3 \]
+\[ 7 = 4+3 = A(3-3)+B(1+2(3)) \]
+\[ B = 1 \]
+\[ Let: x = \frac{-1}{2} \]
+\[ 4-\frac{1}{2} = A(3-\frac{-1}{2})+B(1+2\frac{-1}{2}) \]
+\[ \frac{7}{2} = \frac{7}{2}A \]
+\[ A = 1 \]
+
+Therefore:
+\[ \frac{4+x}{(1+2x)(3-x)} = \frac{1}{1+2x}+\frac{1}{3-x} \]
+\[ \int{\frac{4+x}{(1+2x)(3-x)}\diff{x}} =
+   \int{\frac{1}{1+2x}\diff{x}}+\int{\frac{1}{3-x}\diff{x}} \]
+\[ 2\ln|1+2x|+\ln|3-x|+C \]
+\[ = \ln\bigg(|1+2x|^{2}|3-x|\bigg)+C \]
+
+\noindent\rule{13.7cm}{0.4pt}
+
+Here is a different example with a proper fraction that has a denominator
+with a higher degree.
+\[ \frac{1}{x^{2}+x^{4}} \]
+
+\subsubsection*{Method 1}
+\[ \frac{1}{x^{2}+x^{4}} = \frac{1}{(x^{2})(1+x^{2})} \]
+\[ \frac{1}{(x^{2})(1+x^{2})} = \frac{Ax+B}{x^{2}}+\frac{Cx+D}{1+x^{2}} \]
+\[ 1 = (Ax+B)(1+x^{2})+(Cx+D)x^{2} \]
+\[ 1 = Ax+B+Ax^{3}+Bx^{2}+Cx^{3}+Dx{2} \]
+\[ 1 = (A+C)x^{3}+(B+D)x^{2}+Ax+B \]
+\[ A+C = 0 \quad B+D = 0 \quad A = 0 \quad B = 1 \]
+\[ D = -1 \quad C = 0 \]
+\[ \frac{1}{(x^{2})(1+x^{2})} = \frac{1}{x^{2}}-\frac{1}{1+x^{2}} \]
+
+\subsubsection*{Method 2}
+\[ \frac{1}{x^{2}+x^{4}} = \frac{1}{(x^{2})(1+x^{2})} \]
+\[ \frac{1}{(x^{2})(1+x^{2})} = \frac{1+x^{2}-x^{2}}{x^{2}(1+x^{2})} \]
+\[ \frac{1+x^{2}}{x^{2}(1+x^{2})}+\frac{-x^{2}}{x^{2}(1+x^{2})} \]
+\[ = \frac{1}{x^{2}}-\frac{1}{1+x^{2}} \]
+
+\subsection*{Practice Problem 2}
+\[ \frac{x-6}{x^{2}+x-6} \]
+\[ \frac{x-6}{(x+3)(x-2)} = \frac{A}{x+3}+\frac{B}{x-2} \]
+\[ x-6 = A(x-2)+B(x+3) \]
+\[ Let: x = -3 \]
+\[ -3-6 = A(-3-2)+B(-3+3) \]
+\[ A = \frac{9}{5} \]
+\[ Let: x = 2 \]
+\[ 2-6 = A(2-2)+B(2+3) \]
+\[ B = \frac{-4}{5} \]
+\[ \frac{x-6}{(x+3)(x-2)} = \frac{9}{5(x+3)}-\frac{4}{5(x-2)} \]
+
+\subsection*{Practice Problem 3a}
+\[ \frac{x^{4}+1}{x^{5}+4x^{3}} \]
+\[ \frac{x^{4}+1}{x^{5}+4x^{3}} = \frac{x^{4}+1}{x^{3}(x^{2}+4)} \]
+\[ \frac{x^{4}+1}{x^{3}(x^{2}+4)} =
+   \frac{Ax^{2}+Bx+C}{x^{3}}+\frac{Dx+E}{x^{2}+4} \]
+\[ \frac{x^{4}+1}{x^{3}(x^{2}+4)} =
+   \frac{A}{x}+\frac{B}{x^{2}}+\frac{C}{x^{3}}+\frac{Dx+E}{x^{2}+4} \]
+\[ x^{3}(x^{2}+4)\frac{x^{4}+1}{x^{3}(x^{2}+4)} =
+   \bigg(\frac{A}{x}+\frac{B}{x^{2}}+\frac{C}{x^{3}}+
+   \frac{Dx+E}{x^{2}+4}\bigg)(x^{3}(x^{2}+4)) \]
+\[ x^{4}+1 = Ax^{4}+4Ax^{2}+Bx^{3}+4Bx+Cx^{2}+4C+Dx^{4}+Ex^{3} \]
+\[ x^{4}+1 = (A+D)x^{4}+(B+E)x^{3}+(4A+C)x^{2}+4Bx+4C \]
+\[ A+D = 1 \quad B+E = 0 \quad 4A+C = 0 \quad 4B = 0 \quad 4C = 1 \]
+\[ A = \frac{-1}{16} \quad B = 0 \quad C = \frac{1}{4} \quad
+   D = \frac{17}{16} \quad E = 0 \]
+\[ \frac{x^{4}+1}{x^{3}(x^{2}+4)} =
+   \frac{A}{x}+\frac{B}{x^{2}}+\frac{C}{x^{3}}+\frac{Dx+E}{x^{2}+4} \]
+\[ = \frac{-1}{16x}+\frac{1}{4x^{3}}+\frac{17x}{16(x^{2}+4)} \]
+
+\subsection*{Practice Problem 3b}
+\[ \frac{1}{(x^{2}-9)^{2}} \]
+\[ \frac{1}{(x^{2}-9)^{2}} = \frac{1}{(x-3)^{2}(x+3)^{2}} \]
+\[ \frac{1}{(x-3)^{2}(x+3)^{2}} =
+   \frac{Ax+B}{(x-3)^{2}}+\frac{Cx+D}{(x+3)^{2}} \]
+\[ \frac{1}{(x-3)^{2}(x+3)^{2}} =
+   \frac{Ax}{(x-3)^{2}}+\frac{B}{(x-3)^{2}}+
+   \frac{Cx}{(x+3)^{2}}+\frac{D}{(x+3)^{2}} \]
+\[ ((x-3)^{2}(x+3)^{2})\frac{1}{(x-3)^{2}(x+3)^{2}} =
+   \bigg(\frac{Ax}{(x-3)^{2}}+\frac{B}{(x-3)^{2}}+
+   \frac{Cx}{(x+3)^{2}}+\frac{D}{(x+3)^{2}}\bigg)((x-3)^{2}(x+3)^{2}) \]
+\[ 1 = Ax(x+3)^{2}+B(x+3)^{2}+Cx(x-3)^{2}+D(x-3)^{2} \]
+\[ 1 = Ax(x^{2}+6x+9)+B(x^{2}+6x+9)+Cx(x^{2}-6x+9)+D(x^{2}-6x+9) \]
+\[ 1 = Ax^{3}+6Ax^{2}+9Ax+Bx^{2}+6Bx+9B+Cx^{3}-6Cx^{2}+9Cx+Dx^{2}-6Dx+9D \]
+\[ 1 = (A+C)x^{3}+(6A+B-6C+D)x^{2}+(9A+6B+9C-6D)x+(9B+9D) \]
+\[ A+C = 0 \quad 6A+B-6C+D = 0 \quad 9A+6B+9C-6D = 0 \quad 9B+9D = 1 \]
+\[ 54A+9B-54C+9D = 0 \quad 9B+9D = 1 \]
+\[ 54A-54C = -1 \quad A+C = 0 \]
+\[ 108A = -1 \]
+\[ A = \frac{-1}{108} \quad C = \frac{1}{108} \]
+\[ 9A+6B+9C-6D = 0 = 6B-6D \]
+\[ B-D = 0 \quad B+D = \frac{1}{9} \]
+\[ B = \frac{1}{18} \quad D = \frac{1}{18} \]
+\[ \frac{1}{(x-3)^{2}(x+3)^{2}} =
+   \frac{-x}{108(x-3)^{2}}+\frac{1}{18(x-3)^{2}}+
+   \frac{x}{108(x+3)^{2}}+\frac{1}{18(x+3)^{2}} \]
+
+\subsection*{Practice Problem 12}
+\[ \int{\frac{x-4}{x^{2}-5x+6}\diff{x}} \]
+\[ \frac{x-4}{x^{2}-5x+6} =
+   \frac{x-4}{(x-3)(x-2)} = \frac{A}{x-3}+\frac{B}{x-2} \]
+\[ \frac{x-4}{(x-3)(x-2)} = \frac{A}{x-3}+\frac{B}{x-2} \]
+\[ x-4 = A(x-2)+B(x-3) \]
+\[ Let: x = 3 \]
+\[ 3-4 = A(3-2)+B(3-3) \]
+\[ A = -1 \]
+\[ Let: x = 2 \]
+\[ 2-4 = A(2-2)+B(2-3) \]
+\[ B = 2 \]
+\[ \int{\frac{x-4}{x^{2}-5x+6}\diff{x}} =
+   \int{\frac{A}{x-3}+\frac{B}{x-2}\diff{x}} =
+   \int{\frac{A}{x-3}\diff{x}}+\int{\frac{B}{x-2}\diff{x}} \]
+\[ A\int{\frac{1}{x-3}\diff{x}}+B\int{\frac{1}{x-2}\diff{x}} \]
+\[ A\ln|x-3|+B\ln|x-2|+C \]
+\[ -\ln|x-3|+2\ln|x-2|+C \]
+\[ = \ln\bigg(\frac{|x-2|^{2}}{|x-3|}\bigg)+C \]
+
+\subsection*{Practice Problem 15}
+\[ \int{\frac{x^{3}-4x+1}{x^{2}-3x+2}\diff{x}} \]
+\begin{center}
+  \polylongdiv{x^3-4x+1}{x^2-3x+2}
+\end{center}
+\[ \int{\frac{x^{3}-4x+1}{x^{2}-3x+2}\diff{x}} =
+   \int{x+3+\frac{3x-5}{x^{2}-3x+2}\diff{x}} \]
+\[ \frac{x^{2}}{2}+3x+C+\int{\frac{3x-5}{x^{2}-3x+2}\diff{x}} \]
+\[ \frac{3x-5}{(x-2)(x-1)} = \frac{A}{x-2}+\frac{B}{x-1} \]
+\[ 3x-5 = A(x-1)+B(x-2) \]
+\[ Let: x = 1 \rightarrow 3(1)-5 = A(1-1)+B(1-2) \rightarrow B = 2 \]
+\[ Let: x = 2 \rightarrow 3(2)-5 = A(2-1)+B(2-2) \rightarrow A = 1 \]
+\[ \frac{x^{2}}{2}+3x+C+\int{\frac{3x-5}{(x-2)(x-1)}\diff{x}} \]
+\[ \frac{x^{2}}{2}+3x+C+\int{\frac{A}{x-2}+\frac{B}{x-1}\diff{x}} \]
+\[ \frac{x^{2}}{2}+3x+A\ln|x-2|+B\ln|x-1|+C \]
+\[ = \frac{x^{2}}{2}+3x+1\ln|x-2|+2\ln|x-1|+C \]
+\[ = \frac{x^{2}}{2}+3x+\ln\bigg(|x-2||x-1|^{2}\bigg)+C \]
+
+\subsection*{Practice Problem 24}
+\[ \int{\frac{x^{2}-x+6}{x^{3}+3x}\diff{x}} \]
+\[ \int{\frac{x^{2}-x+6}{x^{3}+3x}\diff{x}} =
+   \int{\frac{x^{2}-x+6}{x(x^{2}+3)}\diff{x}} \]
+\[ \frac{x^{2}-x+6}{x(x^{2}+3)} = \frac{A}{x}+\frac{Bx+D}{x^{2}+3} \]
+\[ x^{2}-x+6 = A(x^{2}+3)+(Bx+D)x \]
+\[ x^{2}-x+6 = Ax^{2}+3A+Bx^{2}+Dx \]
+\[ x^{2}-x+6 = (A+B)x^{2}+Dx+3A \]
+\[ A+B = 1 \quad D = -1 \quad 3A = 6 \]
+\[ A = 2 \quad B = -1 \quad D = -1 \]
+\[ \int{\frac{x^{2}-x+6}{x(x^{2}+3)}\diff{x}} =
+   \int{\frac{A}{x}+\frac{Bx+D}{x^{2}+3}\diff{x}} \]
+\[ \int{\frac{2}{x}+\frac{-x-1}{x^{2}+3}\diff{x}} \]
+\[ 2\int{\frac{1}{x}\diff{x}}-\int{\frac{x+1}{x^{2}+3}\diff{x}} \]
+\[ 2\ln|x|+C-\int{\frac{x}{x^{2}+3}\diff{x}}-\int{\frac{1}{x^{2}+3}\diff{x}} \]
+\[ 2\ln|x|-\frac{1}{2}\ln|x^{2}+3|+C-\int{\frac{1}{x^{2}+3}\diff{x}} \]
+We can solve this integral by rewriting the derivative of \( \arctan \).
+\[ \frac{\diff}{\diff{x}}\arctan(\frac{x}{a}) =
+   \frac{\frac{1}{a}}{1+(\frac{x}{a})^{2}}\times\frac{a^{2}}{a^{2}} =
+   \frac{a}{x^{2}+a^{2}} \]
+\[ \int{\frac{a}{x^{2}+a^{2}}\diff{x}} = \arctan(\frac{x}{a})+C \]
+Substitute this general form into the integral:
+\[ \int{\frac{1}{x^{2}+3}\diff{x}} =
+   \frac{1}{\sqrt{3}}\int{\frac{\sqrt{3}}{x^{2}+3}\diff{x}} =
+   \frac{1}{\sqrt{3}}\arctan(\frac{x}{\sqrt{3}})+C \]
+Therefore:
+\[ 2\ln|x|-\frac{1}{2}\ln|x^{2}+3|+C-\int{\frac{1}{x^{2}+3}\diff{x}} \]
+\[ = 2\ln|x|-\frac{1}{2}\ln|x^{2}+3|-
+   \frac{1}{\sqrt{3}}\arctan(\frac{x}{\sqrt{3}})+C \]
+
+\begin{center}
+  If any errors are found, please contact me at alvin.lin.dev@gmail.com
+\end{center}
+
+\end{document}

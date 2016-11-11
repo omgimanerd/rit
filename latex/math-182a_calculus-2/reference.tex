@@ -1,0 +1,100 @@
+\documentclass[letterpaper, 12pt]{article}
+
+\renewcommand*{\arcsin}{\sin^{-1}}
+\renewcommand*{\arccos}{\cos^{-1}}
+\renewcommand*{\arctan}{\tan^{-1}}
+\newcommand*{\arccot}{\cot^{-1}}
+\newcommand*{\arcsec}{\sec^{-1}}
+\newcommand*{\arccsc}{\csc^{-1}}
+\newcommand*{\diff}{\mathrm{d}}
+\newcommand*{\Diff}[1]{\mathrm{d^#1}}
+\newcommand*{\e}{\mathrm{e}}
+
+
+\title{Calculus II Reference Table}
+\author{Alvin Lin}
+\date{Calculus II: August 2016 - December 2016}
+
+\begin{document}
+
+\maketitle
+
+\section{Trigonometric Formulas}
+\begin{itemize}
+  \item \( \sin^{2}(\theta)+\cos^{2}(\theta) = 1 \)
+  \item \( 1+\tan^{2}(\theta) = \sec^{2}(\theta) \)
+  \item \( 1+\cot^{2}(\theta) = \csc^{2}(\theta) \)
+  \item \( \sin(-\theta) = \sin(\theta) \)
+  \item \( \cos(-\theta) = \cos(\theta) \)
+  \item \( \tan(-\theta) = -\tan(\theta) \)
+  \item \( \sin(A\pm B) = \sin(A)\cos(B)\pm\sin(B)\cos(A) \)
+  \item \( \cos(A\pm B) = \cos(A)\cos(B)\mp\sin(A)\sin(B) \)
+  \item \( \sin(2\theta) = 2\sin(\theta)\cos(\theta) \)
+  \item \( \cos(2\theta) = cos^{2}(\theta)-sin^{2}(\theta) =
+          2\cos^{2}(\theta)-1 = 1-2\sin^{2}(\theta) \)
+  \item \( \tan(\theta) = \frac{\sin(\theta)}{\cos(\theta)} =
+          \frac{1}{\cos(\theta)} \)
+  \item \( \cot(\theta) = \frac{\cos(\theta)}{\sin(\theta)} =
+          \frac{1}{\tan(\theta)} \)
+  \item \( \sec(\theta) = \frac{1}{\cos(\theta)} \)
+  \item \( \csc(\theta) = \frac{1}{\sin(\theta)} \)
+  \item \( \cos(\frac{\pi}{2}-\theta) = \sin(\theta) \)
+  \item \( \sin(\frac{\pi}{2}-\theta) = \cos(\theta) \)
+\end{itemize}
+
+\section{Differentiation Formulas}
+\begin{itemize}
+  \item \( \frac{\diff}{\diff{x}}(x^{n}) = xn^{n-1} \)
+  \item \( \frac{\diff}{\diff{x}}(fg) = fg' + gf' \)
+  \item \( \frac{\diff}{\diff{x}}(\frac{f}{g}) = \frac{gf'-fg'}{g^{2}} \)
+  \item \( \frac{\diff}{\diff{x}}(f(g(x))) = f'(g(x))g'(x) \)
+  \item \( \frac{\diff}{\diff{x}}(\sin(x)) = \cos(x) \)
+  \item \( \frac{\diff}{\diff{x}}(\cos(x)) = -\sin(x) \)
+  \item \( \frac{\diff}{\diff{x}}(\tan(x)) = \sec^{2}(x) \)
+  \item \( \frac{\diff}{\diff{x}}(\cot(x)) = -\csc^{2}(x) \)
+  \item \( \frac{\diff}{\diff{x}}(\sec(x)) = \sec(x)\tan(x) \)
+  \item \( \frac{\diff}{\diff{x}}(\csc(x)) = -\csc(x)\cot(x) \)
+  \item \( \frac{\diff}{\diff{x}}(\e^{x}) = \e^{x} \)
+  \item \( \frac{\diff}{\diff{x}}(a^{x}) = a^{x}\ln(a) \)
+  \item \( \frac{\diff}{\diff{x}}(\ln(x)) = \frac{1}{x} \)
+  \item \( \frac{\diff}{\diff{x}}(\arcsin{x}) = \frac{1}{\sqrt{1-x^{2}}} \)
+  \item \( \frac{\diff}{\diff{x}}(\arccos{x}) =
+           \frac{-1}{\sqrt{1-x^{2}}} \)
+  \item \( \frac{\diff}{\diff{x}}(\arctan{x}) = \frac{1}{1+x^{2}} \)
+  \item \( \frac{\diff}{\diff{x}}(\arccot{x}) = \frac{-1}{1+x^{2}} \)
+  \item \( \frac{\diff}{\diff{x}}(\arcsec{x}) = \frac{1}{|x|\sqrt{x^{2}-1}} \)
+  \item \( \frac{\diff}{\diff{x}}(\arccsc{x}) = \frac{-1}{|x|\sqrt{x^{2}-1}} \)
+\end{itemize}
+
+\section{Integration Formulas}
+\begin{itemize}
+  \item \( \int{a\diff{x} = ax+C} \)
+  \item \( \int{x^{n}\diff{x}} = \frac{x^{n+1}}{n + 1} \)
+  \item \( \int{\frac{1}{x}\diff{x} = \ln|x|+C} \)
+  \item \( \int{\e^{x}\diff{x} = \e^{x}+C} \)
+  \item \( \int{a^{x}\diff{x} = \frac{a^{x}}{\ln(a)}+C} \)
+  \item \( \int{\ln(x)\diff{x} = x\ln(x)-x+C} \)
+  \item \( \int{\sin(x)\diff{x} = \cos(x)+C} \)
+  \item \( \int{\cos(x)\diff{x} = \sin(x)+C} \)
+  \item \( \int{\tan(x)\diff{x} = \ln|\sec(x)|+C = -\ln|\cos(x)|+C} \)
+  \item \( \int{\cot(x)\diff{x} = \ln|\sin(x)|+C} \)
+  \item \( \int{\sec(x)\diff{x} = \ln|\sec(x)+\tan(x)|+C} \)
+  \item \( \int{\csc(x)\diff{x} = \ln|\csc(x)-\cot(x)|+C} \)
+  \item \( \int{\sec^{2}(x)\diff{x} = \tan(x)+C} \)
+  \item \( \int{\sec(x)\tan(x)\diff{x} = \sec(x)+C} \)
+  \item \( \int{\csc^{2}(x)\diff{x} = -\cot(x)+C} \)
+  \item \( \int{\csc(x)\cot(x)\diff{x} = -\csc(x)+C} \)
+  \item \( \int{\tan^{2}(x)\diff{x} = \tan(x)-x+C} \)
+  \item \( \int{\frac{\diff{x}}{a^{2}+x^{2}} =
+          \frac{1}{a}\arctan{\frac{x}{a}}+C} \)
+  \item \( \int{\frac{\diff{x}}{\sqrt{a^{2}-x^{2}}} = \arcsin(\frac{x}{a})+C} \)
+\end{itemize}
+
+\section{Fundamental Theorem of Calculus}
+\[ \int_{a}^{b}{f'(x)\diff{x} = f(b) - f(a)} \]
+
+\begin{center}
+  If any errors are found, please contact me at alvin.lin.dev@gmail.com
+\end{center}
+
+\end{document}

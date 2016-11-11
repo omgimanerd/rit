@@ -1,0 +1,121 @@
+\documentclass[letterpaper, 12pt]{article}
+\usepackage{amsmath}
+\usepackage{pgfplots}
+
+\pgfplotsset{compat=1.13}
+
+\renewcommand*{\arcsin}{\sin^{-1}}
+\renewcommand*{\arccos}{\cos^{-1}}
+\renewcommand*{\arctan}{\tan^{-1}}
+\newcommand*{\arccot}{\cot^{-1}}
+\newcommand*{\arcsec}{\sec^{-1}}
+\newcommand*{\arccsc}{\csc^{-1}}
+\newcommand*{\diff}{\mathrm{d}}
+\newcommand*{\Diff}[1]{\mathrm{d^#1}}
+\newcommand*{\e}{\mathrm{e}}
+
+\title{Curves Defined By Parametric Equations}
+\author{Alvin Lin}
+\date{Calculus II: August 2016 - December 2016}
+
+\begin{document}
+
+\maketitle
+
+\section*{Curves Defined By Parametric Equations}
+A curve defined by a parametric equation is a curve defined by:
+\[ y = f(t) \quad y = g(t) \quad t_{0} \leq t \leq t_{1} \]
+Such as:
+\begin{center}
+  \begin{tikzpicture}
+    \begin{axis}[
+        trig format plots=rad,
+        axis equal
+    ]
+    \addplot [domain=0:2*pi,samples=200, red]
+      ({pi*cos(x)},{pi*sin(x)});
+    \end{axis}
+  \end{tikzpicture}
+\end{center}
+\[ x = \pi\cos(\theta) \quad y = \pi\sin(\theta) \quad
+   0 \leq \theta \leq 2\pi \]
+
+\subsection*{Example 1}
+Eliminate the parameters and find the equation of the graph in terms of y and x:
+\[ x = 1+t \quad y = 5-2t \quad -2 \leq t \leq 3 \]
+\begin{center}
+  \begin{tikzpicture}
+    \begin{axis}[
+        trig format plots=rad,
+        axis equal
+    ]
+    \addplot [domain=-1:4,samples=200, red]
+      ({1+x},{5-2*x});
+    \end{axis}
+  \end{tikzpicture}
+\end{center}
+\[ t = x-1 \]
+\begin{align*}
+y &= 5-2(x-1) \\
+y &= 5-2x+2 \\
+y &= -2x+7 \\
+\end{align*}
+
+\subsection*{Example 2}
+Eliminate the parameters and find the equation of the graph in terms of y and x:
+\[ x = t^{2} \quad y = t^{3} \]
+\begin{center}
+  \begin{tikzpicture}
+    \begin{axis}[
+        trig format plots=rad,
+        axis equal
+    ]
+    \addplot [samples=200, red]
+      ({x^2},{x^3});
+    \end{axis}
+  \end{tikzpicture}
+\end{center}
+\[ y^{2} = (t^{3})^{2} = t^{6} = (t^{2})^{3} = x^{3} \]
+\[ y^{2} = x^{3} \]
+
+\subsection*{Example 3}
+Eliminate the parameters and find the equation of the graph in terms of y and x:
+\[ x = \sin(\theta) \quad y = \cos(\theta) \quad 0 \leq \theta \leq \pi \]
+\begin{center}
+  \begin{tikzpicture}
+    \begin{axis}[
+        trig format plots=rad,
+        axis equal
+    ]
+    \addplot [samples=200, red]
+      ({sin(x)},{cos(x)});
+    \end{axis}
+  \end{tikzpicture}
+\end{center}
+\[ x^{2} = \sin^{2}(\theta) \quad y^{2} = \cos^{2}(\theta) \]
+\[ x^{2}+y^{2} = \sin^{2}(\theta)+\cos^{2}(\theta) = 1 \]
+\[ x^{2}+y^{2} = 1 \]
+
+\subsection*{Example 4}
+Eliminate the parameters and find the equation of the graph in terms of y and x:
+\[ x = 2\sin(\theta) \quad y = 4+\cos(\theta) \]
+\begin{center}
+  \begin{tikzpicture}
+    \begin{axis}[
+        trig format plots=rad,
+        axis equal
+    ]
+    \addplot [samples=200, red]
+      ({2*sin(x)},{4+cos(x)});
+    \end{axis}
+  \end{tikzpicture}
+\end{center}
+\[ \sin(\theta) = \frac{x}{2} \quad \cos(\theta) = y-4 \]
+\[ \frac{x^{2}}{4}+(y-4)^{2} = \sin^{2}(\theta)+\cos^{2}(\theta) = 1 \]
+\[ \frac{x^{2}}{4}+(y-4)^{2} = 1 \]
+
+\begin{center}
+  If any errors are found, please contact me at alvin.lin.dev@gmail.com
+\end{center}
+
+\end{document}

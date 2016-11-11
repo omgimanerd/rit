@@ -1,0 +1,77 @@
+\documentclass[letterpaper, 12pt]{article}
+\usepackage{amsmath}
+\usepackage{pgfplots}
+
+\pgfplotsset{compat=1.10}
+
+\renewcommand*{\arcsin}{\sin^{-1}}
+\renewcommand*{\arccos}{\cos^{-1}}
+\renewcommand*{\arctan}{\tan^{-1}}
+\newcommand*{\arccot}{\cot^{-1}}
+\newcommand*{\arcsec}{\sec^{-1}}
+\newcommand*{\arccsc}{\csc^{-1}}
+\newcommand*{\diff}{\mathrm{d}}
+\newcommand*{\Diff}[1]{\mathrm{d^#1}}
+\newcommand*{\e}{\mathrm{e}}
+
+\title{Arc Length}
+\author{Alvin Lin}
+\date{Calculus II: August 2016 - December 2016}
+
+\begin{document}
+
+\maketitle
+
+\section*{Arc Length}
+\begin{center}
+  \begin{tikzpicture}
+    \begin{axis}[axis lines=middle,
+                 xlabel=\(x\),
+                 ylabel=\(y\),
+                 enlargelimits,
+                 xtick={-1,1},
+                 xticklabels={a,b},
+                 ytick=\empty]
+    \addplot[blue, domain={-2:2}]{pow(x,3)-2*pow(x,2)+5};
+    \end{axis}
+  \end{tikzpicture}
+\end{center}
+Suppose we want to find the distance between f(a) and f(b) along the curve.
+\[ L = \int_{a}^{b}{\sqrt{1+f'(x)^{2}}\diff{x}} \]
+The arc length function is denoted:
+\[ S(x) = \int_{a}^{x}{\sqrt{x+f'(t)^{2}}\diff{t}} \]
+
+\subsection*{Example}
+\[ f(x) = y = \ln(1-x^{2}) \quad 0 \leq x \leq \frac{1}{2} \]
+\[ L = \int_{a}^{b}{\sqrt{1+f'(x)^{2}}\diff{x}} \]
+\[ f'(x) = \frac{0-2x}{1-x^{2}} = \frac{-2x}{1-x^{2}} \]
+\begin{align*}
+  1 + f'(x)^{2} &= 1+(\frac{-2x}{1-x^{2}})^{2} \\
+  &= 1+\frac{4x}{(1-x^{2})^{2}} \\
+  &= \frac{(1-x^{2})^{2}+4x^{2}}{(1-x^{2})^{2}} \\
+  &= \frac{1+x^{4}-2x^{2}+4x^{2}}{(1-x^{2})^{2}} \\
+  &= \frac{x^{4}+2x^{2}+1}{(1-x^{2})^{2}} \\
+  &= \frac{(1+x^{2})^{2}}{(1-x^{2})^{2}} \\
+  &= (\frac{1+x^{2}}{1-x^{2}})^{2}
+\end{align*}
+Therefore:
+\begin{align*}
+  L &= \int_{0}^{\frac{1}{2}}{\sqrt{1+f'(x)^{2}}\diff{x}} \\
+  &= \int_{0}^{\frac{1}{2}}{\frac{1+x^{2}}{1-x^{2}}\diff{x}} \\
+  &= \int_{0}^{\frac{1}{2}}{\frac{2-(1-x^{2})}{1-x^{2}}\diff{x}} \\
+  &= \int_{0}^{\frac{1}{2}}{\frac{2}{1-x^{2}}-
+     \frac{1-x^{2}}{1-x^{2}}\diff{x}} \\
+  &= \int_{0}^{\frac{1}{2}}{\frac{2}{1-x^{2}}-1\diff{x}} \\
+  &= \int_{0}^{\frac{1}{2}}{\frac{2}{(1-x)(1+x)}-1\diff{x}}
+\end{align*}
+By partial fractions:
+\[ \int_{0}^{\frac{1}{2}}{\frac{A}{1-x}+\frac{B}{1+x}-1\diff{x}} \]
+\[ A = B = 1 \]
+\[ \bigg[-A\ln|1-x|+B\ln|1+x|-x\bigg]_{0}^{\frac{1}{2}} \]
+\[ L = -\ln|\frac{1}{2}|+\ln|\frac{3}{2}|-\frac{1}{2} \]
+
+\begin{center}
+  If any errors are found, please contact me at alvin.lin.dev@gmail.com
+\end{center}
+
+\end{document}

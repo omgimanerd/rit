@@ -1,0 +1,215 @@
+\documentclass[letterpaper, 12pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+
+\pgfplotsset{compat=1.10}
+
+\renewcommand*{\arcsin}{\sin^{-1}}
+\renewcommand*{\arccos}{\cos^{-1}}
+\renewcommand*{\arctan}{\tan^{-1}}
+\newcommand*{\arccot}{\cot^{-1}}
+\newcommand*{\arcsec}{\sec^{-1}}
+\newcommand*{\arccsc}{\csc^{-1}}
+\newcommand*{\diff}{\mathrm{d}}
+\newcommand*{\ddiff}[2]{\frac{\diff{#1}}{\diff{#2}}}
+\newcommand*{\Diff}[1]{\mathrm{d^#1}}
+\newcommand*{\e}{\mathrm{e}}
+
+\title{Sequences and Series}
+\author{Alvin Lin}
+\date{Calculus II: August 2016 - December 2016}
+
+\begin{document}
+
+\maketitle
+
+\section*{Sequences and Series}
+
+\subsection*{Sequence:}
+A list of numbers written in a definite order. Example:
+\[ \bigg\{1,19,11,12,19,13,...\frac{1}{11},19^{2}\bigg\} \]
+\[ \bigg\{1,\frac{1}{2},\frac{1}{3},\frac{1}{4},...\bigg\} \]
+Define a mapping:
+\[ f:N \rightarrow R \]
+\[ f(n) = a_{n} \]
+\[ \bigg\{a_{1},a_{2},a_{3},a_{4},...a_{n}\bigg\} \]
+\( a_{n} \) is the generic term where \( a_{n} = \frac{1}{n} \).
+
+\subsubsection*{Definition}
+A sequence \( \{a_{n}\} \) has the limit \( L \) if we can make the terms
+as close to \( L \) as we want by choosing a sufficiently large \( n \). If
+\( a_{n} \) has a limit \( L \), we say that \( \{a_{n}\} \) converges to
+\( L \). We denote this by \( a_{n} \rightarrow L \). \par
+If there is no real number \( L \) such that \( a_{n} \rightarrow L \),
+then \( \{a_{n}\} \) diverges.
+\newline
+Example:
+\[ a_{n} = \frac{1}{n} \]
+\[ a_{n} \to 0 \]
+\[ \lim_{n \to \infty}{a_{n}} = L \]
+\begin{itemize}
+  \item \( a_{n} \) is increasing iff
+    \( a_{n}<a_{n+1} \quad \forall \quad n \).
+  \item \( a_{n} \) is decreasing iff
+    \( a_{n}>a_{n+1} \quad \forall \quad n \).
+  \item \( a_{n} \) is monotonic if it is either increase or decreasing.
+  \item \( a_{n} \) is bounded from above iff
+    \( a_{n} \leq M \quad \forall \quad n \).
+  \item \( a_{n} \) is bounded from below iff
+    \( a_{n} \geq M \quad \forall \quad n \).
+  \item \( r^{n} \) is convergent is \( -1 < r \leq 1 \) and divergent
+    for all other \( r \)'s.
+\end{itemize}
+
+\subsubsection*{Identities}
+\begin{itemize}
+  \item \( \lim{ca_{n}} = c\lim{a_{n}} \)
+  \item \( \lim{a_{n} \pm b_{n}} = \lim{a_{n}}+\lim{b_{n}} \)
+  \item \( \lim{\frac{a_{n}}{b_{n}}} = \frac{\lim{a_{n}}}{\lim{b_{n}}} \)
+  \item \( \lim{a_{n}b_{n}} = (\lim{a_{n}})(\lim{b_{n}}) \)
+  \item \( \lim{((a_{n})^{p})} = (\lim{a_{n}})^{p} \quad (p>0,a_{n}>0) \)
+\end{itemize}
+
+\subsubsection*{Theorems}
+\begin{itemize}
+  \item If \( \lim_{x \to \infty}{f(x)} = L \), then \( a_{n} \rightarrow L \)
+    where \( a_{n} = f(n) \).
+  \item If \( \lim{|a_{n}|} = 0\), then \( \lim{a_{n}} = 0 \).
+  \item Every bounded monotonic sequence is convergent. (Bounded from above and
+    below). \( |a_{n}| < M \).
+  \item The Squeeze Theorem:
+    \[ a_{n} \leq b_{n} \leq c_{n} \quad n \geq n_{o} \]
+    \[ \lim_{n\to\infty}{a_{n}} = \lim_{n\to\infty}{c_{n}} = L \]
+    \[ \rightarrow \lim_{n\to\infty}{b_{n}} = L \]
+\end{itemize}
+
+\subsection*{Practice Problem 17}
+\[ a_{n} = 1-(0.2)^{n} \]
+\begin{align*}
+  \lim_{n\to\infty}{a_{n}} &= \lim_{n\to\infty}{(1-(0.2)^{n})} \\
+  &= 1-\lim_{n\to\infty}{(0.2)^{n}} \\
+  &= 1-0 \\
+  &= 1
+\end{align*}
+\[
+  \lim_{n\to\infty}{r^{n}} =
+  \begin{cases}
+      0 & -1 \leq r \leq 1 \\
+      1 & r = 1 \\
+   \end{cases}
+\]
+Any limit of this form converges when \( -1 < r \leq 1 \) otherwise it
+diverges.
+
+\subsection*{Practice Problem 18}
+\[ a_{n} = \frac{n^{3}}{n^{3}+1} \]
+\begin{align*}
+  \lim_{n\to\infty}{a_{n}} &= \lim_{n\to\infty}{\frac{n^{3}}{n^{3}+1}} \\
+  &= \lim_{n\to\infty}
+    {\frac{n^{3}}{n^{3}+1}\frac{\frac{1}{n^{3}}}{\frac{1}{n^{3}}}} \\
+  &= \lim_{n\to\infty}{\frac{1}{1+\frac{1}{n^{3}}}} \\
+  &= \frac{1}{1+0} \\
+  &= 1
+\end{align*}
+
+\subsection*{Practice Problem 21}
+\[ a_{n} = \e^{\frac{1}{n}} \]
+\begin{align*}
+  \lim_{n\to\infty}{a_{n}} &= \lim_{n\to\infty}{\e^{\frac{1}{n}}} \\
+  &= \e^{\lim_{n\to\infty}{\frac{1}{n}}} \\
+  &= \e^{0} \\
+  &= 1
+\end{align*}
+
+\subsection*{Practice Problem 25}
+\[ a_{n} = \frac{(-1)^{n}n}{n^{2}+1} \]
+\begin{align*}
+  \lim_{n\to\infty}{a_{n}} &= \lim_{n\to\infty}{\frac{(-1)^{n}n}{n^{2}+1}} \\
+  \lim_{n\to\infty}{|a_{n}|} &= \lim_{n\to\infty}{\frac{n}{n^{2}+1}} \\
+  &= \lim_{n\to\infty}
+    {\frac{n}{n^{2}+1}\frac{\frac{1}{n^{2}}}{\frac{1}{n^{2}}}} \\
+  &= \lim_{n\to\infty}
+    {\frac{\frac{1}{n}}{1+\frac{1}{n^{2}}}} \\
+  &= \frac{0}{1+0} \\
+  &= 0
+\end{align*}
+\[ \lim_{n\to\infty}{|a_{n}|} = 0 \quad \therefore \quad
+   \lim_{n\to\infty}{a_{n}} = 0 \]
+\begin{center}
+  (Theorem)
+\end{center}
+
+\subsection*{Practice Problem 29}
+\[ a_{n} = \frac{(2n-1)!}{(2n+1)!} \]
+\begin{align*}
+  \lim_{n\to\infty}{a_{n}} &= \lim_{n\to\infty}{\frac{(2n-1)!}{(2n+1)!}} \\
+  &= \lim_{n\to\infty}{\frac{(2n-1)!}{(2n+1)(2n)(2n-1)!}} \\
+  &= \lim_{n\to\infty}{\frac{1}{(2n+1)(2n)}} \\
+  &= 0
+\end{align*}
+
+\subsection*{Practice Problem 36}
+\[ a_{n} = \ln(n+1)-\ln(n) \]
+\begin{align*}
+  \lim_{n\to\infty}{a_{n}} &= \lim_{n\to\infty}{\ln(n+1)-\ln(n)} \\
+  &= \lim_{n\to\infty}{\ln(\frac{n+1}{n})} \\
+  &= \lim_{n\to\infty}{\ln(1+\frac{1}{n})} \\
+  &= \ln(1) \\
+  &= 0
+\end{align*}
+
+\subsection*{Practice Problem 37}
+\[ a_{n} = n\sin(\frac{1}{n}) \]
+\begin{align*}
+  \lim_{n\to\infty}{a_{n}} &= \lim_{x\to\infty}{x\sin(\frac{1}{x})} \\
+  &= \lim_{x\to\infty}{\frac{\sin(\frac{1}{x})}{\frac{1}{x}}} \\
+  &= \lim_{y\to0}{\frac{\sin(y)}{y}} \\
+  & \mathrm{(L'Hopital's\ Rule)} \\
+  &= \lim_{y\to0}{\frac{\cos(y)}{1}} \\
+  &= \lim_{t\to0}{\cos(y)} \\
+  &= 1
+\end{align*}
+
+\subsection*{Practice Problem 38}
+\[ a_{n} = \sqrt[n]{2^{1+3n}} \]
+\begin{align*}
+  \lim_{n\to\infty}{a_{n}} &= \lim_{n\to\infty}{2^{\frac{1+3n}{n}}} \\
+  &= \lim_{n\to\infty}{2^{\frac{1}{n}+3}} \\
+  &= 2^{0+3} \\
+  &= 8
+\end{align*}
+
+\subsection*{Practice Problem 39}
+\[ a_{n} = (1+\frac{2}{n})^{n} \]
+\[ lim_{n\to\infty}{(1+\frac{2}{n})^{n}} \]
+\begin{align*}
+  y = y(x) &= (1+\frac{2}{x})^{x} \\
+  \ln(y) &= x\ln(1+\frac{2}{x}) \\
+  \ln(y) &= \frac{\ln(1+\frac{2}{x})}{\frac{1}{x}} \\
+  \lim_{x\to\infty}&{(1+\frac{1}{x})^{x}} = \e \\
+  & \mathrm{(L'Hopital's\ Rule)} \\
+  \lim_{x\to\infty}{\ln(y)} &=
+    \lim_{x\to\infty}{\frac{\ln(1+\frac{2}{x})}{\frac{1}{x}}} = 2
+\end{align*}
+
+\subsection*{Practice Problem 40}
+\[ a_{n} = \frac{\sin(2n)}{1+\sqrt{n}} \]
+\[ 0 \leq a_{n} \leq \frac{1}{1+\sqrt{n}} \]
+By the Squeeze Theorem, since 0 and \( \frac{1}{1+\sqrt{n}} \) converge to 0,
+\( a_{n} \) must converge to 0.
+
+\subsection*{Practice Problem 66}
+\[ a_{n} = n+\frac{1}{n} \]
+Either \( a_{n} \geq a_{n+1} \) or \( a_{n+1} \geq a_{n} \) for all n.
+\[ f(x) = x+\frac{1}{x} \]
+\[ f'(x) = 1+(-x^{2}) = 1-\frac{1}{x^{2}} \]
+\[ f'(x) > 0 \]
+We can conclude that \( a_{n} \) is increasing and has a lower bound of 0.
+Thus, \( a_{n} \) diverges.
+
+\begin{center}
+  If any errors are found, please contact me at alvin.lin.dev@gmail.com
+\end{center}
+
+\end{document}

@@ -1,0 +1,180 @@
+\documentclass[letterpaper, 12pt]{article}
+\usepackage{amsmath}
+\usepackage{pgfplots}
+
+\pgfplotsset{compat=1.10}
+
+\renewcommand*{\arcsin}{\sin^{-1}}
+\renewcommand*{\arccos}{\cos^{-1}}
+\renewcommand*{\arctan}{\tan^{-1}}
+\newcommand*{\arccot}{\cot^{-1}}
+\newcommand*{\arcsec}{\sec^{-1}}
+\newcommand*{\arccsc}{\csc^{-1}}
+\newcommand*{\diff}{\mathrm{d}}
+\newcommand*{\Diff}[1]{\mathrm{d^#1}}
+\newcommand*{\e}{\mathrm{e}}
+
+\title{Area of a Surface of Revolution}
+\author{Alvin Lin}
+\date{Calculus II: August 2016 - December 2016}
+
+\begin{document}
+
+\maketitle
+
+\section*{Area of a Surface of Revolution}
+Finding the surface area of a solid of revolution follows a similar process as
+finding its volume. Instead of integrating volumes of cross sections, we divide
+the solid of revolution into frustums and use the arc length formula to
+integrate the surface areas of the frustums.
+\begin{center}
+  \begin{tikzpicture}
+    \begin{scope}
+      \clip (-4,0) rectangle (4,2);
+      \draw[dashed] (0,0) circle (4 and 1);
+    \end{scope}
+    \begin{scope}
+      \clip (-4,0) rectangle (4,-2);
+      \draw (0,0) circle (4 and 1);
+    \end{scope}
+    \draw (0,4) circle (2 and 0.5);
+    \draw (-4,0) -- (-2,4);
+    \draw (4,0) -- (2, 4);
+    \draw[dashed] (4,0) -- node[above] {\( r_{1} \)}
+                           coordinate[](a)(0,0)
+                        -- node[left] {\( h \)}
+                           coordinate[](b)(0,4)
+                        -- node[above] {\( r_{2} \)}
+                           coordinate[](c)(2,4)
+                        -- node[right] {\( l \)}
+                           coordinate[](d)(4,0);
+  \end{tikzpicture}
+\end{center}
+\[ A = 2\pi r l \quad \mathrm{where} \quad r = \frac{r_{1}+r_{2}}{2} \]
+If we have a function \( y=f(x) \) being revolved around the x-axis and split
+into frustums, then:
+\[ r_{1} = f(x_{i}) \]
+\[ r_{2} = f(x_{i-1}) \]
+\[ l = S \quad \mathrm(arc\ length) = \sqrt{1+(f'(x_{i}))^{2}}\Delta x \]
+We can assume that \( \Delta x \) is infinitely small and \( f(x) \) is
+continuous, thus both \( f(x_{i}) \) and \( f(x_{i-1}) \) converge to some
+point \( f(x) \). Therefore:
+\[ r = \frac{f(x_{i})+f(x_{i-1})}{2} \approx f(x) \]
+\[ A = 2\pi f(x)\sqrt{1+(f'(x))^{2}}\Delta x \]
+If we integrate to find the surface area of the entire solid, it follows that:
+\begin{align*}
+  A &= \int_{a}^{b}{2\pi f(x)\sqrt{1+(f'(x))^{2}}\diff{x}} \\
+  &= \int_{a}^{b}{2\pi y\sqrt{1+(f'(x))^{2}}\diff{x}}
+\end{align*}
+This general form can also be modified for rotating a function about the y-axis
+and also with a function in terms of y.
+
+\subsection*{Rotating about the x and y axes}
+About x-axis:
+\[ S = \int{(2\pi y)\diff{S}} \]
+About y-axis:
+\[ S = \int{(2\pi x)\diff{S}} \]
+If you have \( y = f(x) \quad a \leq x \leq b \):
+\[ \diff{S} = \int_{a}^{b}{\sqrt{1+(\frac{\diff{y}}{\diff{x}})^{2}}\diff{x}} \]
+If you have \( x = g(y) \quad c \leq y \leq d \):
+\[ \diff{S} = \int_{c}^{d}{\sqrt{1+(\frac{\diff{x}}{\diff{y}})^{2}}\diff{y}} \]
+
+\subsection*{Example 1}
+\[ y = x^{4} \quad 0 \leq x \leq 1 \]
+\begin{align*}
+  S &= 2\pi\int_{0}^{1}{y\sqrt{1+(y')^{2}}\diff{x}} \\
+  &= 2\pi\int_{0}^{1}{x^{4}\sqrt{1+16x^{6}}\diff{x}}
+\end{align*}
+
+\subsection*{Example 2}
+\[ y = x^{3} \quad 0 \leq x \leq 2 \]
+\begin{align*}
+  S &= 2\pi\int_{0}^{2}{y\sqrt{1+(y')^{2}}\diff{x}} \\
+  &= 2\pi\int_{0}^{2}{x^{3}\sqrt{1+9x^{4}}\diff{x}} \\
+  & Let: u = 1+9x^{4} \quad \diff{u} = 36x^{3}\diff{x} \\
+  &= 2\pi\int{\sqrt{u}\frac{\diff{u}}{36}} \\
+  &= \frac{\pi}{18}\int{u^{\frac{1}{2}}\diff{u}} \\
+  &= \frac{\pi}{18}\frac{2u^{\frac{3}{2}}}{3} \\
+  &= \frac{\pi}{27}u^{\frac{3}{2}} \\
+  &= \frac{\pi}{27}\bigg[(1+9x^{4})^{\frac{3}{2}}\bigg]_{0}^{2}
+\end{align*}
+
+\subsection*{Example 3}
+\[ y = \arctan(x) \quad 0 \leq x \leq 1 \]
+\[ \frac{\diff{y}}{\diff{x}} = \frac{1}{1+x^{2}} \]
+\begin{center}
+  Rotating about the x-axis:
+\end{center}
+\begin{align*}
+  S &= \int_{0}^{1}{2\pi y\sqrt{1+(\frac{\diff{y}}{\diff{x}})^{2}}\diff{x}} \\
+  &= \int_{0}^{1}{
+    2\pi\arctan(x)(1+(\frac{1}{1+x^{2}})^{2})^{\frac{1}{2}}\diff{x}} \\
+\end{align*}
+\begin{center}
+  Rotating about the y-axis:
+\end{center}
+\begin{align*}
+  S &= \int_{0}^{1}{2\pi x\sqrt{1+(\diff{y}/\diff{x})^{2}}\diff{x}} \\
+  &= \int_{0}^{1}{2\pi x(1+\frac{1}{(1+x^{2})^{2}})^{\frac{1}{2}}\diff{x}}
+\end{align*}
+
+\subsection*{Example 4}
+Rotated about y-axis:
+\[ f(x) = y = \frac{x^{3}}{6}+\frac{1}{2x} \quad \frac{1}{2} \leq x \leq 1 \]
+\[ S = \int{2\pi y\diff{S}} \]
+\[ S = \int_{\frac{1}{2}}^{1}{2\pi
+  y\sqrt{1+(\frac{\diff{y}}{\diff{x}})^{2}}\diff{x}} \]
+\[ y = \frac{x^{3}}{6}+\frac{1}{2x} \quad
+   y' = \frac{3x^{2}}{6}-\frac{1}{2x^{2}} = \frac{x^{2}}{2}-\frac{1}{2x^{2}} \]
+\begin{align*}
+  1+(\frac{\diff{y}}{\diff{x}})^{2} &=
+    1+(\frac{x^{2}}{2}-\frac{1}{2x^{2}})^{2} \\
+  &= 1+\frac{x^{4}}{4}+\frac{1}{4x^{4}}-2(\frac{x^{2}}{2})(\frac{1}{2x^{2}}) \\
+  &= 1+\frac{x^{4}}{4}+\frac{1}{4x^{4}}-\frac{1}{2} \\
+  &= (\frac{x^{2}}{2})^{2}+(\frac{1}{2x^{2}})+\frac{1}{2} \\
+  &= (\frac{x^{2}}{2})^{2}+(\frac{1}{2x^{2}})^{2}+
+    2(\frac{x^{2}}{2})(\frac{1}{2x^{2}}) \\
+  &= (\frac{x^{2}}{2}+\frac{1}{2x^{2}})^{2} \\
+  \mathrm{Hence:} \\
+  S &= \int_{\frac{1}{2}}^{1}{2\pi(\frac{x^{3}}{6}+\frac{1}{2x})
+    (\frac{x^{2}}{2}+\frac{1}{2x^{2}})\diff{x}} \\
+  &= 2\pi\int_{\frac{1}{2}}^{1}{
+    \bigg[\frac{x^{5}}{12}+\frac{x}{12}+
+      \frac{x}{4}+\frac{1}{4x^{3}}\bigg]\diff{x}} \\
+  &= 2\pi\int_{\frac{1}{2}}^{1}{
+    \bigg[\frac{x^{5}}{12}+\frac{x}{3}+\frac{1}{4x^{3}}\bigg]\diff{x}} \\
+  &= 2\pi\bigg[\frac{x^{6}}{72}+\frac{x^{2}}{6}+
+    \frac{1}{-8x^{2}}\bigg]_{\frac{1}{2}}^{1} \\
+  &= \frac{263\pi}{256}
+\end{align*}
+
+\subsection*{Example 5}
+Rotated about y-axis:
+\[ x = \sqrt{a^{2}-y^{2}} \quad 0 \leq y \leq \frac{a}{2} \]
+\[ S = \int{2\pi x\diff{S}} \]
+\[ S = \int_{0}^{a/2}{
+   \sqrt{a^{2}-y^{2}}\sqrt{1+(\frac{\diff{x}}{\diff{y}})^{2}}\diff{x}} \]
+\[ x = \sqrt{a^{2}-y^{2}} \quad
+   \frac{\diff{x}}{\diff{y}} = \frac{1}{2}(a^{2}-y^{2})^{\frac{-1}{2}}(-2y) \]
+\[ \frac{\diff{x}}{\diff{y}} = \frac{-y}{\sqrt{a^{2}-y^{2}}} \]
+\begin{align*}
+  1+(\frac{\diff{y}}{\diff{x}})^{2} &=
+    1+\frac{y^{2}}{a^{2}-y^{2}} \\
+  &= \frac{a^{2}-y^{2}+y^{2}}{a^{2}-y^{2}} \\
+  &= \frac{a^{2}}{a^{2}-y^{2}} \\
+  \mathrm{Hence:} \\
+  S &= \int_{0}^{a/2}{
+    2\pi\sqrt{a^{2}-y^{2}}(\frac{a^{2}}{a^{2}-y^{2}})\diff{y}} \\
+  &= \int_{0}^{a/2}{
+    2\pi\sqrt{a^{2}-y^{2}}(\frac{\sqrt{a^{2}}}{\sqrt{a^{2}-y^{2}}})\diff{y}} \\
+  &= \int_{0}^{a/2}{2\pi a\diff{y}} \\
+  &= 2\pi a\bigg[y\bigg]_{0}^{a/2} \\
+  &= 2\pi a(\frac{a}{2}-0) \\
+  &= \pi a^{2}
+\end{align*}
+
+\begin{center}
+  If any errors are found, please contact me at alvin.lin.dev@gmail.com
+\end{center}
+
+\end{document}

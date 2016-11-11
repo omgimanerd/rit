@@ -1,0 +1,95 @@
+\documentclass[letterpaper, 12pt]{article}
+\usepackage{amsmath}
+\usepackage{geometry}
+\usepackage{tikz}
+\usetikzlibrary{quotes,angles}
+
+\geometry{letterpaper, margin=1in}
+
+\renewcommand*{\arcsin}{\sin^{-1}}
+\renewcommand*{\arccos}{\cos^{-1}}
+\renewcommand*{\arctan}{\tan^{-1}}
+\newcommand*{\arccot}{\cot^{-1}}
+\newcommand*{\arcsec}{\sec^{-1}}
+\newcommand*{\arccsc}{\csc^{-1}}
+\newcommand*{\diff}{\mathrm{d}}
+\newcommand*{\Diff}[1]{\mathrm{d^#1}}
+\newcommand*{\e}{\mathrm{e}}
+\newcommand*{\nthroot}[2]{\sqrt[\leftroot{-2}\uproot{3}#1]{#2}}
+
+\title{Section 7.8}
+\author{Alvin Lin}
+\date{Calculus II: August 2016 - December 2016}
+
+\begin{document}
+
+\maketitle
+
+\section*{Problem 5}
+\[ \int_{3}^{\infty}{\frac{1}{(x-2)^{3/2}}\diff{x}} \]
+\[ \lim_{b \to \infty}\int_{3}^{b}{(x-2)^{\frac{3}{2}}\diff{x}} \]
+\[ Let: u = x-2 \]
+\[ \diff{u} = \diff{x} \]
+\[ \lim_{b \to \infty}\int_{3}^{b}{u^{\frac{3}{2}}\diff{u}} \]
+\[ \lim_{b \to \infty}\bigg[\frac{-1}{2\sqrt{u}}\bigg]_{3}^{b} \]
+\[ \lim_{b \to \infty}\bigg[\frac{-1}{2\sqrt{b}}-\frac{-1}{2\sqrt{3}}] \]
+\[ = \frac{\sqrt{3}}{6} \]
+
+\section*{Problem 7}
+\[ \int_{-\infty}^{0}{\frac{1}{3-4x}\diff{x}} \]
+\[ \lim_{b \to -\infty}\int_{b}^{0}{\frac{1}{3-4x}\diff{x}} \]
+\[ Let: u = 3-4x \]
+\[ \diff{u} = -4\diff{x} \]
+\[ \frac{-1}{4}\lim_{b \to -\infty}\int_{b}^{0}{\frac{1}{u}\diff{u}} \]
+\[ \frac{-1}{4}\lim_{b \to -\infty}\bigg[\ln|3-4x|\bigg]_{b}^{0} \]
+\[ \frac{-1}{4}\lim_{b \to -\infty}\bigg[\ln|3|-\ln|3-4b|] \]
+\[ = \infty \]
+
+\section*{Problem 13}
+\[ \int_{-\infty}^{\infty}{x\e^{-x^{2}}\diff{x}} \]
+\[ \int_{-\infty}^{0}{x\e^{-x^{2}}\diff{x}}+
+   \int_{0}^{\infty}{x\e^{-x^{2}}\diff{x}} \]
+Solve as an indefinite integral:
+\[ \int{x\e^{-x^{2}}\diff{x}} \]
+\[ \frac{-1}{2}\int{-2x\e^{-x^{2}}\diff{x}} \]
+\[ e^{-x^{2}}+C \]
+Substitute the original limits:
+\[ -\frac{1}{2}\lim_{a \to -\infty}\bigg[\e^{-x^{2}}\bigg]_{a}^{0}-
+   \frac{1}{2}\lim_{b \to \infty}\bigg[\e^{-x^{2}}\bigg]_{0}^{b} \]
+\[ -\frac{1}{2}\lim_{a \to -\infty}\bigg[\e^{-a^{2}}-\e^{0}\bigg]-
+   \frac{1}{2}\lim_{b \to \infty}\bigg[\e^{0}-\e^{-b^{2}}\bigg] \]
+\[ = 0 \]
+
+\section*{Problem 29}
+\[ \int_{-2}^{14}{(x+2)^{-1/4}\diff{x}} \]
+Solve as an indefinite integral:
+\[ \int{(x+2)^{-1/4}\diff{x}} \]
+\[ Let: f'(x) = x^{-1/4}\diff{x} \quad g(x) = x+2 \]
+\[ f(x) = \frac{4}{3}x^{3/4} \quad g'(x) = \diff{x} \]
+\[ f(g(x)) = \frac{4}{3}(x+2)^{3/4} \]
+Substitute the original limits:
+\[ \frac{4}{3}\bigg[(x+2)^{3/4}\bigg]_{-2}^{14} \]
+\[ \frac{4}{3}\bigg[(14+2)^{3/4}-(-2+2)^{3/4}\bigg] \]
+\[ \frac{4}{3}\bigg[(14+2)^{3/4}-(-2+2)^{3/4}\bigg] \]
+\[ \frac{4}{3}\bigg[8-0\bigg] \]
+\[ = \frac{32}{3} \]
+
+\section*{Problem 33}
+\[ \int_{0}^{9}{\frac{1}{\nthroot{3}{x-1}}\diff{x}} \]
+Solve as an indefinite integral:
+\[ \int{\frac{1}{\nthroot{3}{x-1}}\diff{x}} \]
+\[ Let: u = x-1 \]
+\[ \diff{u} = \diff{x} \]
+\[ \int{u^{-2/3}\diff{u}} \]
+\[ 3u^{1/3}+C \]
+\[ 3(x-1)^{1/3}+C \]
+Substitute the original limits:
+\[ 3\bigg[(x-1)^{1/3}\bigg]_{0}^{9} \]
+\[ 3\bigg[\nthroot{3}{0}-\nthroot{3}{8}] \]
+\[ = -6 \]
+
+\begin{center}
+  If any errors are found, please contact me at alvin.lin.dev@gmail.com
+\end{center}
+
+\end{document}

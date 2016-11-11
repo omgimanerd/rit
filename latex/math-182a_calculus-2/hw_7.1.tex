@@ -1,0 +1,112 @@
+\documentclass[letterpaper, 12pt]{article}
+\usepackage{geometry}
+
+\geometry{letterpaper, margin=1in}
+
+\renewcommand*{\arcsin}{\sin^{-1}}
+\renewcommand*{\arccos}{\cos^{-1}}
+\renewcommand*{\arctan}{\tan^{-1}}
+\newcommand*{\arccot}{\cot^{-1}}
+\newcommand*{\arcsec}{\sec^{-1}}
+\newcommand*{\arccsc}{\csc^{-1}}
+\newcommand*{\diff}{\mathrm{d}}
+\newcommand*{\Diff}[1]{\mathrm{d^#1}}
+\newcommand*{\e}{\mathrm{e}}
+
+\title{Section 7.1}
+\author{Alvin Lin}
+\date{Calculus II: August 2016 - December 2016}
+
+\begin{document}
+
+\maketitle
+
+\section*{Section 5.5}
+
+\subsection*{Problem 3}
+\[ \int{x\cos(5x)\diff{x}} \]
+\[ Let: u = x\quad \diff{v} = \cos(5x)\diff{x} \]
+\[ \diff{u} = \diff{x}\quad v = \frac{\sin(5x)}{5} \]
+\[ \int{x\cos(5x)\diff{x}} =
+   \frac{x\sin(5x)}{5}-\frac{1}{5}\int{\sin(5x)\diff{x}} \]
+\[ = \frac{x\sin(5x)}{5}-\frac{1}{5}(-\frac{\cos(5x)}{5})+C \]
+\[ = \frac{1}{5}x\sin(5x)+\frac{1}{25}\cos(5x)+C \]
+
+\subsection*{Problem 11}
+\[ \int{t^{4}\ln(t)\diff{t}} \]
+\[ Let: u = \ln(t) \quad \diff(v) = t^{4}\diff{t} \]
+\[ \diff{u} = \frac{1}{t}\diff{t} \quad v = \frac{t^{5}}{5} \]
+\[ \int{t^{4}\ln(t)\diff{t}} =
+   \frac{t^{5}\ln{t}}{5}-\int{\frac{t^{5}}{5t}\diff{t}} \]
+\[ = \frac{1}{5}t^{4}\ln(t)-\frac{1}{5}\int{t^{4}}\diff{t}
+   = \frac{1}{5}t^{4}\ln(t)-\frac{1}{5}\bigg[\frac{t^{5}}{5}\bigg] \]
+\[ = \frac{1}{5}t^{4}\bigg(\ln(t)-\frac{t}{5}\bigg) \]
+
+\subsection*{Problem 17}
+\[ \int{\e^{2\theta}\sin(3\theta)}\diff(\theta) \]
+\[ Let: u = \sin(3\theta) \quad \diff{v} = \e^{2\theta}\diff{\theta} \]
+\[ \diff{u} = 3\cos(3\theta)\diff{\theta} \quad v = \frac{\e^{2\theta}}{2} \]
+\[ \int{\e^{2\theta}\sin(3\theta)}\diff(\theta) =
+   \frac{\e^{2\theta}\sin(3\theta)}{2}-
+   \int{\frac{3\e^{2\theta}\cos(3\theta)}{2}\diff{\theta}} \]
+\[ \int{\e^{2\theta}\sin(3\theta)}\diff(\theta) =
+   \frac{\e^{2\theta}\sin(3\theta)}{2}-
+   \frac{3}{2}\int{\e^{2\theta}\cos(3\theta)} \]
+We must use integration by parts again to separate the integral.
+\[ \int{\e^{2\theta}\cos(3\theta)} \]
+\[ Let: u = \cos(3\theta) \quad \diff{v} = \e^{2\theta}\diff{\theta} \]
+\[ \diff{u} = -3\sin(3\theta)\diff{\theta} \quad v = \frac{\e^{2\theta}}{2} \]
+\[ \int{\e^{2\theta}\cos(3\theta)} =
+   \frac{\e^{2\theta}\cos(3\theta)}{2}-
+   \int{-\frac{3}{2}\e^{2\theta}\sin(3\theta)\diff{\theta}} \]
+\[ = \frac{\e^{2\theta}\cos(3\theta)}{2}+\frac{3}{2}
+   \int{\e^{2\theta}\sin(3\theta)\diff{\theta}} \]
+We can form the following equation from this:
+\[ \int{\e^{2\theta}\sin(3\theta)\diff{\theta}} =
+   \frac{\e^{2\theta}\sin(3\theta)}{2}-
+   \frac{3}{2}\bigg(\frac{\e^{2\theta}\cos(3\theta)}{2}+
+   \frac{3}{2}\int{\e^{2\theta}\sin(3\theta)\diff{\theta}}\bigg) \]
+\[ \int{\e^{2\theta}\sin(3\theta)\diff{\theta}} =
+   \frac{\e^{2\theta}\sin(3\theta)}{2}-
+   \frac{3\e^{2\theta}\cos(3\theta)}{4}-
+   \frac{9}{4}\int{\e^{2\theta}\sin(3\theta)\diff{\theta}}\bigg) \]
+\[ \frac{13}{4}\int{\e^{2\theta}\sin(3\theta)\diff{\theta}} =
+   \frac{\e^{2\theta}\sin(3\theta)}{2}-
+   \frac{3\e^{2\theta}\cos(3\theta)}{4} \]
+\[ = \int{\e^{2\theta}\sin(3\theta)\diff{\theta}} =
+\frac{2\e^{2\theta}\sin(3\theta)}{13}-
+\frac{3\e^{2\theta}\cos(3\theta)}{13} \]
+
+\subsection*{Problem 19}
+\[ \int{z^{3}\e^{z}\diff{z}} \]
+\[ Let: u = z^{3} \quad \diff{v} = \e^{z}\diff{z} \]
+\[ \diff{u} = 3z^{2}\diff{z} \quad v = \e^{z} \]
+\[ \int{z^{3}\e^{z}\diff{z}} =
+   z^{3}\e^{z}-\int{3z^{2}\e^{z}} =
+   z^{3}\e^{z}-3\int{z^{2}\e^{z}} \]
+We can use integration by parts again to reduce the new integral.
+\[ \int{z^{2}\e^{z}} \]
+\[ Let: u = z^{2} \quad \diff{v} = \e^{z}\diff{z} \]
+\[ \diff{u} = 2z\diff{z} \quad v = \e^{z} \]
+\[ \int{z^{2}\e^{z}} = z^{2}\e^{z}-\int{2z\e^{z}\diff{z}} =
+   z^{2}\e^{z}-2\int{z\e^{z}\diff{z}} \]
+We can use integration by parts one more time to remove the \( z \) from the
+integral.
+\[ \int{z\e^{z}\diff{z}} \]
+\[ Let: u = z \quad \diff{v} = \e^{z}\diff{z} \]
+\[ \diff{u} = \diff{z} \quad v = \e^{z} \]
+\[ \int{z\e^{z}\diff{z}} = z\e^{z}-\int{\e^{z}\diff{z}} \]
+\[ = z\e^{z}-\e^{z} \]
+Now we put all this shit back together.
+\[ \int{z^{3}\e^{z}\diff{z}} =
+   z^{3}\e^{z}-3\int{z^{2}\e^{z}} \]
+\[ z^{3}\e^{z}-3\bigg(z^{2}\e^{z}-2\int{z\e^{z}\diff{z}}\bigg) \]
+\[ z^{3}\e^{z}-3z^{2}\e^{z}+6\int{z\e^{z}\diff{z}} \]
+\[ z^{3}\e^{z}-3z^{2}\e^{z}+6(z\e^{z}-\e^{z}) \]
+\[ = z^{3}\e^{z}-3z^{2}\e^{z}+6z\e^{z}-6\e^{z} \]
+
+\begin{center}
+  If any errors are found, please contact me at alvin.lin.dev@gmail.com
+\end{center}
+
+\end{document}
