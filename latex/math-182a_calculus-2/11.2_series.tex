@@ -1,9 +1,5 @@
 \documentclass[letterpaper, 12pt]{article}
 \usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{pgfplots}
-
-\pgfplotsset{compat=1.10}
 
 \renewcommand*{\arcsin}{\sin^{-1}}
 \renewcommand*{\arccos}{\cos^{-1}}
@@ -25,7 +21,7 @@
 \maketitle
 
 \section*{Series}
-Sequence \( \bigg\{a_{1},...a_{n},...\bigg\}, \bigg\{a_{n}\bigg\} \).
+Sequence \( \bigg\{a_{1},...a_{n},...\bigg\} \equiv \bigg\{a_{n}\bigg\} \).
 \[ \sum{a_{n}} = a_{1}+a_{2}+a_{3}+...+a_{n}+... = S_{n} \]
 \begin{align*}
   \mathrm{If:} & \quad \lim_{n\to\infty}{S_{n}} = S \\
@@ -34,12 +30,17 @@ Sequence \( \bigg\{a_{1},...a_{n},...\bigg\}, \bigg\{a_{n}\bigg\} \).
 \end{align*}
 
 \subsection*{Geometric Series}
-\[ S_{n} = a+as+as^{2}+as^{3}+... \]
-\[ sS_{n} = as+as^{2}+as^{3}+... \]
-\[ S_{n}(1-s) = a-as^{n} \]
-\[ S_{n} = \frac{a(1-s^{n})}{1-s} \]
-\[ \lim_{n\to\infty}{S_{n}} = \lim_{n\to\infty}{\frac{a(1-s^{n})}{1-s}} \]
-\[ \lim_{n\to\infty}{S_{n}} = \frac{a}{1-r} \]
+\[ S_{n} = a+ar+ar^{2}+ar^{3}+... \]
+\[ rS_{n} = ar+ar^{2}+ar^{3}+... \]
+\[ S_{n}(1-r) = a-ar^{n} \]
+\[ S_{n} = \frac{a(1-r^{n})}{1-r} \]
+\[ \lim_{n\to\infty}{S_{n}} = \lim_{n\to\infty}{\frac{a(1-r^{n})}{1-r}} \]
+\[ \lim_{n\to\infty}{S_{n}} = \frac{a}{1-r}; |r| < 1 \]
+If \( \sum{a_{n}} \) converges, then \( \lim_{n\to\infty}{a_{n}} = 0 \). Proof:
+\[ S_{n}-S_{n-1} = a_{n} \]
+\[ \lim_{n\to\infty}{S_{n}-S_{n-1}} = \lim_{n\to\infty}{a_{n}} \]
+\[ S-S = \lim_{n\to\infty}{a_{n}} = 0 \]
+
 
 \begin{center}
   If any errors are found, please contact me at alvin.lin.dev@gmail.com

@@ -1,0 +1,102 @@
+\documentclass[letterpaper, 12pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\renewcommand*{\arcsin}{\sin^{-1}}
+\renewcommand*{\arccos}{\cos^{-1}}
+\renewcommand*{\arctan}{\tan^{-1}}
+\newcommand*{\arccot}{\cot^{-1}}
+\newcommand*{\arcsec}{\sec^{-1}}
+\newcommand*{\arccsc}{\csc^{-1}}
+\newcommand*{\diff}{\mathrm{d}}
+\newcommand*{\ddiff}[2]{\frac{\diff{#1}}{\diff{#2}}}
+\newcommand*{\Diff}[1]{\mathrm{d^#1}}
+\newcommand*{\e}{\mathrm{e}}
+
+\title{The Integral Test and Esimates of Sums}
+\author{Alvin Lin}
+\date{Calculus II: August 2016 - December 2016}
+
+\begin{document}
+
+\maketitle
+
+\section*{The Integral Test and Estimates of Sums}
+
+\subsection*{The Integral Test}
+If \( f \) is continuous, positive, and decreasing, and let \( f(n) = a_{n} \).
+Then:
+\begin{enumerate}
+  \item If \( \int_{1}^{\infty}f(x)\diff{x} \) converges, then
+    \( \sum{a_{n}} \) converges.
+  \item If \( \int_{1}^{\infty}f(x)\diff{x} \) diverges, then
+    \( \sum{a_{n}} \) diverges.
+\end{enumerate}
+
+\subsection*{Example}
+\[ \sum_{n=1}^{\infty}\frac{1}{\sqrt{n+4}} \]
+\[ f(x) = \frac{1}{\sqrt{x+4}} \]
+\begin{align*}
+  \int_{1}^{\infty}f(x)\diff{x} &=
+    \lim_{b\to\infty}\int_{1}^{b}f(x)\diff{x} \\
+  &= \lim_{b\to\infty}\int_{1}^{b}\frac{1}{\sqrt{x+4}}\diff{x} \\
+  &= \lim_{b\to\infty}\int_{1}^{b}(x+4)^{-\frac{1}{2}}\diff{x} \\
+  &= \lim_{b\to\infty}\bigg[
+    \frac{(x+4)^{\frac{1}{2}}}{\frac{1}{2}}\bigg]_{1}^{b} \\
+  &= \lim_{b\to\infty}\bigg[2(b+4)^{\frac{1}{2}}-2(5)^{\frac{1}{2}}] \\
+  &= \infty \\
+  & \therefore \sum_{n=1}^{\infty}\frac{1}{\sqrt{n+4}}\mathrm{(DIVERGES)}
+\end{align*}
+
+\subsection*{Example 2}
+\[ \sum_{n=1}^{\infty}n\e^{-n} \]
+\[ f(x) = x\e^{-x} \]
+\begin{align*}
+  \int_{1}^{\infty}f(x)\diff{x} &=
+    \lim_{b\to\infty}\int_{1}^{b}x\e^{-x}\diff{x} \\
+  &= \lim_{b\to\infty}\bigg(\big[-x\e^{-x}\big]_{1}^{b}-
+    \int_{1}^{b}-\e^{-x}\diff{x}\bigg) \\
+  &= \lim_{b\to\infty}\bigg[\frac{-b}{\e^{b}}+\frac{1}{\e}\bigg]-
+    \lim_{b\to\infty}\bigg[\e^{-b}-\e^{-1}\bigg] \\
+  &= 0+\frac{1}{\e}+\frac{1}{\e} \\
+  & \therefore \sum_{n=1}^{\infty}n\e^{-n} \mathrm{converges}
+\end{align*}
+
+\subsection*{Example 3}
+\[ \sum_{n=1}^{\infty}\frac{12}{-5^{n}} \]
+\[ a_{1}+a_{2}+a_{3}+... =
+   \frac{12}{-5^{1}}+\frac{12}{-5^{2}}+\frac{12}{-5^{3}}+... \]
+\[ \frac{a_{2}}{a_{1}} = \frac{a_{3}}{a_{2}} = r \]
+\[ r = \frac{\frac{12}{-5^{2}}}{\frac{12}{-5}} = \frac{-1}{5}; |r| < 1 \]
+\[ \sum_{n=1}^{\infty}\frac{12}{-5^{n}} = \frac{a}{1-r} =
+   \frac{\frac{12}{-5}}{1-\frac{-1}{5}} = -2 \]
+
+\subsection*{Example 4}
+\[ \sum_{n=2}^{\infty}\frac{1}{(1+c)^{n}} = 2 \]
+\[ \frac{1}{(1+c)^{2}}+\frac{1}{(1+c)^{3}}+... = 2 \]
+\[ \frac{a}{1-r} = 2 \]
+\[ \frac{\frac{1}{(1+c)^{2}}}{1-\frac{1}{1+c}} = 2 \]
+\[ \frac{\frac{1}{1+c}}{c} = 2 \]
+\[ \frac{1}{c(1+c)} = 2 \]
+\[ 2c+2c^{2} = 1 \]
+\[ 2c^{2}+2c-1 = 0 \]
+\[ c = \frac{-2\pm\sqrt{4-4(2)(-1)}}{4} = \frac{-1\pm\sqrt{3}}{2} \]
+
+\subsection*{Example 5}
+\[ 1+\frac{1}{3}+\frac{1}{5}+\frac{1}{2}+... =
+   \sum_{n=1}^{\infty}\frac{1}{2n-1} \]
+\[ f(x) = \frac{1}{2n-1} \]
+\begin{align*}
+  \lim_{b\to\infty}\int_{1}^{b}f(x)\diff{x} &=
+    \lim_{b\to\infty}\int_{1}^{b}\frac{1}{2x-1}\diff{x} \\
+  &= \lim_{b\to\infty}\bigg[\frac{\ln(2x-1)}{2}\bigg]_{1}^{b} \\
+  &= \lim_{b\to\infty}\bigg[\frac{\ln(2b-1)}{2}-\frac{\ln(1)}{2}\bigg] \\
+  &= \infty \\
+  & \therefore \sum_{n=1}^{\infty}\frac{1}{2n-1} \mathrm{diverges}
+\end{align*}
+
+\begin{center}
+  If any errors are found, please contact me at alvin.lin.dev@gmail.com
+\end{center}
+
+\end{document}
