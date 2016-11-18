@@ -1,5 +1,6 @@
 \documentclass[letterpaper, 12pt]{article}
 \usepackage{amsmath}
+\usepackage{amssymb}
 
 \renewcommand*{\arcsin}{\sin^{-1}}
 \renewcommand*{\arccos}{\cos^{-1}}
@@ -41,6 +42,73 @@ If \( \sum{a_{n}} \) converges, then \( \lim_{n\to\infty}{a_{n}} = 0 \). Proof:
 \[ \lim_{n\to\infty}{S_{n}-S_{n-1}} = \lim_{n\to\infty}{a_{n}} \]
 \[ S-S = \lim_{n\to\infty}{a_{n}} = 0 \]
 
+\subsection*{Problem 23}
+\[ \sum_{k=2}^{\infty}\frac{k^{2}}{k^{2}-1} = \frac{4}{3}+\frac{9}{8}+...\]
+\[ a_{n} = \frac{n^{2}}{n^{2}-1} \]
+\[ \sum{a_{n}} = a_{1}+a_{1}r+a_{1}r^{2}+... \]
+\[ \frac{a_{3}}{a_{2}} = \frac{a_{2}}{a_{1}} = r \]
+\[ \sum{a_{n}} < \infty \]
+\[ \lim_{n\to\infty}a_{n}\to1 \therefore \sum{a_{n}}\to\infty \quad
+   \mathrm{(Diverging)} \]
+
+\subsection*{Problem 25}
+\[ \sum\frac{1+2^{n}}{2^{n}} \]
+\begin{align*}
+  \sum\frac{1+2^{n}}{2^{n}} &= \sum\frac{1}{3^{n}}+\sum\frac{2^{n}}{3^{n}} \\
+  &= \sum(\frac{1}{3})^{n}+\sum(\frac{2}{3})^{n} \\
+  &= \frac{a}{1-r}+\frac{a}{1-r} \\
+  &= \frac{\frac{1}{3}}{1-\frac{1}{3}}+\frac{\frac{2}{3}}{1-\frac{2}{3}} \\
+  &= \frac{1}{2}+\frac{2}{1} \\
+  &= \frac{5}{2}
+\end{align*}
+
+\subsection*{Problem 29}
+\[ \sum_{n=1}^{\infty}\ln(\frac{n^{2}+1}{2n^{2}+1}) \]
+\[ a_{n} = \ln(\frac{n^{2}+1}{2n^{2}+1}) \]
+\begin{align*}
+  \lim_{n\to\infty}a_{n} &= \lim_{n\to\infty}\ln(\frac{n^{2}+1}{2n^{2}+1}) \\
+  &= \lim_{n\to\infty}
+    \ln(\frac{n^{2}(1+\frac{1}{n^{2}})}{n^{2}(2+\frac{1}{n^{2}})}) \\
+  &= \lim_{n\to\infty}
+    \ln(\frac{1+\frac{1}{n^{2}}}{2+\frac{1}{n^{2}}}) \\
+  &= \ln(\frac{1}{2})
+\end{align*}
+\[ \lim_{n\to\infty}a_{n} = \ln(\frac{1}{2}) \therefore
+   \sum{a_{n}} = \infty \quad \mathrm{(Diverges)} \]
+
+\subsection*{Problem 33}
+\[ \sum_{n=1}^{\infty}\bigg[\frac{1}{\e^{n}}+\frac{1}{n(n+1)}\bigg] \]
+\[ \sum_{n=1}^{\infty}\bigg[\frac{1}{\e^{n}}+\frac{1}{n(n+1)}\bigg] =
+   \sum_{n=1}^{\infty}\frac{1}{\e^{n}}+\sum_{n=1}^{\infty}\frac{1}{n(n+1)} \]
+\begin{align*}
+  \sum_{n=1}^{\infty}\frac{1}{\e^{n}} &=
+    \frac{1}{\e}+\frac{1}{\e^{2}}+\frac{1}{\e^{3}}+... \\
+  &= \frac{1}{1-r} \\
+  &= \frac{\frac{1}{\e}}{1-\frac{1}{\e}} \\
+  &= \frac{1}{\e-1} \\
+  \sum_{n=1}^{\infty}\frac{1}{n(n+1)} &=
+    \sum_{n=1}^{\infty}\frac{1}{n}-\frac{1}{n+1} \\
+  &= (1-\frac{1}{2})+(\frac{1}{2}-\frac{1}{3})+(\frac{1}{3}-\frac{1}{4})+... \\
+  &= 1 \\
+  \sum_{n=1}^{\infty}\bigg[\frac{1}{\e^{n}}+\frac{1}{n(n+1)}\bigg] &=
+    \frac{1}{\e-1}+1
+\end{align*}
+
+\subsection*{Problem 35}
+\[ \sum_{n=2}^{\infty}\frac{2}{n^{2}-1} \]
+\begin{align*}
+  a_{n} &= \frac{2}{n^{2}-1} \\
+  &= \frac{2}{(n-1)(n+1)} \\
+  &= \frac{(n+1)-(n-1)}{(n-1)(n+1)} \\
+  &= \frac{1}{n-1}-\frac{1}{n+1} \\
+  \sum_{n=2}^{\infty}a_{n} &= \sum_{n=2}^{\infty}\frac{1}{n-1}-\frac{1}{n+1} \\
+  &= (1-\frac{1}{3})+(\frac{1}{2}-\frac{1}{4})+(\frac{1}{3}-\frac{1}{5})+
+    (\frac{1}{4}-\frac{1}{6})+... \\
+  S_{n} &= (1-\frac{1}{3})+(\frac{1}{2}-\frac{1}{4})+...+
+    (\frac{1}{n-1}-\frac{1}{n+1}) \\
+  &= 1+\frac{1}{2}-\frac{1}{n-1}-\frac{1}{n} \\
+  \lim_{n\to\infty}S_{n} &= \frac{3}{2}
+\end{align*}
 
 \begin{center}
   If any errors are found, please contact me at alvin.lin.dev@gmail.com

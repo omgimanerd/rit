@@ -1,4 +1,5 @@
 \documentclass[letterpaper, 12pt]{article}
+\usepackage{array}
 
 \renewcommand*{\arcsin}{\sin^{-1}}
 \renewcommand*{\arccos}{\cos^{-1}}
@@ -92,6 +93,33 @@
 
 \section{Fundamental Theorem of Calculus}
 \[ \int_{a}^{b}{f'(x)\diff{x} = f(b) - f(a)} \]
+
+\section*{Convergence and Divergence Tests for Series}
+\bgroup
+  \def\arraystretch{2}
+  \begin{tabular}{| m{2cm} | m{2cm} | m{5cm} | m{6cm} |}
+    \hline
+    Test & Series & Convergence or Divergence & Comments \\
+    \hline
+      Divergence &
+      \( \sum{a_{n}} \) &
+      Diverges if \( \lim_{n\to\infty}{a_{n}} \neq 0 \) &
+      Inconclusive if \( \lim_{n\to\infty}{a_{n}} = 0 \) \\
+    \hline
+      Geometric Series &
+      \( \sum_{n=1}^{\infty}{ar^{n-1}} \) &
+      Converges if \( |r| < 1 \), diverges if \( |r| \geq 1 \) &
+      Useful for the comparison tests if the nth term \( a_{n} \) of a series
+        if similar to \( ar^{n-1} \) \\
+    \hline
+      \( p \)-series &
+      \( \sum_{n=1}^{\infty}\frac{1}{n^{p}} \) &
+      Converges if \( p > 1 \), diverges if \( p \leq 1 \) &
+      Useful for the comparison tests if the nth term \( a_{n} \) of a series
+      is similar to \( \frac{1}{n^{p}} \) \\
+    \hline
+  \end{tabular}
+\egroup
 
 \begin{center}
   If any errors are found, please contact me at alvin.lin.dev@gmail.com

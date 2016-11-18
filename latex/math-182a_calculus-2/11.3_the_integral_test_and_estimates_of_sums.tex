@@ -1,6 +1,7 @@
 \documentclass[letterpaper, 12pt]{article}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{array}
 
 \renewcommand*{\arcsin}{\sin^{-1}}
 \renewcommand*{\arccos}{\cos^{-1}}
@@ -45,7 +46,7 @@ Then:
     \frac{(x+4)^{\frac{1}{2}}}{\frac{1}{2}}\bigg]_{1}^{b} \\
   &= \lim_{b\to\infty}\bigg[2(b+4)^{\frac{1}{2}}-2(5)^{\frac{1}{2}}] \\
   &= \infty \\
-  & \therefore \sum_{n=1}^{\infty}\frac{1}{\sqrt{n+4}}\mathrm{(DIVERGES)}
+  & \therefore \sum_{n=1}^{\infty}\frac{1}{\sqrt{n+4}} \quad \mathrm{diverges}
 \end{align*}
 
 \subsection*{Example 2}
@@ -59,7 +60,7 @@ Then:
   &= \lim_{b\to\infty}\bigg[\frac{-b}{\e^{b}}+\frac{1}{\e}\bigg]-
     \lim_{b\to\infty}\bigg[\e^{-b}-\e^{-1}\bigg] \\
   &= 0+\frac{1}{\e}+\frac{1}{\e} \\
-  & \therefore \sum_{n=1}^{\infty}n\e^{-n} \mathrm{converges}
+  & \therefore \sum_{n=1}^{\infty}n\e^{-n} \quad \mathrm{converges}
 \end{align*}
 
 \subsection*{Example 3}
@@ -92,8 +93,34 @@ Then:
   &= \lim_{b\to\infty}\bigg[\frac{\ln(2x-1)}{2}\bigg]_{1}^{b} \\
   &= \lim_{b\to\infty}\bigg[\frac{\ln(2b-1)}{2}-\frac{\ln(1)}{2}\bigg] \\
   &= \infty \\
-  & \therefore \sum_{n=1}^{\infty}\frac{1}{2n-1} \mathrm{diverges}
+  & \therefore \sum_{n=1}^{\infty}\frac{1}{2n-1} \quad \mathrm{diverges}
 \end{align*}
+
+\subsection*{Problem 21}
+\[ \sum\frac{1}{n\ln(n)} \]
+\[ f(x) = \frac{1}{x\ln(x)} \]
+\begin{align*}
+  \int_{1}^{\infty}f(x)\diff{x} &=
+    \lim_{b\to\infty}\int_{1}^{b}\frac{1}{x\ln(x)}\diff{x} \\
+  \mathrm{Let:} & \ln(x) = t \\
+  \ddiff{t}{x} = \frac{1}{x} & \rightarrow \diff{t} = \frac{\diff{x}}{x} \\
+  \int\frac{\diff{t}}{t} &= \ln(t) \\
+  \lim_{b\to\infty}\int_{1}^{b}\frac{1}{x\ln(x)}\diff{x} &=
+    \lim_{b\to\infty}\bigg[\ln(\ln(x))\bigg]_{2}^{b} \\
+  &= \lim_{b\to\infty}\bigg[\ln(\ln(b))-\ln(\ln(1))\bigg] \\
+  &= \infty
+\end{align*}
+
+\subsection*{Problem 27}
+\[ \sum_{n=2}^{\infty}\frac{1}{n(\ln(n))^{p}} \]
+\[ f(x) = \frac{1}{x(\ln(x))^{p}} \]
+\begin{align*}
+  \int_{2}^{\infty}\frac{1}{x(\ln(x))^{p}}\diff{x} &=
+    \lim_{b\to\infty}\int_{2}^{b}\frac{1}{x(\ln(x))^{p}}\diff{x} \\
+  &= \lim_{b\to\infty}\bigg[\frac{(\ln(b))^{-p+1}}{-p+1}\bigg]_{2}^{b} \\
+  &= \frac{1}{1-p}\lim_{b\to\infty}(\ln(b))^{1-p}-\frac{1}{1-p}\ln(\ln(2)) \\
+\end{align*}
+The series converges if \( 1-p < 0 \) and diverges if \( 1 - p \).
 
 \begin{center}
   If any errors are found, please contact me at alvin.lin.dev@gmail.com
