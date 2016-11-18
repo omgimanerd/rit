@@ -1,0 +1,99 @@
+\documentclass[letterpaper, 12pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\renewcommand*{\arcsin}{\sin^{-1}}
+\renewcommand*{\arccos}{\cos^{-1}}
+\renewcommand*{\arctan}{\tan^{-1}}
+\newcommand*{\arccot}{\cot^{-1}}
+\newcommand*{\arcsec}{\sec^{-1}}
+\newcommand*{\arccsc}{\csc^{-1}}
+\newcommand*{\diff}{\mathrm{d}}
+\newcommand*{\ddiff}[2]{\frac{\diff{#1}}{\diff{#2}}}
+\newcommand*{\Diff}[1]{\mathrm{d^#1}}
+\newcommand*{\e}{\mathrm{e}}
+
+\title{The Comparison Tests}
+\author{Alvin Lin}
+\date{Calculus II: August 2016 - December 2016}
+
+\begin{document}
+
+\maketitle
+
+\section*{The Comparison Tests}
+If \( \sum{a_{n}} \) and \( \sum{b_{n}} \) are two series with positive entries:
+\begin{enumerate}
+  \item If \( \sum{b_{n}} \) converges and \( a_{n} \leq b_{n} \), then
+    \( \sum{a_{n}} \) converges
+  \item If \( \sum{a_{n}} \) diverges and \( a_{n} \leq b_{n} \), then
+    \( \sum{b_{n}} \) diverges
+  \item If \( \sum{b_{n}} \) diverges and \( b_{n} \leq a_{n} \), then
+    \( \sum{a_{n}} \) diverges
+\end{enumerate}
+
+\subsection*{Example 1}
+\[ \sum\frac{n}{2n^{3}+1} \]
+\[ \frac{n}{2n^{3}+1} \leq \frac{n}{2n^{3}-1} = \frac{n}{2n^{3}} =
+   \frac{1}{2n^{2}} \]
+Integral test:
+\begin{align*}
+  \int_{1}^{\infty}\frac{1}{2x^{2}}\diff{x} &=
+    \lim_{b\to\infty}\bigg[-\frac{x^{-1}}{2}\bigg]_{1}^{b} \\
+  &= \lim_{b\to\infty}\bigg[-\frac{1}{2b}+\frac{1}{2}\bigg] \\
+  &= \frac{1}{2} \quad \mathrm{(Convergent)}
+\end{align*}
+Therefore, since \( \sum\frac{n}{2n^{3}+1} \leq \sum\frac{1}{2n^{2}} \) and
+\( \sum\frac{1}{2n^{2}} \) is convergent, \( \sum\frac{n}{2n^{3}+1} \) is
+also convergent.
+
+\subsection*{Example 2}
+\[ \sum\frac{n+1}{n\sqrt{n}} \]
+\[ \frac{n+1}{n\sqrt{n}} > \frac{n}{n\sqrt{n}} \]
+\[ \frac{1}{\sqrt{n}} = \infty \quad \therefore \quad \sum\frac{n+1}{n\sqrt{n}}
+   \mathrm{is\ divergent} \]
+
+\subsection*{Example 3}
+\[ \sum\frac{9^{n}}{3+10^{n}} \]
+\[ \frac{9^{n}}{3+10^{n}} < \frac{9^{n}}{3+10^{n}-3} = (\frac{9}{10})^{n} \]
+\[ \sum(\frac{9}{10})^{n} = \frac{a}{1-r} =
+   \frac{\frac{9}{10}}{1-\frac{9}{10}} = 9 \]
+\[ \sum(\frac{9}{10})^{n} \mathrm{converges} \quad \therefore \quad
+   \sum\frac{9^{n}}{3+10^{n}} \mathrm{diverges} \]
+
+\subsection*{Practice Problem 4}
+\[ \sum\frac{n^{3}}{n^{4}-1} \]
+\[ \frac{n^{3}}{n^{4}-1} > \frac{n^{3}}{n^{4}} = \frac{1}{n} \]
+\[ \frac{1}{n} = \infty \quad \therefore \quad \sum\frac{n^{3}}{n^{4}-1}
+   \mathrm{is\ divergent} \]
+
+\subsection*{Practice Problem 8}
+\[ \sum\frac{4+3^{n}}{2^{n}} \]
+\[ \frac{4+3^{n}}{2^{n}} > \frac{3^{n}}{2^{n}} \]
+\[ \sum\frac{3^{n}}{2^{n}} = \infty \quad \therefore \quad
+   \sum\frac{4+3^{n}}{2^{n}} \mathrm{diverges} \]
+
+\subsection*{Practice Problem 10}
+\[ \sum\frac{n^{2}-1}{3n^{4}+1} \]
+\[ \frac{n^{2}+1}{3n^{4}+1} < \frac{n^{2}}{3n^{4}+1} < \frac{n^{2}}{3n^{4}} =
+   \frac{1}{3n^{2}} \]
+\[ \sum\frac{1}{3n^{2}} < \infty \quad \therefore \quad
+   \sum\frac{n^{2}-1}{3n^{4}+1} < \infty \]
+
+\subsection*{Practice Problem 12}
+\[ \sum\frac{1+\sin(n)}{10^{n}} \]
+\[ \frac{1+\sin(n)}{10^{n}} \leq \frac{2}{10^{n}} \]
+\[ \sum\frac{2}{10^{n}} = \frac{a}{1-r} < \infty \]
+\[ \therefore \quad \sum\frac{1+\sin(n)}{10^{n}} < \infty \]
+
+\subsection*{Practice Problem 13}
+\[ \sum\frac{\arctan(n)}{n^{1.2}} \]
+\[ \frac{\arctan(n)}{n^{1.2}} < \frac{\frac{\pi}{2}}{n^{1.2}} \]
+\[ \sum\frac{\frac{\pi}{2}}{n^{1.2}} < \infty \]
+\[ \therefore \quad \sum\frac{\arctan(n)}{n^{1.2}} < \infty \]
+
+\begin{center}
+  If any errors are found, please contact me at alvin.lin.dev@gmail.com
+\end{center}
+
+\end{document}
