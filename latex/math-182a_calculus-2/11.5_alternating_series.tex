@@ -1,0 +1,74 @@
+\documentclass[letterpaper, 12pt]{article}
+\usepackage{amsmath}
+
+\renewcommand*{\arcsin}{\sin^{-1}}
+\renewcommand*{\arccos}{\cos^{-1}}
+\renewcommand*{\arctan}{\tan^{-1}}
+\newcommand*{\arccot}{\cot^{-1}}
+\newcommand*{\arcsec}{\sec^{-1}}
+\newcommand*{\arccsc}{\csc^{-1}}
+\newcommand*{\diff}{\mathrm{d}}
+\newcommand*{\ddiff}[2]{\frac{\diff{#1}}{\diff{#2}}}
+\newcommand*{\Diff}[1]{\mathrm{d^#1}}
+\newcommand*{\e}{\mathrm{e}}
+
+\title{Alternating Series}
+\author{Alvin Lin}
+\date{Calculus II: August 2016 - December 2016}
+
+\begin{document}
+
+\maketitle
+
+\section*{Alternating Series}
+\[ \sum_{n=1}^{\infty}(-1)^{n}b_{n} = b_{1}-b_{2}+b_{3}-b_{4}... \]
+If the following is true:
+\begin{enumerate}
+  \item \( b_{n+1} \leq b_{n} \quad \forall \quad n \)
+  \item \( b_{n} \to 0 \)
+\end{enumerate}
+Then:
+\[ \sum_{n=1}^{\infty}(-1)^{n}b_{n} \quad \mathrm{converges} \]
+
+\subsection*{Example 1}
+\[ \sum_{n=1}^{\infty}\frac{(-1)^{n-1}}{2n+1} \]
+\[ b_{n} = \frac{1}{2n+1} \]
+\[ b_{n+1} \leq b_{n} \quad \forall \quad n \]
+\[ \lim_{n\to\infty}b_{n} = \lim_{n\to\infty}\frac{1}{2n+1} = 0 \]
+Therefore:
+\[ \sum_{n=1}^{\infty}\frac{(-1)^{n-1}}{2n+1} \quad \mathrm{converges} \]
+
+\subsection*{Example 2}
+\[ \sum_{n=1}^{\infty}\frac{(-1)^{n-1}}{\ln(n+4)} \]
+\[ b_{n} = \frac{1}{\ln(n+4)} \]
+\[ b_{n+1} \leq b_{n} \quad \forall \quad n \]
+\[ \lim_{n\to\infty}\frac{1}{\ln(n+4)} = 0 \]
+Therefore:
+\[ \sum_{n=1}^{\infty}\frac{(-1)^{n-1}}{\ln(n+4)} \quad \mathrm{converges} \]
+
+\subsection*{Example 3}
+\[ \sum_{n=1}^{\infty}(-1)^{n-1}\frac{3n-1}{2n+1} \]
+\[ b_{n} = \frac{3n-1}{2n+1} \]
+\[ \lim_{n\to\infty}b_{n} = \frac{3}{2} \neq 0 \]
+Therefore:
+\[ \sum_{n=1}^{\infty}(-1)^{n-1}\frac{3n-1}{2n+1} \quad \mathrm{diverges} \]
+
+\subsection*{Practice Problem 11}
+\[ \sum_{n=1}^{\infty}(-1)^{n-1}\frac{n^{2}}{n^{3}+4} \]
+\[ b_{n} = \frac{n^{2}}{n^{3}+4} \]
+\[ b_{n+1} \leq b_{n} \quad \forall \quad n \]
+\[ \lim_{n\to\infty}b_{n} = 0 \]
+Therefore:
+\[ \sum_{n=1}^{\infty}(-1)^{n-1}\frac{n^{2}}{n^{3}+4} \quad
+   \mathrm{converges} \]
+
+\subsection*{Left Comparison Test}
+\[ \lim_{n\to\infty}\frac{a_{n}}{b_{n}} = c \]
+\[ 0 < c < \infty \]
+Therefore, both sequences either converge or diverge.
+
+\begin{center}
+  If any errors are found, please contact me at alvin.lin.dev@gmail.com
+\end{center}
+
+\end{document}

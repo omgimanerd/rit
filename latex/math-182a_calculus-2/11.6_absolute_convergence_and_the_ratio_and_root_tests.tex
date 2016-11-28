@@ -1,0 +1,60 @@
+\documentclass[letterpaper, 12pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\renewcommand*{\arcsin}{\sin^{-1}}
+\renewcommand*{\arccos}{\cos^{-1}}
+\renewcommand*{\arctan}{\tan^{-1}}
+\newcommand*{\arccot}{\cot^{-1}}
+\newcommand*{\arcsec}{\sec^{-1}}
+\newcommand*{\arccsc}{\csc^{-1}}
+\newcommand*{\diff}{\mathrm{d}}
+\newcommand*{\ddiff}[2]{\frac{\diff{#1}}{\diff{#2}}}
+\newcommand*{\Diff}[1]{\mathrm{d^#1}}
+\newcommand*{\e}{\mathrm{e}}
+
+\title{Absolute Convergence and the Ratio and Root Tests}
+\author{Alvin Lin}
+\date{Calculus II: August 2016 - December 2016}
+
+\begin{document}
+
+\maketitle
+
+\section*{Absolute Convergence and the Ratio and Root Tests}
+\textbf{Definition}: \( \sum{a_{n}} \) is absolutely convergent if
+\( \sum|a_{n}| \) converges. If \( \sum|a_{n}| \) diverges but
+\( \sum{a_{n}} \) converges, then \( \sum{a_{n}} \) is conditionally convergent.
+
+\subsection*{The Ratio Test}
+Let \( \sum{a_{n}} \) be given series.
+\( \lim_{n\to\infty}|\frac{a_{n+1}}{a_{n}}| = L \)
+\begin{enumerate}
+  \item If \( L < 1 \), then \( \sum{a_{n}} \) converges absolutely.
+  \item If \( L > 1 \), then \( \sum{a_{n}} \) diverges.
+  \item If \( L = 1 \), then the test fails.
+\end{enumerate}
+
+\subsection*{Example 1}
+\[ \sum\frac{n^{2}}{2^{n}} \]
+\[ a_{n} = \frac{n^{2}}{2^{n}} \]
+\[ a_{n+1} = \frac{(n+1)^{2}}{2^{n+1}} \]
+\[ |\frac{a_{n+1}}{a_{n}}| =
+   \frac{\frac{(n+1)^{2}}{2^{n+1}}}{\frac{n^{2}}{2^{n}}} \]
+\[ \lim_{n\to\infty}|\frac{a_{n}+1}{a_{n}}| = \frac{1}{2} \]
+Since \( \frac{1}{2} < 1 \), \( \sum{a_{n}} \) is absolutely convergent.
+
+\subsection*{Example 2}
+\[ \sum\frac{(-10)^{n}}{n!} \]
+\[ a_{n} = \frac{(-10)^{n}}{n!} \]
+\[ a_{n+1} = \frac{(-10)^{n+1}}{(n+1)!} \]
+\[ |\frac{a_{n+1}}{a_{n}}| =
+   \frac{\frac{(-10)^{n+1}}{(n+1)!}}{\frac{(-10)^{n}}{n!}} \]
+\[ \lim_{n\to\infty}|\frac{a_{n}+1}{a_{n}}| = 0 \]
+Since \( 0 < 1 \), \( \sum{a_{n}} \) is absolutely convergent.
+
+\begin{center}
+  If any errors are found, please contact me at alvin.lin.dev@gmail.com
+\end{center}
+
+\end{document}
