@@ -1,0 +1,77 @@
+\documentclass[letterpaper, 12pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\renewcommand*{\arcsin}{\sin^{-1}}
+\renewcommand*{\arccos}{\cos^{-1}}
+\renewcommand*{\arctan}{\tan^{-1}}
+\newcommand*{\arccot}{\cot^{-1}}
+\newcommand*{\arcsec}{\sec^{-1}}
+\newcommand*{\arccsc}{\csc^{-1}}
+\newcommand*{\diff}{\mathrm{d}}
+\newcommand*{\ddiff}[2]{\frac{\diff{#1}}{\diff{#2}}}
+\newcommand*{\Diff}[1]{\mathrm{d^#1}}
+\newcommand*{\e}{\mathrm{e}}
+
+\title{Power Series}
+\author{Alvin Lin}
+\date{Calculus II: August 2016 - December 2016}
+
+\begin{document}
+
+\maketitle
+
+\section*{Power Series}
+
+\[ \sum_{n=0}^{\infty}C_{n}x^{n} =
+   C_{0}+C_{1}x+C_{2}x^{2}+...+C_{n}x^{n}+... \]
+This can converge for a single value of \( x \), for multiple values of \( x \),
+or for all \( x \).
+
+\subsection*{Example}
+\[ \sum_{n=1}^{\infty}\frac{x^{n}}{\sqrt{n}} \]
+\begin{align*}
+  a_{n} &= \frac{x^{n}}{n} \\
+  a_{n+1} &= \frac{x^{n+1}}{\sqrt{n+1}} \\
+  \lim_{n\to\infty}|\frac{a_{n+1}}{a_{n}}| &=
+    \lim_{n\to\infty}|\frac{\frac{x^{n+1}}{\sqrt{n+1}}}{\frac{x^{n}}{n}}| \\
+  &= \lim_{n\to\infty}|x|\frac{\sqrt{n+1}}{\sqrt{n}} \\
+  &= \lim_{n\to\infty}|x|\sqrt{1+\frac{1}{n}} \\
+  &= |x|
+\end{align*}
+\( \sum\frac{x^{n}}{\sqrt{n}} \) converges when \( |x| < 1 \). Thus (-1, 1)
+is the radius of convergence.
+
+\subsection*{Example 2}
+\[ \sum_{n=1}^{\infty}\frac{x^{n}}{n!} \]
+\begin{align*}
+  a_{n} &= \frac{x^{n}}{n!} \\
+  a_{n+1} &= \frac{x^{n+1}}{(n+1)!} \\
+  \lim_{n\to\infty}|\frac{a_{n+1}}{a_{n}}| &=
+    \lim_{n\to\infty}|\frac{\frac{x^{n+1}}{(n+1)!}}{\frac{x^{n}}{n!}}| \\
+  &= \lim_{n\to\infty}|x|(\frac{n!}{(n+1)!}) \\
+  &= \lim_{n\to\infty}|x|\frac{1}{n+1} \\
+  &= 0
+\end{align*}
+This series converges for all \( x \in \mathbb{R} \). Thus the radius of
+convergence is \( \infty \).
+
+\subsection*{Practice Problem 4}
+\[ \sum_{n=0}^{\infty}(-1)^{n}\frac{x^{n}}{n+1} \]
+\begin{align*}
+  a_{n} &= (-1)^{n}\frac{x^{n}}{n+1} \\
+  a_{n+1} &= (-1)^{n+1}\frac{x^{n+1}}{n+2} \\
+  \lim_{n\to\infty}|\frac{a_{n+1}}{a_{n}}| &=
+    |\frac{(-1)^{n}\frac{x^{n}}{n+1}}{(-1)^{n+1}\frac{x^{n+1}}{n+2}}| \\
+  &= \lim_{n\to\infty}|x|(\frac{n+1}{n+2}) \\
+  &= \lim_{n\to\infty}|x|(\frac{n}{n})(\frac{1+\frac{1}{n}}{1+\frac{2}{n}}) \\
+  &= |x|
+\end{align*}
+\( \sum\frac{x^{n}}{n+1} \) converges when \( |x| < 1 \). Thus (-1, 1)
+is the radius of convergence.
+
+\begin{center}
+  If any errors are found, please contact me at alvin.lin.dev@gmail.com
+\end{center}
+
+\end{document}
