@@ -44,11 +44,10 @@ goal is to find the preferred bundle on the budget line.
 \begin{center}
   \begin{tikzpicture}
     \begin{axis} [
-      xlabel={Good X},
-      ylabel={Good Y},
       title={How much of Good X and Good Y a consumer can afford},
-      xmin=0, xmax=5,
-      ymin=0, ymax=8
+      xlabel={Good X}, ylabel={Good Y},
+      xmin=0, xmax=5, ymin=0, ymax=8,
+      grid=both
     ]
       \addplot[name path=supply, color=blue] coordinates { (0,8) (4,0) };
       \addlegendentry{Budget Line};

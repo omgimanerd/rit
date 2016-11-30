@@ -56,10 +56,9 @@ with quotas, importers gain profit.
 \begin{center}
   \begin{tikzpicture}
     \begin{axis} [
-      xlabel={Quantity},
-      ylabel={Price},
-      xmin=0, xmax=10,
-      ymin=0, ymax=10
+      xlabel={Quantity}, ylabel={Price},
+      xmin=0, xmax=10, ymin=0, ymax=10,
+      grid=both
     ]
       \addplot[name path=supply, color=blue] coordinates { (0,0) (10,10) };
       \addlegendentry{Supply};
@@ -81,15 +80,12 @@ with quotas, importers gain profit.
 \begin{center}
   \begin{tikzpicture}
     \begin{axis} [
-      xlabel={Quantity},
-      ylabel={Price},
-      width=15cm,
-      height=14cm,
+      xlabel={Quantity}, ylabel={Price},
+      width=15cm, height=14cm,
       title={Opening the Market to Free Trade with a Quota of 4 Units},
-      xtick={0,1,...,10},
-      ytick={0,1,...,10},
-      xmin=0, xmax=10,
-      ymin=0, ymax=10
+      xtick={0,1,...,10}, ytick={0,1,...,10},
+      xmin=0, xmax=10, ymin=0, ymax=10,
+      grid=both
     ]
       \addplot[name path=supply, color=blue] coordinates { (0,0) (10,10) };
       \addlegendentry{Supply};

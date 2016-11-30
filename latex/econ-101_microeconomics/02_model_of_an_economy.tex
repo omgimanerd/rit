@@ -29,7 +29,7 @@ sloping and convex.
 The opportunity cost of an action is the highest valued alternative for
 the action.
 
-Example: If I value fruits in the following pattern:
+\paragraph{Example:} If I value fruits in the following pattern:
 \[ mango > orange > apple \]
 \begin{itemize}
   \item My OC is mango if I choose apple.
@@ -37,11 +37,9 @@ Example: If I value fruits in the following pattern:
   \item My OC is orange if I choose mango.
 \end{itemize}
 
-\noindent\rule{13.7cm}{0.4pt}
-
-Example: Two goods: grade on an economics exam (X), hours on a video game (Y),
-6 hours available in total. The total cost of each hour spent on the game
-is:
+\paragraph{Example:} Two goods: grade on an economics exam (X), hours on a
+video game (Y), 6 hours available in total. The total cost of each hour spent
+on the game is:
 \begin{center}
   \begin{tabular}{|c|c|}
     \hline
@@ -97,7 +95,8 @@ we need to find the allocation efficiency (total benefit - total cost).
       xlabel={Production of X},
       ylabel={Cost/Benefit in terms of product Y},
       xmin=0, xmax=10,
-      ymin=0, ymax=10
+      ymin=0, ymax=10,
+      grid=both
     ]
     \addplot[color=blue] coordinates {(0,0) (10,10)};
     \addlegendentry{Total Cost};
@@ -117,7 +116,8 @@ meet.
       xlabel={Mayonnaise},
       ylabel={Ketchup},
       xmin=0, xmax=6,
-      ymin=0, ymax=12
+      ymin=0, ymax=12,
+      grid=both
     ]
     \addplot[color=red, mark=*] coordinates {
       (0,10.5)(1,10)(2,9)(3,7.5)(4,5.5)(5,3)(6,0)
@@ -131,7 +131,8 @@ meet.
       xlabel={Mayonnaise},
       ylabel={Total Benefit},
       xmin=0, xmax=6,
-      ymin=0, ymax=15
+      ymin=0, ymax=15,
+      grid=both
     ]
     \addplot[color=blue, mark=*] coordinates {
       (0,0)(1,2.75)(2,5.25)(3,7.5)(4,9.5)(5,11.25)(6,12.75)
@@ -166,7 +167,8 @@ health. What happens to allocative efficiency?
       xlabel={Mayonnaise},
       ylabel={Total Benefit},
       xmin=0, xmax=6,
-      ymin=0, ymax=15
+      ymin=0, ymax=15,
+      grid=both
     ]
       \addplot[color=blue, mark=*] coordinates {
         (0,0)(1,2.75)(2,5.25)(3,7.5)(4,9.5)(5,11.25)(6,12.75)
@@ -191,7 +193,8 @@ benefit of ketchup and mayonnaise?
       xlabel={Mayonnaise},
       ylabel={Ketchup},
       xmin=0, xmax=6,
-      ymin=0, ymax=18
+      ymin=0, ymax=18,
+      grid=both
     ]
     \addplot[color=red, mark=*] coordinates {
       (0,10.5)(1,10)(2,9)(3,7.5)(4,5.5)(5,3)(6,0)
@@ -209,7 +212,8 @@ benefit of ketchup and mayonnaise?
       xlabel={Marginal Cost/Benefit},
       ylabel={Ketchup},
       xmin=0, xmax=6,
-      ymin=0, ymax=18
+      ymin=0, ymax=18,
+      grid=both
     ]
     \addplot[color=red] coordinates {
       (0,0)(6,10)

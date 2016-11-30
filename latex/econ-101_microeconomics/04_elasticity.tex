@@ -97,14 +97,15 @@ More time elapsed implies more elastic demand.
       xlabel={Q},
       ylabel={P},
       xmin=0, xmax=25,
-      ymin=0, ymax=50
+      ymin=0, ymax=50,
+      grid=both
     ]
       \addplot[color=red] coordinates { (0,50)(12.5,25) };
       \addlegendentry{Inelastic Demand}
       \addplot[color=blue] coordinates { (12.5,25)(25,0) };
       \addlegendentry{Elastic Demand}
       \fill (12.5,25) circle[radius=2pt];
-      \draw (12.5,25) node[anchor=south west] {Elasticity=-1};
+      \draw (12.5,25) node[anchor=south west] {Elasticity\ =\ -1};
     \end{axis}
   \end{tikzpicture}
 \end{center}
@@ -227,7 +228,8 @@ variable.
       xlabel={Q},
       ylabel={P},
       xmin=0, xmax=25,
-      ymin=0, ymax=25
+      ymin=0, ymax=25,
+      grid=both
     ]
       \addplot[color=red] coordinates { (0,0)(25,25) };
       \addlegendentry{\( E_{S} = 0 \)}

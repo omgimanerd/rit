@@ -58,7 +58,8 @@ individual quantities demanded at each price.
       xmin=0, xmax=40,
       ymin=0, ymax=150,
       ytick={20,40,60,80,100,120,140},
-      xtick={15,30,45}
+      xtick={15,30,45},
+      grid=both
     ]
     \addplot[name path=path, color=red] coordinates { (0,140) (35,0) };
     \addplot[name path=bound, color=green] coordinates { (0,80) (15,80) };
@@ -102,12 +103,9 @@ Total surplus is maximized in a competitive equilibrium.
   \begin{tikzpicture}
     \begin{axis} [
       title={Market Demand Curve},
-      xlabel={Quantity},
-      ylabel={Price},
-      xtick=\empty,
-      ytick=\empty,
-      xmin=0, xmax=100,
-      ymin=0, ymax=100
+      xlabel={Quantity}, ylabel={Price},
+      xtick=\empty, ytick=\empty,
+      xmin=0, xmax=100, ymin=0, ymax=100
     ]
       \addplot[name path=supply, color=blue] coordinates { (0,0) (100,100) };
       \addlegendentry{Supply};
@@ -131,12 +129,9 @@ effects on consumers and producers.
 \begin{center}
   \begin{tikzpicture}
     \begin{axis} [
-      xlabel={Quantity},
-      ylabel={Price},
-      xtick=\empty,
-      ytick=\empty,
-      xmin=0, xmax=100,
-      ymin=0, ymax=100
+      xlabel={Quantity}, ylabel={Price},
+      xtick=\empty, ytick=\empty,
+      xmin=0, xmax=100, ymin=0, ymax=100
     ]
       \addplot[name path=supply, color=blue] coordinates { (0,0) (100,100) };
       \addlegendentry{Supply};
@@ -157,12 +152,9 @@ effects on consumers and producers.
   \end{tikzpicture}
   \begin{tikzpicture}
     \begin{axis} [
-      xlabel={Quantity},
-      ylabel={Price},
-      xtick=\empty,
-      ytick=\empty,
-      xmin=0, xmax=100,
-      ymin=0, ymax=100
+      xlabel={Quantity}, ylabel={Price},
+      xtick=\empty, ytick=\empty,
+      xmin=0, xmax=100, ymin=0, ymax=100
     ]
       \addplot[name path=supply, color=blue] coordinates { (0,0) (100,100) };
       \addlegendentry{Supply};
@@ -192,12 +184,9 @@ traded is \( \neq Q* \), then \( TS < TS* \).
 \begin{center}
   \begin{tikzpicture}
     \begin{axis} [
-      xlabel={Quantity},
-      ylabel={Price},
-      xtick=\empty,
-      ytick=\empty,
-      xmin=0, xmax=100,
-      ymin=0, ymax=100
+      xlabel={Quantity}, ylabel={Price},
+      xtick=\empty, ytick=\empty,
+      xmin=0, xmax=100, ymin=0, ymax=100
     ]
       \addplot[name path=supply, color=blue] coordinates { (0,0) (100,100) };
       \addlegendentry{Supply};

@@ -48,12 +48,10 @@ price.
 \begin{center}
   \begin{tikzpicture}
     \begin{axis} [
-      xlabel={Quantity},
-      ylabel={Price},
-      xtick={0,25,50,75,100},
-      ytick={0,25,50,75,100},
-      xmin=0, xmax=100,
-      ymin=0, ymax=100
+      xlabel={Quantity}, ylabel={Price},
+      xtick={0,25,50,75,100}, ytick={0,25,50,75,100},
+      xmin=0, xmax=100, ymin=0, ymax=100,
+      grid=both
     ]
       \addplot[name path=supply, color=blue] coordinates { (0,0) (100,100) };
       \addlegendentry{Supply};
@@ -122,10 +120,9 @@ market. The labor market has a supply of labor (workers), and demand for labor
 \begin{center}
   \begin{tikzpicture}
     \begin{axis} [
-      xlabel={Quantity},
-      ylabel={Price},
-      xmin=0, xmax=6,
-      ymin=0, ymax=16
+      xlabel={Quantity}, ylabel={Price},
+      xmin=0, xmax=6, ymin=0, ymax=16,
+      grid=both
     ]
       \addplot[name path=supply, color=blue] coordinates { (0,1) (6,7) };
       \addlegendentry{Supply};
@@ -151,10 +148,9 @@ surplus, and total surplus?
 \begin{center}
   \begin{tikzpicture}
     \begin{axis} [
-      xlabel={Quantity},
-      ylabel={Price},
-      xmin=0, xmax=6,
-      ymin=0, ymax=16
+      xlabel={Quantity}, ylabel={Price},
+      xmin=0, xmax=6, ymin=0, ymax=16,
+      grid=both
     ]
       \addplot[name path=supply, color=blue] coordinates { (0,1) (6,7) };
       \addlegendentry{Supply};
@@ -220,10 +216,9 @@ Suppose the government imposes a \$2 tax on sellers:
 \begin{center}
   \begin{tikzpicture}
     \begin{axis} [
-      xlabel={Quantity},
-      ylabel={Price},
-      xmin=0, xmax=6,
-      ymin=0, ymax=10
+      xlabel={Quantity}, ylabel={Price},
+      xmin=0, xmax=6, ymin=0, ymax=10,
+      grid=both
     ]
       \addplot[name path=supply, color=blue] coordinates { (0,0) (6,6) };
       \addlegendentry{Supply};
@@ -275,10 +270,9 @@ Suppose there is a \$20 subsidy to sellers:
 \begin{center}
   \begin{tikzpicture}
     \begin{axis} [
-      xlabel={Quantity},
-      ylabel={Price},
-      xmin=0, xmax=100,
-      ymin=0, ymax=100
+      xlabel={Quantity}, ylabel={Price},
+      xmin=0, xmax=100, ymin=0, ymax=100,
+      grid=both
     ]
       \addplot[name path=supply, color=blue] coordinates { (0,0) (100,100) };
       \addlegendentry{Supply};
