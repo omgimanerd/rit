@@ -86,13 +86,22 @@ We can actually derive the value of \( \e \) by taking \( f(0) \):
 \end{align*}
 
 \subsection*{Binomial Series}
+\textbf{Binomial Theorem:} If \( n \) is any positive integer, then:
+\begin{align*}
+  (a+b)^{n} &= \sum_{i=0}^{\infty}\binom{n}{i}a^{n-i}b^{i} \\
+  &= a^{n}+na^{n-1}b+\frac{n(n-1)a^{n-2}b^{2}}{2!}+...+nab^{n-1}+b^{n} \\
+  \mathrm{where:} \\
+  \binom{n}{i} &= \frac{n(n-1)(n-2)...(n-i+1)}{i!}; \quad i=1,2,3...n \\
+  \binom{n}{0} &= 0
+\end{align*}
+
+\subsection*{Example 1}
 \[ (1+x)^{k} \quad |x| < 1 \]
 \begin{align*}
   (1+x)^{k} &= \sum_{n=0}^{\infty}c_{n}x^{n} \\
   &= \sum_{n=0}^{\infty}\binom{k}{n}x \\
-  &= 1+\frac{kx}{1!}+\frac{k(k-1)x^{2}}{2!}+\frac{k(k-1)(k-2)x^{3}}{3!}+
-    \frac{k(k-1)(k-2)(k-3)x^{4}}{4!}+... \\
-  & +\frac{k(k-1)...(k-(n-1))x^{n}}{n!}
+  &= 1+\frac{kx}{1!}+\frac{k(k-1)x^{2}}{2!}+\frac{k(k-1)(k-2)x^{3}}{3!}
+    +\frac{k(k-1)...(k-(n-1))x^{n}}{n!}
 \end{align*}
 \[ \frac{1}{1+x} = 1-x+x^{2}-x^{3}+... \]
 \[ \frac{1}{1-x} = 1+x+x^{2}+x^{3}+... \]
