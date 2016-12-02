@@ -1,0 +1,119 @@
+\documentclass[letterpaper, 12pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\renewcommand*{\arcsin}{\sin^{-1}}
+\renewcommand*{\arccos}{\cos^{-1}}
+\renewcommand*{\arctan}{\tan^{-1}}
+\newcommand*{\arccot}{\cot^{-1}}
+\newcommand*{\arcsec}{\sec^{-1}}
+\newcommand*{\arccsc}{\csc^{-1}}
+\newcommand*{\diff}{\mathrm{d}}
+\newcommand*{\ddiff}[2]{\frac{\diff{#1}}{\diff{#2}}}
+\newcommand*{\Diff}[1]{\mathrm{d^#1}}
+\newcommand*{\e}{\mathrm{e}}
+
+\title{Taylor and Maclaurin Series}
+\author{Alvin Lin}
+\date{Calculus II: August 2016 - December 2016}
+
+\begin{document}
+
+\maketitle
+
+\section*{Taylor and Maclaurin Series}
+Here is a function \( f(x) \) that can be represented as a power series:
+\begin{align*}
+  f(x) &= \sum_{n=0}^{\infty}c_{n}(x-a)^{n} \\
+  &= c_{0}+c_{1}(x-a)+c_{2}(x-a)^{2}+c_{3}(x-a)^{3}+c_{4}(x-a)^{4}+...
+\end{align*}
+If we assume that the derivatives of \( f(x) \) in every order exist, then we
+can solve for the coefficients \( c_{n} \). For example:
+\[ f(a) = c_{0} \]
+Using the first derivative:
+\begin{align*}
+  f'(x) &= c_{1}+2c_{2}(x-a)+3c_{3}(x-a)^{2}+4c_{4}(x-a)^{3} \\
+  f'(a) &= c_{1}
+\end{align*}
+Using the second derivative:
+\begin{align*}
+  f''(x) &= 2c_{2}+(3)(2)c_{3}(x-a)+(4)(3)(x-a)^{2}+(5)(4)(x-a)^{3} \\
+  f''(a) &= 2c_{2} \\
+  c_{2} &= \frac{f''(a)}{2}
+\end{align*}
+Using the third derivative:
+\begin{align*}
+  f'''(x) &= (3)(2)(1)c_{3}+(4)(3)(2)c_{4}(x-a)+(5)(4)(3)c_{5}(x-a) \\
+  f'''(a) &= (3)(2)c_{3} \\
+  c_{3} &= \frac{f'''(a)}{(3)(2)}
+\end{align*}
+It follows that a general form of the coefficient \( c_{n} \) is:
+\[ c_{n} = \frac{f^{(n)}(a)}{n!} \]
+Provided a power series representation for the function \( f(x) \) about \( x = a \) exists, the Taylor
+Series for \( f(x) \) about \( x = a \) is:
+\begin{align*}
+  f(x) &= \sum_{n=0}^{\infty}\frac{f^{(n)}(a)}{n!}(x-a)^{n} \\
+  &= f(a)+f'(a)(x-a)+\frac{f'(a)(x-a)^{2}}{2!}+\frac{f''(a)(x-a)^{3}}{3!}+...
+\end{align*}
+If we use \( a = 0 \), then the Taylor Series is known as the Maclaurin Series
+for \( f(x) \):
+\begin{align*}
+  f(x) &= \sum_{n=0}^{\infty}\frac{f^{(n)}(0)}{n!}x^{n} \\
+  &= f(0)+f'(0)x+\frac{f''(0)x^{2}}{2!}+\frac{f'''(0)x^{3}}{3!}+...
+\end{align*}
+
+\subsection*{Example 1}
+Find the Taylor Series for \( f(x)= \e^{x} \) about \( x = 0 \):
+\[ f(x) = \e^{x} = \sum_{n=0}^{\infty}\frac{f^{(n)}(0)}{n!}x^{n} \]
+\begin{align*}
+  f^{(n)}(x) &= \e^{x} \\
+  f^{(n)}(0) &= \e^{x} \\
+  f(x) &= \sum_{n=0}^{\infty}\frac{x^{n}}{n!} \\
+  &= 1+x+\frac{x^{2}}{2!}+\frac{x^{3}}{3!}+...
+\end{align*}
+We can actually derive the value of \( \e \) by taking \( f(0) \):
+\[ f(0) = \e = 1+1+\frac{1}{2}+\frac{1}{6}+... \]
+
+\subsection*{Example 2}
+\begin{align*}
+  \sin(x) &= f(0)+\frac{f'(0)}{1!}x+\frac{f''(0)}{2!}x^{2}+
+    \frac{f'''(0)}{3!}x^{3}+... \\
+  &= 0+x-\frac{x^{3}}{3!}+\frac{x^{5}}{5!}-\frac{x^{7}}{7!}+... \\
+  \cos(x) &= f(0)+\frac{f'(0)}{1!}x+\frac{f''(0)}{2!}x^{2}+
+    \frac{f'''(0)}{3!}x^{3}+... \\
+  &= 1-\frac{x^{2}}{2!}+\frac{x^{4}}{4!}-\frac{x^{6}}{6!}+... \\
+  \e^{ix} &= \cos(x)+i\sin(x)
+\end{align*}
+
+\subsection*{Binomial Series}
+\[ (1+x)^{k} \quad |x| < 1 \]
+\begin{align*}
+  (1+x)^{k} &= \sum_{n=0}^{\infty}c_{n}x^{n} \\
+  &= \sum_{n=0}^{\infty}\binom{k}{n}x \\
+  &= 1+\frac{kx}{1!}+\frac{k(k-1)x^{2}}{2!}+\frac{k(k-1)(k-2)x^{3}}{3!}+
+    \frac{k(k-1)(k-2)(k-3)x^{4}}{4!}+... \\
+  & +\frac{k(k-1)...(k-(n-1))x^{n}}{n!}
+\end{align*}
+\[ \frac{1}{1+x} = 1-x+x^{2}-x^{3}+... \]
+\[ \frac{1}{1-x} = 1+x+x^{2}+x^{3}+... \]
+
+\subsection*{Example 3}
+\[ f(x) = x^{4}-3x^{2}+1 \]
+At \( n = 0 \):
+\[ c_{n} = f(1) = -1 \]
+At \( n = 1 \):
+\[ c_{n} = f'(1) = -2 \]
+At \( n = 2 \):
+\[ c_{n} = f''(1) = 6 \]
+At \( n = 3 \):
+\[ c_{n} = f'''(1) = 24 \]
+At \( n = 4 \):
+\[ c_{n} = f^{(4)}(1) = 24 \]
+\[ f(x) = c_{0}+c_{1}(x-a)+c_{2}(x-a)^{2}+c_{3}(c-a)^{3}+... \]
+\[ = -1+(-2)(x-a)+6(x-a)^{2}+24(x-a)^{3}+... \]
+
+\begin{center}
+  If any errors are found, please contact me at alvin.lin.dev@gmail.com
+\end{center}
+
+\end{document}

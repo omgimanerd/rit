@@ -22,9 +22,19 @@
 \maketitle
 
 \section*{Power Series}
-
-\[ \sum_{n=0}^{\infty}C_{n}x^{n} =
-   C_{0}+C_{1}x+C_{2}x^{2}+...+C_{n}x^{n}+... \]
+A power series is any series that can be written in the form:
+\[ \sum_{n=0}^{\infty}c_{n}(x-a)^{n} \]
+where \( a \) is any number and \( c \) is a coefficient of the series.
+There exists a number \( R \) such that the power series converges for
+\( |x-a|< R \) and diverges for \( |x-a|>R \). This is called the radius
+of convergence.
+We are always guaranteed convergence for \( x = a \) because:
+\[ \sum_{n=0}^{\infty}c_{n}(a-a)^{n} = \sum_{n=0}^{\infty}c_{n}(0)^{n} =
+   c_{0}(0)^{n}+\sum_{n=1}^{\infty}c_{n}(0)^{n} = c_{0}+\sum_{n=1}^{\infty}0 =
+   c_{0} \]
+Let \( a = 0 \):
+\[ \sum_{n=0}^{\infty}c_{n}x^{n} =
+   c_{0}+c_{1}x+c_{2}x^{2}+...+c_{n}x^{n}+... \]
 This can converge for a single value of \( x \), for multiple values of \( x \),
 or for all \( x \).
 
