@@ -85,6 +85,50 @@ We can actually derive the value of \( \e \) by taking \( f(0) \):
   \e^{ix} &= \cos(x)+i\sin(x)
 \end{align*}
 
+\subsection*{Example 3}
+\[ \lim_{x\to0}\frac{1-\cos(x)}{1+x-\e^{x}} \]
+\begin{align*}
+  \lim_{x\to0}\frac{1-\cos(x)}{1+x-\e^{x}} &=
+    \lim_{x\to0}\frac{1-[1-\frac{x^{2}}{2!}+\frac{x^{4}}{4!}-...]}
+      {1+x-[1+\frac{x}{1!}+\frac{x^{2}}{2!}+...]} \\
+  &= \lim_{x\to0}\frac{\frac{x^{2}}{2!}-\frac{x^{4}}{4!}+\frac{x^{6}}{6!}-...}
+    {\frac{-x^{2}}{2!}-\frac{x^{3}}{3!}} \\
+  &= \lim_{x\to0}\frac{\frac{x^{2}}{2}}{\frac{-x^{2}}{2}}
+    \bigg[\frac{1-\frac{x^{2}}{2}-...}{1+\frac{x}{3}}\bigg] \\
+  &= -1
+\end{align*}
+
+\subsection*{Example 4}
+\[ \lim_{x\to\infty}\frac{\sin(x)-x-x^{\frac{3}{6}}}{x^{3}} \]
+\begin{align*}
+  \lim_{x\to\infty}\frac{\sin(x)-x-x^{\frac{3}{6}}}{x^{3}} &=
+    \lim_{x\to0}\frac{(x-\frac{x^{3}}{3!}+\frac{x^{5}}{5!}-...)
+      -x-x^{\frac{3}{6}}}{x^{3}} \\
+  &= \lim_{x\to0}\frac{-1}{3}+\frac{x^{2}}{5!}-... \\
+  &= -\frac{1}{3}
+\end{align*}
+
+\subsection*{Example 5}
+\[ y = \e^{x}\ln(1-x) \]
+\begin{align*}
+  y &= \e^{x}\ln(1-x) \\
+  &= (1+\frac{x}{1!}+\frac{x^{2}}{2!}+...)(-x-\frac{x^{2}}{2}+...)
+\end{align*}
+
+\subsection*{Example 6}
+\[ \sum_{n=0}^{\infty}\frac{(-1)^{n}\pi^{2n+1}}{4^{2n+1}(2n+1)!} \]
+\begin{align*}
+  \sum_{n=0}^{\infty}\frac{(-1)^{n}\pi^{2n+1}}{4^{2n+1}(2n+1)!}
+    &= \sum_{n=0}^{\infty}(-1)^{n}\frac{(\frac{\pi}{4})^{2n+1}}{(2n+1)!} \\
+  &= \frac{\frac{\pi}{4}}{1!}-\frac{(\frac{\pi}{4})^{3}}{3!}+... \\
+  &= \sin(\frac{\pi}{4}) \\
+  &= \frac{\sqrt{2}}{2}
+\end{align*}
+
+\subsection*{Example 7}
+\[ 1-\ln(2)+\frac{(\ln(2))^{2}}{2!}-\frac{(\ln(3))^{3}}{3!}+... \]
+\[ = \e^{-\ln(2)} = \frac{1}{2} \]
+
 \subsection*{Binomial Series}
 \textbf{Binomial Theorem:} If \( n \) is any positive integer, then:
 \begin{align*}

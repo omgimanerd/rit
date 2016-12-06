@@ -77,6 +77,21 @@ Since \( 0 < 1 \), \( \sum{a_{n}} \) is absolutely convergent.
 \end{align*}
 Since \( 0 < 1 \), \( \sum{a_{n}} \) is absolutely convergent.
 
+\subsubsection*{Example 4}
+\[ \sum_{n=1}^{\infty}\frac{n^{2}2^{n-1}}{(-5)^{n}} \]
+\begin{align*}
+  a_{n} &= \frac{n^{2}2^{n-1}}{(-5)^{n}} \\
+  a_{n+1} &= \frac{(n+1)^{2}2^{n}}{(-5)^{n+1}} \\
+  \bigg|\frac{a_{n+1}}{a_{n}}\bigg| &= \bigg|
+    \frac{\frac{(n+1)^{2}2^{n}}{(-5)^{n+1}}}
+      {\frac{n^{2}2^{n-1}}{(-5)^{n}}}\bigg| \\
+  &= \frac{(n+1)^{2}2^{n}5^{n}}{5^{n+1}n^{2}2^{n-1}} \\
+  &= \frac{2}{5}(\frac{n+1}{n})^{2} \\
+  &= \frac{2}{5}(1+\frac{1}{n})^{2} \\
+  &= \frac{2}{5}
+\end{align*}
+Since \( \frac{2}{5} < 1 \), \( \sum{a_{n}} \) is absolutely convergent.
+
 \subsection*{The Root Test}
 Given \( \sum{a_{n}} \):
 \[ \lim_{n\to\infty}\sqrt[n]{a_{n}} = L \]
