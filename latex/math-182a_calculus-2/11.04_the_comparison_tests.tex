@@ -41,7 +41,7 @@ also convergent.
 \[ \sum\frac{n+1}{n\sqrt{n}} \]
 \[ \frac{n+1}{n\sqrt{n}} > \frac{n}{n\sqrt{n}} \]
 \[ \frac{1}{\sqrt{n}} = \infty \quad \therefore \quad \sum\frac{n+1}{n\sqrt{n}}
-   \mathrm{is\ divergent} \]
+   \quad \mathrm{diverges} \]
 
 \subsection*{Example 3}
 \[ \sum\frac{9^{n}}{3+10^{n}} \]
@@ -49,38 +49,59 @@ also convergent.
 \[ \sum(\frac{9}{10})^{n} = \frac{a}{1-r} =
    \frac{\frac{9}{10}}{1-\frac{9}{10}} = 9 \]
 \[ \sum(\frac{9}{10})^{n} \mathrm{converges} \quad \therefore \quad
-   \sum\frac{9^{n}}{3+10^{n}} \mathrm{diverges} \]
+   \sum\frac{9^{n}}{3+10^{n}} \quad \mathrm{diverges} \]
 
 \subsection*{Practice Problem 4}
 \[ \sum\frac{n^{3}}{n^{4}-1} \]
 \[ \frac{n^{3}}{n^{4}-1} > \frac{n^{3}}{n^{4}} = \frac{1}{n} \]
 \[ \frac{1}{n} = \infty \quad \therefore \quad \sum\frac{n^{3}}{n^{4}-1}
-   \mathrm{is\ divergent} \]
+   \quad \mathrm{diverges} \]
 
 \subsection*{Practice Problem 8}
 \[ \sum\frac{4+3^{n}}{2^{n}} \]
 \[ \frac{4+3^{n}}{2^{n}} > \frac{3^{n}}{2^{n}} \]
 \[ \sum\frac{3^{n}}{2^{n}} = \infty \quad \therefore \quad
-   \sum\frac{4+3^{n}}{2^{n}} \mathrm{diverges} \]
+   \sum\frac{4+3^{n}}{2^{n}} \quad \mathrm{diverges} \]
 
 \subsection*{Practice Problem 10}
 \[ \sum\frac{n^{2}-1}{3n^{4}+1} \]
 \[ \frac{n^{2}+1}{3n^{4}+1} < \frac{n^{2}}{3n^{4}+1} < \frac{n^{2}}{3n^{4}} =
    \frac{1}{3n^{2}} \]
 \[ \sum\frac{1}{3n^{2}} < \infty \quad \therefore \quad
-   \sum\frac{n^{2}-1}{3n^{4}+1} < \infty \]
+   \sum\frac{n^{2}-1}{3n^{4}+1} \quad \mathrm{converges} \]
 
 \subsection*{Practice Problem 12}
 \[ \sum\frac{1+\sin(n)}{10^{n}} \]
 \[ \frac{1+\sin(n)}{10^{n}} \leq \frac{2}{10^{n}} \]
-\[ \sum\frac{2}{10^{n}} = \frac{a}{1-r} < \infty \]
-\[ \therefore \quad \sum\frac{1+\sin(n)}{10^{n}} < \infty \]
+\[ \sum\frac{2}{10^{n}} = \frac{a}{1-r} < \infty
+   \therefore \quad \sum\frac{1+\sin(n)}{10^{n}} \quad \mathrm{converges} \]
 
 \subsection*{Practice Problem 13}
 \[ \sum\frac{\arctan(n)}{n^{1.2}} \]
 \[ \frac{\arctan(n)}{n^{1.2}} < \frac{\frac{\pi}{2}}{n^{1.2}} \]
-\[ \sum\frac{\frac{\pi}{2}}{n^{1.2}} < \infty \]
-\[ \therefore \quad \sum\frac{\arctan(n)}{n^{1.2}} < \infty \]
+\[ \sum\frac{\frac{\pi}{2}}{n^{1.2}} < \infty
+   \therefore \quad \sum\frac{\arctan(n)}{n^{1.2}} \quad \mathrm{converges} \]
+
+\subsection*{Practice Problem 14}
+\[ \sum_{n=1}^{\infty}\frac{\sqrt{n^{3}+1}}{3n^{3}+4n^{2}+2} \]
+\[ a_{n} = \frac{\sqrt{n^{3}+1}}{3n^{3}+4n^{2}+2} \]
+\[ b_{n} = \frac{n^{\frac{3}{2}}}{3n^{3}} = \frac{1}{3n^{\frac{3}{2}}}
+   \quad \mathrm{(converges)} \]
+\begin{align*}
+  \lim_{n\to\infty}\frac{a_{n}}{b_{n}} &=
+    \frac{\frac{\sqrt{n^{3}+1}}{3n^{3}+4n^{2}+2}}
+    {\frac{1}{3n^{\frac{3}{2}}}} \\
+  &= \lim_{n\to\infty}\frac{3n^{3}}{3n^{3}+4n^{2}+2}
+    \frac{\sqrt{n^{3}+1}}{\sqrt{n^{3}}} \\
+  &= 1
+\end{align*}
+Therefore, \( \sum{a_{n}} \) converges (p-series test).
+
+\subsection*{Practice Problem 15}
+\[ \sum_{n=1}^{\infty}\frac{n-1}{2n+1} \]
+\[ a_{n} = \frac{n-1}{2n+1} \]
+\[ \lim_{n\to\infty}a_{n} = \frac{1}{2} \neq 0 \quad \therefore \quad
+   \sum_{n=1}^{\infty}\frac{n-1}{2n+1} \quad \mathrm{diverges} \]
 
 \begin{center}
   If any errors are found, please contact me at alvin.lin.dev@gmail.com
