@@ -1,0 +1,49 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+
+\title{Probability and Statistics}
+\author{Alvin Lin}
+\date{Probability and Statistics: January 2017 - May 2017}
+
+\begin{document}
+
+\maketitle
+
+\section{Probability}
+The sample space of an experiment, denoted by \( S \), is the set of all
+possible outcomes of the experiment. An event of the experiment is a subset
+of \( S \). An event is simple if it consists of exactly one outcome, and
+compound if it consists of more than one outcome. \par
+Let \( A \) and \( B \) be events of an experiment. If \( A = \emptyset \),
+then it is said to be the null event. \par
+If \( A \cap B = \emptyset \), then \( A \) and \( B \) are said to be mutually
+exclusive, or disjoint.
+
+\subsection{Roll a Die}
+\[ S = \big\{ 1, 2, 3, 4, 5, 6 \big\} \]
+Sample events:
+\begin{itemize}
+  \item \( E_{1}: \) getting a 1
+  \item \( E_{2}: \) getting an even number
+  \item \( E_{3}: \) getting a number greater than 4
+  \item \( E_{4}: \) getting a number greater than 9
+  \item \( E_{5}: \) getting an integer greater than 0 and less than 7
+\end{itemize}
+\begin{align*}
+  E_{1} &= \big\{ 1 \big\} \subset S \\
+  E_{2} &= \big\{ 2, 4, 6, \big\} \subset S \\
+  E_{3} &= \big\{ 5, 6 \big\} \subset S \\
+  E_{4} &= \big\{ \big\} = \emptyset \subset S \\
+  E_{5} &= \big\{ 1, 2, 3, 4, 5, 6 \big\} \subset S
+\end{align*}
+\( E_{1} \) is a simple event. \( E_{2}, E_{3}, E_{5} \) are compound events.
+\( E_{4} \) is the null event. \par
+The events \( E_{1} \) and \( E_{2} \) are mutually exclusive or disjoint.
+\[ E_{1} \cap E_{2} = \emptyset \]
+The events \( E_{2} \) and \( E_{3} \) are not mutually exclusive or disjoint.
+\[ E_{2} \cap E_{3} = \big\{ 6 \big\} \neq \emptyset \]
+
+\end{document}

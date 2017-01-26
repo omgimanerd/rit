@@ -1,4 +1,4 @@
-\documentclass[letterpaper, 12pt]{article}
+\documentclass[letterpaper, 12pt]{math}
 
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -12,7 +12,7 @@
 
 \maketitle
 
-\section{Inferential Statistics}
+\section{Intro to Statistics}
 Suppose there is a set of people who can vote and a subset of them
 whom we want to survey. We can make a prediction about the people
 who can vote by surveying the subset. The set of people who can
@@ -58,7 +58,6 @@ The frequency of 6.8 is 2. \par
 The frequency of 9.0 is 0. \par
 The relative frequency of 6.1 is \( \frac{1}{5} = 0.2 = 20\% \). \par
 The relative frequency of 6.8 is \( \frac{2}{5} = 0.4 = 40\% \).
-
 \begin{center}
   \begin{tikzpicture}
     \begin{axis}[
@@ -75,6 +74,18 @@ The relative frequency of 6.8 is \( \frac{2}{5} = 0.4 = 40\% \).
     };
     \end{axis}
   \end{tikzpicture}
+\end{center}
+There are two types of histograms in our textbook.
+\begin{center}
+  \begin{tabular}{|c|c|c|}
+    \hline
+    & Type 1 & Type 2 \\ \hline
+    Vertical Axis & Relative Frequency &
+        Density \( \frac{Relative Frequency}{Width} \) \\ \hline
+    Width of the rectangles & Same & Do not have to be the same \\ \hline
+    Sum up to 1 & Heights of the rectangles &
+        Area of the rectangles \\ \hline
+  \end{tabular}
 \end{center}
 
 \subsection{Countable and Uncountable Sets}
@@ -112,5 +123,53 @@ all subsets of A.
 \[ Let: A = \bigg\{ 1, 2, 3 \bigg\} \]
 \[ 2^{A} = \bigg\{ \emptyset, 1, 2, 3, \{1, 2\}, \{1, 3\}, \{2, 3\},
    \{1, 2, 3\} \bigg\} \]
+
+\subsection{Sample Mean}
+As sets:
+\[ \bigg\{ 6.1, 6.8, 6.8, 7.1, 7.4 \bigg\} =
+   \bigg\{ 6.1, 6.8, 7.1, 7.4 \bigg\} \]
+But if we take the arithmetic mean:
+\[ \bar{x} \neq \frac{6.1+6.8+7.1+7.4}{4} \]
+Thus, it is better for us to represent the set as an ordered 5-tuple:
+\[ \bigg\{ \dots, (2,6.8), (3,6.8), \dots \bigg \} \]
+\[ \bigg( 6.1, 6.8, 6.8, 7.1, 7.4 \bigg) \]
+
+\subsection{Sample Median}
+With the set:
+\[ \bigg( 6.1, 6.8, 6.8, 7.1, 7.4 \bigg) \]
+The median of the set is:
+\[ \tilde{x} = 6.8 \]
+In the case that the sample size is even:
+\[ \bigg( 5.3, 6.8, 6.8, 7.1, 7.4, 7.9 \bigg) \]
+The median is:
+\[ \tilde{x} = \frac{6.8+7.1}{2} \]
+
+\subsection{Measure of Variability}
+How are the sample data spread out? We can express the spread in numbers
+or visually as scatter, dispersion, or variability.
+\begin{align*}
+  Let: S_{xx} &= \sum_{i=1}^{n}(x_{i}-\bar{x})^{2} =
+    \sum_{i=1}^{n}(x_{i})^{2}-n(\bar{x})^{2} \\
+  Sample\ variance: s^{2} &= \frac{S_{xx}}{n-1} \\
+  Sample\ standard\ deviation: s &= \sqrt{s^{2}}
+\end{align*}
+
+\subsubsection{Proposition}
+Let \( x_{1}, x_{2}, x_{3}, \dots, x_{n} \) be a sample and
+\( (S_{x})^{2} \) and \( S_{x} \) be the variance and standard deviation
+of the sample, respectively. \par
+Let \( a \) and \( b \) be constants. \par
+If \( y_{i} = ax_{i}+b \) for any \( i \in \{1, 2, 3, \dots, n\} \),
+then the variance and standard deviation of the new sample
+\( y_{1}, y_{2}, y_{3}, \dots, y_{n} \) are
+\( (S_{y})^{2} = a_{2}(S_{x})^{2} \) and \( S_{y} = |a|S_{x} \), respectively.
+
+\subsubsection{Usage Example}
+Suppose a sample consists of 1000 temperature measurements in Centigrade.
+We know its standard deviation. If we want to convert the temperature to
+Fahrenheit, we can apply \( F = \frac{9}{5}C + 32 \) to each individual
+measurement. \par
+We can also use the proposition above to determine the new standard deviation:
+\[ S_{F} = |\frac{9}{5}|S_{C} \]
 
 \end{document}
