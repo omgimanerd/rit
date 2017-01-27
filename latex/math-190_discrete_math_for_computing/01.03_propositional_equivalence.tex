@@ -1,0 +1,131 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\title{Propositional Equivalence}
+\author{Alvin Lin}
+\date{Discrete Math for Computing: January 2017 - May 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Propositional Equivalence}
+\( p \to q \)  and \( \neg{q} \to \neg{p} \) have the same truth table. An
+implication and its contrapositive are always logically equivalent.
+A compound proposition is a:
+\begin{enumerate}
+  \item \textbf{tautology} if it is always true.
+  \item \textbf{contradiction} if it is always false.
+  \item \textbf{contingency} if for some values it is true and some it is false.
+\end{enumerate}
+\( p \vee \neg{p} \) is a tautology. \( p \wedge \neg{p} \) is a contradition.
+
+\subsection*{Logical Equivalence}
+The compound propositions \( p \) and \( q \) are logically equivalent is
+\( p \leftrightarrow q \) is a tautology. \\
+\underline{Notation:} We write \( p \equiv q \) if \( p \) and \( q \) are
+logically equivalent.
+
+\subsection*{De Morgan's Laws}
+\begin{enumerate}
+  \item \( \neg{(p \wedge q)} \equiv \neg{p} \vee \neg{q} \)
+  \item \( \neg{(p \vee q)} \equiv \neg{p} \wedge \neg{q} \)
+\end{enumerate}
+\begin{center}
+  \begin{tabular}{|c|c|c|c|c|c|}
+    \hline
+    \( p \) & \( q \) & \( \neg{(p \wedge q)} \) & \( \neg{p} \vee \neg{q} \) &
+    \( \neg{(p \vee q)} \) & \( \neg{p} \wedge \neg{q} \) \\ \hline
+    T & T & F & F & F & F \\ \hline
+    T & F & T & T & F & F \\ \hline
+    F & T & T & T & F & F \\ \hline
+    F & F & T & T & T & T \\ \hline
+  \end{tabular}
+\end{center}
+
+\subsection*{Example}
+Show that \( p \vee (q \wedge r) \equiv (p \vee q) \wedge (p \vee r) \):
+\begin{center}
+  \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+    \hline
+    \( p \) & \( q \) & \( r \) & \( q \wedge r \) & \( p \vee q \) &
+    \( p \vee r \) & \( p \vee (q \wedge r) \) &
+    \( (p \vee q) \wedge (p \vee r) \) \\ \hline
+    T & T & T & T & T & T & T & T \\ \hline
+    T & T & F & F & T & T & T & T \\ \hline
+    T & F & T & F & T & T & T & T \\ \hline
+    T & F & F & F & T & T & T & T \\ \hline
+    F & T & T & T & T & T & T & T \\ \hline
+    F & T & F & F & T & F & F & F \\ \hline
+    F & F & T & F & F & T & F & F \\ \hline
+    F & F & F & F & F & F & F & F \\ \hline
+  \end{tabular}
+\end{center}
+
+\subsection*{Laws of Logical Equivalence}
+\begin{enumerate}
+  \item Identity Law:
+  \begin{itemize}
+    \item \( p \wedge T \equiv p \)
+    \item \( p \vee F \equiv p \)
+  \end{itemize}
+  \item Domination Law:
+  \begin{itemize}
+    \item \( p \vee T \equiv T \)
+    \item \( p \wedge F \equiv F \)
+  \end{itemize}
+  \item Idempotent Law:
+  \begin{itemize}
+    \item \( p \vee p \equiv p \)
+    \item \( p \wedge p \equiv p \)
+  \end{itemize}
+  \item Double Negation:
+  \begin{itemize}
+    \item \( \neg{(\neg{p})} \equiv p \)
+  \end{itemize}
+  \item Commutative Laws:
+  \begin{itemize}
+    \item \( p \vee q \equiv q \vee p \)
+    \item \( p \wedge q \equiv q \wedge p \)
+  \end{itemize}
+  \item Associative Laws:
+  \begin{itemize}
+    \item \( (p \vee q) \vee r \equiv p \vee (q \vee r) \)
+    \item \( (p \wedge q) \wedge r \equiv p \wedge (q \wedge r) \)
+  \end{itemize}
+  \item Distributive Laws:
+  \begin{itemize}
+    \item \( p \vee (q \wedge r) \equiv (p \vee q) \wedge (p \vee r) \)
+    \item \( p \wedge (q \vee r) \equiv (p \wedge q) \vee (p \wedge r) \)
+  \end{itemize}
+  \item De Morgan's Laws:
+  \begin{itemize}
+    \item \( \neg{(p \wedge q)} \equiv \neg{p} \vee \neg{q} \)
+    \item \( \neg{(p \vee q)} \equiv \neg{p} \wedge \neg{q} \)
+  \end{itemize}
+  \item Absorption Laws:
+  \begin{itemize}
+    \item \( p \vee (p \wedge q) \equiv p \)
+    \item \( p \wedge (p \vee q) \equiv p \)
+  \end{itemize}
+  \item Negation:
+  \begin{itemize}
+    \item \( p \vee \neg{p} \equiv T \)
+    \item \( p \wedge \neg{p} \equiv F \)
+  \end{itemize}
+\end{enumerate}
+
+\subsection*{Example}
+Show \( \neg{(p \to q)} \) and \( p \wedge \neg{q} \) are logically equivalent
+using the laws. \\
+\textbf{Hint:} \( p \to q \equiv \neg{p} \vee q \)
+\begin{align*}
+  p \to q &\equiv \neg{p} \vee q \\
+  &\equiv \neg{(\neg{p} \vee q)} \\
+  &\equiv \neg{(\neg{p})} \vee \neg{q} \\
+  &\equiv p \vee \neg{q}
+\end{align*}
+
+\end{document}
