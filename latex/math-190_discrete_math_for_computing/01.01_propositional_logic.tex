@@ -1,0 +1,170 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\title{Propositional Logic}
+\author{Alvin Lin}
+\date{Discrete Math for Computing: January 2017 - May 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Propositional Logic}
+Logic gives precise meaning to mathematical statements. A \textbf{proposition}
+is a statement that declares a fact. Ex:
+\begin{itemize}
+  \item \( 1+1 = 2 \)
+  \item \( 1+1 = 3 \)
+  \item The sky is blue
+  \item Today is Monday
+\end{itemize}
+Note that the first and third are true, while the second and fourth proposition
+are false. Propositions can be either true or false. \par
+We use letters to represent propositions, generally \(p, q, r, s, t\). Truth
+values of a proposition are denoted as True/False, T/F, or 1/0. \par
+The following are not propositions:
+\begin{itemize}
+  \item What time is it?
+  \item \( x+1 = 9 \)
+  \item \( x^{2}+y^{2} = z^{2} \)
+\end{itemize}
+
+\subsection*{Negation}
+Let \( p \) be a proposition. The \textbf{negation} of \( p \), denoted
+\( \neg{p} \), is the statement ``it is not the case p'', read as ``not p''.
+\begin{center}
+  \begin{tabular}{|c|c|}
+    \hline
+    \( p \) & \( \neg{p} \) \\ \hline
+    T       & F             \\ \hline
+    F       & T             \\ \hline
+  \end{tabular}
+\end{center}
+
+\subsection*{Conjunction}
+Let \( p \) and \( q \) be propositions. The \textbf{conjunction} of \( p \)
+and \( q \), denoted by \( p \wedge q \), is the proposition \( p\ and\ q \).
+This conjunction is only true when both \( p \) and \( q \) are true.
+\begin{center}
+  \begin{tabular}{|c|c|c|}
+    \hline
+    \( p \) & \( q \) & \( p \wedge q \) \\ \hline
+    T       & T       & T \\ \hline
+    T       & F       & F \\ \hline
+    F       & T       & F \\ \hline
+    F       & F       & F \\ \hline
+  \end{tabular}
+\end{center}
+
+\subsection*{Disjunction}
+Let \( p \) and \( q \) be propositions. The \textbf{disjunction} of \( p \)
+and \( q \), denoted by \( p \vee q \), is the proposition \( p\ or\ q \).
+This conjunction is true when either \( p \) or \( q \) are true, or both.
+\begin{center}
+  \begin{tabular}{|c|c|c|}
+    \hline
+    \( p \) & \( q \) & \( p \vee q \) \\ \hline
+    T       & T       & T \\ \hline
+    T       & F       & T \\ \hline
+    F       & T       & T \\ \hline
+    F       & F       & F \\ \hline
+  \end{tabular}
+\end{center}
+
+\subsection*{Exclusive Or}
+Let \( p \) and \( q \) be propositions. The \textbf{exclusive or}, denoted
+\( p \oplus q \), is the proposition with the following truth table:
+\begin{center}
+  \begin{tabular}{|c|c|c|}
+    \hline
+    \( p \) & \( q \) & \( p \oplus q \) \\ \hline
+    T       & T       & F \\ \hline
+    T       & F       & T \\ \hline
+    F       & T       & T \\ \hline
+    F       & F       & F \\ \hline
+  \end{tabular}
+\end{center}
+
+\subsection*{Conditional Statements}
+Let \( p \) and \( q \) be propositions. The conditional statement
+\( p \to q \) is the proposition ``if p then q''. This is false when
+\( p \) is true and \( q \) is false, and true otherwise.
+\begin{center}
+  \begin{tabular}{|c|c|c|}
+    \hline
+    \( p \) & \( q \) & \( p \to q \) \\ \hline
+    T       & T       & T \\ \hline
+    T       & F       & F \\ \hline
+    F       & T       & T \\ \hline
+    F       & F       & T \\ \hline
+  \end{tabular}
+\end{center}
+In English, the following mean that \( p \to q \):
+\begin{itemize}
+  \item if p, then q
+  \item p implies q
+  \item p is sufficient for q
+  \item p whenever q
+  \item q is necessary for p
+\end{itemize}
+
+\subsection*{Converse, Contrapositive, and Inverse}
+Given \( p \to q \), we could consider the following:
+\begin{itemize}
+  \item The \textbf{converse} of \( p \to q \) is \( q \to p \).
+  \item The \textbf{contrapositive} of \( p \to q \) is
+    \( \neg{q} \to \neg{p} \).
+  \item The \textbf{inverse} of \( p \to q \) is
+    \( \neg{p} \to \neg{q} \).
+\end{itemize}
+\begin{center}
+  \begin{tabular}{|c|c|c|c|c|c|}
+    \hline
+    \( p \) & \( q \) & \( p \to q \) & \( q \to p \) &
+      \( \neg{q} \to \neg{p} \) & \( \neg{p} \to \neg{q} \) \\ \hline
+    T & T & T & T & T & T \\ \hline
+    T & F & F & T & F & T \\ \hline
+    F & T & T & F & T & F \\ \hline
+    F & F & T & T & T & T \\ \hline
+  \end{tabular}
+\end{center}
+Propositions that have the same truth table are called \textbf{equivalent}.
+\( p \to q \) and \( \neg{q} \to \neg{p} \) are always equivalent.
+This is useful in mathematical proofs since it may be easier to prove the
+contrapositive of a proposition.
+
+\subsection*{Biconditionals}
+Let \( p \) and \( q \) be propositions. The \textbf{biconditional} statement
+\( p \leftrightarrow q \) is the proposition ``p if and only if q''.
+\( p \leftrightarrow q \) is equivalent to \( (p \to q) \wedge (q \to p) \).
+\begin{center}
+  \begin{tabular}{|c|c|c|}
+    \hline
+    \( p \) & \( q \) & \( p \leftrightarrow q \) \\ \hline
+    T & T & T \\ \hline
+    T & F & F \\ \hline
+    F & T & F \\ \hline
+    F & F & T \\ \hline
+  \end{tabular}
+\end{center}
+
+\subsection*{Precedence of Operators}
+\begin{center}
+  \begin{tabular}{|c|c|}
+    \hline
+    Operator              & Precedence \\ \hline
+    \( \neg \)            & 1 \\ \hline
+    \( \wedge \)          & 2 \\ \hline
+    \( \vee \oplus \)     & 3 \\ \hline
+    \( \to \)             & 4 \\ \hline
+    \( \leftrightarrow \) & 4 \\ \hline
+  \end{tabular}
+\end{center}
+\[ \neg{p} \wedge q := (\neg{p}) \wedge q \]
+
+\subsection*{Example}
+Find the truth table for \( (p \vee \neg{q}) \to (p \wedge q) \).
+
+\end{document}
