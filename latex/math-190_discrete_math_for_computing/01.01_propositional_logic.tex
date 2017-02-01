@@ -159,12 +159,39 @@ Let \( p \) and \( q \) be propositions. The \textbf{biconditional} statement
     \( \wedge \)          & 2 \\ \hline
     \( \vee \oplus \)     & 3 \\ \hline
     \( \to \)             & 4 \\ \hline
-    \( \leftrightarrow \) & 4 \\ \hline
+    \( \leftrightarrow \) & 5 \\ \hline
   \end{tabular}
 \end{center}
 \[ \neg{p} \wedge q := (\neg{p}) \wedge q \]
 
 \subsection*{Example}
 Find the truth table for \( (p \vee \neg{q}) \to (p \wedge q) \).
+\begin{center}
+  \begin{tabular}{|c|c|c|c|c|}
+    \hline
+    \( p \) & \( q \) & \( p \vee \neg{q} \) & \( p \wedge q \) &
+    \( (p \vee \neg{q}) \to (p \wedge q) \) \\ \hline
+    T & T & T & T & T \\ \hline
+    T & F & T & F & F \\ \hline
+    F & T & F & F & T \\ \hline
+    F & F & T & F & F \\ \hline
+  \end{tabular}
+\end{center}
+
+\subsection*{Example 2}
+Suppose we have an agreement: \\
+``If there is a horse in the library, then I will pay you \$10'' \\
+Let \( p \) = there is a horse in the library. \\
+Let \( q \) = you get \$10.
+\begin{center}
+  \begin{tabular}{|c|c|c|}
+    \hline
+    \( p \) & \( q \) & \( p \to q \) \\ \hline
+    T       & T       & T \\ \hline
+    T       & F       & F \\ \hline
+    F       & T       & T \\ \hline
+    F       & F       & T \\ \hline
+  \end{tabular}
+\end{center}
 
 \end{document}
