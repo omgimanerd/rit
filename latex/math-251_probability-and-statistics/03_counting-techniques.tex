@@ -1,0 +1,102 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[linguistics]{forest}
+
+\title{Probability and Statistics}
+\author{Alvin Lin}
+\date{Probability and Statistics: January 2017 - May 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Counting Techniques}
+\textbf{Product Rule:} If the first element or object of an ordered pair can be
+selected in \( n_{1} \) ways, and for each of these \( n_{1} \) ways the second
+element of the pair can be selected in \( n_{2} \) ways, then the number of
+pairs is \( n_{1}n_{2} \).
+
+\subsection*{Permutation and Combination Formulas}
+Number of ways of selecting r items from n distinct items:
+\[ \nPr{n}{r} = P(n,r) = P_{r,n} = \nPrf{n}{r} \]
+\[ \nCr{n}{r} = C(n,r) = C_{r,n} = \frac{\nPr{n}{r}}{r} = \nCrf{n}{r} \]
+\[ where \]
+\[ n! = (n)(n-1)(n-2)\dots(3)(2)(1) \]
+\[ 5! = (5)(4)(3)(2)(1) \]
+\[ 3! = (3)(2)(1) \]
+\[ 1! = 1 \]
+\[ 0! = 1 \]
+Repetition is not allowed. For \( \nPr{n}{r} \), order matters, while for
+\( \nCr{n}{r} \), order does not matter. Suppose we are choosing two colors
+from R, G, B:
+\[ \nPr{3}{2} = \nPrf{3}{2} = \frac{(3)(2)(1)}{1} = 6 \]
+This is analogous to choosing those two colors when order does not matter,
+thus there are 6 permutations: RG, RB, GR, GB, BR, BG.
+\[ \nCr{3}{2} = \frac{\nPr{3}{2}}{2!} = \nCrf{3}{2} = 3 \]
+This is analogous to choosing those two colors when order does matter,
+thus there are 3 combinations: RG (same as GR), RB (same as BR), and BG (same
+as GB).
+
+\subsection*{Example}
+\[ \nPr{4}{4} = \nPrf{4}{4} = \frac{4!}{0!} = \frac{4!}{1} = 24 \]
+This is analogous to choosing a permutation of 4 items out of 4 distinct items.
+Suppose we are choosing 4 colors out of R, G, B, W:
+\begin{center}
+  \begin{forest}
+    [R
+      [G [B [W] ] [W [B] ] ]
+      [B [G [W] ] [W [G] ] ]
+      [W [B [G] ] [G [B] ] ]
+    ]
+  \end{forest}
+  \begin{forest}
+    [G
+      [R [B [W] ] [W [B] ] ]
+      [B [R [W] ] [W [R] ] ]
+      [W [B [R] ] [R [B] ] ]
+    ]
+  \end{forest}
+\end{center}
+\begin{center}
+  \begin{forest}
+    [B
+      [G [R [W] ] [W [R] ] ]
+      [R [G [W] ] [W [G] ] ]
+      [W [R [G] ] [G [R] ] ]
+    ]
+  \end{forest}
+  \begin{forest}
+    [W
+      [G [R [B] ] [W [R] ] ]
+      [R [G [B] ] [B [G] ] ]
+      [B [R [G] ] [G [R] ] ]
+    ]
+  \end{forest}
+\end{center}
+
+\subsection*{Example}
+\[ \nPr{4}{0} = \nPrf{4}{0} = \frac{4!}{4!} = 1\]
+This is analogous to choosing 0 items out of 4 distinct items. We can
+interpret this as there was no selection and thus no result, resulting in 0
+permutations, or we can interpret not selection as an action, thus 1
+permutation.
+
+\subsection*{Example}
+In how many ways can six different cell phones be arranged on top of one
+another?
+\[ \nPr{6}{6} = \nPrf{6}{6} = \frac{6!}{0!} = 6! = 720 \]
+
+\subsection*{Example}
+Consider 5 letters a, b, c, d, e. In how many ways can three letters be
+selected and arranged if repetition is not allowed?
+\[ \nPr{5}{3} = \nPrf{5}{3} = \frac{5!}{2!} = 60 \]
+
+\subsection*{Example}
+While visiting NYC, the Friedmans are interested in visiting 8 museums but have
+time to visit only 3. In how many ways can the Friedmans select 3 of the 8
+museums to visit?
+\[ \nCr{8}{3} = \nCrf{8}{3} = \frac{8!}{5!3!} = 56 \]
+
+\end{document}

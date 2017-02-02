@@ -46,7 +46,7 @@ The events \( E_{1} \) and \( E_{2} \) are mutually exclusive or disjoint.
 The events \( E_{2} \) and \( E_{3} \) are not mutually exclusive or disjoint.
 \[ E_{2} \cap E_{3} = \big\{ 6 \big\} \neq \emptyset \]
 
-\subsection*{Example Problem}
+\subsection*{Example}
 A family consisting of three persons - A, B, and C - goes to a medical clinic
 that always has a doctor at stations 1, 2, and 3. During a certain week, each
 member of the family visits the clinic once and is assigned at random to a
@@ -91,7 +91,7 @@ member.
     \[ 111, 113, 131, 133, 311, 313, 331, 333 \]
 \end{enumerate}
 
-\subsection*{Example Problem}
+\subsection*{Example}
 Consider the experiment of tossing a coin which has U on one side and D on the
 other side. \\
 Sample space:
@@ -134,7 +134,7 @@ the following definition:
 \[ P(E) = \frac{\mathrm{\#\ of\ outcomes\ favorable\ to\ E}}
    {\mathrm{total\ \#\ of\ possible\ outcomes}} \]
 
-\subsection*{Example Problem}
+\subsection*{Example}
 Toss a coin and select a ball from a basket containing 3 balls marked R, B, and
 G.
 \begin{align*}
@@ -159,7 +159,7 @@ Consider the following probabilities:
   P(E_{2}\ or\ E_{3}) &= P(E_{2}) + P(E_{3})
 \end{align*}
 
-\subsection*{Example Problem}
+\subsection*{Example}
 A 5-sided rock has the following experimental result from tossing 1000 times.
 \begin{center}
   \begin{tabular}{|c|c|c|c|c|c|}
@@ -184,5 +184,47 @@ Probabilities:
     \frac{220}{1000}\frac{1}{2} \\
   P(E_{3}) &= P(E_{2}) + \frac{180}{1000}\frac{1}{2}
 \end{align*}
+
+\subsection*{Example}
+Roll a die twice. \\
+E: the sum of the two numbers is at least 3
+\begin{center}
+  \begin{forest}
+    [
+      [1 [1 2 3 4 5 6]]
+      [2 [1 2 3 4 5 6]]
+      [3 [1 2 3 4 5 6]]
+      [4 [1 2 3 4 5 6]]
+      [5 [1 2 3 4 5 6]]
+      [6 [1 2 3 4 5 6]]
+    ]
+  \end{forest}
+\end{center}
+\[ P(E) = \frac{\#\ of\ outcomes\ favorable\ to\ E}
+   {total\ \#\ of\ possible\ outcomes} \]
+We can sum up the number of rows where the sum is 3, 4, 5, etc, but since
+the number of outcomes favorable to ``not E'' is a disjoint set, we can
+sum up the number of rows where the sum is 2, 1, and 0. \\
+Number of rows where the sum is 2: 1 \\
+Number of rows where the sum is 1: 0 \\
+Number of rows where the sum is 0: 0
+\[ P(not\ E) = \frac{1}{36} \]
+\[ P(E)+P(not\ E) = 1\]
+\[ \therefore P(E) = 1-P(not\ E) = 1-\frac{1}{36} = \frac{35}{36} \]
+
+\subsection*{Example}
+The manager at Arango Automotive has found that the probability that a car
+brought into the shop requires an oil change is 0.6, the probability that a car
+requires brake repair is 0.2, and the probability that a car requires both an
+oil change and brake repair is 0.1. For a car brought into the shop, determine
+the probability that the car will require an oil change or brake repair.
+\begin{align*}
+  P(oil \cup brake) &= P(oil) + P(brake) - P(oil \cap brake) \\
+  &= 0.6 + 0.2 - 0.1 \\
+  &= 0.7
+\end{align*}
+
+General formula:
+\[ P(A \cup B) = P(A)+P(B)-P(A \cap B) \]
 
 \end{document}
