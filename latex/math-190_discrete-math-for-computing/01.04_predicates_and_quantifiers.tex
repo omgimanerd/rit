@@ -1,0 +1,95 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\title{Predicates and Quantifiers}
+\author{Alvin Lin}
+\date{Discrete Math for Computing: January 2017 - May 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Predicates and Quantifiers}
+Propositional logic cannot express the meaning of many mathematical or
+English statements.
+
+\subsection*{Predicate Logic}
+Statements with variables are called \textbf{predicates}. For example,
+\( x > 9, x+2y = 1, x^{2}+y^{2} = z^{2} \).
+We can view predicates as propositional functions from some domain to some
+range. A predicate in the variable \( x \) will be denoted as \( P(x) \). The
+domain of a predicate is often called the \textbf{universe of discourse}.
+\[ P(x): x > 9 \]
+\begin{align*}
+  P(2)&: 2 > 9\ is\ false. \\
+  P(4)&: 4 > 9\ is\ false. \\
+  P(10)*: 10 > 9\ is\ true.
+\end{align*}
+\[ Q(x,y): x = y+2 \]
+\begin{align*}
+  Q(1,2)&: 1 = 2+2\ is\ false. \\
+  Q(3,0)&: 3 = 0+2\ is\ false. \\
+  Q(2,0)&: 2 = 0+2\ is\ true. \\
+\end{align*}
+
+\subsection*{Quantifiers}
+We will use the following three quantifiers in this class:
+\begin{enumerate}
+  \item \textbf{Universal Quantifier}: The universal quantifier of \( P(x) \)
+    is the statement ``P(x) for all values x in the domain''. Notated as
+    \( \forall x\ P(x) \).
+  \item \textbf{Existential Quantifier}: The existential quantifier of a
+    statement \( P(x) \) is ``There exists an element x in the domain so
+    that P(x) holds''. Notated as
+    \( \exists x\ P(x) \).
+  \item \textbf{Uniqueness Quantifier}: The uniqueness quantifier of \( P(x) \)
+    is the statement ``there exists a unique x such that P(x) holds''. Notated
+    as \( \exists!x \).
+\end{enumerate}
+
+\subsection*{Example Problem}
+What are the truth values of the following if the universe of discourse is all
+positive integers not exceeding four?
+\begin{enumerate}
+  \item \( \exists x\ P(x)\ where\ P(x):x^{2} > 10 \)
+  \[ Domain = \{1, 2, 3, 4\} \]
+  \[ 1^{2} \ngtr 10 \]
+  \[ 2^{2} \ngtr 10 \]
+  \[ 3^{2} \ngtr 10 \]
+  \[ 4^{2} > 10 \]
+  Therefore, this statement is true.
+  \item \( \forall x\ P(x)\ where\ P(x):x^{2} > 10 \)
+  \[ Domain = \{1, 2, 3, 4\} \]
+  \[ 1^{2} \ngtr 10 \]
+  Therefore, this statement is false.
+\end{enumerate}
+
+\subsection*{Precedence of Quantifiers}
+The quantifiers \( \forall x \) and \( \exists x \) have higher precedence
+that those from propositional logic. When \( \forall x \) and \( \exists x \)
+are in statements together, things get tricky.
+\[ \forall x\ P(x) \vee Q(x) \equiv (\forall x\ P(x)) \vee Q(x) \]
+
+\subsection*{Binding Variables}
+When a quantifier is used on the variable \( x \), we say this instance of
+\( x \) is a \textbf{bound variable}. A variable that is not bound is called a
+\textbf{free variable}. The part of a logical expression in which a quantifier
+is applied is called the quantifier's \textbf{scope}.
+\[ \exists x (x+y = 1) \]
+\( x \) is a bound variable while \( y \) is a free variable.
+
+\subsection*{Logical Equivalences with Quantifiers}
+Statements involving predicates and quantifiers are logically equivalent if and
+only if they have the same truth value no matter what predicates are used and
+what universe of discourse is used. \textbf{You must prove things in full
+generality}.
+
+\subsection*{Negation of Quantifiers}
+\[ \neg{\forall x\ P(x)} \equiv \forall x \neg{P(x)} \]
+\[ \neg{\exists x\ P(x)} \equiv \forall x \neg{P(x)} \]
+We will use these facts often, especially for De Morgan's laws for predicate
+logic and set theory.
+
+\end{document}
