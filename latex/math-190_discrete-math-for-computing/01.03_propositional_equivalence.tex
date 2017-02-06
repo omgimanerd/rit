@@ -27,6 +27,10 @@ The compound propositions \( p \) and \( q \) are logically equivalent is
 \( p \leftrightarrow q \) is a tautology. \\
 \underline{Notation:} We write \( p \equiv q \) if \( p \) and \( q \) are
 logically equivalent.
+\[ p \to q \equiv \neg{q} \vee q \]
+\[ p \to q \equiv \neg{q} \to \neg{p} \]
+\[ p \vee q \equiv \neg{p} \to q \]
+\[ p \wedge q \equiv \neg{(p \to \neg{q})} \]
 
 \subsection*{De Morgan's Laws}
 \begin{enumerate}
@@ -127,5 +131,10 @@ using the laws. \\
   &\equiv \neg{(\neg{p})} \vee \neg{q} \\
   &\equiv p \vee \neg{q}
 \end{align*}
+
+\begin{center}
+  If you have any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
 
 \end{document}

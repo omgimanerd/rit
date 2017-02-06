@@ -1,0 +1,63 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\title{Rules of Inference}
+\author{Alvin Lin}
+\date{Discrete Math for Computing: January 2017 - May 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Rules of Inference}
+Proofs in mathematics are valid arguments that establish the truth of
+mathematical statements. \\
+\textbf{Argument:} Sequence of statements that ends with a conclusion. \\
+A conclusion is \textbf{valid} if it follows from the truth of the preceding
+statements (called premises). Rules of inference are basic tools for
+establishing the truth of statements. \\ \\
+
+Consider the following:
+\begin{itemize}
+  \item ``If you have a current password, then you can log on to the network''
+  \item ``You have a current password''
+  \item ``Therefore, you can log onto the network''
+\end{itemize}
+Determine whether this is a valid argument. Does the conclusion following?
+Let: \\
+p = you have a current password, q = you can log onto the network
+\begin{align*}
+  & p \to q \\
+  & p \\
+  \therefore & q
+\end{align*}
+\( (p \leftrightarrow q \wedge p) \to q \) is a tautology, so the argument is
+valid. \\
+
+Suppose we replace \( p \) and \( q \) by: \\
+p: you have access to the network \\
+q: you can change your grade \\
+\( p: True \quad p \to q: False \), \( p \to q \) is valid still, but since
+the premise \( p \to q \) is false, you can't conclude q.
+
+\subsection*{Modus Ponens}
+\( (p \wedge (p \to q)) \to q \) is a rule of inference called Modus Ponens.
+It is always valid, but the conclusion might not always be true.
+
+\subsection*{Example}
+Determine whether the argument is valid and whether its conclusion must be true.
+If \( \sqrt{2} > \frac{3}{2} \) then \( (\sqrt{2})^{2} > (\frac{3}{2})^{2} \).
+Let:
+\[ p: \sqrt{2} > \frac{3}{2} \]
+\[ q: (\sqrt{2})^{2} > (\frac{3}{2})^{2} \]
+The conclusion is not true since one premise, namely
+\( \sqrt{2} > \frac{3}{2} \) is false.
+
+\begin{center}
+  If you have any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}

@@ -1,0 +1,61 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\title{Nested Quantifiers}
+\author{Alvin Lin}
+\date{Discrete Math for Computing: January 2017 - May 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Nested Quantifiers}
+In section 1.4, we avoided nested quantifiers where one was in the scope of the
+other.
+
+\subsection*{Example}
+Assume that the domain of \( x \) and \( y \) are real numbers:
+\begin{enumerate}
+  \item \[ \forall x \forall y (x+y = y+x) \]
+  For all real numbers \( x \) and \( y \), \( x+y = y+x \)
+  \item \[ \forall x \exists y (x+y = 0) \]
+  For all real numbers \( x \), there exists a \( y \) such that \( x+y = 0 \).
+\end{enumerate}
+Translate the following into English:
+\[ \forall x \forall y ((x > 0) \wedge (y < 0)) \to (xy < 0) \]
+For all real \( x \) and all real \( y \) if \( x > 0 \) and \( y > 0 \), then
+\( xy > 0 \). The product of a positive real number and negative real number is
+negative.
+
+\subsection*{Order of Quantifiers}
+The order of quantifiers is essential, unless the quantifiers have all the same
+``type'' (Either the quantifiers are all universal or all existential).
+
+\subsection*{Example}
+\[ P(x,y): x+y = y+x \]
+What are the truth values when \( domain = \R \)?
+\begin{enumerate}
+  \item \( \forall{x}\forall{x}\ P(x,y) \) \textbf{True}
+  \item \( \forall{y}\forall{x}\ P(x,y) \) \textbf{True}
+\end{enumerate}
+\[ Q(x,y): x+y = 0 \]
+Domain is \( \R \), what are the truth values?
+\begin{enumerate}
+  \item \( \exists{y}\forall{x}\ Q(x,y) \) There is a real number \( y \) such
+  that for all real \( x \), \( x+y = 0 \). \textbf{False}
+  \item \( \forall{x}\exists{y}\ Q(x,y) \) For all real \( x \), there is a
+  real number \( y \) such that \( x+y = 0 \). \textbf{True}
+\end{enumerate}
+
+\subsection*{Example}
+Translate the following into a logical expression:
+\begin{enumerate}
+  \item The sum of two positive integers is always positive.
+  \[ \forall{x}\forall{y}((x > 0) \wedge (y > 0)) \to (xy > 0) \]
+  \item Every real number except 0 has a multiplicative inverse.
+  \[ \forall{x}((x \neq 0) \to \exists{y}(xy = 1)) \]
+\end{enumerate}
+
+\end{document}
