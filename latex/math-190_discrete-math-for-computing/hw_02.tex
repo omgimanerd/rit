@@ -11,20 +11,42 @@
 
 \maketitle
 
-\subsection*{2a}
+\subsection*{1}
+Alice and Bob are about to play a game of chess, and Alice moves first. If
+\( x_{1}, \dots, x_{n} \) represents a sequence of possible moves, we let
+\( W(x_{1}, \dots, x_{n}) \) denote the proposition that, after this sequence
+of moves is completed, Bob is in checkmate.
+
+\subsubsection*{a}
+State using quantifier notation the proposition that Alice can force a
+checkmate on her second move, no matter how Bob plays.
+\[ \exists{x_{2}}(W(x_{1}, x_{2})) \]
+
+\subsubsection*{b}
+Alice has many possibilities to choose from on her first move, and wants to
+find one that lets her force a checkmate on her second move. State using
+quantifier notation the proposition that \( x_{1} \) is \textit{not} such
+a move.
+\[ \neg{\exists{x_{1}}}(W(x_{1}, x_{2})) \]
+
+\subsection*{2}
+State the converse, contrapositive, and inverse for each of the following
+conditional statements.
+
+\subsubsection*{a}
 If it snows tonight, then I will stay at home. \\
 Converse: If I will stay at home, then it will snow tonight. \\
 Contrapositive: If I will not stay at home, then it will not snow
 tonight. \\
 Inverse: If it will not snow tonight, then I will not stay at home.
 
-\subsection*{2b}
+\subsubsection*{b}
 I go to the beach whenever it is a sunny day. \\
 Converse: It is a sunny day whenever I go to the beach. \\
 Contrapositive: It is not a sunny day whenever I don't go to the beach. \\
 Inverse: I don't go to the beach when it is not a sunny day.
 
-\subsection*{2c}
+\subsubsection*{c}
 A positive integer is a prime only if it has no divisors other than 1 and
 itself. \\
 Converse: If a positive integer has no divisors other than 1 and itself, it is
@@ -84,5 +106,39 @@ logically equivalent.
   \end{tabular}
 \end{center}
 
+\subsection*{5}
+Find the dual of each of the following compound propositions.
+
+\subsubsection*{a}
+\[ p \vee \neg{q} \]
+\[ s^{*} \equiv p \wedge \neg{q} \]
+
+\subsubsection*{b}
+\[ p \wedge (q \vee (r \wedge T)) \]
+\[ s^{*} \equiv p \vee (q \wedge (r \vee F)) \]
+
+\subsubsection*{c}
+\[ (p \vee F) \wedge (q \vee F) \]
+\[ s^{*} \equiv (p \wedge T) \vee (q \wedge T) \]
+
+\subsection*{6}
+Determine the truth value of each of these statements if the domain of each
+variable consists of all real numbers \( (\R) \).
+
+\subsubsection*{a}
+\[ \exists{x}(x^{2} = 2) \]
+True when \( x = \sqrt{2} \)
+
+\subsubsection*{b}
+\[ \forall{x}(x^{2}+2 \geq 1) \]
+True for all x
+
+\subsubsection*{c}
+\[ \exists{x}(x^{2}-2 = 1) \]
+True when \( x = \sqrt{3} \)
+
+\subsubsection*{d}
+\[ \forall{x}(x^{2} \neq x) \]
+False when \( x = 1 \)
 
 \end{document}
