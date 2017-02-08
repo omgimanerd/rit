@@ -99,4 +99,48 @@ time to visit only 3. In how many ways can the Friedmans select 3 of the 8
 museums to visit?
 \[ \nCr{8}{3} = \nCrf{8}{3} = \frac{8!}{5!3!} = 56 \]
 
+\subsection*{Example}
+A basket contains 4 balls marked R, G, B, Y. Select a ball randomly 2 times
+with replacement.
+\begin{align*}
+  E_{1}&: getting\ a\ G\ and\ a\ B\ without\ regard\ to\ order \\
+  E_{2}&: getting\ two\ Y's
+\end{align*}
+Find \( P(E_{1}) \) and \( P(E_{2}) \).
+\[ P(E_{1}) \neq \frac{1}{\nCr{4}{2}} = \frac{1}{6} \]
+\[ P(E_{2}) \neq \frac{1}{\nCr{4}{2}} = \frac{1}{6} \]
+In reality:
+\[ P(E_{1}) = \frac{2}{4\times4} = \frac{1}{8} \]
+\[ P(E_{2}) = \frac{1}{4\times4} = \frac{1}{16} \]
+
+\subsection*{Example}
+Computer keyboard failures can be attributed to electrical defects or
+mechanical defects. A repair facility currently has 25 failed keyboards, 6
+of which have electrical defects and 19 of which have mechanical defects.
+How many ways are there to randomly select 5 of these keyboards for a thorough
+inspection (without regard to order)?
+\[ \nCr{25}{5} = \nCrf{25}{5} = 53130 \]
+In how many ways can a sample of 5 keyboards be selected so that exactly two
+have an electrical defect? The set of \( A \) is the set of keyboards with
+electrical defects, and the set of \( B \) is the set of keyboards with
+mechanical defects.
+\[ n(A \cup B) = n(A) + n(B) - n(A \cap B) \]
+No keyboard has both electrical and mechanical defects. \\
+Those with electrical defects: \( \nCr{6}{2} \). \\
+Those with mechanical defects: \( \nCr{19}{3} \). \\
+Answer: \( \nCr{6}{2} \times \nCr{19}{3} = 984 \). \\
+If a sample of 5 keyboards is randomly selected, what is the probability that
+at least 4 of these will have a mechanical defect? There are \( \nPr{25}{5} \)
+ways to choose 5 keyboards. \\
+\begin{align*}
+  P(at\ least\ 4\ mechanical\ defects) &=
+    P(4\ mechanical\ defects \cup 5\ mechanical\ defects) \\
+  &= P(4\ mechanical\ defects)+P(5\ mechanical\ defects)- \\
+  & P(4\ mechanical\ defects \cap 5\ mechanical\ defects) \\
+  &= P(4\ mechanical\ defects)+P(5\ mechanical\ defects) \\
+  &= \frac{\nCr{19}{4}\times\nCr{6}{1}}{\nCr{25}{5}}+
+    \frac{\nCr{19}{5}}{\nCr{25}{5}}
+\end{align*}
+Every combination has \( 5! \) corresponding permutations.
+
 \end{document}

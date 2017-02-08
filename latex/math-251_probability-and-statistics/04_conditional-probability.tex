@@ -1,0 +1,43 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\title{Probability and Statistics}
+\author{Alvin Lin}
+\date{Probability and Statistics: January 2017 - May 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Conditional Probability}
+Let \( A \) and \( B \) be events of an experiment. The conditional probability
+of \( A \) given that \( B \) has occurred is:
+\[ P(A|B) = \frac{P(A \cap B)}{P(B)} \]
+
+\subsection*{Idea Behind This Formula}
+Roll a die:
+\begin{align*}
+  A&: getting\ a\ 2 \\
+  B&: getting\ an\ even\ number \\
+\end{align*}
+\[ P(A) = \frac{\#\ of\ outcomes\ favorable\ to\ A}{total\ \#\ of\ outcomes} \]
+(Under the assumption that the outcomes are equally likely) \\
+
+Let's consider the probability of \( A \) given that \( B \) has occurred.
+Suppose the dice have detectors on the faces 2, 4, and 6. After we roll the
+dice, we can detect whether the dice has landed on a 2, 4, or 6, but we will
+not know which of the even numbers it has landed on.
+\[ P(A|B) = \frac{\#\ of\ outcomes\ favorable\ to\ A\ and\ in\ B}
+   {total\ \#\ of\ outcomes\ in\ B} \]
+\[ P(A|B) = \frac{1}{3} \]
+Considering the situation in the previous example, find \( P(B|A) \).
+\[ P(B|A) = \frac{1}{1} = 1 \]
+If \( P(B) > 0 \), the conditional probability of \( A \) given that \( B \)
+has occurred is \( P(A|B) = \frac{P(A \cap B)}{P(B)} \). Thus it follows
+that:
+\[ P(A \cap B) \times P(B) = P(A|B) \]
+This holds true when \( P(B) = 0 \) as well.
+
+\end{document}
