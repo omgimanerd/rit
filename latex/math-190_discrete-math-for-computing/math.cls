@@ -13,3 +13,4 @@
 \newcommand*{\Diff}[1]{\mathrm{d^#1}}
 \newcommand*{\e}{\mathrm{e}}
 \newcommand*{\R}{\mathbb{R}}
+\newcommand*{\Z}{\mathbb{Z}}

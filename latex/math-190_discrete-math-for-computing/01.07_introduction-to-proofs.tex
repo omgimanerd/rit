@@ -1,0 +1,72 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\title{Introduction to Proofs}
+\author{Alvin Lin}
+\date{Discrete Math for Computing: January 2017 - May 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Introduction to Proofs}
+Rough definitions/guidelines:
+\begin{itemize}
+  \item A \textbf{theorem} is a statement that can be shown to be true.
+  \item A \textbf{proposition} is a ``less important'' theorem.
+  \item A \textbf{lemma} is used as a tool for proving other results.
+\end{itemize}
+We show that a theorem is true by using a \textbf{proof}, which is a valid
+argument that establishes the truth of the theorem. To prove a theorem
+of the form \( \exists{x}(P(x) \to Q(x)) \) we show that \( P(c) \to Q(c) \)
+where \( c \) is an \textit{arbitrary} element of the domain. Since \( c \)
+is arbitrary, we can conclude \( \exists{x}(P(x) \to Q(x)) \).
+
+\subsection*{Direct Proofs}
+A direct proof of \( p \to q \) is constructed when the first step is the
+assumption that p is true. Subsequent steps use rules of inference. Finally,
+we show that q is true.
+
+\subsection*{Example}
+Give a direct proof of the theorem: ``If an is an odd integer, then \( n^{2} \)
+is odd''.
+\begin{itemize}
+  \item An integer \( n \) is \textbf{even} if there is an integer \( k \) such
+  that \( n = 2k \).
+  \item An integer \( n \) is \textbf{odd} if there is an integer \( k \) such
+  that \( n = 2k+1 \).
+  \item Any number is either even or odd.
+\end{itemize}
+\[ \exists{n}(n = 2k+1) \to (n^{2} = 2k'+1) \]
+Proof:
+\begin{itemize}
+  \item Suppose \( n \) is an odd integer.
+  \item By definition, there is a \( k \in \Z \) such that \( n = 2k+1 \).
+  \item Consider \( n^{2} = (2k+1)^{2} = 4k^{2}+4k+1 = 2(2k^{2}+2k)+1 \).
+  \item \( 2k^{2}+2k \) is an integer, so \( n^{2} = 2k'+1 \) where
+    \( k' = 2k^{2}+2k \).
+  \item Thus, \( n^{2} \) is odd.
+\end{itemize}
+
+\subsection*{Example}
+Prove the theorem: ``If \( m \) and \( n \) are perfect squares then \( nm \)
+is also a perfect square''. \\
+\textbf{Definition:} An integer \( a \) is a \textbf{perfect square} if there
+exists an integer b so that \( a = b^{2} \). \\
+Proof:
+\begin{itemize}
+  \item Suppose \( m \) and \( n \) are arbitrary perfect squares.
+  \item By definition, \( m = s^{2} \), \( n = t^{2} \) for some \( s \) and
+    \( t \).
+  \item Consider \( nm = s^{2}t^{2} = (st)^{2} \).
+  \item \( st \) is an integer, therefore \( nm \) is a perfect square.
+\end{itemize}
+
+\begin{center}
+  If you have any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
