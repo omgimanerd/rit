@@ -40,4 +40,130 @@ that:
 \[ P(A \cap B) \times P(B) = P(A|B) \]
 This holds true when \( P(B) = 0 \) as well.
 
+\subsection*{Bayes' Theorem}
+Let \( A_{1}, A_{2}, A_{3}, \dots, A_{k} \) be events of an experiment.
+The events \( A_{1}, A_{2}, A_{3}, \dots, A_{k} \) are \textbf{mutually
+exclusive} or \textbf{disjoint} if and only if \( A_{1} \cap A_{j} =
+\emptyset \) for any \( i, j \in \{1, 2, 3, \dots, k \} \) with \( i \neq j \).
+If \( A_{1}, A_{2}, A_{3}, \dots, A_{k} \) are mutually exclusive, then
+\( A_{1} \cap A_{2} \cap A_{3} = \emptyset \), \( A_{1} \cap A_{2} \cap A_{4}
+\cap A_{6} = \emptyset \), and so on. \par
+The events \( A_{1}, A_{2}, A_{3}, \dots, A_{k} \) are \textbf{exhaustive},
+if and only if \( A_{1} \cup A_{2} \cup A_{3} \cup \dots \cup A_{j} = S \).
+If \( A_{1} \) and \( A_{2} \) are exhaustive, then:
+\begin{align*}
+  P(A_{1})+P(A_{2}) &= P(A_{1} \cup A_{2})+P(A_{1} \cap A_{2}) \\
+  &(Inclusion\ Exclusion\ Principle) \\
+  &= P(S)+P(A_{1} \cap A_{2}) \\
+  &(since\ A_{1}\ and\ A_{2}\ are\ exhaustive) \\
+  &= 1+P(A_{1} \cap A_{2}) \\
+  &\geq 1
+\end{align*}
+Let's consider the contrapositive of the statement.
+\[ If\ P(A_{1})+P(A_{2}) < 1,\ then\ A_{1}\ and\ A_{2}\ are\ not\ exhaustive. \]
+
+\subsection*{The Law of Total Probability}
+Let \( A_{1}, A_{2}, \dots, A_{k} \) be mutually exclusive and exhaustive
+events. Then for any other event \( B \):
+\begin{align*}
+  P(B) &= P(B|A_{1})P(A_{1})+\dots+P(B|A_{k})P(A_{j}) \\
+  &= \sum_{i=1}^{k}P(B|A_{i})P(A_{i})
+\end{align*}
+
+\subsection*{Example}
+Roll a die:
+\begin{align*}
+  B&: a\ 2\ or\ a\ 3 \\
+  A_{1}&: a\ number\ less\ than\ 3 \\
+  A_{2}&: a\ number\ greater\ than\ 2 \\
+\end{align*}
+\begin{center}
+  \begin{tabular}{|c|c|c|c|c|c|}
+    \hline
+    & \( B \) & \( A_{1} \) & \( A_{2} \) & \( P(B|A_{1}) \) &
+      \( P(B|A_{2}) \) \\ \hline
+    1 & & \checkmark & & & \\ \hline
+    2 & \checkmark & \checkmark & & \checkmark & \\ \hline
+    3 & \checkmark & & \checkmark & & \checkmark \\ \hline
+    4 & & & \checkmark & & \\ \hline
+    5 & & & \checkmark & & \\ \hline
+    6 & & & \checkmark & & \\ \hline
+  \end{tabular}
+\end{center}
+\begin{align*}
+  P(B) &= \frac{2}{6} \\
+  P(B|A_{1})P(A_{1})+P(B|A_{2})P(A_{2}) &=
+    (\frac{1}{2})(\frac{2}{6})+(\frac{1}{4})(\frac{4}{6}) \\
+  &= \frac{1}{6}+\frac{1}{6} \\
+  &= \frac{2}{6}
+\end{align*}
+Consistency Check:
+\[ A_{1} \cap A_{2} = \emptyset \]
+\[ A_{1} \cup A_{2} = S \]
+\( A_{1} \) and \( A_{2} \) are mutually exclusive and exhaustive, so the law
+applies.
+
+\subsection*{Example}
+An individual has 3 different email accounts. Most of her messages, in fact
+70\%, come into account \#1, whereas 20\% come into account \#2, and the
+remaining 10\% into account \#3. Of the messages into account \#1, only 1\% are
+spam, whereas the corresponding percentages for accounts \#2 and \#3 are 2\%
+and 5\%, respectively. What is the probability that a randomly selected message
+is spam?
+\[ P(spam) = (0.7)(0.01)+(0.2)(0.02)+(0.1)(0.05) \]
+Is this an application of the Law of Total Probability? Let:
+\begin{align*}
+  B&: an\ email\ is\ spam \\
+  A_{1}&: an\ email\ goes\ to\ account\ \#1 \\
+  A_{2}&: an\ email\ goes\ to\ account\ \#2 \\
+  A_{3}&: an\ email\ goes\ to\ account\ \#3 \\
+\end{align*}
+\[ A_{1} \cap A_{2} = \emptyset \quad A_{1} \cap A_{3} = \emptyset \quad
+   A_{2} \cap A_{3} = \emptyset \]
+The events \( A_{1}, A_{2}, A_{3} \) are mutually exclusive.
+\[ A_{1} \cup A_{2} \cup A_{3} = S \]
+The events \( A_{1}, A_{2}, A_{3} \) are exhaustive. So by the Law of Total
+Probability:
+\begin{align*}
+  P(B) &= P(B|A_{1})P(A_{1})+P(B|A_{2})P(A_{2})+P(B|A_{3})P(A_{3}) \\
+  &= (0.01)(0.7)+(0.02)(0.2)+(0.05)(0.1)
+\end{align*}
+
+\subsubsection*{Another visualization}
+Fill a table with a convenient hypothetical total number of emails.
+\begin{center}
+  \begin{tabular}{|c|c|c|c|c|}
+    \hline
+    & account \#1 & account \#2 & account \#3 & total \\ \hline
+    spam & \( 1 \times 70 \) & \( 2 \times 20 \) & \( 5 \times 10 \) & \\ \hline
+    not spam & \( 99 \times 70 \) & \( 98 \times 20 \) & \( 95 \times 10 \) & \\
+      \hline
+    total & \( 100 \times 70 \) & \( 100 \times 20 \) & \( 100 \times 10 \) &
+      \( 100 \times 100 \) \\ \hline
+  \end{tabular}
+\end{center}
+\[ P(B) = \frac{(1)(70)+(2)(20)+(5)(10)}{(100)(100)} \]
+We can also compute the conditional probabilities and check the consistency
+with the Law of Total Probability.
+
+\subsection*{Bayes' Theorem (again)}
+Let \( A_{1}, A_{2}, A_{3}, \dots, A_{k} \) be a collection of \( k \)
+mutually exclusive and exhaustive events with prior probabilities
+\( P(A_{i})(i \in \{1, 2, \dots, k\}) \). Then for any other event B for which
+\( P(B) > 0 \), the posterior/conditional probability of \( A_{j} \) given
+that \( B \) has occurred is:
+\[ P(A_{j}|B) = \frac{P(A_{j} \cap B)}{P(B)} =
+   \frac{P(B|A_{j})P(A_{j})}{\sum_{i=0}^{k}P(B|A_{i})P(A_{i})} \]
+\[ j \in \{1, 2, 3, \dots, k \} \]
+
+\subsubsection*{Derivation}
+\begin{align*}
+  P(A_{j}|B) &= \frac{P(A_{j} \cap B)}{P(B)} \\
+  & P(B) > 0 \\
+  &= \frac{P(B|A_{j})P(A_{j})}{P(B)} \\
+  & Multiplication\ Rule \\
+  &= \frac{P(B|A_{j})P(A_{j})}{\sum_{i=1}^{k}P(B|A_{j})P(A_{i})} \\
+  & The\ Law\ of\ Total\ Probability
+\end{align*}
+
 \end{document}
