@@ -64,6 +64,119 @@ Proof:
   \item \( st \) is an integer, therefore \( nm \) is a perfect square.
 \end{itemize}
 
+\subsection*{Proof by Contraposition}
+If \( n \) is an integer and \( 3n+2 \) is odd, then \( n \) is odd. Proof:
+\begin{itemize}
+  \item Suppose that \( n \) is an integer and \( 3n+2 \) is odd.
+  \item Then \( 3n+2 = 2k+1 \) for some integer \( k \).
+  \item Thus \( 3n = 2k-1 \) and \( n = \frac{2k-1}{3} \), which leaves us
+    stuck.
+\end{itemize}
+It is more advantageous for us to prove the contrapositive.
+\begin{itemize}
+  \item Suppose that \( n \) is even. We must show that \( 3n+2 \) is even.
+  \item Since \( n \) is even, \( n = 2k \) for some integer \( k \).
+  \item This implies that \( 3n+2 = 3(2k)+2 = 2(3k+1) \).
+  \item Since \( 3k+1 \) is an integer, \( 3n+2 = 2(3k+1) \) is even.
+  \item Thus if \( n \) is even, \( 3n+2 \) is even (contrapositive).
+\end{itemize}
+
+\subsection*{Theorem}
+If \( n = ab \) where \( a,b \) are positive integers, then \( a \leq \sqrt{n}
+\) or \( b \leq \sqrt{n} \). Proof:
+\begin{itemize}
+  \item Assume \( \neg(a \leq \sqrt{n} or\ b \leq \sqrt{n}) \).
+  \item Thus, \( a > \sqrt{n} and\ b > \sqrt{n} \) (De Morgan's Law).
+  \item We need to show that \( n \neq ab \).
+  \item Consider that \( ab > \sqrt{n}\sqrt{n} = n \).
+  \item Thus, \( ab > n \) and \( ab \neq n \).
+\end{itemize}
+
+\subsection*{Vacuous Proofs}
+We can show that \( p \to q \) is true when \( p \) is false since \( p \to q \)
+is always true when \( p \) is false. If we show that \( p \) is false, then
+this is called \textbf{vacuous proof}.
+
+\subsection*{Example}
+Show that the proposition \( P(0) \) is true when \( P(n) \): ``If \( n > 1 \),
+then \( n^{2} > n \)'' and the domain is all integers. \par
+\( P(0) \): ``If \( 0 > 1 \), then \( 0^{2} > 0 \)'' is true since
+\( \neg{(0 > 1)} \).
+
+\subsection*{Example}
+To prove \( \exists{x}P(x) \to G(x) \) try to see if a direct proof is
+promising. If not, try a proof by contraposition. \par
+\textbf{Definition:} The real number \( r \) is rational if \( r = \frac{p}{q}
+\) where \( p,q \) are integers and \( q \neq 0 \). \\
+\textbf{Theorem 1:} The sum of two rationals is rational.
+\begin{itemize}
+  \item Assume that \( r \) and \( s \) are rational. We must show that
+    \( r+s \) is rational as well.
+  \item \( r = \frac{p}{q}; p,q \in \Z; q \neq 0 \)
+  \item \( s = \frac{t}{u}; t,u \in \Z; u \neq 0 \)
+  \item Consider:
+    \begin{align*}
+      r+s &= \frac{p}{q}+\frac{t}{u} \\
+      &= \frac{pu+tq}{qu}
+    \end{align*}
+  \item Since \( pu+tq \) is an integer and \( qu \) is a nonzero integer,
+    \( \frac{pu+tq}{qu} \) is rational.
+\end{itemize}
+\textbf{Theorem 2:} If n is an integer, and \( n^{2} \) is odd, then n is odd.
+\begin{itemize}
+  \item Suppose that \( n \) is even.
+  \item Then \( n =2k \) for some integer \( k \).
+  \item Thus:
+    \begin{align*}
+      n^{2} &= (2k)^{2} \\
+      &= 2(2k^{2})
+    \end{align*}
+  \item \( n^{2} \) is even (contrapositive).
+\end{itemize}
+
+\subsection*{The Classic 2=1 Proof}
+Let:
+\begin{align*}
+  a &= b \\
+  a^{2} &= ab \\
+  a^{2}-b^{2} &= ab-b^{2} \\
+  (a-b)(a+b) &= b(a-b) \\
+  a+b &= b \\
+  2b &= b \\
+  2 &= 1
+\end{align*}
+This logic is flawed because we are dividing by zero. Since \( a = b \),
+\( a-b = 0 \), thus step 4 is invalid.
+
+\subsection*{Proof by Contradiction}
+Proof by contradition proves \( p \) by assuming \( \neg{p} \) is true and
+showing that ``something bad'' happens. \par
+\textbf{Theorem:} \( \sqrt{2} \) is irrational.
+\begin{itemize}
+  \item Assume that \( \sqrt{2} \) is rational.
+  \item Then \( \sqrt{2} = \frac{p}{q}; p,q \in \Z; q \neq 0 \) with \( p,q \)
+    having no common factors.
+  \item Consider:
+    \begin{align*}
+      (\sqrt{2})^{2} &= \frac{p^{2}}{q^{2}} \\
+      2 &= \frac{p^{2}}{q^{2}} \\
+      2q^{2} = p^{2}
+    \end{align*}
+  \item Thus \( p^{2} \) is even.
+  \item \textbf{Lemma:} If \( a^{2} \) is even, then \( a \) is even.
+  \item The lemma gives that \( p \) is even. \( p = 2c; c \in \Z \).
+  \item This implies that:
+    \begin{align*}
+      2q^{2} &= (2c)^{2} \\
+      q^{2} = 2c^{2} \\
+    \end{align*}
+  \item By the lemma, \( q \) is even.
+  \item This is absurd, since \( p \) and \( q \) are both even they have
+    the factor \( 2 \) in common. This violates our assumption that they
+    have no common factors. Thus, contradiction. \( \sqrt{2} \) cannot be
+    rational, therefore it must be rational.
+\end{itemize}
+
 \begin{center}
   If you have any questions, comments, or concerns, please contact me at
   alvin@omgimanerd.tech
