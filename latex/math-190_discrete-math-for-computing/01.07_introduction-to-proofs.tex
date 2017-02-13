@@ -151,6 +151,15 @@ This logic is flawed because we are dividing by zero. Since \( a = b \),
 \subsection*{Proof by Contradiction}
 Proof by contradition proves \( p \) by assuming \( \neg{p} \) is true and
 showing that ``something bad'' happens. \par
+To prove a statement \( p \) is true, suppose we can find a contradiction
+\( q \) such that \( \neq{p} \to q \) is true. Because \( q \) is false,
+but \( \neg{p} \to q \) is true, it must be that \( \neg{p} \) is false
+(i.e. \( p \) is true). \par
+Statements \( r \wedge \neg{r} \) are contradictions whenever \( r \) is a
+proposition. Thus we can show \( p \) is true if \( \neg{p} \to
+(r \wedge \neg{r}) \).
+
+\subsection*{Example}
 \textbf{Theorem:} \( \sqrt{2} \) is irrational.
 \begin{itemize}
   \item Assume that \( \sqrt{2} \) is rational.
@@ -176,6 +185,77 @@ showing that ``something bad'' happens. \par
     have no common factors. Thus, contradiction. \( \sqrt{2} \) cannot be
     rational, therefore it must be rational.
 \end{itemize}
+
+\subsection*{Example}
+Given a proof by condtradiction that ``If \( 3n+2 \) is odd, then n is odd''.
+Proof:
+\begin{itemize}
+  \item Let \( p: ``3n+2\ is\ odd'' \) and \( q: ``n\ is\ odd'' \).
+  \item Assume \( p \) and \( \neg{q} \) are true for a proof by contradiction.
+  \item \( 3n+2 \) is odd and \( n \) is even.
+  \item By definition, \( n = 2k \) for some integer \( k \).
+  \item Now consider \( 3n+2 = 3(2k)+2 = 2(3k+1) \).
+  \item Thus, \( 3n+2 \) is even.
+  \item But that is a contradiction since we assumed that \( 3n+2 \) was odd.
+\end{itemize}
+
+\subsection*{Example}
+To prove biconditionals \( p \leftrightarrow q \), we must show \( p \to q \)
+and \( q \to p \). Show that the statements are equivalent:
+\begin{align*}
+  P_{1}&: n\ is\ even \\
+  P_{2}&: n-1\ is\ odd \\
+  P_{3}&: n^{2}\ is\ even
+\end{align*}
+We must show \( p_{1} \to p_{2}, p_{2} \to p_{3}, p_{3} \to p_{1} \).
+\[ p_{1} \to p_{2} \]
+\begin{itemize}
+  \item Assume that \( n \) is even. Then \( n = 2k \) for some integer \( k \).
+  \item But \( n-1 = 2(k-1)+1 \).
+  \item Therefore, \( n-1 \) is odd since \( k-1 \) is an integer.
+  \item Thus, \( p_{1} \to p_{2} \).
+\end{itemize}
+\[ p_{2} \to p_{3} \]
+\begin{itemize}
+  \item Assume \( n-1 \) is odd. Then \( n-1 = 2k+1 \) for some integer \( k \).
+  \item Consider:
+    \begin{align*}
+      n &= 2k+2 \\
+      n^{2} &= (2k+2)^{2} \\
+      &= 4k^{2}+8k+4 \\
+      &= 2(2k^{2}+4k+2)
+    \end{align*}
+  \item Thus, \( n^{2} \) is even and \( p_{2} \to p_{3} \).
+\end{itemize}
+\[ p_{3} \to p_{1} \]
+\begin{itemize}
+  \item \textbf{Contrapositive:} If \( n \) is not even, then \( n^{2} \) is not
+    even.
+  \item Thus, \( n \) is odd, so \( n = 2k+1 \) for some integer \( k \).
+  \item Consider:
+    \begin{align*}
+      n^{2} &= (2k+1)^{2} \\
+      &= 4k^{2}+4k+1 \\
+      &= 2(2k^{2}+2k)+1\ (odd) \\
+    \end{align*}
+  \item Therefore, \( p_{3} \to p_{1} \).
+\end{itemize}
+The statements \( p_{1}, p_{2}, p_{3} \) are all equivalent.
+
+\subsection*{Counterexamples}
+To show a statement \( \exists{x}P(x) \) is false, it suffices to find one such
+\( x \) such that \( P(x) \) does not hold. This \( x \) is called a
+\textbf{counterexample}.
+
+\subsection*{Example}
+Prove or disprove: ``Every positive integer is the sum of two squares of
+integers''. Look for a counterexample:
+\begin{itemize}
+  \item \( 1 = 1^{2}+0^{2} \)
+  \item \( 2 = 1^{1}+1^{2} \)
+  \item \( 3 = \dots \)
+\end{itemize}
+\( x = 3 \) is a counterexample to this proposition.
 
 \begin{center}
   If you have any questions, comments, or concerns, please contact me at

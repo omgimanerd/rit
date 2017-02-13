@@ -1,0 +1,93 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\title{Methods of Proofs}
+\author{Alvin Lin}
+\date{Discrete Math for Computing: January 2017 - May 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Methods of Proofs}
+
+\subsection*{Exhaustive Proofs and Proof by Cases}
+Sometimes, to prove \( p \to q \) is true, it is convenient to use
+\( P_{1} \vee P_{2} \vee P_{3} \vee \dots \vee P_{n} \) instead of \( p \)
+as a hypothesis. These types of proofs are called \textbf{proofs by
+exhaustion}. \par
+A \textbf{proof by cases} is one which covers all possible cases that arise in
+a theorem.
+
+\subsection*{An Exhaustive Proof}
+Prove that \( (n+1)^{3} \geq 3^{n} \) if \( n \) is a positive integer
+\( n \leq 4 \). Proof:
+\begin{itemize}
+  \item \( n = 1: 2^{3} = 8 \geq 3^{1} \)
+  \item \( n = 2: 3^{3} = 27 \geq 3^{2} \)
+  \item \( n = 3: 4^{3} = 64 \geq 3^{3} \)
+  \item \( n = 4: 5^{3} = 125 \geq 3^{4} \)
+\end{itemize}
+So, by exhaustion of all cases, this proposition is true for \( a = 1,2,3,4 \).
+
+\subsection*{A Proof By Cases}
+If \( n \) is an integer, \( n^{2} \geq n \). Proof:
+\begin{itemize}
+  \item Case 1: \( n = 0 \)
+    \[ 0^{2} = 0 \geq 0 \]
+  \item Case 2: \( n > 0 \)
+    \begin{align*}
+      n &\geq 1 \\
+      (n)(n) &\geq (1)(n) \\
+      n^{2} &\geq n
+    \end{align*}
+  \item Case 3: \( n \leq -1 \)
+    \[ n^{2} \geq 0 \]
+    \[ \therefore n^{2} \geq n \]
+\end{itemize}
+Since all integers, fall into 1 of these cases, we conclude our proof.
+
+\subsection*{Example}
+Recall:
+\[ |a| =
+  \begin{cases}
+    & a\ if\ a \geq 0 \\
+    &-a\ if\ a < 0
+  \end{cases}
+\]
+Prove by cases that: \( |xy| = |x||y| \). There are four cases to consider.
+\begin{itemize}
+  \item Case 1: \( x \geq 0, y \geq 0 \)
+    \begin{align*}
+      xy &\geq 0 \\
+      |xy| &= xy \\
+      &= |x||y|
+    \end{align*}
+  \item Case 2: \( x > 0, y < 0 \)
+    \begin{align*}
+      xy &< 0 \\
+      |xy| &= -(xy) \\
+      &= x(-y) \\
+      &= |x||y|
+    \end{align*}
+  \item Case 3: \( x < 0, y > 0 \) \\
+    Without loss of generality, this is the same as case 2.
+  \item Case 4: \( x < 0, y < 0 \)
+    \begin{align*}
+      xy &\geq 0 \\
+      |xy| &= xy \\
+      &= (-x)(-y) \\
+      &= |x||y|
+    \end{align*}
+\end{itemize}
+In general, using without loss of generality states that the proof of a current
+case is identical to a previous case (perhaps with variables switched).
+
+\begin{center}
+  If you have any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
