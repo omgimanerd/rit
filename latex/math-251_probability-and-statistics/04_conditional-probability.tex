@@ -2,6 +2,7 @@
 
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage[linguistics]{forest}
 
 \title{Probability and Statistics}
 \author{Alvin Lin}
@@ -165,5 +166,64 @@ that \( B \) has occurred is:
   &= \frac{P(B|A_{j})P(A_{j})}{\sum_{i=1}^{k}P(B|A_{j})P(A_{i})} \\
   & The\ Law\ of\ Total\ Probability
 \end{align*}
+
+\subsection*{Example}
+A recent Maryland highway safety study found that in 77\% of all accidents the
+driver was wearing a seatbelt. Accident reports indicated that 92\% of those
+drivers escaped serious injury (defined as hospitalization or death), but only
+63\% of the non-belted drivers were so fortunate. What is the probability that
+a driver who was seriously injured wasn't wearing a seatbelt? \par
+Show the steps of finding the answer by defining \( B_{1}, B_{2} (= not\ B_{1}),
+A_{1},\ and\ A_{2} \) and then using Bayes' Theorem:
+\[ P(A_{2}|B_{1}) = \frac{P(B_{1}|A_{2})P(A_{2})}
+   {\sum_{i=1}^{2}P(B_{1}|A_{i})P(A_{i})} \]
+The probability that a driver who was seriously injured wasn't wearing a
+seatbelt is equal to the probability that a driver wasn't wearing a seatbelt
+given that he/she was seriously injured.
+\begin{align*}
+  B_{1}&: a\ driver\ was\ seriously\ injured \\
+  B_{2}&: a\ driver\ was\ not\ seriously\ injured \\
+  A_{1}&: a\ driver\ was\ wearing\ a\ seat\ belt \\
+  A_{2}&: a\ driver\ was\ not\ wearing\ a\ seat\ belt
+\end{align*}
+The probability that we want to find is: \( P(A_{2}|B_{1}) \). \( A_{1} \) and
+\( A_{2} \) are mutually exclusive and exhaustive.
+\begin{align*}
+  P(A_{1}) &= 0.77 \\
+  P(A_{2}) &= 0.23 \\
+  P(B_{2}|A_{1}) &= 0.92 \\
+  P(B_{1}|A_{1}) &= 0.08 \\
+  P(B_{2}|A_{2}) &= 0.63 \\
+  P(B_{1}|A_{2}) &= 0.37 \\
+  P(A_{2}|B_{1}) &= \frac{P(B_{1}|A_{2})P(A_{2})}
+    {P(B_{1}|A_{1})P(A_{1})+P(B_{1}A_{2})P(A_{2})} \\
+  &= \frac{0.37\times 0.23}{0.08\times 0.77+0.37\times 0.23} \\
+  &\approx 0.58
+\end{align*}
+Show the steps of finding \( P(A_{2}|B_{1}) \) using a tree diagram.
+\begin{center}
+  \begin{forest}
+    [
+      [\( A_{1} (0.77) \)
+        [\( B_{1} (0.08) \)]
+        [\( B_{2} (0.92) \)]
+      ]
+      [\( A_{2}(0.23) \)
+        [\( B_{1} (0.37) \)]
+        [\( B_{2} (0.63) \)]
+      ]
+    ]
+  \end{forest}
+\end{center}
+\[ P(A_{2}|B_{1}) = \frac{0.23 \times 0.37}{0.77 \times 0.08+0.23\times 0.37}
+   \approx 0.58 \]
+
+\subsection*{Example}
+1 in 1000 adults is afflicted with a rare disease. Consider a test method. How
+exact is the test? If a person has the disease, there is a 99\% chance they will
+test positive. If a person does not ahve the disease, there is a 2\% chance they
+will test positive. If a randomly selected individual is tested and the result
+is positive, what is the probability that the individual has the disease? \par
+By Bayes' Theorem, the probability is 4.7\%.
 
 \end{document}

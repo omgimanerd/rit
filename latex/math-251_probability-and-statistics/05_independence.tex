@@ -1,0 +1,92 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[linguistics]{forest}
+
+\title{Probability and Statistics}
+\author{Alvin Lin}
+\date{Probability and Statistics: January 2017 - May 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Independence}
+Two events \( A \) and \( B \) are independent if \( P(A|B) = P(A) \), and are
+dependent otherwise. For example, with the case of rolling a die twice, the
+probability of rolling a 2 the second time given that a 2 occurred in the first
+roll is equal to the probability of rolling a 2 the second time. The events of
+rolling a 2 in the first roll and rolling a 2 in the second roll are
+independent of each other.
+\[ P(a\ 2\ in\ the\ second\ roll|a\ 2\ in\ the\ first\ roll) = \frac{1}{6} \]
+\[ P(a\ 2\ in\ the\ second) = \frac{6}{36} = \frac{1}{6} \]
+
+\subsection*{Example}
+A basket has 3 balls marked R, B, and G. Select a ball 3 times without
+replacement.
+\begin{align*}
+  E_{1}&: a\ G\ in\ the\ first\ and\ a\ G\ in\ the\ second \\
+  E_{2}&: a\ G\ in\ the\ third \\
+  E_{3}&: a\ G\ at\ least\ once \\
+  E_{4}&: a\ G\ in\ the\ first \\
+  E_{5}&: a\ B\ in\ the\ first
+\end{align*}
+\begin{center}
+  \begin{forest}
+    [
+      [R [G [B] ] [B [G] ] ]
+      [G [R [B] ] [B [R] ] ]
+      [B [R [G] ] [G [R] ] ]
+    ]
+  \end{forest}
+\end{center}
+\begin{align*}
+  P(A \cap B) &= P(A|B)P(B)
+  &= P(A)P(B) (since\ A\ and\ B\ are\ independent)
+\end{align*}
+\( A \) and \( B \) are independent if and only if \( P(A \cap B) = P(A)P(B) \).
+\begin{align*}
+  P(E_{1}) &= \frac{0}{6} \\
+  &= 0 \\
+  P(E_{1} \cap E_{2}) &= 0 \\
+  P(E_{1} \cap E_{2}) &= P(E_{1})P(E_{2})
+\end{align*}
+\( E_{1} \) and \( E_{2} \) are independent.
+\begin{align*}
+  P(E_{4}|E_{5}) &= \frac{0}{2} \\
+  &= 0 \\
+  P(E_{4}) &= \frac{2}{6} \\
+  P(E_{4}|E_{5}) &\neq P(E_{4})
+\end{align*}
+\( E_{4} \) and \( E_{5} \) are dependent.
+\begin{align*}
+  P(E_{4} \cap E_{3}) &= \frac{2}{6} \\
+  P(E_{4}) &= \frac{2}{6} \\
+  P(E_{3}) &= \frac{6}{6} \\
+  P(E_{4} \cap E_{3}) = P(E_{4})P(E_{3})
+\end{align*}
+\( E_{4} \) and \( E_{3} \) are independent.
+
+\subsection*{Mutual Independence of Multiple Events}
+Events \( A_{1}, A_{2}, \dots, A_{n} \) are mutually independent if for every
+\( k(k = 2,3,\dots,k) \) and for every subset of indices \( i_{1}, i_{2}, i_{3},
+\dots, i_{k} \) the following is true:
+\[ P(A_{i_{1}} \cap A_{i_{2}} \cap \dots \cap A_{i_{k}}) =
+   P(A_{i_{1}})\times P(A_{i_{2}})\times\dots\times P(A_{i_{k}}) \]
+
+\subsection*{Example}
+Let \( A_{1}, A_{2}, A_{3}, A_{4} \) be the events of an experiment such that
+\( A_{1}, A_{2}, A_{3}, A_{4} \) are mutually independent.
+\begin{align*}
+  \bigg[P(A_{1} \cap A_{2}) &= P(A_{1})P(A_{2}) \\
+  \wedge P(A_{1} \cap A_{3}) &= P(A_{1})P(A_{3}) \\
+  \wedge P(A_{1} \cap A_{4}) &= P(A_{1})P(A_{3}) \\
+  & \dots \\
+  \wedge P(A_{1} \cap A_{2} \cap A_{3}) &= P(A_{1})P(A_{2})P(A_{3}) \\
+  & \dots \\
+  \wedge P(A_{1} \cap A_{2} \cap A_{3} \cap A_{4}) &=
+    P(A_{1})P(A_{2})P(A_{3})P(A_{4}) \bigg]
+\end{align*}
+
+\end{document}
