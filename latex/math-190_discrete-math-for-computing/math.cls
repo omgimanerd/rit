@@ -14,3 +14,4 @@
 \newcommand*{\e}{\mathrm{e}}
 \newcommand*{\R}{\mathbb{R}}
 \newcommand*{\Z}{\mathbb{Z}}
+\newcommand*{\Qp}{\mathbb{Q'}}

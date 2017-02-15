@@ -1,0 +1,80 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\title{Homework \#3}
+\author{Alvin Lin}
+\date{Discrete Math for Computing: January 2017 - May 2017}
+
+\begin{document}
+
+\maketitle
+
+\subsection*{1}
+Prove or disprove that the product of two irrational integers is irrational.
+Let \( \Qp \) be the set of irrational numbers.
+\[ \forall{p}\forall{q}((p\in\Qp)\wedge(q\in\Qp)\wedge(pq = r))\to r\in\Qp \]
+Contradictory cases:
+\[ \sqrt{2}\in\Qp; \sqrt{2}\times\sqrt{2} = 2; 2\in\Z \]
+\[ \sqrt{2}\in\Qp; \sqrt{3}\in\Qp; \sqrt{2}\times\sqrt{3} = \sqrt{6};
+   \sqrt{6}\in\Qp \]
+The product of two irrational numbers is not always rational.
+
+\subsection*{2}
+Prove that if \( n \) is an integer, then \( n^{2} \geq n \).
+\begin{itemize}
+  \item Case 1: \( n = 0 \)
+    \[ 0^{2} \geq 0 \]
+  \item Case 2: \( n > 0 \)
+    \begin{itemize}
+      \item Assume \( n^{2} < n \)
+      \item \( n < 1 \) (Contradiction)
+      \item Therefore, \( n^{2} \geq n \)
+    \end{itemize}
+  \item Case 3: \( n < 0 \)
+    \begin{itemize}
+      \item Assume \( n^{2} < n \)
+      \item \( n > 1 \) (Contradiction)
+      \item Therefore, \( n^{2} \geq n \)
+    \end{itemize}
+\end{itemize}
+
+\subsection*{3}
+Prove that \( \sqrt{5} \) is irrational.
+\begin{itemize}
+  \item Assume \( \sqrt{5} \) is rational.
+  \item Therefore, \( \sqrt{5} = \frac{a}{b}; a,b\in\Z; b\neq 0 \)
+    \begin{align*}
+      (\sqrt{5})^{2} &= (\frac{a}{b})^{2} \\
+      5 &= \frac{a^{2}}{b^{2}} \\
+      5a^{2} &= b^{2}
+    \end{align*}
+  \item Suppose \( b \) is even. \( b^{2}, a^{2}, a \) are all even.
+  \item \( b = 2k; a = 2j; k,j\in\Z \)
+  \item \( \sqrt{5} = \frac{2k}{2j} \) (Contradiction)
+  \item Suppose \( b \) is odd. \( b^{2}, a^{2}, a \) are all odd.
+  \item
+    \begin{align*}
+      5(2k+1)^{2} &= (2j+1)^{2}; k,j\in\Z \\
+      5(4k^{2}+4k+1) &= 4j^{2}+4j+1 \\
+      20k^{2}+20k+5 &= 4j^{2}+4j+1 \\
+      20k^{2}+20k+4 &= 4j^{2}+4j \\
+      5k^{2}+5k+1 &= j^{2}+j \\
+      5k(k+1)+1 &= j(j+1)
+    \end{align*}
+  \item \( 5k(k+1)+1 \) is odd and \( j(j+1) \) is even. (Contradiction)
+  \item Therefore, \( \sqrt{5} \) cannot be rational.
+\end{itemize}
+
+\subsection*{4}
+What rules of inference are used in the argument: ``All men are mortal. Socrates
+is a man. Thus, Socrates is mortal.''? \par
+Modus Ponens
+
+\subsection*{5}
+What rules of inference are used in the argument: ``No man is an island.
+Manhattan is an island. Therefore, Manhattan is not a man.''? \par
+Modus Tollens
+
+\end{document}
