@@ -85,6 +85,43 @@ Prove by cases that: \( |xy| = |x||y| \). There are four cases to consider.
 In general, using without loss of generality states that the proof of a current
 case is identical to a previous case (perhaps with variables switched).
 
+\subsection*{Example}
+Show that if \( x \) and \( y \) are integers and both \( xy \) and \( x+y \)
+are even, then both \( x \) and \( y \) are even. Proof:
+\begin{itemize}
+  \item Suppose \( x \) and \( y \) are both not even. \( x \) is odd or \( y \)
+    is odd (or both).
+  \item Without loss of generality, assume that \( x \) is odd. Thus
+    \( x = 2k+1; k\in\Z \).
+  \item To show \( xy \) is odd or \( x+y \) is odd, consider two cases:
+    \begin{enumerate}
+      \item \( y \) is even. Then \( y = 2n; n\in\Z \).
+      \[ x+y = 2k+1+2n = 2(k+n)+1 \]
+      \( x+y \) is odd.
+      \item \( y \) is odd. Then \( y = 2m+1; m\in\Z \).
+      \[ xy = (2k+1)(2m+1) = 2km+2k+2m+1 = 2(km+k+m)+1 \]
+      \( xy \) is odd.
+    \end{enumerate}
+\end{itemize}
+
+\subsection*{Uniqueness Proofs}
+To show uniqueness, we show if \( x \neq y \) then \( y \) does not have some
+desired property.
+
+\subsection*{Example}
+Show if \( a,b \) are real numbers, with \( a \neq 0 \), then there exists a
+unique real number \( r \) such that \( ar+b = 0 \).
+
+\subsubsection*{Proof of Existence}
+Let \( r = \frac{-b}{a} \). Then \( ar+b = a(\frac{-b}{a})+b = 0 \). So such an
+\( r \) exists.
+
+\subsubsection*{Proof of Uniqueness}
+Suppose there is some \( s \) such that \( as+b = 0 \). \( ar+b = as+b \) where
+\( r = \frac{b}{-a} \). Therefore, \( ar = as \) and \( r = s \). If
+\( r \neq s \) then \( as+b \neq 0 \). So \( r = \frac{-b}{a} \) is the only
+such solution.
+
 \begin{center}
   If you have any questions, comments, or concerns, please contact me at
   alvin@omgimanerd.tech
