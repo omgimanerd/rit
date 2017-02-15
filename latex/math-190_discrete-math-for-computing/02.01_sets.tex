@@ -2,6 +2,7 @@
 
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{tikz}
 
 \title{Sets}
 \author{Alvin Lin}
@@ -56,19 +57,13 @@ We write \( A = B \) when sets are equal.
 Venn Diagrams are useful for showing relations between sets. The universal
 set \( U \) contains all elements. The set \( V \) contains the set of all
 vowels.
-% \begin{tikzpicture}
-%   \begin{scope}
-%     \clip \secondcircle;
-%     \fill[cyan] \thirdcircle;
-%   \end{scope}
-%   \begin{scope}
-%     \clip \firstcircle;
-%     \fill[cyan] \thirdcircle;
-%   \end{scope}
-%   \draw \firstcircle node[text=black,above] {$A$};
-%   \draw \secondcircle node [text=black,below left] {$B$};
-%   \draw \thirdcircle node [text=black,below right] {$C$};
-% \end{tikzpicture}
+\begin{center}
+  \begin{tikzpicture}
+    \draw (0,0) -- (4,0) -- (4,4) -- (0,4) -- (0,0);
+    \draw (2,2) circle (1.5cm);
+    \node at (2,2) {a,e,i,o,u};
+  \end{tikzpicture}
+\end{center}
 
 \subsection*{Subsets}
 The set \( A \) is a subset of the set \( B \) if and only if every element of
@@ -79,6 +74,7 @@ The set \( A \) is a subset of the set \( B \) if and only if every element of
 
 \subsection*{The Empty Set}
 The empty set \( \emptyset \) is the set consisting of no elements (null set).
+\par
 \textbf{Theorem:} If \( S \) is a set, then \( \emptyset \subseteq S \) and
 \( S \subseteq S \).
 
