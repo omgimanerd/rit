@@ -89,4 +89,105 @@ Let \( A_{1}, A_{2}, A_{3}, A_{4} \) be the events of an experiment such that
     P(A_{1})P(A_{2})P(A_{3})P(A_{4}) \bigg]
 \end{align*}
 
+\subsection*{Proposition}
+If \( A_{1},A_{2},A_{3},\dots,A_{n} \) are mutually independent, then
+\( A_{1}',A_{2}',A_{3}',\dots,A_{n}' \) are mutually indepedent where
+\( A_{1}' = not\ A_{1} \). \par
+Consequently, if \( A_{1},A_{2},A_{3},A_{4} \) are mutually independent, then
+\[ P(not\ A_{1} \cap not\ A_{2} \cap not\ A_{3}) =
+   P(not\ A_{1})P(not\ A_{2})P(not\ A_{3}) \]
+
+\subsection*{Example}
+\begin{enumerate}
+  \item A certain company sends 40\% of its overnight mail parcels via express
+    mail service \( E_{1} \). Of these parcels, 2\% arrive after the guaranteed
+    delivery time (denote the event ``late delivery'' by L). If a record of an
+    overnight mailing is randomly selected from the company's file, what is the
+    probability that the parcel went via \( E_{1} \) and was late?
+  \item Suppose that 50\% of the overnight parcels are sent via express mail
+    service \( E_{2} \). Of those sent via \( E_{2} \), only 1\% arrive late,
+    whereas 5\% of the parcels handled by \( E_{3} \) arrive late. What is the
+    probability that a randomly selected parcel arrives late?
+  \item If a randomly selected parcel arrived on time, what is the probability
+    that it was not sent via \( E_{1} \)?
+\end{enumerate}
+\begin{center}
+  \begin{forest}
+    [
+      [\( E_{1}(0.4) \) [L(0.02)] [O(0.98)]]
+      [\( E_{2}(0.5) \) [L(0.01)] [O(0.99)]]
+      [\( E_{3}(0.1) \) [L(0.05)] [O(0.95)]]
+    ]
+  \end{forest}
+\end{center}
+\begin{enumerate}
+  \item
+    \[ (0.4)(0.02) = 0.008 \]
+  \item
+    \[ (0.4)(0.02)+(0.5)(0.01)+(0.1)(0.05) = 0.018 \]
+  \item
+    \[ \frac{(0.5)(0.99)+(0.1)(0.95)}{(0.4)(0.98)+(0.5)(0.99)+(0.1)(0.95)} \]
+\end{enumerate}
+
+\subsection*{Random Variable}
+For a given sample space \( S \) of some experiment, a random variable \( (rv)
+\) is any rule that associates a number with each outcome in \( S \).
+A \( rv \) is a function whose domain is \( S \) and whose range is the set
+of real numbers.
+
+\subsection*{Example}
+There are 3 balls marked 1, 3, 9 in a basket. Select a ball twice without
+replacement. Let \( X \) be the sum of the two numbers.
+\begin{center}
+  \begin{forest}
+    [
+      [1 [3] [9]]
+      [3 [1] [9]]
+      [9 [1] [3]]
+    ]
+  \end{forest}
+\end{center}
+\[ X(1,3) = 4 \]
+\[ X(3,9) = 12 \]
+Any random variable whose only possible values are 0 and 1 is called a Bernoulli
+random variable.
+
+\subsection*{Example}
+Determine the number of pumps in each of the two six-pump gas stations.
+\begin{itemize}
+  \item X = the total number of pumps in use at the two stations
+  \item Y = the difference between the number of pumps in use at station 1 and
+    the number of pumps in use at station 2
+  \item U = the maximum number of pumps in use at the two stations
+\end{itemize}
+\begin{align*}
+  W(observed) &= (3,4) \\
+  X(W) &= 3+4 = 7 \\
+  Y(W) &= 3-4 = -1 \\
+  U(W) &= max(3,4) = 4
+\end{align*}
+
+\subsection*{Discrete Random Variables}
+A discrete random variable is a random variable whose possible values either
+constitute a finite set or else can be listed in an infinite sequence in which
+there is a first element, a second element, and so on (a countably infinite
+set). A countable set is finite or countably infinite.
+\begin{itemize}
+  \item Finite sets:
+    \[ \bigg\{ 1 \bigg\} \]
+    \[ \bigg\{ A,B,E \bigg\} \]
+  \item Countably infinite sets:
+    \[ \bigg\{ 2,4,6,8,\dots \bigg\} \]
+    \[ \bigg\{ 1,\frac{1}{2},\frac{1}{3},\frac{1}{4},\dots \bigg\} \]
+    \[ \bigg\{ \dots,-3,-2,-1,0,1,2,3,\dots \bigg\} \]
+    \[ \bigg\{ (m,n)\in\Z\times\Z\ |\ m\geq 0,n\geq 0 \bigg\} \]
+\end{itemize}
+A random variable is continuous if both of the following apply:
+\begin{enumerate}
+  \item Its set of possible values consists either of all members in a single
+    interval on the number line (possibly infinite in extent, eg:
+    \( (-\infty,\infty),(0,\infty),\dots \)) or all numbers in a disjoint
+    union of such intervals.
+\end{enumerate}
+
 \end{document}

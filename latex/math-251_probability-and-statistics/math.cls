@@ -13,6 +13,7 @@
 \newcommand*{\Diff}[1]{\mathrm{d^#1}}
 \newcommand*{\e}{\mathrm{e}}
 \newcommand*{\R}{\mathbb{R}}
+\newcommand*{\Z}{\mathbb{Z}}
 \newcommand*{\nPr}[2]{_{#1}P_{#2}}
 \newcommand*{\nPrf}[2]{\frac{#1!}{(#1-#2)!}}
 \newcommand*{\nCr}[2]{_{#1}C_{#2}}
