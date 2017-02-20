@@ -122,6 +122,38 @@ Suppose there is some \( s \) such that \( as+b = 0 \). \( ar+b = as+b \) where
 \( r \neq s \) then \( as+b \neq 0 \). So \( r = \frac{-b}{a} \) is the only
 such solution.
 
+\subsection*{Example}
+Show if \( x + y \geq 2 \) (where \( x \) and \( y \) are real numbers) then
+\( x \geq 1 \) or \( y \geq 1 \). Proof by contraposition:
+\begin{itemize}
+  \item Suppose \( \neg{(x \geq 1\ or\ y \geq 1)} \).
+  \item Then \( x < 1 \) and \( y < 1 \).
+  \item We must show that \( x+y < 2 \), but \( x < 1 \) and \( y < 1 \).
+  \item Then \( x+y < 1 \).
+\end{itemize}
+
+\subsection*{Example}
+Show that \( n^{2}+1 \geq 2^{n} \) for any positive integer \( n \leq 4 \).
+Proof by exhaustion: Verify that \( n^{2}+1 \geq 2^{n} \) for \( n = 1,2,3,4 \).
+\begin{enumerate}
+  \item \( n = 1: 1^{2}+1 \geq 2^{1} \)
+  \item \( n = 2: 2^{2}+1 \geq 2^{2} \)
+  \item \( n = 3: 3^{2}+1 \geq 2^{3} \)
+  \item \( n = 4: 4^{2}+1 \geq 2^{4} \)
+\end{enumerate}
+
+\subsection*{Example}
+Show that every odd integer is a difference of two squares. Proof:
+\begin{itemize}
+  \item Let \( n = 2k+1; k\in\Z \).
+    \begin{align*}
+      n &= 2k+1+k^{2}-k^{2} \\
+      n &= k^{2}+2k+1-k^{2} \\
+      n &= (k+1)^{2}-k^{2}
+    \end{align*}
+  \item Thus, we've expressed \( n \) as a difference of two squares.
+\end{itemize}
+
 \begin{center}
   If you have any questions, comments, or concerns, please contact me at
   alvin@omgimanerd.tech
