@@ -1,0 +1,107 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+
+\title{Sets}
+\author{Alvin Lin}
+\date{Discrete Math for Computing: January 2017 - May 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Set Operations}
+
+\subsection*{Union}
+\[ A \cup B = \{x\ |\ x \in A \vee x \in B\} \]
+Let \( A = \{1,2\} \quad B = \{3,4\} \):
+\[ A \cup B = =\{1,2,3,4\} \]
+
+\subsection*{Intersection}
+\[ A \cap B = \{x\ |\ x \in A \wedge x \in B\} \]
+Let \( A = \{1,2,3\} \quad B = \{3,4,5\} \):
+\[ A \cap B = \{3\} \]
+
+\subsection*{Set Difference}
+\[ A-B = \{x\ |\ x \in A \wedge x \notin B\} \]
+Let \( A = \{a,b,c\} \quad B = \{b,c,d\} \):
+\[ A-B = \{a\} \]
+
+\subsection*{Set Complements}
+Let \( u \) be the universal set. The \textbf{complement} of the set \( A \),
+denoted \( \overline{A} \), is the set \( u-A \). An element belongs in \( \overline{A} \)
+if \( x \notin A \).
+
+\subsection*{Set Identities}
+\begin{enumerate}
+  \item Identity Laws
+  \begin{itemize}
+    \item \( A \cap u = A \)
+    \item \( A \cup \emptyset = A \)
+  \end{itemize}
+  \item Domination
+  \begin{itemize}
+    \item \( A \cup u = u \)
+    \item \( A \cap \emptyset = \emptyset \)
+  \end{itemize}
+  \item Idempotent
+  \begin{itemize}
+    \item \( A \cup A = A \)
+    \item \( A \cap A = A \)
+  \end{itemize}
+  \item Complementation
+  \begin{itemize}
+    \item \( \overline{(\overline{A})} = A \)
+  \end{itemize}
+  \item Commutative
+  \begin{itemize}
+    \item \( A \cup B = B \cup A \)
+    \item \( A \cap B = B \cap A \)
+  \end{itemize}
+  \item Associative
+  \begin{itemize}
+    \item \( A \cup (B \cup C) = (A \cup B) \cup C \)
+    \item \( A \cap (B \cap C) = (A \cap B) \cap C \)
+  \end{itemize}
+  \item Distribution
+  \begin{itemize}
+    \item \( A \cup (B \cap C) = (A \cup B) \cap (A \cup C) \)
+    \item \( A \cap (B \cup C) = (A \cap B) \cup (A \cap C) \)
+  \end{itemize}
+  \item De Morgan's
+  \begin{itemize}
+    \item \( \overline{A \cap B} = \overline{A} \cup \overline{B} \)
+    \item \( \overline{A \cup B} = \overline{A} \cap \overline{B} \)
+  \end{itemize}
+  \item Absorption
+  \begin{itemize}
+    \item \( A \cup (A \cap B) = A \)
+    \item \( A \cap (A \cup B) = A \)
+  \end{itemize}
+  \item Complement
+  \begin{itemize}
+    \item \( A \cup \overline{A} = u \)
+    \item \( A \cap \overline{A} = \emptyset \)
+  \end{itemize}
+\end{enumerate}
+
+\subsection*{Example}
+Show using set identities that:
+\[ \overline{A \cup (B \cap C)} = (\overline{C} \cup \overline{B}) \cap
+   \overline{A} \]
+\begin{align*}
+  \overline{A \cup (B \cap C)} &=
+    \overline{A} \cap \overline{B \cap C} \quad (De\ Morgan's) \\
+  &= \overline{A} \cap (\overline{B} \cup \overline{C}) \quad (De\ Morgan's) \\
+  &= (\overline{B} \cup \overline{C}) \cap \overline{A} \quad (Commutative) \\
+  &= (\overline{C} \cup \overline{B}) \cap \overline{A} \quad (Commutative)
+\end{align*}
+
+\begin{center}
+  If you have any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}

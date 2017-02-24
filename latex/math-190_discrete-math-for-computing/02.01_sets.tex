@@ -46,9 +46,12 @@ Other examples:
 \end{align*}
 
 \subsection*{Set Equality}
-Two sets are equal if and only iff they contain the same elements. Thus \( A \)
-and \( B \) are equal if:
+Two sets are equal if and only if they contain the same elements. You must show
+that the two sets are subsets of each other. Thus \( A \) and \( B \) are equal
+if:
 \[ \forall{x}(x \in A \leftrightarrow x \in B) \]
+or
+\[ A \subseteq B \wedge B \subseteq A \]
 We write \( A = B \) when sets are equal.
 \[ \bigg\{1,2,3\bigg\} = \bigg\{3,1,2\bigg\} \]
 \[ \bigg\{1,2,3\bigg\} \neq \bigg\{1,2,4\bigg\} \]
@@ -66,18 +69,51 @@ vowels.
   \end{tikzpicture}
 \end{center}
 
+\subsection*{The Empty Set}
+The empty set \( \emptyset \) is the set consisting of no elements (null set).
+\par
+\textbf{Theorem:} If \( S \) is a set, then \( \emptyset \subseteq S \) and
+\( S \subseteq S \).
+
 \subsection*{Subsets}
 The set \( A \) is a subset of the set \( B \) if and only if every element of
 \( A \) is also in \( B \), notated as \( A \subseteq B \)
 \[ \forall{x}(x \in A \to x \in B) \]
 \[ \bigg\{1,2,3\bigg\} \subseteq \bigg\{1,2,3,4\bigg\} \]
 \[ \bigg\{1,2,4\bigg\} \subseteq \bigg\{1,2,5\bigg\} \]
+Sets may have other sets as members:
+\[ A = \{\emptyset, \{a\}, \{b\}, \{a,b\}\} \]
+\[ a \notin A, b \notin A \]
+\[ \{a\} \in A, \{b\} \in A \]
 
-\subsection*{The Empty Set}
-The empty set \( \emptyset \) is the set consisting of no elements (null set).
-\par
-\textbf{Theorem:} If \( S \) is a set, then \( \emptyset \subseteq S \) and
-\( S \subseteq S \).
+\subsection*{The Size of a Set}
+Let \( S \) be a set. If there are exactly \( n \) distinct elements of \( S \),
+then we say that the \underline{size} of \( S \) is \( n \). Written as
+\( |S| = n \). It is also called the \textbf{cardinality} of the set. In this
+case, \( S \) is finite. \par
+Let \( A \) be the set of letters in the alphabet. \( |A| = 26 \). \par
+A set is said to be infinite if it is not finite. For example, the set of
+integers is infinite.
+
+\subsection*{Power Sets}
+Given a set \( S \), the power set of \( S \) is the set of all subsets of
+\( S \). This is denoted by P(S).
+\[ P(\{0,1,2\}) = \{ \emptyset, \{0\}, \{1\}, \{2\}, \{1,2\}, \{1,3\}, \{2,3\},
+   \{1,2,3\}\} \]
+For a set \( S \) with \( |S| = n \), \( |P(S)| = 2^{n} \).
+
+\subsection*{Cartesian Product}
+Let \( A \) and \( B \) be sets. The \textbf{Cartesian Product} of \( A \) and
+\( B \), denoted \( A \times B \), is the set of all \underline{ordered} pairs
+\( (a, b) \) where \( a \in A \) and \( b \in B \).
+\[ A \times B = \{(a,b)\ |\ a \in A \wedge b \in B\} \]
+Let \( A = \{1,2\} \quad B = \{a,b,c\} \):
+\[ A \times B = \{(1,a),(1,b),(1,c),(2,a),(2,b),(2,c)\} \]
+\[ B \times A = \{(a,1),(a,2),(b,1),(b,2),(c,1),(c,2)\} \]
+\( A \times B \neq B \times A \) since the Cartesian Product is ordered.
+\( (1,a) \in A \times B \) but \( (1,a) \notin B \times A \).
+Also note that the cardinality of a Cartesian Product is as such:
+\[ |A \times B| = |A||B| \]
 
 \begin{center}
   If you have any questions, comments, or concerns, please contact me at
