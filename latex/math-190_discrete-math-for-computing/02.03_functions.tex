@@ -1,0 +1,102 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\title{Sets}
+\author{Alvin Lin}
+\date{Discrete Math for Computing: January 2017 - May 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Functions}
+Let \( A \) and \( B \) be sets. A \textbf{function} \( f \) is a rule that
+assigns to each element \( x \in A \) exactly one element \( y \in B \),
+written \( y = f(x) \). \( A \) is called the \textbf{domain} while \( B \)
+is called the \textbf{codomain}. The \textbf{range} of \( f \), denoted
+\( ran(f) \):
+\[ ran(f) = \{f(x) \in B\ |\ x \in A \} \]
+\[ ran(f) \subseteq B \]
+
+\subsection*{Example}
+Let \( f:\R\to\R \) be defined as \( f(x) = x^{2} \).
+\begin{itemize}
+  \item Domain: \( \R \)
+  \item Codomain: \( \R \)
+  \item Range: \( \big[0,\infty\big) \)
+\end{itemize}
+
+\subsection*{Example}
+Let \( g:\R\to[0,\infty) \) be defined as \( g(x) = x^{2} \).
+\begin{itemize}
+  \item Domain: \( \R \)
+  \item Codomain: \( \big[0,\infty\big) \)
+  \item Range: \( \big[0,\infty\big) \)
+\end{itemize}
+
+\subsection*{Function Equality}
+Two functions, \( f:A\to B \) and \( g:C\to D \) are \textbf{equal}, denoted
+\( f = g \), if:
+\begin{itemize}
+  \item \( A = C \)
+  \item \( B = D \)
+  \item \( f(x) = g(x) \quad \forall{x}\in A \)
+\end{itemize}
+
+\subsection*{Absolute Value}
+The \textbf{absolute value} of \( x\in\R \), written \( abs(x) \) or \( |x| \),
+is a piecewise function defined as:
+\[ abs(x) =
+  \begin{cases}
+    x & if\ x\geq 0 \\
+    -x & if\ x < 0
+  \end{cases}
+\]
+\[ abs:\R\to\R \]
+\begin{itemize}
+  \item Domain: \( \R \)
+  \item Codomain: \( \R \)
+  \item Range: \( [0,\infty) \)
+\end{itemize}
+
+\subsection*{Example}
+Let \( X \) be a set, \( P(X) \) be the power set of \( X \), and
+\( S \subseteq X \). Let \( f:P(X)\to P(X) \) be defined as
+\( f(A) = A \cup S \).
+\begin{itemize}
+  \item Domain: \( P(X) \)
+  \item Codomain: \( P(X) \)
+  \item Range: \( \{B \subseteq X\ |\ B \supseteq S\} \)
+\end{itemize}
+
+\subsection*{One-To-One}
+A function is \textbf{one-to-one} if it passes the horizontal line test, that
+is, for every \( x \) value, there is a unique \( y \) value.
+
+\subsection*{Onto}
+A function is \textbf{onto} if the range and codomain are the same.
+
+\subsection*{Function Images and Preimages}
+Let \( f:A\to B \) be a function. If \( S \subseteq A \), then the
+\textbf{image} of \( S \), denoted \( f(S) \), is defined as:
+\[ f(S) = \{f(x):x\in S \} \]
+If \( T \subseteq B \), then the \textbf{preimage} of \( S \), denoted
+\( f^{-1}(S) \), is defined as:
+\[ f^{-1}(T) = \{x\in A\ |\ f(x)\in T\} \]
+
+\subsection*{Example}
+Let \( f:\R\to\R \) be defined by \( f(x) = x^{2} \). Determine:
+\begin{enumerate}
+  \item \( f([-1,2]) = [0,4] \)
+  \item \( f^{-1}(\{2\}) \)
+  \item \( f^{-1}(\big[-1,2\big]) \)
+\end{enumerate}
+
+\begin{center}
+  If you have any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
