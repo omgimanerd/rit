@@ -1,0 +1,134 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+
+\title{Homework \#4}
+\author{Alvin Lin}
+\date{Discrete Math for Computing: January 2017 - May 2017}
+
+\begin{document}
+
+\maketitle
+
+\subsection*{1}
+Determine whether each of the following expressions is true or false.
+\renewcommand{\labelenumi}{(\alph{enumi})}
+\begin{enumerate}
+  \item \( x \in \{x\} \) True
+  \item \( \{x\} \in \{\{x\}\} \) True
+  \item \( \{x\} \subset \{x\} \) True
+  \item \( \emptyset \subset \{x\} \) True
+  \item \( \emptyset \in \{x\} \) False
+\end{enumerate}
+
+\subsection*{2}
+Find the power set of each set below. Assume that \( a \) and \( b \) are
+distinct elements.
+\begin{enumerate}
+  \item \( P(\{a\}) = \{\emptyset,\{a\}\} \)
+  \item \( P(\{a,b\}) = \{\emptyset,\{a\},\{b\},\{a.b\}\} \)
+  \item \( P(\{\emptyset,\{\emptyset\}\}) = \{\emptyset,\{\emptyset\},
+      \{\{\emptyset\}\},\{\emptyset,\{\emptyset\}\}\} \)
+\end{enumerate}
+
+\subsection*{3}
+Let \( A = \{a,b,c\} \), \( B = \{c,d\} \) and \( C = \{x,z\} \). Find
+\begin{enumerate}
+  \item \( A\times C = \{(a,c),(a,d),(b,c),(b,d),(c,c),(c,d)\} \)
+  \item \( C\times A\times B = \{(x,a,c),(x,a,d),(x,b,c),(x,b,d), \) \\
+    \( (x,c,c),(x,c,d),(z,a,c),(z,a,d),(z,b,c),(z,b,d),(z,c,c),(z,c,d)\} \)
+  \item \( A\times B\times C = \{(a,c,x),(a,c,z),(a,d,x),(a,d,z), \) \\
+    \( (b,c,x),(b,c,z),(b,d,x),(b,d,z),(c,c,x),(c,c,z),(c,d,x),(c,d,z) \} \)
+\end{enumerate}
+
+\subsection*{4}
+Suppose that
+\[ A = \{a,b,c,d,e,f\}\ \mathrm{and}\ B = \{a,b,c,d,e,f,g,h,i,j,k\} \]
+Find the following
+\begin{enumerate}
+  \item \( A\cup B = \{a,b,c,d,e,f,g,h,i,j,k\} \)
+  \item \( A-B = \emptyset \)
+  \item \( A\cap B = \{a,b,c,d,e,f\} \)
+  \item \( B-A = \{g,h,i,j,k\} \)
+\end{enumerate}
+
+\subsection*{5}
+Suppose that \( A \), \( B \), and \( C \) are arbitrary sets. Show the
+following and justify:
+\begin{enumerate}
+  \item \( (A\cup B) \subseteq (A\cup B\cup C) \)
+  \[ (A\cup B) = \{x\ |\ x \in A \vee x \in B \} \]
+  \[ (A\cup B\cup C) = \{x\ |\ x \in A \vee x \in B \vee x \in C\} \]
+  \begin{center}
+    Identity Law
+  \end{center}
+  \item \( A-B = A\cap \overline{B} \)
+  \[ A-B = \{x\ |\ x \in A \wedge x \notin B\} \]
+  \[ A\cap \overline{B} = \{x\ |\ x \in A \wedge x \notin B\} \]
+  \item \( (A-B)-C = (A-C)-(B-C) \)
+  \begin{align*}
+    (A-B)-C &= \{x\ |\ x \in A \wedge x \notin B \wedge x \notin C\} \\
+    (A-C) &= \{x\ |\ x \in A \wedge x \notin C\} \\
+    (B-C) &= \{x\ |\ x \in B \wedge x \notin C\} \\
+    (A-C)-(B-C) &= \{x\ |\ x \in A \wedge x \notin C\}-
+     \{x\ |\ x \in B \wedge x \notin C\} \\
+    (A-C)-(B-C) &= \{x\ |\ x \in A \wedge x \notin B \wedge x \notin C\}
+  \end{align*}
+  \item \( \overline{A \cup (B \cap C)} = (\overline{C} \cup \overline{B}) \cap
+     \overline{A} \)
+  \begin{align*}
+    \overline{A \cup (B \cap C)} &=
+      \overline{A} \cap \overline{B \cap C} \\
+    &= \overline{A} \cap (\overline{B} \cup \overline{C}) \\
+    &= (\overline{B} \cup \overline{C}) \cap \overline{A} \\
+    &= (\overline{C} \cup \overline{B}) \cap \overline{A}
+  \end{align*}
+\end{enumerate}
+
+\subsection*{6}
+Suppose that \( A \), \( B \), and \( C \) are sets. Draw the Venn diagrams
+for each of the combinations below.
+\begin{enumerate}
+  \item
+  \[ A \cap (B \cup C) \]
+  \begin{center}
+    \def\firstcircle{(90:1.75cm) circle (2.5cm)}
+    \def\secondcircle{(210:1.75cm) circle (2.5cm)}
+    \def\thirdcircle{(330:1.75cm) circle (2.5cm)}
+    \begin{tikzpicture}
+      \begin{scope}
+        \clip \secondcircle;
+        \fill[green] \firstcircle;
+      \end{scope}
+      \begin{scope}
+        \clip \thirdcircle;
+        \fill[green] \firstcircle;
+      \end{scope}
+      \draw \firstcircle node[text=black,above] {$A$};
+      \draw \secondcircle node [text=black,below left] {$B$};
+      \draw \thirdcircle node [text=black,below right] {$C$};
+    \end{tikzpicture}
+  \end{center}
+  \item
+  \[ (A-B) \cup (A-C) \cup (B-C) \]
+  \begin{center}
+    \def\firstcircle{(90:1.75cm) circle (2.5cm)}
+    \def\secondcircle{(210:1.75cm) circle (2.5cm)}
+    \def\thirdcircle{(330:1.75cm) circle (2.5cm)}
+    \begin{tikzpicture}
+      \fill[green] \firstcircle;
+      \fill[green] \secondcircle;
+      \begin{scope}
+        \clip \secondcircle;
+        \fill[white] \thirdcircle;
+      \end{scope}
+      \draw \firstcircle node[text=black,above] {$A$};
+      \draw \secondcircle node [text=black,below left] {$B$};
+      \draw \thirdcircle node [text=black,below right] {$C$};
+    \end{tikzpicture}
+  \end{center}
+\end{enumerate}
+
+\end{document}
