@@ -1,0 +1,134 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[linguistics]{forest}
+
+\title{Probability and Statistics}
+\author{Alvin Lin}
+\date{Probability and Statistics: January 2017 - May 2017}
+
+\begin{document}
+
+\maketitle
+
+\subsection*{Example}
+There are two balls marked S and F in a basket. Select a ball 3 times with
+replacement. At each trial, S is likely to be chosen with probability \( p \),
+and F is likely to be chosen with probability \( 1-p \). Let \( X \) be the
+random variable of the experiment indicating the number of times S is chosen.
+\begin{center}
+  \begin{forest}
+    [
+      [S \( (p) \)
+        [S \( (p) \) [S \( (p) \)] [F \( (1-p) \)]]
+        [F \( (1-p) \) [S \( (p) \)] [F \( (1-p) \)]]
+      ]
+      [F \( (1-p) \)
+        [S \( (p) \) [S \( (p) \)] [F \( (1-p) \)]]
+        [F \( (1-p) \) [S \( (p) \)] [F \( (1-p) \)]]
+      ]
+    ]
+  \end{forest}
+  \begin{tabular}{|c|c|c|}
+    \hline
+        & \( X = 1 \) & \( X = 2 \) \\ \hline
+    SSS &             & \\ \hline
+    SSF &             & \checkmark \\ \hline
+    SFS &             & \checkmark \\ \hline
+    SFF & \checkmark  & \\ \hline
+    FSS &             & \checkmark \\ \hline
+    FSF & \checkmark  & \\ \hline
+    FFS & \checkmark  & \\ \hline
+    FFF &             & \\ \hline
+  \end{tabular}
+\end{center}
+Find the probability mass function of \( X \), \( b(x;3,p) \):
+\[ b(0;3,p) = P(X=0) = (1-p)^{3} \]
+The underlying assumption is on the independence of the events:
+\begin{itemize}
+  \item \( A_{1} \): getting an S in the first trial
+  \item \( A_{2} \): getting an S in the second trial
+  \item \( A_{3} \): getting an S in the third trial
+\end{itemize}
+\( A_{1} \), \( A_{2} \), and \( A_{3} \) are mutually independent.
+\begin{align*}
+  b(0;3,p) &= P(X=0) \\
+  &= (1-p)(1-p)(1-p) \\
+  &= \binom{3}{0}p^{0}(1-p)^{3-0} \\
+  b(1;3,p) &= p(1-p)(1-p)+(1-p)p(1-p)+(1-p)(1-p)p \\
+  &= \binom{3}{1}p^{1}(1-p)^{3-1}
+\end{align*}
+From 3 distinct items (trial 1, trial 2, trial 3), select 1 item. There are
+\( \nCr{3}{1} \) possible combinations.
+\begin{align*}
+  b(2;3,p) &= P(X=2) \\
+  &= (p)(p)(1-p)+p(1-p)p+(1-p)(p)(p) \\
+  &= \binom{3}{2}p^{2}(1-p)^{3-2} \\
+  b(x;3,p) &=
+  \begin{cases}
+    \binom{3}{x}p^{x}(1-p)^{3-x} &, x = 0,1,2,\dots,n \\
+    0 &, otherwise
+  \end{cases}
+\end{align*}
+The above example is an example of a binomial experiment with a binomial random
+variable.
+\begin{enumerate}
+  \item This experiment consists of a sequence of \( n \) smaller experiments
+    called trials, where \( n \) is fixed in advance of the experiment.
+  \item Each trial can result in one of the two possible outcomes (dichotomous
+    trials), which we generically denote by \( success(S) \) or
+    \( failure(S) \). The assignment of the \( S \) and \( F \) labels to the
+    two sides of the dichotomy is arbitrary.
+  \item The trials are independent, so that the outcome on any particular trial
+    does not influence the outcome of any other trial.
+  \item The probability of success \( P(S) \) is constant from trial to trial.
+    We denote this probability by \( p \).
+\end{enumerate}
+An experiment for which the above conditions (a fixed number of dichotomous,
+independent, homogeneous trials) ar satisfied is called a binomial experiment.
+
+\subsection*{PMF of a binomial random variable X}
+The probability mass function of a binomial random variable \( X \) is:
+\[ b(x;n,p) =
+  \begin{cases}
+    \binom{n}{x}p^{x}(1-p)^{n-x} &, x = 1,2,3,\dots,n \\
+    0 &, otherwise
+  \end{cases}
+\]
+The value of \( X \) indicates the number of S'es. \par
+
+\subsection*{CDF of a binomial random variable X}
+The cumulative distribution function of a binomial random variable \( X \) is:
+\begin{align*}
+  B(x;n,p) &= P(X\leq x) \\
+  &= \sum_{y=0}^{x}b(y;n,p) \\
+  & if\ x = 0,1,2,\dots,n
+\end{align*}
+\( X\sim Bin(n,p) \) denotes that \( X \) is a binomial random variable with
+probability mass function b(x;n,p).
+
+\subsection*{Expected value of a binomial random variable X}
+\[ E(X) = \sum_{x\in\{0,1,2,\dots,n\}}xb(x;n,p) = np \]
+
+\subsection*{Variance of a binomial random variable X}
+\[ V(X) = \sum_{x\in\{0,1,2,\dots,n\}}(x-E(X))^{2}b(x;n,p) = np(1-p) \]
+The standard deviation of \( X \) is \( \sigma = \sqrt{V(X)} = \sqrt{np(1-p)} \)
+
+\subsection*{Example}
+An aircraft seam requires 25 rivets. The seam will have to be reworked if any
+of these rivets are defective. Suppose rivets are defective independently of
+one another, each with the same probability. If 15\% of all seams need
+reworking, what is the probability that a rivet is defective?
+\begin{align*}
+  1-0.15 &= P(a\ seam\ does\ not\ need\ reworking) \\
+  &= P(a\ seam\ has\ zero\ defective\ rivets) \\
+  &= (1-p)^{25} \\
+  1-p &= 0.85^{\frac{1}{25}} \\
+  p &= 1-0.85^{\frac{1}{25}}
+\end{align*}
+Find the probability that a randomly selected seam has exactly 3 defective
+rivets.
+\[ \binom{25}{3}p^{3}(1-p)^{22} \]
+
+\end{document}
