@@ -71,13 +71,6 @@ Let \( X \) be a set, \( P(X) \) be the power set of \( X \), and
   \item Range: \( \{B \subseteq X\ |\ B \supseteq S\} \)
 \end{itemize}
 
-\subsection*{One-To-One}
-A function is \textbf{one-to-one} if it passes the horizontal line test, that
-is, for every \( x \) value, there is a unique \( y \) value.
-
-\subsection*{Onto}
-A function is \textbf{onto} if the range and codomain are the same.
-
 \subsection*{Function Images and Preimages}
 Let \( f:A\to B \) be a function. If \( S \subseteq A \), then the
 \textbf{image} of \( S \), denoted \( f(S) \), is defined as:
@@ -90,9 +83,66 @@ If \( T \subseteq B \), then the \textbf{preimage} of \( S \), denoted
 Let \( f:\R\to\R \) be defined by \( f(x) = x^{2} \). Determine:
 \begin{enumerate}
   \item \( f([-1,2]) = [0,4] \)
-  \item \( f^{-1}(\{2\}) \)
+  \item \( f^{-1}(\{2\})  = \{\sqrt{2},-\sqrt{2}\} \)
   \item \( f^{-1}(\big[-1,2\big]) \)
+  \begin{align*}
+    f^{-1}(\{-1\}) &= \emptyset \\
+    f^{-1}([-1,0]) &= \emptyset \\
+    f^{-1}(\{a,b\}) &= f^{-1}(\{a\}) \cup f^{-1}(\{b\}) \\
+    f^{-1}([-1,2]) &= f^{-1}([-1,0]) \cup f^{-1}([0,2]) \\
+    &= \emptyset \cup [-\sqrt{2},\sqrt{2}] \\
+    &= [-\sqrt{2},\sqrt{2}]
+  \end{align*}
 \end{enumerate}
+
+\subsection*{One-To-One and Onto}
+Let \( f:A\to B \), \( f \) is \textbf{one-to-one} if distinct elements in
+\( A \) have distinct images in \( B \). To show a function is one-to-one:
+\[ \forall{x,y}\in A (x\neq y \to f(x)\neq f(y)) \]
+Contrapositive:
+\[ \forall{x,y}\in A (f(x) = f(y) \to x = y) \]
+
+\subsection*{Onto}
+Let \( f:A\to B\), \( f \) is \textbf{onto} if the range and codomain are the
+same.
+\[ B = ran(f) = f(A) \]
+
+\subsection*{Example}
+Let \( x\in\R \). The greatest integer of x, denoted \( \lfloor x \rfloor \),
+is the largest integer less than or equal to \( x \). \( \lfloor x \rfloor =
+floor(x) = floor:\R\to\R \).
+\begin{align*}
+  \lfloor 2.1 \rfloor &= 2 \\
+  \lfloor \pi \rfloor &= 3 \\
+  \lfloor -2.1 \rfloor &= -3
+\end{align*}
+Is \( \lfloor x \rfloor \) one-to-one?
+\begin{align*}
+  \lfloor 1.1 \rfloor &= \lfloor 1 \rfloor \\
+  1.1 &\neq 1
+\end{align*}
+Therefore, it is not one-to-one. \\
+Is \( \lfloor x \rfloor \) onto? \\
+No, there is no \( x\in\R \) such that \( \lfloor x \rfloor = 2.5 \).
+
+\subsection*{Example}
+Let \( f:\Z\to\Z \) be defined by \( f(n) = n^{3} \). Is \( f \) one-to-one?
+\begin{itemize}
+  \item Suppose \( x,y\in\Z \) and \( f(x) = f(y) \).
+  \item This implies \( x^{3} = y^{3} \).
+  \item Taking the cube root yields \( x = y \).
+\end{itemize}
+Is \( f \) onto? \\
+No, since \( 2\in\Z \) but there is no \( x\in\Z \) such that \( x^{3} = 2 \).
+
+\subsection*{Example}
+Let \( X \) be a set and \( X \subseteq X \). Define \( f:P(x)\to P(x) \) as
+\( f(A) = A \cup S \) Is \( f \) one-to-one? \\
+No, since \( f(\emptyset) = f(S) \) but \( \emptyset \neq S \).
+\begin{align*}
+  f(\emptyset) &= \emptyset \cup S = S \\
+  f(S) &= S \cup S = S
+\end{align*}
 
 \begin{center}
   If you have any questions, comments, or concerns, please contact me at
