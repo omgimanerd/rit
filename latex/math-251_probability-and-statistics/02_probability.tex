@@ -17,9 +17,9 @@ The sample space of an experiment, denoted by \( S \), is the set of all
 possible outcomes of the experiment. An event of the experiment is a subset
 of \( S \). An event is simple if it consists of exactly one outcome, and
 compound if it consists of more than one outcome. \par
-Let \( A \) and \( B \) be events of an experiment. If \( A = \emptyset \),
+Let \( A \) and \( B \) be events of an experiment. If \( A = \varnothing \),
 then it is said to be the null event. \par
-If \( A \cap B = \emptyset \), then \( A \) and \( B \) are said to be mutually
+If \( A \cap B = \varnothing \), then \( A \) and \( B \) are said to be mutually
 exclusive, or disjoint.
 
 \subsection*{Roll a Die}
@@ -36,15 +36,15 @@ Sample events:
   E_{1} &= \big\{ 1 \big\} \subset S \\
   E_{2} &= \big\{ 2, 4, 6, \big\} \subset S \\
   E_{3} &= \big\{ 5, 6 \big\} \subset S \\
-  E_{4} &= \big\{ \big\} = \emptyset \subset S \\
+  E_{4} &= \big\{ \big\} = \varnothing \subset S \\
   E_{5} &= \big\{ 1, 2, 3, 4, 5, 6 \big\} \subset S
 \end{align*}
 \( E_{1} \) is a simple event. \( E_{2}, E_{3}, E_{5} \) are compound events.
 \( E_{4} \) is the null event. \par
 The events \( E_{1} \) and \( E_{2} \) are mutually exclusive or disjoint.
-\[ E_{1} \cap E_{2} = \emptyset \]
+\[ E_{1} \cap E_{2} = \varnothing \]
 The events \( E_{2} \) and \( E_{3} \) are not mutually exclusive or disjoint.
-\[ E_{2} \cap E_{3} = \big\{ 6 \big\} \neq \emptyset \]
+\[ E_{2} \cap E_{3} = \big\{ 6 \big\} \neq \varnothing \]
 
 \subsection*{Example}
 A family consisting of three persons - A, B, and C - goes to a medical clinic
@@ -97,7 +97,7 @@ other side. \\
 Sample space:
 \[ S = \bigg\{ U, D \bigg\} \]
 All possible events:
-\[ \emptyset \quad \bigg\{ U \bigg\} \quad \bigg\{ D \bigg\} \quad
+\[ \varnothing \quad \bigg\{ U \bigg\} \quad \bigg\{ D \bigg\} \quad
    \bigg\{ U, D \bigg\} \]
 The probability of these events are:
 \begin{align*}
@@ -107,10 +107,10 @@ The probability of these events are:
   P(\{ U, D \}) &= 1
 \end{align*}
 Let \( 2^{S} \) denote the power set of \( S \). Then:
-\[ 2^{S} = \bigg\{ \emptyset, \{ U \}, \{ D \}, \{ U, D \} \bigg\} \]
+\[ 2^{S} = \bigg\{ \varnothing, \{ U \}, \{ D \}, \{ U, D \} \bigg\} \]
 P can be viewed as a function from \( 2^{S} \) to \( \R \).
 \[ P:2^{S} \to \R \]
-\[ \bigg\{ \emptyset \bigg\} \to 0 \]
+\[ \bigg\{ \varnothing \bigg\} \to 0 \]
 \[ \bigg\{ \{ U \}, \{ D \} \bigg\} \to \frac{1}{2} \]
 \[ \bigg\{ \{ U, D \} \bigg\} \to 1 \]
 Let:
@@ -129,7 +129,7 @@ We can choose some conditions 1, 2, and 3 to research further about
     disjoint events, the \( P(A_{1} \cup A_{2} \cup A_{3} \cup \dots) =
     \sum_{i=0}^{\infty}P(A_{i}) \).
 \end{enumerate}
-\( P(\emptyset) = 0 \) is proven from the axioms. The proof does not rely on
+\( P(\varnothing) = 0 \) is proven from the axioms. The proof does not rely on
 the following definition:
 \[ P(E) = \frac{\mathrm{\#\ of\ outcomes\ favorable\ to\ E}}
    {\mathrm{total\ \#\ of\ possible\ outcomes}} \]

@@ -86,11 +86,11 @@ Let \( f:\R\to\R \) be defined by \( f(x) = x^{2} \). Determine:
   \item \( f^{-1}(\{2\})  = \{\sqrt{2},-\sqrt{2}\} \)
   \item \( f^{-1}(\big[-1,2\big]) \)
   \begin{align*}
-    f^{-1}(\{-1\}) &= \emptyset \\
-    f^{-1}([-1,0]) &= \emptyset \\
+    f^{-1}(\{-1\}) &= \varnothing \\
+    f^{-1}([-1,0]) &= \varnothing \\
     f^{-1}(\{a,b\}) &= f^{-1}(\{a\}) \cup f^{-1}(\{b\}) \\
     f^{-1}([-1,2]) &= f^{-1}([-1,0]) \cup f^{-1}([0,2]) \\
-    &= \emptyset \cup [-\sqrt{2},\sqrt{2}] \\
+    &= \varnothing \cup [-\sqrt{2},\sqrt{2}] \\
     &= [-\sqrt{2},\sqrt{2}]
   \end{align*}
 \end{enumerate}
@@ -138,10 +138,52 @@ No, since \( 2\in\Z \) but there is no \( x\in\Z \) such that \( x^{3} = 2 \).
 \subsection*{Example}
 Let \( X \) be a set and \( X \subseteq X \). Define \( f:P(x)\to P(x) \) as
 \( f(A) = A \cup S \) Is \( f \) one-to-one? \\
-No, since \( f(\emptyset) = f(S) \) but \( \emptyset \neq S \).
+No, since \( f(\varnothing) = f(S) \) but \( \varnothing \neq S \).
 \begin{align*}
-  f(\emptyset) &= \emptyset \cup S = S \\
+  f(\varnothing) &= \varnothing \cup S = S \\
   f(S) &= S \cup S = S
+\end{align*}
+
+\subsection*{Example}
+Let \( f:\Z\times\Z\to\Z \) be defined by \( f(m,n) = m+n \). \\
+If \( f \) one-to-one? \par
+No, \( f(2,3) = f(3,2) \) but \( (2,3) \neq (3,2) \) \\
+If \( f \) onto? \par
+Yes, take any \( n\in\Z \). Find an ordered pair in \( \Z\times\Z \) that
+maps to it. Since \( f(n-1,1) = (n-1)+1 = n \) and \( (n-1,1)\in\Z\times\Z \),
+then \( f \) is onto.
+
+\subsection*{Identity Mapping}
+Let \( A \) be a set. The function \( 1_{A}:A\to A \) is defined as:
+\[ 1_{A}(x) = x \]
+This is called the \textbf{identity mapping}.
+
+\subsection*{Bijections}
+A function is a \textbf{bijection} if it is one-to-one and onto. A
+``bijection'' is a ``one-to-one correspondence''.
+
+\subsection*{Composition}
+Let \( f:A\to A \) and \( g:B\to C \). The \textbf{composition} of \( f \)
+and \( g \), denoted \( g\circ f \), is \( g\circ f:A\to C \) and defined as:
+\[ (g\circ f)(x) = g(f(x)) \]
+
+\subsection*{Inverse}
+Let \( f \) be a bijection. \( (f:A\to B) \). The \textbf{inverse} of \( f \)
+is the unique function \( g:B\to A \) such that \( g\circ f = 1_{A} \) and
+\( f\circ g = 1_{B} \). Traditionally, we represent \( g \) as \( f^{-1} \).
+Note that \( f^{-1} \neq \frac{1}{f} \).
+
+\subsection*{Example}
+Let \( A = \{1,2,3\}, B = \{x,y,z\}, C = \{\alpha,\beta,\gamma\} \). Let
+\( f:A\to B \) and \( g:B\to C \) be defined as:
+\begin{align*}
+  f &= \{(1,x),(2,y),(3,x)\} \\
+  g &= \{(x,\gamma),(y,\alpha),(z,\beta)\}
+\end{align*}
+Find \( f\circ g \):
+\begin{align*}
+  f\circ g &= undefined \\
+  g\circ f &= \{(1,\gamma),(2,\alpha),(3,\beta)\}
 \end{align*}
 
 \begin{center}
