@@ -12,7 +12,7 @@
 
 \maketitle
 
-\subsection*{Example}
+\section*{Binomial Random Variables}
 There are two balls marked S and F in a basket. Select a ball 3 times with
 replacement. At each trial, S is likely to be chosen with probability \( p \),
 and F is likely to be chosen with probability \( 1-p \). Let \( X \) be the
@@ -130,5 +130,75 @@ reworking, what is the probability that a rivet is defective?
 Find the probability that a randomly selected seam has exactly 3 defective
 rivets.
 \[ \binom{25}{3}p^{3}(1-p)^{22} \]
+
+\subsection*{Example}
+A very large batch of components has arrived at a distributor. The batch
+can be characterized as acceptable only if the proportion of defective
+components is at most 0.10. The distributor decides to randomly select 10 or
+15 components and to accept the batch only if the defective components in the
+sample is at most 1 or 2, respectively. \par
+Consider a simpler experiment. Select 2 components and inspect them. The
+probability that the two are both defective is:
+\[ (\frac{k}{N})(\frac{k-1}{N-1}) \]
+where \( k \) is the number of defective components in the batch. If \( N \)
+and \( k \) are large:
+\[ \frac{k-1}{N-1}\sim\frac{k}{N} \]
+Consider sampling without replacement from a dichotomous population of size
+\( N \). If the sample size (number of trials) \( n \) is at most 5\% of the
+population size. The experiment can be analyzed as though it were a binomial
+experiment. \par
+Trial: select a component from the batch and inspect the component for defects.
+\[ p = \frac{k}{N} \]
+where \( k \) is the number of defective components in the batch and \( X \) is
+the number of defective components in the \( n \) trials. In the real world,
+we do not replace a component after inspecting it, but we can approximate it
+for the purpose of this experiment.
+\begin{align*}
+  X &\sim Bin(10,p) \\
+  P(X\leq 2) &= \sum_{x=0}^{2}b(x;n,p) \\
+  &= \sum_{x=0}{2}\binom{n}{x}p^{x}(1-p)^{n-x}
+\end{align*}
+\[ Method\ 1:\ n = 10 \]
+\begin{center}
+  \begin{tabular}{|c|c|c|c|c|c|}
+    \hline
+    \( p = \frac{k}{N} \) & 0.01 & 0.02 & 0.1 & 0.2 & 0.25 \\
+    \hline
+    \( P(X\leq 2) \) & 0.999 & 0.9985 & 0.9298 & 0.6778 & 0.5256 \\
+    \hline
+  \end{tabular}
+\end{center}
+\[ Method\ 2:\ n = 10 \]
+\begin{center}
+  \begin{tabular}{|c|c|c|c|c|c|}
+    \hline
+    \( p = \frac{k}{N} \) & 0.01 & 0.02 & 0.1 & 0.2 & 0.25 \\
+    \hline
+    \( P(X\leq 1) \) & 0.9957 & 0.9139 & 0.7361 & 0.3758 & 0.2440 \\
+    \hline
+  \end{tabular}
+\end{center}
+\[ Method\ 3:\ n = 15 \]
+\begin{center}
+  \begin{tabular}{|c|c|c|c|c|c|}
+    \hline
+    \( p = \frac{k}{N} \) & 0.01 & 0.02 & 0.1 & 0.2 & 0.25 \\
+    \hline
+    \( P(X\leq 2) \) & 0.9996 & 0.9638 & 0.8159 & 0.3980 & 0.2361 \\
+    \hline
+  \end{tabular}
+\end{center}
+Which method is the best? Our goal is that the batch is accepted if
+\( p \leq 0.10 \) and rejected if \( p > 0.10 \).
+\begin{center}
+  \begin{tabular}{|c|c|c|c|}
+    \hline
+    \( p = \frac{k}{N} \) & & 0.10 & \\
+    \hline
+    \( P(the\ event\ such\ that\ we\ accept\ the\ batch) \) & high & & low \\
+    \hline
+  \end{tabular}
+\end{center}
+The third method is the best.
 
 \end{document}

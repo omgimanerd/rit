@@ -1,0 +1,61 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[linguistics]{forest}
+
+\title{Probability and Statistics}
+\author{Alvin Lin}
+\date{Probability and Statistics: January 2017 - May 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{The Poisson Probability Distribution}
+Recall binomial random variables and its probability mass function.
+\[ b(x;n,p) =
+  \begin{cases}
+    \binom{n}{x}p^{x}(1-p)^{n-x} &, x = 0,1,2,\dots,n \\
+    0 &, otherwise
+  \end{cases}
+\]
+As \( n\to\infty \) and \( p\to 0 \), \( np\to\mu > 0 \).
+\[ b(x;n,p)\to p(x;\mu) \]
+
+\subsection*{Poisson Distribution}
+\[ p(x;\mu) =
+  \begin{cases}
+    \frac{\e^{-\mu}\mu^{x}}{x!} &, x = 0,1,2,\dots \\
+    0 &, otherwise
+  \end{cases}
+\]
+The Poisson model is a reasonably good approximation of the binomial model
+when \( n \geq 20 \) with \( p \leq 0.05 \) or \( n \geq 100 \) with
+\( p \leq 0.10 \).
+\begin{center}
+  \begin{tabular}{|c|c|}
+    \hline
+    binomial & Poisson \\
+    \hline
+    \( E(X) = np \) & \( E(X) = \mu \) \\
+    \hline
+    \multicolumn{2}{|c|}{\( np \sim \mu \)} \\
+    \hline
+    \( V(X) = np(1-p) \) & \( V(X) = \mu \) \\
+    \hline
+    \multicolumn{2}{|c|}{\( np(1-p) \sim np \sim \mu \)} \\
+    \hline
+  \end{tabular}
+\end{center}
+\begin{align*}
+  \sum_{x=0}^{\infty}p(x;\mu) &=
+    \sum_{x=0}^{\infty}\frac{\e^{-\mu}\mu^{x}}{x!} \\
+  &= \e^{-\mu}\sum_{x=0}^{\infty}\frac{\mu^{x}}{x!} \\
+  &= \e^{-\mu}\e^{\mu} \\
+  &= \e^{-\mu+\mu} \\
+  &= \e^{0} \\
+  &= 1
+\end{align*}
+
+\end{document}
