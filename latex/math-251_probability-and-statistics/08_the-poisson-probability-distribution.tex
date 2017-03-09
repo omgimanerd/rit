@@ -2,6 +2,7 @@
 
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{centernot}
 \usepackage[linguistics]{forest}
 
 \title{Probability and Statistics}
@@ -57,5 +58,88 @@ when \( n \geq 20 \) with \( p \leq 0.05 \) or \( n \geq 100 \) with
   &= \e^{0} \\
   &= 1
 \end{align*}
+
+\subsection*{Example}
+Let \( X \) denote the number of traps (defects of a certain kind) in a
+particular type of semiconductor transistor, and suppose it has Poisson
+distribution with \( \mu = 2 \). The probability that there are exactly
+3 traps is:
+\begin{align*}
+  P(X=3) &= p(3;\mu) \\
+  &= p(3;2) \\
+  &= \frac{\e^{-2}(2)^{3}}{3!} \\
+  &\approx 0.18
+\end{align*}
+
+\subsection*{Poisson Process}
+\begin{enumerate}
+  \item There exists a parameter \( \alpha > 0 \) such that for any short time
+    interval of length \( \Delta t \), the probability that exactly one
+    event occurs is:
+    \[ \alpha\Delta t+o(\Delta t) \]
+  \item The probability of more than one event occurring during \( \Delta t \)
+    is \( o(\Delta t) \) [which, along with assumption 1, implies that
+    the probability of no events during \( \Delta t \) is
+    \( 1-\alpha\Delta t-o(\Delta t) \)].
+  \item The number of events occurring during the time interval \( \Delta t \)
+    is independent of the number that occur prior to this time interval.
+  \item The probability that the ``event'' occurs \( k \) times in a time
+    interval of length \( t \) is:
+    \[ P_{k}(t) = \frac{\e^{-(\alpha t)}(\alpha t)^{k}}{k!} \]
+    where \( \alpha \) is the average rate of occurrence of the ``event''.
+\end{enumerate}
+
+\subsubsection*{Little o notation}
+\( x^{2} \) is \( o(|x|) \) for \( x\to 0 \).
+\[ \frac{x^{2}}{|x|} \to 0\ as\ x\to 0 \]
+\( x^{3}+x^{5} \) is \( o(|x|^{2}) \) for \( x\to 0 \).
+\[ \frac{x^{3}+x^{5}}{|x|^{2}} \to 0\ as\ x\to 0 \]
+\( \sqrt{|x|} \) is not \( o(|x|) \) for \( x\to 0 \).
+\[ \frac{\sqrt{|x|}}{|x|} = \frac{1}{\sqrt{|x|}}\ as\ x\to 0 \]
+\( \frac{1}{\sqrt{x}} \) is not \( o(\frac{1}{x}) \) for \( x\to 0 \).
+\[ \frac{\frac{1}{\sqrt{x}}}{\frac{1}{x}} \centernot\to 0\ as\ x\to\infty \]
+\( \frac{1}{x^{2}} \) is \( o(\frac{1}{x}) \) for \( x\to\infty \).
+\[ \frac{\frac{1}{x^{2}}}{\frac{1}{x}} \to 0\ as\ x\to\infty \]
+Let \( R_{n}(x) = f(x)-T_{n}(x) \), where \( T_{n}(x) \) is the nth order
+Maclaurin polynomial for \( f \). Then \( R_{n}(x) = o(|x|^{n}) \) for
+\( x\to 0 \).
+
+\subsection*{Example}
+Suppose pulses arrive at a counter at an average rate of six per minute so that
+\( \alpha = 6 \). Suppose this is a Poisson process. Find the probability that
+at least one pulse arrives during a time interval of length 0.5 minutes. Let
+\( X \) be a random variable denoting the number of pulses arrived.
+\begin{align*}
+  P(X\geq 1) &= 1-P(X=0) \\
+  P(X=0) = \frac{\e^{-\alpha t}(\alpha t)^{k}}{k!} \\
+  &= \frac{\e^{-(6\cdot 0.5)}(6\cdot 0.5)^{0}}{0!} \\
+  &= \e^{-3} \\
+  P(X\geq 1) &= 1-\e^{-3} \\
+  &\approx 0.950
+\end{align*}
+Tell whether the statment is true:
+\begin{itemize}
+  \item
+    \[ \sum_{k=0}^{\infty}\frac{\e^{-\alpha t}(\alpha t)^{k}}{k!} = 1 \]
+    True, since \( P(X=0)+P(X=1)+P(X=2)+\dots \) is exhaustive.
+  \item The probability that 6 pulses arrive during a time interval of length
+    1.0 minute is equal to:
+    \[ \big[\frac{\e^{-(6\cdot 0.5)}(6\cdot 0.5)^{3}}{3!}\big] +
+       \big[\frac{\e^{-(6\cdot 0.5)}(6\cdot 0.5)^{3}}{3!}\big] \]
+    False, they are not additive.
+  \item If 4 pulses arrive during 3:00:00-3:00:30, the probability that 3 pulses
+    arrive during 3:00:30-3:01:00 is equal to:
+    \[ \big[\frac{\e^{-(6\cdot 0.5)}(6\cdot 0.5)^{4}}{4!}\big]\cdot
+       \big[\frac{\e^{-(6\cdot 0.5)}(6\cdot 0.5)^{3}}{3!}\big] \]
+    False, the events are independent.
+  \item The probability that 6 pulses are received in a time interval of
+    length 1.0 minute is equal to:
+    \[ \frac{\e^{-6\cdot 1}(6\cdot 1)^{6}}{6!} \]
+    True
+  \item The probability that 6 pulses are received in a time interval of
+    length 1.0 minute is equal to:
+    \[ \sum_{k=0}^{6}\big[\frac{\e^{-6\cdot 0.5}(6\cdot 0.5)^{k}}{k!}\big]\cdot
+       \big[\frac{\e^{-6\cdot 0.5}(6\cdot 0.5)^{6-k}}{(6-k)!}\big] \]
+\end{itemize}
 
 \end{document}
