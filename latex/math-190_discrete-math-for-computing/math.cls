@@ -12,6 +12,7 @@
 \newcommand*{\ddiff}[2]{\frac{\diff{#1}}{\diff{#2}}}
 \newcommand*{\Diff}[1]{\mathrm{d^#1}}
 \newcommand*{\e}{\mathrm{e}}
+\newcommand*{\N}{\mathbb{N}}
 \newcommand*{\R}{\mathbb{R}}
 \newcommand*{\Z}{\mathbb{Z}}
 \newcommand*{\Qp}{\mathbb{Q'}}
