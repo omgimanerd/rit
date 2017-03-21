@@ -1,0 +1,84 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[linguistics]{forest}
+
+\title{Probability and Statistics}
+\author{Alvin Lin}
+\date{Probability and Statistics: January 2017 - May 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Continuous Random Variables}
+Let \( X \) be a continuous random variable. The probability distribution or
+probability density function (pdf) of \( X \) is a function \( f(x) \) such that
+for any two numbers \( a \) and \( b \) with \( a \leq b \).
+\[ P(a\leq X\leq b) = \int_{a}^{b}f(x)\diff{x} \]
+For a function \( f(x) \) to be a valid pdf, the following conditions must begin
+satisfied:
+\begin{enumerate}
+  \item \( f(x) \geq 0 \) for any \( x \in (-\infty,\infty) \).
+  \item \( \int_{-\infty}^{\infty}f(x)\diff{x} = 1 \)
+\end{enumerate}
+A continuous random variable \( X \) is said to have a uniform distribution on
+the interval \( [A,B] \) if the pdf of \( X \) is:
+\[ f(x;A,B) =
+  \begin{cases}
+    \frac{1}{B-A} &, A\leq x\leq B \\
+    0 &, \mathrm{otherwise}
+  \end{cases}
+\]
+
+\subsection*{Example}
+The direction of an imperfection with respect to a reference line on a
+circular object such as tires, brake rotors, etc. is in general subject to
+uncertainty. Consider the reference line connected the valve stem on a tire rim
+to the center point. Let \( X \) be the angle measured clockwise to the location
+of the imperfection. One possible pdf for \( X \) is:
+\[ f(x) =
+  \begin{cases}
+    \frac{1}{360} &, 0 \leq x < 360 \\
+    0 &, otherwise
+  \end{cases}
+\]
+Find the probability that there is an imperfection between the \( 45^{\circ} \)
+and the \( 90^{\circ} \) region on the rim.
+\begin{align*}
+  P(45\leq X\leq 90) &= \int_{45}^{90}\frac{1}{360}\diff{y} \\
+  &= \frac{1}{360}[y]_{y=45}^{y=90} \\
+  &= \frac{1}{360}(90-45) \\
+  &= \frac{45}{360} \\
+  &= \frac{1}{8}
+\end{align*}
+
+\subsection*{Cumulative Distribution Function}
+The cumulative distribution function \( F(x) \) for a continuous random variable
+\( x \) is defined for every number by:
+\[ F(x) = P(X\leq x) = \int_{-\infty}^{\infty}f(s)\diff{s} \]
+
+\subsection*{Proposition}
+Let \( X \) be a continuous random variable with pdf \( f(x) \) and cdf
+\( F(x) \). Then for any number \( a \):
+\begin{align*}
+  P(X>a) &= 1-P(X\leq a) \\
+  &= 1-\int_{-\infty}^{a}f(s)\diff{s} \\
+  &= 1-F(a)
+\end{align*}
+For any numbers \( a \) and \( b \) with \( a \leq b \):
+\begin{align*}
+  P(a\leq X\leq b) &= \int_{a}^{b}f(s)\diff{s} \\
+  &= \int_{-\infty}^{a}f(s)\diff{s}+\int_{a}^{b}f(s)\diff{s}-
+    \int_{-\infty}^{a}f(s)\diff{s} \\
+  &= \int_{-\infty}^{b}f(s)\diff{s}-\int_{-\infty}^{a}f(s)\diff{s} \\
+  &= F(b)-F(a)
+\end{align*}
+
+\begin{center}
+  If you have any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}

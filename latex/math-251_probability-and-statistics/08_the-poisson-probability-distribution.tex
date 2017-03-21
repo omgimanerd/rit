@@ -117,7 +117,7 @@ at least one pulse arrives during a time interval of length 0.5 minutes. Let
   P(X\geq 1) &= 1-\e^{-3} \\
   &\approx 0.950
 \end{align*}
-Tell whether the statment is true:
+Tell whether the statement is true:
 \begin{itemize}
   \item
     \[ \sum_{k=0}^{\infty}\frac{\e^{-\alpha t}(\alpha t)^{k}}{k!} = 1 \]
@@ -141,6 +141,33 @@ Tell whether the statment is true:
     \[ \sum_{k=0}^{6}\big[\frac{\e^{-6\cdot 0.5}(6\cdot 0.5)^{k}}{k!}\big]\cdot
        \big[\frac{\e^{-6\cdot 0.5}(6\cdot 0.5)^{6-k}}{(6-k)!}\big] \]
 \end{itemize}
+
+\subsection*{Example}
+In proof testing of circuit boards, the probability that any particular diode
+will fail is .01. Suppose a circuit board contains 200 diodes.
+\begin{itemize}
+  \item How many diodes would you expect to fail, and what is the standard
+    deviation of the number expected to fail?
+    \[ E(X) = np = 200\times0.01 = 2 \]
+    \[ \sqrt{V(X)} = \sqrt{np(1-p)} = \sqrt{200\times0.01\times(1-0.01)} =
+       1.407 \]
+  \item What is the (approximate) probability that at least four diodes will
+    fail on a randomly selected board?
+    \begin{align*}
+      P(X\geq 4) &= 1-P(X\leq 3) \\
+      &= 1-\sum_{x=0}^{3}b(x;200,0.01) \\
+      &\approx 1-\sum_{x=0}^{3}p(x;\mu) \\
+      \mu &= 200\times0.01 = 2
+    \end{align*}
+    For a random variable \( X \) with its pmf being \( p(x;\mu) \), it turns
+    out that \( E(X) = \mu \) and \( V(X) = \mu \).
+\end{itemize}
+
+\subsection*{Example}
+Let \( X \) be a continuous random variable. The probability distribution or
+probability density function (pdf) of \( X \) is a function \( f(x) \) such that
+for any two numbers \( a \) and \( b \) with \( a \leq b \).
+\[ P(a\leq X\leq b) = \int_{a}^{b}f(x)\diff{x} \]
 
 \begin{center}
   If you have any questions, comments, or concerns, please contact me at
