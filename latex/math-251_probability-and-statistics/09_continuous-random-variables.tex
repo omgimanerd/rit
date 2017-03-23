@@ -76,6 +76,97 @@ For any numbers \( a \) and \( b \) with \( a \leq b \):
   &= F(b)-F(a)
 \end{align*}
 
+\subsection*{Example}
+Let \( p \) be a number between 0 and 1. The \( (100p) \)th percentile of the
+distribution of a continuous random variable \( X \), denoted by \( \eta(p) \),
+is defined by:
+\[ p = P(x\leq\eta(p)) = F(\eta(p)) = \int_{-\infty}^{\eta(p)}f(x)\diff{x} \]
+Using the previous tire rim example, find \( \eta(0.9) \), i.e. the 90th
+percentile.
+\begin{align*}
+  p &= P(x\leq\eta(p)) \\
+  0.9 &= P(X\leq\eta(0.9)) \\
+  &= F(\eta(0.9)) \\
+  &= \int_{-\infty}^{\eta(0.9)}f(x)\diff{x} \\
+  &= \int_{0}^{\eta(0.9)}\frac{1}{360}\diff{x} \\
+  &= \frac{1}{360}[x]_{x=0}^{x=\eta(0.9)} \\
+  &= \frac{1}{360}[\eta(0.9)-0] \\
+  &= \frac{\eta(0.0)}{360} \\
+  \eta(0.9) &= (0.9)(360)
+\end{align*}
+The median of a continuous distribution, denoted by \( \tilde{\mu} \), is
+the 50th percentile and also has special importance.
+\[ \tilde{\mu} = \eta(0.5) \]
+\[ 0.5 = F(\eta(0.5)) = F(\tilde{\mu}) =
+   \int_{-\infty}^{\tilde{\mu}}f(x)\diff{x} \]
+
+\subsection*{Expected Values and Variance}
+The expected values and variance of a continouous random variable are similar
+to those of a discrete random variable. Instead of \( \sum \), we use
+\( \int \). \\
+Expected value of \( X \):
+\[ E(X) = \int_{-\infty}^{\infty}xf(x)\diff{x} \]
+\begin{center}
+where \( f(x) \) is the pdf of \( X \).
+\end{center}
+Expected value of \( Y = h(X) \):
+\[ E(Y) = E(h(X)) = \int_{-\infty}^{\infty}h(x)f(x)\diff{x} \]
+Variance of \( X \):
+\[ V(X) = \int_{-\infty}^{\infty}(x-E(X))^{2}f(x)\diff{x} \]
+Standard Deviation of \( X \):
+\[ \sigma_{x} = \sqrt{V(X)} \]
+
+\subsection*{Example}
+Using the previous tire rim example:
+\begin{align*}
+  E(X) &= \int_{-\infty}^{\infty}f(x)\diff{x} \\
+  &= \int_{0}^{360}x\frac{1}{360}\diff{x} \\
+  &= \frac{1}{360}\frac{1}{2}[x^{2}]_{x=0}^{x=360} \\
+  &= \frac{1}{2}\frac{1}{360}[360^{2}-0^{2}] \\
+  &= \frac{1}{2}\frac{1}{360}360^{2} \\
+  &= \frac{1}{2}360 = 180 \\
+  V(X) &= \int_{-\infty}^{\infty}(x-E(X))^{2}f(x)\diff{x} \\
+  &= \int_{-\infty}^{\infty}(x-180)^{2}f(x)\diff{x} \\
+  &= \int_{0}^{360}(x-180)^{2}f(x)\diff{x} \\
+  &= \dots
+\end{align*}
+We can also use the proposition that \( V(X) = E(X^{2})-[E(X)]^{2} \):
+\begin{align*}
+  E(X^{2}) &= \int_{-\infty}^{\infty}x^{2}f(x)\diff{x} \\
+  &= \int_{0}^{360}x^{2}f(x)\diff{x} \\
+  &= \int_{0}^{360}x^{2}\frac{1}{360}\diff{x} \\
+  &= \frac{1}{360}\int_{0}^{360}x^{2}\diff{x} \\
+  &= \frac{1}{360}\frac{1}{3}[x^{3}]_{x=0}^{x-360} \\
+  &= \frac{1}{3}\frac{1}{360}[360^{3}-0^{3}] \\
+  &= \frac{1}{3}360^{2} \\
+  V(X) &= E(X^{2})-[E(X)]^{2} \\
+  &= \frac{360^{2}}{3}-180^{2} \\
+  &= \frac{1}{3}2^{2}180^{2}-180^{2} \\
+  &= 180^{2}[\frac{4}{3}-1] \\
+  &= \frac{180^{2}}{3} \\
+  \sigma_{x} &= \sqrt{V(X)} \\
+  &= \frac{180}{\sqrt{3}} \\
+  &\approx 104
+\end{align*}
+
+\subsection*{Discrete vs Continuous Median}
+Given discrete quiz scores 6, 7, and 9, the median score is 7. For continuous
+values, the generation property of median \( \tilde{\mu} \) is:
+\[ \tilde{\mu} = \eta(0.5) \]
+A continuous random variable \( X \) is said to have a normal distribution
+with parameters \( \mu \) and \( \sigma \) (or \( \mu \) and \( \sigma_{2} \)),
+where:
+\[ -\infty < \mu < \infty \]
+\[ \mu\in(-\infty,\infty) \]
+\[ \mu\in\R \]
+\[ \mu\ \mathrm{is\ a\ real\ number} \]
+and \( \sigma > 0 \), if the pdf of \( X \) is:
+\[ f(x;\mu,\sigma) =
+   \frac{1}{\sqrt{2\pi\sigma}}\e^{-(x-\mu)^{2}/(2\sigma)^{2}} \]
+\begin{center}
+  for any \( x\in\R \).
+\end{center}
+
 \begin{center}
   If you have any questions, comments, or concerns, please contact me at
   alvin@omgimanerd.tech
