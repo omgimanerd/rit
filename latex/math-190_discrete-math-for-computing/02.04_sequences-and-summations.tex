@@ -83,6 +83,42 @@ Find a non-recursive formula for \( a_{n} = 2a_{n-1}+n-1 \).
   a_{n} &= 2^{n}-n-1
 \end{align*}
 
+\subsection*{Summation Notation}
+\[ \sum_{i=M}^{N}f(i) = f(M)+f(M+1)+\dots+f(N) \]
+\[ \sum_{i=M}^{N}f(i) = \sum_{j=M}^{N}f(j) = \sum_{k=M}^{N}f(k) \]
+
+\subsection*{Example}
+\[ \sum_{i=1}^{5}i^{2} = 1^{2}+2^{2}+3^{2}+4^{2}+5^{2} = 55 \]
+\[ \sum_{j=5}^{8}(\frac{1}{j}) = \frac{1}{5}+\frac{1}{6}+\frac{1}{7}+
+   \frac{1}{8} \]
+\[ \sum_{k=0}^{5}(2^{k}) = 2^{0}+2^{1}+2^{2}+2^{3}+2^{4}+2^{5} = 2^{6}-1 \]
+
+\subsection*{Summation Properties}
+\begin{enumerate}
+  \item
+    \[ \sum_{i=M}^{N}(kf(i)) = k(\sum_{i=M}^{N}f(i)) \]
+  \item
+    \[ \sum_{i=M}^{N}(f(i)+g(i)) = \sum_{i=M}^{N}f(i)+\sum_{i=M}^{N}g(i) \]
+  \item
+    \[ \sum_{i=M}^{N}f(i) = \sum_{i=1}^{N}f(i)-\sum_{i=1}^{M-1}f(i) \]
+\end{enumerate}
+
+\subsection*{Summation Formulas}
+\begin{enumerate}
+  \item
+    \[ \sum_{i=1}^{n}i = n \]
+  \item Gauss's Formula
+    \[ \sum_{i=1}^{n}i = \frac{n(n+1)}{2} \]
+  \item
+    \[ \sum_{i=1}^{n}i^{2} = \frac{n(n+1)(2n+1)}{6} \]
+  \item
+    \[ \sum_{i=1}^{n}i^{3} = \bigg(\frac{n(n+1)}{2}\bigg)^{2} \]
+\end{enumerate}
+
+\subsection*{Geometric Sequence}
+\[ \{a,ar,ar^{2},ar^{3},\dots\} \]
+\[ \sum_{i=0}^{n}(ar^{i}) = a\bigg(\frac{1-r^{n+1}}{1-r}\bigg) \]
+
 \begin{center}
   If you have any questions, comments, or concerns, please contact me at
   alvin@omgimanerd.tech
