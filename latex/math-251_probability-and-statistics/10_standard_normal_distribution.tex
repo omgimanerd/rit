@@ -1,0 +1,104 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\title{Probability and Statistics}
+\author{Alvin Lin}
+\date{Probability and Statistics: January 2017 - May 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Standard Normal Distribution}
+\textbf{Standard Normal Distribution} is the normal distribution within
+\( \mu = 0 \) and \( \sigma = 1 \). The pdf of a standard normal random
+variable \( Z \) is:
+\[ f(\delta;0,\sigma) = \frac{1}{\sqrt{2\pi}}\e^{-\frac{\delta^{2}}{2}} \]
+The cdf of \( Z \) is:
+\begin{align*}
+  \Phi(\delta) &= P(Z\leq\delta) \\
+  &= \int_{-\infty}^{\delta}f(y;0,1)\diff{y} \\
+  &= \int_{-\infty}^{\delta}\frac{1}{\sqrt{2\pi}}\e^{-\frac{y^{2}}{2}}\diff{y}
+\end{align*}
+
+\subsection*{Example}
+Find \( P(Z\leq 1.25) \), where \( Z \) is the standard normal random variable.
+\begin{align*}
+  P(Z\leq 1.25) &= \int_{\infty}^{1.25}\frac{1}{\sqrt{2\pi}}
+    \e^{-\frac{y^{2}}{2}}\diff{y} \\
+  &= \Phi(1.25) \\
+  &\approx 0.8944
+\end{align*}
+
+\subsection*{Example}
+Find \( \eta(0.99) \), 99th percentile, for the standard normal variable
+\( Z \).
+\begin{align*}
+  0.99 &= \int_{-\infty}^{\eta(0.99)}f(\delta;0,1)\diff{\delta} \\
+  &= \Phi(\eta(0.99)) \\
+  \eta(0.99) &= 2.33 \\
+\end{align*}
+
+\subsection*{The \( Z_{\alpha} \)}
+\( Z_{\alpha} \) denotes the value on the z axis for which the \( \alpha \) of
+the area under the z curve lies to the right of \( Z_{\alpha} \). Example:
+\begin{align*}
+  Z_{0.1} &= \eta(0.9) \\
+  0.9 &= \Phi(Z_{0.1}) \\
+  &= \int_{-\infty}^{\eta(0.9)}\frac{1}{\sqrt{2\pi}}
+    \e^{-\frac{y^{2}}{2}}\diff{y} \\
+  Z_{0.1} &= 1.28
+\end{align*}
+
+\subsection*{Relationship between normal distribution and standard normal
+             distribution}
+Let \( X \) be the normal random variable pdf \( f(x;\mu,\sigma) \), and
+\( Z \) be the standard normal random variable (with pdf \( f(\delta;0,1) \)).
+Derivation:
+\begin{align*}
+  F(x;\mu,\sigma) &= \int_{-\infty}^{x}\frac{1}{\sqrt{2\pi\sigma}}
+    \e^{-\frac{(y-\mu)^{2}}{2\sigma^{2}}}\diff{y} \\
+  \Phi(\delta) &= \int_{-\infty}^{\delta}\frac{1}{\sqrt{2\pi}}
+    \e^{-\frac{y^{2}}{2}}\diff{y} \\
+  Z &= \frac{X-\mu}{\sigma} \\
+  P(a\leq X\leq b) &= P(\frac{a-\mu}{\sigma}\leq Z\leq\frac{b-\mu}{\sigma}) \\
+  &= P(Z\leq\frac{b-\mu}{\sigma})-P(Z\leq\frac{a-\mu}{\sigma}) \\
+  &= \Phi(\frac{b-\mu}{\sigma})-\Phi(\frac{a-\mu}{\sigma}) \\
+  P(X\leq a) &= P(Z\leq\frac{a-\mu}{\sigma}) \\
+  P(X\geq b) &= 1-P(X\leq b) \\
+  &= 1-P(Z\leq\frac{b-\mu}{\sigma}) \\
+  &= 1-\Phi(\frac{b-\mu}{\sigma})
+\end{align*}
+
+\subsection*{Example}
+The breakdown voltage of a randomly chosen diode of a particular type is known
+to be normally distributed. Find the probability that a diode's breakdown
+voltage is within 1 standard deviation of its mean value. Experiment: select
+a diode and measure its breakdown voltage. X: the measured breakdown voltage.
+\[ \mu = E(X) \]
+\[ \sigma = \sqrt{V(X)} \]
+\begin{align*}
+  P(\mu-\sigma\leq X\leq\mu+\sigma) &= \int_{\mu-\sigma}^{\mu+\sigma}
+    f(x;\mu,\sigma)\diff{x} \\
+  &= \int_{\mu-\sigma}^{\mu+\sigma}\frac{1}{\sqrt{2\pi\sigma}}
+    \e^{-\frac{(x-\mu)^{2}}{2\sigma^{2}}}\diff{x} \\
+  &= P(\frac{(\mu-\sigma)-\mu}{\sigma}\leq
+    Z\leq\frac{(\mu+\sigma)-\mu}{\sigma}) \\
+  &= P(-1\leq Z\leq1) \\
+  &= \Phi(1)-\Phi(-1) \\
+  &= 0.8413-0.1587
+\end{align*}
+
+\subsection*{Relationship between two percentiles}
+(100p)th percentile for normal \( (\mu,\sigma) \):
+\[ = \mu +\big[\mathrm{(100p)th\ percentile\ for\ standard\ normal}\big]
+   \times\sigma \]
+
+\begin{center}
+  If you have any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
