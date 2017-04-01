@@ -20,11 +20,8 @@
     "del": "^2.2.2",
     "gulp": "^3.9.1",
     "gulp-changed": "^2.0.0",
-    "gulp-latex": "^1.0.1",
-    "gulp-pdflatex": "^0.2.0",
+    "gulp-pdflatex2": "^1.0.0",
     "gulp-plumber": "^1.1.0",
-    "gulp-print": "^2.0.1",
-    "gulp-rename": "^1.2.2",
-    "gulp-shell": "^0.6.3"
+    "gulp-rename": "^1.2.2"
   }
 }
