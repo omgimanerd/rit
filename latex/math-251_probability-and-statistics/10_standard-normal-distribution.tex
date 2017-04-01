@@ -96,6 +96,23 @@ a diode and measure its breakdown voltage. X: the measured breakdown voltage.
 \[ = \mu +\big[\mathrm{(100p)th\ percentile\ for\ standard\ normal}\big]
    \times\sigma \]
 
+\subsection*{Example}
+The temperature reading from a thermocouple placed in a constant-temperature
+medium is normally distributed with mean \( \mu \), the actual temperature
+of the medium, and standard deviation \( \sigma \). What would the value of
+\( \sigma \) have to be to ensure that 95\% of all readings are within
+\( .1^{\circ} \) of \( \mu \)? \\
+Random variable \( X \) that has a normal distribution with \( E(X) = \mu \)
+and standard deviation \( \sqrt{V(X)} = \sigma \).
+\begin{align*}
+  0.95 &= P(\mu-0.1\leq X\leq\mu+0.1) \\
+  &= P(\frac{(\mu-0.1)-\mu}{\sigma}\leq Z\leq\frac{(\mu+0.1)-\mu}{\sigma}) \\
+  &= P(-\frac{0.1}{\sigma}\leq Z\leq\frac{0.1}{\sigma}) \\
+  \Phi(\frac{0.1}{\sigma}) &= 0.975 \\
+  \frac{0.1}{\sigma} &= 1.96 \\
+  \sigma &= \frac{0.1}{1.96}
+\end{align*}
+
 \begin{center}
   If you have any questions, comments, or concerns, please contact me at
   alvin@omgimanerd.tech

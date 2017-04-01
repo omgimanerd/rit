@@ -1,0 +1,44 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\title{Probability and Statistics}
+\author{Alvin Lin}
+\date{Probability and Statistics: January 2017 - May 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Jointly Distributed Random Variables}
+Let \( X \) and \( Y \) be two discrete random variables defined on the same
+sample space \( S \) of an experiment. The joint pmf \( p(x,y) \) is defined
+for any numbers \( x \) and \( y \) by:
+\[ p(x,y) = P(X=x\ and\ Y=y) \]
+The function \( p(x,y) \) satisfies the following properties.
+\begin{enumerate}
+  \item \( p(x,y) \geq 0 \) for any \( x,y \) \\
+  \item \( \sum_{x}\sum_{y}p(x,y) = 1 \) \\
+\end{enumerate}
+
+\subsection*{Marginal PMF}
+Marginal pmf of \( X \):
+\[ p_{X}(x) = \sum_{y:p(x,y)>0}p(x,y) \]
+
+\subsection*{Jointly Distributed Continuous Random Variables}
+Let \( X \) and \( Y \) be continuous random variables. A joint pdf \( f(x,y) \)
+satisfies the following conditions.
+\begin{enumerate}
+  \item \( P((X,Y)\in A) = \int_{A}\int f(x,y)\diff{x}\diff{y} \)
+  \item \( f(x,y)\geq 0\ for\ any\ x\ and\ y \) \\
+  \item \( \int_{-\infty}^{\infty}\int_{-\infty}^{\infty}
+    f(x,y)\diff{x}\diff{y} = 1 \)
+\end{enumerate}
+
+\begin{center}
+  If you have any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}

@@ -1,0 +1,73 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\title{Probability and Statistics}
+\author{Alvin Lin}
+\date{Probability and Statistics: January 2017 - May 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Exponential and Gamma Distributions}
+A random variable \( X \) is said to have an exponential distribution with
+(scale) parameter \( \lambda (\lambda>0) \) if the pdf of \( X \) is:
+\[ f(x;\lambda) =
+  \begin{cases}
+    \lambda\e^{-\lambda x} &, x\geq 0 \\
+    0 &, otherwise
+  \end{cases}
+\]
+The cdf of \( X \) is:
+\[ F(x;\lambda) =
+  \begin{cases}
+    1-\e^{-\lambda x} &, x\geq 0 \\
+    0 &, otherwise
+  \end{cases}
+\]
+
+The derivative with respect to \( x \) of the cdf is equal to the pdf while the
+parameter \( \lambda \) is fixed.
+\begin{align*}
+  F(x;\lambda) &= P(X\leq x) \\
+  &= \int_{-\infty}^{x}f(t;\lambda)\diff{t} \\
+  F'(x;\lambda) &= f(x;\lambda)
+\end{align*}
+
+\subsection*{Expected Values and Variance}
+Expected value of \( X \):
+\begin{align*}
+  E(X) &= \int_{-\infty}^{\infty}xf(x;\lambda)\diff{x} \\
+  &= \int_{0}^{\infty}x\lambda\e^{-\lambda x}\diff{x} \\
+  &= \frac{1}{\lambda}
+\end{align*}
+Variance of \( X \):
+\begin{align*}
+  V(X) &= \int_{-\infty}^{\infty}(x-E(X))^{2}f(x;\lambda)\diff{x} \\
+  &= \int_{0}^{\infty}(x-\frac{1}{\lambda})^{2}\lambda\e^{-\lambda x}\diff{x} \\
+  &= \int_{0}^{\infty}x^{2}
+    \lambda\e^{-\lambda x}\diff{x}-\frac{1}{\lambda^{2}} \\
+  &= \frac{1}{\lambda^{2}} \\
+  V(X) &= E(X^{2})-[E(X)]^{2} \\
+  &= \int_{-\infty}^{\infty}x^{2}f(x;\lambda)\diff{x}-(\frac{1}{\lambda})^{2} \\
+  &= \frac{1}{\lambda^{2}}
+\end{align*}
+
+\subsection*{Relationship between Poisson process and exponential distribution}
+Suppose that the number of events occurring in any time interval of length
+\( t \) has a Poisson distribution with parameter \( \alpha t \) (where
+\( \alpha \), the rate of the event process, is the expected number of events
+ocurring in 1 unit of time) and that numbers of occurrences in nonoverlapping
+intervals are independent of one another. Then the distribution of elapsed time
+between the occurrence of two successive events is exponential with parameter
+\( \lambda = \alpha \).
+
+\begin{center}
+  If you have any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+
+\end{document}
