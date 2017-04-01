@@ -8,8 +8,7 @@ var path = require('path');
 var del = require('del');
 var gulp = require('gulp');
 var gulpChanged = require('gulp-changed');
-var gulpPdflatex = require('gulp-pdflatex');
-var gulpPdflatex2 = require('../gulp-pdflatex2/gulp-pdflatex2');
+var gulpPdflatex2 = require('gulp-pdflatex2');
 var gulpPlumber = require('gulp-plumber');
 var gulpRename = require('gulp-rename');
 
