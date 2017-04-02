@@ -5,7 +5,7 @@ You must have a standard TeX distribution with `pdflatex` installed.
 ```
 sudo apt install texlive
 ```
-To compile the notes, you will need `node.js >= 6.0.0`. The notes are
+To compile the notes, you will need `node >= 6.0.0`. The notes are
 compiled and managed using a gulpfile.
 ```
 npm install

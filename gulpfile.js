@@ -31,7 +31,7 @@ gulp.task('latex', function() {
       path.dirname += '/output';
       path.extname = '.pdf';
     }))
-    .pipe(gulp.dest('./latex'))
+    .pipe(gulp.dest('./latex'));
 });
 
 gulp.task('latex-all', function() {
@@ -44,7 +44,7 @@ gulp.task('latex-all', function() {
       path.dirname += '/output';
       path.extname = '.pdf';
     }))
-    .pipe(gulp.dest('./latex'))
+    .pipe(gulp.dest('./latex'));
 });
 
 gulp.task('clean', function(done) {
