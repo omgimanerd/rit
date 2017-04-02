@@ -1,10 +1,16 @@
 # RIT Class Notes
 
-To compile the notes yourself, you must have a standard TeX distribution
-with `pdflatex` installed.
+## Setup
+You must have a standard TeX distribution with `pdflatex` installed.
 ```
-cd latex
-make
+sudo apt install texlive
+```
+To compile the notes, you will need `node.js >= 6.0.0`. The notes are
+compiled and managed using a gulpfile.
+```
+npm install
+npm install -g gulp
+gulp latex-all
 ```
 
 These notes are automatically hosted at
