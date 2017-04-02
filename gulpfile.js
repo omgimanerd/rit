@@ -25,7 +25,7 @@ gulp.task('latex', function() {
     .pipe(gulpPlumber())
     .pipe(gulpChanged('./latex', { transformPath: getOutputFile }))
     .pipe(gulpPdflatex2({
-      TEXINPUTS: ['./latex/cls']
+      TEXINPUTS: ['./cls']
     }))
     .pipe(gulpRename((path) => {
       path.dirname += '/output';
@@ -38,7 +38,7 @@ gulp.task('latex-all', function() {
   return gulp.src('./latex/**/*.tex')
     .pipe(gulpPlumber())
     .pipe(gulpPdflatex2({
-      TEXINPUTS: ['./latex/cls']
+      TEXINPUTS: ['./cls']
     }))
     .pipe(gulpRename((path) => {
       path.dirname += '/output';

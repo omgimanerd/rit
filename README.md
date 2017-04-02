@@ -16,5 +16,7 @@ gulp latex-all
 These notes are automatically hosted at
 [http://omgimanerd.tech/notes](http://omgimanerd.tech/notes)
 
-## Owners
-  - Alvin Lin (omgimanerd)
+## Author
+[![Libraries.io for GitHub](https://img.shields.io/badge/Alvin%20Lin-omgimanerd-blue.svg)](http://omgimanerd.tech)
+[![Twitter Follow](https://img.shields.io/twitter/follow/omgimanerd.svg?style=social&label=Follow)](https://twitter.com/omgimanerd)
+[![GitHub followers](https://img.shields.io/github/followers/omgimanerd.svg?style=social&label=Follow)](https://github.com/omgimanerd)
