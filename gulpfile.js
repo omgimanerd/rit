@@ -6,6 +6,7 @@ var fs = require('fs');
 var path = require('path');
 
 var del = require('del');
+var glob = require('glob');
 var gulp = require('gulp');
 var gulpChanged = require('gulp-changed');
 var gulpPdflatex2 = require('gulp-pdflatex2');
@@ -33,10 +34,38 @@ gulp.task('latex', function() {
     .pipe(gulp.dest('./latex'))
 });
 
-gulp.task('clean', function() {
-  return del([
-    './**/output'
-  ]);
+gulp.task('latex-all', function() {
+  return gulp.src('./latex/**/*.tex')
+    .pipe(gulpPlumber())
+    .pipe(gulpPdflatex2({
+      TEXINPUTS: ['./latex/cls']
+    }))
+    .pipe(gulpRename((path) => {
+      path.dirname += '/output';
+      path.extname = '.pdf';
+    }))
+    .pipe(gulp.dest('./latex'))
+});
+
+gulp.task('clean', function(done) {
+  glob('./latex/**/*.tex', function(error, texFiles) {
+    glob('./latex/**/output/*', function(error, outputFiles) {
+      var correctOutputFiles = texFiles.map(getOutputFile).map(function(path) {
+        return `./${path}`;
+      });
+      for (var file of outputFiles) {
+        if (!correctOutputFiles.includes(file)) {
+          console.log(`Deleted ${file}`);
+          del(file);
+        }
+      }
+      done();
+    });
+  });
+});
+
+gulp.task('clean-all', function() {
+  return del(['./latex/**/output']);
 });
 
 gulp.task('watch', function() {
