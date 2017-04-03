@@ -69,5 +69,5 @@ gulp.task('clean-all', function() {
 });
 
 gulp.task('watch', function() {
-  gulp.watch('./**/*.tex', ['latex']);
+  gulp.watch('./latex/**/*.tex', ['latex']);
 });
