@@ -26,7 +26,17 @@ six sets:
   \item \( \R \) is the set of all real numbers.
 \end{itemize}
 Both \( E \) and \( P \) are finite sets with \( |E| = 50 \) and \( |P| = 15 \).
-The remaining four sets are all infinite.
+The remaining four sets are all infinite. If \( f:A\to B \) is 1-1, then
+\( |A|\leq|B| \). Recall from functions that \( f \) is 1-1 if every output
+is uniquely associated to 1 input. Also, for real-valued functions, \( f \)
+is 1-1 if it passed the horizontal line test. If \( A\subseteq B \), then
+\( |A|\leq|B| \) by using \( f(x) = x \) where \( f:A\to B \).
+
+\subsection*{Schr{\"o}der-Bernstein Theorem}
+If \( f:A\to B \) is 1-1 and \( g:B\to A \) is 1-1, then \( |A| = |B| \).
+Using the above example, \( |U| = |\R| \) since \( f(x) =
+\frac{\arctan(x)+\frac{\pi}{2}}{\pi} \) where \( f:\R\to U \) is 1-1 and
+\( g(x) = x \) where \( g:U\to\R \) is 1-1.
 
 \subsection*{Infinite Sets}
 Two sets \( A \) and \( B \) have the same \textbf{cardinality}, written

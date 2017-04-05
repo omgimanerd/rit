@@ -9,7 +9,7 @@ var del = require('del');
 var glob = require('glob');
 var gulp = require('gulp');
 var gulpChanged = require('gulp-changed');
-var gulpPdflatex2 = require('gulp-pdflatex2');
+var gulpPdflatex2 = require('../gulp-pdflatex2/gulp-pdflatex2');
 var gulpPlumber = require('gulp-plumber');
 var gulpRename = require('gulp-rename');
 
@@ -20,9 +20,13 @@ var getOutputFile = function(texFile) {
   return path.join(texFile.dir, 'output', texFile.name + '.pdf');
 };
 
+var errorHandler = function() {
+  this.emit('end');
+};
+
 gulp.task('latex', function() {
   return gulp.src('./latex/**/*.tex')
-    .pipe(gulpPlumber())
+    .pipe(gulpPlumber({ errorHandler: errorHandler }))
     .pipe(gulpChanged('./latex', { transformPath: getOutputFile }))
     .pipe(gulpPdflatex2({
       TEXINPUTS: ['./cls']
@@ -36,7 +40,7 @@ gulp.task('latex', function() {
 
 gulp.task('latex-all', function() {
   return gulp.src('./latex/**/*.tex')
-    .pipe(gulpPlumber())
+    .pipe(gulpPlumber({ errorHandler: errorHandler }))
     .pipe(gulpPdflatex2({
       TEXINPUTS: ['./cls']
     }))
