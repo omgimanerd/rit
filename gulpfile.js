@@ -8,8 +8,9 @@ var path = require('path');
 var del = require('del');
 var glob = require('glob');
 var gulp = require('gulp');
+var gutil = require('gulp-util');
 var gulpChanged = require('gulp-changed');
-var gulpPdflatex2 = require('../gulp-pdflatex2/gulp-pdflatex2');
+var gulpPdflatex2 = require('gulp-pdflatex2');
 var gulpPlumber = require('gulp-plumber');
 var gulpRename = require('gulp-rename');
 
@@ -59,7 +60,7 @@ gulp.task('clean', function(done) {
       });
       for (var file of outputFiles) {
         if (!correctOutputFiles.includes(file)) {
-          console.log(`Deleted ${file}`);
+          gutil.log(`Deleted ${file}`);
           del(file);
         }
       }
