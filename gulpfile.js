@@ -74,5 +74,5 @@ gulp.task('clean-all', function() {
 });
 
 gulp.task('watch', function() {
-  gulp.watch('./latex/**/*.tex', ['latex']);
+  gulp.watch('latex/**/*.tex', { cwd: './'}, ['latex']);
 });
