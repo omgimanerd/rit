@@ -1,4 +1,8 @@
 # RIT Class Notes
+This repository contains notes taken from my classes at RIT. Some of these
+are intended for the NTID/hard-of-hearing students at RIT. These notes are
+automatically hosted at
+[http://omgimanerd.tech/notes](http://omgimanerd.tech/notes)
 
 ## Setup
 You must have a standard TeX distribution with `pdflatex` installed.
@@ -12,9 +16,6 @@ npm install
 npm install -g gulp
 gulp latex-all
 ```
-
-These notes are automatically hosted at
-[http://omgimanerd.tech/notes](http://omgimanerd.tech/notes)
 
 ## Author
 [![Libraries.io for GitHub](https://img.shields.io/badge/Alvin%20Lin-omgimanerd-blue.svg)](http://omgimanerd.tech)
