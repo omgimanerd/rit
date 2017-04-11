@@ -1,0 +1,174 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage[linguistics]{forest}
+
+\title{Probability and Statistics}
+\author{Alvin Lin}
+\date{Probability and Statistics: January 2017 - May 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Expected Values and Covariance}
+Let \( X \) and \( Y \) be discrete random variables with joint pmf
+\( p(x,y) \). The expected value of \( h(X,Y) \) is:
+\begin{align*}
+  E\bigg[h(X,Y)\bigg] &= \sum_{x}\sum_{y}h(x,y)p(x,y) \\
+  &= \sum_{x}\sum_{y}h(x,y)P(X=x\ and\ Y=y) \\
+  \mu_{x} &= \sum_{x}xp_{x}(x) \\
+  \mu_{y} &= \sum_{y}xp_{y}(y) \\
+  &= \sum_{y}yP(Y=y)
+\end{align*}
+\( p_{x}(x) \) and \( p_{y}(y) \) are marginal probability mass functions of
+\( X \) and \( Y \), respectively. Recall the formal definitions:
+\begin{align*}
+  p_{x}(x) &= \sum_{y}p(x,y) \\
+  p_{y}(y) &= \sum_{x}p(x,y) \\
+  (\sigma_{x})^{2} &= \sum_{x}(x-\mu_{x})^{2}p_{x}(x) \\
+  &= \sum_{x}(x-\mu_{x})^{2}P(X=x) \\
+  (\sigma_{y})^{2} &= \sum_{y}(y-\mu_{y})^{2}p_{y}(y) \\
+  \sigma_{x} &= \sqrt{(\sigma_{x})^{2}} \\
+  \sigma_{y} &= \sqrt{(\sigma_{y})^{2}}
+\end{align*}
+The \textbf{covariance} between the jointly distributed random variables
+\( X \) and \( Y \) is:
+\begin{align*}
+  Cov(X,Y) &= E\bigg[(x-\mu_{x})(y-\mu_{y})\bigg] \\
+  &= \sum_{x}\sum_{y}(x-\mu_{x})(y-\mu_{y})p(x,y)
+\end{align*}
+Let \( X \) and \( Y \) be jointly distributed random variables.
+\[ Cov(X,Y) = E(XY)-\mu_{x}\mu_{y} \]
+where:
+\[ E(XY) = \sum_{x}\sum_{y}xy\ p(x,y) \]
+
+\subsection*{Correlation Coefficient}
+The correlation coefficient of \( X \) and \( Y \), denoted by \( Corr(X,Y) \),
+\( \rho_{x,y} \), or just \( \rho \), is:
+\[ \rho_{x,y} = \frac{Cov(X,Y)}{\sigma_{x}\sigma_{y}} \]
+If the variables \( a \) and \( c \) are both positive or both negative, then:
+\[ Corr(aX+b,cY+d) = Corr(X,Y) \]
+\[ -1\leq Corr(X,Y) \leq 1 \]
+If \( X \) and \( Y \) with joint pmf \( p(x,y) \) and joint pdf \( f(x,y) \)
+are independent, the \( \rho = 0 \). If \( \rho = 0 \), then the random
+variables \( X \) and \( Y \) may or may not be independent. \( \rho = \pm1 \)
+if and only if \( Y = aX+b \) for some numbers \( a \) and \( b \) with
+\( a \neq 0 \).
+
+\subsection*{Uses of the Correlation Coefficient}
+Let \( X \) be the random variable for the height of a randomly selected person
+at RIT and let \( Y \) be the random variable for their weight. \( Corr(X,Y) \)
+is not likely to be 1 or -1 because there is no strong correlation between
+height and weight. \par
+Let \( X \) be the average temperature of a randomly selected city in degrees
+Centigrade, with \( Y \) being the average temperature expressed in degrees
+Fahrenheit. The correlation coefficient in this case is 1.
+
+\subsection*{Example}
+Randomly select a card from a file containing three cards:
+\begin{itemize}
+  \item (Name, Readiness Assessment Score, Common Core Score)
+  \item (James, 58, 81)
+  \item (Mike, 73, 78)
+  \item (Jane, 76, 85)
+\end{itemize}
+Let \( X \) be the random variable for the readiness assessment score and
+\( Y \) be the random variable for the Common Core score. Recall that a random
+variable is a function. Find the correlation coefficient of \( X \) and \( Y \).
+\begin{center}
+  {\renewcommand{\arraystretch}{2}
+  \begin{tabular}{|c|c|c|c|c|c|}
+    \hline
+    \( x \) & \( y \) & \( p(x,y) \) & \( p_{x}(x) \) & \( p_{y}(y) \) &
+      \( p_{x}(x)p_{y}(y) \) \\
+    \hline
+    58 & 81 & \( \frac{1}{3} \) & \( \frac{1}{3} \) & \( \frac{1}{3} \) &
+      \( \frac{1}{9} \) \\
+    \hline
+    73 & 78 & \( \frac{1}{3} \) & \( \frac{1}{3} \) & \( \frac{1}{3} \) &
+      \( \frac{1}{9} \) \\
+    \hline
+    76 & 85 & \( \frac{1}{3} \) & \( \frac{1}{3} \) & \( \frac{1}{3} \) &
+      \( \frac{1}{9} \) \\
+    \hline
+  \end{tabular}}
+\end{center}
+Are \( X \) and \( Y \) independent? \\
+No, \( p(x,y)\neq p_{x}(x)p_{y}(y) \).
+\begin{align*}
+  \mu_{x} &= \sum_{x}xp_{x}(x) \\
+  &= 58\cdot p_{x}(58)+73\cdot p_{x}(73)+76\cdot p_{x}(76) \\
+  &= 58\cdot\frac{1}{3}+73\cdot\frac{1}{3}+76\cdot\frac{1}{3} = 69 \\
+  \mu_{y} &= \sum_{y}p_{y}(y) \\
+  &= 81\cdot\frac{1}{3}+78\cdot\frac{1}{3}+85\cdot\frac{1}{3} = \frac{244}{3} \\
+  (\sigma_{x})^{2} &= \sum_{x}(x-\mu_{x})^{2}p_{x}(x) \\
+  &= (58-69)^{2}\cdot\frac{1}{3}+(73-69)^{2}\cdot\frac{1}{3}+
+    (76-69)^{2}\cdot\frac{1}{3} \\
+  &= \frac{1}{3}\big[11^{2}+4^{2}+7^{2}\big] \\
+  &= 62 \\
+  (\sigma_{y})^{2} &= \sum_{y}(y-\mu_{y})^{2}p_{y}(y) \\
+  &= (81-\frac{244}{9})^{2}\cdot\frac{1}{3}+
+    (78-\frac{244}{9})^{2}\cdot\frac{1}{3}+
+    (85-\frac{244}{9})^{2}\cdot\frac{1}{3} \\
+  &= \frac{1}{3}\big[
+    (\frac{1}{3})^{2}+(-\frac{10}{3})^{2}+(\frac{11}{3})^{2}\big] \\
+  &= \frac{74}{9}
+\end{align*}
+\begin{align*}
+  Cov(X,Y) &= E\bigg[(X-\mu_{x})(Y-\mu_{y})\bigg] \\
+  &= E(XY)-\mu_{x}\mu_{y} \\
+  &= \bigg[\sum_{x}\sum_{y}xy\ p(x,y)\bigg]-\mu_{x}\mu_{y} \\
+  &= 58\cdot81\cdot\frac{1}{3}+73\cdot78\cdot\frac{1}{3}+
+    76\cdot85\cdot\frac{1}{3}-69\cdot(81+\frac{1}{3}) \\
+  &= 5.33 \\
+  Corr(X,Y) &= \frac{5.33}{\sqrt{62}\sqrt{8.22}} = 0.236
+\end{align*}
+The positive correlation indicates that we can reasonable expect there is a
+correlation between the Readiness Assessment score and the Common Core score.
+The correlation is not perfectly linear however.
+
+\subsection*{Example}
+A surveyor wishes to lay out a square region with each side having length
+\( L \). However, because of measurement error, he instead lays out a
+rectangle in which both the north-south sides are of length \( X \) and
+the east-west sides are both of length \( Y \). Suppose \( X \) and \( Y \)
+are independent and that each is uniformly distributed on the interval
+\( [L-A,L+A] \) where \( 0<A<L \). What is the expected area of the
+resulting rectangle? Find the joint pdf of \( X \) and \( Y \).
+\[ f(x,y) = \begin{cases}
+  h &, L-A\leq x\leq L+A\ and\ L-A\leq y\leq L+A \\
+  0 &, otherwise
+\end{cases} \]
+How do we find the value of \( h \)?
+\begin{align*}
+  1 &= \int_{-\infty}^{\infty}\int_{-\infty}^{\infty}f(x,y)\diff{x}\diff{y} \\
+  &= \int_{L-A}^{L+A}\int_{L-A}^{L+A}h\diff{x}\diff{y} \\
+  &= h\int_{L-A}^{L+A}\int_{L-A}^{L+A}\diff{x}\diff{y} \\
+  &= h(2A)(2A) \\
+  h &= \frac{1}{4A^{2}}
+\end{align*}
+The expected value of the area of the rectange is \( E(XY) \).
+\begin{align*}
+  E(XY) &= \int_{-\infty}^{\infty}\int_{-\infty}^{\infty}
+    xy\ p(x,y)\diff{x}\diff{y} \\
+  &= \int_{L-A}^{L+A}\int_{L-A}^{L+A}xyh\diff{x}\diff{y} \\
+  &= h\int_{L-A}^{L+A}y\bigg[\int_{L-A}^{L+A}x\diff{x}\bigg]\diff{y} \\
+  &= h\bigg[\int_{L-A}^{L+A}x\diff{x}\bigg]
+    \bigg[\int_{L-A}^{L+A}y\diff{y}\bigg] \\
+  &= h\bigg[\int_{L-A}^{L+A}x\diff{x}\bigg]^{2} \\
+  &= h\bigg[\frac{1}{2}(x^{2})_{x=L-A}^{x=L+A}\bigg] \\
+  &= h\frac{1}{2}\bigg[(L+A)^{2}-(L-A)^{2}\bigg]^{2} \\
+  &= h\frac{1}{2}\bigg[((L+A)+(L-A))((L+A)-(L-A))\bigg]^{2} \\
+  &= h\frac{1}{2}\bigg[2L\cdot2A\bigg]^{2} \\
+  &= L^{2}
+\end{align*}
+
+\begin{center}
+  If you have any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
