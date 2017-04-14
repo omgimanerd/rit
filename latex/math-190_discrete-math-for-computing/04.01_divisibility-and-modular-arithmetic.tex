@@ -1,0 +1,61 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\title{Sets}
+\author{Alvin Lin}
+\date{Discrete Math for Computing: January 2017 - May 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Divisibility and Modular Arithmetic}
+Floor function: \( \lfloor x\rfloor:\R\to\Z \):
+\begin{center}
+  \begin{tabular}{|c|c|}
+    \hline
+    \( x \) & \( \lfloor x\rfloor \) \\
+    \hline
+    4.5 & 4 \\
+    \hline
+    4.99 & 4 \\
+    \hline
+    4.1 & 4 \\
+    \hline
+    4 & 4 \\
+    \hline
+    12.8 & 12 \\
+    \hline
+    -3.14 & -4 \\
+    \hline
+  \end{tabular}
+\end{center}
+
+\subsection*{Divsion Algorithm}
+For any integer \( a \) and a positive integer \( d \), there is a unique
+quotient \( q \) and a unique remainder \( r \) so that \( a = dq+r \) and
+\( 0\leq r<d \).
+\begin{center}
+  \begin{tabular}{|c|c|c|c|}
+    \hline
+    \( a \) & \( d \) & \( a(\mathrm{div}\ d) = q \) & \( a(\bmod\ r) \) \\
+    \hline
+    23 & 5 & 4 & 3 \\
+    \hline
+    2017 & 12 & 168 & 1 \\
+    \hline
+    18 & 7 & 2 & 4 \\
+    \hline
+    -10 & 6 & -2 & 2 \\
+    \hline
+  \end{tabular}
+\end{center}
+
+\begin{center}
+  If you have any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
