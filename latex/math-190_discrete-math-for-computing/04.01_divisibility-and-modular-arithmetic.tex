@@ -33,7 +33,7 @@ Floor function: \( \lfloor x\rfloor:\R\to\Z \):
   \end{tabular}
 \end{center}
 
-\subsection*{Divsion Algorithm}
+\subsection*{Division Algorithm}
 For any integer \( a \) and a positive integer \( d \), there is a unique
 quotient \( q \) and a unique remainder \( r \) so that \( a = dq+r \) and
 \( 0\leq r<d \).
@@ -62,6 +62,14 @@ quotient \( q \) and a unique remainder \( r \) so that \( a = dq+r \) and
     \( a_{n+1} = (ax_{n}+b) (\bmod\ d) \).
   \item Basic Cryptography: The mod function is applied for basic cryptographic
     schemes like the Caesarshift cipher.
+\end{enumerate}
+
+\subsection*{Mod Congruency}
+\begin{enumerate}
+  \item \( d\equiv0\ (\bmod\ d) \) \\
+  \item \( a\equiv a+kd\ (\bmod\ d) \) \\
+  \item \( a\equiv a-kd\ (\bmod\ d) \) \\
+  \item \( a\equiv b\ (\bmod\ d)\ if\ (a-b)\ is\ a\ multiple\ of\ d \)
 \end{enumerate}
 
 \begin{center}
