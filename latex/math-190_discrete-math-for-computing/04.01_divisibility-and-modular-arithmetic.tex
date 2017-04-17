@@ -53,6 +53,17 @@ quotient \( q \) and a unique remainder \( r \) so that \( a = dq+r \) and
   \end{tabular}
 \end{center}
 
+\subsection*{Applications of the Mod Function}
+\begin{enumerate}
+  \item Hashing Functions: A rudimentary hashing function can take the form of
+    \( h(x) = x(\bmod\ d) \).
+  \item Pseudorandom Sequences: Given some seed value \( a_{0} \), a
+    pseudorandom sequence can be generated using the sequence
+    \( a_{n+1} = (ax_{n}+b) (\bmod\ d) \).
+  \item Basic Cryptography: The mod function is applied for basic cryptographic
+    schemes like the Caesarshift cipher.
+\end{enumerate}
+
 \begin{center}
   If you have any questions, comments, or concerns, please contact me at
   alvin@omgimanerd.tech
