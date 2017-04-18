@@ -1,0 +1,91 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[linguistics]{forest}
+
+\title{Probability and Statistics}
+\author{Alvin Lin}
+\date{Probability and Statistics: January 2017 - May 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Statistics and their Distributions}
+The random variables \( X_{1},X_{2},\dots,X_{n} \) are said to form a random
+sample of size \( n \) if the following conditions are satisfied.
+\begin{enumerate}
+  \item Every \( X_{i} \) has the same probability distribution.
+  \item The random variable \( X_{1},X_{2},\dots,X_{n} \) are independent.
+\end{enumerate}
+
+\subsection*{Example}
+Using the populuation of graduating RIT students, select a person from the
+population and observe his or her GPA. Then, with/without replacement (the
+population size is big and \( n \) is not big compared to the population
+size) select a student and then observe his or her GPA. Repeat \( n \)
+times. We consider \( n \) random variables where \( X_{1} \) is the GPA of
+the first selected person, \( X_{2} \) is the GPA of the second selected
+person, and so on. Then \( X_{1},X_{2},\dots,X_{n} \) for a random sample of
+size \( n \). Once we finish the n\textsuperscript{th} observation, we
+have \( n \) numbers:
+\[ x_{1},x_{2},\dots,x_{n} \]
+We can consider the sample mean, median, variance, fourth spread, etc as
+functions. Consider the case \( n = 3 \).
+\[ (2.9,3.0,3.8)\to3.233\dots \]
+\[ (2.5,3.7,3.9)\to3.466\dots \]
+\( \overline{X} \) is a statistic and random variable that takes a sample as
+input and outputs a number. Sample mean, sample median, sample variance, et
+cetera can be viewed as random variables. Each of them is called a
+statistic. The probability distribution of \( X_{1},X_{2},\dots,X_{n} \) is
+also called population distribution.
+
+\subsection*{Example}
+A certain brand of MP3 player comes in three configurations: a model with 2GB
+of memory, costing \$80, a 4GB model priced at \$100, and an 8GB version with
+a price tag of \$120. If 20\% of all purchasers choose the 2GB model, 30\%
+choose the 4GB model, then the probability distribution of the cost \( X \) of
+a single randomly selected MP3 player purchase is given by:
+\begin{center}
+  \begin{tabular}{|c|c|c|c|}
+    \hline
+    \( x \) & 80 & 100 & 120 \\
+    \hline
+    \( p(x) \) & 0.2 & 0.3 & 0.5 \\
+    \hline
+  \end{tabular}
+\end{center}
+\begin{align*}
+  p(80) &= p(X=80) = 0.2 \\
+  \mu &= 106 \\
+  \sigma^{2} &= 244
+\end{align*}
+Suppose on a particular day, only two MP3 players are sold. Let \( X_{1} \) be
+the random variable representing the revenue of the first sale, and \( X_{2} \)
+be the random variable representing the revenue of the second sale. \( X_{1} \)
+and \( X_{2} \) are independent and their pmf is \( p(x) \). \( X_{1} \) and
+\( X_{2} \) form a random sample of size 2.
+\begin{center}
+  \begin{tabular}{|c|c|c|c|c|}
+    \hline
+    \( x_{1} \) & \( x_{2} \) & \( p(x_{1},x_{2}) \) & \( \overline{x} \) &
+      \( \sigma^{2} \) \\
+    \hline
+    80 & 80 & 0.04 & 80 & 0 \\
+    \hline
+    80 & 100 & 0.06 & 90 & 200 \\
+    \hline
+    80 & 120 & \( 0.2\times0.5 \) & 100 & 800 \\
+    \hline
+    100 & 80 & 0.06 & 90 & 200 \\
+    \hline
+  \end{tabular}
+\end{center}
+
+\begin{center}
+  If you have any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
