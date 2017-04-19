@@ -1,0 +1,89 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\title{Sets}
+\author{Alvin Lin}
+\date{Discrete Math for Computing: January 2017 - May 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Mathematical Induction}
+Mathematical inductions prove statements that depend on a positive integer
+\( n \). In general, we use it to prove \( \forall{n}P(n) \) where we
+normally have \( \U = \Z\geq a \) for \( a = \{0,1,2,3,4,5,\dots\} \).
+Unless otherwise specified, we assume \( a = 1 \).
+
+\subsection*{Examples}
+For all \( n > 0 \):
+\[ \sum_{i=1}^{n}i = \frac{n(n+1)}{2} \]
+For all \( n > 0 \):
+\[ \sum_{i=1}^{n}i^{2} = \frac{n(n+1)(2n+1)}{6} \]
+For all \( n > 0 \), 2 divides \( n^{2} + n \):
+\[ n^{2}+n \equiv 0(\bmod\ 2) \]
+For all \( n > 0 \):
+\[ 4^{n+1}+5^{2n-1} \equiv 0(\bmod\ 21) \]
+
+\subsection*{Process}
+\begin{enumerate}
+  \item Identify the exact \( P(n) \) statement.
+  \item Write out \( P(k) \) in the induction hypothesis.
+  \item Write out \( P(k+1) \) in the induction.
+  \item Think about how \( P(k+1) \) relates to \( P(k) \).
+  \item Once you apply the induction hypothesis in the induction, the rest is
+    algebra.
+\end{enumerate}
+With the math induction argument, we have:
+\begin{align*}
+  & P(1) \\
+  & \underline{\forall{k}P(k)\to P(k+1)} \\
+  \therefore{} & \forall{n}P(n)
+\end{align*}
+Using Modus Ponens:
+\begin{align*}
+  & P(1) \\
+  & \underline{P(1)\to P(2)} \\
+  \therefore{} & P(2)
+\end{align*}
+By hypothetical syllogism:
+\begin{align*}
+  & P(1)\to P(2) \\
+  & \underline{P(2)\to P(3)} \\
+  \therefore{} & P(1)\to P(3) \\
+\end{align*}
+
+\subsection*{Example}
+Prove \( \forall{n}\sum_{i=1}^{n}(2i-1) = n^{2} \).
+\begin{enumerate}
+  \item Basis: \( P(n) = \sum_{i=1}^{n}(2i-1) = n^{2} \)
+  \item Show \( P(1) \) is true:
+    \begin{align*}
+      \sum_{i=1}^{1}(2i-1) &= 1^{1} \\
+      (2\cdot1-1) &= 1^{2} \\
+      2-1 &= 1
+    \end{align*}
+  \item Induction hypothesis, assume \( P(k) \) is true for some \( k\geq 1 \).
+    Assume \( \sum_{i=1}^{k}(2i-1) = k^{2} \).
+  \item Induction (we need to prove this):
+    \begin{align*}
+      P(k+1) = \sum_{i=1}^{k+1}(2i-1) &= (k+1)^{2} \\
+      \sum_{i=1}^{k+1}(2i-1) &= k^{2}+2k+1
+    \end{align*}
+  \item Proof:
+    \begin{align*}
+      \sum_{i=1}^{k+1}(2i-1) &= \sum_{i=1}^{k}(2i-1)+\sum_{k}^{k+1}(2i-1) \\
+      &= \sum_{i=1}^{k}(2i-1)+(2(k+1)-1) \\
+      &= k^{2}+(2k+2-1) \\
+      &= k^{2}+2k-1
+    \end{align*}
+\end{enumerate}
+
+\begin{center}
+  If you have any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}

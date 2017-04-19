@@ -16,6 +16,7 @@
 \newcommand*{\Q}{\mathbb{Q}}
 \newcommand*{\Qp}{\mathbb{Q'}}
 \newcommand*{\R}{\mathbb{R}}
+\newcommand*{\U}{\mathbb{U}}
 \newcommand*{\Z}{\mathbb{Z}}
 \newcommand*{\nPr}[2]{_{#1}P_{#2}}
 \newcommand*{\nPrf}[2]{\frac{#1!}{(#1-#2)!}}
