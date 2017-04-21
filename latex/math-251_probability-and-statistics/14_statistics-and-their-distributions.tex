@@ -83,6 +83,46 @@ and \( X_{2} \) are independent and their pmf is \( p(x) \). \( X_{1} \) and
   \end{tabular}
 \end{center}
 
+\subsection*{The Distribution of the Sample Mean}
+Let \( X_{1},X_{2},\dots,X_{n} \) be a random sample from a distribution with
+mean \( \mu \) and standard deviation \( \sigma \). Then:
+\begin{enumerate}
+  \item \( E(\overline{X}) = \mu_{\overline{x}} = \mu \)
+  \item \( V(\overline{X}) = \sigma_{\overline{x}}^{2} = \frac{\sigma^{2}}{n} \)
+\end{enumerate}
+Let \( T_{\circ} = X_{1}+X_{2}+X_{3}+\dots+X_{n} \). (the sample total)
+\begin{enumerate}
+  \item \( E(T_{\circ}) = \mu_{T_{\circ}} = n\mu \)
+  \item \( V(T_{\circ}) = \sigma_{T_{\circ}}^{2} = n\sigma^{2} \)
+\end{enumerate}
+Each of \( X_{1},X_{2},\dots,X_{n} \) has pmf \( p(x) \) or pdf \( f(x) \).
+\( X_{1},X_{2},X_{3},\dots,X_{n} \) are independent.
+\[ \overline{X} = \frac{X_{1}+X_{2}+\dots+X_{n}}{n} \]
+In the above proposition, \( p(x) \) or \( f(x) \) can be any function
+satisfying the following conditions.
+\begin{itemize}
+  \item \( p(x)\geq 0 \) for any \( x \).
+  \item \( f(x)\geq 0 \) for any \( x \).
+  \item \( \sum p(x) = 1 \)
+  \item \( \int_{-\infty}^{\infty}f(x)\diff{x} = 1 \)
+\end{itemize}
+\( p(x) \) or \( f(x) \) is the pmf or pdf of \( X_{i} \) and represents the
+population distribution. Let \( X_{1},X_{2},\dots,X_{n} \) be a random
+sample from a normal distribution with mean \( \mu \) and variance
+\( \sigma^{2} \). Then for any \( n \), \( \overline{X} \) is normally
+distributed with mean \( \mu_{\overline{x}} = \mu \) and variance
+\( \sigma_{\overline{x}}^{2} = \frac{\sigma^{2}}{n} \) (same as before).
+\( T_{\circ} \) is normally distributed with \( \mu_{T_{\circ}} = n\mu \)
+and \( \sigma_{T_{\circ}}^{2} = n\sigma^{2} \).
+
+\subsection*{Central Limit Theorem}
+Let \( X_{1},X_{2},\dots,X_{n} \) be a random sample from a distribution
+with mean \( \mu \) and variance \( \sigma^{2} \). Then if \( n \) is
+sufficiently large, \( \overline{X} \) has approximately normal distribution
+with \( \mu_{\overline{x}} = \mu \) and \( \sigma_{\overline{x}}^{2} =
+\frac{\sigma^{2}}{n} \). \( T_{\circ} \): normal with \( \mu_{T_{\circ}} =
+n\mu \) and \( \sigma_{T_{\circ}}^{2} = n\sigma^{2} \).
+
 \begin{center}
   If you have any questions, comments, or concerns, please contact me at
   alvin@omgimanerd.tech
