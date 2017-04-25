@@ -1,0 +1,98 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[linguistics]{forest}
+
+\title{Probability and Statistics}
+\author{Alvin Lin}
+\date{Probability and Statistics: January 2017 - May 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Basic Properties of Confidence Intervals}
+\[ B-r\leq A\leq B+r \]
+Add \( -B \) to each side:
+\[ -r\leq -B+A\leq r \]
+Add \( -A \) to each side:
+\[ -A-r\leq -B\leq -A+r \]
+Multiply both sides by -1:
+\[ A+r\geq B\geq A-r \]
+The original statement is logically equivalent to the following:
+\[ A-r\leq B\leq A+r \]
+That is:
+\[ B-r\leq A\leq B+r \quad\leftrightarrow\quad A-r\leq B\leq A+r \]
+
+\subsection*{Theorem}
+Consider a random sample \( X_{1},X_{2},\dots,X_{n} \) from a normal
+distribution with mean value \( \mu \) (population mean) and standard deviation
+\( \sigma \) (population standard deviation). Then the sample mean
+\[ \overline{X} = \frac{X{1}+X_{2}+\dots+X_{n}}{n} \]
+is normally distributed with with mean \( \mu \) and standard deviation
+\( \frac{\sigma}{\sqrt{n}} \). The random variable
+\( Z = \frac{\overline{X}-\mu}{\sigma/\sqrt{n}} \) is a standard normal random
+variable. \par
+
+\subsection*{Example}
+Consider the following probability:
+\begin{align*}
+  P(-1.96\leq Z\leq 1.96) &= \Phi(1.96)-\Phi(-1.96) \\
+  &= 0.9750-0.0250 \\
+  &= 0.95 \\
+  &= P(-1.96\leq\frac{\overline{X}-\mu}{\sigma/\sqrt{n}}) \\
+  &= P(-1.96\frac{\sigma}{\sqrt{n}}\leq
+    \overline{X}-\mu\leq1.96\frac{\sigma}{\sqrt{n}}) \\
+  &= P(\mu-1.96\frac{\sigma}{\sqrt{n}}\leq\overline{X}
+    \leq\mu+1.96\frac{\sigma}{\sqrt{n}}) \\
+  &= P(\overline{X}-1.96\frac{\sigma}{\sqrt{n}}\leq\mu
+    \leq\overline{X}+1.96\frac{\sigma}{\sqrt{n}})
+\end{align*}
+This represents the probability that the interval \( (\overline{X}
+-1.96\frac{\sigma}{\sqrt{n}},\overline{X}+1.96\frac{\sigma}{\sqrt{n}}) \)
+contains the population mean \( \mu \). After observing
+\( X_{1}=x_{1},X_{2}=x_{2},\dots,X_{n}=x_{n} \), we compute the
+observed sample mean \( \overline{x} \).
+\[ \bigg(\overline{x}-1.96\frac{\sigma}{\sqrt{n}},
+   \overline{x}+1.96\frac{\sigma}{\sqrt{n}}\bigg) \]
+This interval is a 95\% confidence interval for \( \mu \).
+
+\subsection*{Example}
+Suppose we repeat taking a sample of size \( n \), finding \( \overline{x} \),
+and calculating the interval 100 times. How many intervals do not contain the
+population mean \( \mu \)? It could be any number. If \( N \) (the \# of
+repetitions of sampling) \( \to\infty \), then 5\% of the 95\% confidence
+intervals do not contain \( \mu \).
+
+\subsection*{Definition}
+\( 100(1-\alpha)\% \) confidence interval for the population mean \( \mu \) of
+a normal population when the population standard deviation \( \sigma \) is known
+is:
+\[ \overline{x}\pm Z_{\alpha/2}\frac{\sigma}{\sqrt{n}} \]
+\begin{align*}
+  1-\alpha &= P(Z_{\alpha/z}\leq Z\leq Z_{\alpha/2}) \\
+  &= P(\overline{X}-Z_{\alpha/2}\frac{\sigma}{\sqrt{n}}\leq \mu\leq
+    \overline{X}+Z_{\alpha/2}\frac{\sigma}{\sqrt{n}}) \\
+  &= P(the\ interval\ \overline{X}+Z_{\alpha/2}\frac{\sigma}{\sqrt{n}}
+    \ contains\ \mu)
+\end{align*}
+The sample size necessary for the confidence interval to have a width \( w \)
+is
+\[ n = (2Z_{\alpha/2}\frac{\sigma}{w})^{2} \]
+
+\subsection*{Example}
+What is the confidence level for the interval \( \overline{x}\pm2.81
+\frac{\sigma}{\sqrt{n}} \)?
+\begin{align*}
+  Z_{\alpha/2} &= 2.81 \\
+  \alpha &= 0.0050 \\
+  100(1-\alpha)\% &= 99.5\%
+\end{align*}
+
+\begin{center}
+  If you have any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
