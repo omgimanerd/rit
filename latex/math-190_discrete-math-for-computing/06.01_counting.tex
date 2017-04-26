@@ -1,0 +1,69 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[linguistics]{forest}
+
+\title{Counting}
+\author{Alvin Lin}
+\date{Discrete Math for Computing: January 2017 - May 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Counting}
+Counting is a higher level math topic involving subtle counting rules,
+applying logic, and set theory. It involves questions such as:
+\begin{enumerate}
+  \item How many license plates have the form AAA-DDDD where A is an uppercase
+    alphabetical character and D is a digit?
+  \item Jessica, Tim, Dan, and Mary are lining up to purchase tickets at a
+    movie theater. In how many ways can they line up?
+  \item Two people from a group of 10 are being selected to co-chair an
+    upcoming event. How many ways are there to select 2 people from 10?
+  \item In a binary string of length 5, how many strings contain exactly two
+    1's somewhere in the string?
+  \item 75 students are enrolled in math or english. If 40 students are
+    enrolled in math and 50 students are enrolled in english then how many
+    students are enrolled in both?
+\end{enumerate}
+
+\subsection*{Tree Diagrams}
+A \textbf{tree diagram} is a useful visual tool for enumerating outcomes. For
+example, suppose we wish to list all of the outcomes from rolling a die and
+then flipping a coin. The tree diagram begins at a point and then splits into
+6 directions. Then each branches off into 2 directions from flipping a coin.
+\begin{center}
+  \begin{forest}
+    [
+      [1 [H] [T]]
+      [2 [H] [T]]
+      [3 [H] [T]]
+      [4 [H] [T]]
+      [5 [H] [T]]
+      [6 [H] [T]]
+    ]
+  \end{forest}
+\end{center}
+
+\subsection*{Product Rule}
+In a string of length \( k \), if there are \( n_{1} \) ways to fill position
+1, \( n_{2} \) ways to fill position 2, \( \dots \) and \( n_{k} \) ways to
+fill position \( k \) then there are \( n_{1}\cdot n_{2}\cdot\dots\cdot n_{k} \)
+strings altogether.
+
+\subsection*{Addition Rule}
+If a set \( S \) can be divided up into \( k \) non-overlapping subsets
+\( T_{1},T_{2},\dots,T_{k} \) then \( |S| = |T_{1}|+|T_{2}|+\dots+|T_{k}| \).
+
+\subsection*{Opposite Rule}
+Suppose \( S \) consists of a set of objects chosen from a larger universe of
+objects \( \U \). Then \( |S| = |\U|-|\overline{S}| \).
+
+\begin{center}
+  If you have any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
