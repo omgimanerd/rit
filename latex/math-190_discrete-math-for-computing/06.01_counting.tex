@@ -61,6 +61,32 @@ If a set \( S \) can be divided up into \( k \) non-overlapping subsets
 Suppose \( S \) consists of a set of objects chosen from a larger universe of
 objects \( \U \). Then \( |S| = |\U|-|\overline{S}| \).
 
+\subsection*{General Pigeonhole Principle}
+Given \( N \) objects and \( k \) boxes or categories, there is at least one box
+with at least \( M \) objects where \( M = \lceil\frac{N}{k}\rceil \).
+
+\subsection*{Permutations and Combinations}
+\begin{itemize}
+  \item The \textbf{factorial} of a number \( n \), or \( n \) factorial, is
+    the product of all the numbers from \( n \) down to 1. Additionally, 0
+    factorial is 1 by definition and \( n \) factorial is denoted by \( n! \).
+    For example, \( 3! = 3\cdot2\cdot1 = 6 \).
+  \item An \textbf{r permutation of \( n \) distinct objects} is an ordered
+    arrangement of \( r \) distinct objects from the original \( n \) objects.
+    For example, the 2 permutations of `abc' are `ab', `ba', `ac', `ca', `bc',
+    and `cb'. The total number of \( r \) permutations from \( n \) objects
+    is denoted by \( P(n,r) \) or \( \nPr{n}{r} \). For example, \( P(3,2) = 6
+    \) since we found 6 strings of length 2 when selected from the 3 distinct
+    letters in `abc'.
+  \item An \textbf{r combination of \( n \) distinct objects} is an unordered
+    selection of \( r \) distinct objects from the original \( n \) objects.
+    For example, the 2 combinations of `abc' are \( \{a,b\},\{a,c\},\ and\
+    \{b,c\} \). The total number of \( r \) combinations from \( n \) objects
+    is denoted by \( C(n,r) \) or \( \nCr{n}{r} \). For example, \( C(3,2) = 3
+    \) since we found 3 sets of size 2 when selecting from the 3 distinct
+    letters in `abc'.
+\end{itemize}
+
 \begin{center}
   If you have any questions, comments, or concerns, please contact me at
   alvin@omgimanerd.tech
