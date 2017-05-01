@@ -2,7 +2,8 @@
 
 \usepackage{amsmath}
 \usepackage{amssymb}
-\usepackage[linguistics]{forest}
+\usepackage{forest}
+\usepackage{ulem}
 
 \title{Counting}
 \author{Alvin Lin}
@@ -85,7 +86,27 @@ with at least \( M \) objects where \( M = \lceil\frac{N}{k}\rceil \).
     is denoted by \( C(n,r) \) or \( \nCr{n}{r} \). For example, \( C(3,2) = 3
     \) since we found 3 sets of size 2 when selecting from the 3 distinct
     letters in `abc'.
+  \item \textbf{\( k \) to 1 Correspondences}: If there are \( k \) objects in
+    set A that correspond to 1 object in set B, then \( |A| = k\cdot|B| \).
+  \item \textbf{Permutation with Repetition}: In a string of length \( n \)
+    with \( r_{1} \) letters of type, \( r_{2} \) letters of type 2,
+    \( dots \), and \( r_{k} \) letters of type \( k \), then there are
+    \( \frac{n!}{(r_{1}!)} \)
 \end{itemize}
+
+\subsection*{Facts about \( P(n,r) \) and \( C(n,r) \)}
+\begin{enumerate}
+  \item \( P(n,r) = n(n-1)(n-2)\dots(n-r+1) \)
+  \item \( P(n,r) = \nPrf{n}{r} \)
+  \item \( P(n,r) = r!\nCr{n}{r} \)
+  \item \( C(n,r) = \frac{n(n-1)\dots(n-r+1)}{r!} \)
+  \item \( C(n,r) = \nCrf{n}{r} \)
+  \item \( P(n,r) = {\nPr{n}{r}} \)
+  \item \( C(n,r) = {\nCr{n}{r}} = \nCrp{n}{r} \)
+  \item \( C(n,0) = 1 = \frac{n!1}{n!0!} = \frac{1}{1} \)
+  \item \( C(n,n) = 1 \)
+  \item \( C(n,r) = C(n,n-r) \)
+\end{enumerate}
 
 \begin{center}
   If you have any questions, comments, or concerns, please contact me at

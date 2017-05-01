@@ -22,3 +22,4 @@
 \newcommand*{\nPrf}[2]{\frac{#1!}{(#1-#2)!}}
 \newcommand*{\nCr}[2]{_{#1}C_{#2}}
 \newcommand*{\nCrf}[2]{\frac{#1!}{(#1-#2)!#2!}}
+\newcommand*{\nCrp}[2]{\big({^{#1}_{#2}}\big)}
