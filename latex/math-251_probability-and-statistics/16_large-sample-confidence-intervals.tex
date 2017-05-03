@@ -1,0 +1,82 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{forest}
+\usepackage{graphicx}
+
+\title{Probability and Statistics}
+\author{Alvin Lin}
+\date{Probability and Statistics: January 2017 - May 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Large Sample Confidence Intervals}
+For a population mean and proportion:
+\begin{center}
+  \begin{tabular}{|c|c|c|c|}
+    \hline
+    & population distribution type & sample size &
+      population standard deviation \\
+    \hline
+    Section 7.1 & normal & any & known \\
+    \hline
+    Section 7.2 & any & large & unknown \\
+    \hline
+  \end{tabular}
+\end{center}
+
+\subsection*{Section 7.1}
+\[ \overline{x}+z_{\alpha/2}\frac{\sigma}{\sqrt{n}} \]
+is a large sample confidence interval for \( \mu \) with confidence level
+\[ 100(1-\alpha)\% \]
+\( \overline{x} \) represents the observed sample mean, \( \sigma \) represents
+the population standard deviation, and \( n \) represents the sample size.
+
+\subsection*{Section 7.2}
+Proposition: If \( n \) is sufficiently large:
+\[ Z = \frac{\overline{X}-\mu}{S/\sqrt{n}} \]
+has approximately a standard normal distribution, with \( \overline{X} \) being
+the random variable for the sample mean, \( S \) being the random variable for
+the sample standard deviation.
+
+\subsection*{A Confidence Interval for a Population Proportion}
+\begin{align*}
+  p&: \mathrm{proportion\ of\ success\ in\ a\ population} \\
+  n&: \mathrm{sample\ size} \\
+  X&: \mathrm{\#\ of\ successes\ in\ a\ sample,\ a\ random\ variable} \\
+  x&: \mathrm{observed\ \#\ of\ successes\ in\ a\ sample} \\
+  \hat{p}&: \frac{x}{n} \\
+  \hat{q}&: 1-\hat{p}
+\end{align*}
+Assumptions:
+\begin{itemize}
+  \item Population size is larger than \( n \)
+  \item \( np\geq 10 \)
+  \item \( n(1-p)\geq 10 \)
+\end{itemize}
+Proposition:
+\[ \scalebox{2}{$
+  \tilde{p} = \frac{\hat{p}+\frac{(z_{\alpha/2})^{2}}{2n}}
+  {1+\frac{(z_{\alpha/2})^{2}}{n}}
+$} \]
+The confidence interval for a population proportion \( p \) with confidence
+level \( 100(1-\alpha)\% \) is:
+\[ \scalebox{2}{$
+  \tilde{p}\pm z_{\alpha/2}\frac{\sqrt{
+  \frac{\hat{p}\hat{q}}{n}+\frac{(z_{\alpha/2})^{2}}{4n^{2}}
+  }}{1+\frac{(z_{\alpha/2})^{2}}{n}}
+$} \]
+Under certain conditions, the interval is:
+\[ \scalebox{2}{$
+  \tilde{p}+z_{\alpha/2}\sqrt{\frac{\hat{p}\hat{q}}{n}}
+$} \]
+
+\begin{center}
+  If you have any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
