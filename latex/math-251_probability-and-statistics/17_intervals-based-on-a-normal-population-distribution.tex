@@ -1,0 +1,79 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{forest}
+
+\title{Probability and Statistics}
+\author{Alvin Lin}
+\date{Probability and Statistics: January 2017 - May 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Intervals Based on a Normal Population Distribution}
+Assumption in 7.3:
+\begin{itemize}
+  \item population: normal
+  \item population standard deviation \( \sigma \): unknown
+  \item \( n \): no need to be large
+\end{itemize}
+Review 7.1:
+\begin{itemize}
+  \item population: normal
+  \item population standard deviation \( \sigma \): known
+  \item \( n \): no need to be large
+  \item confidence interval for \( \mu = E(X_{1}) = E(X_{2})\dots \)
+\end{itemize}
+Review 7.2:
+\begin{itemize}
+  \item population: any
+  \item population standard deviation \( \sigma \): unknown
+  \item \( n \): large
+  \item confidence interval for \( \mu = E(X_{1}) \)
+\end{itemize}
+If the number of repetitions goes to infinity, \( 100(1-\alpha)\% \) of
+the intervals contain \( \mu \). Each interval is obtained from observed
+values of \( X_{1},X_{2},\dots,X_{n}:x_{1},x_{2},\dots,x_{n} \). Each
+interval is calculated from the observed sample proportion \( \frac{x}{n} \)
+where \( x \) is the observed number of successes in the sample of size \( n \).
+Review 7.3:
+\begin{itemize}
+  \item population: normal
+  \item population standard deviation \( \sigma \): unknown
+  \item \( n \): no need to be large
+\end{itemize}
+
+\subsection*{Theorem}
+\[ T = \frac{\overline{X}-\mu}{S/\sqrt{n}} \]
+where \( \overline{X} \) is the random variable for the sample mean, \( \mu \)
+is the population mean, \( S \) is the random variable for the sample standard
+deviation, and \( n \) is the sample size. This random variable \( T \) has
+\( t_{n-1} \) distribution, or a \( t \) distribution with \( n-1 \) degrees of
+freedom. \par
+\textbf{Proposition}: \( 100(1-\alpha)\% \) confidence interval for \( \mu \)
+is:
+\[ \overline{x}\pm t_{\alpha/2,n-1}\cdot\frac{s}{\sqrt{n}} \]
+where \( \overline{x} \) is the observed sample mean and \( s \) is the observed
+sample standard deviation. Upper and lower confidence bounds for \( \mu \) are
+\[ \overline{x}+t_{\alpha,n-1}\cdot\frac{s}{\sqrt{n}} \]
+\[ \overline{x}-t_{\alpha,n-1}\cdot\frac{s}{\sqrt{n}} \]
+
+\subsection*{Prediction Interval}
+\begin{itemize}
+  \item population: normal
+  \item population standard deviation \( \sigma \): unknown
+  \item \( n \): no need to be large
+\end{itemize}
+A prediction interval (PI) for a single observation to be selected from a normal
+population distribution is:
+\[ \overline{x}\pm t_{\alpha/2,n-1}\cdot s\sqrt{1+\frac{1}{n}} \]
+The confidence level is \( 100(1-\alpha)\% \).
+
+\begin{center}
+  If you have any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}

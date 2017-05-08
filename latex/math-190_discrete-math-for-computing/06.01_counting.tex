@@ -102,11 +102,22 @@ with at least \( M \) objects where \( M = \lceil\frac{N}{k}\rceil \).
   \item \( C(n,r) = \frac{n(n-1)\dots(n-r+1)}{r!} \)
   \item \( C(n,r) = \nCrf{n}{r} \)
   \item \( P(n,r) = {\nPr{n}{r}} \)
-  \item \( C(n,r) = {\nCr{n}{r}} = \nCrp{n}{r} \)
+  \item \( C(n,r) = {\nCr{n}{r}} = \binom{n}{r} \)
   \item \( C(n,0) = 1 = \frac{n!1}{n!0!} = \frac{1}{1} \)
   \item \( C(n,n) = 1 \)
   \item \( C(n,r) = C(n,n-r) \)
 \end{enumerate}
+
+\subsection*{Binomial Theorem}
+\begin{align*}
+  (x+y)^{0} &= 1 \\
+  (x+y)^{1} &= 1x+1y \\
+  (x+y)^{2} &= 1x^{2}+2xy+1y^{2} \\
+  (x+y)^{3} &= 1x^{3}+3x^{2}y+3xy^{2}+1y^{3} \\
+  (x+y)^{n} &= \binom{n}{0}x^{n}y^{0}+\binom{n}{1}x^{n-1}y^{1}+\dots+
+      \binom{n}{n-1}x^{1}y^{n-1}+\binom{n}{n}x^{0}y^{n} \\
+  (x+y)^{n} &= \sum_{i=0}^{n}\binom{n}{i}x^{n-i}y^{i}
+\end{align*}
 
 \begin{center}
   If you have any questions, comments, or concerns, please contact me at
