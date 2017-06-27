@@ -23,4 +23,4 @@ gulp latex-all
 [![GitHub followers](https://img.shields.io/github/followers/omgimanerd.svg?style=social&label=Follow)](https://github.com/omgimanerd)
 
 ## License
-[MIT]()
+[MIT](https://github.com/omgimanerd/rit-notes/blob/master/LICENSE)
