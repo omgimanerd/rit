@@ -1,0 +1,249 @@
+\documentclass[letterpaper, 12pt]{article}
+
+\usepackage{amsmath}
+\usepackage{hyperref}
+
+\title{CSCI 251: Concepts of Parallel and Distributed Systems}
+\author{Alvin Lin}
+\date{August 28th, 2017}
+
+\begin{document}
+
+\maketitle
+
+\subsection*{Course Objectives}
+\begin{itemize}
+  \item Understand parallelism and concurrency
+  \item Recognize inherent parallelism that exists in computational problems.
+  \item Exploit machine parallelism and learn to write efficient and effective
+    parallel programs
+  \item Learn concurrent programming techniques for distributed computing
+    systems
+  \item Learn basics of routing and networking to better utilize parallel and
+    distributed computing resources
+  \item Understand basics of network security and cloud computing
+\end{itemize}
+
+\subsection*{Grading}
+\begin{itemize}
+  \item Quizzes (20\%)
+  \begin{itemize}
+    \item 10 quizzes, one every week.
+    \item The best 8 quizzes will be taken into account with each counting
+      2.25\%.
+    \item They will be short answer, true/false, or multiple choice.
+    \item May have negative grading to discourage guessing.
+  \end{itemize}
+  \item Projects (40\%)
+  \begin{itemize}
+    \item 4 projects
+    \item 3 programming and one problem solving
+    \item Each project is worth 10\%
+  \end{itemize}
+  \item Exams (40\%)
+  \begin{itemize}
+    \item 2 Exams (midterm and final)
+    \item Each exam is worth 20\%
+  \end{itemize}
+  \item Homeworks (not graded directly)
+  \begin{itemize}
+    \item Impacts performance on quizzes and exams
+    \item Discussion in MyCourses
+  \end{itemize}
+\end{itemize}
+
+\subsection*{Organization}
+\begin{itemize}
+  \item Topics
+  \begin{itemize}
+    \item Main Topics: parallelism, concurrency, parallel computer systems,
+      distributed computer systems, parallel programming, concurrent
+      programming
+    \item Additional topics: Principles of computer networks, packet routing,
+      TCP/UDP, network security, cloud computing and virtualization
+  \end{itemize}
+  \item Teaching
+  \begin{itemize}
+    \item Mondays: Lecture
+    \item Wednesday: Lecture, review, problem solving, questions, homeworks,
+      quizzes, midterm exam
+  \end{itemize}
+  \item MyCourses
+  \begin{itemize}
+    \item Course material, important dates, schedule, news, events, homework,
+      sample questions, grades, discussions, etc.
+  \end{itemize}
+\end{itemize}
+
+\subsection*{General Suggestions and Advice}
+\begin{itemize}
+  \item Think parallel
+  \item Think concurrent
+  \item Attend classes
+  \item Visit MyCourses
+  \item Read and digest course materials
+  \item Do homeworks
+  \item Solve problems
+  \item Do not postpone
+  \item Do not carry doubts
+  \item Ask questions to the instructor and fellow students
+  \item Make notes
+  \item Write the algorithm first, and then code
+  \item Discuss with fellow students and the instructor
+  \item Write your own solutions and answers
+\end{itemize}
+
+\subsection*{Parallelism}
+\begin{itemize}
+  \item What is parallelism?
+  \begin{itemize}
+    \item The objective is to execute tasks faster
+    \item Processes are executed simultaneously on parallel computing elements
+  \end{itemize}
+  \item Data parallelism
+  \begin{itemize}
+    \item Data to be processed exhibits parallelism (matrix operations, image
+      processing)
+    \item The same task is performed on the same or different set/stream of data
+  \end{itemize}
+  \item Instruction parallelism
+  \begin{itemize}
+    \item Processors with multiple execution units
+    \item Execute multiple instructions through pipelining
+  \end{itemize}
+  \item Task parallelism
+  \begin{itemize}
+    \item Parallel tasks performed, each on a different computing element
+  \end{itemize}
+  \item Device parallelism
+  \begin{itemize}
+    \item Relates to hardware
+    \item Multiple cores, GPUs, parallel computers, clusters, grids, etc.
+  \end{itemize}
+\end{itemize}
+
+\subsection*{Applications}
+At any given moment:
+\begin{itemize}
+  \item How many Visa credit cards are processed?
+  \item How many aircrafts are in the air?
+  \item How many students are trying to enroll into a class?
+  \item How many phone calls are active?
+  \item How many homes/people are downloading the same movie from Netflix?
+  \item How many smart phones are using the same app?
+  \item How many sensors are collecting sensory information?
+  \item How many apps are active on your smart phone?
+\end{itemize}
+
+\subsection*{Example: Matrix Multiplication}
+\[
+  \begin{bmatrix}
+    a_{11} & a_{12} & a_{13} & a_{14} \\
+    \dots & \dots & \dots & \dots \\
+    \dots & \dots & \dots & \dots \\
+    \dots & \dots & \dots & \dots
+  \end{bmatrix}
+  \times
+  \begin{bmatrix}
+    b_{11} & \dots & \dots & \dots \\
+    b_{21} & \dots & \dots & \dots \\
+    b_{31} & \dots & \dots & \dots \\
+    b_{41} & \dots & \dots & \dots
+  \end{bmatrix}
+  =
+  \begin{bmatrix}
+    \dots & \dots & \dots & \dots \\
+    \dots & \dots & \dots & \dots \\
+    \dots & \dots & \dots & \dots \\
+    \dots & \dots & \dots & \dots
+  \end{bmatrix}
+\]
+This operation can be heavily parallelized.
+
+\subsection*{MIPS and FLOPS}
+\begin{itemize}
+  \item MIPS - million instructions per second, CPU power to execute
+    instructions
+  \item MFLOPS - million floating point operations per second, used for
+    computations, involves the whole system and not just the CPU. Involves
+    memory, DISK, cache, bandwidth, I/O for high precision scientific
+    calculations.
+\end{itemize}
+
+\subsection*{Why parallel computing?}
+Single processor systems are inadequate to complete certain compute intensive
+tasks, on time.
+\subsubsection*{CPUs in computers}
+\begin{itemize}
+  \item Intel 386 DX (1985): 11 MIPS @ 33 MHz
+  \item Intel Pentium Pro (1996): 541 MIPS @ 200 MHz
+  \item Intel Core 2 X6800 (2006): 27079 MIPS @ 2.93 GHz
+  \item Intel i7 5960X 8 Core (2015): 238,310 MIPS @ 3 GHz
+\end{itemize}
+\subsubsection*{Applications demand}
+\begin{itemize}
+  \item Several Tera/Peta FLOPS
+  \item Sunway TaihLight, National Super Computer Center, China: 10,649,600
+    cores, 93 Peta FLOPS
+  \item Titan Cray XK7, ORNL: 560,640 cores, 17.5 Peta FLOPS
+\end{itemize}
+
+\subsection*{Concurrency}
+What is concurrency? Concurrency is the potential for parallelism. It provides
+resource access to multiple processes and threads. It involves coordination,
+sharing, and synchronization. \textbf{Concurrency control} deals with correct
+and efficient access by multiple threads to shared resources because
+concurrently executing programs need to coordinate.
+
+\subsection*{Distributed Computing}
+\begin{itemize}
+  \item Concurrent components are independent and communicate and coordinate
+    through message passing or shared memory.
+  \item The lack of a global clock causes problems because each component has
+    its own clock and synchronization is a huge issue.
+  \item Components fail independently. They are isolated from one another and
+    redudant, and should not be visible to the end user.
+\end{itemize}
+\subsubsection*{Characteristics}
+\begin{itemize}
+  \item Heterogeneous
+  \item Transparent
+  \item Secure
+  \item Privacy preserving
+  \item Scalable
+  \item Fault-tolerant
+  \item Concurrent
+\end{itemize}
+\subsubsection*{Examples}
+\begin{itemize}
+  \item The Internet
+  \item Sensor Systems
+  \item P2P Systems
+  \item Airlines
+  \item Aircraft
+  \item Cars
+\end{itemize}
+
+\subsection*{Reminders}
+Professor Mohan Kumar (Professor and Chair, CS Department): \\
+\url{mjkvcs@rit.edu} \\
+\url{https://cs.rit.edu/~mjk} \\
+Include ``CSCI 251'' in your message header. \\
+
+\noindent Jennifer Burt (Additional Contact): \\
+\url{jennifer@cs.rit.edu} \\
+
+There is no single textbook for this course. Check MyCourses for appropriate
+texts and references.
+
+\subsection*{Homework}
+Identify parallelism in different daily activities and read the
+``Dining Philosophers'' problem.
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, feel free to contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
