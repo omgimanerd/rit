@@ -1,0 +1,261 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\title{Linear Algebra}
+\author{Alvin Lin}
+\date{August 2017 - December 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Linear Algebra}
+The study of linear algebra is about two basic things. We study
+\textbf{vector spaces} and structure preserving maps between vector
+spaces. A \textbf{vector space} is set \( v \) with two binary operations,
+addition and scalar multiplcation. A vector space will satisfy various
+distributive identities.
+\[ \R^{2}, \R^{3}, \dots, \R^{n} \]
+are all vector spaces.
+
+\subsection*{Vectors}
+A \textbf{vector} is a directed line segment corresponding to the displacement
+from points \( A \) to \( B \) (in \( \R^{2} \)). If a vector starts at the
+origin, we will say that the vector is in standard position. We can represent
+them as row vectors or column vectors depending on convenience. Each is an
+ordered pair.
+\[ \vec{v} =
+  \begin{bmatrix}
+    2 & 3 \\
+  \end{bmatrix} \]
+\[ \vec{v} =
+  \begin{bmatrix}
+    2 \\
+    3
+  \end{bmatrix}
+\]
+The zero vector (\( \vec{0} \)) is a special vector.
+\[ \vec{0} =
+  \begin{bmatrix}
+    0 & 0
+  \end{bmatrix}
+\]
+Let \( \vec{v}\in\R^{2} \):
+\[ \vec{v}+\vec{0}=\vec{0}+\vec{v}=\vec{v} \]
+
+\subsection*{Adding vectors in \( \R^{2} \)}
+Take the following:
+\begin{align*}
+  \vec{v} &= \langle v_{1},v_{2}\rangle \\
+  \vec{w} &= \langle w_{1},w_{2}\rangle \\
+  \vec{v}+\vec{w} &= \langle v_{1}+w_{1},v_{2}+w_{2}\rangle
+\end{align*}
+Example:
+\begin{align*}
+  \vec{v} &= \langle1,2\rangle \\
+  \vec{w} &= \langle3,4\rangle \\
+  \vec{v}+\vec{w} &= \langle1+3,2+4\rangle = \langle4,6\rangle
+\end{align*}
+
+\subsection*{Scalar Multiplication}
+Let \( c \) be a scalar and let \( \vec{v} = \langle v_{1},v_{2}\in\R^{2} \).
+\[ c\cdot\vec{v} = c\langle v_{1},v_{2}\rangle = \langle cv_{1},cv_{2}\rangle \]
+Example:
+\[ 2\cdot\langle3,4\rangle = \langle2(3),2(4)\rangle = \langle6,8\rangle \]
+If \( c>0 \), then \( c\cdot\vec{v} \) points in the same direction as
+\( \vec{v} \). \\
+If \( c<0 \), then \( c\cdot\vec{v} \) points in the opposite
+direction as \( \vec{v} \). \\
+If \( |c|>1 \), then \( c\cdot\vec{v} \) is \( \vec{v} \) stretched by a factor
+of \( c \). \\
+If \( |c|<1 \), then \( c\cdot\vec{v} \) is \( \vec{v} \) compressed by a factor
+of \( c \).
+
+\subsection*{Vectors in \( \R^{3} \)}
+\[ \R^{3} = \{(x,y,z)\ |\ x,y,z\in\R\} \]
+Similarly, vectors in \( \R^{n} \) are:
+\[ \R^{n} = \{(x_{1},x_{2},\dots,x_{n})\ |\ all\ x_{i}\in\R\} \]
+Let \( \vec{u},\vec{v}\in\R^{n} \), let \( c\in\R \):
+\begin{align*}
+  \vec{u}+\vec{v} &= \langle u_{1},u_{2},\dots,u_{n}\rangle +
+    \langle v_{1},v_{2},\dots,v_{n}\rangle +
+    \langle u_{1}+v_{1},u_{2}+v_{2},\dots,u_{n}+v_{n}\rangle \\
+  c\vec{v} &= c\langle v_{1},v_{2},\dots,v_{n}\rangle =
+    \langle cv_{1},cv_{2},\dots,cv_{n}\rangle
+\end{align*}
+
+\subsection*{Algebraic Properties of \( \R^{n} \)}
+Let:
+\begin{align*}
+  \vec{u} &= \langle u_{1},u_{2},\dots,u_{n}\rangle\in\R^{n} \\
+  \vec{v} &= \langle v_{1},v_{2},\dots,v_{n}\rangle\in\R^{n} \\
+  \vec{w} &= \langle w_{1},w_{2},\dots,w_{n}\rangle\in\R^{n}
+\end{align*}
+Let \( c,d\in\R \) (scalars):
+\begin{enumerate}
+  \item Commutative
+    \[ \vec{u}+\vec{v} = \vec{v}+\vec{u} \]
+  \item Associative
+    \[ (\vec{u}+\vec{v})+\vec{w} = \vec{u}+(\vec{v}+\vec{w}) \]
+  \item
+    \[ \vec{u}+\vec{0} = \vec{0}+\vec{u} = \vec{u} \]
+  \item
+    \[ \vec{u}+(-\vec{u}) = \vec{0} \]
+  \item Distributive
+    \[ c(\vec{u}+\vec{v}) = c\vec{u}+c\vec{v} \]
+  \item
+    \[ (c+d)\vec{u} = c\vec{u}+d\vec{u} \]
+  \item
+    \[ c(d\vec{u}) = (cd)\vec{u} \]
+  \item
+    \[ 1\vec{u} = \vec{u} \]
+\end{enumerate}
+Proof of (1):
+\begin{align*}
+  \vec{u}+\vec{v} &= \langle u_{1},u_{2},\dots,u_{n}\rangle+
+    \langle v_{1},v_{2},\dots,v_{n}\rangle \\
+  &= \langle u_{1}+v_{1},u_{2}+v_{2},\dots,u_{n}+v_{n}\rangle \\
+  &= \langle v_{1}+u_{1},v_{2}+u_{2},\dots,v_{n}+u_{n}\rangle \\
+  &= \langle v_{1},v_{2},\dots,v_{n}\rangle+
+    \langle u_{1},u_{2},\dots,u_{n}\rangle \\
+  &= \vec{v}+\vec{u}
+\end{align*}
+Proof of (2):
+\begin{align*}
+  (\vec{u}+\vec{v})+\vec{w} &= (\langle u_{1},\dots,u_{n}\rangle+
+    \langle v_{1},\dots,v_{n}\rangle)+\langle w_{1},\dots,w_{n}\rangle \\
+  &= \langle u_{1}+v_{1},\dots,u_{n}+v_{n}\rangle+
+    \langle w_{1},\dots,w_{n}\rangle \\
+  &= \langle(u_{1}+v_{1})+w_{1},\dots,(u_{n}+v_{n})+w_{n}\rangle \\
+  &= \langle u_{1},\dots,u_{n}\rangle +
+    (\langle v_{1}+w_{1},\dots,v_{n}+w_{n}) \\
+  &= \vec{u}+(\langle v_{1},\dots,v_{n}\rangle+
+    \langle w_{1},\dots,w_{n}\rangle) \\
+  &= \vec{u}+(\vec{v}+\vec{w})
+\end{align*}
+Proof of (3):
+\begin{align*}
+  \vec{u}+\vec{0} &= \langle u_{1},u_{2},\dots,u_{n}\rangle+
+    \langle0,0,\dots,0\rangle \\
+  &= \langle u_{1}+0,u_{2}+0,\dots,u_{n}+0\rangle \\
+  &= \langle u_{1},u_{2},\dots,u_{n}\rangle = \vec{u}
+\end{align*}
+Proof of (4):
+\begin{align*}
+  \vec{u}+(-\vec{u}) &= \langle u_{1},u_{2},\dots,u_{n}\rangle+
+    \langle-u_{1},-u_{2},\dots,-u_{n}\rangle \\
+  &= \langle u_{1}-u_{1},u_{2}-u_{2},\dots,u_{n}-u_{n}\rangle \\
+  &= \langle0,0,\dots,0\rangle = \vec{0}
+\end{align*}
+Proof of (5):
+\begin{align*}
+  c(\vec{u}+\vec{v}) &= c(\langle u_{1},u_{2},\dots,u_{n}\rangle+
+    \langle v_{1},v_{2},\dots,v_{n}\rangle) \\
+  &= c(\langle u_{1}+v_{1},u_{2}+v_{2},\dots,u_{n}+v_{n}\rangle) \\
+  &= \langle c(u_{1}+v_{1}),c(u_{2}+v_{2}),\dots,c(u_{n}+v_{n})\rangle \\
+  &= \langle cu_{1}+cv_{1},cu_{2}+cv_{2},\dots,cu_{n}+cv_{n}\rangle \\
+  &= \langle cu_{1},cu_{2},\dots,cu_{n}\rangle+
+    \langle cv_{1},cv_{2},\dots,cv_{n}\rangle \\
+  &= c\langle u_{1},u_{2},\dots,u_{n}\rangle+
+    c\langle v_{1},v_{2},\dots,v_{n}\rangle \\
+  &= c\vec{u}+c\vec{v}
+\end{align*}
+
+\subsection*{Linear combinations}
+Let \( \vec{v_{1}},\vec{v_{2}},\dots,\vec{v_{k}}\in\R^{n} \). We say
+\( \vec{v} \) is a \textbf{linear combination} of
+\( \vec{v_{1}},\dots,\vec{v_{k}} \) if there exists scalars
+\( c_{1},\dots,c_{k} \) such that:
+\[ \vec{v} = \sum_{i=1}^{k}c_{i}\vec{v_{i}} =
+  c_{1}\vec{v_{1}}+c_{2}\vec{v_{2}}+\dots+c_{n}\vec{v_{n}} \]
+Example in \( \R^{3} \):
+Let:
+\begin{align*}
+  \vec{v} &=
+    \begin{bmatrix}
+      2 \\ -2 \\ -1
+    \end{bmatrix} \quad
+  \vec{v_{1}} =
+    \begin{bmatrix}
+      1 \\ 0 \\ -1
+    \end{bmatrix} \\
+  \vec{v_{2}} &=
+    \begin{bmatrix}
+      2 \\ -3 \\ 1
+    \end{bmatrix} \quad
+  \vec{v_{3}} =
+    \begin{bmatrix}
+      5 \\ -4 \\ 0
+    \end{bmatrix}
+\end{align*}
+Claim: \( \vec{v} \) is a linear combination of
+\( \vec{v_{1}},\vec{v_{2}},\vec{v_{3}} \): \\
+We must find \( c_{1},c_{2},c_{3} \) such that:
+\[ \vec{v} = c_{1}\vec{v_{1}}+c_{2}\vec{v_{2}}+c_{3}\vec{v_{3}} \]
+
+\subsection*{Dot Product}
+Let:
+\begin{align*}
+  \vec{u} &=
+    \begin{bmatrix}
+      u_{1} \\ u_{2} \\ \vdots \\ u_{n}
+    \end{bmatrix} \\
+  \vec{v} &=
+    \begin{bmatrix}
+      v_{1} \\ v_{2} \\ \vdots \\ v_{n}
+    \end{bmatrix} \\
+  \vec{u}\cdot\vec{v} &= \sum_{i=1}^{n}u_{i}v_{i} \\
+  &= u_{1}v_{1}+u_{2}v_{2}+\dots+u_{n}v_{n}
+\end{align*}
+
+\subsection*{Rules for the dot product}
+Let \( \vec{u},\vec{v},\vec{w}\in\R^{n} \), \( c \) is a scalar:
+\begin{enumerate}
+  \item
+    \[ \vec{u}\cdot\vec{v} = \vec{v}\cdot\vec{u} \]
+  \item
+    \[ \vec{u}\cdot(\vec{v}+\vec{w}) =
+      \vec{u}\cdot\vec{v}+\vec{u}\cdot\vec{w} \]
+  \item
+    \[ (c\vec{u})\cdot\vec{v} = c(\vec{u}\cdot\vec{v}) \]
+  \item
+    \[ \vec{u}\cdot\vec{u}\geq0 \]
+    \[ \vec{u}\cdot\vec{u} = 0\ \textrm{iff}\ \vec{u} = \vec{0} \]
+\end{enumerate}
+Proof for (1):
+\begin{align*}
+  \vec{u}\cdot\vec{v} &= \sum_{i=1}^{n}u_{i}v_{i} \\
+  &= \sum_{i=1}^{n}v_{i}u_{i} \\
+  &= \vec{v}\cdot\vec{u}
+\end{align*}
+Proof for (2):
+\begin{align*}
+  \vec{u}\cdot(\vec{v}+\vec{w}) &=
+    (\langle v_{1}+w_{1},\dots,v_{n}+w_{n}\rangle) \\
+  &= \sum_{i=1}^{n}u_{i}(v_{i}+w_{i}) \\
+  &= \sum_{i=1}^{n}(u_{i}v_{i}+u_{i}+w_{i}) \\
+  &= \sum_{i=1}^{n}u_{i}v_{i}+\sum_{i=1}^{n}u_{i}w_{i} \\
+  &= \vec{u}\cdot\vec{v}+\vec{u}\cdot\vec{w}
+\end{align*}
+Proof for (3):
+\begin{align*}
+  \sum_{i=1}^{n}(cu_{i})v_{i} &= \sum_{i=1}^{n}c(u_{i}v_{i}) \\
+  &= c\sum_{i=1}^{n}u_{i}v_{i} \\
+  &= c(\vec{u}\cdot\vec{v})
+\end{align*}
+Proof for (4):
+\begin{align*}
+  \vec{u}\cdot\vec{u} &= \sum_{i=1}^{n}u_{i}u_{i} \\
+  &= \sum_{i=1}^{n}(u_{1})^{2}
+\end{align*}
+\( (u_{1})^{2} \) is non-negative, therefore the summation must be greater than
+or equal to 0.
+
+\begin{center}
+  If you have any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
