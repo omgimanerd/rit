@@ -1,0 +1,54 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\title{University Physics 1A}
+\author{Alvin Lin}
+\date{August 2017 - December 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Factor Label Method}
+For converting units of measure, you can multiply by one, using equal unit
+measures as equivalent fractions:
+\[ 1 = \frac{2.54in}{1cm} = \frac{5280ft}{1mi} = \frac{1mi}{5280ft} \]
+
+\subsection*{Example}
+A wheel rotates at 1.234 rad/s. Convert this to rev/min.
+\[ \frac{1.234rad}{1s}\times\frac{1rev}{2\pi rad}\times\frac{60s}{1min} =
+  \frac{74.04rev}{2\pi min} = 116.3\frac{rev}{min} \]
+
+\section*{Uncertainty}
+Uncertainties should have the same level of precision as the measurement.
+\[ 1.23\pm0.06 \]
+\[ 4.56\pm0.09 \]
+When adding numbers with uncertainty, the uncertainties are added:
+\[ 1.23+4.56\pm(0.06+0.06) \]
+When subtracting numbers with uncertainty, the uncertainties are still
+added because it is still compounded by the operation:
+\[ 4.56-1.23\pm(0.06+0.09) \]
+When multiplying numbers with uncertainty, we sum together the relative
+uncertainty:
+\[ (1.23\pm0.06)(4.56\pm0.09) =
+  (1.23)(4.56)(1\pm(\frac{0.06}{1.23}+\frac{0.09}{4.56})) \]
+When dividing numbers with uncertainty, it follows the same rule as
+multiplication:
+\begin{align*}
+  \frac{1.23\pm0.06}{4.56}{0.09} &=
+    \frac{1.23}{4.56}(1\pm(\frac{0.06}{1.23}+\frac{0.09}{4.56})) \\
+  &= 0.27(1\pm(0.05+0.02)) \\
+  &= 0.27\pm(0.27)(0.07) \\
+  &= 0.27\pm0.02
+\end{align*}
+Uncertainty arises from the tools of measurement and the precision associated
+with the instrument.
+
+\begin{center}
+  If you have any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
