@@ -2,6 +2,9 @@
 \ProvidesClass{math}[2016/12/06 Custom Math Notes]
 \LoadClass[letterpaper, 12pt]{article}
 
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+
 \renewcommand*{\arcsin}{\sin^{-1}}
 \renewcommand*{\arccos}{\cos^{-1}}
 \renewcommand*{\arctan}{\tan^{-1}}
