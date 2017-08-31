@@ -2,7 +2,7 @@
 
 \usepackage{amsmath}
 \usepackage{amssymb}
-\usepackage[x11names]{xcolor}
+\usepackage{tikz}
 
 \title{Linear Algebra}
 \author{Alvin Lin}
@@ -18,12 +18,12 @@ The study of linear algebra is about two basic things. We study
 spaces. A \textbf{vector space} is set \( v \) with two binary operations,
 addition and scalar multiplcation. A vector space will satisfy various
 distributive identities.
-\[ \R^{2}, \R^{3}, \dots, \R^{n} \]
+\[ \R^2, \R^3, \dots, \R^n \]
 are all vector spaces.
 
 \subsection*{Vectors}
 A \textbf{vector} is a directed line segment corresponding to the displacement
-from points \( A \) to \( B \) (in \( \R^{2} \)). If a vector starts at the
+from points \( A \) to \( B \) (in \( \R^2 \)). If a vector starts at the
 origin, we will say that the vector is in standard position. We can represent
 them as row vectors or column vectors depending on convenience. Each is an
 ordered pair.
@@ -43,10 +43,10 @@ The zero vector (\( \vec{0} \)) is a special vector.
     0 & 0
   \end{bmatrix}
 \]
-Let \( \vec{v}\in\R^{2} \):
+Let \( \vec{v}\in\R^2 \):
 \[ \vec{v}+\vec{0}=\vec{0}+\vec{v}=\vec{v} \]
 
-\subsection*{Adding vectors in \( \R^{2} \)}
+\subsection*{Adding vectors in \( \R^2 \)}
 Take the following:
 \begin{align*}
   \vec{v} &= \langle v_{1},v_{2}\rangle \\
@@ -87,7 +87,7 @@ Let \( \vec{u},\vec{v}\in\R^{n} \), let \( c\in\R \):
     \langle cv_{1},cv_{2},\dots,cv_{n}\rangle
 \end{align*}
 
-\subsection*{Algebraic Properties of \( \R^{n} \)}
+\subsection*{Algebraic Properties of \( \R^n \)}
 Let:
 \begin{align*}
   \vec{u} &= \langle u_{1},u_{2},\dots,u_{n}\rangle\in\R^{n} \\
@@ -165,7 +165,7 @@ Proof of (5):
 \end{align*}
 
 \subsection*{Linear combinations}
-Let \( \vec{v_{1}},\vec{v_{2}},\dots,\vec{v_{k}}\in\R^{n} \). We say
+Let \( \vec{v_{1}},\vec{v_{2}},\dots,\vec{v_{k}}\in\R^n \). We say
 \( \vec{v} \) is a \textbf{linear combination} of
 \( \vec{v_{1}},\dots,\vec{v_{k}} \) if there exists scalars
 \( c_{1},\dots,c_{k} \) such that:
@@ -212,7 +212,7 @@ Let:
 \end{align*}
 
 \subsection*{Rules for the dot product}
-Let \( \vec{u},\vec{v},\vec{w}\in\R^{n} \), \( c \) is a scalar:
+Let \( \vec{u},\vec{v},\vec{w}\in\R^n \), \( c \) is a scalar:
 \begin{enumerate}
   \item
     \[ \vec{u}\cdot\vec{v} = \vec{v}\cdot\vec{u} \]
@@ -253,6 +253,204 @@ Proof for (4):
 \end{align*}
 \( (u_{1})^{2} \) is non-negative, therefore the summation must be greater than
 or equal to 0.
+
+\subsection*{Norm or length of a vector}
+Let:
+\begin{align*}
+  \vec{v}\in\R^n \quad \vec{v} &= \begin{bmatrix}
+    v_{1} \\ v_{2} \\ \vdots \\ v_{N}
+  \end{bmatrix} \\
+  \|\vec{v}\| &= \sqrt{\vec{v}\cdot\vec{v}} \\
+  &= \sqrt{\sum_{i=1}^{n}(v_{1})^{2}}
+\end{align*}
+
+\subsubsection*{Example}
+In \( \R^2 \), consider \( \vec{v} = \begin{bmatrix}3 \\ 4\end{bmatrix} \).
+Calculate \( |\vec{v}| \).
+\[ \|\vec{v}\| = \sqrt{3^{2}+4^{2}} = \sqrt{9+16} = \sqrt{25} = 5 \]
+
+\subsubsection*{Properties of a vector norm}
+\[ |\vec{v}| = 0 \iff \vec{v} = \vec{0} \]
+This is true because \( \|\vec{v}\| = 0 \iff \vec{v}\cdot\vec{v} = 0 \iff
+  \vec{v} = \vec{0} \).
+\[ \|c\vec{v}\| = |c|\|\vec{v}\| \]
+Proof:
+\begin{align*}
+  \|c\vec{v}\|^{2} &= (c\vec{v})\cdot(c\vec{v}) \\
+  &= c^{2}(\vec{v}\cdot\vec{v}) \\
+  &= c^{2}\|\vec{v}\|^{2} \\
+  \sqrt{\|c\vec{v}\|^{2}} &= \sqrt{c^{2}\|\vec{v}\|^{2}} \\
+  \|\vec{v}\| = |c|\|\vec{v}\|
+\end{align*}
+
+\subsection*{Unit Vectors}
+A \textbf{unit vector} is a vector of length 1. In \( \R^2 \):
+\begin{align*}
+  \vec{e_{1}} &= \begin{bmatrix}
+    1 \\ 0
+  \end{bmatrix} \\
+  \vec{e_{2}} &= \begin{bmatrix}
+    0 \\ 1
+  \end{bmatrix}
+\end{align*}
+In \( \R^3 \):
+\begin{align*}
+  \vec{e_{1}} &= \begin{bmatrix}
+    1 \\ 0 \\ 0
+  \end{bmatrix} \\
+  \vec{e_{2}} &= \begin{bmatrix}
+    0 \\ 1 \\ 0
+  \end{bmatrix} \\
+  \vec{e_{3}} &= \begin{bmatrix}
+    0 \\ 0 \\ 1
+  \end{bmatrix}
+\end{align*}
+In \( \R^n \), there exist the unit vectors \( \vec{e_{1}},\vec{e_{2}},\dots,
+\vec{e_{n}} \). \( e_{i} \) has a 1 in the \( i^th \) component and zeros
+everywhere else.
+
+\subsection*{Vector Normalization}
+In \( \R^3 \) with \( \vec{v}\in\R^{n} \) and \( \vec{v}\neq\vec{0} \), the
+unit vector corresponding to \( \vec{v} \) is:
+\[ \vec{v}_{norm} = \frac{1}{\|\vec{v}\|}\vec{v} \]
+
+\subsubsection*{Example}
+Normalize \( \vec{v} = \begin{bmatrix}2 \\ -1 \\ -3\end{bmatrix} \):
+\begin{align*}
+  \|\vec{v}\| &= \sqrt{2^2+(-1)^2+(-3)^2} \\
+  &= \sqrt{4+1+9} \\
+  &= \sqrt{14} \\
+  \vec{v}_{norm} &= \frac{1}{\|\vec{v}\|}\vec{v} \\
+  &= \frac{1}{\sqrt{14}}\begin{bmatrix}2 \\ -1 \\ -3\end{bmatrix} \\
+  &= \begin{bmatrix}
+    \frac{2}{\sqrt{14}} \\
+    \frac{-1}{\sqrt{14}} \\
+    \frac{-3}{\sqrt{14}}
+  \end{bmatrix}
+\end{align*}
+
+\subsection*{Cauchy-Schwarz Inequality}
+Let \( \vec{u},\vec{v}\in\R^{n} \):
+\[ |\vec{u}\cdot\vec{v}|\leq\|\vec{u}\|\|\vec{v}\| \]
+
+\subsection*{The Triangle Inequality}
+Let \( \vec{u},\vec{v}\in\R^{n} \):
+\[ \|\vec{u}+\vec{v}\|\leq\|\vec{u}\|+\|\vec{v}\| \]
+Proof:
+\begin{align*}
+  \|\vec{u}+\vec{v}\|^2 &= (\vec{u}+\vec{v})\cdot(\vec{u}+\vec{v}) \\
+  &= \vec{u}\cdot\vec{u}+2\vec{u}\vec{v}+\vec{u}\cdot\vec{v} \\
+  &= \|\vec{u}\|^2+2\vec{u}\cdot\vec{v}+\|\vec{v}\|^2 \\
+  & \textrm{By the Cauchy-Schwarz Inequality} \\
+  &\leq \|\vec{u}\|^2+2\|\vec{u}\|\|\vec{v}\|+\|\vec{v}\|^2 \\
+  &= (\|\vec{u}\|+\|\vec{v}\|)^2
+\end{align*}
+Thus, \( \|\vec{u}+\vec{v}\|^2 \leq (\|\vec{u}\|+\|\vec{v}\|)^2 \). Taking the
+square root:
+\[ \|\vec{u}+\vec{v}\|\leq\|\vec{u}\|+\|\vec{v}\| \]
+
+\subsection*{Distance Formula}
+In \( \R \), let \( a,b\in\R \). Find the formula for \( d(a,b) \):
+\[ d(a,b) = |a-b| = \sqrt{(a-b)^2}\]
+In \( \R^2 \), let \( \vec{v_{1}} = [a_{1},b_{1}] \), and \( v_{2} = [a_{2},
+b_{2}] \).
+\begin{align*}
+  d(\vec{v_{1}},\vec{v_{2}}) &= \|\vec{v_{1}}-\vec{v_{2}}\| \\
+  &= \sqrt{(a_{1}-a_{2})^2-(b_{2}-b_{2})^2}
+\end{align*}
+In \( \R^n \), let \( \vec{v},\vec{w} \) be vectors. Define the distance from
+\( \vec{v} \) to \( \vec{w} \) as follows:
+\begin{align*}
+  d(\vec{v},\vec{w}) &= \|\vec{v}-\vec{w}\| \\
+  &= \sqrt{\sum_{i=1}^{n}(v_{1}-w_{1})^2}
+\end{align*}
+
+\subsubsection*{Example}
+\begin{align*}
+  \vec{u} &= \begin{bmatrix}\sqrt{2} \\ 1 \\ -1\end{bmatrix} \\
+  \vec{v} &= \begin{bmatrix}0 \\ 2 \\ -2\end{bmatrix} \\
+  d(\vec{u},\vec{v}) &= \sqrt{(\sqrt{2}-0)^2+(1-2)^2+(-1+2)^2} \\
+  &= \sqrt{2+(-1)^2+1^2} \\
+  &= \sqrt{4} \\
+  &= 2
+\end{align*}
+
+\subsection*{Angle Between Vectors}
+If we have two vectors \( \vec{v},\vec{u} \) and the angle \( \theta \) between
+them, we can use the law of cosines to find \( \theta \):
+\begin{align*}
+  \|\vec{u}-\vec{v}\|^2 &=
+    \|\vec{u}\|^2+\|\vec{v}\|^2-2\|\vec{u}\|\|\vec{v}\|\cos\theta \\
+  &= (\vec{u}-\vec{v})\cdot(\vec{u}-\vec{v}) \\
+  &= \vec{u}\cdot\vec{u}-2\vec{u}\cdot\vec{v}+\vec{v}\cdot\vec{v} \\
+  &= \|\vec{u}\|^2-2\vec{u}\cdot\vec{v}+\|\vec{v}\|^2 \\
+  \|\vec{u}\|^2-2\vec{u}\cdot\vec{v}+\|\vec{v}\|^2 &=
+    \|\vec{u}\|^2+\|\vec{v}\|^2-2\|\vec{u}\|\|\vec{v}\|\cos\theta \\
+  -2\vec{u}\cdot\vec{v} &= -2\|\vec{u}\|\|\vec{v}\|\cos\theta \\
+  \frac{\vec{u}\cdot\vec{v}}{\|\vec{u}\|\|\vec{v}\|} &= \cos\theta
+\end{align*}
+Let \( \vec{u},\vec{v}\in\R^n \), the angle \( \theta \) between \( \vec{v} \)
+and \( \vec{u} \) is:
+\[ \cos\theta = \frac{\vec{u}\cdot\vec{v}}{\|\vec{u}\|\|\vec{v}\|} \]
+
+\subsubsection*{Example}
+Find the angle between:
+\begin{align*}
+  \vec{u} &= \begin{bmatrix}2 \\ 1 \\ -2\end{bmatrix} \\
+  \vec{v} &= \begin{bmatrix}1 \\ 1 \\ 1\end{bmatrix} \\
+  \vec{u}\cdot\vec{v} &= 2(1)+1(1)+(-2)(1) \\
+  &= 2+1-2 = 1 \\
+  \|\vec{u}\| &= \sqrt{2^2+1^2+(-2)^2} = \sqrt{9} = 3 \\
+  \|\vec{v}\| &= \sqrt{1^2+1^2+1^2} = \sqrt{3} \\
+  \cos\theta &= \vec{1}{3\sqrt{3}} \\
+  \theta &\approx 1.377rad \approx 78.9^\circ
+\end{align*}
+
+\subsection*{Orthogonal Vectors}
+We say two vectors \( \vec{u} \) and \( \vec{v} \) are orthogonal if there's
+a right angle between them.
+\begin{align*}
+  \cos(\frac{\pi}{2}) &= \frac{\vec{u}\cdot\vec{v}}{\|\vec{u}\|\|\vec{v}\|} \\
+  0 &= \frac{\vec{u}\cdot\vec{v}}{\|\vec{u}\|\|\vec{v}\|} \\
+  &\therefore \vec{u}\cdot\vec{v} = 0
+\end{align*}
+Two vectors are orthogonal if their dot product is zero.
+
+\subsubsection*{Example}
+\begin{align*}
+  \vec{u} &= \langle1,1,-2\rangle \\
+  \vec{v} &= \langle3,1,2\rangle \\
+  \vec{u}\cdot\vec{v} &= 1(3)+1(1)+(-2)(2) \\
+  &= 3+1-4 = 0
+\end{align*}
+
+\subsection*{The Pythagorean Theorem}
+For vectors \( \vec{u},\vec{v}\in\R^n \), suppose \( \vec{u} \) and
+\( \vec{v} \) are orthogonal. Then:
+\begin{align*}
+  \|\vec{u}+\vec{v}\|^2 &= \|\vec{u}\|^2+\|\vec{v}\|^2 \\
+  (\vec{u}+\vec{v})\cdot(\vec{u}+\vec{v}) &=
+    \vec{u}\cdot\vec{u}+2\vec{u}\cdot\vec{v}+\vec{v}\cdot\vec{v} \\
+  &= \|\vec{u}\|^2+2\vec{u}\cdot\vec{v}+\|\vec{v}\|^2 \\
+  &= \|\vec{u}\|^2+0+\|\vec{v}\|^2 \\
+  &= \|\vec{u}\|^2+\|\vec{v}\|^2
+\end{align*}
+
+\subsection*{Vector Projection}
+The projection of \( \vec{v} \) onto \( \vec{u} \) described by \( \vec{p} \)
+is:
+\begin{center}
+  \begin{tikzpicture}
+    \draw[->] (0,0)--(4,0) node[pos=0.5,below] {\( \vec{v} \)};
+    \draw[->] (0,0)--(1,2) node[pos=0.5,left] {\( \vec{u} \)};
+    \draw[->,red,thick] (0,0)--(1,0) node[pos=0.5,below]
+      {\( \vec{p} = proj_{\vec{v}}\vec{u} \)};
+    \draw[dashed] (1,2)--(1,0);
+  \end{tikzpicture}
+\end{center}
+\[ proj_{\vec{u}}\vec{v} =
+  (\frac{\vec{u}\cdot\vec{v}}{\vec{u}\cdot\vec{u}})\vec{u} =
+  (\frac{\vec{u}\cdot\vec{v}}{\|\vec{u}\|^2})\vec{u} \]
 
 \begin{center}
   If you have any questions, comments, or concerns, please contact me at
