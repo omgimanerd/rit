@@ -1,0 +1,173 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+
+\title{Introduction to Computer Science Theory}
+\author{Alvin Lin}
+\date{August 28th, 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{What is theory?}
+\begin{itemize}
+  \item Greek \textit{theoria}: ``a looking at, viewing, beholding''
+  \item National Academy of Sciences: ``... a well-substantiated
+    explanation of some aspect of the natural world, based on a body of
+    facts that have been repeatedly confirmed through observation and
+    experiment.
+  \item A simple explanatory framework
+\end{itemize}
+
+\subsection*{Criteria for a Good Theory}
+\begin{itemize}
+  \item Makes falsifiable predictions.
+  \item Well-supported by many independent strands of evidence.
+  \item Consistent with pre-existing theories.
+  \item Can be adapted and modified to account for new evidence.
+  \item Parsimonious (Occam's razor)
+\end{itemize}
+
+\subsection*{Automata Theory}
+\begin{itemize}
+  \item The foundational theory of computer science.
+  \item Based on simple, abstract, and mathematically well-defined
+    machines.
+  \item Uses proofs, theorems, et cetera to extend the theory.
+\end{itemize}
+
+\subsection*{Why should you care about the theory of computing?}
+\begin{itemize}
+  \item Any scientific inquiry should be guided by and phrased in
+    terms of theory.
+  \item To gain an understanding of what computers can and cannot do, akin
+    to the role physics plays in engineering.
+  \item To learn how to think and express yourself formally and abstractly,
+    using English, not a programming language. This is use when communicating
+    with clients and other nontechnical people, writing patents or scientific
+    papers, or porting algorithms to other systems.
+  \item Programming is itself a formal problem. Understanding more broadly how
+    formal methods work results in better programming.
+\end{itemize}
+
+\section*{Sets}
+A collection of objects (a.k.a. hashes, associated arrays). Examples:
+\begin{itemize}
+  \item The set of natural numbers
+  \begin{align*}
+    \mathrm{Define}\ \N&: \\
+    \mathrm{Basis}&: 1\in\N \\
+    \mathrm{Recursion}&: \forall n\in\N(n+1\in\N)
+  \end{align*}
+  \item \( \{1,-1,2,-2,\dots,345,-345\} \)
+  \item \( \{x\in\N\ |\ x>517\} \)
+  \item \( 2^{S} \) where \( S \) is a set.
+    \[ 2^{\{0,1,2\}} = \{\emptyset,\{0\},\{1\},\{2\},\{0,1\},
+      \{0,2\},\{1,2\},\{0,1,2\}\} \]
+  \item \( S = \{1,\{1,\{1,\{\dots\},\dots\}\}\} \) is a set that
+    contains itself.
+  \item Is \( \{S\ |\ S\ is\ a\ set\ and\ S\in S\} \) a set? Yes.
+  \item Is \( \{S\ |\ S\ is\ a\ set\ and\ S\notin S\} \) a set? No.
+\end{itemize}
+The complement of a set is denoted \( \bar{A} \) or as \( A' \).
+\[ \bar{A} = \U-A \]
+
+\section*{Languages}
+A \textbf{language} is a set of strings involving symbols from some
+\textbf{alphabet}. An \textbf{alphabet} is a finite set of
+indivisible objects, usually denoted by \( \Sigma \). Examples:
+\begin{itemize}
+  \item \( \{0,1\} \)
+  \item \( \{a,b,c,d,e,\dots,x,y,z\} \)
+\end{itemize}
+
+A string over \( \Sigma \) is finite (possibly empty) sequence of elements of
+\( \Sigma \). Strings of alpha \( \{0,1\} \) are:
+\begin{itemize}
+  \item \( \epsilon \)
+  \item \( 0 \)
+  \item \( 1 \)
+  \item \( 10010011101 \)
+  \item \( 00000 \)
+\end{itemize}
+
+\( \epsilon \) denotes the \textbf{null string}: the empty sequence of elements
+of \( \Sigma \). Sometimes this is denoted \( \wedge \) or \( \lambda \). The
+following strings are not strings over \( \{0,1\} \):
+\begin{itemize}
+  \item \( 1021 \)
+  \item \( 1111111111\dots \)
+\end{itemize}
+
+If \( x \) is a string of \( \Sigma \), \( |x| \) denotes the length of \( x \),
+the number of alphabet symbols in the string.
+\begin{itemize}
+  \item \( |1| = 1 \)
+  \item \( |10001010101| = 11 \)
+  \item \( |00000| = 5 \)
+  \item \( |\epsilon| = 0 \)
+\end{itemize}
+
+The set of all strings over \( \Sigma \) is denoted by \( \Sigma^* \).
+For example, \( \{0,1\}^* = \{\epsilon,0,1,00,01,10,11,000,001,\dots\} \).
+A language of \( \Sigma \) is a subset of \( \Sigma^* \).
+\[ \{a,b,c\}^* = \{\epsilon,a,b,c,aa,ab,ac,ba,bb,bc,\dots\} \]
+A language over \( \Sigma \) is a subset of \( \Sigma^* \). Example:
+\begin{itemize}
+  \item \( \{1,010,111000,110\} \)
+  \item \( \emptyset \)
+  \item \( \epsilon \)
+  \item \( \{0,1\}^* \)
+  \item \( \{x\in\{0,1\}^*\ |\ |x|\ is\ even\} \)
+\end{itemize}
+
+Because languages are sets of strings, we can construct new languages using
+set operations (like union, intersection, and complementation).
+\[ L_{1}, L_{2} \]
+\[ L_{1}\cup L_{2} \quad L_{1}\cap L_{2} \]
+If \( L \) is a language of \( \Sigma \), then \( \bar{L} \) (the complement of
+\( L \)) is \( \Sigma^*-L \).
+\[ L = \{0,00,000,0000,\dots\} \]
+If \( \Sigma = \{0\} \):
+\[ \bar{L} = \{\epsilon\} \]
+If \( \Sigma = \{1,0\} \):
+\[ \bar{L} = \{\epsilon,1,01,10,11,\dots\} \]
+
+\subsection*{Operations on Strings}
+Let \( x,y\in\Sigma^* \):
+\begin{itemize}
+  \item \( xy \) is the \textbf{concatenation} of \( x \) and \( y \). For
+    example, if \( x = \text{ab} \) and \( y = \text{aabb} \), then \( xy =
+    \text{abaabb} \). For all strings \( x \), \( x\epsilon = \epsilon x =
+    x \).
+  \item For \( i \) an integer, \( x^i \) is the concatenation of \( i\ x's \).
+    For example, if \( x = abb \), then \( x^{3} = \text{abbabbabb} \). For all
+    strings \( x \), \( x^0 = \epsilon \).
+  \item x is a \textbf{substring} of y if and only if there exist \( w,z\in
+    \Sigma^* \) such that \( wxz = y \).
+  \item \( x \) is a \textbf{prefix} of \( y \) if and only if there exists a
+    \( z\in\Sigma^* \) such that \( xz = y \).
+  \item \( x \) is a \textbf{suffix} of \( y \) if and only if there exists a
+    \( z\in\Sigma^* \) such that \( zx = y \).
+\end{itemize}
+
+\subsection*{Operations on Languages}
+Operations on strings can be extended to operations on languages. Let
+\( L,L_1,L_2\subseteq\Sigma^* \):
+\begin{itemize}
+  \item \( L_1\circ L_2 = \{xy\ |\ x\in L_1,y\in L_2\} \) is the concatenation
+    of languages \( L_1 \) and \( L_2 \). What is \( \{ab,a\}\circ\{a,ba,aaaa\}
+    \)
+    \[ \{aba,abba,abaaaa,aa,aba,aaaaa\} \]
+\end{itemize}
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, feel free to contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
