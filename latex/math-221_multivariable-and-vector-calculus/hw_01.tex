@@ -1,0 +1,152 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+
+\geometry{letterpaper, margin=1in}
+
+\title{Multivariable and Vector Calculus: Homework 1}
+\author{Alvin Lin}
+\date{August 2016 - December 2016}
+
+\begin{document}
+
+\maketitle
+
+\section*{Page 796}
+
+\subsection*{Exercise 3}
+Which of the points A(-4,0,-1), B(-3,1,-5), and C(2,4,6) is closest to the
+yz-plane? Which point lies in the xz-plane?
+\[ A \to 4 \quad B -> 3 \quad C -> 2 \]
+Point C is closest to the yz-plane. The y-component of A is 0, so it lies in the
+xz-plane.
+
+\subsection*{Exercise 9}
+Find the lengths of the sides of the triangle PQR. Is it a right triangle?
+Is it an isosceles triangle?
+\[ P(3,-2,-3) \quad Q(7,0,1) \quad R(1,2,1) \]
+\begin{align*}
+  \overline{PQ} &= \sqrt{16+4+16} = \sqrt{36} = 6 \\
+  \overline{QR} &= \sqrt{36+4+0} = \sqrt{40} \\
+  \overline{PR} &= \sqrt{4+16+16} = \sqrt{36} = 6
+\end{align*}
+\( \triangle \) PQR is an isosceles triangle.
+
+\subsection*{Exercise 13}
+Find the intersection of the sphere with center (-3,2,5) and radius 4.
+\[ (x+3)^2+(y-2)^2+(z-5)^2 = 16 \]
+This sphere intersects the yz-plane at \( x = 0 \):
+\[ (0+3)^2+(y-2)^2+(z-5)^2 = 16 \]
+\[ (y-2)^2+(z-5)^2 = 7 \]
+The intersection is a circle centered at (0,2,5) with radius \( \sqrt{7} \).
+
+\subsection*{Exercise 17}
+Show that the equation represents a sphere, and find its center and radius:
+\begin{align*}
+  x^2+y^2+z^2-2x-4y+8z &= 15 \\
+  x^2-2x+y^2-4y+z^2+8z &= 15 \\
+  x^2-2x+1+y^2-4y+4+z^2+8z+16 &= 15+1+4+16 \\
+  (x-1)^2+(y-2)^2+(z+4)^2 &= 36
+\end{align*}
+This sphere is centered at (1,2,-4) and has a radius of 6.
+
+\subsection*{Exercise 33}
+Describe in words the region of \( \R^3 \) represented by the equations or
+inequality.
+\[ x^2+y^2+z^2 = 4 \]
+This describes a hollow sphere centered at the origin with a radius 2 (excluding
+the inside of the sphere).
+
+\subsection*{Exercise 37}
+Describe in words the region of \( \R^3 \) represented by the equations or
+inequality.
+\[ x^2+z^2\le 9 \]
+This describes a solid cylinder centered at the origin with radius 9 extending
+infinitely in the y-direction.
+
+\subsection*{Exercise 41}
+Write inequalities to describe the region: The region consisting of all points
+between (but not on) the spheres of radius \( r \) and \( R \) centered at the
+origin, where \( r < R \).
+\[ r < x^2+y^2+z^2 < R \]
+
+\section*{Page 805}
+
+\subsection*{Exercise 7}
+In the figure, the tip of c and the tail of d are both the midpoint
+of QR. Express c and d in terms of a and b.
+\[ d = \frac{b-a}{2} \]
+\[ b = \frac{a+b}{2} \]
+
+\subsection*{Exercise 8}
+If the vectors in the figure satisfy \( |u| = |v|= 1 \) and \( u+v+w = 0 \),
+what is \( |w| \)?
+\begin{align*}
+  |w| &= \sqrt{(w_x)^2+(w_y)^2} \\
+  &= \sqrt{(w_x)^2+0} \\
+  &= w_x \\
+  &= u_x+v_x \\
+  &= 1\cos45+1\cos45 \\
+  &= \frac{\sqrt{2}}{2}+\frac{\sqrt{2}}{2} \\
+  &= \sqrt{2}
+\end{align*}
+
+\subsection*{Exercise 27}
+What is the angle between the given vector and the positive direction of the
+x-axis?
+\[ \hat{i}+\sqrt{3}\hat{j} \]
+\begin{align*}
+  \tan\theta &= \frac{y}{x} \\
+  \theta &= \arctan\frac{y}{x} \\
+  &= \arctan\frac{\sqrt{3}}{1} \\
+  &= 60^{\circ}
+\end{align*}
+
+\subsection*{Exercise 33}
+Find the magnitude of the resultant force and the angle it makes with the
+positive x-axis.
+\begin{align*}
+  \vec{r} &= \langle200\cos-300,200\sin60+0\rangle \\
+  &= \langle-200,\frac{200\sqrt{3}}{2}\rangle \\
+  \theta &= \arctan|\frac{y}{x}| \\
+  &= \frac{\frac{200\sqrt{3}}{2}}{200} \\
+  &= \frac{\sqrt{3}}{2} \\
+  &\approx 40.9^{\circ}
+\end{align*}
+This is the angle with the negative x-axis. The angle with the positive x-axis
+is:
+\[ 180-\theta = 139.1 \]
+
+\subsection*{Exercise 35}
+A woman walks due west on the deck of a ship at 3 mi/h. The ship is moving
+north at a speed of 22 mi/h. Find the speed and direction of the woman relative
+to the surface of the water.
+\begin{align*}
+  \vec{v} &= \langle-3,22\rangle \\
+  |\vec{v}| &= \sqrt{9+484} = \sqrt{493} \approx 22.2 \\
+  \theta &= \arctan\frac{3}{22} \approx 7.765
+\end{align*}
+She is traveling at approximately 22.2 mi/h at \( 7.765^{\circ} \) west of
+north or \( 82.235^{\circ} \) north of west.
+
+\subsection*{Exercise 41}
+Find the unit vectors that are parallel to the tangent line to the
+parabola \( y = x^2 \) at the point (2,4).
+\begin{align*}
+  y' &= 2x \\
+  y'(2) &= 2(2) = 4 \\
+  \vec{u} &= \langle1,4\rangle \\
+  \frac{\vec{u}}{|\vec{u}|} &= \frac{\langle1,4\rangle}{\sqrt{1+16}} \\
+  &= \left\langle\frac{1}{\sqrt{17}},\frac{4}{\sqrt{17}}\right\rangle
+\end{align*}
+
+\subsection*{Exercise 43}
+
+\begin{center}
+  If you have any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
