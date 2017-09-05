@@ -1,0 +1,105 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\title{Linear Algebra}
+\author{Alvin Lin}
+\date{August 2017 - December 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Mathematical Induction}
+We will try to prove that some statement \( P(n) \) for all integers \( n \ge
+n_{\circ} \).
+\begin{enumerate}
+  \item (Basis) Show \( P(n_{\circ}) \) is true.
+  \item (Induction) Induction Hypothesis: We assume \( P(n) \) is true.
+    We must show \( P(n+1) \) is also true.
+  \item We then conclude \( P(n) \) is true for all integers
+    \( n \ge n_{\circ} \).
+\end{enumerate}
+
+\subsubsection*{Example}
+Show that:
+\[ 1+2+3+\dots+n = \frac{n(n+1)}{2} = P(n) \]
+\begin{enumerate}
+  \item (Basis): \( n = 1 \)
+    \[ 1 = \frac{1(1+1)}{2} \]
+  \item (Induction) Assume \( P(n) \) is true. Show \( P(n+1) \) is also true.
+    \begin{align*}
+      1+2+3+\dots+n+(n+1) &= \frac{(n+1)(n+1+1)}{2} \\
+      &= \frac{(n+1)(n+2)}{2} \\
+    \end{align*}
+    Show that the left and right hand sides are equal.
+    \begin{align*}
+      (1+2+3+\dots+n)+(n+1) &= \frac{n(n+1)}{2}+\frac{2(n+1)}{2} \\
+      &= \frac{n^2+n+2n+2}{2} \\
+      &= \frac{n^2+3n+2}{2} \\
+      &= \frac{(n+1)(n+2)}{2}
+    \end{align*}
+\end{enumerate}
+
+\subsubsection*{Example}
+Define:
+\[ f(n) = \begin{cases}
+  1 &\quad n = 0 \\
+  nf(n-1) &\quad n > 0
+\end{cases} \]
+\( f(n) \) is the factorial function \( f(n) = n! \). Prove it for all \( n \ge
+0 \).
+\begin{enumerate}
+  \item (Basis): \( n = 0 \)
+    \[ f(0) \stackrel{?}{=} 0! \]
+    \[ f(0) = 1 = 0! \quad \text{by definition} \]
+  \item (Induction): Assume it is true for \( n \), assume \( f(n) = n! \).
+    Show that \( f(n+1) = (n+1)! \).
+    \begin{align*}
+      f(n+1) &= (n+1)f(n) \\
+      &= (n+1)(n!) \\
+      &= (n+1)!
+    \end{align*}
+\end{enumerate}
+\( f(n) \) is true for all integers \( n \ge 0 \).
+
+\subsubsection*{Problem 63}
+Show that:
+\[ \vec{u}\cdot\vec{v} = \frac{1}{4}\|\vec{u}+\vec{v}\|^2-
+  \frac{1}{4}\|\vec{u}-\vec{v}\|^2 \]
+for all \( \vec{u},\vec{v}\in\R^2 \).
+\begin{align*}
+  \frac{1}{4}\|\vec{u}+\vec{v}\|^2-\frac{1}{4}\|\vec{u}-\vec{v}\|^2
+  &= \frac{1}{4}((\vec{u}+\vec{v})\cdot(\vec{u}+\vec{v}))-
+    \frac{1}{4}((\vec{u}-\vec{v})\cdot(\vec{u}-\vec{v})) \\
+  &= \frac{1}{4}(\vec{u}\cdot\vec{u}+2\vec{u}\cdot\vec{v}+\vec{v}\cdot\vec{v})-
+    \frac{1}{4}(\vec{u}\cdot\vec{u}-2\vec{u}\cdot\vec{v}+\vec{v}\cdot\vec{v}) \\
+  &= \frac{2}{4}\vec{u}\cdot\vec{v}+\frac{2}{4}\vec{u}\cdot\vec{v} \\
+  &= \vec{u}\cdot\vec{v}
+\end{align*}
+
+\subsubsection*{Problem 74}
+Show that:
+\[ \left\|\sum_{i=1}^{n}\vec{v_i}\right\| \le \sum_{i=1}^{n}\|\vec{v_i}\| \]
+\begin{enumerate}
+  \item (Basis): \( n = 2 \):
+    \[ \|\vec{v_1}+\vec{v_2}\| \le \|\vec{v_1}\|+\|\vec{v_2}\| \]
+  \item (Induction): Assume \( P(n) \) is true. Show that \( P(n+1) \) is also
+    true.
+    \begin{align*}
+      \left\|\sum_{i=1}^{n}\vec{v_i}\right\| &\le
+        \sum_{i=1}^{n+1}\|\vec{v_i}\| \\
+      \left\|(\sum_{i=1}^{n}\vec{v_i})+\vec{v_{n+1}}\right\|
+      &\le \left\|\sum_{i=1}^{n}\vec{v_i}\right\|+\|\vec{v_{n+1}}\| \\
+      &\le \sum_{i=1}^{n}\|\vec{v_{i}}\|+\vec{v_{n+1}} \\
+      &= \sum_{i}^{n+1}\|\vec{v_i}\|
+    \end{align*}
+\end{enumerate}
+
+\begin{center}
+  If you have any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}

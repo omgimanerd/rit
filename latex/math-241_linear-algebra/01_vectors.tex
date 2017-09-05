@@ -21,7 +21,7 @@ distributive identities.
 \[ \R^2, \R^3, \dots, \R^n \]
 are all vector spaces.
 
-\subsection*{Vectors}
+\section*{Vectors}
 A \textbf{vector} is a directed line segment corresponding to the displacement
 from points \( A \) to \( B \) (in \( \R^2 \)). If a vector starts at the
 origin, we will say that the vector is in standard position. We can represent
@@ -451,6 +451,91 @@ is:
 \[ proj_{\vec{u}}\vec{v} =
   (\frac{\vec{u}\cdot\vec{v}}{\vec{u}\cdot\vec{u}})\vec{u} =
   (\frac{\vec{u}\cdot\vec{v}}{\|\vec{u}\|^2})\vec{u} \]
+
+\subsubsection*{Practice Problem 48}
+Given:
+\[ \vec{u} = \begin{bmatrix}2 \\ 3\end{bmatrix}
+  \vec{v} = \begin{bmatrix}k+1 \\ k-1\end{bmatrix} \]
+Find all values of \( k \) such that \( \vec{u} \) and \( \vec{v} \) are
+orthogonal.
+\begin{align*}
+  \vec{u}\cdot\vec{v} &= 0 \\
+  2(k+1)+3(k-1) &= 0 \\
+  2k+2+3k-3 &= 0 \\
+  5k-1 &= 0 \\
+  k &= \frac{1}{5}
+\end{align*}
+
+\subsubsection*{Practice Problem 49}
+Given:
+\[ \vec{u} = \begin{bmatrix}1 \\ -1 \\ 2\end{bmatrix}
+  \vec{v} = \begin{bmatrix}k^2 \\ k \\ -3\end{bmatrix} \]
+Find all values \( k \) such that \( \vec{u} \) and \( \vec{v} \) are
+orthogonal.
+\begin{align*}
+  \vec{u}\cdot\vec{v} &= 0 \\
+  k^2-k+2(-3) &= 0 \\
+  k^2-k-6 &= 0 \\
+  (k-3)(k+2) &= 0 \\
+  k &= 3\ or \\
+  k &= 2
+\end{align*}
+
+\subsubsection*{Practice Problem 50}
+Describe all vectors \( \vec{v} = \begin{bmatrix}x \\ y\end{bmatrix} \) that
+are orthogonal to \( \vec{u} = \begin{bmatrix}3 \\ 1\end{bmatrix} \).
+\begin{align*}
+  \vec{u}\cdot\vec{v} &= 0 \\
+  3x+y &= 0 \\
+  y &= -3x
+\end{align*}
+\( y \) is a line going through the origin with a slope of -3.
+
+\subsubsection*{Practice Problem 52}
+Under what conditions are the following true for vectors \( \vec{u},\vec{v}
+\in\R^2\ or\ \R^3 \).
+\[ \|\vec{u}+\vec{v}\| = \|\vec{u}\|+\|\vec{v}\| \]
+\begin{align*}
+  \|\vec{u}+\vec{v}\|^2 &= (\|\vec{u}\|+\|\vec{v}\|)^2 \\
+  (\vec{u}+\vec{v})\cdot(\vec{u}+\vec{v}) &= \|\vec{u}\|^2+
+    2\|\vec{u}\|\|\vec{v}\|+\|\vec{v}\|^2 \\
+  \vec{u}\cdot\vec{u}+2\vec{u}\cdot\vec{v}+\vec{v}\cdot\vec{v} &=
+    \|\vec{u}\|^2+2\|\vec{u}\|\|\vec{v}\|+\|\vec{v}\|^2 \\
+  \vec{u}\cdot\vec{v} &= \|\vec{u}\|\|\vec{v}\|
+\end{align*}
+Since:
+\[ \cos\theta = \frac{\vec{u}\cdot\vec{v}}{\|\vec{u}\|\|\vec{v}\|} \]
+\( \theta \) must be equal to zero since \( \vec{u}\cdot\vec{v} =
+\|\vec{u}\|\|\vec{v}\| \). Therefore, this can only be true for \( \vec{u} =
+c\vec{v}, c > 0 \).
+
+\subsubsection*{Practice Problem 55}
+Verify the stated property of distances:
+\[ d(\vec{u},\vec{v}) = \|\vec{u}-\vec{v}\| \]
+\begin{align*}
+  d(\vec{u},\vec{v}) &= \|\vec{u}-\vec{v}\| \\
+  &= \|(-1)(\vec{v}-\vec{u})\| \\
+  &= |-1|\|\vec{v}-\vec{u}\| \\
+  &= d(\vec{v},\vec{u})
+\end{align*}
+
+\subsubsection*{Practice Problem 56}
+\[ d(\vec{u},\vec{w}) \le d(\vec{u},\vec{v})+d(\vec{v},\vec{w}) \]
+\begin{align*}
+  d(\vec{u},\vec{w}) &= \|\vec{u}-\vec{w}\| \\
+  &= \|(\vec{u}-\vec{v})+(\vec{v}-\vec{w})\| \\
+  &\le \|\vec{u}-\vec{w}\|+\|\vec{v}+\vec{w}\| \\
+  &= d(\vec{u},\vec{v})+d(\vec{v},\vec{w})
+\end{align*}
+
+\subsubsection*{Practice Problem 58}
+Prove:
+\[ \vec{u}\cdot c\vec{v} = c(\vec{u}\cdot\vec{v}) \]
+\begin{align*}
+  \vec{u}\cdot(c\vec{v}) &= (c\vec{v})\cdot\vec{u} \\
+  &= c(\vec{v}\cdot\vec{u}) \\
+  &= c(\vec{u}\cdot\vec{v})
+\end{align*}
 
 \begin{center}
   If you have any questions, comments, or concerns, please contact me at
