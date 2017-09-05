@@ -1,0 +1,147 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\usepackage{amsmath}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.8}
+\usetikzlibrary{arrows}
+
+\title{Multivariable and Vector Calculus}
+\author{Alvin Lin}
+\date{August 2017 - December 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Lines in \( \R^3 \)}
+Consider a line \( l \) such that a point \( P_0\in l, l\parallel\vec{a} \).
+To describe the line, for any point \( P\in l \):
+\[ \vec{P_{0}P}\parallel\vec{a} \equiv \vec{r}-\vec{r_0}=t\vec{a} \]
+where \( \vec{r} \) is the vector from the origin to the point \( P \) and
+\( \vec{r_0} \) is the vector from the origin to the point \( P_0 \).
+\begin{align*}
+  \vec{r} &= \vec{r_0}+t\vec{a} \\
+  \langle x,y,z\rangle &= \langle x_0,y_0,z_0\rangle+
+    t\langle a_1,a_2,z_3\rangle \\
+  x &= x_0+ta_1 \\
+  y &= y_0+ta_2 \\
+  z &= z_0+ta_3 \\
+  \frac{x-x_0}{a_1} &= \frac{y-y_0}{a_2} = \frac{z-z_0}{a_3}
+\end{align*}
+
+\subsubsection*{Example}
+\( Line\ l: P_0(1,1,2), P_1(2,3,5)\in l \)
+\begin{align*}
+  \vec{r} &= \langle1,1,2\rangle+t\langle2-1,3-1,5-2\rangle \\
+  &= \langle1,2,3\rangle \\
+  x &= 1+t \\
+  y &= 1+2t \\
+  z &= 2+3t
+\end{align*}
+
+\subsubsection*{Example}
+There is a bug \( B \) traveling on \( l_1 \):
+\[ l_1 = \begin{cases}
+  x &= 2+t \\
+  y &= 4+2t \\
+  z &= 1+t
+\end{cases} \]
+Another bug \( b \) is traveling on \( l_2 \):
+\[ l_2 = \begin{cases}
+  x &= 1+t \\
+  y &= 4+t \\
+  z &= 4-t
+\end{cases} \]
+Do their paths intersect at the same time?
+\begin{align*}
+  x &= 2+t = 1+t \\
+  y &= 4+2t = 4+t \\
+  z &= 1+t = 4-t
+\end{align*}
+Since there is no solution, they do not intersect at the same time. Is there
+a point of intersection between their paths at different times?
+\begin{align*}
+  x &= 2+t &= 1+\tau \\
+  t &= \tau-1 \\
+  y = 4+2t &= 4+\tau \\
+  4+2(\tau-1) &= 4+\tau \\
+  2+2\tau &= 4+\tau \\
+  \tau &= 2 \\
+  t &= 1 \\ \\
+  z = 1+t &= 4-\tau \\
+  1+1 &\stackrel{?}{=} 4-2 \\
+  2 &= 2
+\end{align*}
+It is possible to solve for a \( \tau \) and \( t \), so the two paths do cross.
+
+\subsubsection*{Example}
+In \( \R^2 \) we have the line \( y=2x+3 \), how do we convert this to
+\( \R^3 \)? Two points on this line are (0,3,0) and (1,5,0):
+\[ l = \begin{cases}
+  x &= 0+t(1-0) = t \\
+  y &= 3+t(5-3) = 3+2t \\
+  z &= 0+t(0-0) = 0
+\end{cases} \]
+
+\subsubsection*{Example}
+Does the point (1,2,-3) lie on the line:
+\[ \frac{x-1}{3} = \frac{y+2}{1} = \frac{z-1}{-1} \]
+With the point (1,2,-3):
+\[ 0 \ne 4 = 4 \]
+As a counterexample, (1,-2,1) is a point that lies on the line.
+
+\section*{Describing a plane in \( \R^3 \)}
+Given a plane \( \Pi \): \( P_0\in\Pi \), \( \vec{n}\bot\Pi \):
+\[ P\in\Pi \equiv (\vec{P_{0}P}\bot\vec{n}) \equiv
+  \vec{P_{0}P}\cdot\vec{n} = 0 \]
+where \( P \) is any point on plane \( \Pi \). Plane \( \Pi \) is
+described by:
+\[ n_1(x-x_0)+n_2(y-y_0)+n_3(z-z_0) = 0 \]
+\[ n_{1}x+n_{2}y+n_{3}z = 0 \]
+
+\subsubsection*{Example}
+Suppose the plane \( \Pi \) contains the points A(1,1,1), B(2,1,3), C(1,4,4).
+\[ \vec{n} = \vec{AB}\times\vec{AC} = \begin{vmatrix}
+  \vec{i} & \vec{j} & \vec{k} \\
+  1 & 0 & 2 \\
+  0 & 3 & 3
+\end{vmatrix} = \langle6,-3,3\rangle = \langle2,1,-1\rangle \]
+\[ 2(x-1)+1(y-1)-1(z-1) = 0 \]
+\[ 2x+y-z = 2 \]
+
+\subsubsection*{Example}
+Given a plane \( \Pi \) described by \( 2x+y-z = 5 \), given a plane \( \Pi_1 \)
+parallel to \( \Pi \) containing the point \( P_0 \)(1,2,3).
+\[ \vec{n} = \langle2,1,-1\rangle \]
+\[ \Pi_2 \equiv 2(x-1)+1(y-2)-1(z-3) = 0 \equiv 2x+y-z = 1 \]
+
+\subsubsection*{Example}
+Given:
+\[ \Pi_1 \equiv x+y+z = 4 \]
+\[ \Pi_2 \equiv 2x-y+2x = 5 \]
+Find the line of intersection between the planes. Suppose we pick \( z = 0 \):
+\[ x+y = 4 \]
+\[ 2x-y = 5 \]
+Solving for this, we get the point \( P_0 \)(3,1,0). If we pick \( x = 0 \), we
+get the point \( P_1 \)(0,1,3). We can use these two points to get the line:
+\[ l = \begin{cases}
+  x &= 3+t(0-3) = 3-3t\\
+  y &= 1+t(1-1) = 1 \\
+  z &= 0+t(3-0) = 3t
+\end{cases} \]
+What is the angle \( \theta \) between \( \Pi_0,\Pi_1 \)? We can compute the
+angle between the normal vectors of the planes.
+\begin{align*}
+  \cos\angle(n_0,n_1) &= \frac{\vec{n_0}\cdot\vec{n_1}}{|n_0||n_1||} \\
+  &= \frac{\langle1,1,1\rangle\cdot\langle2,-1,2\rangle}{\sqrt{3}\sqrt{9}} \\
+  &= \frac{3}{3\sqrt{3}} \\
+  &= \frac{\sqrt{3}}{3} \\
+  \theta &= \arccos\frac{\sqrt{3}}{3}
+\end{align*}
+
+\begin{center}
+  If you have any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
