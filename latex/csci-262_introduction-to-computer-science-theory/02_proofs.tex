@@ -1,0 +1,70 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+
+\title{Introduction to Computer Science Theory}
+\author{Alvin Lin}
+\date{August - December 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Proofs}
+A proof is a logical argument, inductive or deductive. Some proofs are
+completely analytical. They are strictly the result of symbolic manipulation
+(just like a computer program). A major effort in the 20th century mathematics
+was to make all proofs into symbolic manipulations. This effort failed, but the
+tools developed are still useful. This led to the theory of computing. In
+practice, proofs use natural language in a special way though having in mind
+a gross underlying formal structure can be very helpful.
+
+\subsection*{Sentential Logic}
+A statement that evaluates to true or false.
+\begin{itemize}
+  \item Shakespeare wrote \( x \).
+  \item \( n \) is an even prime number.
+  \item Shakespeare wrote \( x \) and \( n \) is an even prime number.
+  \item \( y\in\{x\ |\ x^2<0\} \)
+  \item If \( x \) is a substring of \( y \) and \( y \) is a substring of
+    \( x \), then \( y = x \) .
+\end{itemize}
+
+\subsection*{Logical Forms}
+\begin{itemize}
+  \item Shakespeare wrote \( x \).
+    \[ P \]
+  \item \( n \) is an even prime number.
+    \[ Q \]
+  \item Shakespeare wrote \( x \) and \( n \) is an even prime number.
+    \[ P\wedge Q \]
+\end{itemize}
+Functions that take variables are called \textbf{predicates}.
+\begin{itemize}
+  \item Shakespeare wrote \( x \).
+    \[ P(x) \]
+  \item \( n \) is an even prime number.
+    \[ Q(n) \]
+  \item Shakespeare wrote \( x \) and \( n \) is an even prime number.
+    \[ P(x)\wedge Q(n) \]
+  \item If \( x \) is a substring of \( y \) and \( y \) is a substring of
+    \( x \), then \( y = x \).
+    \[ (S(x,y)\wedge S(y,x))\to y = x \]
+\end{itemize}
+
+\subsection*{Free and bound variables}
+\[ y\in\{x\ |\ x^2<9\} \]
+Free variables are those that are currently in scope. The truth of the statement
+depends on what you assign them. \( y \) is a free variable in this example.
+Bound variables are out of scope. They overshadow any value you assign to them.
+\( x \) is a bound variable in this example.
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, feel free to contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
