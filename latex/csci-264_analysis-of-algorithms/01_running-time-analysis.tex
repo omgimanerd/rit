@@ -12,18 +12,18 @@
 
 \maketitle
 
-\subsection*{Big-Oh Running Time (asymptotic upper bound)}
+\section*{Big-Oh Running Time (asymptotic upper bound)}
 \( f(n) = O(g(n)) \) if there exists a constant \( c > 0 \) and a constant
 \( n_{\circ} \) such that for every \( n\geq n_{\circ} \) we have
 \( f(n)\leq cg(n) \).
 
-\subsubsection*{Example}
+\subsection*{Example}
 Prove that \( n^3 = O(7n^2+\frac{n^3}{3}) \):
 We need to find \( c,n_{\circ} \) such that \( \forall n\geq n_{\circ} \):
 \[ n^3\leq c(7n^2-\frac{n^3}{3}) \]
 \[ c = 3 \]
 
-\subsubsection*{Example}
+\subsection*{Example}
 Prove that \( n^3 = O(\frac{n^3}{3}-7n^2) \):
 We need to find \( c,n_{\circ} \) such that \( \forall n\geq n_{\circ} \):
 \[ n^3\geq c(\frac{n^3}{3}-7n^2) \]
@@ -36,7 +36,7 @@ We can take \( c = 6 \), then we want to show that:
 \end{align*}
 Thus, this inequality holds for \( n_{\circ} = 42 \).
 
-\subsubsection*{Example}
+\subsection*{Example}
 Prove that \( \log_{10}n = O(\log n) \) and that \( \log n = O(\log_{10}n) \):
 We need to find \( c,n_{\circ} \) such that \( \forall n\geq n_{\circ} \):
 \begin{align*}
@@ -45,7 +45,7 @@ We need to find \( c,n_{\circ} \) such that \( \forall n\geq n_{\circ} \):
 \end{align*}
 We can take \( c = \frac{1}{\log_{2}10} \) and \( n_{\circ} = 1 \).
 
-\subsubsection*{Example}
+\subsection*{Example}
 What about \( 3^n \) and \( 2^n \)?
 \[ 2^n = O(3^n) \]
 \[ 2^n \neq O(2^n) \]
@@ -59,14 +59,14 @@ Divide both sides by \( 2^n \):
 This cannot possibly hold as \( n\to\infty \) because \( \frac{3}{2} > 1 \)
 and the function is exponential.
 
-\subsection*{Big-Omega Running Time (asymptotic lower bound)}
+\section*{Big-Omega Running Time (asymptotic lower bound)}
 \( f(n) = \Omega(g(n)) \) if there exists a constant \( c > 0 \) and a constant
 \( n_{\circ} \) such that for every \( n \geq n_{\circ} \) we have
 \( f(n) \geq cg(n) \). This is the reverse of Big-Oh and determines a lower
 bound. Claim: any comparison-based sort of \( n \) numbers needs at least
 \( \Omega(n\log n) \) comparisons.
 
-\subsection*{Theta Running Time (asymptotically tight bound)}
+\section*{Theta Running Time (asymptotically tight bound)}
 \( f(n) = \Theta(g(n)) \) if there exists constants \( c_{1},c_{2} > 0 \) and
 a constant \( n_{\circ} \) such that for every \( n \geq n_{\circ} \) we have
 \( c_{1}g(n) \leq f(n) \leq c_{2}g(n) \).
