@@ -1,0 +1,152 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+
+\geometry{letterpaper, margin=1in}
+
+\title{Linear Algebra: Homework 2}
+\author{Alvin Lin}
+\date{August 2016 - December 2016}
+
+\begin{document}
+
+\maketitle
+
+23, 25, 31, 41, 43
+
+\subsection*{Exercise 1}
+Find \( \vec{u}\cdot\vec{v} \):
+\[ \vec{u} = \begin{bmatrix}-1 \\ 2\end{bmatrix} \quad
+  \vec{v} = \begin{bmatrix}3 \\ 1\end{bmatrix} \]
+\[ \vec{u}\cdot\vec{v} = (-3)+2 = -1 \]
+
+\subsection*{Exercise 3}
+Find \( \vec{u}\cdot\vec{v} \):
+\[ \vec{u} = \begin{bmatrix}1 \\ 2 \\ 3\end{bmatrix} \quad
+  \vec{v} = \begin{bmatrix}2 \\ 3 \\ 1\end{bmatrix} \]
+\[ \vec{u}\cdot\vec{v} = 2+6+3 = 11 \]
+
+\subsection*{Exercise 5}
+Find \( \vec{u}\cdot\vec{v} \):
+\[ \vec{u} = \begin{bmatrix}1 \\ \sqrt{2} \\ \sqrt{3} \\ 0\end{bmatrix} \quad
+  \vec{v} = \begin{bmatrix}4 \\ -\sqrt{2} \\ 0 \\ -5\end{bmatrix} \]
+\[ \vec{u}\cdot\vec{v} = 4+(-2)+0+0 = 2 \]
+
+\subsection*{Exercise 7}
+Find \( \|\vec{u}\| \) for the given exercise and give a unit vector in the
+direction of \( \vec{u} \).
+\[ \vec{u} = \begin{bmatrix}-1 \\ 2\end{bmatrix} \]
+\[ \|\vec{u}\| = \sqrt{5} \]
+\[ \text{unit vector} = \langle\frac{-1}{\sqrt{5}},\frac{2}{\sqrt{5}}\rangle \]
+
+\subsection*{Exercise 9}
+Find \( \|\vec{u}\| \) for the given exercise and give a unit vector in the
+direction of \( \vec{u} \).
+\[ \vec{u} = \begin{bmatrix}1 \\ 2 \\ 3\end{bmatrix} \]
+\[ \|\vec{u}\| = \sqrt{14} \]
+\[ \text{unit vector} =
+  \langle\frac{1}{\sqrt{14}},\frac{2}{\sqrt{14}},\frac{3}{\sqrt{14}}\rangle \]
+
+\subsection*{Exercise 11}
+Find \( \|\vec{u}\| \) for the given exercise and give a unit vector in the
+direction of \( \vec{u} \).
+\[ \vec{u} = \begin{bmatrix}1 \\ \sqrt{2} \\ \sqrt{3} \\ 0\end{bmatrix} \]
+\[ \|\vec{u}\| = \sqrt{14} \]
+\[ \text{unit vector} =
+  \langle\frac{1}{\sqrt{14}},\sqrt{\frac{1}{7}},\sqrt{\frac{3}{14}},0\rangle \]
+
+\subsection*{Exercise 13}
+Find the distance \( d(u,v) \) between \( \vec{u} \) and \( \vec{v} \) in the
+given exercise:
+\[ \vec{u} = \begin{bmatrix}-1 \\ 2\end{bmatrix} \quad
+  \vec{v} = \begin{bmatrix}3 \\ 1\end{bmatrix} \]
+\[ d(u,v) = \|\vec{u}-\vec{v}\| = \|\langle-4,1\rangle\| = \sqrt{17} \]
+
+\subsection*{Exercise 15}
+Find the distance \( d(u,v) \) between \( \vec{u} \) and \( \vec{v} \) in the
+given exercise:
+\[ \vec{u} = \begin{bmatrix}1 \\ 2 \\ 3\end{bmatrix} \quad
+  \vec{v} = \begin{bmatrix}2 \\ 3 \\ 1\end{bmatrix} \]
+\[ d(u,v) = \|\vec{u}-\vec{v}\| = \|\langle-1,-1,2\rangle\| = \sqrt{6} \]
+
+\subsection*{Exercise 19}
+Determine whether the angle between the vectors is acute, obtuse, or a right
+angle.
+\[ \vec{u} = \begin{bmatrix}2 \\ -1 \\ 1\end{bmatrix} \quad
+  \vec{v} = \begin{bmatrix}1 \\ -2 \\ -1\end{bmatrix} \]
+\begin{align*}
+  \cos\theta &= \frac{\vec{u}\cdot\vec{v}}{\|\vec{u}\|\|\vec{v}\|} \\
+  &= \frac{2+2+(-1)}{\sqrt{6}\sqrt{6}} \\
+  &= \frac{3}{6} \\
+  &= \frac{1}{2} \\
+  \theta &= \arccos\frac{1}{2} \\
+  &= 60^{\circ}
+\end{align*}
+Acute.
+
+\subsection*{23}
+Determine whether the angle between the vectors is acute, obtuse, or a right
+angle.
+\[ \vec{u} = \begin{bmatrix}1 \\ 2 \\ 3 \\ 4\end{bmatrix} \quad
+  \vec{v} = \begin{bmatrix}5 \\ 6 \\ 7 \\ 8\end{bmatrix} \]
+\begin{align*}
+  \cos\theta &= \frac{\vec{u}\cdot\vec{v}}{\|\vec{u}\|\|\vec{v}\|} \\
+  &= \frac{5+12+21+32}{\sqrt{30}\sqrt{174}} \\
+  &= \frac{70}{36\sqrt{145}} \\
+  &= \frac{35}{18\sqrt{145}} \\
+  \theta &\approx 80.707^{\circ}
+\end{align*}
+Acute.
+
+\subsection*{25}
+Find the angle between \( \vec{u} \) and \( \vec{v} \):
+\[ \vec{u} = \begin{bmatrix}2 \\ -1 \\ 1\end{bmatrix} \quad
+  \vec{v} = \begin{bmatrix}1 \\ -2 \\ -1\end{bmatrix} \]
+\[ \theta = 60^{\circ} \]
+Work shown above.
+
+\subsection*{31}
+Let A = (1,1,-1), B = (-3,2,-2), C = (2,2,-4). Prove that \( \triangle \) ABC is
+a right-angled triangle.
+\begin{align*}
+  \vec{AB} &= \langle-4,1,-1\rangle \\
+  \vec{BC} &= \langle5,0,-2\rangle \\
+  \vec{AC} &= \langle1,1,-3\rangle \\
+  \vec{AB}\cdot\vec{BC} &= (-20)+0+2 = -18 \\
+  \vec{AB}\cdot\vec{AC} &= (-4)+1+3 = 0
+\end{align*}
+Since \( \vec{AB} \) and \( \vec{AC} \) have a dot product of 0, they must be
+orthogonal, meaning that the \( \triangle \) ABC has a right angle.
+
+\subsection*{41}
+Find the projection of \( \vec{v} \) onto \( \vec{u} \).
+\[ \vec{u} = \begin{bmatrix}\frac{3}{5} \\ \frac{-4}{5}\end{bmatrix}\quad
+  \vec{v} = \begin{bmatrix}1 \\ 2\end{bmatrix} \]
+\begin{align*}
+  proj_{\vec{u}}\vec{v} &=
+    \frac{\vec{u}\cdot\vec{v}}{\vec{u}\cdot\vec{u}}\vec{u} \\
+  &= \frac{\frac{3}{5}-\frac{8}{5}}{1+4}\vec{u} \\
+  &= \frac{-1}{5}\vec{u} \\
+  &= \langle\frac{-3}{25},\frac{4}{25}\rangle
+\end{align*}
+
+\subsection*{43}
+Find the projection of \( \vec{v} \) onto \( \vec{u} \).
+\[ \vec{u} = \begin{bmatrix}1 \\ -1 \\ 1 \\ -1\end{bmatrix}\quad
+  \vec{v} = \begin{bmatrix}2 \\ -3 \\ -1 \\ -2\end{bmatrix} \]
+\begin{align*}
+  proj_{\vec{u}}\vec{v} &=
+    \frac{\vec{u}\cdot\vec{v}}{\vec{u}\cdot\vec{u}}\vec{u} \\
+  &= \frac{2+3+(-1)+2}{1+1+1+1}\vec{u} \\
+  &= \frac{6}{4}\vec{u} \\
+  &= \langle\frac{3}{2},-\frac{3}{2},\frac{3}{2},-\frac{3}{2}\rangle
+\end{align*}
+
+\begin{center}
+  If you have any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
