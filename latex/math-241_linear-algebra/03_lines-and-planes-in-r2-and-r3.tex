@@ -1,0 +1,221 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\title{Linear Algebra}
+\author{Alvin Lin}
+\date{August 2017 - December 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Lines in \( \R^2 \) and \( \R^3 \)}
+In \( \R^2 \), a line has the following general equation:
+\[ ax+by = c \]
+If \( b \ne 0 \):
+\[ by = -ax+c \]
+\[ y = \frac{-a}{b}x+\frac{c}{b} \]
+Consider the line \( l \) given by:
+\[ 2x+y = 0 \]
+\[ y = -2x \]
+This is a line going through the origin with a slope of -2. We can represent
+the line as:
+\[ 2x+y = \begin{bmatrix}2 \\ 1\end{bmatrix}\cdot
+  \begin{bmatrix}x \\ y\end{bmatrix} = \vec{n}\cdot\vec{x} = 0 \]
+For any line \( ax+by = 0 \), we can write it as:
+\[ \vec{n}\cdot\vec{x} = 0 \]
+
+\subsection*{Vector Form of a Line}
+Let \( x = t \):
+\[ \vec{x} = \begin{bmatrix}x \\ y\end{bmatrix} =
+  \begin{bmatrix}t \\ -2t\end{bmatrix} = t\begin{bmatrix}1 \\-2\end{bmatrix} \]
+In this example, \( \begin{bmatrix}1 \\ -2\end{bmatrix} \) is referred to as
+\( \vec{d} \), the direction vector for \( l \).
+
+\subsection*{Parametric Form of a Line}
+\begin{align*}
+  x &= t \\
+  y &= -2t
+\end{align*}
+given \( t\in\R \).
+
+\subsection*{Normal Form of a Line}
+Suppose line \( l \) is described by \( 2x+y = 5 \) (general form of a line).
+Let \( \vec{x} \) be a general point on \( l \) and let \( \vec{p} \) be a
+fixed point on \( l \).
+\begin{align*}
+  \vec{n}\cdot(\vec{x}-\vec{p}) &= 0 \\
+  \vec{n}\cdot\vec{x}-\vec{n}\cdot\vec{p} &= 0 \\
+  \vec{n}\cdot\vec{x} = \vec{n}\cdot\vec{p}
+\end{align*}
+In vector form, this is represented as:
+\[ \vec{x} = \begin{bmatrix}x \\ y\end{bmatrix} =
+  \begin{bmatrix}t \\ 5-2t\end{bmatrix} =
+  \begin{bmatrix}0 \\ 5\end{bmatrix}+
+  t\begin{bmatrix}1 \\ -2\end{bmatrix} \]
+In parametric form, this is represented as:
+\begin{align*}
+  x &= t \\
+  y &= 5-2t
+\end{align*}
+given \( t\in\R \).
+
+\subsubsection*{Example}
+Find the vector and parametric equations for \( l \) in \( \R^3 \) given \( l \)
+goes through \( P = \begin{bmatrix}1 \\ 2 \\ -1\end{bmatrix} \) and has
+direction vector \( \vec{d} = \begin{bmatrix}5 \\ -1 \\ 3\end{bmatrix} \).
+\[ \vec{x} = \begin{bmatrix}x \\ y \\ z\end{bmatrix} =
+  \begin{bmatrix}1 \\ 2 \\ -1\end{bmatrix}+
+  t\begin{bmatrix}5 \\ -1 \\ 3\end{bmatrix} \]
+\[ l = \begin{cases}
+  x &= 1+5t \\
+  y &= 2-t \\
+  z &= -1+3t
+\end{cases} \]
+
+\subsubsection*{Example}
+It is possible to determine a line by knowing 2 points on it. Find the equation
+of the line in \( \R^3 \) given points \( P = (-1,5,0) \) and \( Q = (2,1,1) \).
+\[ \overrightarrow{PQ} = \langle3,-4,1\rangle \]
+\[ \vec{x} = \begin{bmatrix}-1 \\ 5 \\ 0\end{bmatrix}+
+  t\begin{bmatrix}3 \\ -4 \\ 1\end{bmatrix} \]
+\[ l = \begin{cases}
+  x &= -1+3t \\
+  y &= 5-4t \\
+  z &= t
+\end{cases} \]
+
+\section*{Planes in \( \R^3 \)}
+The general form of a plane can be written as:
+\[ ax+by+cz = d \]
+We can rewrite this as a dot product:
+\[ \begin{bmatrix}a \\ b \\ c\end{bmatrix}\cdot
+  \begin{bmatrix}x \\ y \\ z\end{bmatrix} = d \]
+\[ \vec{n}\cdot(\vec{x}-\vec{p}) = 0 \]
+\[ \therefore \vec{n}\cdot\vec{x} = \vec{n}\cdot\vec{p} \]
+
+\subsection*{Vector form of a Plane}
+\[ \vec{x} = \begin{bmatrix}x \\ y \\ z\end{bmatrix} =
+  \vec{p}+s\vec{u}+t\vec{v} \]
+where \( s,t \) are parameters and \( \vec{p} \) is a fixed point on the plane.
+
+\subsubsection*{Example}
+Find the normal and general forms of plane \( \mathbb{P} \) where point
+\( P = (6,0,1) \) is on \( \mathbb{P} \) with normal vector:
+\[ \vec{n} = \begin{bmatrix}1 \\ 2 \\ 3\end{bmatrix} \]
+Normal form:
+\begin{align*}
+  \vec{n}\cdot\vec{x} &= \vec{n}\cdot\vec{p} \\
+  \begin{bmatrix}1 \\ 2 \\ 3\end{bmatrix}\cdot
+    \begin{bmatrix}x \\ y \\ z\end{bmatrix} &=
+    \begin{bmatrix}1 \\ 2 \\ 3\end{bmatrix}\cdot
+    \begin{bmatrix}6 \\ 0 \\ 1\end{bmatrix} \\
+\end{align*}
+General form:
+\begin{align*}
+  x+2y+3z &= 6+0+3 \\
+  x+3y+3z &= 9
+\end{align*}
+And for good measure, the vector form. Let \( y = s \) and \( z = t \):
+\[ \vec{x} = \begin{bmatrix}x \\ y \\ z\end{bmatrix} =
+  \begin{bmatrix}-2s-3t+9 \\ s \\ t\end{bmatrix} =
+  \begin{bmatrix}9 \\ 0 \\ 0\end{bmatrix}+
+  s\begin{bmatrix}-2 \\ 1 \\ 0\end{bmatrix}+
+  t\begin{bmatrix}-3 \\ 0 \\ 1\end{bmatrix} \]
+
+\section*{Systems of Linear Equations}
+A \textbf{linear equation} in variables \( x_1,x_2,\dots,x_n \) can be written
+in this form:
+\[ a_1x_1+a_2x_2+\dots+a_nx_n = b \]
+where \( a_1,a_2,\dots,a_n,b \) are constants. The following examples are all
+linear equations:
+\begin{enumerate}
+  \item \( 4x-5y = -2 \)
+  \item \( r-\frac{1}{3}s+\frac{1}{5}t = \pi^2 \)
+  \item \( 2x_1+4x_2 = 5-x_3+5x_4 \)
+  \item \( \sqrt{3}x+\frac{\pi}{4}y-\sin(\frac{\pi}{5})z = 1 \)
+\end{enumerate}
+The following examples are NOT linear equations:
+\begin{enumerate}
+  \item \( 2xy+3z = 10 \)
+  \item \( (x_1)^2-(x_2)^2 = 47 \)
+  \item \( \frac{x}{y}+4z = 936 \)
+  \item \( \sqrt{2x}+\frac{\pi}{4}y-\sin(\frac{\pi}{12}z) = 2 \)
+  \item \( \sin(x_1)+4x_2+4^{x_3} = 22 \)
+\end{enumerate}
+
+\subsubsection*{Example}
+Consider \( 3x-4y = -1 \). Characterize all solutions to this linear system.
+Let \( x = t \).
+\begin{align*}
+  3t-4y &= 1 \\
+  -4y &= -1-3t \\
+  y &= \frac{1}{4}+\frac{3}{4}t
+\end{align*}
+\[ \vec{x} = \begin{bmatrix}x \\ y\end{bmatrix} =
+  \begin{bmatrix}t \\ \frac{1}{4}+\frac{3}{4}t\end{bmatrix} =
+  \begin{bmatrix}0 \\ \frac{1}{4}\end{bmatrix}+
+  t\begin{bmatrix}1 \\ \frac{3}{4}\end{bmatrix} \]
+
+\subsection*{Solving Systems of Linear Equations}
+A system of \textbf{linear equations} is a finite collection of linear
+equations. Solving the system involves finding the set of all ordered n-tuples
+satisfying the given system. Find all \( \begin{bmatrix}x \\ y\end{bmatrix} \)
+satisfying the equations.
+\begin{align*}
+  2x+y &= 8 \\
+  x-3y &= -3
+\end{align*}
+We can do this algebraically to get:
+\[ \vec{v} = \begin{bmatrix}x \\ y\end{bmatrix} = \begin{bmatrix} 3 \\ 2
+  \end{bmatrix} \]
+Or we can use \textbf{reduced row echelon form} to solve it.
+\[ \left[\begin{array}{cc|c}
+  2 & 1 & 8 \\
+  1 & -3 & -3 \\
+\end{array}\right] \]
+
+\subsection*{Consistency}
+Let \( S \) be a linear system. We say \( S \) is \textbf{consistent} if \( S \)
+has at least 1 solution. Otherwise, we say \( S \) is \textbf{inconsistent}.
+Any linear system \( S \) has three possibilities.
+\begin{enumerate}
+  \item 0 solutions
+  \item 1 solutions
+  \item \( \infty \) - many solutions
+\end{enumerate}
+
+\subsubsection*{Example}
+\begin{align*}
+  x-y &= 1 \\
+  x-y &= 4
+\end{align*}
+In this example, \( x-y \) cannot be 2 different things. The solution set here
+is \( \emptyset \), thus this system is inconsistent.
+
+\subsection*{Equivalence}
+Let \( S \) and \( S' \) be 2 linear systems. If \( S \) and \( S' \) have the
+same solutions, they are \textbf{equivalent}. As a corollary, every inconsistent
+system is equivalent.
+
+\subsubsection*{Example}
+The following system is in a form called upper triangular form:
+\begin{align*}
+  x-y-z &= 2 \\
+  y+3z &= 5 \\
+  5z &= 10 \\
+  z &= 2 \\
+  y+6 &= 5 \\
+  y &= -1 \\
+  x+1-2 &= 2 \\
+  x &= 3
+\end{align*}
+
+\begin{center}
+  If you have any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
