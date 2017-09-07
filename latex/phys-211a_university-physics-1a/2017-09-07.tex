@@ -1,0 +1,68 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+
+\title{University Physics 1A}
+\author{Alvin Lin}
+\date{September 9th, 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Kinematics}
+\[ v = \lim_{\Delta t\to0}\frac{\Delta x}{\Delta t} = \ddiff{x}{t} \]
+\[ a = \lim_{\Delta t\to0}\frac{\Delta v}{\Delta t} = \ddiff{v}{t} \]
+\[ \int_{t_i}^{t^f}v\diff{t} = \int_{x_i}^{x_f}\diff{x} = x_f-x_i \]
+\[ \int_{t_i}^{t_f}a\diff{t} = \int_{v_i}^{v_f}\diff{v} = v_f-v_i \]
+
+\subsection*{Example Problem}
+The velocity of a rocket plane is given by \( v = (2.00 m/s) + (3.00m/s^3)t^2 \)
+\begin{enumerate}
+  \item What is the speed of the rocket plane at \( t = 10.0s \)?
+    \begin{align*}
+      v &= 2\frac{m}{s}+(3\frac{m}{s^2})t^2 \\
+      &= 2+(3)(10)^2 \\
+      &= 302m/s
+    \end{align*}
+  \item If \( x_0 = 5.00m \), what is the position of the rocket plane at
+    \( t = 10.0s \)?
+    \begin{align*}
+      x_f-x_i &= \int_{t_i}^{t_f}(2+3t^2)\diff{t} \\
+      &= 2(t_f-t_i)+\frac{3}{3}(t_f^3-t_i^3) \\
+      x-5 &= 2(10-0)+(10^3-0) \\
+      &= 20+1000 \\
+      x &= 1025m
+    \end{align*}
+  \item What is the acceleration of the rocket plane at \( t = 10.0s \)?
+    \begin{align*}
+      a &= \ddiff{v}{t} = 0+6t \\
+      &= 60\frac{m}{s^2}
+    \end{align*}
+\end{enumerate}
+
+\subsection*{Vector and Scalar Quantities}
+Vector Quantities in 1D:
+\begin{itemize}
+  \item Position
+  \item Velocity
+  \item Acceleration
+\end{itemize}
+Scalar Quantities in 1D:
+\begin{itemize}
+  \item Distance
+  \item Speed
+\end{itemize}
+
+\section*{Reminders and Homework}
+Complete the homework on TheExpertTA and WebAssign.
+
+\begin{center}
+  If you have any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
