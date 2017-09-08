@@ -60,6 +60,56 @@ Free variables are those that are currently in scope. The truth of the statement
 depends on what you assign them. \( y \) is a free variable in this example.
 Bound variables are out of scope. They overshadow any value you assign to them.
 \( x \) is a bound variable in this example.
+\begin{itemize}
+  \item \( y\in\{x\ |\ x^2<9\} \) \\
+    \( y \) is a free variable in this example.
+  \item \( \{x\ |\ x^2<9\} \) \\
+    There are no free variables in this example.
+  \item \( x^2<9 \) \\
+    \( x \) is a free variable in this example.
+  \item \( \forall{x}(DOG(x)\to\exists{y}DAY(y)\wedge HAS(x,y)) \) \\
+    There are no free variables in this example.
+\end{itemize}
+
+\subsection*{Predicate (quantificational) logic}
+\begin{itemize}
+  \item Everyone at RIT loves CS majors. \\
+    Let P be the predicate ``person'', let A be the predicate ``at'', let
+    R be the constant ``RIT'', let C be the predicate ``CS Major'', let L
+    be the predicate ``loves''.
+    \[ \forall{x}(P(x)\wedge A(x,R)\to\forall{y}(C(y)\to L(x,y))) \]
+  \item Someone at RIT loves some CS major. \\
+    Using the same predicates and constants:
+    \[ \exists{x}(P(x)\wedge A(x,R)\wedge\exists{y}(C(y)\to L(x,y))) \]
+  \item There is a CS major that everyone at RIT loves. \\
+    Using the same predicates and constants:
+    \[ \exists{x}(C(x)\to\forall{y}(P(y)\wedge A(y,R)\wedge L(x,y))) \]
+  \item Everybody loves somebody sometime. \\
+    Let L be the predicates ``loves'', let P be the predicate ``person''.
+    \[ \forall{x}(P(x)\to\exists{y}\exists{t}(L(x,y,t))) \]
+\end{itemize}
+
+\subsection*{Proof meta-strategy}
+Write the proof in predicate logic, leaving no free variables. Using predicate
+logic as a roadmap, complete the proof by simplifying the predicate logic
+using formal definitions.
+
+\subsubsection*{Example}
+\textbf{Theorem}: If \( x \) is a substring of \( y \) and \( y \) is a
+substring of \( x \), then \( y = x \). \\
+\textbf{Predicate logic}:
+\[ \forall{x}(\forall{y}((\text{x is a substring of y}\wedge\text{y is a
+  substring of x})\to x = y))) \]
+\textbf{Proof}: Choose an arbitrary string \( x \). Choose an arbitrary string
+\( y \). Assume that \( x \) is a substring of \( y\wedge y \) is a substring of
+\( x \). Substitute the formal definitions for substrings.
+\[ \forall{x}(\forall{y}((\exists{w,z}(wxz = y)\wedge\exists{w,z}(wyz = x))\to
+  x = y)) \]
+Note that what is left matches the for \( R\to S \).
+\[ \exists{w,z}(wxz = y)\wedge\forall{w,z}(wyz = x) \]
+By the definition of the substring relation, there exists strings \( w_1,z_1 \)
+such that \( w_1xz_1 = y \) and strings \( w_2,z_2 \) such that
+\( w_2yz_2 = x \).
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
