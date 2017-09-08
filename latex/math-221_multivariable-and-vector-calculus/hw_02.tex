@@ -1,0 +1,141 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\usepackage{tikz}
+
+\geometry{letterpaper, margin=1in}
+
+\title{Multivariable and Vector Calculus: Homework 2}
+\author{Alvin Lin}
+\date{August 2016 - December 2016}
+
+\begin{document}
+
+\maketitle
+
+\section*{Page 821}
+
+\subsubsection*{Problem 5}
+Find the cross product \( \vec{a}\times\vec{b} \) and verify that it is
+orthogonal to both \( a \) and \( b \).
+\begin{align*}
+  \vec{a} &= \frac{1}{2}\i+\frac{1}{3}\j+\frac{1}{4}\k \\
+  \vec{b} &= \i+2\j-3\k \\
+  \vec{a}\times\vec{b} &= \begin{vmatrix}
+    \i & \j & \k \\
+    \frac{1}{2} & \frac{1}{3} & \frac{1}{4} \\
+    1 & 2 & -3
+  \end{vmatrix} = \frac{-3}{2}\i+\frac{7}{4}\j+\frac{2}{3}\k \\
+  \vec{a}\times\vec{b}\cdot\vec{a} &=
+    \frac{-3}{4}+\frac{7}{12}+\frac{2}{12} = 0 \\
+  \vec{a}\times\vec{b}\cdot\vec{b} &=
+    \frac{-3}{2}+\frac{14}{4}-2 = 0
+\end{align*}
+
+\subsubsection*{Problem 7}
+Find the cross product \( \vec{a}\times\vec{b} \) and verify that it is
+orthogonal to both \( a \) and \( b \).
+\begin{align*}
+  \vec{a} &= \langle t,1,\frac{1}{t}\rangle \\
+  \vec{b} &= \langle t^2,t^2,1\rangle \\
+  \vec{a}\times\vec{b} &= \begin{vmatrix}
+    \i & \j & \k \\
+    t & 1 & \frac{1}{t} \\
+    t^2 & t^2 & 1
+  \end{vmatrix} = \langle1-t,0,t^3-t^2\rangle \\
+  \vec{a}\times\vec{b}\cdot\vec{a} &=
+    t(1-t)+0+\frac{t^3-t^2}{t} \\
+  &= t-t^2+t^2-t = 0 \\
+  \vec{a}\times\vec{b}\cdot\vec{b} &=
+    t^2(1-t)+0+t^3-t^2 = 0
+\end{align*}
+
+\subsubsection*{Problem 11}
+Find the vector, not with determinants, but by using properties of cross
+products.
+\begin{align*}
+  (\j-\k)\times(\k-\i) &= (\j-\k)\times\k+(\j-\k)\times-\i \\
+  &= (\j\times\k)+(\j\times-\i)+(-\k\times\k)+(-\k\times-\i) \\
+  &= \i+\k+0+\j = \i+\j+\k
+\end{align*}
+
+\subsubsection*{Problem 13}
+State whether each expression is meaningful:
+\begin{enumerate}
+  \item \( \vec{a}\cdot(\vec{b}\times\vec{c}) \) \\
+  Scalar
+  \item \( \vec{a}\times(\vec{b}\cdot\vec{c}) \) \\
+  Nonsensical (vector cross scalar)
+  \item \( \vec{a}\times(\vec{b}\times\vec{c}) \) \\
+  Vector
+  \item \( \vec{a}\cdot(\vec{b}\cdot\vec{c}) \) \\
+  Nonsensical (vector dot scalar)
+  \item \( (\vec{a}\cdot\vec{b})\times(\vec{c}\cdot\vec{d}) \) \\
+  Nonsensical (scalar cross scalar)
+  \item \( (\vec{a}\times\vec{b})\cdot(\vec{c}\times\vec{d}) \) \\
+  Scalar
+\end{enumerate}
+
+\subsubsection*{Problem 27}
+Find the area of the parallelogram with vertices A(-3,0), B(-1,3), C(5,2), and
+D(3,-1).
+\begin{center}
+  \begin{tikzpicture}
+    \draw (-3,0) node[left] {A} -- (-1,3) node[above] {B} --
+      (5,2) node[right] {C} -- (3,-1) node[below] {D} -- (-3,0);
+  \end{tikzpicture}
+\end{center}
+\begin{align*}
+  \overrightarrow{AB} &= \langle2,3\rangle \\
+  \overrightarrow{AD} &= \langle6,-1\rangle \\
+  \overrightarrow{AB}\times\overrightarrow{AD} &= \begin{vmatrix}
+    \i & \j & \k \\
+    2 & 3 & 0 \\
+    6 & -1 & 0 \\
+  \end{vmatrix} = \langle0,0,-16\rangle \\
+  \text{area of ABCD} = |\langle0,0,-16\rangle| = 16
+\end{align*}
+
+\subsubsection*{Problem 29}
+Find a nonzero vector orthogonal to the plane through the points P,Q, and R and
+find the area of \( \triangle \) PQR: P(1,0,1), Q(-2,1,3), R(4,2,5).
+\begin{align*}
+  \overrightarrow{PQ} &= \langle-3,1,2\rangle \\
+  \overrightarrow{PR} &= \langle3,2,4\rangle \\
+  \overrightarrow{PQ}\times\overrightarrow{PR} &= \begin{vmatrix}
+    \i & \j & \k \\
+    -3 & 1 & 2 \\
+    3 & 2 & 4
+  \end{vmatrix} = \langle0,18,9\rangle
+\end{align*}
+\( \langle0,2,1\rangle \) is a vector orthogonal to the plane and the area of
+\( \triangle \) PQR is:
+\[ \frac{1}{2}|\langle0,18,9\rangle| = \frac{\sqrt{405}}{2} \]
+
+\subsubsection*{Problem 33}
+Find the volume of the parallelepiped determine by the vectors:
+\[ \vec{a} = \langle1,2,3\rangle \quad \vec{b} = \langle-1,1,2\rangle
+  \quad \vec{c} = \langle2,1,4\rangle \]
+\begin{align*}
+  V &= (\vec{a}\times\vec{b})\cdot\vec{c} \\
+  &= \begin{vmatrix}
+    \i & \j & \k \\
+    1 & 2 & 3 \\
+    -1 & 1 & 2
+  \end{vmatrix}\cdot\langle2,1,4 \\
+  &= \langle0,-5,3\rangle\cdot\langle2,1,4\rangle \\
+  &= 0-5+12 = 7
+\end{align*}
+
+\subsubsection*{Problem 37}
+Use the scalar triple product to verify that the vectors \( \vec{u} = \i+5\j-
+2\k \), \( \vec{v} = 3\i-\j \), and \( w = 5\i+9\j-4\k \) are coplanar.
+
+\begin{center}
+  If you have any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}

@@ -8,6 +8,9 @@
 \renewcommand*{\arcsin}{\sin^{-1}}
 \renewcommand*{\arccos}{\cos^{-1}}
 \renewcommand*{\arctan}{\tan^{-1}}
+\renewcommand*{\i}{\hat{i}}
+\renewcommand*{\j}{\hat{j}}
+\renewcommand*{\k}{\hat{k}}
 \newcommand*{\arccot}{\cot^{-1}}
 \newcommand*{\arcsec}{\sec^{-1}}
 \newcommand*{\arccsc}{\csc^{-1}}
