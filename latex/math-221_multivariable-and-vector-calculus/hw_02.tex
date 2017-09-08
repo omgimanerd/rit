@@ -5,7 +5,7 @@
 \usepackage{geometry}
 \usepackage{tikz}
 
-\geometry{letterpaper, margin=1in}
+\geometry{letterpaper, margin=0.5in}
 
 \title{Multivariable and Vector Calculus: Homework 2}
 \author{Alvin Lin}
@@ -132,6 +132,224 @@ Find the volume of the parallelepiped determine by the vectors:
 \subsubsection*{Problem 37}
 Use the scalar triple product to verify that the vectors \( \vec{u} = \i+5\j-
 2\k \), \( \vec{v} = 3\i-\j \), and \( w = 5\i+9\j-4\k \) are coplanar.
+\begin{align*}
+  V &= (\vec{u}\times\vec{b})\cdot\vec{w} \\
+  &= \begin{vmatrix}
+    \i & \j & \k \\
+    1 & 5 & -2 \\
+    3 & -1 & 0
+  \end{vmatrix}\cdot\langle5,9,-4\rangle \\
+  &= \langle-2,-6,-16\rangle\cdot\langle5,9,-4\rangle \\
+  &= -10-54+64 = 0
+\end{align*}
+Since the scalar triple product is 0, the vectors must be coplanar.
+
+\subsection*{831}
+
+\subsubsection*{5}
+Find a vector equation and parametric equations for the line through the
+point (1,0,6) and perpendicular to the plane \( x+3y+z = 5 \).
+\[ \vec{n} = \langle1,3,1\rangle \]
+\begin{align*}
+  \vec{r} &= \langle1,0,6\rangle+\langle1,3,1\rangle t \\
+  &= \langle1+t,3t,6+t\rangle \\
+  &\equiv \begin{cases}
+    x &= 1+t \\
+    y &= 3t \\
+    z &= 6+t
+  \end{cases}
+\end{align*}
+
+\subsubsection*{9}
+Find parametric equations and symmetric equations for the line through the
+points (-8,1,4) and (3,-2,4).
+\[ \vec{d} = \langle11,-3,0\rangle \]
+\begin{align*}
+  l &= \begin{cases}
+    x &= 3+11t \\
+    y &= -2-3t \\
+    z &= 4
+  \end{cases} \\
+  &\equiv \frac{x-3}{11} = \frac{y+2}{-3}
+\end{align*}
+
+\subsubsection*{19}
+Determine whether the lines \( L_1 \) and \( L_2 \) are parallel, skew, or
+intersecting. If they intersect, find the point of intersection.
+\begin{align*}
+  L_1 &= \begin{cases}
+    x &= 3+2t \\
+    y &= 4-t \\
+    z &= 1+3t
+  \end{cases} \\
+  L_2 &= \begin{cases}
+    x &= 1+4s \\
+    y &= 3-2s \\
+    z &= 4+5s
+  \end{cases}
+  \vec{n_1} &= \langle2,-1,3\rangle \\
+  \vec{n_2} &= \langle4,-2,5\rangle \\
+  3+2t &= 1+4s \\
+  t &= 2s-1 \\
+  4-t &= 3-2s \\
+  4-(2s-1) &= 3-2s \\
+  5-2s &= 3-2s
+\end{align*}
+No solution, therefore the lines are skew.
+
+\subsubsection*{27}
+Find an equation of the plane through the point (1,-1,-1) and parallel to the
+plane \( 5x-y-z = 6 \).
+\begin{align*}
+  \vec{n} &= \langle5,-1,-1\rangle \\
+  \Pi &\equiv 5(x-1)-1(y+1)-1(z+1) = 0 \\
+  &\equiv 5x-5-y-1-z-1 = 0 \\
+  &\equiv 5x-y-z = 7
+\end{align*}
+
+\subsubsection*{31}
+Find an equation of the plane through the points (0,1,1), (1,0,1), and (1,1,0).
+\begin{align*}
+  \vec{u} &= \langle1,-1,0\rangle \\
+  \vec{v} &= \langle1,0,-1\rangle \\
+  \vec{n} &= \vec{u}\times\vec{v} \\
+  &= \begin{vmatrix}
+    \i & \j & \k \\
+    1 & -1 & 0 \\
+    1 & 0 & -1
+  \end{vmatrix} = \langle1,1,1\rangle \\
+  \Pi &\equiv 1(x-0)+1(y-1)+1(z-1) = 0 \\
+  &\equiv x+y-1+z-1 = 0 \\
+  &\equiv x+y+z = 2
+\end{align*}
+
+\subsubsection*{37}
+Find the equation of the plane that passes through the point (3,1,4) and
+contains the line of intersection of the planes \( x+2y+3z = 1 \) and
+\( 2x-y+z = -3 \). \\
+Let \( z = 0 \):
+\begin{align*}
+  x+2y &= 1 \\
+  2x-y &= -3 \\
+  x &= 1-2y \\
+  2(1-2y)-y &= -3 \\
+  2-4y-y &= -3 \\
+  2-5y &= -3 \\
+  -5y &= -5 \\
+  y &= 1 \\
+  x &= -1
+\end{align*}
+Let \( y = 0 \):
+\begin{align*}
+  x+3z &= 1 \\
+  2x+z &= -3 \\
+  x &= 1-3z \\
+  2(1-3z)+z &= -3 \\
+  2-6z+z &= -3 \\
+  -5z &= -5 \\
+  z &= 1 \\
+  x &= -2
+\end{align*}
+Points (-1,1,0) and (-2,0,1):
+\begin{align*}
+  \vec{u} &= (3,1,4)-(-1,1,0) = \langle4,0,4\rangle \\
+  \vec{v} &= (3,1,3)-(-2,0,1) = \langle5,1,2\rangle \\
+  \vec{n} &= \vec{u}\times\vec{v} \\
+  &= \begin{vmatrix}
+    \i & \j & \k \\
+    4 & 0 & 4 \\
+    5 & 1 & 2 \\
+  \end{vmatrix} = \langle-4,12,4\rangle \\
+  \Pi &\equiv -4(x-(-1))+12(y-1)+4(z-0) = 0 \\
+  &\equiv -4x-4+12y-12+4z = 0 \\
+  &\equiv -4x+12y+4z = 16 \\
+  &\equiv -x+3y+z = 4 \\
+  &\equiv x-3y-z = -4
+\end{align*}
+
+\subsubsection*{69}
+Use the formula to find the distance from the point to the given line.
+P = (4,1,-2)
+\[ l = \begin{cases}
+  x &= 1+t \\
+  y &= 3-2t \\
+  z &= 4-3t
+\end{cases} \]
+\begin{align*}
+  \vec{u} &= \langle1,-2,-3\rangle \\
+  P_0 &= (1,3,4) \\
+  \vec{v} &= \overrightarrow{P_0P} = \langle3,-2,-6\rangle \\
+  d &= \frac{|\vec{u}\times\vec{v}|}{|\vec{u}|} \\
+  &= \left|\begin{vmatrix}
+    \i & \j & \k \\
+    1 & -2 & -3 \\
+    3 & -2 & -6
+  \end{vmatrix}\right|\left(\frac{1}{|\langle1,-2,-3\rangle|}\right) \\
+  &= \frac{|\langle6,-3,4\rangle|}{\sqrt{1+4+9}} \\
+  &= \frac{\sqrt{36+9+16}}{\sqrt{14}} \\
+  &= \sqrt{\frac{61}{14}}
+\end{align*}
+
+\subsubsection*{71}
+Find the distance from the point to the given plane. \( P_1 = (1,-2,4) \)
+\[ 3x+2y+6z = 5 \]
+\begin{align*}
+  D &= \frac{|ax_1+by_1+cz_1+d|}{\sqrt{a^2+b^2+c^2}} \\
+  &= \frac{|3(1)+2(-2)+6(4)+(-5)|}{\sqrt{9+4+36}} \\
+  &= \frac{|3-4+24-5|}{\sqrt{49}} \\
+  &= \frac{18}{7}
+\end{align*}
+
+\subsubsection*{73}
+Find the distance between the given parallel planes.
+\[ 2x-3y+z = 4 \quad 4x-6y+2z = 3 \]
+\begin{align*}
+  P_0 &= \langle0,0,4\rangle \\
+  D &= \frac{|ax_1+by_1+cz_1+d|}{\sqrt{a^2+b^2+c^2}} \\
+  &= \frac{|4(0)-6(0)+2(4)-3|}{\sqrt{16+36+4}} \\
+  &= \frac{|8-3|}{\sqrt{56}} \\
+  &= \frac{5}{4\sqrt{14}}
+\end{align*}
+
+\subsubsection*{77}
+Show that the lines with symmetric equations \( x = y = z \) and
+\( x+1 = \frac{y}{2} = \frac{z}{3} \) are skew, and find the distance
+between these lines.
+\begin{align*}
+  l_1 &= \begin{cases}
+    x &= t \\
+    y &= t \\
+    z &= t
+  \end{cases} \\
+  l_2 &= \begin{cases}
+    x &= -1+s \\
+    y &= 2s \\
+    z &= 3s
+  \end{cases} \\
+  t &= s-1 \\
+  s-1 &= 2s \\
+  s &= -1 \\
+  t &\stackrel{?}{=} 3s \\
+  s-1 &= 3s \\
+  s &= \frac{-1}{2}
+\end{align*}
+Since the solutions do not match, the lines are skew.
+\begin{align*}
+  \vec{v_1} &= \langle1,1,1\rangle \\
+  \vec{v_2} &= \langle1,2,3\rangle \\
+  \vec{n} &= \vec{v_1}\times\vec{v_2} \\
+  &= \begin{vmatrix}
+    \i & \j & \k \\
+    1 & 1 & 1 \\
+    1 & 2 & 3
+  \end{vmatrix} = \langle1,-2,1\rangle \\
+  P_0 &= (0,0,0) \\
+  \Pi &= 1x-2y+1z = 0 \\
+  P_1 &= (-1,0,0) \\
+  D &= \frac{|ax_1+by_1+cz_1+d|}{\sqrt{a^2+b^2+c^2}} \\
+  &= \frac{|1(-1)+0+0+0|}{\sqrt{1+4+1}} \\
+  &= \frac{1}{\sqrt{6}}
+\end{align*}
 
 \begin{center}
   If you have any questions, comments, or concerns, please contact me at
