@@ -1,0 +1,59 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+
+\title{University Physics 1A}
+\author{Alvin Lin}
+\date{September 8th, 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Kinematic Equations}
+The following equations can be derived though calculus:
+\[ x = x_0+v_0t+\frac{1}{2}at^2 \]
+\[ v = v_0+at \]
+\[ v^2 = (v_0)^2+2a(x-x_0) \]
+One additional equation can be derived from the combinations of the above
+equations:
+\[ x-x_0 = \frac{1}{2}(v+v_0)t \]
+These equations are only valid when the acceleration is constant and assume that
+motion begins at \( t = 0 \). If we assume that motion begins at \( t = t_i \):
+\[ x = x_i+v_i(t-t_i)+\frac{1}{2}a(t-t_i)^2 \]
+\[ v = v_0+a(t-t_i) \]
+These equations are useful in situations without friction, air resistance, etc,
+such as freefall (where acceleration \( a = -9.81m/s^2 \) assuming y is
+positive upwards).
+\[ g \equiv 9.81m/s^2 \]
+\[ a_{gravity} = -g \]
+
+\subsubsection*{Example}
+Driver A is driving along a road at constant velocity \( v_A = 50m/s \). As
+driver A passes police car P, P starts accelerating at \( 2m/s^2 \). How long
+will it take for P to catch A? This question implies that the two cars must be
+at the same point at the same time.
+\begin{align*}
+  x_A = x_P &= x_{A_0}+v_{A_0}t+\frac{1}{2}a_At^2 =
+    x_{P_0}t+v_{P_0}+\frac{1}{2}a_Pt^2 \\
+  0+50t+\frac{1}{2}(0)t^2 &= 0+0t+\frac{1}{2}(2)t^2 \\
+  50t &= t^2 \\
+  t^2-50t &= 0 \\
+  t(t-50) &= 0
+\end{align*}
+The two solutions for this are \( t = 0s \) and \( t = 50s \). We can rule out
+\( t = 0 \) because that's when driver A first passes police car P.
+
+\section*{Reminders and Homework}
+Complete the homework on TheExpertTA and WebAssign. \\
+\textbf{Remember to bring the Activities Manual}
+
+\begin{center}
+  If you have any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
