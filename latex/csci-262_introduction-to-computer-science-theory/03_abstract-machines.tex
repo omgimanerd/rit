@@ -1,0 +1,98 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+
+\title{Introduction to Computer Science Theory}
+\author{Alvin Lin}
+\date{August - December 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Abstract Machines}
+Our goal is to answer fundamental computer science questions:
+\begin{itemize}
+  \item What can and cannot be computed?
+  \item What can and cannot be computer efficiently?
+\end{itemize}
+To answer this, we need a \textbf{universal model of computation}. We also need
+\textbf{restricted models of computation}, such as string matching, lexical
+analysis, and parsing.
+
+\subsection*{Finite Automata}
+This is our most restricted model, and it can be represented as input on tape
+that reads input once from left to right. It has no memory except for one
+register.
+\[ \texttt{[a a b a c a d a b a d a]} \]
+They have finite control and contain a state. We call these
+\textbf{deterministic finite automata}.
+
+\subsection*{What languages can finite automatons recognize?}
+Given a language, we want to write a program that given a string, can tell
+whether or not the string is in the language. For this example, we will define
+our language as the strings over \( \{a,b\} \) that contain an even number of
+\( a \)'s.
+\[ \{aab,aba,aa,b,\epsilon\}\in L \]
+\[ \{ab,a,abb\}\notin L \]
+One algorithm:
+\begin{itemize}
+  \item Let \( n_a \leftarrow 0 \)
+  \item For \( i\in\{1,\dots,n\} \):
+  \begin{itemize}
+    \item If \( x_i == a \), let \( n_a\leftarrow n_a+1 \).
+  \end{itemize}
+  \item If \( n_a \) is even, accept.
+  \item Else, reject.
+\end{itemize}
+This algorithm cannot be run on a finite automaton because the \( n_a \)
+counter can get arbitrarily large. A finite automata can only have a finite
+number of states.
+
+\subsubsection*{Example}
+Give \textbf{set builder notation} and a \textbf{transition diagram} for a
+finite automaton that recognizes the language that consists of the strings over
+\( \{a,b\} \) that:
+\begin{itemize}
+  \item contain an even number of \( a \)'s.
+  \[ \{x\in\{a,b\}*\mid x\ has\ 0\ mod\ 2\ a's \} \]
+  \begin{center}
+    \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=3cm,
+                        thick]
+      \node[circle,draw] (0) {0};
+      \node[circle,draw] (1) [left of=0] {1};
+      \node (2) [above left of=1] {};
+      \path (2) edge (1)
+        (0) edge[loop below] node {b} (0) edge[bend left] node {a} (1)
+        (1) edge[loop below] node {b} (1) edge[bend left] node {a} (0);
+    \end{tikzpicture}
+  \end{center}
+  \item contain at least 3 \( a \)'s.
+  \begin{center}
+    \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=3cm,
+                        thick]
+      \node[circle,draw] (0) {0};
+      \node[circle,draw] (1) [right of=0] {0};
+      \node[circle,draw] (2) [right of=1] {0};
+      \node[circle,draw] (3) [right of=2] {1};
+      \node (4) [left of=0] {};
+      \path (4) edge (0)
+        (0) edge[loop below] node {b} (0) edge[bend left] node {a} (1)
+        (1) edge[loop below] node {b} (1) edge[bend left] node {a} (2)
+        (2) edge[loop below] node {b} (1) edge[bend left] node {a} (3)
+        (3) edge[loop below] node {b} (3) edge[loop right] node {a} (3);
+    \end{tikzpicture}
+  \end{center}
+\end{itemize}
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, feel free to contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
