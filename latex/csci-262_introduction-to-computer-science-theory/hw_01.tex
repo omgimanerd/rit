@@ -1,0 +1,78 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\usepackage{tikz}
+
+\geometry{letterpaper, margin=0.5in}
+
+\title{Multivariable and Vector Calculus: Homework 2}
+\author{Alvin Lin}
+\date{August 2016 - December 2016}
+
+\begin{document}
+
+\maketitle
+
+\subsection*{Problem 1}
+Analyze the logical forms of the following statements. Use the same level of
+detail as presented in page 18 of the course notes. Make sure that you add
+quantifiers to ensure that all the variables are bound. See also exercise 2 of
+section 2.1 of Velleman (2 points each).
+\begin{enumerate}
+  \item I've given you all I've got.
+    \[ \forall{x}(g(x)\to G(x)) \]
+    where \( g(x) \) stands for ``I've got x'' and \( G(x) \) stands for ``I've
+    given you x''.
+  \item Someday my prince will come.
+    \[ \exists{d}P(d) \]
+    where \( P(d) \) stands for ``My prince will come on day d''.
+  \item Nobody loves me like my baby.
+    \[ \neg\exists{x}L(x) \]
+    where \( L(x) \) stands for ``x loves me like my baby''.
+  \item If Fred can't do it, no one can.
+    \[ \neg D(f)\to(\neg\exists{x}D(x)) \]
+    where \( D(x) \) stands for ``x can do it'' and \( f \) stands for Fred.
+  \item If Fred can't do it, everyone else can.
+    \[ \neg D(f)\to(\forall{x}D(x)) \]
+    where \( D(x) \) stands for ``x can do it`` and \( f \) stands for Fred.
+\end{enumerate}
+
+\subsection*{Problem 2}
+Let \( A = \{z\in\R \mid 0 < z < 1\} \) and \( B = \{z\in\R \mid 0 \le z \le
+1\} \). Say whether each of the following statements is true or false (1 point
+each).
+\begin{enumerate}
+  \item \( \forall{x}\in A(\exists{y}\in A(x > y)) \) True
+  \item \( \forall{x}\in A(\exists{y}\in A(x \ge y)) \) True
+  \item \( \exists{y}\in A(\forall{x}\in A(x > y)) \) False
+  \item \( \exists{y}\in A(\forall{x}\in A(x \ge y)) \) False
+  \item \( \forall{x}\in B(\exists{y}\in B(x > y)) \) False
+  \item \( \forall{x}\in B(\exists{y}\in B(x \ge y)) \) True
+  \item \( \exists{y}\in B(\forall{x}\in B(x > y)) \) False
+  \item \( \exists{y}\in B(\forall{x}\in B(x \ge y)) \) True
+\end{enumerate}
+
+\subsection*{Problem 3}
+Prove that, for any language \( L \), if \( L\circ L \subseteq L \) then
+\( L \circ L \circ L \subseteq L \), in the following steps.
+\begin{enumerate}
+  \item Rewrite in quantifiable logic form, with no free variables, using
+    \( \subseteq \) in the writeup. (4 points)
+    \[ L\circ L\subseteq L \to L\circ L\circ L\subseteq L \]
+  \item Substitute for each occurrance \( \subseteq \) the definition of
+    \( \subseteq \). (4 points)
+    \[ \forall{x}(x\in(L\circ L)\to x\in L)\to
+      \forall{y}(y\in(L\circ L\circ L)\to y\in L) \]
+  \item Continue the proof. For each quantifier, you must use one of the proof
+    strategies from Velleman. Use square brackets and logical forms to cite
+    each use of a strategy, as in page 27 of the course notes. (4 points)
+\end{enumerate}
+
+\begin{center}
+  If you have any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
