@@ -1,0 +1,90 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{listings}
+
+\title{Analysis of Algorithms}
+\author{Alvin Lin and William Leuschner}
+\date{September 10th, 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Problem 1}
+Least to greatest:
+\begin{itemize}
+  \item Constant Time:
+  \[ 3 \quad n^{\frac{1}{\log n}} \]
+  \item Logarithmic:
+  \[ \quad \log\log n \quad \log_8 n \quad \log_2 n \quad \log_2 n^3 \quad
+    (\log n)^2 \]
+  \item Sub-linear:
+  \[ n^{\frac{1}{2}} \quad \frac{n}{\log n} \]
+  \item Linear:
+  \[ n-\log n \quad n\log n \]
+  \item Polynomial:
+  \[ n^2 \quad n^2\log n \quad n^{\log\log n} \quad (\log n)^{\log n} \quad
+    n^2+10^{100}n\log n \quad n^4 \]
+  \item Exponential:
+  \[ 4^{\log n} \quad 4^{2n} \quad n! \quad 8^{n-1} \quad n^n\quad 8^n \quad
+    4^{n^2} \quad \]
+\end{itemize}
+
+\section*{Problem 2}
+\begin{lstlisting}[mathescape=true]
+    let n1 = the list of she-aliens
+    let n2 = the list of he-aliens
+    let c = n1 $\cup$ n2
+    let d = []
+    for alien in c:
+        if alien.preferences is empty:
+            remove alien from c
+    let c = sorted*(c, ascending, by alien.preferences)
+    while c is not empty:
+        let current = c[0]
+        if current.preferences is empty:
+            remove current from c
+        let match = random.choice(current.preferences)
+        add (current, match) to d
+        remove current from c
+        remove match from c
+        for alien in c:
+            remove current from alien.preferences
+            remove match from alien.preferences
+\end{lstlisting}
+This function is upper bounded by \( O(n^2) \) because while iterating through
+the list of aliens to find matches, we must go through all other aliens if we
+find a match in order to remove the matches from the other aliens' preferences.
+
+\section*{Problem 3}
+For this problem, we needed fast lookup and insertion. A self-balancing binary
+search tree was the best choice for this, so we implemented an AVLTree.
+While iterating through the array of numbers, we look in our AVLTree for both
+numbers that would result in a difference of \( t \), that is, we look for
+\( a_i+t \) and \( a_i-t \). Since iteration through the numbers is
+\( O(n) \) and we must perform an insertion and 2 lookups for each number, our
+execution time is \( n\times3\log(n) \), which is upper-bounded by \( O(n\log
+n) \).
+
+\section*{Problem 4}
+For this problem, we used the AVLTree implemented in problem 3 to keep track
+of all the \( t \) differences. In order to find every single \( t \), we need
+to find the difference between every possible pair of numbers, which is
+\( O(n^2) \) complexity. By storing the \( t \) difference and frequency which
+that difference occurred in a tuple inside the tree, we could find all the
+\( t \) differences in \( n^2\times2\log(n) \) time. Isolating the most common
+one requires \( n \) since we have to traverse the AVLTree. This makes our
+complexity \( n^2*2\log(n)+n \), which is upper bounded by \( O(n^2\log n) \).
+
+\section*{Problem 5}
+For this problem, we first found the lexical difference between the two strings
+as an array of differences between each letter. This requires only a single
+pass (\( O(n) \)). This list of differences can be represented as a series of
+heights/depths in a ``mountain range''. We will refer to the letter distances
+as heights, and the contiguous groups of letters as ``mountains'' or
+``valleys''.
+
+\end{document}

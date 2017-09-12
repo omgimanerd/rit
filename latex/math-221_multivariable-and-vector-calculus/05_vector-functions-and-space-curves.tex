@@ -1,0 +1,71 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\title{Multivariable and Vector Calculus}
+\author{Alvin Lin}
+\date{August 2017 - December 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Vector Functions and Space Curves}
+\[ v:t\in\R \longrightarrow \vec{v(t)} = \langle x(t),y(t),z(t)\rangle \]
+Parametric line equations are similar to this form:
+\[ l = \begin{cases}
+  x &= x_{\circ}+ta_1 \\
+  y &= y_{\circ}+ta_2 \\
+  z &= z_{\circ}+ta_3
+\end{cases} \]
+\[ r(t) = \langle x_{\circ}+ta_1,y_{\circ}+ta_2,z_{\circ}+ta_3\rangle \]
+
+\subsubsection*{Example}
+\[ \vec{v(t)} = \langle\cos(t),\sin(t),t^3\rangle \]
+We know that \( x = \cos(t) \) and \( y = \sin(t) \) and we have the identity
+\( \sin^2\theta+\cos^2\theta = 1 \), therefore \( x^2+y^2 = 1 \). We can
+determine this this vector traces a helix on the perimeter of a cylinder along
+the z-axis.
+
+\subsubsection*{Example}
+Find the point where the helix \( v(t) = \langle\cos(t),\sin(t),t\rangle \)
+intersects the sphere with equation \( x^2+y^2+z^2 = 5 \).
+\begin{align*}
+  x^2+y^2+z^2 &= 5 \\
+  \cos^2t+\sin^2t+t^2 &= 5 \\
+  1+t^2 &= 5 \\
+  t^2 &= 4 \\
+  t &= \pm2
+\end{align*}
+There are two points at which they intersect, when \( t = 2 \) and when
+\( t = -2 \), \( P_1(\cos2,\sin(2),2) \) and \( P_2(\cos(-2),\sin(-2),-2) \).
+
+\subsubsection*{Example}
+Suppose you have two surfaces \( S_1:x^2+y^2 = 4 \) and \( S_2:z=xy \). Find
+the curve of intersection \( C \). We can let \( x = 2\cos(t) \) and
+\( y = 2\sin(t) \) in order to fulfill \( x^2+y^2 = 4 \).
+\[ \vec{r(t)} = \langle2\cos(t),2\sin(t),4\cos(t)\sin(t) \]
+
+\subsubsection*{Example}
+Given the vector equation for the curve of intersection between
+\( S_1: z = 4x^2+y^2 \) and \( S_2: y = x^2 \). In terms of x:
+\[ \vec{r(x)} = \langle x,x^2,4x^2+y^2\rangle = \langle x,x^2,4x^2+x^4\rangle \]
+\[ \vec{r(t)} = \langle t,t^2,4t^2+t^4\rangle \]
+
+\subsubsection*{Example}
+Give the vector equation for the curve of intersection between
+\( S_1: x^2+z^2 = 1 \) and \( S_2: x^2+y^2+4z^2 = 4, y\ge0 \).
+\[ \vec{r(t)} = \langle\cos(t),\sqrt{4-\cos^2(t)-4\sin^2(t)},\sin(t)\rangle \]
+
+\subsubsection*{Example}
+Given a surface \( S \) such that the curve \( \vec{r(t)} = \langle t^2,\ln(t),
+\frac{1}{2}\rangle \) belongs to \( S \).
+\begin{align*}
+  t^2-t^2 &= 0 \\
+  x-\e^{2\ln(t)} = 0
+\end{align*}
+
+\begin{center}
+  If you have any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}

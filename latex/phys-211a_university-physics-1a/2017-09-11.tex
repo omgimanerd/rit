@@ -1,0 +1,74 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+
+\title{University Physics 1A}
+\author{Alvin Lin}
+\date{September 11th, 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Kinematic Equations Review}
+Bob drops a ball from rest out the window of a building. At the very same
+instant Phyllis releases a ball upward with an initial speed fo 11.0m/s
+from a point 20.0m directly below Bob.
+\begin{align*}
+  d &= x_{\circ}+v_{\circ}t+\frac{1}{2}at^2 \\
+  d = 0+11t+\frac{1}{2}at^2 = 20+0t+\frac{1}{2}at^2 \\
+  11t &= 20 \\
+  t &= \frac{20}{11}
+\end{align*}
+The balls collided at time \( t = \frac{20}{11}s \).
+\begin{align*}
+  d &= 20+0t+\frac{1}{2}(-9.81)t^2 \\
+  &= 20-\frac{1}{2}(9.81)(\frac{20}{11})^2 \\
+  &\approx 3.77m
+\end{align*}
+The balls collided at distance \( d = 3.77m \).
+Is the ball thrown byy Phyllis moving upwards or downward when the collision
+occurred.
+\begin{align*}
+  v &= v_{\circ}+at \\
+  &= 11+at^2 \\
+  &= 11+(-9.8)(\frac{20}{11}) \\
+  &\approx -6.8m/s
+\end{align*}
+
+\section*{2D Kinematics}
+\begin{center}
+  \begin{tikzpicture}
+    \draw[thick,->] (0,0) -- (4.5,0) node[anchor=north west] {x axis};
+    \draw[thick,->] (0,0) -- (0,4.5) node[anchor=south east] {y axis};
+    \draw[thick,->,red] (0,0) -- (4,3) node[anchor=south west] {(x,y)};
+    \draw[dashed] (4,0) -- (4,3);
+    \draw[dashed] (0,3) -- (4,3);
+  \end{tikzpicture}
+\end{center}
+\begin{align*}
+  \vec{x} &= \text{position vector} = x\i+y\j \\
+  \vec{v} &= \ddiff{\vec{v}}{t} = \ddiff{x}{t}\i+\ddiff{y}{t}\j \\
+  &= v_x\i+v_y\j \\
+  \vec{a} &= \ddiff{v_x}{t}\i+\ddiff{v_y}{t}\j
+\end{align*}
+
+\subsection*{Example}
+Given that the initial velocity is \( (A,B) \) at \( t = 0 \), find
+the velocity given:
+\[ a = (C+Dt^2,Et) \]
+\[ v = (Ct+\frac{1}{2}Dt^2+A,\frac{1}{2}Et^2+B) \]
+
+\section*{Reminders and Homework}
+Complete the homework on TheExpertTA and WebAssign. \\
+\textbf{Remember to bring the Activities Manual}
+
+\begin{center}
+  If you have any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}

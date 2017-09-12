@@ -7,9 +7,9 @@
 
 \geometry{letterpaper, margin=0.5in}
 
-\title{Multivariable and Vector Calculus: Homework 2}
+\title{Intro to Computer Science Theory: Homework 1}
 \author{Alvin Lin}
-\date{August 2016 - December 2016}
+\date{August 2017 - December 2017}
 
 \begin{document}
 
@@ -60,14 +60,26 @@ Prove that, for any language \( L \), if \( L\circ L \subseteq L \) then
 \begin{enumerate}
   \item Rewrite in quantifiable logic form, with no free variables, using
     \( \subseteq \) in the writeup. (4 points)
-    \[ L\circ L\subseteq L \to L\circ L\circ L\subseteq L \]
+    \[ \forall{L}(L\circ L\subseteq L \to L\circ L\circ L\subseteq L) \]
   \item Substitute for each occurrance \( \subseteq \) the definition of
     \( \subseteq \). (4 points)
-    \[ \forall{x}(x\in(L\circ L)\to x\in L)\to
-      \forall{y}(y\in(L\circ L\circ L)\to y\in L) \]
+    \[ \forall{L}(\forall{x}(x\in(L\circ L)\to x\in L)\to
+      \forall{y}(y\in(L\circ L\circ L)\to y\in L)) \]
   \item Continue the proof. For each quantifier, you must use one of the proof
     strategies from Velleman. Use square brackets and logical forms to cite
     each use of a strategy, as in page 27 of the course notes. (4 points)
+    \begin{itemize}
+      \item Choose an arbitrary \( L \) [Velleman p.108]:
+      \[ \forall{x}(x\in(L\circ L)\to x\in L)\to
+        \forall{y}(y\in(L\circ L\circ L)\to y\in L) \]
+      \item This is of the form \( R\to S \) [Velleman p.87], assume
+      \[ \forall{x}(x\in(L\circ L)\to x\in L) \]
+      \[ \forall{x}(x\in\{yz\mid y\in L,z\in L\})\to x\in L \]
+      and prove:
+      \[ \forall{y}(y\in(L\circ L\circ L)\to y\in L) \]
+      \item Choose an arbitrary \( x \) [Velleman p.108]:
+      \[ \]
+    \end{itemize}
 \end{enumerate}
 
 \begin{center}
