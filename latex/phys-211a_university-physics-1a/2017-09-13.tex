@@ -1,0 +1,53 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+
+\title{University Physics 1A}
+\author{Alvin Lin}
+\date{September 13th, 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{2D motion}
+When we have projectiles traveling in 2D space:
+\begin{align*}
+  \vec{x} &= x\i+y\j \\
+  \vec{v} &= \ddiff{x}{t}\i+\ddiff{y}{t}\j \\
+  \vec{v} &= v_x\i+v_y\j \\
+  \vec{a} &= a_x\i+a_y\j
+\end{align*}
+Projectile motion is a special case which ignores air resistance where:
+\[ a_x = 0 \quad a_y = -g \]
+
+\subsubsection*{Example}
+Suppose we have a projectile be launched at an angle of \( 60^{\circ} \) at
+30m/s. How far has it traveled in the x direction when it is 8m above the
+ground and falling?
+\begin{align*}
+  y &= y_0+v_{\circ_y}t+\frac{1}{2}a_yt^2 \\
+  8m &= 0+30\sin(60)t+\frac{1}{2}(-9.8)t^2 \\
+  4.9t^2-26t+8 &= 0 \\
+  t &= 0.32s \quad t = 4.98s
+\end{align*}
+At these two times, the projectile is 8 meters above the ground.
+\begin{align*}
+  x &= x_0+v_{\circ_x}t+0 = 0+(15)(4.98) \\
+  &= 74.6m
+\end{align*}
+Work on practice problems in the Activities Manual.
+
+\section*{Reminders and Homework}
+Complete the homework on TheExpertTA and WebAssign. \\
+\textbf{Remember to bring the Activities Manual}
+
+\begin{center}
+  If you have any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
