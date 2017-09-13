@@ -4,6 +4,7 @@
 \usepackage{amssymb}
 \usepackage{hyperref}
 \usepackage{listings}
+\lstset{basicstyle=\ttfamily\footnotesize,breaklines=true}
 
 \title{Analysis of Algorithms}
 \author{Alvin Lin and William Leuschner}
@@ -35,56 +36,213 @@ Least to greatest:
 
 \section*{Problem 2}
 \begin{lstlisting}[mathescape=true]
-    let n1 = the list of she-aliens
-    let n2 = the list of he-aliens
-    let c = n1 $\cup$ n2
-    let d = []
-    for alien in c:
-        if alien.preferences is empty:
-            remove alien from c
-    let c = sorted*(c, ascending, by alien.preferences)
-    while c is not empty:
-        let current = c[0]
-        if current.preferences is empty:
-            remove current from c
-        let match = random.choice(current.preferences)
-        add (current, match) to d
+let n1 = the list of she-aliens
+let n2 = the list of he-aliens
+let c = n1 $\cup$ n2
+let d = []
+for alien in c:
+    if alien.preferences is empty:
+        remove alien from c
+while c is not empty:
+    let current = min(c, by length of alien.preferences)
+    if current.preferences is empty:
         remove current from c
-        remove match from c
-        for alien in c:
-            remove current from alien.preferences
-            remove match from alien.preferences
+    let match = random.choice(current.preferences)
+    add (current, match) to d
+    remove current from c
+    remove match from c
+    for alien in c:
+        remove current from alien.preferences
+        remove match from alien.preferences
 \end{lstlisting}
-This function is upper bounded by \( O(n^2) \) because while iterating through
-the list of aliens to find matches, we must go through all other aliens if we
-find a match in order to remove the matches from the other aliens' preferences.
+This function is \( O(n^2) \) because while iterating through the list of
+aliens to find matches, we must go through all other aliens if we find a match
+in order to remove the matches from the other aliens' preferences.
 
 \section*{Problem 3}
+
+\subsubsection*{Algorithm Description}
 For this problem, we needed fast lookup and insertion. A self-balancing binary
 search tree was the best choice for this, so we implemented an AVLTree.
 While iterating through the array of numbers, we look in our AVLTree for both
 numbers that would result in a difference of \( t \), that is, we look for
-\( a_i+t \) and \( a_i-t \). Since iteration through the numbers is
+\( a_i+t \) and \( a_i-t \).
+
+\subsubsection*{Argument of Correctness}
+Our algorithm examines every element in the input and calculates every
+possible pairing that could produce \( t \) to search for them.
+
+\subsubsection*{Running Time Estimate} Since iteration through the numbers is
 \( O(n) \) and we must perform an insertion and 2 lookups for each number, our
-execution time is \( n\times3\log(n) \), which is upper-bounded by \( O(n\log
-n) \).
+execution time is \( n\times3\log(n) \), which is \( O(n\log n) \).
+
+\subsubsection*{Pseudocode}
+\begin{lstlisting}
+let avlt = an new AVLTree (self-balancing)
+let count = 0
+for i=0 to the length of the input:
+    let possibility1 = avlt.search(input[i]+t)
+    let possibility2 = avlt.search(input[i]-t)
+    if possibility1 exists:
+        count += possibility1.frequency
+    if possiblilty2 exists and t != 0:
+        count += possibility2.frequency
+    let currentValue = avlt.search(input[i])
+    if currentValue exists:
+        currentValue.frequency += 1
+    else:
+        avlt.insert(currentValue)
+return count
+\end{lstlisting}
 
 \section*{Problem 4}
+
+\subsubsection*{Algorithm Description}
 For this problem, we used the AVLTree implemented in problem 3 to keep track
-of all the \( t \) differences. In order to find every single \( t \), we need
-to find the difference between every possible pair of numbers, which is
-\( O(n^2) \) complexity. By storing the \( t \) difference and frequency which
-that difference occurred in a tuple inside the tree, we could find all the
-\( t \) differences in \( n^2\times2\log(n) \) time. Isolating the most common
-one requires \( n \) since we have to traverse the AVLTree. This makes our
-complexity \( n^2*2\log(n)+n \), which is upper bounded by \( O(n^2\log n) \).
+of all the \( t \) differences. We computed the difference \( t \) between every
+pair of input values and stored each \( t \) difference and its frequency as
+a tuple inside the tree.
+
+\subsubsection*{Argument of Correctness}
+This algorithm finds every possible \( t \) difference by computing the
+difference between every single pair of inputs. It uses an AVLTree to store the
+differences for fast lookup and update. Because we have every possible \( t \)
+difference, we can find the most frequently occurring one.
+
+\subsubsection*{Running Time Estimate}
+Finding every possible \( t \) difference is \( O(n^2) \). Storing them in the
+tree requires \( O(\log n) \) time, and finding the maximum requires \( O(n) \)
+time. This makes our complexity \( n^2*2\log(n)+n \), which is
+\( O(n^2\log n) \).
+
+\subsubsection*{Pseudocode}
+\begin{lstlisting}
+let avlt = an new AVLTree (self-balancing)
+for i=0 to the length of the input:
+    for j=i to the length of the input:
+        let t = input[i] - input[j]
+        let possibility = avlt.search(t)
+        if possibility exists:
+            possibility.frequency += 1
+        else:
+            avlt.insert(t)
+let max = 0
+let stack = a new stack
+stack.push(avlt.root)
+while stack is not empty:
+    let current = stack.pop()
+    if current.frequency > max.frequency:
+        max = current
+    stack.push(current.left)
+    stack.push(current.right)
+return max.value
+\end{lstlisting}
 
 \section*{Problem 5}
+
+\subsubsection*{Algorithm Description}
 For this problem, we first found the lexical difference between the two strings
 as an array of differences between each letter. This requires only a single
-pass (\( O(n) \)). This list of differences can be represented as a series of
+pass. This list of differences can be represented as a series of
 heights/depths in a ``mountain range''. We will refer to the letter distances
 as heights, and the contiguous groups of letters as ``mountains'' or
-``valleys''.
+``valleys''. For example:
+\[ d = [1\ 2\ 3\ 3\ 2\ 1\ 0\ 3\ 4\ 3\ 3\ 2\ 3\ 0\ -1\ -2\ -3\ -2\ -3\ 0] \]
+In this example, our lexical difference array contains two mountains and one
+valley. The two mountains contain a valley, and the valley itself contains a
+mountain. We then recursively chunk the mountains and valleys into groups and
+cut away the base height or depth shared in common by the mountain/valley.
+For example, the \( d \) array above would be split into three ``chunks''.
+\[ \text{mountains} = \begin{bmatrix}
+  [1\ 2\ 3\ 3\ 2\ 1] \\
+  [3\ 4\ 3\ 3\ 2\ 3] \\
+  [-1\ -2\ -3\ -2\ -3]
+\end{bmatrix} \]
+The first mountain has a height 1 base that we can cut off, the second mountain
+has a height 2 base that we can cut off, and the valley has a depth 1 base that
+we can fill upwards. Each of these counts as a shift as defined in the problem
+statement, for a total of 4 shifts during this operation. After the cutoff,
+the arrays become:
+\[ \text{mountains} = \begin{bmatrix}
+  [0\ 1\ 2\ 2\ 1\ 0] \\
+  [1\ 2\ 1\ 1\ 0\ 1] \\
+  [0\ -1\ -2\ -1\ -2]
+\end{bmatrix} \]
+We then run the chunking function on each of these entries and add the results
+back into the array. Note that the second mountain, after cutoff, has split into
+two mountains.
+\[ \text{mountains} = \begin{bmatrix}
+  [1\ 2\ 2\ 1] \\
+  [1\ 2\ 1\ 1] \\
+  [1] \\
+  [-1\ -2\ -1\ -2]
+\end{bmatrix} \]
+We can cut off the common bases on these mountains/valleys again and add the
+shifts required to the total. The cut mountains/valleys are rechunked and cut
+again recursively until they have all been flattened out, at which point the
+number of operations accumulated from each mountain cut is our result.
+
+\subsubsection*{Argument of Correctness}
+This algorithm minimizes the number of shifts needed to accomplish the goal by
+recursively finding the greatest common contiguous segment of letters that can
+be shifted in a single direction. This prevents any unnecessary shifts from
+being made if the same operation can be done on a bigger segment of letters.
+
+\subsubsection*{Running Time Estimate}
+This algorithm is \( O(n) \), chunking the lexical difference array is linear,
+while calculating the shift of a mountain is constant. In the worst case, the
+maximum number of times we need to recursively chunk a mountain with a valley
+in it is upper bounded by \( n \), so our algorithm runs in constant \( n \)
+time.
+
+\subsubsection*{Pseudocode}
+\begin{lstlisting}
+def stringDistance(s1, s2):
+    result = []
+    for c1 in s1, c2 in s2:
+        result.append(c2 - c1)
+    return result
+
+def chunk(segment):
+    let mountains = []
+    let mountain = []
+    let lastHeight = segment[0]
+    for i=1 to segment.length:
+        let currentHeight = segment[i]
+        if lastHeight == 0 and currentHeight == 0:
+            pass
+        else if lastHeight == 0 and currentHeight != 0:
+            mountain.append(currentHeight)
+        else if lastHeight != 0 and currentHeight = 0:
+            mountains.append(mountain)
+            mountain = [currentHeight]
+        else if lastHeight is opposite sign of currentHeight:
+            mountains.append(mountain)
+            mountain = [currentHeight]
+        else:
+            mountain.append(currentHeight)
+        lastHeight = currentHeight
+    mountains.append(mountain)
+
+def chopMin**(chunk):
+    let minValue = min*(chunk)
+    for i=0 to chunk.length:
+        chunk[i] -= minValue
+    return minValue
+
+let queue = new queue
+let chunks = chunk(stringDistance(input1, input2))
+let totalShifts = 0
+for i=0 to chunks.length:
+    queue.push(chunk[i])
+while queue is not empty:
+    let currentMountain = queue.pop()
+    shifts += chopMin(currentMountain)
+    queue.push(chunk(currentMountain))
+return totalShifts
+\end{lstlisting}
+*: Note that this min function finds the element in chunk that is closest to 0,
+so it is more of an ``absolute value min'' function. \\
+**: The chopMin() function mutates the input array. \\
 
 \end{document}
