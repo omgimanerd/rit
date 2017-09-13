@@ -64,21 +64,27 @@ Prove that, for any language \( L \), if \( L\circ L \subseteq L \) then
   \item Substitute for each occurrance \( \subseteq \) the definition of
     \( \subseteq \). (4 points)
     \[ \forall{L}(\forall{x}(x\in(L\circ L)\to x\in L)\to
-      \forall{y}(y\in(L\circ L\circ L)\to y\in L)) \]
+      \forall{x}(x\in(L\circ L\circ L)\to x\in L)) \]
   \item Continue the proof. For each quantifier, you must use one of the proof
     strategies from Velleman. Use square brackets and logical forms to cite
     each use of a strategy, as in page 27 of the course notes. (4 points)
     \begin{itemize}
       \item Choose an arbitrary \( L \) [Velleman p.108]:
       \[ \forall{x}(x\in(L\circ L)\to x\in L)\to
-        \forall{y}(y\in(L\circ L\circ L)\to y\in L) \]
+        \forall{x}(x\in(L\circ L\circ L)\to x\in L) \]
       \item This is of the form \( R\to S \) [Velleman p.87], assume
       \[ \forall{x}(x\in(L\circ L)\to x\in L) \]
-      \[ \forall{x}(x\in\{yz\mid y\in L,z\in L\})\to x\in L \]
       and prove:
-      \[ \forall{y}(y\in(L\circ L\circ L)\to y\in L) \]
-      \item Choose an arbitrary \( x \) [Velleman p.108]:
-      \[ \]
+      \[ \forall{x}(x\in(L\circ L\circ L)\to x\in L) \]
+      \item Choose an arbitrary \( x \) and \( y \) [Velleman p.108]:
+      \[ x\in(L\circ L)\to x\in L \]
+      \[ x\in(L\circ L\circ L)\to y\in L \]
+      \item This is of the form \( R\to S \). Assume that
+        \( x\in L\circ L\circ L \). We need to show that \( x\in L \).
+      \item By the definition of \( \circ \), there exists \( y\in L\circ L \)
+        and \( z\in L \) such that \( x = yz \).
+      \item From our given, if \( y\in L\circ L \), then it follows that
+        \( y\in L \).
     \end{itemize}
 \end{enumerate}
 
