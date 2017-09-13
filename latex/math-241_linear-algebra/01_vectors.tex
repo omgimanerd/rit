@@ -49,9 +49,9 @@ Let \( \vec{v}\in\R^2 \):
 \subsection*{Adding Vectors in \( \R^2 \)}
 Take the following:
 \begin{align*}
-  \vec{v} &= \langle v_{1},v_{2}\rangle \\
-  \vec{w} &= \langle w_{1},w_{2}\rangle \\
-  \vec{v}+\vec{w} &= \langle v_{1}+w_{1},v_{2}+w_{2}\rangle
+  \vec{v} &= \langle v_1,v_2\rangle \\
+  \vec{w} &= \langle w_1,w_2\rangle \\
+  \vec{v}+\vec{w} &= \langle v_1+w_1,v_2+w_2\rangle
 \end{align*}
 Example:
 \begin{align*}
@@ -61,8 +61,8 @@ Example:
 \end{align*}
 
 \subsection*{Scalar Multiplication}
-Let \( c \) be a scalar and let \( \vec{v} = \langle v_{1},v_{2}\in\R^{2} \).
-\[ c\cdot\vec{v} = c\langle v_{1},v_{2}\rangle = \langle cv_{1},cv_{2}\rangle \]
+Let \( c \) be a scalar and let \( \vec{v} = \langle v_1,v_2\in\R^2 \).
+\[ c\cdot\vec{v} = c\langle v_1,v_2\rangle = \langle cv_1,cv_2\rangle \]
 Example:
 \[ 2\cdot\langle3,4\rangle = \langle2(3),2(4)\rangle = \langle6,8\rangle \]
 If \( c>0 \), then \( c\cdot\vec{v} \) points in the same direction as
@@ -74,25 +74,25 @@ of \( c \). \\
 If \( |c|<1 \), then \( c\cdot\vec{v} \) is \( \vec{v} \) compressed by a factor
 of \( c \).
 
-\subsection*{Vectors in \( \R^{3} \)}
-\[ \R^{3} = \{(x,y,z)\mid x,y,z\in\R\} \]
-Similarly, vectors in \( \R^{n} \) are:
-\[ \R^{n} = \{(x_{1},x_{2},\dots,x_{n})\mid all\ x_{i}\in\R\} \]
-Let \( \vec{u},\vec{v}\in\R^{n} \), let \( c\in\R \):
+\subsection*{Vectors in \( \R^3 \)}
+\[ \R^3 = \{(x,y,z)\mid x,y,z\in\R\} \]
+Similarly, vectors in \( \R^n \) are:
+\[ \R^n = \{(x_1,x_2,\dots,x_n)\mid all\ x_i\in\R\} \]
+Let \( \vec{u},\vec{v}\in\R^n \), let \( c\in\R \):
 \begin{align*}
-  \vec{u}+\vec{v} &= \langle u_{1},u_{2},\dots,u_{n}\rangle +
-    \langle v_{1},v_{2},\dots,v_{n}\rangle +
-    \langle u_{1}+v_{1},u_{2}+v_{2},\dots,u_{n}+v_{n}\rangle \\
-  c\vec{v} &= c\langle v_{1},v_{2},\dots,v_{n}\rangle =
-    \langle cv_{1},cv_{2},\dots,cv_{n}\rangle
+  \vec{u}+\vec{v} &= \langle u_1,u_2,\dots,u_n\rangle +
+    \langle v_1,v_2,\dots,v_n\rangle +
+    \langle u_1+v_1,u_2+v_2,\dots,u_n+v_n\rangle \\
+  c\vec{v} &= c\langle v_1,v_2,\dots,v_n\rangle =
+    \langle cv_1,cv_2,\dots,cv_n\rangle
 \end{align*}
 
 \subsection*{Algebraic Properties of \( \R^n \)}
 Let:
 \begin{align*}
-  \vec{u} &= \langle u_{1},u_{2},\dots,u_{n}\rangle\in\R^{n} \\
-  \vec{v} &= \langle v_{1},v_{2},\dots,v_{n}\rangle\in\R^{n} \\
-  \vec{w} &= \langle w_{1},w_{2},\dots,w_{n}\rangle\in\R^{n}
+  \vec{u} &= \langle u_1,u_2,\dots,u_n\rangle\in\R^n \\
+  \vec{v} &= \langle v_1,v_2,\dots,v_n\rangle\in\R^n \\
+  \vec{w} &= \langle w_1,w_2,\dots,w_n\rangle\in\R^n
 \end{align*}
 Let \( c,d\in\R \) (scalars):
 \begin{enumerate}
@@ -115,100 +115,100 @@ Let \( c,d\in\R \) (scalars):
 \end{enumerate}
 Proof of (1):
 \begin{align*}
-  \vec{u}+\vec{v} &= \langle u_{1},u_{2},\dots,u_{n}\rangle+
-    \langle v_{1},v_{2},\dots,v_{n}\rangle \\
-  &= \langle u_{1}+v_{1},u_{2}+v_{2},\dots,u_{n}+v_{n}\rangle \\
-  &= \langle v_{1}+u_{1},v_{2}+u_{2},\dots,v_{n}+u_{n}\rangle \\
-  &= \langle v_{1},v_{2},\dots,v_{n}\rangle+
-    \langle u_{1},u_{2},\dots,u_{n}\rangle \\
+  \vec{u}+\vec{v} &= \langle u_1,u_2,\dots,u_n\rangle+
+    \langle v_1,v_2,\dots,v_n\rangle \\
+  &= \langle u_1+v_1,u_2+v_2,\dots,u_n+v_n\rangle \\
+  &= \langle v_1+u_1,v_2+u_2,\dots,v_n+u_n\rangle \\
+  &= \langle v_1,v_2,\dots,v_n\rangle+
+    \langle u_1,u_2,\dots,u_n\rangle \\
   &= \vec{v}+\vec{u}
 \end{align*}
 Proof of (2):
 \begin{align*}
-  (\vec{u}+\vec{v})+\vec{w} &= (\langle u_{1},\dots,u_{n}\rangle+
-    \langle v_{1},\dots,v_{n}\rangle)+\langle w_{1},\dots,w_{n}\rangle \\
-  &= \langle u_{1}+v_{1},\dots,u_{n}+v_{n}\rangle+
-    \langle w_{1},\dots,w_{n}\rangle \\
-  &= \langle(u_{1}+v_{1})+w_{1},\dots,(u_{n}+v_{n})+w_{n}\rangle \\
-  &= \langle u_{1},\dots,u_{n}\rangle +
-    (\langle v_{1}+w_{1},\dots,v_{n}+w_{n}) \\
-  &= \vec{u}+(\langle v_{1},\dots,v_{n}\rangle+
-    \langle w_{1},\dots,w_{n}\rangle) \\
+  (\vec{u}+\vec{v})+\vec{w} &= (\langle u_1,\dots,u_n\rangle+
+    \langle v_1,\dots,v_n\rangle)+\langle w_1,\dots,w_n\rangle \\
+  &= \langle u_1+v_1,\dots,u_n+v_n\rangle+
+    \langle w_1,\dots,w_n\rangle \\
+  &= \langle(u_1+v_1)+w_1,\dots,(u_n+v_n)+w_n\rangle \\
+  &= \langle u_1,\dots,u_n\rangle +
+    (\langle v_1+w_1,\dots,v_n+w_n) \\
+  &= \vec{u}+(\langle v_1,\dots,v_n\rangle+
+    \langle w_1,\dots,w_n\rangle) \\
   &= \vec{u}+(\vec{v}+\vec{w})
 \end{align*}
 Proof of (3):
 \begin{align*}
-  \vec{u}+\vec{0} &= \langle u_{1},u_{2},\dots,u_{n}\rangle+
+  \vec{u}+\vec{0} &= \langle u_1,u_2,\dots,u_n\rangle+
     \langle0,0,\dots,0\rangle \\
-  &= \langle u_{1}+0,u_{2}+0,\dots,u_{n}+0\rangle \\
-  &= \langle u_{1},u_{2},\dots,u_{n}\rangle = \vec{u}
+  &= \langle u_1+0,u_2+0,\dots,u_n+0\rangle \\
+  &= \langle u_1,u_2,\dots,u_n\rangle = \vec{u}
 \end{align*}
 Proof of (4):
 \begin{align*}
-  \vec{u}+(-\vec{u}) &= \langle u_{1},u_{2},\dots,u_{n}\rangle+
-    \langle-u_{1},-u_{2},\dots,-u_{n}\rangle \\
-  &= \langle u_{1}-u_{1},u_{2}-u_{2},\dots,u_{n}-u_{n}\rangle \\
+  \vec{u}+(-\vec{u}) &= \langle u_1,u_2,\dots,u_n\rangle+
+    \langle-u_1,-u_2,\dots,-u_n\rangle \\
+  &= \langle u_1-u_1,u_2-u_2,\dots,u_n-u_n\rangle \\
   &= \langle0,0,\dots,0\rangle = \vec{0}
 \end{align*}
 Proof of (5):
 \begin{align*}
-  c(\vec{u}+\vec{v}) &= c(\langle u_{1},u_{2},\dots,u_{n}\rangle+
-    \langle v_{1},v_{2},\dots,v_{n}\rangle) \\
-  &= c(\langle u_{1}+v_{1},u_{2}+v_{2},\dots,u_{n}+v_{n}\rangle) \\
-  &= \langle c(u_{1}+v_{1}),c(u_{2}+v_{2}),\dots,c(u_{n}+v_{n})\rangle \\
-  &= \langle cu_{1}+cv_{1},cu_{2}+cv_{2},\dots,cu_{n}+cv_{n}\rangle \\
-  &= \langle cu_{1},cu_{2},\dots,cu_{n}\rangle+
-    \langle cv_{1},cv_{2},\dots,cv_{n}\rangle \\
-  &= c\langle u_{1},u_{2},\dots,u_{n}\rangle+
-    c\langle v_{1},v_{2},\dots,v_{n}\rangle \\
+  c(\vec{u}+\vec{v}) &= c(\langle u_1,u_2,\dots,u_n\rangle+
+    \langle v_1,v_2,\dots,v_n\rangle) \\
+  &= c(\langle u_1+v_1,u_2+v_2,\dots,u_n+v_n\rangle) \\
+  &= \langle c(u_1+v_1),c(u_2+v_2),\dots,c(u_n+v_n)\rangle \\
+  &= \langle cu_1+cv_1,cu_2+cv_2,\dots,cu_n+cv_n\rangle \\
+  &= \langle cu_1,cu_2,\dots,cu_n\rangle+
+    \langle cv_1,cv_2,\dots,cv_n\rangle \\
+  &= c\langle u_1,u_2,\dots,u_n\rangle+
+    c\langle v_1,v_2,\dots,v_n\rangle \\
   &= c\vec{u}+c\vec{v}
 \end{align*}
 
 \subsection*{Linear Combinations}
-Let \( \vec{v_{1}},\vec{v_{2}},\dots,\vec{v_{k}}\in\R^n \). We say
+Let \( \vec{v_1},\vec{v_2},\dots,\vec{v_k}\in\R^n \). We say
 \( \vec{v} \) is a \textbf{linear combination} of
-\( \vec{v_{1}},\dots,\vec{v_{k}} \) if there exists scalars
-\( c_{1},\dots,c_{k} \) such that:
-\[ \vec{v} = \sum_{i=1}^{k}c_{i}\vec{v_{i}} =
-  c_{1}\vec{v_{1}}+c_{2}\vec{v_{2}}+\dots+c_{n}\vec{v_{n}} \]
-Example in \( \R^{3} \):
+\( \vec{v_1},\dots,\vec{v_k} \) if there exists scalars
+\( c_1,\dots,c_k \) such that:
+\[ \vec{v} = \sum_{i=1}^kc_i\vec{v_i} =
+  c_1\vec{v_1}+c_2\vec{v_2}+\dots+c_n\vec{v_n} \]
+Example in \( \R^3 \):
 Let:
 \begin{align*}
   \vec{v} &=
     \begin{bmatrix}
       2 \\ -2 \\ -1
     \end{bmatrix} \quad
-  \vec{v_{1}} =
+  \vec{v_1} =
     \begin{bmatrix}
       1 \\ 0 \\ -1
     \end{bmatrix} \\
-  \vec{v_{2}} &=
+  \vec{v_2} &=
     \begin{bmatrix}
       2 \\ -3 \\ 1
     \end{bmatrix} \quad
-  \vec{v_{3}} =
+  \vec{v_3} =
     \begin{bmatrix}
       5 \\ -4 \\ 0
     \end{bmatrix}
 \end{align*}
 Claim: \( \vec{v} \) is a linear combination of
-\( \vec{v_{1}},\vec{v_{2}},\vec{v_{3}} \): \\
-We must find \( c_{1},c_{2},c_{3} \) such that:
-\[ \vec{v} = c_{1}\vec{v_{1}}+c_{2}\vec{v_{2}}+c_{3}\vec{v_{3}} \]
+\( \vec{v_1},\vec{v_2},\vec{v_3} \): \\
+We must find \( c_1,c_2,c_3 \) such that:
+\[ \vec{v} = c_1\vec{v_1}+c_2\vec{v_2}+c_3\vec{v_3} \]
 
 \subsection*{Dot Product}
 Let:
 \begin{align*}
   \vec{u} &=
     \begin{bmatrix}
-      u_{1} \\ u_{2} \\ \vdots \\ u_{n}
+      u_1 \\ u_2 \\ \vdots \\ u_n
     \end{bmatrix} \\
   \vec{v} &=
     \begin{bmatrix}
-      v_{1} \\ v_{2} \\ \vdots \\ v_{n}
+      v_1 \\ v_2 \\ \vdots \\ v_n
     \end{bmatrix} \\
-  \vec{u}\cdot\vec{v} &= \sum_{i=1}^{n}u_{i}v_{i} \\
-  &= u_{1}v_{1}+u_{2}v_{2}+\dots+u_{n}v_{n}
+  \vec{u}\cdot\vec{v} &= \sum_{i=1}^nu_iv_i \\
+  &= u_1v_1+u_2v_2+\dots+u_nv_n
 \end{align*}
 
 \subsection*{Rules for the Dot Product}
@@ -227,47 +227,47 @@ Let \( \vec{u},\vec{v},\vec{w}\in\R^n \), \( c \) is a scalar:
 \end{enumerate}
 Proof for (1):
 \begin{align*}
-  \vec{u}\cdot\vec{v} &= \sum_{i=1}^{n}u_{i}v_{i} \\
-  &= \sum_{i=1}^{n}v_{i}u_{i} \\
+  \vec{u}\cdot\vec{v} &= \sum_{i=1}^nu_iv_i \\
+  &= \sum_{i=1}^nv_iu_i \\
   &= \vec{v}\cdot\vec{u}
 \end{align*}
 Proof for (2):
 \begin{align*}
   \vec{u}\cdot(\vec{v}+\vec{w}) &=
-    (\langle v_{1}+w_{1},\dots,v_{n}+w_{n}\rangle) \\
-  &= \sum_{i=1}^{n}u_{i}(v_{i}+w_{i}) \\
-  &= \sum_{i=1}^{n}(u_{i}v_{i}+u_{i}+w_{i}) \\
-  &= \sum_{i=1}^{n}u_{i}v_{i}+\sum_{i=1}^{n}u_{i}w_{i} \\
+    \vec{u}\cdot(\langle v_1+w_1,\dots,v_n+w_n\rangle) \\
+  &= \sum_{i=1}^nu_i(v_i+w_i) \\
+  &= \sum_{i=1}^n(u_iv_i+u_iw_i) \\
+  &= \sum_{i=1}^nu_iv_i+\sum_{i=1}^nu_iw_i \\
   &= \vec{u}\cdot\vec{v}+\vec{u}\cdot\vec{w}
 \end{align*}
 Proof for (3):
 \begin{align*}
-  \sum_{i=1}^{n}(cu_{i})v_{i} &= \sum_{i=1}^{n}c(u_{i}v_{i}) \\
-  &= c\sum_{i=1}^{n}u_{i}v_{i} \\
+  \sum_{i=1}^n(cu_i)v_i &= \sum_{i=1}^nc(u_iv_i) \\
+  &= c\sum_{i=1}^nu_iv_i \\
   &= c(\vec{u}\cdot\vec{v})
 \end{align*}
 Proof for (4):
 \begin{align*}
-  \vec{u}\cdot\vec{u} &= \sum_{i=1}^{n}u_{i}u_{i} \\
-  &= \sum_{i=1}^{n}(u_{1})^{2}
+  \vec{u}\cdot\vec{u} &= \sum_{i=1}^nu_iu_i \\
+  &= \sum_{i=1}^n(u_i)^2
 \end{align*}
-\( (u_{1})^{2} \) is non-negative, therefore the summation must be greater than
+\( (u_1)^2 \) is non-negative, therefore the summation must be greater than
 or equal to 0.
 
 \subsection*{Norm or Length of a Vector}
 Let:
 \begin{align*}
   \vec{v}\in\R^n \quad \vec{v} &= \begin{bmatrix}
-    v_{1} \\ v_{2} \\ \vdots \\ v_{N}
+    v_1 \\ v_2 \\ \vdots \\ v_N
   \end{bmatrix} \\
   \|\vec{v}\| &= \sqrt{\vec{v}\cdot\vec{v}} \\
-  &= \sqrt{\sum_{i=1}^{n}(v_{1})^{2}}
+  &= \sqrt{\sum_{i=1}^n(v_1)^2}
 \end{align*}
 
 \subsubsection*{Example}
 In \( \R^2 \), consider \( \vec{v} = \begin{bmatrix}3 \\ 4\end{bmatrix} \).
 Calculate \( |\vec{v}| \).
-\[ \|\vec{v}\| = \sqrt{3^{2}+4^{2}} = \sqrt{9+16} = \sqrt{25} = 5 \]
+\[ \|\vec{v}\| = \sqrt{3^2+4^2} = \sqrt{9+16} = \sqrt{25} = 5 \]
 
 \subsubsection*{Properties of a vector norm}
 \[ |\vec{v}| = 0 \iff \vec{v} = \vec{0} \]
@@ -276,41 +276,41 @@ This is true because \( \|\vec{v}\| = 0 \iff \vec{v}\cdot\vec{v} = 0 \iff
 \[ \|c\vec{v}\| = |c|\|\vec{v}\| \]
 Proof:
 \begin{align*}
-  \|c\vec{v}\|^{2} &= (c\vec{v})\cdot(c\vec{v}) \\
-  &= c^{2}(\vec{v}\cdot\vec{v}) \\
-  &= c^{2}\|\vec{v}\|^{2} \\
-  \sqrt{\|c\vec{v}\|^{2}} &= \sqrt{c^{2}\|\vec{v}\|^{2}} \\
+  \|c\vec{v}\|^2 &= (c\vec{v})\cdot(c\vec{v}) \\
+  &= c^2(\vec{v}\cdot\vec{v}) \\
+  &= c^2\|\vec{v}\|^2 \\
+  \sqrt{\|c\vec{v}\|^2} &= \sqrt{c^2\|\vec{v}\|^2} \\
   \|\vec{v}\| = |c|\|\vec{v}\|
 \end{align*}
 
 \subsection*{Unit Vectors}
 A \textbf{unit vector} is a vector of length 1. In \( \R^2 \):
 \begin{align*}
-  \vec{e_{1}} &= \begin{bmatrix}
+  \vec{e_1} &= \begin{bmatrix}
     1 \\ 0
   \end{bmatrix} \\
-  \vec{e_{2}} &= \begin{bmatrix}
+  \vec{e_2} &= \begin{bmatrix}
     0 \\ 1
   \end{bmatrix}
 \end{align*}
 In \( \R^3 \):
 \begin{align*}
-  \vec{e_{1}} &= \begin{bmatrix}
+  \vec{e_1} &= \begin{bmatrix}
     1 \\ 0 \\ 0
   \end{bmatrix} \\
-  \vec{e_{2}} &= \begin{bmatrix}
+  \vec{e_2} &= \begin{bmatrix}
     0 \\ 1 \\ 0
   \end{bmatrix} \\
-  \vec{e_{3}} &= \begin{bmatrix}
+  \vec{e_3} &= \begin{bmatrix}
     0 \\ 0 \\ 1
   \end{bmatrix}
 \end{align*}
-In \( \R^n \), there exist the unit vectors \( \vec{e_{1}},\vec{e_{2}},\dots,
-\vec{e_{n}} \). \( e_{i} \) has a 1 in the \( i^th \) component and zeros
+In \( \R^n \), there exist the unit vectors \( \vec{e_1},\vec{e_2},\dots,
+\vec{e_n} \). \( e_i \) has a 1 in the \( i^th \) component and zeros
 everywhere else.
 
 \subsection*{Vector Normalization}
-In \( \R^3 \) with \( \vec{v}\in\R^{n} \) and \( \vec{v}\neq\vec{0} \), the
+In \( \R^3 \) with \( \vec{v}\in\R^n \) and \( \vec{v}\neq\vec{0} \), the
 unit vector corresponding to \( \vec{v} \) is:
 \[ \vec{v}_{norm} = \frac{1}{\|\vec{v}\|}\vec{v} \]
 
@@ -330,11 +330,11 @@ Normalize \( \vec{v} = \begin{bmatrix}2 \\ -1 \\ -3\end{bmatrix} \):
 \end{align*}
 
 \subsection*{Cauchy-Schwarz Inequality}
-Let \( \vec{u},\vec{v}\in\R^{n} \):
+Let \( \vec{u},\vec{v}\in\R^n \):
 \[ |\vec{u}\cdot\vec{v}|\leq\|\vec{u}\|\|\vec{v}\| \]
 
 \subsection*{The Triangle Inequality}
-Let \( \vec{u},\vec{v}\in\R^{n} \):
+Let \( \vec{u},\vec{v}\in\R^n \):
 \[ \|\vec{u}+\vec{v}\|\leq\|\vec{u}\|+\|\vec{v}\| \]
 Proof:
 \begin{align*}
@@ -352,17 +352,17 @@ square root:
 \subsection*{Distance Formula}
 In \( \R \), let \( a,b\in\R \). Find the formula for \( d(a,b) \):
 \[ d(a,b) = |a-b| = \sqrt{(a-b)^2}\]
-In \( \R^2 \), let \( \vec{v_{1}} = [a_{1},b_{1}] \), and \( v_{2} = [a_{2},
-b_{2}] \).
+In \( \R^2 \), let \( \vec{v_1} = [a_1,b_1] \), and \( v_2 = [a_2,
+b_2] \).
 \begin{align*}
-  d(\vec{v_{1}},\vec{v_{2}}) &= \|\vec{v_{1}}-\vec{v_{2}}\| \\
-  &= \sqrt{(a_{1}-a_{2})^2-(b_{2}-b_{2})^2}
+  d(\vec{v_1},\vec{v_2}) &= \|\vec{v_1}-\vec{v_2}\| \\
+  &= \sqrt{(a_1-a_2)^2-(b_2-b_2)^2}
 \end{align*}
 In \( \R^n \), let \( \vec{v},\vec{w} \) be vectors. Define the distance from
 \( \vec{v} \) to \( \vec{w} \) as follows:
 \begin{align*}
   d(\vec{v},\vec{w}) &= \|\vec{v}-\vec{w}\| \\
-  &= \sqrt{\sum_{i=1}^{n}(v_{1}-w_{1})^2}
+  &= \sqrt{\sum_{i=1}^n(v_1-w_1)^2}
 \end{align*}
 
 \subsubsection*{Example}
