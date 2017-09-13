@@ -74,11 +74,11 @@ possible pairing that could produce \( t \) to search for them.
 
 \subsubsection*{Running Time Estimate} Since iteration through the numbers is
 \( O(n) \) and we must perform an insertion and 2 lookups for each number, our
-execution time is \( n\times3\log(n) \), which is \( O(n\log n) \).
+execution time is \( n*3\log(n) \), which is \( O(n\log n) \).
 
 \subsubsection*{Pseudocode}
 \begin{lstlisting}
-let avlt = an new AVLTree (self-balancing)
+let avlt = AVLTree()
 let count = 0
 for i=0 to the length of the input:
     let possibility1 = avlt.search(input[i]+t)
@@ -117,10 +117,10 @@ time. This makes our complexity \( n^2*2\log(n)+n \), which is
 
 \subsubsection*{Pseudocode}
 \begin{lstlisting}
-let avlt = an new AVLTree (self-balancing)
+let avlt = AVLTree()
 for i=0 to the length of the input:
     for j=i to the length of the input:
-        let t = input[i] - input[j]
+        let t = Tuple(value = input[i]-input[j], frequency=1)
         let possibility = avlt.search(t)
         if possibility exists:
             possibility.frequency += 1
@@ -241,8 +241,8 @@ while queue is not empty:
     queue.push(chunk(currentMountain))
 return totalShifts
 \end{lstlisting}
-*: Note that this min function finds the element in chunk that is closest to 0,
-so it is more of an ``absolute value min'' function. \\
+*: Note that this min() function finds the element in chunk that is closest to
+0, so it is more of an ``absolute value min'' function. \\
 **: The chopMin() function mutates the input array. \\
 
 \end{document}
