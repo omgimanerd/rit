@@ -1,5 +1,6 @@
 /**
- * @author Alvin Lin (alvin.lin.dev@gmail.com)
+ * @fileoverview gulpfile for watching and compiling .tex notes.
+ * @author Alvin Lin (alvin@omgimanerd.tech)
  */
 
 var fs = require('fs');

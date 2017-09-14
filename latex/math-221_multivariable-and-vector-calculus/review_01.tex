@@ -1,0 +1,114 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\title{Multivariable and Vector Calculus}
+\author{Alvin Lin}
+\date{August 2017 - December 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Review of Material}
+\[ \vec{a}\cdot\vec{b} = a_1b_2+a_2b_2+a_3b_3 =
+  |\vec{a}||\vec{b}|\cos\theta \]
+\[ proj_{\vec{a}}\vec{b} = \frac{\vec{a}\cdot\vec{v}}{|\vec{a}|} \]
+\[ \vec{a}\cdot\vec{b} = 0 \equiv \vec{a}\bot\vec{b} \]
+\[ \vec{a}\times\vec{b} = \begin{vmatrix}
+  \i & \j & \k \\
+  a_1 & a_2 & a_3 \\
+  b_1 & b_2 & b_3
+\end{vmatrix} \]
+\[ \vec{a}\times\vec{b}\bot\vec{a},\vec{b} \]
+\[ \vec{a}\times\vec{b} = -\vec{b}\times\vec{a} \]
+\[ \vec{a}\times\vec{b} = \vec{0} \equiv \vec{a}\parallel\vec{b} \]
+\[ \text{Volume of a parellelepiped} = (\vec{a}\times\vec{b})\cdot\vec{c} =
+\begin{vmatrix}
+  c_1 & c_2 & c_3 \\
+  a_1 & a_2 & a_3 \\
+  b_1 & b_2 & b_3
+\end{vmatrix} \]
+\[ \text{Line} = \begin{cases}
+  x &= x_{\circ}+ta_1 \\
+  y &= y_{\circ}+ta_2 \\
+  z &= z_{\circ}+ta_3
+\end{cases} \]
+\[ \text{Plane} = n_1(x-x_{\circ})+n_2(y-y_{\circ})+n_3(z-z_{\circ}) = 0 \]
+
+\subsubsection*{Example}
+Find the angle between the diagonal of a cube and the edge of the base
+starting at (0,0,0).
+\[ \cos\alpha = \frac{\langle1,1,1\rangle\cdot\langle0,1,0\rangle}
+  {|\langle1,1,1\rangle||\langle0,1,0\rangle|} = \frac{1}{\sqrt{3}} \]
+
+\subsubsection*{Example}
+Find \( x \) such that \( \langle1,x,2\rangle\bot\langle x,3,4\rangle \).
+\begin{align*}
+  \langle1,x,2\rangle\cdot\langle x,3,4\rangle &= 0 \\
+  x+3x+8 &= 0 \\
+  x &= -2
+\end{align*}
+Is there such an \( x \) that the two vectors are parallel?
+\begin{align*}
+  c\langle1,x,2\rangle &= \langle x,3,r\rangle \\
+  c &= x \\
+  cx &= 3 \\
+  2c &= 4
+\end{align*}
+This system of linear equations is inconsistent, therefore the two vectors
+are not parallel.
+
+\subsubsection*{Example}
+Given the planes \( \Pi_1: x-2y+z = 4 \) and \( \Pi_2: 2x-2x-z = 6 \). Find the
+line of intersection between the planes \( l = \Pi_1\cap\Pi_2 \). \\
+If we let \( x = 0 \):
+\[ \begin{cases}
+  -2y+z &= 4 \\
+  -2y-z &= 6
+\end{cases} \]
+\[ y = -\frac{5}{2} \quad z = -1 \quad P_1 = (0,-\frac{5}{2},1) \]
+If we let \( y = 0 \):
+\[ \begin{cases}
+  x+z &= 4 \\
+  2x-z &= 6
+\end{cases} \]
+\[ x = \frac{10}{3} \quad z = \frac{2}{3} \quad P_2 =
+  (\frac{10}{3},0,\frac{2}{3}) \]
+\[ \overrightarrow{P_1P_2} =
+  \langle\frac{10}{3},\frac{5}{2},-\frac{1}{3}\rangle \]
+\[ l = \begin{cases}
+  x &= \frac{10}{3}+t\frac{10}{3} \\
+  x &= t\frac{5}{2} \\
+  z &= \frac{2}{3}-t\frac{1}{3}
+\end{cases} \]
+Find the angle between \( \Pi_1,\Pi_2 \).
+\[ \cos\alpha = \frac{\vec{n_1}\cdot\vec{n_2}}{|\vec{n_1}||\vec{n_2}|} =
+  \frac{\langle1,-2,1\rangle\cdot\langle2,-2,-1\rangle}{\sqrt{6}\sqrt{9}} =
+  \frac{5}{3\sqrt{6}} \]
+
+\subsubsection*{Example}
+Given \( \Pi_1: x-2y+z = 4 \) and \( l: x-2 = y+5 = z-4 = t \), find
+\( P = l\cap\Pi \).
+\begin{align*}
+  x-2y+z &= 4 \\
+  (t+2)-2(t-5)+(t+4) &= 4 \\
+  16 &\ne 4
+\end{align*}
+Since there is no solution, the line \( l \) does not intersect the plane. \\
+Find the distance between \( l \) and \( \Pi \). Pick any point \( P_0 \) on
+the plane and any point \( P_1 \) on the line.
+\begin{align*}
+  P_0 &= (4,0,0) \\
+  P_1 &= (2,-5,4) \\
+  dist(l,\Pi) &= comp_{\vec{n}}{\overrightarrow{P_0P_1}} \\
+  &= \frac{\overrightarrow{P_0P_1}\cdot\vec{n}}{|\vec{n}|} \\
+  &= \frac{\langle-2,-5,4\rangle\cdot\langle1,-2,1\rangle}
+    {|\langle1,-2,1\rangle|} \\
+  &= \frac{14}{\sqrt{6}}
+\end{align*}
+
+\begin{center}
+  If you have any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
