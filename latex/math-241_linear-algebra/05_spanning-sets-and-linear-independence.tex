@@ -1,0 +1,83 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\title{Linear Algebra}
+\author{Alvin Lin}
+\date{August 2017 - December 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Spanning Sets and Linear Independence}
+We want to know when one vector is a \textbf{linear combination} of some other
+vectors.
+\[ c_1\vec{v_1}+c_2\vec{v_2}+c_3\vec{v_3} \]
+For example, is the vector \( \begin{bmatrix}1 \\ 2 \\ 3\end{bmatrix} \) a
+linear combination of \( \vec{v} = \begin{bmatrix}1 \\ 0 \\ 3\end{bmatrix} \)
+and \( \vec{w} = \begin{bmatrix}-1 \\ 1 \\ -3\end{bmatrix} \). The solution
+would be to find scalars \( c_1,c_2,c_3 \) such that:
+\[ \begin{bmatrix}1 \\ 2 \\ 3\end{bmatrix} =
+  c_1\begin{bmatrix}1 \\ 0 \\ 3\end{bmatrix}+
+  c_2\begin{bmatrix}-1 \\ 1 \\ -3\end{bmatrix} \]
+We can treat this as a system of linear equations and solve an augmented
+matrix:
+\[ A' = \left[\begin{array}{cc|c}
+  1 & -1 & 1 \\
+  0 & 1 & 2 \\
+  3 & -3 & 3
+\end{array}\right] \]
+Bring this to reduced row echelon form yields:
+\[ A' = \left[\begin{array}{cc|c}
+  1 & 0 & 3 \\
+  0 & 1 & 2 \\
+  0 & 0 & 0
+\end{array}\right] \]
+Thus, \( \begin{bmatrix}1 \\ 2 \\ 3\end{bmatrix} \) is a linear combination of
+\( \vec{v},\vec{w} \) through the constants:
+\[ \begin{bmatrix}c_1 \\ c_2\end{bmatrix} =
+  \begin{bmatrix}3 \\ 2\end{bmatrix} \]
+
+\subsection*{Describing a Linear System}
+There are three equivalent ways to specify a linear system:
+\begin{enumerate}
+  \item \[ \begin{cases}
+    a_{11}x_1+a_{12}x_2+\dots+a_{1n}x_n &= b_1 \\
+    \vdots & \\
+    a_{m1}x_1+a_{m2}x_2+\dots+a_{mn}x_n &= b_m
+  \end{cases} \]
+  \item Let \( \vec{A_i} \) be a column vector with entries \( a_i \):
+    \[ x_1\vec{A_1}+x_2\vec{A_2}+\dots+x_n\vec{A_n} = \vec{b} \]
+  \item \( A\vec{x} = \vec{b} \) where \( A \) is an \( m\times x \) matrix:
+    \[ \vec{x} = \begin{bmatrix}x_1 \\ x_2 \\ \vdots \\ x_n\end{bmatrix} \]
+    \[ \vec{b} = \begin{bmatrix}b_1 \\ b_2 \\ \vdots \\ b_m\end{bmatrix} \]
+    where we multiply \( A\vec{x} = \vec{b} \) using:
+    \[ b_i = \text{ith row of A}\times\vec{x} \]
+\end{enumerate}
+\textbf{Theorem:} A system of linear equations with augmented matrix
+\( [A|\vec{b}] \) is consistent if and only if \( \vec{b} \) is a linear
+combination of the columns of \( A \).
+
+\subsection*{Spanning Sets}
+Let \( \{\vec{v_1},\dots,\vec{v_k}\} \) be a set of vectors.
+\[ Span(\{\vec{v_1},\dots,\vec{v_k}\}) = \left\{\sum_{i=1}^{k}c_i\vec{v_i}\mid
+  c_i \text{'s are scalars}\right\} \]
+The span of:
+\[ \vec{e_1} = \begin{bmatrix}1 \\ 0\end{bmatrix}\quad
+  \vec{e_2} = \begin{bmatrix}0 \\ 1\end{bmatrix} \]
+is equal to:
+\begin{align*}
+  Span(\{\vec{e_1},\vec{e_2}\}) &=
+    \{c_1\vec{e_1}+c_2\vec{e_2}\mid c_1,c_2\in\R\} \\
+  &= \left\{\begin{bmatrix}c_1 \\ 0\end{bmatrix}+
+    \begin{bmatrix}0 \\ c_2\end{bmatrix}\mid c_1,c_2\in\R\right\} \\
+  &= \left\{\begin{bmatrix}c_1 \\ c_2\end{bmatrix}\mid c_2,c_2\in\R\right\} \\
+  &= \R^2
+\end{align*}
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, feel free to contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
