@@ -15,10 +15,6 @@
 
 \maketitle
 
-(3) Complete the following exercises from Section 1.3: 1 - 23 (odd)
-
-(4) Complete the following exercises from Section 2.1: 1 - 5 (odd), 11 - 39 (odd)
-
 \section*{Section 1.2}
 
 \subsubsection*{Problem 48}
@@ -337,8 +333,378 @@ Assumption:
 \[ \|\vec{v_1}+\vec{v_2}+\dots+\vec{v_n}\| \le
   \|\vec{v_1}\|+\|\vec{v_2}\|+\dots+\|\vec{v_n}\| \]
 Induction:
-\[ \|\vec{v_1}+\vec{v_2}+\dots+\vec{v_n}+\vec{v_{n+1}}\| \le
-  \|\vec{v_1}\|+\|\vec{v_2}\|+\dots+\|\vec{v_n}\|+\|\vec{v_{n+1}}\| \]
+\begin{align*}
+  \|\vec{v_1}+\vec{v_2}+\dots+\vec{v_n}+\vec{v_{n+1}}\| &\le
+    \|\vec{v_1}+\vec{v_2}+\dots+\vec{v_n}\|+\|\vec{v_{n+1}}\| \\
+  &\le \|\vec{v_1}\|+\|\vec{v_2}\|+\dots+\|\vec{v_n}\|+\|\vec{v_{n+1}}\| \\
+\end{align*}
+
+\section*{Section 1.3}
+
+\subsubsection*{Problem 1}
+Write the equation of the line passing through \( P \) with normal vector
+\( \vec{n} \) in normal form and general form.
+\[ P = (0,0) \quad \vec{n} = \begin{bmatrix}3 \\ 2\end{bmatrix} \]
+\[ \begin{bmatrix}3 \\ 2\end{bmatrix}\cdot\begin{bmatrix}x \\ y\end{bmatrix} =
+  \begin{bmatrix}0 \\ 0\end{bmatrix}\cdot\begin{bmatrix}3 \\ 2\end{bmatrix} \]
+\[ 3x+2y = 0 \]
+
+\subsubsection*{Problem 3}
+Write the equation of the line passing through \( P \) with direction vector
+\( \vec{d} \) in vector form and parametric form.
+\[ P = (1,0) \quad \vec{d} = \begin{bmatrix}-1 \\ 3\end{bmatrix} \]
+\[ \begin{bmatrix}x \\ y\end{bmatrix} =
+  \begin{bmatrix}1 \\ 0\end{bmatrix}+t\begin{bmatrix}-1 \\ 3\end{bmatrix} \]
+\[ l = \begin{cases}
+  x &= 1-t \\
+  y &= 3t
+\end{cases} \]
+
+\subsubsection*{Problem 5}
+Write the equation of the line passing through \( P \) with direction vector
+\( \vec{d} \) in vector form and parametric form.
+\[ P = (0,1,0) \quad \vec{d} = \begin{bmatrix}1 \\ -1 \\ 4\end{bmatrix} \]
+\[ \begin{bmatrix}x \\ y \\ z\end{bmatrix} =
+  \begin{bmatrix}0 \\ 1 \\ 0\end{bmatrix}+
+  t\begin{bmatrix}1 \\ -1 \\ 4\end{bmatrix} \]
+\[ l = \begin{cases}
+  x &= t \\
+  y &= 1-t \\
+  z &= 4t
+\end{cases} \]
+
+\subsubsection*{Problem 7}
+Write the equation of the line passing through \( P \) with normal vector
+\( \vec{n} \) in normal form and general form.
+\[ P = (0,1,0) \quad \vec{n} = \begin{bmatrix}3 \\ 2 \\ 1\end{bmatrix} \]
+\[ \begin{bmatrix}3 \\ 2 \\ 1\end{bmatrix}\cdot
+  \begin{bmatrix}x \\ y \\ z\end{bmatrix} =
+  \begin{bmatrix}3 \\ 2 \\ 1\end{bmatrix}\cdot
+  \begin{bmatrix}0 \\ 1 \\ 0\end{bmatrix} \]
+\[ 3x+2y+z = 2 \]
+
+\subsubsection*{Problem 9}
+Write the equation of the plane passing through \( P \) with vectors \( \vec{u}
+\) and \( \vec{v} \) in vector form and parametric form.
+\[ P = (0,0,0) \quad \vec{u} = \begin{bmatrix}2 \\ 1 \\ 2\end{bmatrix} \quad
+  \vec{v} = \begin{bmatrix}-3 \\ 2 \\ 1\end{bmatrix} \]
+\[ \begin{bmatrix}x \\ y \\ z\end{bmatrix} =
+  \begin{bmatrix}0 \\ 0 \\ 0\end{bmatrix}+
+  s\begin{bmatrix}2 \\ 1 \\ 2\end{bmatrix}+
+  t\begin{bmatrix}-3 \\ 2 \\ 1\end{bmatrix} \]
+\[ \Pi = \begin{cases}
+  x &= 2s-t3 \\
+  y &= s+2t \\
+  z &= 2s+t
+\end{cases} \]
+
+\subsubsection*{Problem 11}
+Give the vector equation of the line passing through \( P \) and \( Q \).
+\[ P = (1,-2) \quad Q = (3,0) \]
+\[ \vec{d} = \begin{bmatrix}2 \\ 2\end{bmatrix} \]
+\[ \begin{bmatrix}x \\ y\end{bmatrix} = \begin{bmatrix}3 \\ 0\end{bmatrix}+
+  t\begin{bmatrix}2 \\ 2\end{bmatrix} \]
+
+\subsubsection*{Problem 13}
+Give the vector equation of the plane passing through \( P, Q, R \).
+\[ P = (1,1,1) \quad Q = (4,0,2) \quad R = (0,1,-1) \]
+\begin{align*}
+  \vec{u} &= \begin{bmatrix}3 \\ -1 \\ 1\end{bmatrix} \\
+  \vec{v} &= \begin{bmatrix}-1 \\ 0 \\ -2\end{bmatrix} \\
+  \begin{bmatrix}x \\ y \\ z\end{bmatrix} &=
+    \begin{bmatrix}1 \\ 1 \\ 1\end{bmatrix}+
+    s\begin{bmatrix}3 \\ -1 \\ 1\end{bmatrix}+
+    t\begin{bmatrix}-1 \\ 0 \\ -2\end{bmatrix}
+\end{align*}
+
+\subsubsection*{Problem 15}
+Find parametric equations and an equation in vector form for the lines in
+\( \R^2 \) with the following equations:
+\[ y = 3x-1 \]
+\[ l = \begin{cases}
+  x &= t \\
+  y &= 3t-1
+\end{cases} \]
+\[ \begin{bmatrix}x \\ y\end{bmatrix} = \begin{bmatrix}0 \\ -1\end{bmatrix}+
+  t\begin{bmatrix}1 \\ 3\end{bmatrix} \]
+
+\subsubsection*{Problem 17}
+Suggest a ``vector proof'' of the fact that in \( \R^2 \), two lines with slope
+\( m_1 \) and \( m_2 \) are perpendicular if and only if \( m_1m_2 = -1 \).
+\begin{align*}
+  \vec{u} &= \langle m_1,1\rangle \\
+  \vec{v} &= \langle m_2,1\rangle \\
+  \vec{u}\cdot\vec{v} &= 0 \\
+  m_1m_2+1 &= 0 \\
+  m_1m_2 &= -1
+\end{align*}
+
+\subsubsection*{Problem 19}
+The plane \( P_1 \) has the equation \( 4x-y+5z = 2 \). For each
+of the planes \( P \) in Exercise 18. determine whether \( P_1 \) and \( P \)
+are parallel, perpendicular, or neither.
+\begin{align*}
+  \vec{n_1} &= \langle4,-1,5\rangle \\
+  a: 2x+3y-z &= 1 \\
+  \vec{n_a} &= \langle2,3,-1\rangle \\
+  \vec{n_1} &\ne c\vec{n_a} \\
+  \vec{n_1}\cdot\vec{n_a} &= 8+(-3)+(-5) = 0 \quad &\text{Perpendicular} \\
+  b: 4x-y+5z &= 0 \\
+  \vec{n_b} &= \langle4,-1,5\rangle \\
+  \vec{n_1} &= c\vec{n_a} \quad &\text{Parallel} \\
+  c: x-y-z &= 3 \\
+  \vec{n_c} &= \langle1,-1,-1\rangle \\
+  \vec{n_1} &\ne c\vec{n_c} \\
+  \vec{n_1}\cdot\vec{n_c} &= 4+1+(-5) = 0 \quad &\text{Perpendicular} \\
+  d: 4x+6y-2z &= 0 \\
+  \vec{n_d} &= \langle4,6,-2\rangle = \langle2,3,-1\rangle \\
+  \vec{n_1} &\ne c\vec{n_d} \\
+  \vec{n_1}\cdot\vec{n_d} &= 8+(-3)+(-5) = 0 \quad &\text{Perpendicular}
+\end{align*}
+
+\subsubsection*{Problem 21}
+Find the vector form of the equation of the line in \( \R^2 \) that passes
+through \( P = (2,-1) \) and is parallel to the line with general equation
+\( 2x-3y = 1 \).
+\[ \vec{d} = \langle2,3\rangle \]
+\[ \begin{bmatrix}x \\ y\end{bmatrix} =
+  \begin{bmatrix}2 \\ -1\end{bmatrix}+
+  t\begin{bmatrix}2 \\ 3\end{bmatrix} \]
+
+\subsubsection*{Problem 23}
+Find the vector form of the equation of the line in \( \R^3 \) that passes
+through \( P = (-1,0,3) \) and is parallel to the line with parametric
+equations:
+\[ l = \begin{cases}
+  x &= 1-t \\
+  y &= 2+3t \\
+  z &= -2-t
+\end{cases} \]
+\[ \begin{bmatrix}x \\ y \\ z\end{bmatrix} =
+  \begin{bmatrix}-1 \\ 0 \\ 3\end{bmatrix}+
+  t\begin{bmatrix}-1 \\ 3 \\ -1\end{bmatrix} \]
+
+\section*{Section 2.1}
+
+\subsubsection*{Problem 1}
+Determine which equations are linear in the variables \( x,y,z \).
+\[ x-\pi y+\sqrt[3]{5}z = 0 \]
+Linear.
+
+\subsubsection*{Problem 3}
+Determine which equations are linear in the variables \( x,y,z \).
+\[ x^{-1}+7y+z = \sin\frac{\pi}{9} \]
+Nonlinear, \( x \) is not 1st degree.
+
+\subsubsection*{Problem 5}
+\[ 3\cos(x)-4y+z = \sqrt{3} \]
+Nonlinear, \( \cos(x) \) is a function of \( x \).
+
+\subsubsection*{Problem 11}
+Find the solution set of each equation.
+\[ 3x-6y = 0 \]
+All points that lie on the line \( y = \frac{1}{2}x \).
+
+\subsubsection*{Problem 13}
+Find the solution set of each equation.
+\[ x+2y+3z = 4 \]
+All points that lie on the plane \( x+2y+3z = 4 \) or \( [4-3t-2s,s,t] \).
+
+\subsubsection*{Problem 15}
+Determine geometrically whether each system has a unique solution, infinitely
+many solutions, or no solution. Then solve each system algebraically to confirm
+your answer.
+\[ x+y = 0 \quad 2x+y = 3 \]
+Two intersecting lines, one solution at (3,-3).
+
+\subsubsection*{Problem 17}
+Determine geometrically whether each system has a unique solution, infinitely
+many solutions, or no solution. Then solve each system algebraically to confirm
+your answer.
+\[ 3x-6y = 3 \quad -x+2y = 1 \]
+Two parallel lines, no solution.
+
+\subsubsection*{Problem 19}
+Solve the given system by back substitution.
+\begin{align*}
+  x-2y &= 1 \\
+  y &= 3 \\
+  x &= 7
+\end{align*}
+
+\subsubsection*{Problem 21}
+Solve the given system by back substitution.
+\begin{align*}
+  x-y+z &= 0 \\
+  2y-z &= 1 \\
+  3z &= -1 \\
+  z &= -\frac{1}{3} \\
+  y &= \frac{1}{3} \\
+  x &= \frac{2}{3}
+\end{align*}
+
+\subsubsection*{Problem 23}
+Solve the given system by back substitution.
+\begin{align*}
+  x_1+x_2-x_3-x_4 &= 1 \\
+  x_2+x_3+x_4 &= 0 \\
+  x_3-x_4 &= 0 \\
+  x_4 &= 1 \\
+  x_3 &= 1 \\
+  x_2 &= -2 \\
+  x_1 &= 1
+\end{align*}
+
+\subsubsection*{Problem 25}
+Solve these systems.
+\begin{align*}
+  x &= 2 \\
+  2x+y &= -3 \\
+  -3x-4y+z &= -1 \\
+  y &= -7 \\
+  z &= -23
+\end{align*}
+
+\subsubsection*{Problem 27}
+Find the augmented matrices of the linear systems.
+\begin{align*}
+  x-y &= 0 \\
+  2x+y &= 3 \\
+  A &= \left[\begin{array}{cc|c}
+    1 & -1 & 0 \\
+    2 & 1 & 3
+  \end{array}\right]
+\end{align*}
+
+\subsubsection*{Problem 29}
+Find the augmented matrices of the linear systems.
+\begin{align*}
+  x+5y &= -1 \\
+  -x+y &= -5 \\
+  2x+4y &= 4 \\
+  A &= \left[\begin{array}{cc|c}
+    1 & 5 & -1 \\
+    -1 & 1 & -5 \\
+    2 & 4 & 4
+  \end{array}\right]
+\end{align*}
+
+\subsubsection*{Problem 31}
+Find a system of linear equations that has the given matrix as its augmented
+matrix.
+\begin{align*}
+  A &= \left[\begin{array}{ccc|c}
+    0 & 1 & 1 & 1 \\
+    1 & -1 & 0 & 1 \\
+    2 & -1 & 1 & 1
+  \end{array}\right] \\
+  y+z &= 1 \\
+  x-y &= 1 \\
+  2x-y+z &= 1
+\end{align*}
+
+\subsubsection*{Problem 33}
+Solve the linear systems in the given equations.
+\begin{align*}
+  x-y &= 0 \\
+  2x+y &= 3 \\
+  A &= \left[\begin{array}{cc|c}
+    1 & -1 & 0 \\
+    2 & 1 & 3
+  \end{array}\right] \\
+  -2R_1+R_2 &\to R_2 \\
+  A &= \left[\begin{array}{cc|c}
+    1 & -1 & 0 \\
+    0 & 3 & 3
+  \end{array}\right] \\
+  \frac{1}{3}R_2 &\to R_2 \\
+  A &= \left[\begin{array}{cc|c}
+    1 & -1 & 0 \\
+    0 & 1 & 1
+  \end{array}\right] \\
+  R_2+R_1 &\to R_1 \\
+  A &= \left[\begin{array}{cc|c}
+    1 & 0 & 1 \\
+    0 & 1 & 1
+  \end{array}\right] \\
+  x &= 1 \\
+  y &= 1
+\end{align*}
+
+\subsubsection*{Problem 35}
+Solve the linear systems in the given equations.
+\begin{align*}
+  x+5y &= -1 \\
+  -x+y &= -5 \\
+  2x+4y &= 4 \\
+  A &= \left[\begin{array}{cc|c}
+    1 & 5 & -1 \\
+    -1 & 1 & -5 \\
+    2 & 4 & 4
+  \end{array}\right] \\
+  R_1+R_2 &\to R_2 \\
+  -2R_1+R_3 &\to R_3 \\
+  A &= \left[\begin{array}{cc|c}
+    1 & 5 & -1 \\
+    0 & 6 & -6 \\
+    0 & -6 & 6
+  \end{array}\right] \\
+  \frac{1}{6}R_2 &\to R_2 \\
+  \frac{1}{6}R_3 &\to R_3 \\
+  A &= \left[\begin{array}{cc|c}
+    1 & 5 & -1 \\
+    0 & 1 & -1 \\
+    0 & -1 & 1
+  \end{array}\right] \\
+  5R_3+R_1 &\to R_1 \\
+  A &= \left[\begin{array}{cc|c}
+    1 & 0 & 4 \\
+    0 & 1 & -1 \\
+    0 & -1 & 1
+  \end{array}\right] \\
+  x &= 4 \\
+  y &= -1
+\end{align*}
+
+\subsubsection*{Problem 37}
+Solve the linear systems in the given equations.
+\begin{align*}
+  A &= \left[\begin{array}{ccc|c}
+    0 & 1 & 1 & 1 \\
+    1 & -1 & 0 & 1 \\
+    2 & -1 & 1 & 1
+  \end{array}\right] \\
+  R_2 &\leftrightarrow R_1 \\
+  &= \left[\begin{array}{ccc|c}
+    1 & -1 & 0 & 1 \\
+    0 & 1 & 1 & 1 \\
+    2 & -1 & 1 & 1
+  \end{array}\right] \\
+  -2R_1+R_3 &\to R_3 \\
+  &= \left[\begin{array}{ccc|c}
+    1 & -1 & 0 & 1 \\
+    0 & 1 & 1 & 1 \\
+    0 & 1 & 1 & -1
+  \end{array}\right] \\
+  R_3-R_2 &\to R_3 \\
+  &= \left[\begin{array}{ccc|c}
+    1 & -1 & 0 & 1 \\
+    0 & 1 & 1 & 1 \\
+    0 & 0 & 0 & 2
+  \end{array}\right] \\
+  0 &= 2 \quad \text{(Inconsistent)}
+\end{align*}
+
+\subsubsection*{Problem 39}
+Find a system of two linear equations in the variables \( x \) and \( y \)
+whose solution set is given by the parametric equations \( x = t \) and
+\( y = 3-2t \).
+\[ y = 3-2x \]
+\[ 3x = 15 \]
+Find another parametric solution to the system in the first part in which
+the parameter is \( s \) and \( y = s \).
+\[ y = s \]
+\[ x = \frac{s-3}{-2} \]
 
 \begin{center}
   If you have any questions, comments, or concerns, please contact me at
