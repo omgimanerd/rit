@@ -4,6 +4,9 @@
 
 \RequirePackage{amsmath}
 \RequirePackage{amssymb}
+\RequirePackage{array}
+\RequirePackage{geometry}
+\RequirePackage{hyperref}
 
 \renewcommand*{\arcsin}{\sin^{-1}}
 \renewcommand*{\arccos}{\cos^{-1}}
