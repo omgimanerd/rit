@@ -70,20 +70,42 @@ finite automaton that recognizes the language that consists of the strings over
   \end{center}
   \item contain at least 3 \( a \)'s.
   \begin{center}
-    \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=3cm,
-                        thick]
+    \begin{tikzpicture}[->,node distance=2cm,thick]
       \node[circle,draw] (0) {0};
       \node[circle,draw] (1) [right of=0] {0};
       \node[circle,draw] (2) [right of=1] {0};
       \node[circle,draw] (3) [right of=2] {1};
       \node (4) [left of=0] {};
       \path (4) edge (0)
-        (0) edge[loop below] node {b} (0) edge[bend left] node {a} (1)
-        (1) edge[loop below] node {b} (1) edge[bend left] node {a} (2)
-        (2) edge[loop below] node {b} (1) edge[bend left] node {a} (3)
-        (3) edge[loop below] node {b} (3) edge[loop right] node {a} (3);
+        (0) edge[loop below] node {b} (0) edge[bend left] node[above] {a} (1)
+        (1) edge[loop below] node {b} (1) edge[bend left] node[above] {a} (2)
+        (2) edge[loop below] node {b} (1) edge[bend left] node[above] {a} (3)
+        (3) edge[loop below] node {b} (3) edge[loop right] node[above] {a} (3);
     \end{tikzpicture}
   \end{center}
+\end{itemize}
+Formally defined, a finite automata is a quintuple \( M =
+(Q,\Sigma,\delta,q_{\circ},F) \), where:
+\begin{itemize}
+  \item \( Q \) is a finite set of states
+  \item \( \Sigma \) is an alphabet of \textit{input symbols}
+  \item \( \delta \) is a total function from \( Q\times\Sigma \) to \( Q \):
+    the \textit{transition function} (\( \delta \) is often given as a
+    \textit{transition table})
+  \item \( q_{\circ}\in Q \) is the \textit{initial state}
+  \item \( F\subseteq Q \) is the set of \textit{accepting} states
+\end{itemize}
+For the example above of a finite automaton that contains an even number of
+\( a \)'s: \( M = (Q,\Sigma,\delta,0,\{0\}) \), where:
+\begin{itemize}
+  \item \( Q = \{0,1\} \)
+  \item \( \Sigma = \{a,b\} \)
+  \item \( \delta \): \( Q\times\Sigma\to Q \) is defined on \( (q,z)\in
+    Q\times\Sigma \) as:
+    \[ \delta(q,x) = \begin{cases}
+      q & if\ x = b \\
+      q+1\mod2 & otherwise
+    \end{cases} \]
 \end{itemize}
 
 \begin{center}
