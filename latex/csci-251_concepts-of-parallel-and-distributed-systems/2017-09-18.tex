@@ -1,0 +1,77 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\usepackage{listings}
+\lstset{basicstyle=\ttfamily\footnotesize,breaklines=true}
+
+\title{CSCI 251: Concepts of Parallel and Distributed Systems}
+\author{Alvin Lin}
+\date{September 18th, 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Topics}
+\begin{itemize}
+  \item Complete Bitonic Sort
+  \item Shared Memory
+  \item Processes and Threads
+  \item POSIX (P. Threads)
+  \item Project 1 Problem
+\end{itemize}
+
+\subsection*{Shared Memory}
+The idea with shared memory is that you allow multiple processes to share the
+same memory. Computers may have separate memory process access, but use
+a logically shared address space. Concurrently, all processes can read from the
+memory space with no problems, but processes that write to the memory space must
+write atomically and serially. A mutual exclusion (mutex) lock is necessary for
+this to happen. A semaphore is a generalized mutex that can be used to control
+access to memory by processes.
+
+\subsubsection*{Processes and Threads}
+Processes:
+\begin{itemize}
+  \item A sequence of instructions
+  \item Process ID, User ID
+  \item Program instructions and PC
+  \item Stack
+  \item Heap
+  \item Registers
+  \item File descriptors
+  \item Libraries
+  \item Mechanisms for message passing
+\end{itemize}
+Threads:
+\begin{itemize}
+  \item Created by a process
+  \item Shares process resources (file descriptors, libraries)
+  \item Stack pointer
+  \item Registers
+  \item Lightweight
+  \item Can be executed independently
+  \item Scheduled for execution by the OS
+\end{itemize}
+Example code:
+\begin{lstlisting}
+  for (row = 0; row < n; row++)
+    for (col = 0; col < n; col++)
+      c[row][col] = dot_product(get_row(a, row), get_col(b, col))
+      # it is feasible to create a thread here to do this
+\end{lstlisting}
+
+\section*{Reminders}
+Professor Mohan Kumar: \\
+\url{mjkvcs@rit.edu} \\
+\url{https://cs.rit.edu/~mjk} \\
+
+\noindent Rahul Dashora (TA): \\
+\url{rd5476@mail.rit.edu} \\
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
