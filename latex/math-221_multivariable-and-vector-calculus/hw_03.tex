@@ -73,10 +73,15 @@ Use traces to sketch and identify the surface.
   9y^2+4z^2 &= 40
 \end{split}\quad
 \begin{split}
+  y &= 0 \\
+  4z^2-x^2 &= 36
+\end{split}\quad
+\begin{split}
   y &= 2 \\
   36+4z^2 &= x^2+36 \\
-  x &= \pm2z
+  4z^2-x^2 &= 0
 \end{split} \]
+This surface is a hyperboloid of one sheet.
 
 \subsubsection*{Problem 47}
 Find an equation for the surface consisting of all points that are
@@ -95,6 +100,51 @@ cross section of the circles is a parabola. The surface is a elliptic
 paraboloid.
 
 \section*{Section 13.1}
+
+\subsubsection*{Problem 31}
+At what points does the curve \( \vec{r(t)} = t\i+(2t-t^2)\k \) intersect the
+the paraboloid \( z = x^2+y^2 \)?
+\begin{align*}
+  \vec{r(t)} &= \begin{cases}
+    x &= t \\
+    y &= 2t-t^2 \\
+    z &= 0
+  \end{cases} \\
+  z &= x^2+y^2 \\
+  0 &= t^2+(2t-t^2)^2 \\
+  0 &= t^2+(4t^2-4t^3+t^4) \\
+  t^4-4t^3+5t^2 &= 0 \\
+  t^2(t-4)(t-1) &= 0 \\
+  t &= 4 \quad t = 1 \quad t = 0 \\
+  \vec{r(0)} &= \langle0,0,0\rangle \\
+  \vec{r(1)} &= \langle1,1,0\rangle \\
+  \vec{r(4)} &= \langle4,-8,0\rangle
+\end{align*}
+
+\subsubsection*{Problem 41}
+Show that the curve with parametric equations \( x = t^2, y = 1-3t, z = 1+3t^2
+\) passes through the points (1,4,0) and (9,-8,28) but not through the point
+(4,7,-6).
+\[ \begin{split}
+  1 &= t^2 \quad t = \pm1 \\
+  4 &= 1-3t \quad t = -1 \\
+  0 &= 1+t^3 \quad t = -1
+\end{split}\quad\begin{split}
+  9 &= t^2 \quad t = \pm3 \\
+  -8 &= 1-3t \quad t = 3 \\
+  28 &= 1+t^3 \quad t = 3
+\end{split}\quad\begin{split}
+  4 &= t^2 \quad t = \pm2 \\
+  7 &= 1-3t \quad t = -2 \\
+  -6 &= 1+t^3 \quad t = \sqrt[3]{7}
+\end{split} \]
+The equation does not solve to the same \( t \) for the point (4,7,-6).
+
+\subsubsection*{Problem 43}
+Find a vector function that represents the curve of intersection of the cone
+\( z = \sqrt{x^2+y^2} \) and the plane \( z = 1+y \).
+
+\subsubsection*{Problem 45}
 
 \begin{center}
   If you have any questions, comments, or concerns, please contact me at
