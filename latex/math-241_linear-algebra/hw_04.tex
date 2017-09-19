@@ -1,0 +1,616 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\usepackage{multicol}
+
+\geometry{letterpaper, margin=0.5in}
+
+\title{Linear Algebra: Homework 3}
+\author{Alvin Lin}
+\date{August 2016 - December 2016}
+
+\begin{document}
+
+\maketitle
+
+\section*{Section 2.2}
+
+\subsubsection*{Exercise 1}
+Determine whether the given matrix is in row echelon form. If it is, state
+whether it is also in reduced row echelon form.
+\[ \begin{bmatrix}
+  1 & 0 & 1 \\
+  0 & 0 & 3 \\
+  0 & 1 & 1
+\end{bmatrix} \]
+No.
+
+\subsubsection*{Exercise 3}
+Determine whether the given matrix is in row echelon form. If it is, state
+whether it is also in reduced row echelon form.
+\[ \begin{bmatrix}
+  0 & 1 & 3 & 0 \\
+  0 & 0 & 0 & 1
+\end{bmatrix} \]
+Yes, and it is in reduced row echelon form.
+
+\subsubsection*{Exercise 5}
+Determine whether the given matrix is in row echelon form. If it is, state
+whether it is also in reduced row echelon form.
+\[ \begin{bmatrix}
+  1 & 0 & 3 & -4 & 0 \\
+  0 & 0 & 0 & 0 & 0 \\
+  0 & 1 & 5 & 0 & 1
+\end{bmatrix} \]
+No.
+
+\subsubsection*{Exercise 7}
+Determine whether the given matrix is in row echelon form. If it is, state
+whether it is also in reduced row echelon form.
+\[ \begin{bmatrix}
+  1 & 2 & 3 \\
+  1 & 0 & 0 \\
+  0 & 1 & 1 \\
+  0 & 0 & 1
+\end{bmatrix} \]
+No.
+
+\subsubsection*{Exercise 9}
+Determine whether the given matrix is in row echelon form. If it is, state
+whether it is also in reduced row echelon form.
+\[ \begin{bmatrix}
+  0 & 0 & 1 \\
+  0 & 1 & 1 \\
+  1 & 1 & 1
+\end{bmatrix} \]
+No.
+
+\subsubsection*{Exercise 11}
+Use elementary row operations to reduce the given matrix to row echelon form
+and reduced row echelon form.
+\begin{align*}
+  A &= \begin{bmatrix}
+    0 & 0 & 1 \\
+    0 & 1 & 1 \\
+    1 & 1 & 1
+  \end{bmatrix} \\
+  R_1 &\leftrightarrow R_3 \\
+  REF &= \begin{bmatrix}
+    1 & 1 & 1 \\
+    0 & 1 & 1 \\
+    0 & 0 & 1
+  \end{bmatrix} \\
+  R_1-R_2 &\to R_1 \\
+  RREF &= \begin{bmatrix}
+    1 & 0 & 0 \\
+    0 & 1 & 0 \\
+    0 & 0 & 1
+  \end{bmatrix}
+\end{align*}
+
+\subsubsection*{Exercise 13}
+Use elementary row operations to reduce the given matrix to row echelon form
+and reduced row echelon form.
+\begin{multicols}{2}
+  \begin{align*}
+    A &= \begin{bmatrix}
+      3 & -2 & -1 \\
+      2 & -1 & -1 \\
+      4 & -3 & -1
+    \end{bmatrix} \\
+    -2R_2+R_3 &\to R_3 \\
+    &= \begin{bmatrix}
+      3 & -2 & -1 \\
+      2 & -1 & -1 \\
+      0 & -1 & 1
+    \end{bmatrix} \\
+    2R_1 &\to R_1 \\
+    3R_2 &\to R_2 \\
+    &= \begin{bmatrix}
+      6 & -4 & -2 \\
+      6 & -3 & -3 \\
+      0 & -1 & 1
+    \end{bmatrix} \\
+    R_2-R_1 &\to R_2 \\
+    &= \begin{bmatrix}
+      6 & -4 & -2 \\
+      0 & 1 & -1 \\
+      0 & -1 & 1
+    \end{bmatrix}
+  \end{align*}\break
+  \begin{align*}
+    R_3-R_2 &\to R_3 \\
+    REF &= \begin{bmatrix}
+      6 & -4 & -2 \\
+      0 & 1 & -1 \\
+      0 & 0 & 0
+    \end{bmatrix} \\
+    R_1-R_2 &\to R_1 \\
+    &= \begin{bmatrix}
+      6 & 0 & -6 \\
+      0 & 1 & -1 \\
+      0 & 0 & 0
+    \end{bmatrix} \\
+    \frac{1}{6}R_1 &\to R_1 \\
+    RREF &= \begin{bmatrix}
+      1 & 0 & -1 \\
+      0 & 1 & -1 \\
+      0 & 0 & 0
+    \end{bmatrix}
+  \end{align*}
+\end{multicols}
+
+\subsubsection*{Exercise 17}
+Show that the given matrices are row equivalent and find a sequence of
+elementary row operations that will convert \( A \) into \( B \).
+\[ A = \begin{bmatrix}
+  1 & 2 \\
+  3 & 4
+\end{bmatrix}\quad B = \begin{bmatrix}
+  3 & -1 \\
+  1 & 0
+\end{bmatrix} \]
+\begin{align*}
+  A &= \begin{bmatrix}
+    1 & 2 \\
+    3 & 4
+  \end{bmatrix} \\
+  -2R_1+R_2 &\to R_2 \\
+  &= \begin{bmatrix}
+    1 & 2 \\
+    1 & 0
+  \end{bmatrix} \\
+  -\frac{1}{2}R_1 &\to R_1 \\
+  &= \begin{bmatrix}
+    -\frac{1}{2} & -1 \\
+    1 & 0
+  \end{bmatrix} \\
+  -6R_2+R_1 &\to R_1 \\
+  &= \begin{bmatrix}
+    3 & -1 \\
+    1 & 0
+  \end{bmatrix} = B
+\end{align*}
+
+\subsubsection*{Exercise 23}
+What is the rank of each of the matrices in Exercises 1-8?
+\begin{enumerate}
+  \item Rank: 3
+  \item Rank: 2
+  \item Rank: 2
+  \item Rank: 0
+  \item Rank: 2
+  \item Rank: 3
+  \item Rank: 3
+  \item Rank: 3
+\end{enumerate}
+
+\subsubsection*{Exercise 25}
+Solve the given system of equations:
+\begin{align*}
+  x_1+2x_2-3x_3 &= 9 \\
+  2x_1-x_2+x_3 &= 0 \\
+  4x_1-x_2+x_3 &= 4 \\
+\end{align*}
+\newpage
+\begin{multicols}{2}
+  \begin{align*}
+    A &= \begin{bmatrix}
+      1 & 2 & -3 & 9 \\
+      2 & -1 & 1 & 0 \\
+      4 & -1 & 1 & 4
+    \end{bmatrix} \\
+    -2R_2+R_3 &\to R_3 \\
+    &= \begin{bmatrix}
+      1 & 2 & -3 & 9 \\
+      2 & -1 & 1 & 0 \\
+      0 & 1 & -1 & 4
+    \end{bmatrix} \\
+    -2R_1+R_2 &\to R_2 \\
+    &= \begin{bmatrix}
+      1 & 2 & -3 & 9 \\
+      0 & -5 & 7 & -18 \\
+      0 & 1 & -1 & 4
+    \end{bmatrix} \\
+    5R_3+R_2 &\to R_2 \\
+    R_2 &\leftrightarrow R_3 \\
+    &= \begin{bmatrix}
+      1 & 2 & -3 & 9 \\
+      0 & 1 & -1 & 4 \\
+      0 & 0 & 2 & 2
+    \end{bmatrix} \\
+  \end{align*}
+  \begin{align*}
+    \frac{1}{2}R_3 &\to R_3 \\
+    &= \begin{bmatrix}
+      1 & 2 & -3 & 9 \\
+      0 & 1 & -1 & 4 \\
+      0 & 0 & 1 & 1
+    \end{bmatrix} \\
+    -2R_2+R_1 &\to R_1 \\
+    R_3+R_2 &\to R_2 \\
+    &= \begin{bmatrix}
+      1 & 0 & -1 & 1 \\
+      0 & 1 & 0 & 3 \\
+      0 & 0 & 1 & 1
+    \end{bmatrix} \\
+    R_1+R_3 &\to R_1 \\
+    &= \begin{bmatrix}
+      1 & 0 & 0 & 2 \\
+      0 & 1 & 0 & 3 \\
+      0 & 0 & 1 & 1
+    \end{bmatrix} \\
+    x_1 &= 2 \\
+    x_2 &= 3 \\
+    x_3 &= 1
+  \end{align*}
+\end{multicols}
+
+\subsubsection*{Exercise 27}
+Solve the given system of equations:
+\begin{align*}
+  x_1-3x_2-2x_3 &= 0 \\
+  -x_1+2x_2+x_3 &= 0 \\
+  2x_1+4x_2+6x_3 &= 0
+\end{align*}
+\begin{multicols}{2}
+  \begin{align*}
+    A &= \begin{bmatrix}
+      1 & -3 & -2 & 0 \\
+      -1 & 2 & 1 & 0 \\
+      2 & 4 & 6 & 0
+    \end{bmatrix} \\
+    2R_2+R_3 &\to R_3 \\
+    &= \begin{bmatrix}
+      1 & -3 & -2 & 0 \\
+      -1 & 2 & 1 & 0 \\
+      0 & 8 & 8 & 0
+    \end{bmatrix} \\
+    \frac{1}{8}R_3 &\to R_3 \\
+    &= \begin{bmatrix}
+      1 & -3 & -2 & 0 \\
+      -1 & 2 & 1 & 0 \\
+      0 & 1 & 1 & 0
+    \end{bmatrix} \\
+  \end{align*}
+  \begin{align*}
+    -2R_3+R_2 &\to R_2 \\
+    &= \begin{bmatrix}
+      1 & -3 & -2 & 0 \\
+      -1 & 0 & -1 & 0 \\
+      0 & 1 & 1 & 0
+    \end{bmatrix} \\
+    R_2+R_1 &\to R_1 \\
+    &= \begin{bmatrix}
+      0 & -3 & -3 & 0 \\
+      -1 & 0 & -1 & 0 \\
+      0 & 1 & 1 & 0
+    \end{bmatrix} \\
+    &= \begin{bmatrix}
+      1 & 0 & 1 & 0 \\
+      0 & 1 & 1 & 0 \\
+      0 & 0 & 0 & 0
+    \end{bmatrix} \\
+    x &= y = z
+  \end{align*}
+\end{multicols}
+
+\subsubsection*{Exercise 29}
+Solve the given system of equations:
+\begin{align*}
+  2r+s &= 3 \\
+  4r+s &= 7 \\
+  2r+5s &= -1
+\end{align*}
+\begin{multicols}{2}
+  \begin{align*}
+    A &= \begin{bmatrix}
+      2 & 1 & 3 \\
+      4 & 1 & 7 \\
+      2 & 5 & -1
+    \end{bmatrix} \\
+    R_3-R_1 &\to R_3 \\
+    &= \begin{bmatrix}
+      2 & 1 & 3 \\
+      4 & 1 & 7 \\
+      0 & 4 & -4
+    \end{bmatrix} \\
+    \frac{1}{4}R_3 &\to R_3 \\
+    -2R_1+R_2 &\to R_2 \\
+    &= \begin{bmatrix}
+      2 & 1 & 3 \\
+      0 & -1 & 1 \\
+      0 & 1 & -1
+    \end{bmatrix} \\
+  \end{align*}
+  \begin{align*}
+    R_1-R_3 &\to R_1 \\
+    R_3+R_2 &\to R_2 \\
+    R_3 &\leftrightarrow R_2 \\
+    &= \begin{bmatrix}
+      2 & 0 & 4 \\
+      0 & 1 & -1 \\
+      0 & 0 & 0
+    \end{bmatrix} \\
+    \frac{1}{2}R_1 &\to R_1 \\
+    &= \begin{bmatrix}
+      1 & 0 & 2 \\
+      0 & 1 & -1 \\
+      0 & 0 & 0
+    \end{bmatrix} \\
+    r &= 2 \\
+    s &= -1
+  \end{align*}
+\end{multicols}
+
+\subsubsection*{Exercise 31}
+Solve the given system of equations:
+\[ \begin{alignedat}{4}
+  \frac{1}{2}x_1 &+x_2 &-x_3 &-6x_4 & &= 2 \\
+  \frac{1}{6}x_1 &+\frac{1}{2}x_2 & &-3x_4 &+x_5 &= -1 \\
+  \frac{1}{3}x_1 & &-2x_3 & &-4x_5 &= 8
+\end{alignedat} \]
+\newpage
+\begingroup
+\renewcommand*{\arraystretch}{1.5}
+\begin{multicols}{2}
+  \begin{align*}
+    A &= \begin{bmatrix}
+      \frac{1}{2} & 1 & -1 & -6 & 0 & 2 \\
+      \frac{1}{6} & \frac{1}{2} & 0 & -3 & 1 & -1 \\
+      \frac{1}{3} & 0 & -2 & 0 & -4 & 8
+    \end{bmatrix} \\
+    2R_1 &\to R_1 \\
+    6R_2 &\to R_2 \\
+    3R_3 &\to R_3 \\
+    &= \begin{bmatrix}
+      1 & 2 & -2 & -12 & 0 & 4 \\
+      1 & 3 & 0 & -18 & 6 & -6 \\
+      3 & 0 & -6 & 0 & -12 & 24
+    \end{bmatrix} \\
+    R_1-R_2 &\to R_2 \\
+    3R_1-R_3 &\to R_3 \\
+    &= \begin{bmatrix}
+      1 & 2 & -2 & -12 & 0 & 4 \\
+      0 & -1 & -2 & 6 & -6 & 10 \\
+      0 & 6 & 0 & -36 & 12 & -12
+    \end{bmatrix} \\
+    6R_2+R_3 &\to R_3 \\
+  \end{align*}
+  \begin{align*}
+    &= \begin{bmatrix}
+      1 & 2 & -2 & -12 & 0 & 4 \\
+      0 & -1 & -2 & 6 & -6 & 10 \\
+      0 & 0 & -12 & 0 & -24 & 48
+    \end{bmatrix} \\
+    \frac{-1}{12}R_3 &\to R_3 \\
+    2R_2+R_1 &\to R_1 \\
+    &= \begin{bmatrix}
+      1 & 0 & -6 & 0 & -12 & 24 \\
+      0 & -1 & -2 & 6 & -6 & 10 \\
+      0 & 0 & 1 & 0 & 2 & -4
+    \end{bmatrix} \\
+    6R_3+R_1 &\to R_1 \\
+    2R_3+R_2 &\to R_2 \\
+    &= \begin{bmatrix}
+      1 & 0 & 0 & 0 & 0 & 0 \\
+      0 & -1 & 0 & 6 & -2 & 2 \\
+      0 & 0 & 1 & 0 & 2 & -4
+    \end{bmatrix} \\
+    x_1 &= 0 \\
+    -1x_2+6x_4-2x_5 &= 2 \\
+    x_3+2x_5 &= -4
+  \end{align*}
+\end{multicols}
+\endgroup
+
+\subsubsection*{Exercise 33}
+Solve the given system of equations:
+\[ \begin{alignedat}{5}
+  &w &+x &+2y &+z &= 1 \\
+  &w &-x &-y  &+z &= 0 \\
+  &  &x  &+y  &   &= -1 \\
+  &w &+x &    &+z &= 2
+\end{alignedat} \]
+\begin{align*}
+  A &= \begin{bmatrix}
+    1 & 1 & 2 & 1 & 1 \\
+    1 & -1 & -1 & 1 & 0 \\
+    0 & 1 & 1 & 0 & -1 \\
+    1 & 1 & 0 & 1 & 2
+  \end{bmatrix} \\
+  R_4-R_1 &\to R_4 \\
+  R_2-R_1 &\to R_1 \\
+  A &= \begin{bmatrix}
+    1 & 1 & 2 & 1 & 1 \\
+    0 & -2 & -3 & 0 & -1 \\
+    0 & 1 & 1 & 0 & -1 \\
+    0 & 0 & -2 & 0 & 1
+  \end{bmatrix} \\
+  R_1-R_3 &\to R_1 \\
+  R_2+2R_3 &\to R_2 \\
+  A &= \begin{bmatrix}
+    1 & 0 & 1 & 1 & 2 \\
+    0 & 0 & -1 & 0 & 1 \\
+    0 & 1 & 1 & 0 & -1 \\
+    0 & 0 & -2 & 0 & 1
+  \end{bmatrix} \\
+  -2R_2+R_4 &\to R_4 \\
+  R_1+R_2 &\to R_2 \\
+  A &= \begin{bmatrix}
+    1 & 0 & 1 & 1 & 2 \\
+    0 & 0 & -1 & 0 & 1 \\
+    0 & 1 & 1 & 0 & -1 \\
+    0 & 0 & 0 & 0 & -1
+  \end{bmatrix} \\
+  0 &= -1
+\end{align*}
+System is inconsistent.
+
+\subsubsection*{Exercise 39}
+Show that if \( ad-bc \ne 0 \), then the system
+\begin{align*}
+  ax+by &= r \\
+  cx+dy &= s
+\end{align*}
+has a unique solution.
+\begin{align*}
+  A &= \begin{bmatrix}a & b \\ c & d\end{bmatrix} \\
+  \begin{bmatrix}a & b \\ c & d\end{bmatrix}
+    \begin{bmatrix}x \\ y\end{bmatrix} &= \begin{bmatrix}r \\ s\end{bmatrix} \\
+  \begin{bmatrix}x \\ y\end{bmatrix} &= \frac{1}{\det(A)}A
+    \begin{bmatrix}r \\ s\end{bmatrix} \\
+  &= \frac{1}{ad-bc}A\begin{bmatrix}r \\ s\end{bmatrix}
+\end{align*}
+If \( ad-bc \ne 0 \), then the system has a unique solution.
+
+\subsubsection*{Exercise 40}
+For what values of \( k \), if any, will the systems have no solution, a unique
+solution, and infinitely many solutions?
+\begin{align*}
+  kx+2y &= 3 \\
+  2x-4y &= -6 \\
+  A &= \begin{bmatrix}
+    k & 2 & 3 \\
+    2 & -4 & -6
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    k & 2 & 3 \\
+    1 & -2 & -3
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    k & 2 & 3 \\
+    k+1 & 0 & 0
+  \end{bmatrix}
+\end{align*}
+\( k = -1 \) will have infinitely many solutions. The system will have a unique
+solution for all other values.
+
+\subsubsection*{Exercise 41}
+For what values of \( k \), if any, will the systems have no solution, a unique
+solution, and infinitely many solutions?
+\begin{align*}
+  x+ky &= 1 \\
+  kx+y &= 1 \\
+  A &= \begin{bmatrix}
+    1 & k & 1 \\
+    k & 1 & 1
+  \end{bmatrix}
+\end{align*}
+\( k = 1 \) will have infinitely many solutions. The system will have a unique
+solution for all other values.
+
+\subsubsection*{Exercise 42}
+For what values of \( k \), if any, will the systems have no solution, a unique
+solution, and infinitely many solutions?
+\begin{align*}
+  x-2y+3z &= 2 \\
+  x+y+z &= k \\
+  2x-y+4z &= k^2 \\
+  A &= \begin{bmatrix}
+    1 & -2 & 3 & 2 \\
+    1 & 1 & 1 & k \\
+    2 & -1 & 4 & k^2
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    1 & -2 & 3 & 2 \\
+    0 & -3 & 2 & 2-k \\
+    0 & -3 & 2 & 4-k^2
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    1 & -2 & 3 & 2 \\
+    0 & -3 & 2 & 2-k \\
+    0 & 0 & 0 & 2-k+(4-k^2)
+  \end{bmatrix} \\
+  2-k+4-k^2 &= 0 \\
+  k^2+k-6 &= 0 \\
+  (k+3)(k-2) &= 0 \\
+  k &= -3 \quad k = 2
+\end{align*}
+The system has infinitely many solutions when \( k = 2 \), no solutions
+otherwise.
+
+\subsubsection*{Exercise 43}
+For what values of \( k \), if any, will the systems have no solution, a unique
+solution, and infinitely many solutions?
+\begin{align*}
+  x+y+kz &= 1 \\
+  x+ky+z &= 1 \\
+  kz+y+z &= -2 \\
+  A &= \begin{bmatrix}
+    1 & 1 & k & 1 \\
+    1 & k & 1 & 1 \\
+    k & 1 & 1 & -2
+  \end{bmatrix}
+\end{align*}
+The system has no solution when \( k = 1 \), and a unique solution otherwise.
+
+\subsubsection*{Exercise 44}
+Give examples of homogeneous systems of \( m \) linear equations in \( n \)
+variables with \( m = n \) and with \( m > n \) that have infinitely many
+solutions and a unique solution. \\
+\( m = n \): infinite solutions
+\begin{align*}
+  x+y &= 0 \\
+  2x+2y &= 0
+\end{align*}
+\( m = n \): unique solution
+\begin{align*}
+  x+2y &= 0 \\
+  4x+y &= 0
+\end{align*}
+\( m > n \): infinite solutions
+\begin{align*}
+  x+y &= 0 \\
+  2x+2y &= 0 \\
+  10x+10y &= 0 \\
+\end{align*}
+\( m > n \): unique solution
+\begin{align*}
+  x+y &= 0 \\
+  3x+1y &= 0 \\
+  10x+3y &= 0 \\
+\end{align*}
+
+\subsubsection*{Exercise 45}
+Find the line of intersection of the given planes.
+\begin{align*}
+  3x+2y+z &= -1 \\
+  2x-y+4z &= 5
+\end{align*}
+Let \( z = t \):
+\begin{align*}
+  3x+2y &= -1-t \\
+  2x-y &= 5-4t \\
+  A &= \begin{bmatrix}
+    3 & 2 & -1-t \\
+    2 & -1 & 5-4t
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    6 & 4 & -2-2t \\
+    3 & -1 & 5-4t
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    0 & 6 & 6t-12 \\
+    3 & -1 & 5-4t
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    0 & 1 & t-2 \\
+    3 & 0 & 3-3t
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    0 & 1 & t-2 \\
+    1 & 0 & 1-t
+  \end{bmatrix} \\
+  l(t) &= \begin{cases}
+    x &= t-2 \\
+    y &= 1-t \\
+    z &= t
+  \end{cases}
+\end{align*}
+
+\begin{center}
+  If you have any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
