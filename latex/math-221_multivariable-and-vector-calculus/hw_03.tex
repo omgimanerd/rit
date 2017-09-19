@@ -33,6 +33,7 @@ Use traces to sketch and identify the surface.
   y &= 0 \\
   x &= 4z^2
 \end{split} \]
+\\ \\ \\ \\ \\
 The surface is a elliptic paraboloid expanding along the positive x-axis.
 
 \subsubsection*{Problem 13}
@@ -55,6 +56,7 @@ Use traces to sketch and identify the surface.
   x^2 &= 4z^2 \\
   x &= \pm2z
 \end{split} \]
+\\ \\ \\ \\ \\
 This surface is a cone defined by ellipses along the x-axis.
 
 \subsubsection*{Problem 15}
@@ -81,6 +83,7 @@ Use traces to sketch and identify the surface.
   36+4z^2 &= x^2+36 \\
   4z^2-x^2 &= 0
 \end{split} \]
+\\ \\ \\ \\ \\
 This surface is a hyperboloid of one sheet.
 
 \subsubsection*{Problem 47}
@@ -105,7 +108,7 @@ paraboloid.
 At what points does the curve \( \vec{r(t)} = t\i+(2t-t^2)\k \) intersect the
 the paraboloid \( z = x^2+y^2 \)?
 \begin{align*}
-  \vec{r(t)} &= \begin{cases}
+  \overrightarrow{r(t)} &= \begin{cases}
     x &= t \\
     y &= 2t-t^2 \\
     z &= 0
@@ -116,9 +119,9 @@ the paraboloid \( z = x^2+y^2 \)?
   t^4-4t^3+5t^2 &= 0 \\
   t^2(t-4)(t-1) &= 0 \\
   t &= 4 \quad t = 1 \quad t = 0 \\
-  \vec{r(0)} &= \langle0,0,0\rangle \\
-  \vec{r(1)} &= \langle1,1,0\rangle \\
-  \vec{r(4)} &= \langle4,-8,0\rangle
+  \overrightarrow{r(0)} &= \langle0,0,0\rangle \\
+  \overrightarrow{r(1)} &= \langle1,1,0\rangle \\
+  \overrightarrow{r(4)} &= \langle4,-8,0\rangle
 \end{align*}
 
 \subsubsection*{Problem 41}
@@ -143,8 +146,69 @@ The equation does not solve to the same \( t \) for the point (4,7,-6).
 \subsubsection*{Problem 43}
 Find a vector function that represents the curve of intersection of the cone
 \( z = \sqrt{x^2+y^2} \) and the plane \( z = 1+y \).
+\begin{align*}
+  \sqrt{x^2+y^2} &= 1+y \\
+  x^2+y^2 &= (1+y)^2 \\
+  x^2+y^2 &= 1+2y+y^2 \\
+  x^2-2y &= 1 \\
+  x &= \cos(t) \\
+  -2y &= \sin^2(t) \\
+  z &= 1-\frac{\sin^2(t)}{2} \\
+  \overrightarrow{r(t)} &=
+    \langle\cos(t),\frac{-\sin^2(t)}{2},1-\frac{\sin^2(t)}{2}\rangle
+\end{align*}
 
 \subsubsection*{Problem 45}
+Find a vector function that represents the curve of intersection of the
+hyperboloid \( z = x^2-y^2 \) and the cylinder \( x^2+y^2 = 1 \).
+\begin{align*}
+  x &= \cos(t) \\
+  y &= \sin(t) \\
+  z &= x^2-y^2 \\
+  &= \cos^2(t)-\sin^2(t) \\
+  \overrightarrow{r(t)} &= \langle\cos(t),\sin(t),\cos^2(t)-\sin^2(t)\rangle
+\end{align*}
+
+\section*{Section 13.2}
+
+\subsubsection*{Problem 23}
+Find the parametric equations for the tangent line to the curve with the
+given parametric equations at the specified point.
+\[ x = t^2+1 \quad y = 4\sqrt{t} \quad z = \e^{t^2-t}\ at\ (2,4,1) \]
+\[ x' = 2t \quad y' = \frac{2}{\sqrt{t}} \quad z' = (2t-1)\e^{t^2-t} \]
+\[ x'(2) = 4 \quad y'(4) = 1 \quad z'(1) = \e^0 = 1 \]
+\[ l = \begin{cases}
+  x &= 2+4t \\
+  y &= 4+t \\
+  z &= 1+t
+\end{cases} \]
+
+\subsubsection*{Problem 27​}
+Find a vector equation for the tangent line to the curve of intersection of
+the cylinders \( x^2+y^2 = 25 \) and \( y^2+z^2 = 20 \) at the point
+(3,4,2).
+\begin{align*}
+  \frac{x^2}{25} &= \cos^2(t) \\
+  x &= 5\cos(t) \\
+  \frac{y^2}{25} &= \sin^2(t) \\
+  y &= 5\sin(t) \\
+  z^2 &= 20-y^2 = 20-25\sin^2(t) \\
+  z &= \sqrt{20-25\sin^2(t)} \\
+  \overrightarrow{r(t)} &=
+    \left\langle5\cos(t),5\sin(t),\sqrt{20-25\sin^2(t)}\right\rangle \\
+  \overrightarrow{r(x)} &= \langle3,4,2\rangle \\
+  \cos(x) &= \frac{3}{5} \\
+  \sin(x) &= \frac{4}{5} \\
+  \overrightarrow{r'(t)} &= \left\langle
+    -5\sin(t),
+    5\cos(t),
+    \frac{-25\sin(t)\cos(t)}{\sqrt{20-25\sin^2(t)}}
+  \right\rangle \\
+  \overrightarrow{r'(x)} &=
+    \left\langle-4,3,\frac{-12}{\sqrt{4}}\right\rangle \\
+  &= \langle-4,3,-6\rangle \\
+  \overrightarrow{l(t)} &= \langle3-4t,4+3t,2-6t\rangle
+\end{align*}
 
 \begin{center}
   If you have any questions, comments, or concerns, please contact me at
