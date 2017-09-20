@@ -108,6 +108,20 @@ For the example above of a finite automaton that contains an even number of
     \end{cases} \]
 \end{itemize}
 
+\subsection*{Acceptance on Finite Automata}
+For finite automaton \( M = (Q,\Sigma,\delta,q_{\circ},F) \), \( \delta(q,a) \)
+is the state \( M \) goes to if it is in state \( q \) and reads an \( a \).
+We say that \( M \) accepts \( w = w_1w_2\dots w_n\in\Sigma^{*} \) if there is
+a sequence (repeats allowed) of states \( r_0,r_1,\dots,r_n\in Q \) such that:
+\begin{enumerate}
+  \item \( r_0 = q_{\circ} \)
+  \item \( \forall{i}\in\{0,\dots,n-1\}(\delta(r_i,w_i+1) = r_i+1) \)
+  \item \( r_n \in F \)
+\end{enumerate}
+A deterministic finite automaton \( M \) recognizes a language \( A \) if
+\( A = \{w\mid M\ accepts\ w\} \). We say \( A = L(M) \). A language is called
+a \textbf{regular language} if some finite automaton recognizes it.
+
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
   any questions, comments, or concerns, please contact me at

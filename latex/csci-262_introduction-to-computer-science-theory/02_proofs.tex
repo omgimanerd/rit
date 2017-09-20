@@ -107,6 +107,18 @@ By the definition of the substring relation, there exists strings \( w_1,z_1 \)
 such that \( w_1xz_1 = y \) and strings \( w_2,z_2 \) such that
 \( w_2yz_2 = x \).
 
+\subsubsection*{Example}
+\[ \forall\ sets\ A,B,C (A \cap (B \cup C) \subseteq (A \cap B) \cup C) \]
+Substitute for formal definitions:
+\[ \forall\ sets\ A,B,C (A \cap (\{x\mid x\in B\vee x\in C\}) \subseteq
+  (A \cap B) \cup B) \]
+\[ \forall\ sets\ A,B,C \bigg(\big\{y\mid y\in A \wedge y\in\{x\mid x\in B\vee
+  x\in C\}\big\} \subseteq (A \cap B) \cup C\bigg) \]
+\[ \forall\ sets\ A,B,C \bigg(\big\{y\mid y\in A\wedge(y\in B\vee y\in
+  C)\big\} \subseteq \big\{x\mid(x\in A\wedge x\in B)\vee x\in C\big\}\bigg) \]
+\[ \forall\ sets\ A,B,C \Bigg(\forall{z}\bigg(z\in \big\{y\mid y\in A \wedge
+  (y\in B\ \vee\ y\in C)\big\} \to z\in\big\{x\mid(x\in A\wedge x\in B)\vee x\in C\big\}\bigg)\Bigg) \]
+
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
   any questions, comments, or concerns, please contact me at
