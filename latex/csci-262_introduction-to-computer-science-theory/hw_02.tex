@@ -81,6 +81,31 @@ as possible.
 \end{itemize}
 
 \section*{Problem 3}
+Prove, in the following steps, that for any language \( L \), if
+\( L\circ L\subseteq L \) then \( L = \{\epsilon\} \) or \( L \) is
+infinite.
+\begin{enumerate}
+  \item Write the theorem using quantifiable logic, as in our previous
+    homework.
+    \[ (L\circ L\subseteq L)\to((L =
+      \{\epsilon\}) \vee L \text{ is infinite}) \]
+  \item Rewrite the following statement in quantifiable logic. For all natural
+    numbers \( n \), there exists an \( x \) in \( L \) such that \( |x|>n \).
+    Note that this is effectively what it means for \( L \) to be infinite.
+    \[ \forall{n}(n\in\N)\exists{x}(x\in L\wedge |x|>n) \]
+  \item Where appropriate, substitute into your answer in 1 for the definitions
+    of \( \circ,\subseteq \), and ``L is infinite''.
+    \[ \forall{x}((x\in L\circ L)\to(x\in L))\to((L =
+      \{\epsilon\})\vee(\forall{n}(n\in\N)\exists{x}(x\in L\wedge |x|>n))) \]
+  \item Write the following statements in predicate logic.
+    \begin{enumerate}
+      \item For any string \( x \), \( |x| = 0 \) if and only if
+        \( x = \epsilon \).
+        \[ \forall{x}(|x| = 0)\leftrightarrow(x = \epsilon) \]
+      \item For any strings \( x \) and \( y \), \( |xy| = |x|+|y| \).
+        \[ \forall{x}\forall{y}(|xy| = |x|+|y|) \]
+    \end{enumerate}
+\end{enumerate}
 
 \begin{center}
   If you have any questions, comments, or concerns, please contact me at
