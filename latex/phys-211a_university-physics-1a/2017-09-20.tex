@@ -1,0 +1,43 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\usepackage{tikz}
+
+\title{University Physics 1A}
+\author{Alvin Lin}
+\date{September 20th, 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Newton's Laws}
+
+\begin{enumerate}
+  \item The natural state of motion of an object is to move with
+    constant velocity (which could be zero), and a force is needed to
+    change that.
+  \item \( F_{net} = ma \)
+  \item \( F_{initial} = F_{final} \)
+\end{enumerate}
+We draw free body diagrams from a single dot. Example:
+\begin{center}
+  \begin{tikzpicture}
+    \draw[fill] (0,0) circle (0.1cm);
+    \draw[->] (0,0) -- (0,-2) node[left] {\( F_g \)};
+    \draw[->] (0,0) -- (0,1.5) node[above] {\( F_{air\ resistance} \)};
+    \draw[->] (0,0) -- (3,0) node[right] {\( F_{wind} \)};
+  \end{tikzpicture}
+\end{center}
+
+
+\section*{Reminders and Homework}
+Complete the homework on TheExpertTA and WebAssign. \\
+\textbf{Remember to bring the Activities Manual}
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
