@@ -1,0 +1,102 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\usepackage{listings}
+\lstset{basicstyle=\ttfamily\footnotesize,breaklines=true}
+
+\title{CSCI 251: Concepts of Parallel and Distributed Systems}
+\author{Alvin Lin}
+\date{September 18th, 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Topics}
+\begin{itemize}
+  \item Race conditions and mutexes
+  \item Overheads
+  \item Load balancing
+\end{itemize}
+
+\subsection*{Race Conditions}
+Suppose we are finding the number of primes in a given range. If we are
+checking if a number \( n \) is prime, we can check for factors up to
+\( \sqrt{n} \) as a simple optimization. If we have a function
+\texttt{isPrime(n)} to be distributed across 2 threads, we can divide \( n \)
+into two ranges for checking, one range being 3 to \( \frac{n}{2} \), and the
+second range being \( \frac{n}{2} \) to \( n \).
+\begin{lstlisting}
+#include <pthread.h>
+
+pthread_t t1,t1;
+struct prime_arg t1arg = {3,n/2};
+struct prime_arg t2arg = {n/2+1,n};
+pthread_create(&t1, NULL, prime_thread, &t1arg);
+pthread_create(&t2, NULL, prime_thread, &t2arg);
+...
+pthread_join(t1, NULL);
+pthread_join(t2, NULL);
+\end{lstlisting}
+Suppose these threads increment a \texttt{pcount} variable to count primes,
+a race condition can occur if two threads are trying to read and write to a
+single piece of memory at the same time (namely, the \texttt{pcount} variable).
+Race conditions cause unpredictable behavior.
+
+\subsection*{Mutex Locks}
+A mutex lock ensures that two threads cannot simultaneously attempt to update
+the \texttt{pcount} variable. When a thread acquires a lock, it ensures that
+operation to be performed is atomic.
+\begin{lstlisting}
+p_thread_mutex_lock(&mutex);
+pcount++;
+p_thread_mutex_unlock(&mutex);
+\end{lstlisting}
+This is a problem however, since the mutex becomes a bottleneck for the threads.
+We can remove the need for a mutex lock by having each thread maintain a local
+count and accumulating at the end.
+
+\subsection*{Load Balancing}
+In the previous example, dividing the input range \( n \) among two threads is
+a naive solution since one thread may finish first. This solution is not load
+balanced since one thread will be idle at the end of its set of operations.
+
+\subsection*{Programming Guidelines}
+
+\subsubsection*{Memory}
+Every memory location in your program must meet at least one
+of the following criteria:
+\begin{itemize}
+  \item Only one thread can access it.
+  \item It is immutable.
+  \item It is synchronized (locks are used to avoid race conditions).
+\end{itemize}
+
+\subsubsection*{Synchronization}
+\begin{itemize}
+  \item Avoid data races, use locks to prevent it.
+  \item Use consistent locking, each shared location that needs synchronization
+    should have a corresponding lock.
+  \item Coarse grained vs fine grained locks, you can lock memory locations
+    individually or lock the entire block, depending on your needs.
+  \item Critical sections, the cost of the critican section is given by the
+    time to execute the critical section and the resources used by the OS.
+\end{itemize}
+
+\section*{Reminders}
+The midterm is on October 11th.
+Refer to MyCourses for details on Project 1. \\
+
+\noindent Professor Mohan Kumar: \\
+\url{mjkvcs@rit.edu} \\
+\url{https://cs.rit.edu/~mjk} \\
+
+\noindent Rahul Dashora (TA): \\
+\url{rd5476@mail.rit.edu} \\
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
