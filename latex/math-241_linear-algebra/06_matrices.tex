@@ -1,0 +1,217 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\title{Linear Algebra}
+\author{Alvin Lin}
+\date{August 2017 - December 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Matrices}
+A \textbf{matrix} is a rectangular array of numbers. Example:
+\[ A_1 = \begin{bmatrix}1 & 2 \\ 3 & 4\end{bmatrix} \]
+\[ \begin{bmatrix}\sqrt{7} & 1 & 0 \\ 2 & 3\pi & \frac{3}{4}\end{bmatrix} \]
+\[ \begin{bmatrix}2 \\ 3 \\ 17\end{bmatrix} \text{(column matrix)} \]
+\[ \begin{bmatrix}1 & 1 & 0 & 1\end{bmatrix} \text{(row matrix)} \]
+An \( m\times n \) matrix has \( m \) rows and \( n \) columns.
+\[ A = \begin{bmatrix}
+  a_{11} & a_{12} & \dots & a_{1n} \\
+  a_{21} & a_{22} & \dots & a_{2n} \\
+  \vdots & \vdots & \vdots & \vdots \\
+  a_{m1} & a_{m2} & \dots a_{mn}
+\end{bmatrix} \]
+Columns of \( A \) are denoted as: \( \vec{a_1},\vec{a_2},\dots,\vec{a_n} \) \\
+Rows of \( A \) are denoted as: \( \vec{A_1},\vec{A_2},\dots,\vec{A_m} \).
+\[ A = \begin{bmatrix}\vec{a_1} & \vec{a_2} & \dots & \vec{a_n}\end{bmatrix} =
+  \begin{bmatrix}\vec{A_1} \\ \vec{A_2} \\ \vdots \\ \vec{A_m}\end{bmatrix} \]
+For any matrix \( A \), \( a_{ij} \) is the entry in row \( i \) and column
+\( j \).
+
+\subsection*{Special Matrices}
+\begin{enumerate}
+  \item \textbf{Square Matrix}: A matrix with the same number of row and
+    columns, an \( n \times n \) matrix.
+  \item \textbf{Diagonal Matrix}: A square matrix where every entry off the
+    diagonal is 0.
+    \[ \begin{bmatrix}1 & 0 & 0 \\ 0 & 2 & 0 \\ 0 & 0 & 3\end{bmatrix} \]
+  \item \textbf{Scalar Matrix}: A diagonal matrix where all entries on the
+    diagonal are equal.
+    \[ \begin{bmatrix}4 & 0 & 0 \\ 0 & 4 & 0 \\ 0 & 0 & 4\end{bmatrix} \]
+  \item \textbf{Identity Matrix}: A square matrix where \( a_{ii} = 1 \) for
+    \( 1\le i\le n \) is 1.
+    \[ I_2 = \begin{bmatrix}1 & 0 \\ 0 & 1\end{bmatrix} \]
+    \[ I_3 = \begin{bmatrix}1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1\end{bmatrix} \]
+  \item \textbf{Zero Matrix}: The matrix where all entries are 0.
+\end{enumerate}
+
+\subsection*{Matrix Equality}
+In order for matricies \( A \) and \( B \) to be equal, the sizes of \( A \) and
+\( B \) must agree, and all of the corresponding entries are equal.
+\begin{align*}
+  A &= \begin{bmatrix}
+    5 & 0 & 2 \\
+    4 & 1 & -2
+  \end{bmatrix} \\
+  B &= \begin{bmatrix}
+    5 & 0 & 2 \\
+    x & y & z
+  \end{bmatrix} \\
+  x &= 4 \quad y = 1 \quad z = -2 \\
+  B^T &= \begin{bmatrix}
+    5 & x \\
+    0 & y \\
+    2 & z
+  \end{bmatrix} \\
+  B^T &\ne B \\
+  B^T &\ne A \\
+  \begin{bmatrix}1 & 2 & 3\end{bmatrix} &\ne
+    \begin{bmatrix}1 \\ 2 \\ 3\end{bmatrix}
+\end{align*}
+
+\subsection*{Addition of Matrices}
+\[ A = [a_{ij}] \quad B = [b_{ij}] \]
+If \( A \) and \( B \) have the same sizes, let \( S = A+B \) where:
+\[ s_{ij} = a_{ij}+b_{ij} \]
+\textbf{Additive Identity}: Let \( 0_{m\times n} \) (or 0) denote the zero
+matrix:
+\begin{enumerate}
+  \item \( A+0 = A = 0+A \)
+  \item \( A+(-B) = A-B \)
+\end{enumerate}
+
+\subsubsection*{Example}
+\[ A = \begin{bmatrix}1 & 2 \\ 3 & 4\end{bmatrix} \quad
+  B = \begin{bmatrix}2 & 3 \\ 4 & 5 \\ 6 & 7\end{bmatrix} \]
+\( A+B \) is not defined in this case.
+\[ C = \begin{bmatrix}-1 & 4 \\ 2 & 3\end{bmatrix} \]
+\[ A+C = \begin{bmatrix}0 & 6 \\ 5 & 7\end{bmatrix} \]
+
+\subsection*{Scalar Multiplication}
+Let \( c \) be a scalar and \( A \) be a matrix:
+\[ cA = [ca_{ij}] \]
+
+\subsubsection*{Example}
+\[ 3\begin{bmatrix}2 & 3 \\ 4 & 5\end{bmatrix} =
+  \begin{bmatrix}6 & 9 \\ 12 & 15\end{bmatrix} \]
+
+\subsection*{Matrix Multiplication}
+Let \( A \) be an \( m\times n \) matrix and \( B \) be an \( n\times r \)
+matrix. \( A\times B = P \) is an \( m\times r \) matrix derived from
+the following:
+\[ P_{ij} = \vec{A_i}\cdot\vec{b_{j}} = \sum_{k=1}^{n}a_{ij}b_{kj} \]
+\[ A\times B = A\begin{bmatrix}\vec{b_1} & \vec{b_2} & \dots &
+  \vec{b_r}\end{bmatrix} = \begin{bmatrix}A\vec{b_1} & A\vec{b_2} & \dots
+  A\vec{b_r}\end{bmatrix} \]
+\[ A\times B = \begin{bmatrix}\vec{A_1} \\ \vec{A_2} \\ \vdots \\ \vec{A_m}
+  \end{bmatrix}B = \begin{bmatrix}\vec{A_1}B \\ \vec{A_2}B \\ \vdots \\
+  \vec{A_m}B\end{bmatrix} \]
+
+\subsubsection*{Example}
+\begin{align*}
+  A = \begin{bmatrix}1 & -2 \\ 3 & 2\end{bmatrix} \\
+  B = \begin{bmatrix}4 & 1 \\ -1 & 3\end{bmatrix} \\
+  A\times B &= \begin{bmatrix}
+    1(4)+(-2)(-1) & 1(1)+(-2)(3) \\
+    3(4)+(2)(-1) & (-2)(-1)+(2)(3) \\
+  \end{bmatrix} = \begin{bmatrix}6 & -5 \\ 10 & 9\end{bmatrix}
+\end{align*}
+
+\subsubsection*{Example}
+Consider the linear system:
+\begin{align*}
+  2x-3y+5z &= 7 \\
+  -3x+4y-6z &= 2 \\
+  4x+y-z &= 0
+\end{align*}
+As a matrix equation:
+\[ \begin{bmatrix}
+  2 & -3 & 5 \\
+  -3 & 4 & -6 \\
+  4 & 1 & -1
+\end{bmatrix}\begin{bmatrix}
+  x \\ y \\ z
+\end{bmatrix} = \begin{bmatrix}
+  7 \\ 2 \\ 0
+\end{bmatrix} \]
+\[ A\vec{x} = \vec{b} \]
+
+Recall the ``standard basis vectors'' \( \vec{e_i} \) where there is a 1 in
+the \( i \)th place and 0's elsewhere. Let \( \vec{e_i} \) be the \( i \)th
+standard column vector and \( \vec{e_j} \) be the standard row vector.
+\begin{align*}
+  A\vec{e_i} &= \vec{a_i} \\
+  \vec{e_j} &= \vec{A_j}
+\end{align*}
+
+\subsection*{Power of Matrices}
+Let \( A \) be a square matrix, look at:
+\[ A^k = A\times A\times\dots A \]
+By convention:
+\begin{align*}
+  A^0 &= I \\
+  A^1 &= A \\
+  A^k &= A^{k-1}A
+\end{align*}
+
+\subsubsection*{Example}
+Let:
+\[ A = \begin{bmatrix}1 & 1 \\ 1 & 1\end{bmatrix} \]
+Then:
+\begin{align*}
+  A^2 &= \begin{bmatrix}2 & 2 \\ 2 & 2\end{bmatrix} \\
+  A^3 &= A^2A = \begin{bmatrix}2 & 2 \\ 2 & 2\end{bmatrix}
+    \begin{bmatrix}1 & 1 \\ 1 & 1\end{bmatrix} =
+    \begin{bmatrix}4 & 4 \\ 4 & 4\end{bmatrix} \\
+  A^4 &= A^3A = \begin{bmatrix}4 & 4 \\ 4 & 4\end{bmatrix}
+    \begin{bmatrix}1 & 1 \\ 1 & 1\end{bmatrix} =
+    \begin{bmatrix}8 & 8 \\ 8 & 8\end{bmatrix} \\
+  A^n &= \begin{bmatrix} 2^{n-1} & 2^{n-1} \\ 2^{n-1} & 2^{n-1}\end{bmatrix}
+\end{align*}
+Proof by Induction:
+\begin{itemize}
+  \item Base Case:
+  \[ A^1 = \begin{bmatrix}1 & 1 \\ 1 & 1\end{bmatrix} =
+    \begin{bmatrix}2^0 & 2^0 \\ 2^0 & 2^0\end{bmatrix} \]
+  \item Induction Step: Assume it is true for \( n \), prove:
+  \begin{align*}
+    A^{n+1} &= \begin{bmatrix}2^n & 2^n \\ 2^n & 2^n\end{bmatrix} \\
+    A^{n+1} &= A^nA \\
+    &= \begin{bmatrix}2^{n-1} & 2^{n-1} \\ 2^{n-1} & 2^{n-1}\end{bmatrix}
+      \begin{bmatrix}1 & 1 \\ 1 & 1\end{bmatrix} \\
+    &= \begin{bmatrix}2^{n-1}2^{n-1} & 2^{n-1}2^{n-1} \\
+      2^{n-1}2^{n-1} & 2^{n-1}2^{n-1}\end{bmatrix} \\
+    &= \begin{bmatrix}2^n & 2^n \\ 2^n & 2^n\end{bmatrix}
+  \end{align*}
+\end{itemize}
+
+\subsection*{Transpose of a Matrix}
+\( A^T \) will denote the \textbf{transpose} of \( A \). The row \( i \),
+column \( j \) entry of \( A^T = a_{ji} \):
+\begin{align*}
+  A &= \begin{bmatrix}1 & 2 & 3 \\ 4 & 5 & 6\end{bmatrix} \\
+  A^T &= \begin{bmatrix}1 & 4 \\ 2 & 5 \\ 3 & 6\end{bmatrix}
+\end{align*}
+If \( A \) is not square: \( A^T \ne A \) \\
+Recall that the dot product \( \vec{u}\cdot\vec{v} \) is equal to:
+\begin{align*}
+  \vec{u}\cdot\vec{v} &= \sum_{i=1}^{n}u_iv_i \\
+  &= \begin{bmatrix}u_1 & u_2 & \dots & u_n\end{bmatrix}\cdot
+    \begin{bmatrix}v_1 \\ v_2 \\ \vdots \\ v_n\end{bmatrix} \\
+  &= \vec{u^T}\vec{v}
+\end{align*}
+
+\subsection*{Symmetric Matrices}
+A square matrix \( A \) is \textbf{symmetric} if \( A = A^T \). Example:
+\[ I_2 = \begin{bmatrix}1 & 0 \\ 0 & 1\end{bmatrix}\quad
+  I_2^T = \begin{bmatrix}1 & 0 \\ 0 & 1\end{bmatrix} \]
+\( I_2^T = I_2 \), therefore \( I_2 \) is symmetric. \( I_n \) is also
+symmetric.
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
