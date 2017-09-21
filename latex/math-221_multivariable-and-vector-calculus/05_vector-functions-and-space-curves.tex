@@ -63,6 +63,78 @@ Given a surface \( S \) such that the curve \( \vec{r(t)} = \langle t^2,\ln(t),
   x-\e^{2\ln(t)} = 0
 \end{align*}
 
+\subsubsection*{Example}
+Find the length of the arc of the curve \( \overrightarrow{\vec{r(t)}} =
+\langle t^2,9t,4t^\frac{3}{2}\rangle \quad 1\le t\le 4 \):
+\begin{align*}
+  L &= \int_{1}^{4}|\langle2t,9,4\frac{3}{2}\sqrt{t}\rangle|\diff{t} \\
+  &= \int_{1}^{4}\sqrt{4t^2+81+36t}\diff{t} \\
+  &= \int_{1}^{4}2t+9\diff{t} \\
+  &= t^2+9\bigg]^{4}_{1}
+\end{align*}
+
+\subsubsection*{Example}
+Find a point on \( \overrightarrow{\vec{r(t)}} = \langle3\sin(t),4t,3\cos(t)
+\rangle \) 5 units from (0,0,3) in the direction of increasing \( t \).
+\begin{align*}
+  L &= 5 \\
+  &= \int_{0}^{\tau}|\langle3\cos(t),4,-3\sin(t)\rangle|\diff{t} \\
+  &= \int_{0}^{\tau}\sqrt{9\cos^2(t)+16+9\sin^2(t)}\diff{t} \\
+  &= \int_{0}^{\tau}\sqrt{9(\cos^2(t)+\sin^2(t))16}\diff{t} \\
+  &= \int_{0}^{\tau}\sqrt{9+16}\diff{t} \\
+  &= \int_{0}^{\tau}5\diff{t} \\
+  &= 5t\bigg]_{t=0}^{t=\tau} \\
+  &= 5\tau \\
+  \tau &= 1 \\
+  P &= \big(3\sin(1),4,3\cos(1)\big)
+\end{align*}
+
+\subsubsection*{Example}
+Given:
+\begin{align*}
+  \overrightarrow{v(0)} &= \langle1,0,-4\rangle \\
+  \overrightarrow{v'(0)} &= \langle0,0,-1\rangle \\
+  \overrightarrow{v''(t)} &= \langle\sin(t),2\cos(t),6t\rangle \\
+\end{align*}
+Find \( \overrightarrow{\vec{v(t)}} \):
+\begin{align*}
+  \overrightarrow{v'(t)} &= \langle-\cos(t)+c_1,2\sin(t)+c_2,3t^2+c_3
+    \rangle = \langle0,0,-1\rangle \\
+  \therefore & \quad c_1 = 1 \quad c_2 = 0 \quad c_3 = -1 \\
+  \overrightarrow{v'(t)} &= \langle-\cos(t)+1,2\sin(t),3t^2-1\rangle \\
+  \overrightarrow{v(t)} &= \langle-\sin(t)+t+c_1,-2\cos(t)+c_2,t^3-t+c_3
+    \rangle = \langle1,0,-4\rangle \\
+  \therefore & \quad c_1 = 1 \quad c_2 = 2 \quad c_3 = -4 \\
+  \overrightarrow{v(t)} &= \langle-\sin(t)+t+1,-2\cos(t)+2,t^3-t-4\rangle
+\end{align*}
+
+\subsubsection*{Example}
+A bullet fired at an angle of \( 30^{\circ} \) to the horizontal lands 1600ft
+away. Find \( v_{\circ} \). \\
+Newton's Second Law:
+\begin{align*}
+  \vec{F} &= m\vec{a} \\
+  &\equiv m\vec{v''} = \langle0,-mg\rangle \\
+  \text{Assume } m = 1 \\
+  &\equiv \overrightarrow{v''(t)} = \langle0,-g\rangle \\
+  &= \langle c_1,-gt+c_2\rangle = \langle
+    v_{\circ}\cos(30),v_{\circ}\cos(60)\rangle \text{ at } t = 0 \\
+  \therefore & \quad c_1 = \frac{v_{\circ}\sqrt{3}}{2} \quad
+    c_2 = \frac{v_{\circ}}{2} \\
+  \overrightarrow{v''(t)} &= \langle\frac{v_{\circ}\sqrt{3}}{2},-gt+
+    \frac{v_{\circ}}{2}\rangle \\
+  \overrightarrow{v(t)} &= \langle\frac{v_{\circ}\sqrt{3}}{2}t+c_1,-gt+
+    \frac{v_{\circ}t}{2}+c_2\rangle = \langle0,0\rangle \\
+  \therefore & \quad c_1 = 0 \quad c_2 = 0 \\
+  \overrightarrow{v(t)} &= \langle\frac{v_{\circ}\sqrt{3}}{2}t,
+    \frac{-gt^2}{2}+\frac{v_{\circ}}{2}t\rangle = \langle0,0\rangle \\
+  \frac{-gt^2}{2}+\frac{v_{\circ}}{2}t &= 0 \\
+  \therefore t &= \frac{v_{\circ}}{g} \\
+  \frac{v_{\circ}\sqrt{3}}{2}t &= 1600 \\
+  \frac{v_{\circ}\sqrt{3}}{2}\frac{v_{\circ}}{g} &= 1600 \\
+  v_{\circ} &= \sqrt{\frac{3200g}{\sqrt{3}}}
+\end{align*}
+
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
   any questions, comments, or concerns, please contact me at
