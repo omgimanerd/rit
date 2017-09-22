@@ -1,0 +1,73 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\usepackage{tikz}
+
+\title{University Physics 1A}
+\author{Alvin Lin}
+\date{September 22nd, 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Modified Atwood Machine}
+Two masses (cart \( m_A \), hanging block \( m_B \)) are connected by an ideal
+string passing over an ideal pulley, as shown. Note that an ``ideal string'' has
+the same tension force \( T \) everywhere along its length, but that force pulls
+to the right on sliding cart \( m_A \) and up on the hanging mass \( m_B \).
+Assume that the friction on the horizontal surface is negligible. Figure
+out the forces acting on the cart. Fill in the table.
+\begin{center}
+  \begin{tabular}{|c|c|c|}
+    \hline
+    \textbf{Name of force on cart} & \textbf{x-component} &
+      \textbf{y-component} \\ \hline
+    gravity & 0 & \( -m_Ag \) \\ \hline
+    normal & 0 & \( N \) \\ \hline
+    tension & \( T \) & 0 \\ \hline
+    total & \( T \) & \( N-m_Ag \) \\ \hline
+  \end{tabular}
+\end{center}
+Now do the same for the forces acting on the weight.
+\begin{center}
+  \begin{tabular}{|c|c|c|}
+    \hline
+    \textbf{Name of force on weight} & \textbf{x-component} &
+      \textbf{y-component} \\ \hline
+    gravity & 0 & \( -m_Bg \) \\ \hline
+    tension & 0 & \( T \) \\ \hline
+    total & 0 & \( T-m_Bg \) \\ \hline
+  \end{tabular}
+\end{center}
+Apply Newton's Second Law. You should end up with a set of two useful
+equations.
+\[ T = m_Aa_A \]
+\[ T-m_Bg = m_Ba_B \]
+Combine the equations to eliminate variables:
+\begin{align*}
+  T &= m_Aa_A \\
+  T-m_Bg &= m_Ba_B \\
+  m_Aa-m_Bg &= -m_Ba \\
+  m_Aa+m_Ba &= m_Bg \\
+  a(m_A+m_B) &= m_Bg \\
+  a &= \frac{m_B}{m_A+m_B}g
+\end{align*}
+
+\section*{Friction}
+Kinetic Friction:
+\[ F_{kinetic} = \mu_kN \]
+\( \mu_k \) is the coefficient of kinetic friction. \\
+Static friction is as large as it needs to be to stop motion.
+\[ F_{static} = \mu_sN \]
+
+\section*{Reminders and Homework}
+Complete the homework on TheExpertTA and WebAssign. \\
+\textbf{Remember to bring the Activities Manual}
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
