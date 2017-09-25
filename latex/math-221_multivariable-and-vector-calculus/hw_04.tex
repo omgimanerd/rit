@@ -1,0 +1,122 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\usepackage{tikz}
+
+\geometry{letterpaper, margin=0.5in}
+
+\title{Multivariable and Vector Calculus: Homework 4}
+\author{Alvin Lin}
+\date{August 2016 - December 2016}
+
+\begin{document}
+
+\maketitle
+
+\section*{Section 13.3}
+
+\subsubsection*{Exercise 3}
+Find the length of the curve.
+\[ \overrightarrow{r(t)} = \sqrt{2}t\i+\e^t\j+\e^{-t}\k \quad 0\le t\le 1 \]
+\begin{align*}
+  L &= \int_{0}^{1}|\langle\sqrt{2},\e^t,-\e^{-t}\rangle|\diff{t} \\
+  &= \int_{0}^{1}\sqrt{2+\e^{2t}+\e^{-2t}}\diff{t} \\
+  &= \int_{0}^{1}\sqrt{(\e^t+\e^{-t})^2}\diff{t} \\
+  &= \e^t-\e^{-t}\bigg]_{0}^{1} \\
+  &= \e-\frac{1}{\e}-(1-1) \\
+  &= \e-\frac{1}{\e}
+\end{align*}
+
+\subsubsection*{Exercise 5}
+Find the length of the curve.
+\[ \overrightarrow{r(t)} = \i+t^2\j+t^3\k \quad 0\le t\le 1 \]
+\begin{align*}
+  L &= \int_{0}^{1}|\langle0,2t,3t^2\rangle|\diff{t} \\
+  &= \int_{0}^{1}\sqrt{0+4t^2+9t^4}\diff{t} \\
+  &= \int_{0}^{1}\sqrt{t^2}\sqrt{9t^2+4}\diff{t} \\
+  &= \int_{0}^{1}t\sqrt{9t^2+4}\diff{t} \\
+  Let &: u = 9t^2+4 \\
+  \diff{u} &= 18t\diff{t} \\
+  &= \int_{4}^{13}t\sqrt{u}\frac{\diff{u}}{18t} \\
+  &= \frac{1}{18}\int_{4}^{13}\sqrt{u}\diff{u} \\
+  &= \frac{1}{18}\frac{2}{3}u^{\frac{3}{2}}\bigg]_{4}^{13} \\
+  &= \frac{1}{27}(13^{\frac{3}{2}}-4^{\frac{3}{2}}) \\
+  &= \frac{1}{27}(13^{\frac{3}{2}}-8)
+\end{align*}
+
+\section*{Section 13.4}
+
+\subsubsection*{Exercise 11}
+Find the velocity, acceleration, and speed of a particle with the given position
+function.
+\[ \overrightarrow{r(t)} = \sqrt{2}t\i+\e^t\j+\e^{-t}\k \]
+\begin{align*}
+  \overrightarrow{r'(t)} &= \sqrt{2}\i+\e^t\j-\e^{-t}\k \\
+  \overrightarrow{r''(t)} &= \e^t\j+\e^{-t}\k
+\end{align*}
+
+\subsubsection*{Exercise 15}
+Find the velocity and position vectors of a particle that has the given
+acceleration and the given initial velocity and position.
+\[ \overrightarrow{a(t)} = 2\i+2t\k \quad \overrightarrow{v(0)} = 3\i-\j \quad
+  \overrightarrow{r(0)} = \j+\k \]
+\begin{align*}
+  \overrightarrow{v(t)} &= (2t+c_1)\i+c_2\j+(t^2+c_3)\k \\
+  \overrightarrow{v(0)} &= 3\i-\j \\
+  \overrightarrow{v(t)} &= (2t+3)\i-\j+t^2\k \\
+  \overrightarrow{r(t)} &= (t^2+3t+c_1)\i+(-t+c_2)\j+(\frac{t^3}{3}+c_3)\k \\
+  \overrightarrow{r(0)} &= \j+\k \\
+  \overrightarrow{r(t)} &= (t^2+3t)\i+(-t+1)\j+(\frac{t^3}{3}+1)\k
+\end{align*}
+
+\subsubsection*{Exercise 23}
+A projectile is fired with an initial speed of 200m/s and angle of elevation
+\( 60^{\circ} \). Find the range of the projectile, the maximum height reached,
+and the speed at impact.
+\begin{align*}
+  d_y &= y_{\circ}+v_{y\circ}t+\frac{1}{2}at^2 \\
+  0 &= 0+200\sin(60)t-\frac{1}{2}(9.8)t^2 \\
+  t &= 0 \quad t = 35.347s \\
+  d_x &= x_{\circ}+v_{x\circ}+\frac{1}{2}at^2 \\
+  &= 200\c7s(60)(35.347) \\
+  &= 3534.1m \\
+  v_{yf} &= v_{yi}+at \\
+  0 &= 200\sin(60)-(9.8)t \\
+  t &= 17.674s \\
+  d_y &= 0+200\sin(60)(17.674)-\frac{1}{2}(9.8)(17.674^2) \\
+  &= 1530.6m \\
+  v_f &= 200m/s
+\end{align*}
+
+\subsubsection*{Exercise 25}
+A ball is thrown at an angle of \( 45^{\circ} \) to the ground. If the ball
+lands 90m away, what was the initial speed of the ball?
+\begin{align*}
+  d_x &= x_{\circ}+v_{x\circ}t+\frac{1}{2}at^2 \\
+  90 &= 0+v\cos(45)t \\
+  t &= \frac{90}{v\cos(45)} \\
+  d_y &= y_{\circ}+v_{y\circ}t+\frac{1}{2}at^2 \\
+  0 &= 0+v\sin(45)t-4.9t^2 \\
+  &= v\sin(45)\frac{90}{v\cos(45)}-4.9(\frac{90}{v\cos(45)})^2 \\
+  \frac{(4.9)(90^2)}{v^2\cos^2(45)} &= \frac{90\sin(45)}{\cos(45)} \\
+  \frac{(4.9)(90)}{v^2\cos(45)} &= \sin(45) \\
+  v &= \sqrt{\frac{(4.9)(90)}{\cos(45)\sin(45)}} \\
+  &= 29.69m/s
+\end{align*}
+
+\subsubsection*{Exercise 27}
+A rifle is fired with angle of elevation \( 36^{\circ} \). What is the muzzle
+speed if the maximum height of the bullet is 1600ft.
+\begin{align*}
+  (v_{yf})^2 &= (v_{yi})^2+2ad \\
+  0 &= (v_{yi})^2-2(9.8)(1600) \\
+  v_{yi} &= 177.08m/s \\
+  v\sin(36) &= 177.08m.s \\
+  v &= \frac{177.08m/s}{\sin(36)} = 301.27m/s
+\end{align*}
+
+\begin{center}
+  If you have any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
