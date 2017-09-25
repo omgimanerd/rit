@@ -1,0 +1,208 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\usepackage{listings}
+\lstset{basicstyle=\ttfamily\footnotesize,breaklines=true}
+
+\title{Analysis of Algorithms}
+\author{Alvin Lin and William Leuschner}
+\date{September 10th, 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Problem 1}
+
+\subsubsection*{Algorithm Description}
+For this problem, we used two passes over the array of heights to determine
+the maximum possible volume of the reservoir. One pass would start left to
+right, and the other pass would sweep right to left. Each pass kept track of
+the highest point that it passed over and added the difference between the
+subsequent lower points to the volume. If the pass reached a point higher than
+the apex that it was tracking, it designated the end of a reservoir, and the
+summed volume would be added to a heap for tracking.
+
+\subsubsection*{Argument of Correctness}
+There are three possible ways for a reservoir to exist, the left wall can be
+higher than the right, the left wall can be lower than the right, or they can
+be equal. A left to right pass of this algorithm is able to determine the
+volume of all the reservoirs as long as the right side of the reservoir is
+higher than or equal to the left side. A right to left pass has the opposite
+condition, so by making two passes, we are able to determine the sizes of all
+the reservoirs.
+
+\subsubsection*{Running Time Estimate}
+This algorithm requires two passes through the heights, so the execution time is
+a constant \( 2n \), or \( O(n) \).
+
+\subsubsection*{Pseudocode}
+\begin{lstlisting}
+def getMaxReservoirVolume(data);
+  let highestVolume = 0
+  let currentVolumeLTR = 0
+  let currentVolumeRTL = 0
+  let currentApexLTR = data[0]
+  let currentApexRTL = data[data.length - 1]
+  for i=1 to data.length:
+    let LTRelement = data[i]
+    let RTLelement = data[data.length - i - 1]
+    if LTRelement > currentApexLTR:
+      currentApexLTR = LTRelement
+      highestVolume = max(highestVolume, currentVolumeLTR)
+      currentVolumeLTR = 0
+    else:
+      currentVolumeLTR += currentApexLTR - LTRelement
+    if RTLelement > currentApexRTL:
+      currentApexRTL = RTLelement
+      highestVolume = max(highestVolume, currentVolumeRTL)
+      currentVolumeRTL = 0
+    else:
+      currentVolumeRTL += currentApexRTL - RTLelement
+  return highestVolume
+\end{lstlisting}
+
+\section*{Problem 2}
+Consider the divide-and-conquer algorithm in Figure 1 that assumes access to
+a global string \( s \) of lower-case letters, where \( s[i] \) refers to
+the \( i \)-th character of \( s \).
+\begin{enumerate}
+  \item State the recurrence for \( T(n) \) that captures the running time of
+  the algorithm as closely as possible.
+  \[ O(n) \]
+  \item Use the ``unrolling the recurrence'' or the mathematical induction
+  technique to find a tight bound on \( T(n) \).
+  \begin{align*}
+    T(1) &= 1 \\
+    T(n) &= 2T\left(\frac{n}{2}\right)+c \\
+    &= 2\left(2T\left(\frac{n}{4}\right)+c\right)+c \\
+    &= 2\left(2\left(2T\left(\frac{n}{8}\right)+c\right)+c\right)+c \\
+    &= 2^kT\left(\frac{n}{2^k}\right)+kc \\
+    & \text{stops when } \frac{n}{2^k} = 1 \equiv k = \log(n) \\
+    &= 2^{\log(n)}T(1)+c\log(n) \\
+    &= n+c\log(n) \\
+    &= O(n+\log(n)) \\
+    &= O(n)
+  \end{align*}
+  \item What does the algorithm do? \\
+  \texttt{maxdif} contains the length of the largest contiguous group of
+  consonants. \\
+  \texttt{dif} contains the difference between the number of consonants and
+  the number of vowels in string \( s \). \\
+
+\end{enumerate}
+
+\section*{Problem 3}
+
+\subsubsection*{Algorithm Description}
+For this problem, we represented each number in the array as a tuple containing
+the number's value and the index of its original position. We then ran a merge
+sort on the array. Each merge operation was a subproblem that could be handled
+the same way in order to count the weight of the inversions. When merge sorting
+two lists, hereafter referred to as \( left \) and \( right \), pulling a number
+from the left list into the result means that there was no inversion. Pulling a
+number from the right list means that number has an inversion with every number
+on the left list. Essentially, the number of inversions is incremented by the
+size of the left list each time we pull from the right list for every merge
+operation. \par
+We made a modification to this algorithm to count the weight of the inversions
+instead of the number of inversions by precomputing the sum of all the elements
+in the left list. For this problem, we needed to find the difference in indices
+between the right element and ALL the elements in the left list every time we
+pulled from the left list. Let \( l_1,l_2,\dots,l_n \) be the original indices
+of the elements in the left list, and let \( r \) be the original index of the
+element in the right list which we are pulling out. Each time we pull out an
+element from the right, we need to compute the following in order to get the
+total weight all the inversions:
+\begin{align*}
+  (r-l_1)+(r-l_2)+\dots+(r-l_n) &= \sum_{i=1}^{n}r-l_n \\
+  &= \sum_{i=1}^{n}r-\sum_{i=1}^{n}l_n \\
+  &= rn-\sum_{i=1}^{n}l_n
+\end{align*}
+Before we begin the merging, we can compute \( \sum_{i=1}^{n}l_n \) simply by
+summing up all the numbers in the left list. Each time we pull from the right
+list, we multiply the right number's original index by the size of the
+left list and subtract our precomputed sum to get the weight of all the
+inversions. Each time we pull from the list list, we subtract that number's
+value from the precomputed sum so that it remains equal to the sum of all
+the numbers in the left list. By making this calculation during each merge
+operation and summing up all the results, we will have the total weight of
+all the inversions when the list has been fully sorted.
+
+\subsubsection*{Argument of Correctness}
+During each merge operation, we are guaranteed that the left and right lists
+are sorted due to the recursive nature of the merge sort algorithm. Since a
+merge sort is also stable, this allows us to keep track of the number of times
+a number is ``swapped'' when we pull from the right list. Each time a number
+is swapped, we know it is inverted with every element in the left list, and
+we can use this to sum up whatever information we need about the inversions.
+
+\subsubsection*{Running Time Estimate}
+The merge sort is \( O(n\log n) \), and since we are precomputing the
+sum of the left side before each merge operation, we can compute the weight
+of the inversions during the merge in constant time. This makes the entire
+algorithm \( O(n\log n) \).
+
+\subsubsection*{Pseudocode}
+\begin{lstlisting}
+def calculateWeightedInversions(data):
+  let inversions = 0
+
+  def merge(left, right):
+    let leftSum = sum([e.index for e in left])
+    let result = []
+    while left.length + right.length < result.length:
+      if left.length == 0:
+        result.push(right.pop())
+      elif right.length == 0:
+        result.push(left.pop())
+      elif left.peek().index > right.peek().index:
+        inversions += left.length * right.peek().index - leftSum
+        result.push(right.pop())
+      else:
+        leftSum -= left.peek().value
+        result.push(left.pop())
+    return result
+
+  def mergeSort(data):
+    if data.length == 1:
+      return data
+    let middle = data.length / 2
+    return merge(data[:middle], data[middle + 1:])
+
+  mergeSort(data)
+  return inversions
+\end{lstlisting}
+
+\section*{Problem 4}
+For each the following recurrences, use the Master theorem to express \( T(n) \)
+as a Theta of a simple function. State what the corresponding values of \( a \),
+\( b \), and \( f(n) \) are and how you determined which case of the theorem
+applies. Do not worry about the base case or rounding.
+\begin{enumerate}
+  \item \( T(n) = 9T(\frac{n}{3})+n^3 \)
+  \begin{align*}
+    a &= 9 \\
+    b &= 3 \\
+    f(n) &= n^3 \\
+    n^3 &= O(n^{\frac{\log9}{\log3}-\epsilon})\quad \epsilon > 0 \\
+    \therefore T(n) &= \Theta(n^{\frac{\log9}{\log3}}\log n) \\
+    &= \Theta(n^2\log n)
+  \end{align*}
+  \item \( T(n) = \frac{3}{2}T(\frac{2n}{3})+3 \)
+  \begin{align*}
+    a &= \frac{3}{2} \\
+    b &= \frac{3}{2} \\
+    f(n) &= 3 \\
+    f(n) &= O(n) \\
+    \therefore T(n) &= \Theta(n)
+  \end{align*}
+  \item \( T(n) = 2T(\frac{n}{4}) + \sqrt{n} \)
+  \begin{align*}
+    a &= 2 \\
+    b &= 4 \\
+    f(n) &= \sqrt{n} \\
+    \therefore T(n) &= \Theta(\sqrt{n}\log n)
+  \end{align*}
+\end{enumerate}
+
+\end{document}
