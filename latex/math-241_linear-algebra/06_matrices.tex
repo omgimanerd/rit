@@ -208,6 +208,133 @@ A square matrix \( A \) is \textbf{symmetric} if \( A = A^T \). Example:
 \( I_2^T = I_2 \), therefore \( I_2 \) is symmetric. \( I_n \) is also
 symmetric.
 
+\subsubsection*{Example}
+Compute \( A^2,A^3,\dots,A^7 \) when:
+\[ A = \begin{bmatrix}0 & 1 \\ -1 & 1\end{bmatrix} \]
+\begin{align*}
+  A^2 &= \begin{bmatrix}-1 & 1 \\ -1 & 0\end{bmatrix} \\
+  A^3 &= \begin{bmatrix}-1 & 0 \\ 0 & -1\end{bmatrix} \\
+  A^4 &= \begin{bmatrix}0 & -1 \\ 1 & -1\end{bmatrix} \\
+  A^5 &= \begin{bmatrix}1 & -1 \\ 1 & 0\end{bmatrix} \\
+  A^6 &= \begin{bmatrix}1 & 0 \\ 1 & 0\end{bmatrix} = I_2 \\
+  A^7 &= A^1 \\
+\end{align*}
+Compute \( A^{2015} \):
+\begin{align*}
+  A^{2015} &= A^{6(370)+5} \\
+  &= (A^6)^{370}A^5 \\
+  &= (I_2)^{370}A^5 \\
+  &= \begin{bmatrix}1 & -1 \\ 1 & 0\end{bmatrix}
+\end{align*}
+
+\subsubsection*{Example}
+Examine:
+\[ A = \begin{bmatrix}1 & 1 \\ 0 & 1\end{bmatrix} \]
+Find a formula for \( A^n \) and prove it is true.
+\begin{align*}
+  A^2 &= \begin{bmatrix}1 & 2 \\ 0 & 1\end{bmatrix} \\
+  A^3 &= \begin{bmatrix}1 & 3 \\ 0 & 1\end{bmatrix} \\
+  A^4 &= \begin{bmatrix}1 & 4 \\ 0 & 1\end{bmatrix} \\
+  A^n &= \begin{bmatrix}1 & n \\ 0 & 1\end{bmatrix}
+\end{align*}
+Base Case (\(n = 1\)):
+\[ A^1 = \begin{bmatrix}1 & 1 \\ 0 & 1\end{bmatrix} \]
+Induction Step: Assume it is true for \( n \). Prove it is true for \( n+1 \).
+Show that:
+\begin{align*}
+  A^{n+1} &= \begin{bmatrix}
+    1 & n+1 \\
+    0 & 1
+  \end{bmatrix} \\
+  A^{n+1} &= A^n\times A \\
+  &= \begin{bmatrix}
+    1 & n \\
+    0 & 1
+  \end{bmatrix}\times\begin{bmatrix}
+    1 & 1 \\
+    0 & 1
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    1 & n+1 \\
+    0 & 1
+  \end{bmatrix}
+\end{align*}
+
+\subsubsection*{Example}
+\[ A = \begin{bmatrix}
+  \cos\theta & -\sin\theta \\
+  \sin\theta & \cos\theta
+\end{bmatrix} \]
+Show that:
+\[ A^2 = \begin{bmatrix}
+  \cos2\theta & -\sin2\theta \\
+  \sin2\theta & \cos2\theta
+\end{bmatrix} \]
+\begin{align*}
+  A\times A &= \begin{bmatrix}
+    \cos\theta & -\sin\theta \\
+    \sin\theta & \cos\theta
+  \end{bmatrix}\begin{bmatrix}
+    \cos\theta & -\sin\theta \\
+    \sin\theta & \cos\theta
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    \cos^2\theta-\sin^2\theta & -\cos\theta\sin\theta-\sin\theta\cos\theta \\
+    \sin\theta\cos\theta+\cos\theta\sin\theta & -\sin^2\theta+\cos^2\theta
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    \cos(\theta+\theta) & -\sin(\theta+\theta) \\
+    \sin(\theta+\theta) & \cos(\theta+\theta)
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    \cos(2\theta) & -\sin(2\theta) \\
+    \sin(2\theta) & \cos(2\theta)
+  \end{bmatrix}
+\end{align*}
+Prove that:
+\[ A^n = \begin{bmatrix}
+  \cos(n\theta) & -\sin(n\theta) \\
+  \sin(n\theta) & \cos(n\theta)
+\end{bmatrix} \]
+Base Case (\( n = 1 \)): Obvious. \\
+Induction Step: Assume it is true for \( n \). Prove it is true for \( n+1 \):
+\begin{align*}
+  A^{n+1} &= A^nA \\
+  &= \begin{bmatrix}
+    \cos(n\theta) & -\sin(n\theta) \\
+    \sin(n\theta) & \cos(n\theta)
+  \end{bmatrix}\begin{bmatrix}
+    \cos\theta & -\sin\theta \\
+    \sin\theta & \cos\theta
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    \cos(n\theta)\cos(\theta)-\sin(n\theta)\sin(\theta) &
+      \cos(n\theta)(-\sin(\theta))-\sin(n\theta)\cos(\theta) \\
+    \sin(n\theta)\cos(\theta)+\cos(n\theta)\sin(\theta) &
+      -\sin(n\theta)\sin(\theta)+\cos(n\theta)\cos(\theta)
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    \cos(n\theta+\theta) & -\sin(n\theta+\theta) \\
+    \sin(n\theta+\theta) & \cos(n\theta+\theta)
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    \cos((n+1)\theta) & -\sin((n+1)\theta) \\
+    \sin((n+1)\theta) & \cos((n+1)\theta)
+  \end{bmatrix}
+\end{align*}
+
+\subsubsection*{Example}
+Prove that every subset of a lienarly independent subset is linearly
+independent. Let \( S \) be a set of linearly independent vectors.
+\[ S = \{\vec{v_1},\vec{v_2},\dots,\vec{v_m}\} \]
+Let \( S' = \{\vec{v_1},\dots,\vec{v_k}\} \quad k\le m \).
+\begin{align*}
+  \vec{0} &= c_1\vec{v_1}+c_2\vec{v_2}+\dots+c_k\vec{v_k} \\
+  &= c_1\vec{v_1}+c_2\vec{v_2}+\dots+c_k\vec{v_k}+
+    c_{k+1}\overrightarrow{v_{k+1}}+\dots+c_m\vec{v_m} \\
+  c_1 &= c_2 = \dots = c_k = c_{k+1} = \dots = c_m = 0
+\end{align*}
+
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
   any questions, comments, or concerns, please contact me at

@@ -110,6 +110,112 @@ linearly independent or linearly dependent?
   \begin{bmatrix}0 \\ 0\end{bmatrix} \]
 This has a unique solution, so \( \vec{v},\vec{w} \) are linearly independent.
 
+\subsubsection*{Example}
+The general equation of the plane contains points (1,0,3), (-1,1,-3), and the
+origin. It has equation \( ax+by+cz = 0 \). Find \( a,b,c \).
+\begin{align*}
+  a(1)+3c &= 0 \\
+  a(-1)+1b-3c &= 0 \\
+  \left[\begin{array}{ccc|c}
+    1 & 0 & 3 & 0 \\
+    -1 & 1 & -3 & 0 \\
+  \end{array}\right] &= \left[\begin{array}{ccc|c}
+    1 & 0 & 3 & 0 \\
+    0 & 1 & 0 & 0
+  \end{array}\right] \\
+  a+3c &= 0 \\
+  a &= -3c \\
+  b &= 0 \\
+  -3cx+cz &= 0 \\
+  -3x+z &= 0
+\end{align*}
+
+\subsubsection*{Example}
+Prove that \( \vec{u},\vec{v},\vec{w}\in span(\vec{u},\vec{v},\vec{w}) \).
+\begin{align*}
+  \vec{u} &= 1\vec{u}+0\vec{v}+0\vec{w} \\
+  \vec{v} &= 0\vec{u}+1\vec{v}+0\vec{w} \\
+  \vec{w} &= 0\vec{u}+0\vec{v}+1\vec{w} \\
+  \vec{u},\vec{v},\vec{w} &\in span(\vec{u},\vec{v},\vec{w})
+\end{align*}
+
+\subsubsection*{Example}
+Prove that \( \vec{u},\vec{v},\vec{w}\in span(\vec{},\vec{u}+\vec{v},\vec{u}+
+\vec{v}+\vec{w}) \).
+\begin{align*}
+  \vec{u} &= 1\vec{u}+0(\vec{u}+\vec{v})+0(\vec{u}+\vec{v}+\vec{w}) \\
+  \vec{v} &= -1\vec{u}+1(\vec{u}+\vec{v})+0(\vec{u}+\vec{v}+\vec{w}) \\
+  \vec{w} &= 0\vec{u}-1(\vec{u}+\vec{v})+1(\vec{u}+\vec{v}+\vec{w}) \\
+  \vec{u},\vec{v},\vec{w} &\in
+    span(\vec{u},\vec{u}+\vec{v},\vec{u}+\vec{v}+\vec{w})
+\end{align*}
+
+\subsection*{Useful Fact}
+Suppose we have \( m \) vectors in \( \R^n \), where \( m > n \). Those vectors
+are linearly dependent.
+\[ A = \begin{bmatrix}\vec{v_1} & \vec{v_2} & \dots & \vec{v_m}\end{bmatrix} \]
+Examine: \( A\vec{x} = \vec{0} \). As a consequence of the rank theorem, which
+states that the number of free variables is equal to the number of columns of
+\( A \) minus the rank of A, \( A\vec{x} = \vec{0} \) has a non-trivial
+solution, hence the columns of \( A \) are linearly dependent.
+
+\subsubsection*{Example}
+Prove that if \( \vec{u_1},\dots,\vec{u_m}\in\R^n \) where \( S = \{\vec{u_1},
+\dots,\vec{u_k}\} \) and \( T = \{\vec{u_1},\dots,\vec{u_k},\vec{u_{k+1}},\dots,
+\vec{u_m}\} \) that \( span(S)\subseteq span(T) \).
+Let \( \alpha\in span(S) \):
+\begin{align*}
+  \alpha &= c_1\vec{u_1}+c_2\vec{u_2}+\dots+c_k\vec{u_k} \\
+  &= c_1\vec{u_1}+\dots+c_k\vec{u_k}+0\vec{u_{k+1}}+0\vec{u_{k+2}}+0\vec{u_m} \\
+  &\in span(T)
+\end{align*}
+Deduce if \( R^n = span(S) \), then \( \R^n = span(T) \).
+\[ \R^n = span(S) \subseteq span(T) \subseteq \R^n \]
+\[ span(T) = \R^n \]
+
+\subsubsection*{Example}
+Suppose \( \vec{w} \) is a linear combination of \( \vec{u_1},\vec{u_2},\dots,
+\vec{u_k} \) and each \( \vec{u_1} \) is a linear combination of \( \vec{v_1},
+\dots,\vec{v_m} \). Prove \( \vec{w} \) is a linear combination of \( \vec{v_1},
+\dots,\vec{v_m} \).
+\begin{align*}
+  \vec{w} &= \sum_{i=1}^{k}c_iu_i \\
+  &= \sum_{i=1}^{k}c_i\left(\sum_{j=1}^{m}d_{ij}\vec{v_j}\right) \\
+  &= \sum_{i=1}^{k}\left(\sum_{j=1}^{m}c_id_{ij}\vec{v_j}\right) \\
+  &= \sum_{j=1}^{m}\left(\sum_{i=1}^{k}c_id_{ij}\right)\vec{v_i} \\
+  w &\in span(\vec{v_1},\dots,\vec{v_m})
+\end{align*}
+Also suppose each \( \vec{v_j} \) is a linear combination of \( \vec{u_1},\dots,
+\vec{u_k} \). Prove \( span(\vec{u_1},\dots,\vec{u_k}) =
+span(\vec{v_1},\dots,\vec{v_m}) \). Above we proved:
+\[ span(\vec{u_1},\dots,\vec{u_k}) \subseteq span(\vec{v_1},\dots,\vec{v_m}) \]
+Therefore:
+\[ span(\vec{u_1},\dots,\vec{u_k}) \supseteq span(\vec{v_1},\dots,\vec{v_m}) \]
+
+\subsubsection*{Example}
+If the columns of an \( n\times n \) matrix \( A \) are linearly independent
+as vectors in \( \R^n \), what is the rank of \( A \)?
+\[ rank(A) = n \]
+The columns are linearly independent as \( A\vec{x} = \vec{0} \) has only the
+trivial solution. So there are no free variables.
+
+\subsubsection*{Example}
+Prove two vectors are linearly dependent if and only if 1 is a scalar multiple
+of the other. \\
+Say \( \vec{u} \) and \( \vec{v} \) are linearly depedent, there exists scalars
+\( c_1,c_2 \) (not both 0) such that \( c_1\vec{u}+c_2\vec{v} = \vec{0} \).
+Without loss of generality, we say that \( c_1 \ne 0 \), then:
+\begin{align*}
+  c_1\vec{u} &= -c_2\vec{v} \\
+  \vec{u} &= \frac{-c_2}{c_1}\vec{v}
+\end{align*}
+Suppose \( \vec{u} \) is a scalar multiple of \( \vec{v} \).
+\begin{align*}
+  \vec{u} &= c\vec{v} \\
+  c\vec{v}-\vec{u} &= \vec{0}
+\end{align*}
+Thus, \( \vec{u} \) and \( \vec{v} \) are linearly dependent.
+
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
   any questions, comments, or concerns, please contact me at
