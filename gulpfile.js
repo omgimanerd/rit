@@ -50,7 +50,10 @@ gulp.task('latex-all', function() {
       path.dirname += '/output';
       path.extname = '.pdf';
     }))
-    .pipe(gulp.dest('./latex'));
+    .pipe(gulp.dest('./latex'))
+    .on('error', () => {
+      process.exit(1);
+    });
 });
 
 gulp.task('clean', function(done) {
