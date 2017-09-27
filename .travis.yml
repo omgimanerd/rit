@@ -3,7 +3,7 @@ node_js:
   - "7"
 cache: yarn
 dist: trusty
-sudo: enabled
+sudo: false
 before_install:
   - sudo apt-get install texlive-full
   - npm install -g gulp
