@@ -6,5 +6,4 @@ dist: trusty
 sudo: enabled
 before_install:
   - sudo apt-get install texlive-full
-  - tlmgr update --all
   - npm install -g gulp
