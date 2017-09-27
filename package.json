@@ -4,7 +4,8 @@
   "description": "RIT Class Notes",
   "main": "gulpfile.js",
   "scripts": {
-    "compile": "gulp"
+    "compile": "gulp latex-all",
+    "test": "gulp latex-all"
   },
   "repository": {
     "type": "git",

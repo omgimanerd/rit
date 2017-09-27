@@ -1,0 +1,5 @@
+language: node_js
+sudo: enabled
+before_install:
+  - sudo apt-get install texlive
+  - npm install -g gulp
