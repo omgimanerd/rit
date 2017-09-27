@@ -6,6 +6,7 @@ dist: trusty
 sudo: false
 before_install:
   - sudo apt-get install texlive xzdec
+  - tlmgr init-usertree
   - tlmgr option repository ftp://tug.org/historic/systems/texlive/2015/tlnet-final
   - tlmgr install pgfplots pgf
   - npm install -g gulp
