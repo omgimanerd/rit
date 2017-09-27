@@ -1,4 +1,6 @@
 language: node_js
+node_js:
+  - "7"
 sudo: enabled
 before_install:
   - sudo apt-get install texlive
