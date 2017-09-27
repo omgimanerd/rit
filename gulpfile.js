@@ -42,7 +42,6 @@ gulp.task('latex', function() {
 
 gulp.task('latex-all', function() {
   return gulp.src('./latex/**/*.tex')
-    .pipe(gulpPlumber({ errorHandler: errorHandler }))
     .pipe(gulpPdflatex2({
       TEXINPUTS: ['./cls']
     }))
@@ -51,9 +50,6 @@ gulp.task('latex-all', function() {
       path.extname = '.pdf';
     }))
     .pipe(gulp.dest('./latex'))
-    .on('error', () => {
-      process.exit(1);
-    });
 });
 
 gulp.task('clean', function(done) {
