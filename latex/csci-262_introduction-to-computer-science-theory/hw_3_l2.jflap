@@ -1,296 +1,282 @@
 <?xml version="1.0" encoding="UTF-8"?><structure type="editor_panel">
 	<structure type="transition_graph">
 		<structure mode="Default mode" type="fsa">
-			<structure type="start_state">
-				<state>
-					<name>s</name>
-					<id>0</id>
-				</state>
+			<structure type="transition_set">
+				<fsa_trans>
+					<input>a</input>
+					<from>
+						<name>0b_s</name>
+						<id>0</id>
+					</from>
+					<to>
+						<name>0b_1a</name>
+						<id>1</id>
+					</to>
+				</fsa_trans>
+				<fsa_trans>
+					<input>b</input>
+					<from>
+						<name>0b_s</name>
+						<id>0</id>
+					</from>
+					<to>
+						<name>1b_s</name>
+						<id>3</id>
+					</to>
+				</fsa_trans>
+				<fsa_trans>
+					<input>a</input>
+					<from>
+						<name>0b_1a</name>
+						<id>1</id>
+					</from>
+					<to>
+						<name>0b_f</name>
+						<id>2</id>
+					</to>
+				</fsa_trans>
+				<fsa_trans>
+					<input>b</input>
+					<from>
+						<name>0b_1a</name>
+						<id>1</id>
+					</from>
+					<to>
+						<name>1b_1a</name>
+						<id>4</id>
+					</to>
+				</fsa_trans>
+				<fsa_trans>
+					<input>a</input>
+					<from>
+						<name>0b_f</name>
+						<id>2</id>
+					</from>
+					<to>
+						<name>0b_f</name>
+						<id>2</id>
+					</to>
+				</fsa_trans>
+				<fsa_trans>
+					<input>b</input>
+					<from>
+						<name>0b_f</name>
+						<id>2</id>
+					</from>
+					<to>
+						<name>1b_f</name>
+						<id>5</id>
+					</to>
+				</fsa_trans>
+				<fsa_trans>
+					<input>a</input>
+					<from>
+						<name>1b_s</name>
+						<id>3</id>
+					</from>
+					<to>
+						<name>1b_1a</name>
+						<id>4</id>
+					</to>
+				</fsa_trans>
+				<fsa_trans>
+					<input>b</input>
+					<from>
+						<name>1b_s</name>
+						<id>3</id>
+					</from>
+					<to>
+						<name>2b_s</name>
+						<id>6</id>
+					</to>
+				</fsa_trans>
+				<fsa_trans>
+					<input>a</input>
+					<from>
+						<name>1b_1a</name>
+						<id>4</id>
+					</from>
+					<to>
+						<name>1b_f</name>
+						<id>5</id>
+					</to>
+				</fsa_trans>
+				<fsa_trans>
+					<input>b</input>
+					<from>
+						<name>1b_1a</name>
+						<id>4</id>
+					</from>
+					<to>
+						<name>2b_1a</name>
+						<id>7</id>
+					</to>
+				</fsa_trans>
+				<fsa_trans>
+					<input>a</input>
+					<from>
+						<name>1b_f</name>
+						<id>5</id>
+					</from>
+					<to>
+						<name>1b_f</name>
+						<id>5</id>
+					</to>
+				</fsa_trans>
+				<fsa_trans>
+					<input>b</input>
+					<from>
+						<name>1b_f</name>
+						<id>5</id>
+					</from>
+					<to>
+						<name>2b_f</name>
+						<id>8</id>
+					</to>
+				</fsa_trans>
+				<fsa_trans>
+					<input>b</input>
+					<from>
+						<name>2b_s</name>
+						<id>6</id>
+					</from>
+					<to>
+						<name>2b_s</name>
+						<id>6</id>
+					</to>
+				</fsa_trans>
+				<fsa_trans>
+					<input>a</input>
+					<from>
+						<name>2b_s</name>
+						<id>6</id>
+					</from>
+					<to>
+						<name>2b_1a</name>
+						<id>7</id>
+					</to>
+				</fsa_trans>
+				<fsa_trans>
+					<input>b</input>
+					<from>
+						<name>2b_1a</name>
+						<id>7</id>
+					</from>
+					<to>
+						<name>2b_1a</name>
+						<id>7</id>
+					</to>
+				</fsa_trans>
+				<fsa_trans>
+					<input>a</input>
+					<from>
+						<name>2b_1a</name>
+						<id>7</id>
+					</from>
+					<to>
+						<name>2b_f</name>
+						<id>8</id>
+					</to>
+				</fsa_trans>
+				<fsa_trans>
+					<input>a</input>
+					<from>
+						<name>2b_f</name>
+						<id>8</id>
+					</from>
+					<to>
+						<name>2b_f</name>
+						<id>8</id>
+					</to>
+				</fsa_trans>
+				<fsa_trans>
+					<input>b</input>
+					<from>
+						<name>2b_f</name>
+						<id>8</id>
+					</from>
+					<to>
+						<name>2b_f</name>
+						<id>8</id>
+					</to>
+				</fsa_trans>
 			</structure>
 			<structure type="input_alph">
 				<symbol>a</symbol>
 				<symbol>b</symbol>
 			</structure>
-			<structure type="transition_set">
-				<fsa_trans>
-					<input>a</input>
-					<from>
-						<name>s</name>
-						<id>0</id>
-					</from>
-					<to>
-						<name>s</name>
-						<id>0</id>
-					</to>
-				</fsa_trans>
-				<fsa_trans>
-					<input>b</input>
-					<from>
-						<name>s</name>
-						<id>0</id>
-					</from>
-					<to>
-						<name>b</name>
-						<id>1</id>
-					</to>
-				</fsa_trans>
-				<fsa_trans>
-					<input>a</input>
-					<from>
-						<name>b</name>
-						<id>1</id>
-					</from>
-					<to>
-						<name>ba</name>
-						<id>8</id>
-					</to>
-				</fsa_trans>
-				<fsa_trans>
-					<input>b</input>
-					<from>
-						<name>b</name>
-						<id>1</id>
-					</from>
-					<to>
-						<name>bb</name>
-						<id>9</id>
-					</to>
-				</fsa_trans>
-				<fsa_trans>
-					<input>a</input>
-					<from>
-						<name>bba</name>
-						<id>2</id>
-					</from>
-					<to>
-						<name>baa</name>
-						<id>4</id>
-					</to>
-				</fsa_trans>
-				<fsa_trans>
-					<input>b</input>
-					<from>
-						<name>bba</name>
-						<id>2</id>
-					</from>
-					<to>
-						<name>bab</name>
-						<id>6</id>
-					</to>
-				</fsa_trans>
-				<fsa_trans>
-					<input>a</input>
-					<from>
-						<name>aba</name>
-						<id>3</id>
-					</from>
-					<to>
-						<name>baa</name>
-						<id>4</id>
-					</to>
-				</fsa_trans>
-				<fsa_trans>
-					<input>b</input>
-					<from>
-						<name>aba</name>
-						<id>3</id>
-					</from>
-					<to>
-						<name>bab</name>
-						<id>6</id>
-					</to>
-				</fsa_trans>
-				<fsa_trans>
-					<input>a</input>
-					<from>
-						<name>baa</name>
-						<id>4</id>
-					</from>
-					<to>
-						<name>s</name>
-						<id>0</id>
-					</to>
-				</fsa_trans>
-				<fsa_trans>
-					<input>b</input>
-					<from>
-						<name>baa</name>
-						<id>4</id>
-					</from>
-					<to>
-						<name>b</name>
-						<id>1</id>
-					</to>
-				</fsa_trans>
-				<fsa_trans>
-					<input>a</input>
-					<from>
-						<name>bbb</name>
-						<id>5</id>
-					</from>
-					<to>
-						<name>bba</name>
-						<id>2</id>
-					</to>
-				</fsa_trans>
-				<fsa_trans>
-					<input>b</input>
-					<from>
-						<name>bbb</name>
-						<id>5</id>
-					</from>
-					<to>
-						<name>bbb</name>
-						<id>5</id>
-					</to>
-				</fsa_trans>
-				<fsa_trans>
-					<input>a</input>
-					<from>
-						<name>bab</name>
-						<id>6</id>
-					</from>
-					<to>
-						<name>aba</name>
-						<id>3</id>
-					</to>
-				</fsa_trans>
-				<fsa_trans>
-					<input>b</input>
-					<from>
-						<name>bab</name>
-						<id>6</id>
-					</from>
-					<to>
-						<name>abb</name>
-						<id>7</id>
-					</to>
-				</fsa_trans>
-				<fsa_trans>
-					<input>a</input>
-					<from>
-						<name>abb</name>
-						<id>7</id>
-					</from>
-					<to>
-						<name>bba</name>
-						<id>2</id>
-					</to>
-				</fsa_trans>
-				<fsa_trans>
-					<input>b</input>
-					<from>
-						<name>abb</name>
-						<id>7</id>
-					</from>
-					<to>
-						<name>bbb</name>
-						<id>5</id>
-					</to>
-				</fsa_trans>
-				<fsa_trans>
-					<input>a</input>
-					<from>
-						<name>ba</name>
-						<id>8</id>
-					</from>
-					<to>
-						<name>baa</name>
-						<id>4</id>
-					</to>
-				</fsa_trans>
-				<fsa_trans>
-					<input>b</input>
-					<from>
-						<name>ba</name>
-						<id>8</id>
-					</from>
-					<to>
-						<name>bab</name>
-						<id>6</id>
-					</to>
-				</fsa_trans>
-				<fsa_trans>
-					<input>a</input>
-					<from>
-						<name>bb</name>
-						<id>9</id>
-					</from>
-					<to>
-						<name>bba</name>
-						<id>2</id>
-					</to>
-				</fsa_trans>
-				<fsa_trans>
-					<input>b</input>
-					<from>
-						<name>bb</name>
-						<id>9</id>
-					</from>
-					<to>
-						<name>bbb</name>
-						<id>5</id>
-					</to>
-				</fsa_trans>
+			<structure type="start_state">
+				<state>
+					<name>0b_s</name>
+					<id>0</id>
+				</state>
 			</structure>
 			<structure type="state_set">
 				<state>
-					<name>s</name>
+					<name>0b_s</name>
 					<id>0</id>
 				</state>
 				<state>
-					<name>b</name>
+					<name>0b_1a</name>
 					<id>1</id>
 				</state>
 				<state>
-					<name>bba</name>
+					<name>0b_f</name>
 					<id>2</id>
 				</state>
 				<state>
-					<name>aba</name>
+					<name>1b_s</name>
 					<id>3</id>
 				</state>
 				<state>
-					<name>baa</name>
+					<name>1b_1a</name>
 					<id>4</id>
 				</state>
 				<state>
-					<name>bbb</name>
+					<name>1b_f</name>
 					<id>5</id>
 				</state>
 				<state>
-					<name>bab</name>
+					<name>2b_s</name>
 					<id>6</id>
 				</state>
 				<state>
-					<name>abb</name>
+					<name>2b_1a</name>
 					<id>7</id>
 				</state>
 				<state>
-					<name>ba</name>
+					<name>2b_f</name>
 					<id>8</id>
-				</state>
-				<state>
-					<name>bb</name>
-					<id>9</id>
 				</state>
 			</structure>
 			<structure type="final_states">
 				<state>
-					<name>bba</name>
-					<id>2</id>
+					<name>0b_s</name>
+					<id>0</id>
 				</state>
 				<state>
-					<name>baa</name>
+					<name>0b_1a</name>
+					<id>1</id>
+				</state>
+				<state>
+					<name>1b_s</name>
+					<id>3</id>
+				</state>
+				<state>
+					<name>1b_1a</name>
 					<id>4</id>
 				</state>
 				<state>
-					<name>bbb</name>
-					<id>5</id>
+					<name>2b_s</name>
+					<id>6</id>
 				</state>
 				<state>
-					<name>bab</name>
-					<id>6</id>
+					<name>2b_1a</name>
+					<id>7</id>
+				</state>
+				<state>
+					<name>2b_f</name>
+					<id>8</id>
 				</state>
 			</structure>
 		</structure>
@@ -298,233 +284,202 @@
 			<state_point>
 				<state>0</state>
 				<point>
-					<x>319.0</x>
-					<y>303.0</y>
+					<x>117.0</x>
+					<y>108.0</y>
 				</point>
 			</state_point>
 			<state_point>
 				<state>1</state>
 				<point>
-					<x>445.0</x>
-					<y>303.0</y>
+					<x>267.0</x>
+					<y>109.0</y>
 				</point>
 			</state_point>
 			<state_point>
 				<state>2</state>
 				<point>
-					<x>581.0</x>
-					<y>307.0</y>
+					<x>423.0</x>
+					<y>107.0</y>
 				</point>
 			</state_point>
 			<state_point>
 				<state>3</state>
 				<point>
-					<x>714.0</x>
-					<y>199.0</y>
+					<x>117.0</x>
+					<y>230.0</y>
 				</point>
 			</state_point>
 			<state_point>
 				<state>4</state>
 				<point>
-					<x>582.0</x>
-					<y>199.0</y>
+					<x>269.0</x>
+					<y>228.0</y>
 				</point>
 			</state_point>
 			<state_point>
 				<state>5</state>
 				<point>
-					<x>581.0</x>
-					<y>412.0</y>
+					<x>425.0</x>
+					<y>228.0</y>
 				</point>
 			</state_point>
 			<state_point>
 				<state>6</state>
 				<point>
-					<x>714.0</x>
-					<y>306.0</y>
+					<x>118.0</x>
+					<y>347.0</y>
 				</point>
 			</state_point>
 			<state_point>
 				<state>7</state>
 				<point>
-					<x>715.0</x>
-					<y>410.0</y>
+					<x>272.0</x>
+					<y>347.0</y>
 				</point>
 			</state_point>
 			<state_point>
 				<state>8</state>
 				<point>
-					<x>443.0</x>
-					<y>198.0</y>
-				</point>
-			</state_point>
-			<state_point>
-				<state>9</state>
-				<point>
-					<x>446.0</x>
-					<y>412.0</y>
+					<x>426.0</x>
+					<y>346.0</y>
 				</point>
 			</state_point>
 		</state_point_map>
 		<control_point_map>
 			<control_point>
-				<from>0</from>
-				<to>0</to>
+				<from>1</from>
+				<to>4</to>
 				<point>
-					<x>319.0</x>
-					<y>233.0</y>
+					<x>268.0</x>
+					<y>168.5</y>
+				</point>
+			</control_point>
+			<control_point>
+				<from>2</from>
+				<to>2</to>
+				<point>
+					<x>423.0</x>
+					<y>37.0</y>
 				</point>
 			</control_point>
 			<control_point>
 				<from>3</from>
 				<to>6</to>
 				<point>
-					<x>730.123</x>
-					<y>252.5</y>
+					<x>117.5</x>
+					<y>288.5</y>
 				</point>
 			</control_point>
 			<control_point>
-				<from>4</from>
+				<from>8</from>
+				<to>8</to>
+				<point>
+					<x>355.0</x>
+					<y>288.0</y>
+				</point>
+			</control_point>
+			<control_point>
+				<from>2</from>
+				<to>5</to>
+				<point>
+					<x>424.0</x>
+					<y>167.5</y>
+				</point>
+			</control_point>
+			<control_point>
+				<from>0</from>
 				<to>1</to>
 				<point>
-					<x>513.5</x>
-					<y>251.0</y>
+					<x>192.0</x>
+					<y>108.5</y>
+				</point>
+			</control_point>
+			<control_point>
+				<from>1</from>
+				<to>2</to>
+				<point>
+					<x>345.0</x>
+					<y>108.0</y>
 				</point>
 			</control_point>
 			<control_point>
 				<from>6</from>
-				<to>3</to>
-				<point>
-					<x>697.877</x>
-					<y>252.5</y>
-				</point>
-			</control_point>
-			<control_point>
-				<from>9</from>
-				<to>2</to>
-				<point>
-					<x>513.5</x>
-					<y>359.5</y>
-				</point>
-			</control_point>
-			<control_point>
-				<from>2</from>
 				<to>6</to>
 				<point>
-					<x>644.3026993073656</x>
-					<y>307.5240681205865</y>
-				</point>
-			</control_point>
-			<control_point>
-				<from>8</from>
-				<to>6</to>
-				<point>
-					<x>625.5118171771558</x>
-					<y>271.6673454839044</y>
-				</point>
-			</control_point>
-			<control_point>
-				<from>1</from>
-				<to>9</to>
-				<point>
-					<x>445.5</x>
-					<y>357.5</y>
-				</point>
-			</control_point>
-			<control_point>
-				<from>9</from>
-				<to>5</to>
-				<point>
-					<x>513.5</x>
-					<y>412.0</y>
-				</point>
-			</control_point>
-			<control_point>
-				<from>0</from>
-				<to>1</to>
-				<point>
-					<x>382.0</x>
-					<y>303.0</y>
-				</point>
-			</control_point>
-			<control_point>
-				<from>1</from>
-				<to>8</to>
-				<point>
-					<x>444.0</x>
-					<y>250.5</y>
-				</point>
-			</control_point>
-			<control_point>
-				<from>2</from>
-				<to>4</to>
-				<point>
-					<x>581.5</x>
-					<y>253.0</y>
+					<x>116.78284752459281</x>
+					<y>466.73629242819857</y>
 				</point>
 			</control_point>
 			<control_point>
 				<from>4</from>
-				<to>0</to>
+				<to>7</to>
 				<point>
-					<x>359.22269876133606</x>
-					<y>58.209334350159</y>
-				</point>
-			</control_point>
-			<control_point>
-				<from>7</from>
-				<to>5</to>
-				<point>
-					<x>648.0</x>
-					<y>411.0</y>
-				</point>
-			</control_point>
-			<control_point>
-				<from>8</from>
-				<to>4</to>
-				<point>
-					<x>512.5</x>
-					<y>198.5</y>
+					<x>270.5</x>
+					<y>287.5</y>
 				</point>
 			</control_point>
 			<control_point>
 				<from>5</from>
-				<to>2</to>
+				<to>8</to>
 				<point>
-					<x>580.8088441982558</x>
-					<y>369.5345945945946</y>
+					<x>425.5</x>
+					<y>287.0</y>
+				</point>
+			</control_point>
+			<control_point>
+				<from>0</from>
+				<to>3</to>
+				<point>
+					<x>117.42422078308516</x>
+					<y>159.75229544990816</y>
 				</point>
 			</control_point>
 			<control_point>
 				<from>3</from>
 				<to>4</to>
 				<point>
-					<x>648.0</x>
-					<y>199.0</y>
+					<x>193.0</x>
+					<y>229.0</y>
 				</point>
 			</control_point>
 			<control_point>
 				<from>5</from>
 				<to>5</to>
 				<point>
-					<x>578.0</x>
-					<y>544.0</y>
+					<x>362.0</x>
+					<y>166.0</y>
+				</point>
+			</control_point>
+			<control_point>
+				<from>7</from>
+				<to>7</to>
+				<point>
+					<x>271.5</x>
+					<y>466.53359427462783</y>
+				</point>
+			</control_point>
+			<control_point>
+				<from>4</from>
+				<to>5</to>
+				<point>
+					<x>347.0</x>
+					<y>228.0</y>
 				</point>
 			</control_point>
 			<control_point>
 				<from>6</from>
 				<to>7</to>
 				<point>
-					<x>714.5</x>
-					<y>358.0</y>
+					<x>195.0</x>
+					<y>347.0</y>
 				</point>
 			</control_point>
 			<control_point>
 				<from>7</from>
-				<to>2</to>
+				<to>8</to>
 				<point>
-					<x>640.8595362879711</x>
-					<y>352.7105212790472</y>
+					<x>349.0</x>
+					<y>346.5</y>
 				</point>
 			</control_point>
 		</control_point_map>

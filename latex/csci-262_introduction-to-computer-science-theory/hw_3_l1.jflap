@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><structure type="editor_panel">
 	<structure type="transition_graph">
 		<structure mode="Default mode" type="fsa">
-			<structure type="start_state">
-				<state>
-					<name>s</name>
-					<id>0</id>
-				</state>
-			</structure>
 			<structure type="input_alph">
 				<symbol>a</symbol>
 				<symbol>b</symbol>
@@ -273,6 +267,12 @@
 				<state>
 					<name>bb</name>
 					<id>9</id>
+				</state>
+			</structure>
+			<structure type="start_state">
+				<state>
+					<name>s</name>
+					<id>0</id>
 				</state>
 			</structure>
 			<structure type="final_states">

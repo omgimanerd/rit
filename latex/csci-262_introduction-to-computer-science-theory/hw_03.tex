@@ -5,7 +5,7 @@
 \geometry{letterpaper, margin=0.5in}
 
 \title{Intro to Computer Science Theory: Homework 3}
-\author{Alvin Lin}
+\author{Alvin Lin and Joshua Cotton}
 \date{August 2017 - December 2017}
 
 \begin{document}
@@ -79,7 +79,7 @@
     \end{center}
     \[ \{x\mid x\text{'s third symbol from the right is } b\} \]
     \begin{center}
-      \includegraphics[width=16cm]{hw_3_8.png}
+      \includegraphics[width=12cm]{hw_3_8.png}
     \end{center}
     \item~[4 points for each complex language, 12 points total] For each of the
     three complex languages \( L_1 \), \( L_2 \), and \( L_3 \), use the
@@ -89,7 +89,22 @@
     accepting states etc. must reflect the construction. Note also that for
     \( L_1 \) and \( L_2 \) you need apply the construction once, but for\
     \( L_3 \) you need to apply it three times.
-    \[ L \]
+    \[ L_1 \]
+    For \( L_1 \) the language \( \{x\mid|x|\geq3\} \) is a subset of the
+    language \( \{x\mid x\text{'s third symbol from the right is } b\} \), thus
+    the state transition diagram for \( \{x\mid x\text{'s third symbol from the
+    right is } b\} \) is also the state transition diagram for \( L_1 \).
+    \begin{center}
+      \includegraphics[width=8cm]{hw_3_l1.png}
+    \end{center}
+    \[ L_2 \]
+    \begin{center}
+      \includegraphics[width=8cm]{hw_3_l2.png}
+    \end{center}
+    \[ L_3 \]
+    \begin{center}
+      \includegraphics[width=8cm]{hw_3_l3.png}
+    \end{center}
   \end{enumerate}
   \item For any alphabet \( \Sigma \), consider the following (recursive)
   definition of \( |\cdot|: \Sigma^* \rightarrow \mathbb{N}\) (where
@@ -102,9 +117,25 @@
     \item ~[3 points] Write the following statement in quantifiable logic:
     ``For any alphabet \( \Sigma \), \( z,w\in\Sigma^* \), and \( b\in\Sigma
       \), if \( |zw| = |z| + |w| \) then \( |zwb| = |z| + |w| + 1 \).''
-    \item ~[3 points] Finish the proof. For each quantifier, you must use one\
+    \[ \forall{\Sigma}\bigg(\forall{z}\forall{w}\forall{b}(z,w\in\Sigma^*\wedge
+      b\in\Sigma\wedge|zw| = |z|+|w| \to |zwb| = |z|+|w|+1)\bigg) \]
+    \item ~[3 points] Finish the proof. For each quantifier, you must use one
     of the proof strategies from Velleman. Use square brackets and logical
     forms to cite each use of a strategy, as in page 27--28 of the course notes.
+    \begin{enumerate}
+      \item ~[The statement is of the form \( \forall{x}P(x) \)]
+      Let \( \Sigma \) be an arbitrary alphabet.
+      \item ~[The statement is of the form \( \forall{b}P(b) \)]
+      Choose an arbitrary \( b \).
+      \item ~[The statement is of the form \( R\to S \)]
+      Suppose that \( \forall{z}\forall{w}(z,w\in\Sigma^*\wedge
+      b\in\Sigma\wedge|zw| = |z|+|w| \), we need to show that \( |zwb| =
+      |z|+|w|+1 \).
+      \item By the definition \( |x| = |y|+1 \text{ where } x=ya\wedge y\in
+      \Sigma^*\wedge a\in\Sigma\), it follows that \( |zwb| = |zw| + 1 \).
+      \item From what is given, \( \forall{z}\forall{w}|zw| = |z|+|w| \), it
+      follows that \( |zwb| = |z|+|w|+1 \)
+    \end{enumerate}
   \end{enumerate}
 \end{enumerate}
 
