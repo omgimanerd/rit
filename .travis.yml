@@ -4,5 +4,5 @@ node_js:
 cache: yarn
 sudo: enabled
 before_install:
-  - sudo apt-get install texlive-full
+  - sudo apt-get install texlive texlive-latex-extra texlive-pictures
   - npm install -g gulp
