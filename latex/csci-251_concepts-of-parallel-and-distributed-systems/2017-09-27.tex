@@ -1,0 +1,57 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\usepackage{listings}
+\lstset{basicstyle=\ttfamily\footnotesize,breaklines=true}
+\usepackage{tikz}
+
+\title{CSCI 251: Concepts of Parallel and Distributed Systems}
+\author{Alvin Lin}
+\date{September 27th, 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Topics}
+\begin{itemize}
+  \item Exercise Problems
+  \item Challenges in Parallel Programming
+\end{itemize}
+
+\subsection*{Costs of Communication}
+We want to minimize the idling time of a processor. The cost of communication
+can depend on the size of the message being passed. We need to keep in mind
+the concept of granularity in our programs, whether or not we have coarse grain
+parallelism or fine grain parallelism. \par
+\textbf{Fine grained parallelism} involves a low ratio of computation to
+communication, with very high levels of parallelism. Often, this entails small
+tasks distributed and communicated between many processors. \par
+\textbf{Coarse grained parallelism} involves a high ratio of computation to
+communication. This will have very low overhead since each processor will tend
+to do large amounts of computation and less communication. \par
+The measure of the ratio between communication and computation is relative since
+it depends on the CPU and communication network architecture. One also needs to
+take into account data transmission latency and bandwidths as an additional
+bottleneck when analyzing parallel programs. \par
+\textbf{In degree} refers to how long a processor has to wait before it starts
+computing. \par
+\textbf{Out degree} refers to how much is spent in terms of communication.
+
+\section*{Reminders}
+The midterm is on October 11th.
+Refer to MyCourses for details on Project 1. \\
+
+\noindent Professor Mohan Kumar: \\
+\url{mjkvcs@rit.edu} \\
+\url{https://cs.rit.edu/~mjk} \\
+
+\noindent Rahul Dashora (TA): \\
+\url{rd5476@mail.rit.edu} \\
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}

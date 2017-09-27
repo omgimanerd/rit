@@ -8,7 +8,8 @@ website](http://omgimanerd.tech/notes).
 
 ## Setup
 If you wish to compile this repository yourself, you must have a standard TeX
-distribution installed.
+distribution installed. Your TeX distribution must have the `pgfplots`
+package and its libraries installed.
 ```
 sudo apt install texlive texlive-latex-extra
 ```
