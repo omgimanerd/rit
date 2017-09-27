@@ -19,6 +19,7 @@
 \newcommand*{\arccsc}{\csc^{-1}}
 \newcommand*{\diff}{\mathrm{d}}
 \newcommand*{\ddiff}[2]{\frac{\diff{#1}}{\diff{#2}}}
+\newcommand*{\pdiff}[2]{\frac{\partial{#1}}{\partial{#2}}}
 \newcommand*{\Diff}[1]{\mathrm{d^#1}}
 \newcommand*{\e}{\mathrm{e}}
 \newcommand*{\N}{\mathbb{N}}
