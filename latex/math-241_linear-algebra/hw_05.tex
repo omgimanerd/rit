@@ -1,0 +1,617 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\geometry{letterpaper, margin=0.5in}
+
+\title{Linear Algebra: Homework 5}
+\author{Alvin Lin}
+\date{August 2016 - December 2016}
+
+\begin{document}
+
+\maketitle
+
+\section*{Section 2.3}
+
+\subsubsection*{Exercise 1}
+Determine if the vector \( \vec{v} \) is a linear combination of the remaining
+vectors.
+\[ \vec{v} = \begin{bmatrix}1 \\ 2\end{bmatrix} \quad
+  \vec{u_1} = \begin{bmatrix}1 \\ -1\end{bmatrix} \quad
+  \vec{u_2} = \begin{bmatrix}2 \\ -1\end{bmatrix} \]
+\begin{align*}
+  A &= \begin{bmatrix}
+    1 & 2 & 1 \\
+    -1 & -1 & 2
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    0 & 1 & 3 \\
+    -1 & -1 2
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    0 & 1 & 3 \\
+    -1 & 0 5
+  \end{bmatrix} \\
+  & \text{Yes}
+\end{align*}
+
+\subsubsection*{Exercise 3}
+Determine if the vector \( \vec{v} \) is a linear combination of the remaining
+vectors.
+\[ \vec{v} = \begin{bmatrix}1 \\ 2 \\ 3\end{bmatrix} \quad
+  \vec{u_1} = \begin{bmatrix}1 \\ 1 \\ 0\end{bmatrix} \quad
+  \vec{u_2} = \begin{bmatrix}0 \\ 1 \\ 1\end{bmatrix} \]
+\begin{align*}
+  A &= \begin{bmatrix}
+    1 & 0 & 1 \\
+    1 & 1 & 2 \\
+    0 & 1 & 3
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    1 & 0 & 1 \\
+    1 & 0 & -1 \\
+    0 & 1 & 3
+  \end{bmatrix} \\
+  & \text{No}
+\end{align*}
+
+\subsubsection*{Exercise 5}
+Determine if the vector \( \vec{v} \) is a linear combination of the remaining
+vectors.
+\[ \vec{v} = \begin{bmatrix}1 \\ 2 \\ 3\end{bmatrix} \quad
+  \vec{u_1} = \begin{bmatrix}1 \\ 1 \\ 0\end{bmatrix} \quad
+  \vec{u_2} = \begin{bmatrix}0 \\ 1 \\ 1\end{bmatrix} \quad
+  \vec{u_3} = \begin{bmatrix}1 \\ 0 \\ 1\end{bmatrix} \]
+\begin{align*}
+  A &= \begin{bmatrix}
+    1 & 0 & 1 & 1 \\
+    1 & 1 & 0 & 2 \\
+    0 & 1 & 1 & 3
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    1 & 0 & 1 & 1 \\
+    0 & 1 & -1 & 1 \\
+    0 & 1 & 1 & 3
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    1 & 0 & 1 & 1 \\
+    0 & 2 & 0 & 4 \\
+    0 & 1 & 1 & 3
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    1 & 0 & 1 & 1 \\
+    0 & 1 & 0 & 2 \\
+    0 & 0 & 1 & 1
+  \end{bmatrix} \\
+  & \text{Yes}
+\end{align*}
+
+\subsubsection*{Exercise 7}
+Determine if the vector \( \vec{v} \) is in the span of the columns of the
+matrix \( A \).
+\[ A = \begin{bmatrix}1 & 2 \\ 3 & 4\end{bmatrix} \quad
+  \vec{b} = \begin{bmatrix}5 \\ 6\end{bmatrix} \]
+\begin{align*}
+  A|\vec{b} &= \begin{bmatrix}
+    1 & 2 & 5 \\
+    3 & 4 & 6
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    1 & 2 & 5 \\
+    1 & 0 & -4
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    0 & 2 & 9 \\
+    1 & 0 & -4
+  \end{bmatrix} \\
+\end{align*}
+There is a unique solution for:
+\begin{align*}
+  1a+2b &= 5 \\
+  3a+4b &= 6
+\end{align*}
+\[ \begin{bmatrix}a \\ b\end{bmatrix} =\
+  \begin{bmatrix}-1 \\ \frac{9}{2}\end{bmatrix} \]
+
+\subsubsection*{Exercise 9}
+Show that \( \R^2 = span\left(\begin{bmatrix}1 \\ 1\end{bmatrix},
+\begin{bmatrix}1 \\ -1\end{bmatrix}\right) \)
+\begin{align*}
+  \begin{bmatrix}
+    1 & 1 & a \\
+    1 & -1 & b
+  \end{bmatrix} &= \begin{bmatrix}
+    1 & 1 & a \\
+    2 & 0 & a+b
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    1 & 1 & a \\
+    1 & 0 & \frac{a+b}{2}
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    0 & 1 & a-\frac{a+b}{2} \\
+    1 & 0 & \frac{a+b}{2}
+  \end{bmatrix} \\
+  x &= a-\frac{a+b}{2} \\
+  y &= \frac{a+b}{2}
+\end{align*}
+Any point in \( \R^2 \) can be described by a linear combination of the two
+vectors using the constants described above.
+
+\subsubsection*{Exercise 11}
+Show that \( \R^3 = span\left(\begin{bmatrix}1 \\ 0 \\ 1\end{bmatrix},
+\begin{bmatrix}1 \\ 1 \\0\end{bmatrix},\begin{bmatrix}0 \\ 1 \\ 1\end{bmatrix}
+\right) \)
+\begin{align*}
+  \begin{bmatrix}
+    1 & 1 & 0 & a \\
+    0 & 1 & 1 & b \\
+    1 & 0 & 1 & c
+  \end{bmatrix} &= \begin{bmatrix}
+    1 & 0 & -1 & a-b \\
+    0 & 1 & 1 & b \\
+    1 & 0 & 1 & c
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    2 & 0 & 0 & a-b+c \\
+    0 & 1 & 1 & b \\
+    1 & 0 & 1 & c
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    1 & 0 & 0 & \frac{a-b+c}{2} \\
+    0 & 1 & 1 & b \\
+    0 & 0 & 1 & c-\frac{a-b+c}{2}
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    1 & 0 & 0 & \frac{a-b+c}{2} \\
+    0 & 1 & 0 & b-(c-\frac{a-b+c}{2}) \\
+    0 & 0 & 1 & c-\frac{a-b+c}{2}
+  \end{bmatrix} \\
+  x &= \frac{a-b+c}{2} \\
+  y &= b-(c-\frac{a-b+c}{2}) \\
+  z &= c-\frac{a-b+c}{2}
+\end{align*}
+Any point in \( \R^3 \) can be described by a linear combination of the two
+vectors using the constants described above.
+
+\subsubsection*{Exercise 13b}
+Describe the span of the given vectors algebraically.
+\[ \begin{bmatrix}2 \\ -4\end{bmatrix},\begin{bmatrix}-1 \\ 2\end{bmatrix} \]
+\begin{align*}
+  s\begin{bmatrix}2 \\ -4\end{bmatrix}+t\begin{bmatrix}-1 \\ 2\end{bmatrix} &=
+    \begin{bmatrix}x \\ y\end{bmatrix} \\
+  2s-t &= x\\
+  -4s+2t &= y \\
+  \begin{bmatrix}
+    2 & -1 & x \\
+    -4 & 2 & y
+  \end{bmatrix} &= \begin{bmatrix}
+    2 & -1 & x \\
+    0 & 0 & y+2x
+  \end{bmatrix} \\
+  y+2x &= 0 \\
+  y &= -2x
+\end{align*}
+The span of the two vectors describes the set of all vectors parallel and
+antiparallel to the given vectors, which line on the line \( y = -2x \).
+
+\subsubsection*{Exercise 15b}
+Describe the span of the given vectors algebraically.
+\[ \begin{bmatrix}1 \\ 2 \\ 0\end{bmatrix},
+  \begin{bmatrix}3 \\ 2 \\ -1\end{bmatrix} \]
+\begin{align*}
+  s\begin{bmatrix}1 \\ 2 \\ 0\end{bmatrix}+
+    t\begin{bmatrix}3 \\ 2 \\ -1\end{bmatrix} &=
+    \begin{bmatrix}x \\ y \\ z\end{bmatrix} \\
+  s+3t &= x \\
+  2s+2t &= y \\
+  -t &= z \\
+  \begin{bmatrix}
+    1 & 3 & x \\
+    2 & 2 & y \\
+    0 & -1 & z
+  \end{bmatrix} &= \begin{bmatrix}
+    1 & 0 & x+3z \\
+    2 & 0 & y+2z \\
+    0 & -1 & z
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    1 & 0 & x+3z \\
+    0 & 0 & y+2z-2(x+3z) \\
+    0 & -1 & z
+  \end{bmatrix} \\
+  0 &= y+2z-2x-6z \\
+  &= -2x+y-4z
+\end{align*}
+The span of the vectors describes a plane with the equation \( 0 = -2x+y-4z \).
+
+\subsubsection*{Exercise 17}
+The general equation of the plane that contains the points (1,0,3),(-1,1,-3),
+and the origin is of the form \( ax+by+cz = 0 \). Solve for \( a, b, c \).
+\begin{align*}
+  \begin{bmatrix}
+    1 & -1 & 0 & x \\
+    0 & 1 & 0 & y \\
+    3 & -3 & 0 & z
+  \end{bmatrix} &= \begin{bmatrix}
+    1 & 0 & 0 & x+y \\
+    0 & 1 & 0 & y \\
+    1 & -1 & 0 & \frac{z}{3}
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    1 & 0 & 0 & x+y \\
+    0 & 1 & 0 & y \\
+    1 & 0 & 0 & \frac{z}{3}+y
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    1 & 0 & 0 & x+y \\
+    0 & 1 & 0 & y \\
+    0 & 0 & 0 & \frac{z}{3}+y-(x+y)
+  \end{bmatrix} \\
+  0 &= \frac{z}{3}+y-x-y \\
+  &= -x+\frac{z}{3} \\
+  &= -3x+z \\
+  a &= -3 \\
+  b &= 0 \\
+  c &= 1
+\end{align*}
+
+\subsubsection*{Exercise 18}
+Prove that \( \vec{u},\vec{v},\vec{w} \) are all in
+\( span(\vec{u},\vec{v},\vec{w}) \).
+\begin{align*}
+  \vec{u} &= 1\vec{u}+0\vec{v}+0\vec{w} \\
+  \vec{v} &= 0\vec{u}+1\vec{v}+0\vec{w} \\
+  \vec{w} &= 0\vec{u}+0\vec{v}+1\vec{w} \\
+  \vec{u},\vec{v},\vec{w} &\in span(\vec{u},\vec{v},\vec{w})
+\end{align*}
+
+\subsubsection*{Exercise 19}
+\begin{align*}
+  \vec{u} &= 1\vec{u}+0(\vec{u}+\vec{v})+0(\vec{u}+\vec{v}+\vec{w}) \\
+  \vec{v} &= -1\vec{u}+1(\vec{u}+\vec{v})+0(\vec{u}+\vec{v}+\vec{w}) \\
+  \vec{w} &= 0\vec{u}-1(\vec{u}+\vec{v})+1(\vec{u}+\vec{v}+\vec{w}) \\
+  \vec{u},\vec{v},\vec{w} &\in
+    span(\vec{u},\vec{u}+\vec{v},\vec{u}+\vec{v}+\vec{w})
+\end{align*}
+
+\subsubsection*{Exercise 20}
+Prove that if \( \vec{u_1},\dots,\vec{u_m}\in\R^n \) where \( S = \{\vec{u_1},
+\dots,\vec{u_k}\} \) and \( T = \{\vec{u_1},\dots,\vec{u_k},\vec{u_{k+1}},\dots,
+\vec{u_m}\} \) that \( span(S)\subseteq span(T) \).
+\begin{align*}
+  c_1\vec{u_1}+c_2\vec{u_2}+\dots+c_k\vec{u_k} &\in span(S) \\
+  c_1\vec{u_1}+c_2\vec{u_2}+\dots+c_k\vec{u_k} &=
+    c_1\vec{u_1}+\dots+c_k\vec{u_k}+0\vec{u_{k+1}}+\dots+0\vec{u_m} \\
+  c_1\vec{u_1}+\dots+c_k\vec{u_k}+0\vec{u_{k+1}}+\dots+0\vec{u_m} &\in
+    span(T) \\
+  span(S) &\subseteq span(T) \\
+\end{align*}
+Deduce if \( \R^n = span(S) \), then \( \R^n = span(T) \).
+\begin{align*}
+  \R^n &= span(S) \\
+  span(S) &\subseteq span(T) \\
+  span(T) &\supseteq \R^n \\
+  span(T) &= \R^n \\
+\end{align*}
+
+\subsubsection*{Exercise 21}
+Suppose \( \vec{w} \) is a linear combination of \( \vec{u_1},\vec{u_2},\dots,
+\vec{u_k} \) and each \( \vec{u_1} \) is a linear combination of \( \vec{v_1},
+\dots,\vec{v_m} \). Prove \( \vec{w} \) is a linear combination of \( \vec{v_1},
+\dots,\vec{v_m} \).
+\begin{align*}
+  \vec{w} &= \sum_{i=1}^{k}c_iu_i \\
+  &= \sum_{i=1}^{k}c_i\left(\sum_{j=1}^{m}d_{ij}\vec{v_j}\right) \\
+  &= \sum_{i=1}^{k}\left(\sum_{j=1}^{m}c_id_{ij}\vec{v_j}\right) \\
+  &= \sum_{j=1}^{m}\left(\sum_{i=1}^{k}c_id_{ij}\right)\vec{v_i} \\
+  w &\in span(\vec{v_1},\dots,\vec{v_m})
+\end{align*}
+Also suppose each \( \vec{v_j} \) is a linear combination of \( \vec{u_1},\dots,
+\vec{u_k} \). Prove \( span(\vec{u_1},\dots,\vec{u_k}) =
+span(\vec{v_1},\dots,\vec{v_m}) \). Above we proved:
+\[ span(\vec{u_1},\dots,\vec{u_k}) \subseteq span(\vec{v_1},\dots,\vec{v_m}) \]
+Therefore:
+\[ span(\vec{u_1},\dots,\vec{u_k}) \supseteq span(\vec{v_1},\dots,\vec{v_m}) \]
+Use the result above to prove that:
+\[ \R^3 = span\left(\begin{bmatrix}1 \\ 0 \\ 0\end{bmatrix},
+  \begin{bmatrix}1 \\ 1 \\ 0\end{bmatrix},
+  \begin{bmatrix}1 \\ 1 \\ 1\end{bmatrix}\right) \]
+\begin{align*}
+  \R^3 &= span(\vec{e_1},\vec{e_2},\vec{e_3}) \\
+  \begin{bmatrix}1 \\ 0 \\ 0\end{bmatrix} &= \vec{e_1} \\
+  \begin{bmatrix}1 \\ 1 \\ 0\end{bmatrix} &= \vec{e_1}+\vec{e_2} \\
+  \begin{bmatrix}1 \\ 1 \\ 1\end{bmatrix} &= \vec{e_1}+\vec{e_2}+\vec{e_3} \\
+  span(\vec{e_1},\vec{e_2},\vec{e_3}) &\subseteq span\left(
+    \begin{bmatrix}1 \\ 0 \\ 0\end{bmatrix},
+    \begin{bmatrix}1 \\ 1 \\ 0\end{bmatrix},
+    \begin{bmatrix}1 \\ 1 \\ 1\end{bmatrix}\right) \\
+  \R^3 &= span\left(
+    \begin{bmatrix}1 \\ 0 \\ 0\end{bmatrix},
+    \begin{bmatrix}1 \\ 1 \\ 0\end{bmatrix},
+    \begin{bmatrix}1 \\ 1 \\ 1\end{bmatrix}\right)
+\end{align*}
+
+\subsubsection*{Exercise 23}
+Determine if the sets of vectors are linearly independent.
+\[ \begin{bmatrix}1 \\ 1 \\ 1\end{bmatrix},
+  \begin{bmatrix}1 \\ 2 \\ 3\end{bmatrix},
+  \begin{bmatrix}1 \\ -1 \\ 2\end{bmatrix} \]
+\begin{align*}
+  \begin{bmatrix}
+    1 & 1 & 1 & 0 \\
+    1 & 2 & -1 & 0 \\
+    1 & 3 & 2 & 0
+  \end{bmatrix} &= \begin{bmatrix}
+    0 & 1 & 3 & 0 \\
+    1 & 0 & -2 & 0 \\
+    0 & 0 & -5 & 0
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    1 & 0 & 0 & 0 \\
+    0 & 1 & 0 & 0 \\
+    0 & 0 & 1 & 0
+  \end{bmatrix}
+\end{align*}
+Linearly independent.
+
+\subsubsection*{Exercise 25}
+Determine if the sets of vectors are linearly independent.
+\[ \begin{bmatrix}0 \\ 1 \\ 2\end{bmatrix},
+  \begin{bmatrix}2 \\ 1 \\ 3\end{bmatrix},
+  \begin{bmatrix}2 \\ 0 \\ 1\end{bmatrix} \]
+\[ \begin{bmatrix}0 \\ 1 \\ 2\end{bmatrix}+
+  \begin{bmatrix}2 \\ 0 \\ 1\end{bmatrix} =
+  \begin{bmatrix}2 \\ 1 \\ 3\end{bmatrix} \]
+Linearly dependent.
+
+\subsubsection*{Exercise 27}
+Determine if the sets of vectors are linearly independent.
+\[ \begin{bmatrix}3 \\ 4 \\ 5\end{bmatrix},
+  \begin{bmatrix}6 \\ 7 \\ 8\end{bmatrix},
+  \begin{bmatrix}0 \\ 0 \\ 0\end{bmatrix} \]
+Linearly dependent, \( \vec{0} \) is linearly dependent to all other vectors.
+
+\subsubsection*{Exercise 29}
+Determine if the sets of vectors are linearly independent.
+\[ \begin{bmatrix}1 \\ -1 \\ 1 \\ 0\end{bmatrix},
+  \begin{bmatrix}-1 \\ 1 \\ 0 \\ 1\end{bmatrix},
+  \begin{bmatrix}1 \\ 0 \\ 1 \\ -1\end{bmatrix},
+  \begin{bmatrix}0 \\ 1 \\ -1 \\ 1\end{bmatrix} \]
+\begin{align*}
+  \begin{bmatrix}
+    1 & -1 & 1 & 0 & 0 \\
+    -1 & 1 & 0 & 1 & 0 \\
+    1 & 0 & 1 & -1 & 0 \\
+    0 & 1 & -1 & 1 & 0
+  \end{bmatrix} &= \begin{bmatrix}
+    1 & 0 & 1 & -1 & 0 \\
+    0 & 1 & 0 & -1 & 0 \\
+    0 & 0 & 1 & 1 & 0 \\
+    0 & 0 & 0 & -1 & 0
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    1 & 0 & 0 & 0 & 0 \\
+    0 & 1 & 0 & 0 & 0 \\
+    0 & 0 & 1 & 0 & 0 \\
+    0 & 0 & 0 & 1 & 0
+  \end{bmatrix} \\
+\end{align*}
+Linearly independent.
+
+\subsubsection*{Exercise 31}
+Determine if the sets of vectors are linearly independent.
+\[ \begin{bmatrix}3 \\ -1 \\ 1 \\ -1\end{bmatrix},
+  \begin{bmatrix}-1 \\ 3 \\ 1 \\ -1\end{bmatrix},
+  \begin{bmatrix}1 \\ 1 \\ 3 \\ 1\end{bmatrix},
+  \begin{bmatrix}-1 \\ -1 \\ 1 \\ 3\end{bmatrix} \]
+\begin{align*}
+  \begin{bmatrix}
+    3 & -1 & 1 & -1 & 0 \\
+    -1 & 3 & 1 & -1 & 0 \\
+    1 & 1 & 3 & 1 & 0 \\
+    -1 & -1 & 1 & 3 & 0
+  \end{bmatrix} &= \begin{bmatrix}
+    2 & 2 & 2 & -2 & 0 \\
+    0 & 4 & 4 & 0 & 0 \\
+    0 & 0 & 4 & 4 & 0 \\
+    -1 & -1 & 1 & 3 & 0
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    0 & 0 & 4 & 4 & 0 \\
+    0 & 4 & 4 & 0 & 0 \\
+    0 & 0 & 4 & 4 & 0 \\
+    -1 & -1 & 1 & 3 & 0
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    -1 & -1 & 1 & 3 & 0 \\
+    0 & 1 & 1 & 0 & 0 \\
+    0 & 0 & 1 & 1 & 0 \\
+    0 & 0 & 0 & 0 & 0 \\
+  \end{bmatrix}
+\end{align*}
+Linearly dependent, infinite solutions.
+
+\subsubsection*{Exercise 42a}
+If the columns of an \( n\times n \) matrix \( A \) are linearly independent
+as vectors in \( \R^n \), what is the rank of \( A \)? Explain.
+The rank of \( A \) is \( n \) because there exists a non-trivial solution. It
+is possible to reduce \( A \) to reduced row echelon form with no row of 0s
+at the bottom.
+
+\subsubsection*{Exercise 44}
+Prove two vectors are linearly dependent if and only if one is a scalar multiple
+of the other.
+\begin{align*}
+  \vec{v_1} &= c\vec{v_2} \\
+  1\vec{v_1}-c\vec{v_2} &= \vec{0}
+\end{align*}
+
+\subsubsection*{Exercise 46}
+Prove that every subset of a linearly independent set is linearly independent.
+Let \( \vec{v_1},\vec{v_2},\dots,\vec{v_n} \) be a linearly independent set.
+\[ c_1\vec{v_1}+c_2\vec{v_2}+\dots+c_n\vec{v_n} \ne \vec{0} \]
+By Theorem 2.5, \( \vec{v},\vec{v_2},\dots,\vec{v_n} \) are linearly dependent
+if and only if at least one of the vectors can be expressed as a linear
+combination of the others. If no such set of scalars exist, then no subset
+of \( \vec{v_1},\vec{v_2},\dots,\vec{v_n} \) can be linearly dependent. Thus,
+every subset of a linearly independent set is linearly independent.
+
+\subsubsection*{Exercise 47}
+Suppse that \( S = \{\vec{v_1},\dots,\vec{v_k},\vec{v}\} \) is a set of vectors
+in some \( \R^n \) and that \( \vec{v} \) is a linear combination of
+\( \vec{v_1},\dots,\vec{v_k} \). If \( S' = \{\vec{v_1},\dots,\vec{v_k}\} \),
+prove that \( span(S) = span(S') \).
+\[ \vec{v} = c_1\vec{v_1}+\dots+c_k\vec{v_k} \]
+If a vector \( \vec{w}\in span(S) \):
+\begin{align*}
+  \vec{w} &= d_1\vec{v_1}+\dots+d_k\vec{v_k}+d\vec{v} \\
+  &= d_1\vec{v_1}+\dots+d_k\vec{v_k}+d(c_1\vec{v_1}+\dots+c_k\vec{v_k}) \\
+  &= d_1\vec{v_1}+\dots+d_k\vec{v_k}+dc_1\vec{v_1}+\dots+dc_k\vec{v_k}) \\
+  &= (d_1+dc_1)\vec{v_1}+\dots+(d_k+dc_k)\vec{v_k} \\
+  \therefore \vec{w} &\in span(S') \\
+  span(S) &\subseteq span(S')
+\end{align*}
+If a vector \( \vec{x}\in span(S') \):
+\begin{align*}
+  \vec{x} &= a_1\vec{v_1}+\dots+a_k\vec{v_k}+0\vec{v} \\
+  \therefore \vec{x}&\in span(S) \\
+  span(S') &\subseteq span(S) \\
+  \therefore span(S) &= span(S')
+\end{align*}
+
+\subsubsection*{Exercise 48}
+Let \( \{\vec{v_1},\dots,\vec{v_k}\} \) be a linearly independent set of vectors
+in \( \R^n \), and let \( \vec{v} \) be a vector in \( \R^n \). Suppose that
+\( \vec{v} = c_1\vec{v_1}+c_2\vec{v_2}+\dots+c_k\vec{v_k} \) with \( c_1 \ne 0
+\). Prove that \( \{\vec{v},\vec{v_2},\dots,\vec{v_k}\} \) is linearly
+independent.
+\[ ? \]
+
+\section*{Section 3.1}
+Let:
+\[ A = \begin{bmatrix}3 & 0 \\ -1 & 5\end{bmatrix},
+  B = \begin{bmatrix}4 & -2 & 1 \\ 0 & 2 & 3\end{bmatrix},
+  C = \begin{bmatrix}1 & 2 \\ 3 & 4 \\ 5 & 6\end{bmatrix} \]
+\[ D = \begin{bmatrix}0 & -3 \\ -2 & 1\end{bmatrix},
+  D = \begin{bmatrix}4 & 2\end{bmatrix},
+  F = \begin{bmatrix}-1 \\ 2\end{bmatrix} \]
+
+\subsubsection*{Exercise 1}
+Compute the indicated matrices.
+\begin{align*}
+  A+2D
+\end{align*}
+
+\subsubsection*{Exercise 3}
+Compute the indicated matrices.
+\begin{align*}
+  B-C
+\end{align*}
+
+\subsubsection*{Exercise 5}
+Compute the indicated matrices.
+\begin{align*}
+  AB
+\end{align*}
+
+\subsubsection*{Exercise 7}
+Compute the indicated matrices.
+\begin{align*}
+  D+BC
+\end{align*}
+
+\subsubsection*{Exercise 9}
+Compute the indicated matrices.
+\begin{align*}
+  E(AF)
+\end{align*}
+
+\subsubsection*{Exercise 11}
+Compute the indicated matrices.
+\begin{align*}
+  FE
+\end{align*}
+
+\subsubsection*{Exercise 13}
+Compute the indicated matrices.
+\begin{align*}
+  B^TC^T-(CB)^T
+\end{align*}
+
+\subsubsection*{Exercise 15}
+Compute the indicated matrices.
+\begin{align*}
+  A^3
+\end{align*}
+
+\subsubsection*{Exercise 17}
+Given an example of a nonzero \( 2\times2 \) matrix \( A \) such that
+\( A^2 = 0 \)
+
+\subsubsection*{Exercise 21}
+Write the given system of linear equations as a matrix equation of the form
+\( A\vec{x} = \vec{b} \).
+\begin{align*}
+  x_1-2x_2+3x_3 &= 0 \\
+  2x_1+x_2-5x_3 &= 4 \\
+  \begin{bmatrix}
+    1 & -2 & 3 \\
+    2 & 1 & -5
+  \end{bmatrix}\begin{bmatrix}
+    x_1 \\ x_2 \\ x_3
+  \end{bmatrix} &= \begin{bmatrix}
+    0 \\ 4
+  \end{bmatrix}
+\end{align*}
+
+\subsubsection*{Exercise 22}
+Write the given system of linear equations as a matrix equation of the form
+\( A\vec{x} = \vec{b} \).
+\begin{align*}
+  -x_1 + 2x_3 &= 1 \\
+  x_1-x_2 &= -2 \\
+  x_2+x_3 &= -1 \\
+  \begin{bmatrix}
+    -1 & 0 & 2 \\
+    1 & -1 & 0 \\
+    0 & 1 & 1
+  \end{bmatrix}\begin{bmatrix}
+    x_1 \\ x_2 \\ x_3
+  \end{bmatrix} &= \begin{bmatrix}
+    1 \\ -2 \\ -1
+  \end{bmatrix}
+\end{align*}
+
+\subsubsection*{Exercise 35}
+Let \( A = \begin{bmatrix}0 & 1 \\ -1 & 1\end{bmatrix} \). Compute \( A^2,A^3,
+\dots,A^7 \). What is \( A^{2015} \)?
+
+\subsubsection*{Exercise 36}
+Let:
+\[ B = \begin{bmatrix}
+  \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} \\
+  \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}}
+\end{bmatrix} \]
+Find \( B^{2015} \)
+
+\subsubsection*{Exercise 37}
+Let \( A = \begin{bmatrix}1 & 1 \\ 0 & 1\end{bmatrix} \). Find a formula for
+\( A^n(n\ge1) \) and verify your formula using mathematical induction.
+
+\subsubsection*{Exercise 38}
+Let \( A = \begin{bmatrix}\cos\theta & -\sin\theta \\ \sin\theta & \cos\theta
+\end{bmatrix} \). Show that \( A^2 = \begin{bmatrix}\cos2\theta & -\sin2\theta
+\\ \sin2\theta & \cos2\theta\end{bmatrix} \).
+
+Prove by mathematical induction that:
+\[ A^n = \begin{bmatrix}
+  \cos(n\theta) & -\sin(n\theta) \\
+  \sin(n\theta) & \cos(n\theta)
+\end{bmatrix} \quad \text{ for } n\ge 1 \]
+
+\begin{center}
+  If you have any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
