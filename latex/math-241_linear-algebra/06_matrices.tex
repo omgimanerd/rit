@@ -208,132 +208,110 @@ A square matrix \( A \) is \textbf{symmetric} if \( A = A^T \). Example:
 \( I_2^T = I_2 \), therefore \( I_2 \) is symmetric. \( I_n \) is also
 symmetric.
 
-\subsubsection*{Example}
-Compute \( A^2,A^3,\dots,A^7 \) when:
-\[ A = \begin{bmatrix}0 & 1 \\ -1 & 1\end{bmatrix} \]
-\begin{align*}
-  A^2 &= \begin{bmatrix}-1 & 1 \\ -1 & 0\end{bmatrix} \\
-  A^3 &= \begin{bmatrix}-1 & 0 \\ 0 & -1\end{bmatrix} \\
-  A^4 &= \begin{bmatrix}0 & -1 \\ 1 & -1\end{bmatrix} \\
-  A^5 &= \begin{bmatrix}1 & -1 \\ 1 & 0\end{bmatrix} \\
-  A^6 &= \begin{bmatrix}1 & 0 \\ 1 & 0\end{bmatrix} = I_2 \\
-  A^7 &= A^1 \\
-\end{align*}
-Compute \( A^{2015} \):
-\begin{align*}
-  A^{2015} &= A^{6(370)+5} \\
-  &= (A^6)^{370}A^5 \\
-  &= (I_2)^{370}A^5 \\
-  &= \begin{bmatrix}1 & -1 \\ 1 & 0\end{bmatrix}
-\end{align*}
+\subsection*{Properties of Matrices}
+Let \( A,B,C \) be matrices of the same size. Let \( c,d \) be scalars.
+\begin{enumerate}
+  \item \( A+B = B+A \)
+  \item \( (A+B)+C = A+(B+C) \)
+  \item \( A+0 = A \)
+  \item \( A+(-A) = 0 \)
+  \item \( c(A+B) = cA+cB \)
+  \item \( (c+d)A = cA+dA \)
+  \item \( c(dA) = (cd)A \)
+  \item \( 1A = A \)
+\end{enumerate}
+Properties of matrix multiplication (\( k \) is a scalar):
+\begin{enumerate}
+  \item \( A(BC) = (AB)C \)
+  \item \( A(B+C) = AB+AC \)
+  \item \( (A+B)C = AC+BC \)
+  \item \( k(AB) = (kA)B = A(kB) \)
+  \item \( IA = AI = A \)
+\end{enumerate}
+Properties of transpose:
+\begin{enumerate}
+  \item \( (A^T)^T = A \)
+  \item \( (A+B)^T = A^T+B^T \)
+  \item \( (kA)^T = k(A^T) \)
+  \item \( (AB)^T = B^TA^T \)
+  \item \( (A^n)^T = (A^T)^n \)
+\end{enumerate}
+\textbf{Theorems}:
+\begin{enumerate}
+  \item If \( A \) is a square matrix, \( A+A^T \) is symmetric.
+  \item For any matrix \( A \), \( AA^T \) and \( A^TA \) are symmetric.
+\end{enumerate}
+Extension:
+\begin{enumerate}
+  \item \( (A_1+A_2+\dots+A_n)^T = \sum_{i=1}^{n}(A_i)^T \)
+  \item \( (A_1\cdot A_2\cdot\dots\cdot A_n)^T = (A_n)^T(A_{n-1})^T(A_1)^T \)
+\end{enumerate}
 
 \subsubsection*{Example}
-Examine:
-\[ A = \begin{bmatrix}1 & 1 \\ 0 & 1\end{bmatrix} \]
-Find a formula for \( A^n \) and prove it is true.
+Let \( A_1 = \begin{bmatrix}0 & 1 \\ -1 & 0\end{bmatrix} \quad
+  A_2 = \begin{bmatrix}1 & 0 \\ 0 & 1\end{bmatrix} \quad
+  A_3 = \begin{bmatrix}1 & 1 \\ 1 & 1\end{bmatrix} \). Suppose
+\( \begin{bmatrix}w & x \\ y & z\end{bmatrix}\in span(A_1,A_2,A_3) \).
 \begin{align*}
-  A^2 &= \begin{bmatrix}1 & 2 \\ 0 & 1\end{bmatrix} \\
-  A^3 &= \begin{bmatrix}1 & 3 \\ 0 & 1\end{bmatrix} \\
-  A^4 &= \begin{bmatrix}1 & 4 \\ 0 & 1\end{bmatrix} \\
-  A^n &= \begin{bmatrix}1 & n \\ 0 & 1\end{bmatrix}
-\end{align*}
-Base Case (\(n = 1\)):
-\[ A^1 = \begin{bmatrix}1 & 1 \\ 0 & 1\end{bmatrix} \]
-Induction Step: Assume it is true for \( n \). Prove it is true for \( n+1 \).
-Show that:
-\begin{align*}
-  A^{n+1} &= \begin{bmatrix}
-    1 & n+1 \\
-    0 & 1
+  c_1A_1+c_2A_2+c_3A_3 = \begin{bmatrix}
+    w & x \\
+    y & z
   \end{bmatrix} \\
-  A^{n+1} &= A^n\times A \\
-  &= \begin{bmatrix}
-    1 & n \\
-    0 & 1
-  \end{bmatrix}\times\begin{bmatrix}
-    1 & 1 \\
-    0 & 1
-  \end{bmatrix} \\
-  &= \begin{bmatrix}
-    1 & n+1 \\
-    0 & 1
+  \begin{bmatrix}
+    c_2+c_3 & c_1+c_3 \\
+    -c_1+c_3 & c_2+c_3
+  \end{bmatrix} &= \begin{bmatrix}
+    w & x \\
+    y & z
   \end{bmatrix}
+  c_2+c_3 &= w \\
+  c_1+c_3 &= x \\
+  -c_1+c_3 = y \\
+  c_2+c_3 = z \\
+  \left[\begin{array}{ccc|c}
+    0 & 1 & 1 & w \\
+    1 & 0 & 1 & x \\
+    -1 & 0 & 1 & y \\
+    0 & 1 & 1 & z
+  \end{array}\right] &\to \left[\begin{array}{ccc|c}
+    1 & 0 & 0 & x-\frac{x+y}{2} \\
+    0 & 1 & 0 & w-\frac{x+y}{2} \\
+    0 & 0 & 1 & \frac{x+y}{2} \\
+    0 & 0 & 0 & z-w
+  \end{array}\right]
 \end{align*}
+This describes the general form of all matrixes in the span.
 
-\subsubsection*{Example}
-\[ A = \begin{bmatrix}
-  \cos\theta & -\sin\theta \\
-  \sin\theta & \cos\theta
-\end{bmatrix} \]
-Show that:
-\[ A^2 = \begin{bmatrix}
-  \cos2\theta & -\sin2\theta \\
-  \sin2\theta & \cos2\theta
-\end{bmatrix} \]
+\subsection*{Inverse of a Matrix}
+Assume \( A \) is a square matrix. If we try to solve \( A\vec{x} = \vec{b} \),
+we would like to cancel \( A \) out. We want a matrix \( A' \) such that
+\( A'A = AA' = I \).
 \begin{align*}
-  A\times A &= \begin{bmatrix}
-    \cos\theta & -\sin\theta \\
-    \sin\theta & \cos\theta
-  \end{bmatrix}\begin{bmatrix}
-    \cos\theta & -\sin\theta \\
-    \sin\theta & \cos\theta
-  \end{bmatrix} \\
-  &= \begin{bmatrix}
-    \cos^2\theta-\sin^2\theta & -\cos\theta\sin\theta-\sin\theta\cos\theta \\
-    \sin\theta\cos\theta+\cos\theta\sin\theta & -\sin^2\theta+\cos^2\theta
-  \end{bmatrix} \\
-  &= \begin{bmatrix}
-    \cos(\theta+\theta) & -\sin(\theta+\theta) \\
-    \sin(\theta+\theta) & \cos(\theta+\theta)
-  \end{bmatrix} \\
-  &= \begin{bmatrix}
-    \cos(2\theta) & -\sin(2\theta) \\
-    \sin(2\theta) & \cos(2\theta)
-  \end{bmatrix}
+  A\vec{x} &= \vec{b} \\
+  A'(A\vec{x}) &= A'\vec{b} \\
+  (A'A)\vec{x} &= A'\vec{b} \\
+  I\vec{x} &= A'\vec{b} \\
+  \vec{x} &= A'\vec{v}
 \end{align*}
-Prove that:
-\[ A^n = \begin{bmatrix}
-  \cos(n\theta) & -\sin(n\theta) \\
-  \sin(n\theta) & \cos(n\theta)
-\end{bmatrix} \]
-Base Case (\( n = 1 \)): Obvious. \\
-Induction Step: Assume it is true for \( n \). Prove it is true for \( n+1 \):
+When this \( A' \) does exist, we say \( A \) is invertible. \\
+\textbf{Theorem}: If \( A \) is an invertible \( n\times n \) matrix, then the
+system of linear equations given by \( A\vec{x} = \vec{b} \) has a unique
+solution. \\
+Let \( A \) be a \( 2\times2 \) matrix.
+\[ A = \begin{bmatrix}a & b \\ c & d\end{bmatrix} \]
+Suppose \( ad-bc \ne 0 \), then \( A \) is invertible:
 \begin{align*}
-  A^{n+1} &= A^nA \\
-  &= \begin{bmatrix}
-    \cos(n\theta) & -\sin(n\theta) \\
-    \sin(n\theta) & \cos(n\theta)
-  \end{bmatrix}\begin{bmatrix}
-    \cos\theta & -\sin\theta \\
-    \sin\theta & \cos\theta
-  \end{bmatrix} \\
-  &= \begin{bmatrix}
-    \cos(n\theta)\cos(\theta)-\sin(n\theta)\sin(\theta) &
-      \cos(n\theta)(-\sin(\theta))-\sin(n\theta)\cos(\theta) \\
-    \sin(n\theta)\cos(\theta)+\cos(n\theta)\sin(\theta) &
-      -\sin(n\theta)\sin(\theta)+\cos(n\theta)\cos(\theta)
-  \end{bmatrix} \\
-  &= \begin{bmatrix}
-    \cos(n\theta+\theta) & -\sin(n\theta+\theta) \\
-    \sin(n\theta+\theta) & \cos(n\theta+\theta)
-  \end{bmatrix} \\
-  &= \begin{bmatrix}
-    \cos((n+1)\theta) & -\sin((n+1)\theta) \\
-    \sin((n+1)\theta) & \cos((n+1)\theta)
-  \end{bmatrix}
+  A' &= \frac{1}{ad-bc}\begin{bmatrix}d & -b \\ -c & a\end{bmatrix} \\
+  &= \frac{1}{det(A)}\begin{bmatrix}d & -b \\ -c & a\end{bmatrix}
 \end{align*}
+The inverse of a matrix is also denoted as \( A^{-1} \).
 
-\subsubsection*{Example}
-Prove that every subset of a linearly independent subset is linearly
-independent. Let \( S \) be a set of linearly independent vectors.
-\[ S = \{\vec{v_1},\vec{v_2},\dots,\vec{v_m}\} \]
-Let \( S' = \{\vec{v_1},\dots,\vec{v_k}\} \quad k\le m \).
-\begin{align*}
-  \vec{0} &= c_1\vec{v_1}+c_2\vec{v_2}+\dots+c_k\vec{v_k} \\
-  &= c_1\vec{v_1}+c_2\vec{v_2}+\dots+c_k\vec{v_k}+
-    c_{k+1}\overrightarrow{v_{k+1}}+\dots+c_m\vec{v_m} \\
-  c_1 &= c_2 = \dots = c_k = c_{k+1} = \dots = c_m = 0
-\end{align*}
+\subsection*{General Procedure for Finding \( A^{-1} \)}
+\[ [A|I_n] \rightarrow [I|A^{-1}] \]
+By reducing a matrix to reduced row echelon form, it is possible to find the
+inverse of \( A \). This is possible when \( rank(A) < n \). \\
+\textbf{Fact}:
+\[ (AB)^{-1} = B^{-1}A^{-1} \]
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
