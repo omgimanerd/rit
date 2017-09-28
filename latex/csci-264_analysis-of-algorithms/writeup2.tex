@@ -84,11 +84,22 @@ the \( i \)-th character of \( s \).
     &= O(n)
   \end{align*}
   \item What does the algorithm do? \\
-  \texttt{maxdif} contains the length of the largest contiguous group of
-  consonants. \\
-  \texttt{dif} contains the difference between the number of consonants and
-  the number of vowels in string \( s \). \\
-
+  This algorithm calculates four statistics about the number and placement of
+  vowels and consonants in a string. Those four statistics are:
+  \begin{itemize}
+    \item \texttt{maxdif}, the maximum of \texttt{leftalignedmaxdif} and
+    \texttt{rightalignedmaxdif} (usually, although we couldn't figure out the
+    special cases where it wasn't)
+    \item \texttt{leftalignedmaxdif} is the maximum difference between the
+    number of consonants and the number of vowels, in the left half of the
+    input.
+    \item \texttt{rightalignedmaxdif} is the maximum difference between the
+    number of consonants and the number of vowels, in the right half of the
+    input.
+    \item \texttt{dif} contains the difference between the number of consonants
+    and the number of vowels in string \( s \). (This is the only one we're
+    completely sure about.)
+  \end{itemize}
 \end{enumerate}
 
 \section*{Problem 3}
@@ -204,5 +215,86 @@ applies. Do not worry about the base case or rounding.
     \therefore T(n) &= \Theta(\sqrt{n}\log n)
   \end{align*}
 \end{enumerate}
+
+\section*{Problem 5}
+
+\subsubsection*{Algorithm Description}
+For this problem, we implemented a radix sort with a variable base. By computing
+an optimal base to convert all the numbers into, we are able to sort all the
+numbers in linear time.
+
+\subsubsection*{Argument of Correctness}
+Given \( n \) numbers of which the maximum is \( n^2-1 \), a base 10 radix sort
+would have a runtime of \( n\log_{10}(n^2-1) \), which is:
+\[ O(n\log(n)) \]
+In general, for a radix sort of base \( b \), the runtime is \( b\times d \)
+where \( d \) is the number of digits in the largest number. Since we are given
+the constraint that the largest number can be upper bounded by \( n^2 \),
+\( d \) can be expressed in terms of \( n \) as \( \log_b(n^2) = d \). \par
+Note that as long as \( b \) is a function of \( n \) of the form \( cn \), then
+this runtime is equivalent to linear time.
+\begin{align*}
+  Let: b &= cn \\
+  bd &= b\log_b(n^2) \\
+  &= cn\log_{cn}(n^2) \\
+  &= 2cn\log_{cn}(n) \\
+  &= 2cn\frac{\log(n)}{\log(cn)} \\
+  \lim_{n\to\infty}\frac{\log(n)}{\log(cn)} &= 1
+\end{align*}
+From the definitions above:
+\begin{align*}
+  \log_b(m) &= d \\
+  \log_b(n^2) &= d \\
+  n^2 &= b^d
+\end{align*}
+Logically, this shows that we could do a sort in one pass if we let \( d = 1 \)
+and \( b = n^2 \). This will have \( O(n^2) \) space complexity as it is
+basically just creating an array of size \( n^2 \) and placing the numbers at
+the index they correspond to. It makes the most sense to choose a \( b \) as
+close to the resultant \( d \) as possible because this minimizes the space
+complexity.
+
+\subsubsection*{Running Time Estimate}
+From the calculations above, the running time of this optimized radix sort is
+linear, or \( O(n) \).
+
+\subsubsection*{Pseudocode}
+\begin{lstlisting}
+def getOptimalBaseDigits(max):
+  for base = 2 to max:
+    let digits = ceil(log(max) / log(base))
+    if digits < base:
+      return (base, digits)
+
+def convertFromBase10(number, base, digits):
+  let result = []
+  while number != 0:
+    result.pushFirst(number % base)
+    number /= base
+  return result
+
+def radixSort(data, base, digits):
+  let buckets1 = [[] for i in base]
+  let buckets2 = [[] for i in base]
+  for i = 0 to data.length:
+    buckets1[data[i][0]].pushLast(data[i])
+  let empty = buckets2
+  let filled = buckets1
+  for digit = 1 to digits:
+    for bucket in filled:
+      while not bucket.isEmpty():
+        let num = bucket.popFirst()
+        empty[num[digit]].pushLast(num)
+    filled, empty = empty, filled
+  let result = []
+  for bucket in filled:
+    result.pushLast(bucket.popFirst())
+
+def main(input):
+  let base, digits = getOptimalBaseDigits(max(input))
+  let matrix = [convertFromBase10(d, base, digits) for d in data]
+  matrix = radixSort(matrix)
+  return matrix
+\end{lstlisting}
 
 \end{document}
