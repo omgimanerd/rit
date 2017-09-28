@@ -487,7 +487,14 @@ in \( \R^n \), and let \( \vec{v} \) be a vector in \( \R^n \). Suppose that
 \( \vec{v} = c_1\vec{v_1}+c_2\vec{v_2}+\dots+c_k\vec{v_k} \) with \( c_1 \ne 0
 \). Prove that \( \{\vec{v},\vec{v_2},\dots,\vec{v_k}\} \) is linearly
 independent.
-\[ ? \]
+\begin{align*}
+  \vec{v} &= c_1\vec{v_1}+c_2\vec{v_2}+\dots+c_k\vec{v_k} \\
+  \vec{0} &= c\vec{v}+c_1\vec{v_1}+c_2\vec{v_2}+\dots+c_k\vec{v_k} \\
+  c_1\vec{v_1} &= c\vec{v}+c_2\vec{v_2}+\dots+c_k\vec{v_k} \\
+  c_1 &\ne 0 \\
+  \vec{0} &\ne c\vec{v}+c_2\vec{v_2}+\dots+c_k\vec{v_k} \\
+\end{align*}
+Therefore, \( \{\vec{v},\vec{v_2},\vec{v_k}\} \) is linearly independent.
 
 \section*{Section 3.1}
 Let:
