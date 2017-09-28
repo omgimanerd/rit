@@ -130,6 +130,119 @@ If \( \frac{\partial^2{f}}{\partial{x}\partial{y}} \) and \(
 neighborhood of \( (x_{\circ},y_{\circ}) \), then:
 \[ \frac{\partial^2}{\partial{x}\partial{y}}(x_{\circ},y_{\circ}) =
   \frac{\partial^2}{\partial{y}\partial{x}}(x_{\circ},y_{\circ}) \]
+\( z = f(x,y) \) is called differentiable at \( x_{\circ},y_{\circ} \) if and
+only if \( \pdiff{f}{x},\pdiff{f}{y} \) exist and are continouous at \(
+(x_{\circ},y_{\circ}) \).
+
+\subsubsection*{Example}
+Check that \( u(x,t) = \sin(x-at) \) is a solution of:
+\[ \frac{\partial^2{u}}{\partial{t^2}} =
+  a^2\frac{\partial^2{u}}{\partial{x^2}} \]
+\begin{align*}
+  \frac{\partial^2{u}}{\partial{t^2}}(\sin(x-at)) &=
+    \pdiff{u}{t}\cos(x-at)(-a) \\
+  &= -\sin(x-at)(-a)(-a) \\
+  &= -a^2\sin(x-at) \\
+  a^2\frac{\partial^2{u}}{\partial{x^2}}(\sin(x-at)) &=
+    a^2\pdiff{u}{x}\cos(x-at) \\
+  &= a^2(-\sin(x-at)) \\
+  &= -a^2\sin(x-at)
+\end{align*}
+Both derivatives are equal.
+
+\subsubsection*{Example}
+The temperature of a region is determined by:
+\[ T(t) = \frac{60}{1+x^2+y^2} \]
+A bug is located at (2,1), in which direction should it go to cool off.
+\begin{align*}
+  \pdiff{T}{x} &= \frac{-20}{3} \\
+  \pdiff{T}{y} &= \frac{-10}{3}
+\end{align*}
+The bug should move towards the north and east.
+
+\subsubsection*{Example}
+\[ z = f(x,y) \quad x = x(t) \quad y = y(t) \]
+The function \( z \) can be defined in terms of \( t \): \( z(t) \)
+\begin{align*}
+  \ddiff{z}{t} &= \lim_{h\to0}\frac{z(t+h)-z(t)}{h} \\
+  &= \lim_{h\to0}\frac{f(x(t+h),y(t+h))-f(x(t),y(t))}{h} \\
+  &= \lim_{h\to0}\frac{(f(x(t+h),y(t+h))-f(x(t+h),y(t)))(y(t+h)-y(t))}
+    {h(y(t+h)-y(t))} \\
+  &+\frac{(f(x(t+h),y(t))-f(x(t),y(t)))(x(t+h)-x(t))}{h(x(t+h)-x(t))} \\
+  & \lim_{h\to0}\frac{(x(t+h)-x(t))}{h} = \ddiff{x}{t} \\
+  & \lim_{h\to0}\frac{(y(t+h)-y(t))}{h} = \ddiff{y}{t} \\
+  & \lim_{h\to0}\frac{(f(x(t+h),y(t))-f(x(t),y(t)))}{(x(t+h)-x(t))} =
+    \pdiff{f}{x} \\
+  \ddiff{z}{t} &= \pdiff{z}{x}\ddiff{x}{t}+\pdiff{f}{y}\ddiff{y}{t}
+\end{align*}
+
+\subsubsection*{Example}
+\[ W = W(T,R) \quad \pdiff{W}{T} = -2 \quad \pdiff{W}{R} = 4 \]
+\[ \ddiff{T}{t} = 0.1 \quad \ddiff{R}{t} = 0.5 \]
+\[ \ddiff{W}{t} = \pdiff{W}{T}\ddiff{T}{t}+\pdiff{W}{R}\ddiff{R}{t} = 1.8 \]
+
+\subsubsection*{Example}
+Suppose you have a simple electric circuit:
+\[ V = IR \quad R = 4.00\Omega \quad I = 0.08A \quad
+  \ddiff{R}{t} = 0.03\frac{\Omega}{s} \quad \ddiff{V}{t} = -0.01V \]
+What is \( \ddiff{I}{t} \)?
+\begin{align*}
+  I(V,R) &= \ddiff{I}{t} \\
+  &= \pdiff{I}{V}\ddiff{V}{t}+\pdiff{I}{R}\ddiff{R}{t} \\
+  &= \frac{1}{R}(-0.01)+\frac{-V}{R^2}{0.03} \\
+  &= \frac{1}{400}(-0.01)-\frac{0.08}{400}(0.03)
+\end{align*}
+
+\subsubsection*{Example}
+Suppose you have the surface
+\[ x^3y^2z^4+4xy+z^2-6 = 0 \]
+What is \( \ddiff{z}{y} \)?
+\begin{align*}
+  F(x,y,z(x,y)) &= 0 \\
+  \ddiff{z}{y}F(x,y,z(x,y)) &=
+    \pdiff{F}{x}\ddiff{x}{y}+\pdiff{F}{y}\ddiff{y}{y}+
+    \pdiff{F}{z}\ddiff{z}{y} = 0 \\
+  \ddiff{x}{y} &= 0 \\
+  \ddiff{y}{y} &= 1\\
+  \therefore \ddiff{z}{y} &= \frac{-\pdiff{F}{y}}{\pdiff{F}{z}} \\
+  &= -\frac{F_y}{F_z} \\
+  &= -\frac{x^3z^4(2y)+4x}{x^3y^2(4z^3)+2z}
+\end{align*}
+
+\subsubsection*{Example}
+\[ y^2x^4+y^3x-2 = 0 \]
+Find \( \ddiff{y}{x} \):
+\begin{align*}
+  2y\diff{y}{x}x^4+y^{2}4x^3+3y^2\ddiff{y}{x}x+y^3 &= 0 \\
+  \ddiff{y}{x} &= \frac{-y^{2}4x^3-y^3}{2y+3y^{2}x}
+\end{align*}
+
+\subsubsection*{Example}
+\[ S: F(x,y,z) = 0 \quad (x_{\circ},y_{\circ},z_{\circ})\in S \]
+\[ C: \vec{r(t)} = \langle x(t),y(t),z(t)\rangle \quad C\subset S \quad
+  (x_{\circ},y_{\circ},z_{\circ})\in S \]
+\begin{align*}
+  \pdiff{F}{x}\diff{x}{t}+\pdiff{F}{t}\pdiff{y}{t}+\pdiff{F}{z}\ddiff{z}{t} &=
+    0 \\
+  &= \langle\pdiff{F}{x},\pdiff{F}{y},\pdiff{F}{z}\rangle\cdot
+    \langle\ddiff{x}{t},\ddiff{y}{t},\ddiff{z}{t}\rangle \\
+  &= \overrightarrow{\triangledown F}\cdot\overrightarrow{r'(t)} = 0 \\
+  &\therefore \overrightarrow{\triangledown F}\bot\overrightarrow{r'(t)}
+\end{align*}
+
+\subsubsection*{Example}
+Check that every line normal to a sphere passes through its center.
+\[ x^2+y^2+z^2-1 = 0 \]
+\begin{align*}
+  \vec{u} &= \overrightarrow{\triangledown F} \\
+  &= \langle2x,2y,2z\rangle \\
+  l_{normal} &= \begin{cases}
+    x &= x_{\circ}+t2x_{\circ} \\
+    y &= y_{\circ}+t2y_{\circ} \\
+    z &= z_{\circ}+t2z_{\circ}
+  \end{cases} \\
+  t &= -\frac{1}{2}
+\end{align*}
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have

@@ -440,11 +440,13 @@ at the bottom.
 
 \subsubsection*{Exercise 44}
 Prove two vectors are linearly dependent if and only if one is a scalar multiple
-of the other.
+of the other. \\
+Suppose \( \vec{u} \) is a scalar multiple of \( \vec{v} \).
 \begin{align*}
-  \vec{v_1} &= c\vec{v_2} \\
-  1\vec{v_1}-c\vec{v_2} &= \vec{0}
+  \vec{u} &= c\vec{v} \\
+  c\vec{v}-\vec{u} &= \vec{0}
 \end{align*}
+Thus, \( \vec{u} \) and \( \vec{v} \) are linearly dependent.
 
 \subsubsection*{Exercise 46}
 Prove that every subset of a linearly independent set is linearly independent.
@@ -677,14 +679,55 @@ Find \( B^{2015} \).
     \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}}
   \end{bmatrix} \\
   B^4 &= \begin{bmatrix}
-    -\frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} \\
-    \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}}
+    -1 & 0 \\
+    0 & -1
+  \end{bmatrix} \\
+  B^8 &= \begin{bmatrix}
+    1 & 0 \\
+    0 & 1
+  \end{bmatrix} = I_2 \\
+  B^{2015} &= B^{8(251)+7} \\
+  &= (I_2)^{250}B^7 \\
+  &= B^3B^4 \\
+  &= \begin{bmatrix}
+    \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\
+    -\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}}
   \end{bmatrix}
 \end{align*}
 
 \subsubsection*{Exercise 37}
 Let \( A = \begin{bmatrix}1 & 1 \\ 0 & 1\end{bmatrix} \). Find a formula for
 \( A^n(n\ge1) \) and verify your formula using mathematical induction.
+\begin{align*}
+  A^2 &= \begin{bmatrix}
+    1 & 2 \\
+    0 & 1
+  \end{bmatrix} \\
+  A^3 &= \begin{bmatrix}
+    1 & 3 \\
+    0 & 1
+  \end{bmatrix} \\
+  A^n &= \begin{bmatrix}
+    1 & n \\
+    0 & 1
+  \end{bmatrix} \\
+\end{align*}
+Base Case: \( A^1 = \begin{bmatrix}1 & 1 \\ 0 & 1\end{bmatrix} \).
+Induction Step: Assume it is true for \( n \). Prove it is true for \( n+1 \):
+\begin{align*}
+  A^{n+1} &= A^nA \\
+  &= \begin{bmatrix}
+    1 & n \\
+    0 & 1
+  \end{bmatrix}\begin{bmatrix}
+    1 & 1 \\
+    0 & 1
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    1 & n+1 \\
+    0 & 1
+  \end{bmatrix}
+\end{align*}
 
 \subsubsection*{Exercise 38}
 Let \( A = \begin{bmatrix}\cos\theta & -\sin\theta \\ \sin\theta & \cos\theta
