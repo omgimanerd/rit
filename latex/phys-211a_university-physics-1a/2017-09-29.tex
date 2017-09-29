@@ -1,0 +1,54 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\usepackage{tikz}
+
+\title{University Physics 1A}
+\author{Alvin Lin}
+\date{September 29th, 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Work}
+\[ \text{work} = \overrightarrow{force}\times\overrightarrow{displacement} \]
+\[ W = \vec{F}\cdot\overrightarrow{\Delta x} \]
+There are two ways to define the dot product.
+\begin{align*}
+  \vec{A}\cdot\vec{B} &= |A||B|\cos(\theta) \\
+  \vec{A} &= A_x\i+A_y\j \\
+  \vec{B} &= B_x\i+B-y\j \\
+  \vec{A}\cdot\vec{B} &= (A_x\i+A_y\j)\cdot(B_x\i+B_y\j) \\
+  &= A_xB_x\i\cdot\i+A_yB_x\j\cdot\i+A_xB_y\i\cdot\j+A_yB_y\j\cdot\j \\
+  \vec{A}\cdot\vec{B} &= A_xB_x+0+0+A_yB_y
+\end{align*}
+The calculation for work assumes a constant force and a straight line
+displacement. A curved path can be broken up into infinitely many straight
+segments. The total work is therefore the sum of the work in each segment.
+\[ W = \sum{\vec{F}\cdot\overrightarrow{\Delta x}} \]
+This can be generalized to:
+\[ W = \int\vec{F}\cdot\vec{\diff{x}} \]
+where \( \vec{\diff{x}} \) is an infinitesimal displacement tangent to the
+path. This is the work done by force \( \vec{F} \) on an object moving along
+the path. Work is expressed in the units of newton meters, or joules.
+
+\subsection*{Power}
+Power is the rate at which work is done, or the rate of change of work.
+\begin{align*}
+  P &= \frac{\text{work done}}{\text{time}} \\
+  &= \ddiff{W}{t} \\
+  \frac{J}{s} &= Watt = W \\
+  1~horsepower &= 746W
+\end{align*}
+
+\section*{Reminders and Homework}
+Complete the homework on TheExpertTA and WebAssign. \\
+\textbf{Remember to bring the Activities Manual.} \\
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
