@@ -1,0 +1,61 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\title{University Physics 1A}
+\author{Alvin Lin}
+\date{October 2nd, 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Work}
+
+\subsubsection*{Practice Problem}
+A force given by \( F = (-3.0x+2.0)N \) acts on an object that is initially at
+\( x = 3.0m \). What is the work done by this force as the object is moved to
+\( x = 5.0m \)?
+\begin{align*}
+  W &= \int{F_x\diff{x}} \\
+  &= \int_{3}^{5}(-3x+2)\diff{x} \\
+  &= \frac{3x^2}{2}+2x\bigg]_3^5 \\
+  &= \frac{-3(5^2)}{2}+2(5)-\left(-\frac{3(3^2)}{2}+2(3)\right) \\
+  &= -20J
+\end{align*}
+
+\subsubsection*{Practice Problem}
+A force \( \vec{F} = (-Ax,-By^2)N \) acts on an object that is initially at rest
+at the origin. It travels only along the y-axis to \( y = 4.0m \).
+\begin{enumerate}
+  \item What are the units of \( A \) and \( B \)? \\
+  \( A \) is in \( \frac{N}{m} \) and \( B \) is in \( \frac{N}{m^2} \).
+  \item What is the work done by this force as the object is moved to
+  \( y = 4.0m \)?
+  \begin{align*}
+    W &= \int{F_y\diff{y}} \\
+    &= \int_{0}^{4}-By^2\diff{y} \\
+    &= \frac{-By^3}{3}\bigg]_{0}^{4} \\
+    &= \frac{-64B}{3}m^2
+  \end{align*}
+\end{enumerate}
+
+\subsubsection*{Practice Problem}
+A force \( \vec{F} = (-10,-5.0,-4.0)N \) acts on an object that is initially at
+the origin and moves to a position \( \vec{r} = (2.0,3.0,0.0)m \). What is the
+work done on the object by this force during the motion?
+\begin{align*}
+  W &= \vec{F}\cdot\vec{d} \\
+  &= (-20)+(-15)+0 \\
+  &= -35J
+\end{align*}
+
+\subsection*{Work-Kinetic Energy Theorem}
+\[ W = \frac{1}{2}mv^2 \]
+\[ W = KE_f-KE_i \]
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
