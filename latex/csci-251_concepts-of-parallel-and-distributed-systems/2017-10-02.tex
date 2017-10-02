@@ -1,0 +1,93 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\usepackage{listings}
+\lstset{basicstyle=\ttfamily\footnotesize,breaklines=true}
+
+\title{CSCI 251: Concepts of Parallel and Distributed Systems}
+\author{Alvin Lin}
+\date{October 2nd, 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Message Passing Systems}
+MPI is an industry standard interface for message passing systems. It is
+supported by almost every high performance computer (HPC). It is portable and
+high performance. There are 7430 MPI routines, but for most programs, we only
+need 10-12 routines. Refer to the documentation at: \\
+\url{https://www.mpich.org/static/docs/v3.1/}
+
+\subsection*{Basic Program Structure}
+\begin{lstlisting}
+MPI include file
+  Declarations, prototypes, etc.
+Program begins
+  Serial code
+Initialize environment - parallel code begins
+MPI_Init
+  Parallel processing code
+  Message Passing
+MPI_Terminate - parallel code ends
+Serial code
+\end{lstlisting}
+
+\subsection*{MPI Communicator}
+Groups of processes need to communicate with one another and a communicating
+processor may be part of one or more communication groups.
+\texttt{MPI\_Comm\_World} is the collection of all processes that may
+communicate with each other in the parallel execution. The number of processes
+in an MPI communicator is given by `size', and each process in a communicator
+has a `rank', which is an integer from 0 to (size - 1). Rank serves as a
+unique ID for each process.
+
+\subsection*{MPI Sending and Receiving}
+\texttt{MPI\_Send} performs a blocking send: \\
+\url{https://www.mpich.org/static/docs/v3.1/www3/MPI_Send.html} \\
+\texttt{MPI\_Recv} performs a blocking receive: \\
+\url{https://www.mpich.org/static/docs/v3.1/www3/MPI_Recv.html}
+
+\subsection*{Synchronization}
+All member processes wait until they have all reached a synchronization point.
+For MPI, this is done with \texttt{MPI\_Barrier}: \\
+\url{https://www.mpich.org/static/docs/v3.1/www3/MPI_Barrier.html}
+
+\subsection*{Data Transfer}
+MPI allows a specific process to broadcast a message to all other messages in
+the communicator group via \texttt{MPI\_Bcast}: \\
+\url{https://www.mpich.org/static/docs/v3.1/www3/MPI_Bcast.html} \\
+\texttt{MPI\_Scatter} allows an external process to send data to all processes
+in a communicator group: \\
+\url{https://www.mpich.org/static/docs/v3.1/www3/MPI_Scatter.html}
+
+\subsection*{Data Reduction}
+\texttt{MPI\_Gather} gathers together values from a group of processes. \\
+\url{https://www.mpich.org/static/docs/v3.1/www3/MPI_Gather.html} \\
+\texttt{MPI\_Reduce} allows values from processes to be reduced to a single
+value through operations such as max, min, sum, etc: \\
+\url{https://www.mpich.org/static/docs/v3.1/www3/MPI_Reduce.html}
+
+\subsection*{Blocking vs Nonblocking}
+All the MPI functions have a non-blocking counterpart of the form
+\texttt{MPI\_I*}. While blocking is safer, non-blocking allows for faster
+overlapped computation, but may result in unsafe operations.
+
+\section*{Reminders}
+The midterm is on October 11th.
+Refer to MyCourses for details on Project 1, which is due Friday,
+October 6th. \\
+
+\noindent Professor Mohan Kumar: \\
+\url{mjkvcs@rit.edu} \\
+\url{https://cs.rit.edu/~mjk} \\
+
+\noindent Rahul Dashora (TA): \\
+\url{rd5476@mail.rit.edu} \\
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
