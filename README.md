@@ -11,7 +11,7 @@ If you wish to compile this repository yourself, you must have a standard TeX
 distribution installed. Your TeX distribution must have the `pgfplots`
 package and its libraries installed.
 ```
-sudo apt install texlive texlive-latex-extra
+sudo apt install texlive-full
 ```
 To compile the notes, you will need `node >= 6.0.0`. The notes are
 compiled and managed using a gulpfile.
