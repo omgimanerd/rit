@@ -122,6 +122,27 @@ A deterministic finite automaton \( M \) recognizes a language \( A \) if
 \( A = \{w\mid M\ accepts\ w\} \). We say \( A = L(M) \). A language is called
 a \textbf{regular language} if some finite automaton recognizes it.
 
+\subsection*{Nondeterminism}
+Look at the following transition diagram for the set of strings over \( \{a,b\}
+\) that contain at most 2 \( a \)'s.
+\begin{center}
+  \begin{tikzpicture}[->,node distance=2cm,thick]
+    \node[circle,draw] (0) {0};
+    \node[circle,draw] (1) [right of=0] {0};
+    \node[circle,draw] (2) [right of=1] {0};
+    \node[circle,draw] (3) [right of=2] {1};
+    \node (4) [left of=0] {};
+    \path (4) edge (0)
+      (0) edge[loop below] node {b} (0) edge[bend left] node[above] {a} (1)
+      (1) edge[loop below] node {b} (1) edge[bend left] node[above] {a} (2)
+      (2) edge[loop below] node {b} (1) edge[bend left] node[above] {a} (3);
+  \end{tikzpicture}
+\end{center}
+This is not the transition diagram of a finite automaton because the last state
+is missing transitions. Nondeterminism removes the restrictions on finite
+automata and allows for a transition diagram to omit transitions on certain
+inputs or multiple transitions on certain inputs.
+
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
   any questions, comments, or concerns, please contact me at
