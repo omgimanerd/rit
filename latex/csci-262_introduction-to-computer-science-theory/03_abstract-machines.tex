@@ -39,10 +39,8 @@ our language as the strings over \( \{a,b\} \) that contain an even number of
 One algorithm:
 \begin{itemize}
   \item Let \( n_a \leftarrow 0 \)
-  \item For \( i\in\{1,\dots,n\} \):
-  \begin{itemize}
-    \item If \( x_i == a \), let \( n_a\leftarrow n_a+1 \).
-  \end{itemize}
+  \item For \( i\in\{1,\dots,n\} \): If \( x_i == a \), let \( n_a\leftarrow
+  n_a+1 \).
   \item If \( n_a \) is even, accept.
   \item Else, reject.
 \end{itemize}
@@ -56,7 +54,7 @@ finite automaton that recognizes the language that consists of the strings over
 \( \{a,b\} \) that:
 \begin{itemize}
   \item contain an even number of \( a \)'s.
-  \[ \{x\in\{a,b\}*\mid x\ has\ 0\ mod\ 2\ a's \} \]
+  \[ \{x\in\{a,b\}^*\mid x\ has\ 0\ mod\ 2\ a's \} \]
   \begin{center}
     \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=3cm,
                         thick]
@@ -85,14 +83,14 @@ finite automaton that recognizes the language that consists of the strings over
   \end{center}
 \end{itemize}
 Formally defined, a finite automata is a quintuple \( M =
-(Q,\Sigma,\delta,q_{\circ},F) \), where:
+(Q,\Sigma,\delta,q_0,F) \), where:
 \begin{itemize}
-  \item \( Q \) is a finite set of states
+  \item \( Q \) is a finite set of \textit{states}
   \item \( \Sigma \) is an alphabet of \textit{input symbols}
   \item \( \delta \) is a total function from \( Q\times\Sigma \) to \( Q \):
     the \textit{transition function} (\( \delta \) is often given as a
     \textit{transition table})
-  \item \( q_{\circ}\in Q \) is the \textit{initial state}
+  \item \( q_0\in Q \) is the \textit{initial state}
   \item \( F\subseteq Q \) is the set of \textit{accepting} states
 \end{itemize}
 For the example above of a finite automaton that contains an even number of
@@ -108,13 +106,13 @@ For the example above of a finite automaton that contains an even number of
     \end{cases} \]
 \end{itemize}
 
-\subsection*{Acceptance on Finite Automata}
+\subsection*{Acceptance on Deterministic Finite Automata}
 For finite automaton \( M = (Q,\Sigma,\delta,q_{\circ},F) \), \( \delta(q,a) \)
 is the state \( M \) goes to if it is in state \( q \) and reads an \( a \).
 We say that \( M \) accepts \( w = w_1w_2\dots w_n\in\Sigma^{*} \) if there is
 a sequence (repeats allowed) of states \( r_0,r_1,\dots,r_n\in Q \) such that:
 \begin{enumerate}
-  \item \( r_0 = q_{\circ} \)
+  \item \( r_0 = q_0 \)
   \item \( \forall{i}\in\{0,\dots,n-1\}(\delta(r_i,w_i+1) = r_i+1) \)
   \item \( r_n \in F \)
 \end{enumerate}
@@ -141,7 +139,29 @@ Look at the following transition diagram for the set of strings over \( \{a,b\}
 This is not the transition diagram of a finite automaton because the last state
 is missing transitions. Nondeterminism removes the restrictions on finite
 automata and allows for a transition diagram to omit transitions on certain
-inputs or multiple transitions on certain inputs.
+inputs or multiple transitions on certain inputs. Formally defined, a
+nondeterministic finite automaton is a quintuple \( M = (Q,\Sigma,\delta,
+q_0,F) \) where:
+\begin{itemize}
+  \item \( Q \) is a finite set of \textit{states}
+  \item \( \Sigma \) is an alphabet of \textit{input symbols}
+  \item \( \delta \) is a total function from \( Q\times\Sigma_{\epsilon} \) to
+  \( 2^Q \)
+  \item \( q_0 \) is the initial state
+  \item \( F\subseteq Q \) is the set of \textit{accepting states}
+\end{itemize}
+
+\subsection*{Acceptance on Nondeterministic Finite Automata}
+For finite automaton \( M = (Q,\Sigma,\delta,q_0,F) \), \( \delta(q,a) \)
+is the state \( M \) goes to if it is in state \( q \) and reads an input
+\( a \). We say that \( M \) accepts \( w = w_1w_2\dots w_n \) where each
+\( w_i\in\Sigma_{\epsilon} \) if there is a sequence of states \( r_0,r_1,
+\dots,r_n\in Q \) such that:
+\begin{itemize}
+  \item \( r_0 = q_0 \)
+  \item \( \forall{i}\in\{0,\dots,n-1\}(r_{i+1}\in\delta(r_i,w_{i+1})) \)
+  \item \( r_n\in F \)
+\end{itemize}
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
