@@ -15,12 +15,49 @@
 \section*{Section 14.2}
 
 \subsubsection*{Exercise 5}
+Find the limit, if it exists, or show that the limit does not exist.
+\[ \lim_{(x,y)\to(3,2)}(x^2y^3-4y^2) \]
+\begin{align*}
+  \lim_{(x,y)\to(3,2)}(x^2y^3-4y^2) &= (3^2)(2^3)-4(2^2) \\
+  &= 72-16 = 56
+\end{align*}
 
 \subsubsection*{Exercise 13}
+Find the limit, if it exists, or show that the limit does not exist.
+\[ \lim_{(x,y)\to(0,0)}\frac{xy}{\sqrt{x^2+y^2}} \]
+\begin{align*}
+  \lim_{(x,y)\to(0,0)}\frac{xy}{\sqrt{x^2+y^2}} &= \frac{0}{0}
+    \text{ Indeterminate Form} \\
+  -|x| &\le \frac{xy}{\sqrt{x^2+y^2}} \le |x| \\
+  \lim_{(x,y)\to(0,0)}-|x| &= \lim_{(x,y)\to(0,0)}|x| = 0 \\
+  \therefore \lim_{(x,y)\to(0,0)}\frac{xy}{\sqrt{x^2+y^2}} &= 0
+\end{align*}
 
 \subsubsection*{Exercise 15}
+Find the limit, if it exists, or show that the limit does not exist.
+\[ \lim_{(x,y)\to(0,0)}\frac{xy^2\cos(y)}{x^2+y^4} \]
+\begin{align*}
+  y &= 0 \\
+  \lim_{(x,0)\to(0,0)}\frac{x(0)^2\cos(0)}{x^2+(0)^4} &= 0 \\
+  x &= y^2 \\
+  \lim_{(y^2,y)\to(0,0)}\frac{(y^2)y^2\cos(y)}{(y^2)^2+y^4} &=
+    \lim_{(y^2,y)\to(0,0)}\frac{y^4\cos(y)}{2y^4} \\
+  &= \lim_{(y^2,y)\to(0,0)}\frac{\cos(y)}{2} \\
+  &= \frac{1}{2} \\
+  0 &\ne \frac{1}{2}
+\end{align*}
+Limit does not exist.
 
 \subsubsection*{Exercise 17}
+Find the limit, if it exists, or show that the limit does not exist.
+\[ \lim_{(x,y)\to(0,0)}\frac{x^2+y^2}{\sqrt{x^2+y^2+1}-1} \]
+\begin{align*}
+  \lim_{(x,y)\to(0,0)}\frac{x^2+y^2}{\sqrt{x^2+y^2+1}-1}
+    \frac{\sqrt{x^2+y^2+1}+1}{\sqrt{x^2+y^2+1}+1} &=
+    \lim_{(x,y)\to(0,0)}\frac{(x^2+y^2)(\sqrt{x^2+y^2+1}+1)}{x^2+y^2+1-1} \\
+  &= \lim_{(x,y)\to(0,0)}\frac{(x^2+y^2)(\sqrt{x^2+y^2+1}+1)}{x^2+y^2} \\
+  &= \lim_{(x,y)\to(0,0)}\sqrt{x^2+y^2+1}+1)
+\end{align*}
 
 \section*{Section 14.3}
 
