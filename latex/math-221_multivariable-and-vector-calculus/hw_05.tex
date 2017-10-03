@@ -56,25 +56,148 @@ Find the limit, if it exists, or show that the limit does not exist.
     \frac{\sqrt{x^2+y^2+1}+1}{\sqrt{x^2+y^2+1}+1} &=
     \lim_{(x,y)\to(0,0)}\frac{(x^2+y^2)(\sqrt{x^2+y^2+1}+1)}{x^2+y^2+1-1} \\
   &= \lim_{(x,y)\to(0,0)}\frac{(x^2+y^2)(\sqrt{x^2+y^2+1}+1)}{x^2+y^2} \\
-  &= \lim_{(x,y)\to(0,0)}\sqrt{x^2+y^2+1}+1)
+  &= \lim_{(x,y)\to(0,0)}\sqrt{x^2+y^2+1}+1) \\
+  &= \sqrt{1}+1 \\
+  &= 2
 \end{align*}
 
 \section*{Section 14.3}
 
 \subsubsection*{Exercise 19}
+Find the first partial derivatives of the function.
+\[ z = \ln(x+t^2) \]
+\begin{align*}
+  \pdiff{z}{x} &= \frac{1}{x+t^2} \\
+  \pdiff{z}{t} &= \frac{2t}{x+t^2}
+\end{align*}
+
 \subsubsection*{Exercise 29}
+Find the first partial derivatives of the function.
+\[ F(x,y) = \int_{y}^{x}\cos(\e^t)\diff{t} \]
+\begin{align*}
+  \pdiff{F}{x} &= \cos(\e^x) \\
+  \pdiff{F}{y} &= -\cos(\e^y)
+\end{align*}
+
 \subsubsection*{Exercise 47}
+Use implicit differentiation to find \( \pdiff{z}{x} \) and \( \pdiff{z}{y} \).
+\[ x^2+2y^2+3z^2 = 1 \]
+\begin{align*}
+  2x\pdiff{x}{z}+0+6z\pdiff{z}{x} &= 0 \\
+  6z\pdiff{z}{x} &= -2x \\
+  \pdiff{z}{x} &= -\frac{2x}{6z} \\
+  &= -\frac{x}{3z} \\
+  0+4y\pdiff{y}{y}+6z\pdiff{z}{y} &= 0 \\
+  6z\pdiff{z}{y} &= -4y \\
+  \pdiff{z}{y} &= -\frac{4y}{6z} \\
+  &= -\frac{2y}{3z}
+\end{align*}
+
 \subsubsection*{Exercise 49}
+Use implicit differentiation to find \( \pdiff{z}{x} \) and \( \pdiff{z}{y} \).
+\[ \e^z = xyz \]
+\begin{align*}
+  \e^z\pdiff{z}{x} &= y(x\pdiff{z}{x}+z\pdiff{x}{x}) \\
+  \e^z\pdiff{z}{x}-yx\pdiff{z}{x} &= yz \\
+  \pdiff{z}{x}(\e^z-yx) &= yz \\
+  \pdiff{z}{x} &= \frac{yz}{\e^z-yx} \\
+  \e^z\pdiff{z}{y} &= x(y\pdiff{z}{y}+z\pdiff{y}{y}) \\
+  \e^z\pdiff{z}{y}-xy\pdiff{z}{y} &= xz \\
+  \pdiff{z}{y}(\e^z-xy) &= xz \\
+  \pdiff{z}{y} &= \frac{xz}{\e^z-xy}
+\end{align*}
+
 \subsubsection*{Exercise 83}
+The total resistance \( R \) produced by three conductors with resistances
+\( R_1,R_2,R_3 \) connected in a parallel electrical circuit is given by
+the formula:
+\[ \frac{1}{R} = \frac{1}{R_1}+\frac{1}{R_2}+\frac{1}{R_3} \]
+Find \( \pdiff{R}{R_1} \).
+\begin{align*}
+  \ln(R)\pdiff{R}{R_1} &= \ln(R_1)\pdiff{R_1}{R_1}+0+0 \\
+  \pdiff{R}{R_1} &= \frac{\ln(R_1)}{\ln(R)}
+\end{align*}
+
 \subsubsection*{Exercise 95}
+The kinetic energy of a body with mass \( m \) and velocity \( v \) is \( K =
+\frac{1}{2}mv^2 \). Show that:
+\[ \pdiff{K}{m}\pdiff{^2K}{v^2} = K \]
+\begin{align*}
+  \pdiff{K}{m} &= \frac{1}{2}v^2 \\
+  \pdiff{K}{v} &= mv \\
+  \pdiff{^2K}{v^2} &= m \\
+  \pdiff{K}{m}\pdiff{^2K}{v^2} &= (\frac{1}{2}v^2)(m) = K
+\end{align*}
 
 \section*{Section 14.5}
 
 \subsubsection*{Exercise 3}
+Use the Chain Rule to find \( \ddiff{z}{t} \).
+\[ z = \sin(x)\cos(y), \quad x = \sqrt{t}, \quad y = \frac{1}{t} \]
+\begin{align*}
+  \ddiff{z}{t} &= \pdiff{z}{y}\ddiff{y}{t}+\pdiff{z}{x}\ddiff{x}{t} \\
+  \pdiff{z}{y} &= -\sin(x)\sin(y) \\
+  \ddiff{y}{t} &= -t^{-2} \\
+  \pdiff{z}{x} &= \cos(x)\cos(y) \\
+  \ddiff{x}{t} &= -\frac{1}{2\sqrt{t}} \\
+  \ddiff{z}{t} &= \frac{\sin(x)\sin(y)}{t^2}-\frac{\cos(x)\cos(y)}{\sqrt{t}}
+\end{align*}
+
 \subsubsection*{Exercise 27}
+Use Equation 6 to find \( \ddiff{y}{x} \).
+\[ y\cos(x) = x^2+y^2 \]
+\begin{align*}
+  \ddiff{y}{x} &= -\frac{\pdiff{F}{x}}{\pdiff{F}{y}} \\
+  F(x,y) &= 0 = x^2+y^2-y\cos(x) \\
+  \pdiff{F}{x} &= 2x+y\sin(x) \\
+  \pdiff{F}{y} &= 2y-\cos(x) \\
+  -\frac{\pdiff{F}{x}}{\pdiff{F}{y}} &= -\frac{2x+y\sin(x)}{2y-\cos(x)}
+\end{align*}
+
 \subsubsection*{Exercise 29}
+Use Equation 6 to find \( \ddiff{y}{x} \).
+\[ \arctan(x^2y) = x+xy^2 \]
+\begin{align*}
+  \ddiff{y}{x} &= -\frac{\pdiff{F}{x}}{\pdiff{F}{y}} \\
+  F(x,y) &= 0 = x+xy^2-\arctan(x^2y) \\
+  \pdiff{F}{x} &= 1+y^2-\frac{2xy}{1+x^4y^2} \\
+  \pdiff{F}{y} &= 2xy-\frac{x^2}{1+x^4y^2} \\ \\
+  -\frac{\pdiff{F}{x}}{\pdiff{F}{y}} &=
+    \frac{1+y^2-\frac{2xy}{1+x^4y^2}}{2xy-\frac{x^2}{1+x^4y^2}}
+\end{align*}
+
 \subsubsection*{Exercise 33}
+Use Equations 7 to find \( \pdiff{z}{x} \) and \( \pdiff{z}{y} \).
+\[ \e^z = xyz \]
+\begin{align*}
+  \pdiff{z}{x} &= -\frac{\pdiff{F}{x}}{\pdiff{F}{z}} \\
+  \pdiff{z}{y} &= -\frac{\pdiff{F}{y}}{\pdiff{F}{z}} \\
+  F(x,y,z) &= 0 = xyz-\e^z \\
+  \pdiff{F}{x} &= yz \\
+  \pdiff{F}{y} &= xz \\
+  \pdiff{F}{z} &= xy-\e^z \\
+  \pdiff{z}{x} &= -\frac{yz}{xy-\e^z} \\
+  \pdiff{z}{y} &= -\frac{xz}{xy-\e^z}
+\end{align*}
+
 \subsubsection*{Exercise 41}
+The pressure of 1 mole of an ideal gas is increasing at a rate of 0.05kPa/s and
+the temperature is increasing at a rate of 0.15 K/s. Use the equation PV =
+8.31T in Example 2 to find the rate of change of the volume when the pressure is
+20kPa and the temperature is 320K.
+\begin{align*}
+  \pdiff{P}{t} &= 0.05 \\
+  \pdiff{T}{t} &= 0.15 \\
+  \ddiff{V}{t} &= \ddiff{V}{P}\pdiff{P}{t}+\ddiff{V}{T}\pdiff{T}{t} \\
+  PV &= 8.31T \\
+  V(P,T) &= \frac{8.31T}{P} \\
+  \pdiff{V}{P} &= -\frac{8.31T}{P^2} \\
+  \pdiff{V}{T} &= \frac{8.31}{P} \\
+  \ddiff{V}{t}(T,P) &= -\frac{8.31T}{P^2}(0.05)+\frac{8.31}{P}(0.15) \\
+  \ddiff{V}{t}(320,20) &= -\frac{(0.05)(8.31)(320)}{20^2}+
+    \frac{(0.15)(8.31)}{20} \\
+  &= −0.27\frac{liters}{s}
+\end{align*}
 
 \begin{center}
   If you have any questions, comments, or concerns, please contact me at
