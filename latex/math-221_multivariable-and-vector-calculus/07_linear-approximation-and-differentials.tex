@@ -1,0 +1,45 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\usepackage{tikz}
+
+\title{Multivariable and Vector Calculus}
+\author{Alvin Lin}
+\date{August 2017 - December 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Linear Approximation and Differentials}
+\[ F(x,y,z) = 0 \]
+In a special case:
+\[ z-f(x,y) = 0 \]
+Then:
+\[ -f_x(x_{\circ},y_{\circ})(x-x_{\circ})-f_y(x_{\circ},y_{\circ})(y-y_{\circ})+
+  1(z-f(x_{\circ},y_{\circ})) = 0 \]
+\begin{align*}
+  z-f(x_{\circ},y_{\circ}) &= f_x(x_{\circ},y_{\circ})(x-x_{\circ})+
+    f_y(x_{\circ},y_{\circ})(y-y_{\circ}) \\
+  f(x,y)-f(x_{\circ},y_{\circ}) &= f_x(x_{\circ},y_{\circ})(x-x_{\circ})+
+    f_y(x_{\circ},y_{\circ})(y-y_{\circ}) \\
+  f(x,y) &\approx f(x_{\circ},y_{\circ})+f_x(x_{\circ},y_{\circ})(x-x_{\circ})+
+    f_y(x_{\circ},y_{\circ})(y-y_{\circ}) \\
+\end{align*}
+This is known as the linearization of the function. It provides a linear
+approximation of the function.
+
+\subsubsection*{Example}
+Give the linear approximation of \( f(x,y) = \sqrt{x^2+y^2} \) at (4,3).
+\begin{align*}
+  \sqrt{x^2+y^2} &\approx 5+(\frac{1(2x)}{2\sqrt{x^2+y^2}})(x-4)+
+    \frac{1}{2\sqrt{x^2+y^2}}(y-3) \\
+  &\approx 5+\frac{4}{5}(x-4)+\frac{3}{5}(y-3)
+\end{align*}
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}

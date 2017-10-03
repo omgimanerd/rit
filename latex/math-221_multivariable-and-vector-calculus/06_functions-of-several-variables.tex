@@ -226,15 +226,15 @@ Find \( \ddiff{y}{x} \):
     0 \\
   &= \langle\pdiff{F}{x},\pdiff{F}{y},\pdiff{F}{z}\rangle\cdot
     \langle\ddiff{x}{t},\ddiff{y}{t},\ddiff{z}{t}\rangle \\
-  &= \overrightarrow{\triangledown F}\cdot\overrightarrow{r'(t)} = 0 \\
-  &\therefore \overrightarrow{\triangledown F}\bot\overrightarrow{r'(t)}
+  &= \gradientd{F}\cdot\overrightarrow{r'(t)} = 0 \\
+  &\therefore \gradientd{F}\bot\overrightarrow{r'(t)}
 \end{align*}
 
 \subsubsection*{Example}
 Check that every line normal to a sphere passes through its center.
 \[ x^2+y^2+z^2-1 = 0 \]
 \begin{align*}
-  \vec{u} &= \overrightarrow{\triangledown F} \\
+  \vec{u} &= \gradientd{F} \\
   &= \langle2x,2y,2z\rangle \\
   l_{normal} &= \begin{cases}
     x &= x_{\circ}+t2x_{\circ} \\
@@ -242,6 +242,30 @@ Check that every line normal to a sphere passes through its center.
     z &= z_{\circ}+t2z_{\circ}
   \end{cases} \\
   t &= -\frac{1}{2}
+\end{align*}
+
+\subsection*{Directional Derivative}
+As an extension of the gradient definition:
+\[ D_{\vec{u}}f = \gradientd{f}\cdot\vec{u} = |\gradientd{f}||\vec{u}|\cos\theta
+  \quad |\vec{u}| = 1 \]
+The maximum value of \( D_{\vec{u}} \) is \( |\gradientd{f}| \), which occurs
+when:
+\[ \vec{u} = \frac{\gradientd{F}}{|\gradientd{f}|} \]
+The minimum value of \( D_{\vec{u}} \) is \( -|\gradientd{f}| \), which occurs
+when:
+\[ \vec{u} = -\frac{\gradientd{F}}{|\gradientd{f}|} \]
+
+\subsubsection*{Example}
+\[ z = x^2+y^2 \]
+Find the directional derivative of \( z \) at (1,2) in the direction towards
+(5,5).
+\begin{align*}
+  \vec{u} &= \langle5-1,5-2\rangle \\
+  &= \langle\frac{4}{5},\frac{3}{5}\rangle \\
+  D_z(1,2) &= \gradientd{z}\cdot\vec{u} \\
+  &= \langle2x,2y\rangle\cdot\vec{u} \\
+  &= \langle2,4\rangle\cdot\langle\frac{4}{5},\frac{3}{5}\rangle \\
+  &= 4
 \end{align*}
 
 \begin{center}
