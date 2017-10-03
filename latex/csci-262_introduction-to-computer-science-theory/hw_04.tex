@@ -1,0 +1,77 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\usepackage{graphicx}
+
+\geometry{letterpaper, margin=0.5in}
+
+\title{Intro to Computer Science Theory: Homework 4}
+\author{Alvin Lin and Joshua Cotton}
+\date{August 2017 - December 2017}
+
+\begin{document}
+
+\maketitle
+
+Let \( k\in\N \) be an arbitrary natural number. Show that the following
+languages over the alphabet \( \{0,1\} \) are regular.
+\begin{enumerate}
+  \item \( L_1 = \{x\mid|x|\ge k\} \) is accepted by the finite automaton
+  \( M = \{Q,\Sigma,\delta,q_0,F\} \) such that:
+  \begin{itemize}
+    \item \( Q = \{n\mid(1\le n\le k \wedge n\in\N)\} \)
+    \item \( \Sigma = \{0,1\} \)
+    \item \( \delta \): \( Q\times\Sigma\to Q \) is defined on \( (q,z)\in
+    Q\times\Sigma \) as:
+    \[ \delta(q,x) = \begin{cases}
+      q & if\ q = k \\
+      q+1 & otherwise
+    \end{cases} \]
+    \item \( q_0 = 1 \)
+    \item \( F = \{k\} \)
+  \end{itemize}
+  \item \( L_2 = \{x\mid|x|\equiv1\mod k\} \) is accepted by the finite
+  automaton \( M = \{Q,\Sigma,\delta,q_0,F\} \) such that:
+  \begin{itemize}
+    \item \( Q = \{n\mid(1\le n\le k \wedge n\in\N)\} \)
+    \item \( \Sigma = \{0,1\} \)
+    \item \( \delta \): \( Q\times\Sigma\to Q \) is defined on \( (q,z)\in
+    Q\times\Sigma \) as:
+    \[ \delta(q,x) = (q+1)\mod k \]
+    \item \( q_0 = 1 \)
+    \item \( F = \{2\} \)
+  \end{itemize}
+  \item \( L_3 = \{x\mid x,\text{ interpreted as a binary number, is at least
+  } k\} \) is accepted by the finite automaton \( M = \{Q,\Sigma,\delta,q_0,F\}
+  \) such that:
+  \begin{itemize}
+    \item \( Q = \{n\mid(0\le n\le k \wedge n\in\N)\} \)
+    \item \( \Sigma = \{0,1\} \)
+    \item \( \delta \): \( Q\times\Sigma\to Q \) is defined on \( (q,z)\in
+    Q\times\Sigma \) as:
+    \[ \delta(q,x) = \begin{cases}
+      k & if\ (q = k) \vee (2q+x \ge k) \\
+      2q+x & otherwise
+    \end{cases} \]
+    \item \( q_0 = 0 \)
+    \item \( F = \{k\} \)
+  \end{itemize}
+  \item \( L_4 = \{x\mid x,\text{ interpreted as a binary number, is divisible
+  by } k\} \) is accepted by the finite automaton \( M =
+  \{Q,\Sigma,\delta,q_0,F\} \) such that:
+  \begin{itemize}
+    \item \( Q = \{n\mid(0\le n<k \wedge n\in\N)\} \)
+    \item \( \Sigma = \{0,1\} \)
+    \item \( \delta \): \( Q\times\Sigma\to Q \) is defined on \( (q,z)\in
+    Q\times\Sigma \) as:
+    \[ \delta(q,x) = (2q+x)\mod k \]
+    \item \( q_0 = 0 \)
+    \item \( F = \{0\} \)
+  \end{itemize}
+\end{enumerate}
+
+\begin{center}
+  If you have any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
