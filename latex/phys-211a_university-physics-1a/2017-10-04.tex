@@ -1,0 +1,45 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\title{University Physics 1A}
+\author{Alvin Lin}
+\date{October 4th, 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Work-Energy Theorem}
+\[ \frac{1}{2}mv^2 = \text{kinetic energy in joules} \]
+
+\subsection*{Constant Force with a Varying Direction of Motion}
+An iceboat is tethered by a rope to a post so that it can move around an arc of
+a circle of radius \( R = 100.0m \). The wind exerts a constant force \( F =
+150N \) on the boat. What is the work done by the wind on the boat as it rotates
+through \( 90.0^{\circ} \)?
+\begin{align*}
+  W &= \int\vec{F}\cdot\diff{\vec{s}} \\
+  &= \int F\diff{s}\cos(\theta) \\
+  &= F\int\cos(\theta)\diff{s} \\
+  &= F\int\cos(\theta)r\diff{\theta} \\
+  &= Fr\int_{0}^{90}\cos(\theta)\diff{\theta} \\
+  &= (150N)(100)(\sin(90)-\sin(0)) \\
+  &= 15000J
+\end{align*}
+If the boat starts from rest, what is its speed at the end of this motion
+(again, friction is negligible)?
+\begin{align*}
+  W &= \frac{1}{2}mv_f^2-\frac{1}{2}mv_i^2 \\
+  15000J &= \frac{1}{2}mv_f^2-\frac{1}{2}mv_i^2 \\
+  v_f &= \sqrt{\frac{30000J}{m}}
+\end{align*}
+The mass of the iceboat is the same as the problems from the Activities Manual
+(250kg).
+\[ v_f \approx 11\frac{m}{s} \]
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
