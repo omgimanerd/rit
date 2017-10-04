@@ -1,0 +1,76 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\usepackage{listings}
+\lstset{basicstyle=\ttfamily\footnotesize,breaklines=true}
+
+\title{CSCI 251: Concepts of Parallel and Distributed Systems}
+\author{Alvin Lin}
+\date{October 4th, 2017}
+
+\begin{document}
+
+\maketitle
+
+\subsection*{Practice Problem}
+Illustrate the user of recursive locks using a binary tree search algorithm.
+The program takes in a large list of numbers. The list is divided across
+multiple threads. Each thread tries to insert its elements into the tree by
+using a single lock associated with the tree.
+\begin{enumerate}
+  \item Show that the single lock becomes a bottleneck even for a moderate
+  number of threads. \\
+  (This problem is obvious, a single thread inserting an element locks the
+  entire tree and prevents any other thread from writing.)
+  \item Improve the above program by associating a lock with each node in the
+  tree (as opposed to a single lock with the entire tree). A thread locks a node
+  when it reads or writes it. Examine the performance properties of the
+  implementation.
+\end{enumerate}
+
+\subsection*{Practice Problem}
+Implement a threaded hash table in which a single lock is associated with a
+block of \( k \) hash table entries. Threads attempting to read/write an element
+in a block must first lock the corresponding block. How does the performance
+of your algorithm vary as a function of \( k (k<n) \), where \( n \) is the
+total number of entries in the hash table.
+
+\subsection*{Practice Problem}
+The odd-even transposition algorithm sorts \( N \) elements in \( N \) phases
+where \( N \) is even. The algorithm alternates between two phases called odd
+and even phases. Each phase requires \( \frac{N}{2} \) compare-exchange
+operations. During the odd phase, elements with odd indices are compared with
+their right neighbors and they are exchanged if they are out of sequence.
+Similarly, during the even phase, elements with even indices are compared with
+their right neighbors, and they are exchanged if they are out of sequence. After
+\( N \) phases of odd-even exchanges, the sequence is sorted.
+\begin{enumerate}
+  \item Assume availability of \( P = N \) processes. Show a parallel
+  formulation of the problem and compute the parallel time and speedup.
+  \item Assume availability of \( P << N \) processes. Show a parallel
+  formulation of the problem and compute the parallel time and speedup.
+\end{enumerate}
+
+\subsection*{Practice Problem}
+Develop a parallel formulation of the quicksort algorithm. Provide analysis of
+your algorithm. Show the parallel time and speedup. Discuss the implementation
+of the algorithm on shared memory and message passing systems.
+
+\section*{Reminders}
+The midterm is on October 11th.
+Refer to MyCourses for details on Project 1, which is due Friday,
+October 6th. \\
+
+\noindent Professor Mohan Kumar: \\
+\url{mjkvcs@rit.edu} \\
+\url{https://cs.rit.edu/~mjk} \\
+
+\noindent Rahul Dashora (TA): \\
+\url{rd5476@mail.rit.edu} \\
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
