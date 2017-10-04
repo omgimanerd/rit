@@ -1,0 +1,81 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\title{Linear Algebra}
+\author{Alvin Lin}
+\date{August 2017 - December 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Subspaces}
+Consider \( \R^n \). Let \( S\subseteq\R^n \). \( S \) is a \textbf{subspace}
+of \( \R^n \) if:
+\begin{enumerate}
+  \item \( \vec{0}\in S \)
+  \item If \( \vec{u},\vec{v}\in S \), then \( \vec{u}+\vec{v}\in S \).
+  (Additive Closure)
+  \item If \( \vec{u}\in S \) and \( c \) is a scalar, \( c\vec{u}\in S \).
+  (Closure over Scalar Multiple)
+\end{enumerate}
+Consider \( S = \{\vec{0}\} \). Is \( S \) a subspace of \( \R^n \)?
+\begin{enumerate}
+  \item \( \vec{0}\in S \)
+  \item \( \vec{0}+\vec{0} = \vec{0} \quad \vec{0}\in S \)
+  \item \( c\vec{0} = \vec{0} \quad \vec{0}\in S \)
+\end{enumerate}
+\( \therefore S = \{\vec{0}\} \) is a subspace of \( \R^n \).
+
+\subsubsection*{Example}
+Let \( P \) be a plane through the origin. Show \( P \) is a subspace of
+\( \R^3 \).
+\[ P = span(\vec{v},\vec{w}) \]
+\begin{enumerate}
+  \item \( 0\vec{v}+0\vec{w} = \vec{0}\in P \)
+  \item Additive Closure:
+  \begin{align*}
+    \vec{\alpha_1} &= c_1\vec{v}+c_2\vec{w}\in P \\
+    \vec{\alpha_2} &= d_1\vec{v}+d_2\vec{w}\in P \\
+    \vec{\alpha_1}+\vec{\alpha_2} &= (c_1+d_1)\vec{v}+(c_2+d_2)\vec{w}\in P
+  \end{align*}
+  \item Closure over Scalar Multiple:
+  \begin{align*}
+    \vec{\alpha} &= c_1\vec{v}+c_2\vec{w}\in P \\
+    c\vec{\alpha} &= c(c_1\vec{v}+c_2\vec{w}) \\
+    &= (cc_1)\vec{v}+(cc_2)\vec{w}\in P
+  \end{align*}
+\end{enumerate}
+So \( P\subseteq\R^3 \)
+
+\subsection*{Theorem}
+In \( \R^n \), \( span(\vec{v_1},\dots,\vec{v_m}) \) is a subspace of
+\( \R^n \). Non-example, consider:
+\[ S = \left\{\begin{bmatrix}x \\ y \\ z\end{bmatrix}: x = 3y+1, z = 2y
+  \right\} \]
+Is \( S \) a subspace of \( \R^3 \)?
+\[ \begin{bmatrix}0 \\ 0 \\ 0\end{bmatrix} =
+  \begin{bmatrix}x \\ y \\ z\end{bmatrix} =
+  \begin{bmatrix}3y+1 \\ y \\ 2y\end{bmatrix} \]
+Thus \( \vec{0}\notin S \). \( S \) is not a subspace of \( \R^3 \).
+
+\subsection*{Subspaces Associated with Matrices}
+Let \( A \) be an \( m\times n \) matrix.
+\begin{enumerate}
+  \item \( row(A) = \text{span of the rows of } A \)
+  \item \( col(A) = \text{span of the cols of } A \)
+  \item \( null(A) = \{\vec{x}\in\R^n\mid A\vec{x} = \vec{0}\} \)
+\end{enumerate}
+
+\subsection*{Basis/Dimension for a Subspace}
+A basis \( B \) for \( S \) is linearly independent such that \( span(B) = S \).
+The dimension \( S \) is the number of elements of basis \( B \). If we have
+\( m \) vectors in a subspace of dimension \( n \), where \( m > n \), then
+this set is linearly dependent.
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}

@@ -313,6 +313,26 @@ inverse of \( A \). This is possible when \( rank(A) < n \). \\
 \textbf{Fact}:
 \[ (AB)^{-1} = B^{-1}A^{-1} \]
 
+\subsection*{Properties of Invertible Matrices}
+Suppose \( A \) is invertible.
+\begin{enumerate}
+  \item \( (A^{-1})^{-1} = A \)
+  \item \( (cA)^{-1}) = \frac{1}{c}A^{-1} \)
+  \item \( (AB)^{-1} = B^{-1}A^{-1} \)
+  \item \( (A^T)^{-1} = (A^{-1})^T \)
+  \item \( (A^n)^{-1} = (A^{-1})^T \)
+\end{enumerate}
+
+\subsection*{Fundamental Theorem of Invertible Matrices}
+Let \( A \) be an \( n\times n \) matrix. The following are equivalent:
+\begin{enumerate}
+  \item \( A \) is invertible.
+  \item \( A\vec{x} = \vec{b} \) has a unique solution \( \forall{b}\in\R^n \).
+  \item \( A\vec{x} = \vec{0} \) has only the trivial solution.
+  \item The reduced row echelon form of \( A \) is \( I_n \).
+  \item \( A \) is the product of elementary matrices.
+\end{enumerate}
+
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
   any questions, comments, or concerns, please contact me at
