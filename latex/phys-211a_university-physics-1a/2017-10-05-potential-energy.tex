@@ -1,0 +1,45 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\title{University Physics 1A}
+\author{Alvin Lin}
+\date{October 5th, 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Potential Energy}
+Any path from A to B has the same work by the force of gravity. The work around
+a closed path is 0. This is called a ``conservative'' force. For a conservative
+force \( \vec{F} \):
+\[ \int\vec{F}\cdot\vec{\diff{s}} = 0 \]
+on any closed path. We can define a potential function \( u \) which is a
+function of position.
+\begin{align*}
+  \triangle{u} &= u_B-u_A \\
+  &= -\int_{A}^{B}\vec{F}\cdot\vec{\diff{s}} \\
+  &= -W_{A~to~B} \\
+  &= -\int_{A}^{B}mg~\diff{s}\cos(180) \\
+  &= mg\int_{A}^{B}\diff{s} \\
+  &= mgh \\
+  &= \text{gravitational potential energy of the mass } m
+\end{align*}
+For a frictionless spring where equilibrium is position 0, compression distance
+is \( x_B \), and the force by the spring is \( -kx \):
+\begin{align*}
+  \triangle{u} &= u_B-u_A \\
+  &= -\int_{0}^{x_B}\overrightarrow{F_{spring}}\cdot\vec{\diff{x}} \\
+  &= -\int_{0}^{x_B}|-kx|~|\diff{x}|\cos(180^{\circ}) \\
+  &= \int_{0}^{x_B}x\diff{x} \\
+  &= \frac{1}{2}kx^2\bigg]_{0}^{x_B} \\
+  &= \frac{1}{2}kx_B^2 \\
+  &= \text{potential energy of the spring at }x = x_B
+\end{align*}
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
