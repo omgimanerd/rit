@@ -1,0 +1,127 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\title{Linear Algebra}
+\author{Alvin Lin}
+\date{August 2017 - December 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Linear Transformations}
+\( T:\R^n\to\R^m \) is a transformation if for each \( \vec{x}\in\R^n~\exists!~
+T(\vec{x})\in\R^m \). \( Range(T) = Image(T) = \{T(\vec{x})\mid\vec{x}\in\R^n\}
+\). \( T:\R^n\to\R^m \) is one-to-one if \( \forall\vec{x},\vec{y}\in\R^n \),
+\[ T(\vec{x}) = T(\vec{y}) \longrightarrow \vec{x} = \vec{u} \]
+\[ \vec{x} \ne \vec{y} \longrightarrow T(\vec{x}) \ne \vec{y} \]
+\( T:\R^n\to\R^m \) is \textbf{onto} (surjective) if \( Range(T) = Codomain(T)
+\).
+
+\subsection*{Properties of Linear Transformations}
+Let \( T:\R^n\to\R^m \) be a transformation. \( T \) is a linear transformation
+if for all \( \vec{u},\vec{v}\in\R^n \) and all scalars \( c,d \):
+\begin{enumerate}
+  \item \( T(\vec{u}+\vec{v}) = T(\vec{u})+T(\vec{v}) \)
+  \item \( T(c\vec{u}) = cT(\vec{u}) \)
+  \item \( T(c\vec{u}+d\vec{v}) = cT(\vec{u})+dT(\vec{u}) \)
+\end{enumerate}
+
+\subsubsection*{Example}
+Suppose \( T:\R^2\to\R^2 \) is defined by:
+\[ T\left(\begin{bmatrix}x \\ y\end{bmatrix}\right) = \begin{bmatrix}3y \\
+  -4x\end{bmatrix} \]
+Verify that \( T \) is linear. Let:
+\[ \vec{u} = \begin{bmatrix}x_1 \\ y_1\end{bmatrix} \quad
+  \vec{v} = \begin{bmatrix}x_2 \\ y_2\end{bmatrix} \]
+\begin{align*}
+  T(\vec{u}+\vec{v}) &=
+    T\left(\begin{bmatrix}x_1+x_2 \\ y_1+y_2\end{bmatrix}\right) \\
+  &= \begin{bmatrix}
+    3(y_1+y_2) \\
+    -4(x_1+x_2)
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    3y_1+3y_2 \\
+    -4x_1-4x_2
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    3y_1 \\
+    -4x_1
+  \end{bmatrix}+\begin{bmatrix}
+    3y_2 \\
+    -4x_2
+  \end{bmatrix} \\
+  &= T(\vec{u})+T(\vec{v}) \\
+  T(c\vec{u}) &= \left(\begin{bmatrix}cx \\ cy\end{bmatrix}\right) \\
+  &= \begin{bmatrix}
+    3(cy) \\
+    -4(cx)
+  \end{bmatrix} \\
+  &= c\begin{bmatrix}
+    3y \\
+    -4x
+  \end{bmatrix} \\
+  &= cT(\vec{u})
+\end{align*}
+\( T \) satisfies both properties of a linear transformation. To prove a
+transformation is not linear, one only needs to find a single counterexample.
+
+\subsubsection*{Example}
+Consider \( T:\R^n\to\R^m \) as a linear transformation. What is \( T(\vec{0})
+\)?
+\begin{align*}
+  T(\vec{0}) &= T(\vec{0}+\vec{0}) \\
+  &= T(\vec{0})+T(\vec{0}) \\
+  \vec{0} &= T(\vec{0})
+\end{align*}
+
+\subsection*{Facts about Linear Transformations}
+Suppose \( B = \{\vec{v_1},\vec{v_2},\dots,\vec{v_n}\} \) basis for \( R^n \).
+Let \( \vec{x}\in\R^n \).
+\begin{align*}
+  \vec{x} &= \sum_{i=1}^{n}x_1\vec{v_1} \\
+  T(\vec{x}) &= T\left(\sum_{i=1}^{n}x_i\vec{v_i}\right) \\
+  &= \sum_{i=1}^{n}x_iT(\vec{v_i})
+\end{align*}
+Let the standard matrix \( A_T \) stand for the linear transformation \( T \):
+\begin{align*}
+  A_T &= [A] \\
+  &= \begin{bmatrix}
+    T(\vec{e_1}) & T(\vec{e_2}) & \dots & T(\vec{e_n})
+  \end{bmatrix}
+\end{align*}
+Let \( S:\R^n\to\R^m \) and \( T:\R^m\to\R^k \). The composition of linear
+transformations \( T\circ S:\R^n\to\R^k \) is also linear.
+\begin{align*}
+  [T] &= B \\
+  [S] &= A \\
+  (T\circ S)(\vec{x}) &= T(S(\vec{x})) \\
+  &= T(A\vec{x}) \\
+  &= B(A\vec{x}) \\
+  &= (BA)\vec{x}
+\end{align*}
+
+\subsubsection*{Example}
+Define \( \Pi_x:\R^2\to\R^2 \):
+\[ \Pi_x\left(\begin{bmatrix}x \\ y\end{bmatrix}\right) = \begin{bmatrix}x \\
+  0\end{bmatrix} \]
+\( \Pi_x \) is linear. Find \( [\Pi_x] \):
+\begin{align*}
+  \Pi_x(\vec{e_1}) &= \begin{bmatrix}1 \\ 0\end{bmatrix} \\
+  \Pi_x(\vec{e_2}) &= \begin{bmatrix}0 \\ 1\end{bmatrix} \\
+  A &= [\Pi_x] = \begin{bmatrix}
+    \Pi_x(\vec{e_1}) & \Pi_x(\vec{e_2})
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    1 & 0 \\
+    0 & 0
+  \end{bmatrix}
+\end{align*}
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
