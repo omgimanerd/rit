@@ -1,0 +1,194 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\title{Multivariable and Vector Calculus}
+\author{Alvin Lin}
+\date{August 2017 - December 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Review 2}
+Arc Length:
+\[ L = \int_{a}^{b}|\overrightarrow{v'(t)}|\diff{t} \]
+Partial Derivative Chain Rules:
+\[ z = f(x,y), \quad x = x(t), \quad y = y(t), \quad \pdiff{f}{t} =
+  \pdiff{f}{x}\ddiff{x}{t}+ \pdiff{f}{y}\ddiff{y}{t} \]
+\[ F(x,y,z) = 0, \quad \pdiff{z}{y} = -\frac{F_y}{F_z} \]
+Gradient Vector:
+\[ \gradientd{F} = \langle F_x,F_y,F_z\rangle~\bot~\text{surface} \]
+\[ D_{\vec{u}}f = \gradientd{f}\cdot\vec{u},\quad |\vec{u}| = 1 \]
+\[ \text{max }D_{\vec{u}}f = |\gradientd{f}|~in~\vec{u} =
+  \frac{\gradientd{f}}{|\gradientd{f}|} \]
+Linear approximation:
+\[ \Delta{f} \approx \diff{f} \]
+\[ f(x,y) \approx f(x_0,y_0)+\pdiff{f}{x}(x_0,y_0)(x-x_0)+
+  \pdiff{f}{y}(x_0,y_0)(y-y_0) \]
+
+\subsubsection*{Practice Problem}
+Given \( \overrightarrow{v(t)} \) for \( C = S_1\cap S_2 \):
+\[ S_1: z = \sqrt{x^2+y^2} \]
+\[ S_2: z = 1+y \]
+\begin{align*}
+  \sqrt{x^2+y^2} &= 1+y \\
+  x^2+y^2 &= 1+2y+y^2 \\
+  x^2 &= 1+2y \\
+  y &= \frac{x^2-1}{2} \\
+  \overrightarrow{r(t)} &= \langle t,\frac{t^2-1}{2},1+t\rangle
+\end{align*}
+
+\subsubsection*{Practice Problem}
+\[ C: \overrightarrow{v(t)} = \langle2\cos(t),2\sin(t),\e^t\rangle \]
+Find a point on \( C \) such that the line tangent to the curve is parallel
+to the plane described by \( \sqrt{3}x+y = 1 \). \\
+The line tangent and the normal vector of the plane must have a dot product of
+0 if they are parallel.
+\begin{align*}
+  \overrightarrow{v'(t)}\cdot\langle\sqrt{3},1,0\rangle &= 0 \\
+  &\equiv \langle-2\sin(t),2\cos(t),\e^t\rangle\cdot
+    \langle\sqrt{3},1,3\rangle = 0 \\
+  &\equiv -2\sqrt{3}\sin(t)+2\cos(t) = 0 \\
+  &\equiv 2\cos(t) = 2\sqrt{3}\sin(t) \\
+  &\equiv \tan(t) = \frac{\sqrt{3}}{3}
+\end{align*}
+We can simply plug \( t \) back into the vector equation to find the point.
+
+\subsubsection*{Practice Problem}
+Find the angle at the point of intersection between the curves:
+\[ C_1: \overrightarrow{v_1(t)} = \langle t,1-t,3+t^2\rangle \]
+\[ C_2: \overrightarrow{v_2(\tau)} = \langle3-\tau,\tau-2,\tau^2\rangle \]
+\begin{align*}
+  t &= 3-\tau \\
+  1-t &= \tau-2 \\
+  3+t^2 &= \tau^2 \\
+  1-3+\tau &= \tau-2 \\
+  3+9-6\tau+\tau^2 &= \tau^2 \\
+  \tau &= 2 \\
+  t &= 1 \\
+\end{align*}
+\begin{align*}
+  \overrightarrow{v_1(1)} &= \langle1,-1,2t\rangle = \langle1,-1,2\rangle \\
+  \overrightarrow{v_2(2)} &= \langle-1,1,2\tau\rangle = \langle-1,1,4\rangle \\
+  \cos\theta &= \frac{\langle1,-1,2\rangle\cdot\langle-1,1,4\rangle}
+    {\sqrt{6}\sqrt{18}} \\
+  &= \frac{6}{\sqrt{6}\sqrt{18}} \\
+  &= \frac{\sqrt{6}}{\sqrt{18}} \\
+  &= \frac{\sqrt{3}}{3}
+\end{align*}
+
+\subsubsection*{Practice Problem}
+Check that an object moving with constant speed has an acceleration vector that
+is perpendicular to the velocity vector.
+\begin{align*}
+  |\overrightarrow{v(t)}| &= c \\
+  |\overrightarrow{v(t)}|^2 &= c^2 \\
+  \overrightarrow{v(t)}\cdot\overrightarrow{v(t)} &= c^2 \\
+  &\text{Derive in terms of t} \\
+  \overrightarrow{v'(t)}\cdot\overrightarrow{v(t)}+
+    \overrightarrow{v(t)}\cdot\overrightarrow{v'(t)} &= 0 \\
+  2\left(\overrightarrow{v(t)}\cdot\overrightarrow{v'(t)}\right) &= 0 \\
+  \therefore~& \overrightarrow{v(t)}\bot\overrightarrow{v'(t)}
+\end{align*}
+
+\subsubsection*{Practice Problem}
+\[ \lim_{(x,y)\to(0,0)}\frac{x^y}{2x^4-5y^2} \]
+Suppose \( y = kx \):
+\[ \lim_{(x,kx)\to(0,0)}\frac{x^2kx}{2x^4-5k^2x^2} =
+  \lim\frac{kx}{2x^2-5k^2} = 0 \]
+Suppose \( y = kx^2 \):
+\[ \lim_{(x,kx^2)\to(0,0)}\frac{x^2kx^2}{2x^4-5k^2x^4} =
+  \frac{k}{2-5k^2} \]
+Since the limit is different on different curves approaching the point, the
+limit does not exist.
+
+\subsubsection*{Practice Problem}
+A sand pile is in a conical shape with radius 10 and height 30. It starts to
+rain, causing the height to decrease at a rate of -2 units per minute. This
+causes the sand pile to flatten, but the volume remains the same. What is the
+rate of change of the radius?
+\begin{align*}
+  r &= 10 \\
+  h &= 30 \\
+  \ddiff{h}{t} &= -2 \\
+  \ddiff{V}{t} &= 0 \\
+  V &= \frac{1}{3}\pi r^2h \\
+  \diff{V}{t} &= \pdiff{V}{t}\ddiff{r}{t}+\pdiff{V}{h}\ddiff{h}{t} \\
+  0 &= \frac{2}{3}\pi rh\ddiff{r}{t}+\frac{1}{3}\pi r^2\ddiff{h}{t} \\
+  0 &= \frac{2}{3}\pi(10)(30)\ddiff{r}{t}+\frac{1}{3}\pi(10^2)(-2) \\
+  \ddiff{r}{t} &= \frac{\frac{200\pi}{3}}{\frac{600\pi}{3}} = \frac{1}{3}
+\end{align*}
+Suppose our measurements were inaccurate and our radius measurement is
+\( 10\pm1\% \) and our height measurement is \( 30\pm2\% \). Give the
+approximate max change in the volume.
+\begin{align*}
+  r &= 10 \\
+  h &= 30 \\
+  \diff{r} &= \pm\frac{1}{10} \\
+  \diff{h} &= \pm\frac{6}{10} \\
+  \Delta{v} &= \diff{V} \\
+  &= \pdiff{V}{r}\diff{r}+\pdiff{V}{h}\diff{h} \\
+  &= \frac{2}{3}\pi rh\diff{r}+\frac{\pi}{3}r^2\diff{h} \\
+  &= \frac{2}{3}\pi(300)(\pm\frac{1}{10})-\frac{\pi}{3}(100)(\pm\frac{6}{10}) \\
+\end{align*}
+At the ends of the ranges, the maximum change in volume based on the error is
+\( 20\pi+20\pi = 40\pi \).
+
+\subsubsection*{Practice Problem}
+Find \( \ddiff{z}{x} \) given the curve:
+\[ yz +x\ln(y)-z^2 = 0 \]
+\[ \ddiff{z}{x} = -\frac{F_x}{F_z} = -\frac{\ln(y)}{y-2z} \]
+
+\subsubsection*{Practice Problem}
+Find the line tangent to the curve \( C = S_1\cap S_2 \) at the point (3,4,5):
+\[ S_1: z = \sqrt{x^2+y^2} \]
+\[ S_2: z = 1+y \]
+\begin{align*}
+  \vec{u} &= \gradientd{F_1}\times\gradientd{F_1} \\
+  &= \begin{vmatrix}
+    \i & \j & \k \\
+    \frac{-x}{\sqrt{x^2+y^2}} & \frac{-y}{\sqrt{x^2+y^2}} & 1 \\
+    0 & -1 & 1
+  \end{vmatrix} \\
+  &= \begin{vmatrix}
+    \i & \j & \k \\
+    -\frac{3}{5} & -\frac{4}{5} & 1 \\
+    0 & -1 & 1
+  \end{vmatrix} \\
+  &= \langle\frac{1}{5},\frac{3}{5},\frac{3}{5}\rangle \parallel
+    \langle1,3,3\rangle \\
+  l_{tangent} &= \begin{cases}
+    x &= 3+t \\
+    y &= 4+3t \\
+    z &= 5+3t
+  \end{cases}
+\end{align*}
+
+\subsubsection*{Practice Problem}
+Evaluate the directional derivative when the vector \( \vec{u} \) goes from
+(2,1) to (5,5).
+\[ D_{\vec{u}}(x^2+xy^3)(2,1) \]
+\begin{align*}
+  D_{\vec{u}}(x^2+xy^3)(2,1) &= \gradientd{f}\cdot\vec{u} \\
+  &= \langle2x+y^3,2xy^2\rangle\cdot\langle\frac{3}{5},\frac{4}{5}\rangle \\
+  &= \langle5,6\rangle\cdot\langle\frac{3}{5},\frac{4}{5}\rangle \\
+  &= \frac{39}{5}
+\end{align*}
+
+\subsubsection*{Practice Problem}
+Approximate the value of \( (0.9)^2(3.9)^2 \): \\
+We can take (1,4) as a reference point using the curve \( x^2y^2 \).
+\begin{align*}
+  x^2y^2 &\approx 16+(2xy^2)(x-1)+(2x^y)(y-1) \\
+  &\approx 16+32(x-1)+8(y-4) \\
+  (0.9)^2(3.9)^2 &\approx 16+32(-0.1)+8(-0.1) \\
+  &\approx 16-3.2-0.8 \\
+  &\approx 12
+\end{align*}
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
