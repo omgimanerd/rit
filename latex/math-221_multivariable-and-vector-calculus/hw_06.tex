@@ -1,0 +1,78 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\usepackage{tikz}
+
+\geometry{letterpaper, margin=0.5in}
+
+\title{Multivariable and Vector Calculus: Homework 6}
+\author{Alvin Lin}
+\date{August 2016 - December 2016}
+
+\begin{document}
+
+\maketitle
+
+\section*{Section 14.4}
+
+\subsubsection*{Exercise 5}
+Find an equation of the tangent plane to the given surface at the specified
+point.
+\[ z = x\sin(x+y) \quad (-1,1,0) \]
+\begin{align*}
+  z-z_0 &= f_x(x_0,y_0)(x-x_0)+f_y(x_0,y_0)(y-y_0) \\
+  \pdiff{z}{x} &= x\cos(x+y)+\sin(x+y) \\
+  \pdiff{z}{x}(-1,1) &= -1+0 = 0 \\
+  \pdiff{z}{y} &= x\cos(x+y) \\
+  \pdiff{z}{y}(-1,1) &= -1 \\
+  z &= -1(x+1)-1(y-1) \\
+  -x-y &= z \\
+  x+y+z &= 0
+\end{align*}
+
+\subsubsection*{Exercise 33}
+The length and width of a rectangle are measured as 30cm and 24cm, respectively,
+with an error in measurement of at most 0.1cm in each. Use differentials to
+estimate the maximum error in the calculated area of the rectangle.
+\begin{align*}
+  l &= 30 \\
+  w &= 24 \\
+  \diff{l} &= 0.1 \\
+  \diff{w} &= 0.1 \\
+  A &= lw \\
+  \diff{A} &= \pdiff{l}{A}\diff{l}+\pdiff{w}{A}\diff{w} \\
+  &= w~\diff{l}+l~\diff{w} \\
+  &= 30(0.1)+24(0.1) \\
+  &= 5.4cm^2
+\end{align*}
+
+\subsubsection*{Exercise 35}
+Use differentials to estimate the amount of tin in a closed tin can with
+diameter 8cm and height 12cm if the tin is 0.04cm thick.
+\begin{align*}
+  d &= 8 \\
+  r &= 4 \\
+  h &= 12 \\
+  \diff{d} &= \diff{r} = 0.04 \\
+  \diff{h} &= 0.08 \\
+  V &= \pi r^2h \\
+  \diff{V} &= \pdiff{V}{d}\diff{d}+\pdiff{V}{h}\diff{h} \\
+  &= 2\pi rh(0.04)+\pi r^2(0.04) \\
+  &= 6.0288cm^2
+\end{align*}
+
+\subsubsection*{Exercise 39}
+
+\section*{Section 14.6}
+
+\subsubsection*{Exercise 5}
+\subsubsection*{Exercise 13}
+\subsubsection*{Exercise 21}
+\subsubsection*{Exercise 29}
+\subsubsection*{Exercise 43}
+
+\begin{center}
+  If you have any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
