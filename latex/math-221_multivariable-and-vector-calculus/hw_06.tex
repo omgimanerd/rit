@@ -56,19 +56,116 @@ diameter 8cm and height 12cm if the tin is 0.04cm thick.
   \diff{h} &= 0.08 \\
   V &= \pi r^2h \\
   \diff{V} &= \pdiff{V}{d}\diff{d}+\pdiff{V}{h}\diff{h} \\
-  &= 2\pi rh(0.04)+\pi r^2(0.04) \\
-  &= 6.0288cm^2
+  &= 2\pi rh(0.04)+\pi r^2(0.08) \\
+  &= 16.0768cm^2
 \end{align*}
 
 \subsubsection*{Exercise 39}
+If \( R \) is the total resistance of three resistors, connected in parallel,
+with resistances \( R_1,R_2,R_3 \), then:
+\[ \frac{1}{R} = \frac{1}{R_1}+\frac{1}{R_2}+\frac{1}{R_3} \]
+If the resistances are measured in ohms as \( R_1 = 25\Omega, R_2 = 40\Omega,
+R_3 = 50\Omega \), with a possible error of 0.5\% in each case, estimate the
+maximum error in the calculated value of \( R \).
+\begin{align*}
+  R_1 &= 25 \quad \diff{R_1} = 0.125 \\
+  R_2 &= 40 \quad \diff{R_2} = 0.2 \\
+  R_3 &= 50 \quad \diff{R_3} = 0.25 \\
+  \frac{1}{R} &= \frac{1}{25}+\frac{1}{40}+\frac{1}{50} \\
+  R &= 11.764 \\
+  \frac{1}{R} &= \frac{1}{R_1}+\frac{1}{R_2}+\frac{1}{R_3} \\
+  \diff{R} &= \pdiff{R}{R_1}\diff{R_1}+\pdiff{R}{R_2}\diff{R_2}+
+    \pdiff{R}{R_3}\diff{R_3} \\
+  \pdiff{R}{R_1} &= \frac{R^2}{(R_1)^2} \\
+  \pdiff{R}{R_2} &= \frac{R^2}{(R_2)^2} \\
+  \pdiff{R}{R_3} &= \frac{R^2}{(R_3)^2} \\
+  \diff{R} &= \frac{11.764^2}{25^2}(0.125)+\frac{11.764^2}{40^2}(0.2)+
+    \frac{11.764^2}{50^2}(0.25) \\
+  &\approx 0.0588\Omega
+\end{align*}
 
 \section*{Section 14.6}
 
 \subsubsection*{Exercise 5}
+Find the directional derivative of \( f \) at the given point in the direction
+indicated by the angle \( \theta \).
+\[ f(x,y) = y\cos(xy) \quad (0,1) \quad \theta = \frac{\pi}{4} \]
+\begin{align*}
+  \gradientd{F} &= \langle F_x,F_y\rangle \\
+  &= \left\langle -y^2\sin(xy),-xy\sin(xy)+\cos(xy)\right\rangle \\
+  \gradientd{F}(0,1) &= \langle-1\sin(0),0+\cos(0)\rangle \\
+  &= \langle0,1\rangle \\
+  D_{\vec{u}}f &= \gradientd{F}(0,1)\cdot\langle\cos\theta,\sin\theta\rangle \\
+  &= \langle0,1\rangle\cdot
+    \langle\frac{\sqrt{2}}{2},\frac{\sqrt{2}}{2}\rangle \\
+  &= 0+\frac{\sqrt{2}}{2} = \frac{\sqrt{2}}{2}
+\end{align*}
+
 \subsubsection*{Exercise 13}
+Find the directional derivative of the function at the given point in the
+direction of the vector \( \vec{v} \).
+\[ g(s,t) = s\sqrt{t} \quad (2,4) \quad \vec{v} = 2\i-\j \]
+\begin{align*}
+  \gradientd{g} &= \langle\pdiff{g}{s},\pdiff{g}{t}\rangle \\
+  &= \langle\sqrt{t},\frac{s}{2\sqrt{t}}\rangle \\
+  \gradientd{g}(2,4) &= \langle\sqrt{4},\frac{2}{2\sqrt{4}}\rangle \\
+  &= \langle2,\frac{1}{2}\rangle \\
+  D_{\vec{u}}g &= \gradientd{g}\cdot\vec{u} \\
+  \vec{u} &= \langle\frac{2}{\sqrt{5}},\frac{-1}{\sqrt{5}}\rangle \\
+  &= \langle2,\frac{1}{2}\rangle\cdot
+    \langle\frac{2}{\sqrt{5}},\frac{-1}{\sqrt{5}}\rangle \\
+  &= \frac{4}{\sqrt{5}}-\frac{1}{2\sqrt{5}} \\
+  &= \frac{7}{2\sqrt{5}}
+\end{align*}
+
 \subsubsection*{Exercise 21}
+Find the maximum rate of change of \( f \) at the given point and the direction
+in which it occurs.
+\[ f(x,y) = 4y\sqrt{x} \quad (4,1) \]
+\begin{align*}
+  \gradientd{f} &= \langle\pdiff{f}{x},\pdiff{f}{y}\rangle \\
+  &= \langle\frac{4y}{2\sqrt{x}},4\sqrt{x}\rangle \\
+  &= \langle\frac{2y}{\sqrt{x}},4\sqrt{x}\rangle \\
+  \gradientd{f}(4,1) &= \langle\frac{2(1)}{\sqrt{4}},4\sqrt{4}\rangle \\
+  &= \langle1,8\rangle \\
+  |\gradientd{f}(4,1)| &= \sqrt{65} \\
+  \text{unit vector } &= \langle\frac{1}{\sqrt{65}},\frac{8}{\sqrt{65}}\rangle
+\end{align*}
+
 \subsubsection*{Exercise 29}
+Find all points at which the direction of fastest change of the function
+\( f(x,y) = x^2+y^2-2x-4y \) is \( \i+\j \).
+\begin{align*}
+  \gradientd{f} &= \langle2x-2,2y-4\rangle \\
+  \gradientd{f} &= c(\i+\j) \\
+  2x-2 &= c = 2y-4 \\
+  x-1 &= y-2 \\
+  y &= x+1
+\end{align*}
+Any point on the line \( y = x+1 \).
+
 \subsubsection*{Exercise 43}
+Find equations of the tangent plane and the normal line to the given surface
+at the specified point.
+\[ xy^2z^3 = 8 \quad (2,2,1) \]
+\begin{align*}
+  F(x,y,z) &= xy^2z^3-8 = 0 \\
+  F_x &= y^2z^3 \\
+  F_x(2,2,1) &= 4 \\
+  F_y &= 2yxz^3 \\
+  F_y(2,2,1) &= 8 \\
+  F_z &= 3z^2xy^2 \\
+  F_z(2,2,1) &= 24 \\\
+  \Pi: 0 &= F_x(x,y,z)(x-x_0)+F_y(x,y,z)(y-y_0)+F_z(x,y,z)(z-z_0) \\
+  \Pi: 0 &= 4(x-2)+8(y-2)+24(z-1) \\
+  \Pi: 0 &= 4x+8y+24z-48 \\
+  \Pi: 0 &= x+2y+6z-12 \\
+  l &= \begin{cases}
+    x &= 4t+2 \\
+    y &= 8t+2 \\
+    z &= 24t+1
+  \end{cases}
+\end{align*}
 
 \begin{center}
   If you have any questions, comments, or concerns, please contact me at
