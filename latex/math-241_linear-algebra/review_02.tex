@@ -1,0 +1,169 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\title{Linear Algebra}
+\author{Alvin Lin}
+\date{August 2017 - December 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Review 2}
+Exam 2 covers section 2.3, 3.1, 3.2, 3.3, 3.5, 3.6, and homeworks 5, 6, and 7.
+
+\subsubsection*{Example}
+Prove that, for square matrices \( A \) and \( B \), \( AB = BA \) if and only
+if \( (A-B)(A+B) = A^2-B^2 \).
+\begin{align*}
+  \text{Assume } AB &= BA \\
+  (A-B)(A+B) &= A^2+AB-BA-B^2 \\
+  &= A^2-B^2 \\
+\end{align*}
+Converse:
+\begin{align*}
+  \text{Assume } (A-B)(A+B) &= A^2-B^2 \\
+  A^2-AB-BA-B^2 &= A^2-B^2 \\
+  AB-BA &= 0 \\
+  AB &= BA
+\end{align*}
+
+\subsubsection*{Example}
+Prove that the product of 2 upper triangular matrices is upper triangular. \\
+Let \( A,B \) be upper triangular matrices. We want to show that \( P = AB \)
+is upper triangular:
+\begin{align*}
+  [P]_{ij} &= 0 \text{ iff } i > j \\
+  [P]_{ij} &= row_i(A)\cdot col_j(B) \\
+  &= \sum_{k=1}^{n}a_{ij}b_{kj} \\
+  &= \sum_{k=1}^{i-1}a_{ij}b_{kj}+\sum_{k=i}^{n}a_{ij}b_{kj} \\
+  &= \sum_{k=1}^{i-1}0b_{kj}+\sum_{k=i}^{n}a_{ij}0 \\
+  &= 0
+\end{align*}
+
+\subsubsection*{Example}
+Prove that the main diagonal of a skew-symmetric matrix must consist entirely
+of 0's. \\
+\( A \) is \textbf{skew-symmetric} if \( A^T = -A \).
+\[ [A]_{ii} = [A^T]_{ii} = [-A]_{ii} \]
+For all \( i \), \( a_{ii} = -a_{ii} \), so \( a_{ii} = 0 \) for all \( i \).
+
+\subsubsection*{Example}
+Prove that is \( A \) and \( B \) are skew-symmetric, then so is \( A+B \).
+\begin{align*}
+  (A+B)^T &= A^T+B^T \\
+  &= -A+(-B) \\
+  &= (-1)(A+B)
+\end{align*}
+Therefore, \( A+B \) is skew-symmetric.
+
+\subsubsection*{Example}
+Prove that is \( A \) is an \( n\times n \) matrix, then \( A-A^T \) is skew
+symmetric.
+\begin{align*}
+  (A-A^T)^T &= A^T-(A^T)^T \\
+  &= A^T-A \\
+  &= (-1)(A-A^T)
+\end{align*}
+Therefore \( A-A^T \) is skew-symmetric.
+
+\subsubsection*{Example}
+Definition: If \( A \) is a square matrix:
+\[ tr(A) = \sum_{i=1}^{n}a_{ii} \]
+If \( A,B \) are \( n\times n \) matrices, show that:
+\begin{itemize}
+  \item \( tr(A+B) = tr(A)+tr(B) \)
+  \begin{align*}
+    tr(A-B) &= \sum_{i=1}^{n}(a_{ii}+b_{ii}) \\
+    &= \sum_{i=1}^{n}a_{ii}+\sum_{i=1}^{n}b_{ii} \\
+    &= tr(A)+tr(B)
+  \end{align*}
+  \item \( tr(kA) = k~tr(A) \)
+  \begin{align*}
+    tr(kA) &= \sum_{i=1}^{n}(ka_{ii}) \\
+    &= k\left(\sum_{i=1}^{n}a_{ii}\right) \\
+    &= k~tr(A)
+  \end{align*}
+\end{itemize}
+
+\subsubsection*{Example}
+If \( A \) is any matrix, what does \( tr(AA^T) \) equal.
+\begin{align*}
+  tr(AA^T) &= \sum_{i=1}^{n}row_i(A)\cdot col_i(A^T) \\
+  &= \sum_{i=1}^{n}row_i(A)\cdot row_i(A) \\
+  &= \sum_{i=1}^{n}\|row_i(A)\|^2
+\end{align*}
+
+\subsubsection*{Example}
+Show that if \( A \) is a square matrix satisfying \( A^2-2A+I = 0 \), then
+\( A^{-1} = 2I - A \).
+\begin{align*}
+  AA^{-1} &= I \\
+  A(2I-A) &= I \\
+  2A-A^2 &= I \\
+  A^2-2A+I &= 0 \quad \text{given to be true} \\
+  A^{-1} = 2I-A
+\end{align*}
+
+\subsubsection*{Example}
+Prove if a symmetric matrix is invertible, then its inverse is symmetric too.
+Let \( A \) be a symmetric and invertible matrix.
+\begin{align*}
+  (A^{-1})^T &= (A^T)^{-1} \\
+  &= (A^{-1})^T
+\end{align*}
+Therefore, \( A^{-1} \) is symmetric.
+
+\subsubsection*{Example}
+In \( \R^2: S = \{\begin{bmatrix}x \\ y\end{bmatrix}\mid x\ge0 \wedge y\ge0\}
+\). Is \( S \) a subspace of \( \R^2 \)? \\
+Note that \( \begin{bmatrix}1 \\ 1\end{bmatrix}\in S \).
+\[ -1\begin{bmatrix}1 \\ 1\end{bmatrix} = \begin{bmatrix}-1 \\ -1\end{bmatrix}
+  \notin S \]
+So \( S \) is not a subspace.
+
+\subsubsection*{Example}
+Is \( S = \{\begin{bmatrix}x \\ y\end{bmatrix}\in\R^2\mid xy\ge0\} \) a subspace
+of \( \R^2 \).
+\begin{align*}
+  \begin{bmatrix}-50 \\ 0\end{bmatrix} &\in S \\
+  \begin{bmatrix}1 \\ 100\end{bmatrix} &\in S \\
+  \begin{bmatrix}-50 \\ 0\end{bmatrix}+\begin{bmatrix}1 \\ 100\end{bmatrix}
+    &= \begin{bmatrix}-49 \\ 100\end{bmatrix} \notin S
+\end{align*}
+This subspace is not closed under addition and thus is not a subspace.
+
+\subsubsection*{Example}
+Is \( S = \{\begin{bmatrix}x \\ y \\ z\end{bmatrix}\mid x = 2x \wedge y = 0 \}
+\) a subspace of \( \R^3 \)? Why?
+\[ \begin{bmatrix}x \\ y \\ z\end{bmatrix} =
+  \begin{bmatrix}x \\ 0 \\ 2x\end{bmatrix} =
+  x\begin{bmatrix}1 \\ 0 \\ 2\end{bmatrix} \]
+\[ S = span(\begin{bmatrix}1 \\ 0 \\ 2\end{bmatrix}) \]
+So \( S \) is a subspace.
+
+\subsubsection*{Example}
+In \( \R^2 \), \( S \) consists of the union of the x-axis and y-axis. Is
+\( S \) a subspace of \( \R^2 \)?
+\[ \vec{e_1}\in S \wedge \vec{e_2}\in S \]
+\[ \vec{e_1}+\vec{e_2} = \begin{bmatrix}1 \\ 1\end{bmatrix}\notin S \]
+Therefore, \( S \) is not a subspace.
+
+\subsubsection*{Example}
+\( A \) is a \( 3\times 5 \) matrix. Why are the column vectors of \( A \)
+linearly dependent. \\
+Fact: If \( A \) is an \( m\times n \) matrix:
+\[ rank(A) \le min(m,n) \]
+\[ A\vec{x} = \vec{0} \]
+\[ 5 = rank(A)+nullity(A) \]
+\[ rank(A) \le 3 \]
+The nullity of \( A \) must be at least 2, therefore \( A\vec{x} = \vec{0} \)
+has a non-trivial solution. Thus, the columns of \( A \) are linearly
+dependent.
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
