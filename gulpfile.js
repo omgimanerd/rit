@@ -31,6 +31,7 @@ gulp.task('latex', function() {
     .pipe(gulpPlumber({ errorHandler: errorHandler }))
     .pipe(gulpChanged('./latex', { transformPath: getOutputFile }))
     .pipe(gulpPdflatex2({
+      options: ['-shell-escape'],
       TEXINPUTS: ['./cls']
     }))
     .pipe(gulpRename((path) => {
@@ -43,6 +44,7 @@ gulp.task('latex', function() {
 gulp.task('latex-all', function() {
   return gulp.src('./latex/**/*.tex')
     .pipe(gulpPdflatex2({
+      options: ['-shell-escape'],
       TEXINPUTS: ['./cls']
     }))
     .pipe(gulpRename((path) => {

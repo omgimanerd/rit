@@ -393,7 +393,7 @@ gulp-changed@^2.0.0:
     gulp-util "^3.0.0"
     through2 "^2.0.0"
 
-gulp-pdflatex2@^3.0.2:
+gulp-pdflatex2@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/gulp-pdflatex2/-/gulp-pdflatex2-3.1.0.tgz#94713843e8c1078325464c600a7b330dbd38c452"
   dependencies:
