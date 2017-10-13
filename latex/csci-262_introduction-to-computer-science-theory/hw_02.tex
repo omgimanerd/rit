@@ -49,7 +49,7 @@ as possible.
 \begin{itemize}
   \item \( Q = \{0,1,2,3,4\} \)
   \item \( \Sigma = \{a,b\} \)
-  \item \( \delta: Q\times E\to Q \) is defined on \( (q,z)\in Q\times Z \) as:
+  \item \( \delta: Q\times E\to Q \) is defined on \( (q,z)\in Q\times\Sigma \) as:
     \[ \delta(q,x) = \begin{cases}
       1 & if\ (x = a) \wedge (q\in\{0,3,4\}) \\
       2 & if\ (x = a) \wedge (q\in\{1,2\})   \\
@@ -63,7 +63,7 @@ as possible.
 \begin{itemize}
   \item \( Q = \{0,1,2,3,4\} \)
   \item \( \Sigma = \{a,b\} \)
-  \item \( \delta: Q\times E\to Q \) is defined on \( (q,z)\in Q\times Z \) as:
+  \item \( \delta: Q\times E\to Q \) is defined on \( (q,z)\in Q\times\Sigma \) as:
     \[ \delta(q,x) = q+1 \]
 \end{itemize}
 
@@ -72,7 +72,7 @@ as possible.
 \begin{itemize}
   \item \( Q = \{0,1,2\} \)
   \item \( \Sigma = \{a,b\} \)
-  \item \( \delta: Q\times E\to Q \) is defined on \( (q,z)\in Q\times Z \) as:
+  \item \( \delta: Q\times E\to Q \) is defined on \( (q,z)\in Q\times\Sigma \) as:
     \[ \delta(q,x) = \begin{cases}
       0 & if\ (x = b) \\
       q+1 & if\ (x = a) \wedge (q \ne 2) \\
