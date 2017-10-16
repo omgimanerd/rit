@@ -1,0 +1,61 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\usepackage{listings}
+\lstset{basicstyle=\ttfamily\footnotesize,breaklines=true}
+
+\title{CSCI 251: Concepts of Parallel and Distributed Systems}
+\author{Alvin Lin}
+\date{October 4th, 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Test Answers}
+
+\subsubsection*{Question 1}
+In this problem, we were given a \( 4\times4 \) matrix multiplication operation
+to parallelize across a \( 2\times2 \) grid. We can look at these as four
+individual processors to split the data among, or a \( 2\times2 \) grid on which
+we can implement Canon's algorithm. For this problem, the serial computation
+time \( T_s \) is \( O(n^3) \), or 64 in this specific case. The parallel
+computation time is \( T_p \) is 16 units at minimum plus the communication
+costs. Depending on the implementation and initial assumptions, the
+communication costs can vary.
+
+\subsubsection*{Question 2}
+In this problem, we had a tree of \( P \) processor nodes, of which the
+\( k \) leaves must perform 1-to-all personalized communication. The
+generalized expression for the cost of this \( k \)-to-all communication is:
+\[ k\sum_{i=0}^{\log_2(P)}2^i\times i \]
+
+\subsubsection*{Question 3}
+For this problem, we had to implement a parallelized bitonic sort, merge sort,
+odd-even sort, or quicksort. The only thing to note is that those who
+implemented bitonic sort needed to implement the correct \texttt{compare\_split}
+and \texttt{compare\_exchange} operation as discussed in class. For bitonic
+sort in the case of \( N > P \), the order complexity becomes:
+\[ \frac{N}{P}\log(\frac{N}{P})+\frac{N}{P}\log^2(P) \]
+
+\section*{Project 2}
+Project 2 will involve implementing bitonic sort. Since it requires message
+passing, the use of MPI is suggested. Please review the \texttt{compare\_split}
+operation. With MPI, the process with rank 0 can be treated as the master
+process. The data can then be scattered across the other processes for
+manipulation.
+
+\section*{Reminders}
+\noindent Professor Mohan Kumar: \\
+\url{mjkvcs@rit.edu} \\
+\url{https://cs.rit.edu/~mjk} \\
+
+\noindent Rahul Dashora (TA): \\
+\url{rd5476@mail.rit.edu} \\
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
