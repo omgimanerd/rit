@@ -1,0 +1,87 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\usepackage{tikz}
+
+\title{University Physics 1A}
+\author{Alvin Lin}
+\date{October 12th, 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Impulse}
+\[ W_{net} = \int\overrightarrow{F_{net}}\cdot\diff{\vec{x}} =
+  \frac{1}{2}mv_f^2 = \frac{1}{2}mv_i^2 \]
+\begin{align*}
+  \int\overrightarrow{F_{net}}\diff{t} &= \int m\vec{a}\diff{t} \\
+  &= \int m\ddiff{\vec{v}}{t}\diff{t} \\
+  &= \int m\diff{\vec{v}} \\
+  &= m\int\diff{v} \\
+  &= m\vec{v_f}-m\vec{v_i} \\
+  \text{impulse} &= \text{change in momentum}
+\end{align*}
+This is known as the impulse-momentum theorem.
+\[ \int F\diff{t} = F_{avg}\Delta{t} \]
+This applies to systems as well as individual objects. Suppose we have the
+system:
+\begin{center}
+  \begin{tikzpicture}
+    \draw[->] (-2,0) -- (-1,0) node[pos=0.5,above] {\( F \)};
+    \draw[->] (-2,0) -- (-2,-1) node[pos=0.5,left] {\( m_1g \)};
+    \draw[->] (2,0) -- (1,0) node[pos=0.5,above] {\( F \)};
+    \draw[->] (2,0) -- (2,-1) node[pos=0.5,right] {\( m_2g \)};
+  \end{tikzpicture}
+\end{center}
+The internal forces cancel out and the net impulse is only due to the external
+forces.
+\begin{align*}
+  0 &= m_1v_{1f}+m_2v_{2f}-(m_1v_{1i}+m_2v_{2i}) \\
+  m_1v_{1i}+m_2v_{2i} &= m_1v_{1f}+m_2v_{2f} \\
+\end{align*}
+This is known as the conservation of momentum, and is true when the net
+external force is zero.
+
+\subsubsection*{Example}
+A superball of mass \( m = 0.0300 \) kg heads towards the right with velocity
+\( v = 20.0 \) m/s west (?). It hits a wall and then bounces back with the same
+speed in the opposite direction. The ball is in contact with the wall for
+\( t = 0.0300 \) s. What is the average \textit{vector} force \textbf{on the
+ball} during the collision?
+\begin{align*}
+  F_{avg}\Delta{t} &= m\vec{v_f}-m\vec{v_i} \\
+  F_{avg} &= \frac{m\vec{v_f}-m\vec{v_i}}{\Delta{t}} \\
+  &= \frac{(0.03)(20)-(0.03)(-20)}{0.03} \\
+  &= 40N
+\end{align*}
+
+\subsubsection*{Example}
+A tennis ball of mass \( m = 0.0300 \) kg is thrown towards the right with
+velocity \( v = 20.0 \) m/s west. It hits a wall with a speed of \( v = 20.0 \)
+m/s, and the angle between the vertical wall and the initial velocity is
+\( 70.0^{\circ} \). It bounces off the wall, still headed upwards with a speed
+of 10.0 m/s, again making an angle of \( 70.0^{\circ} \) with the vertical wall.
+The ball is in contact with the wall for \( t = 0.0300 \) s. What is the average
+\textit{vector} force \textbf{on the ball} during the collision written in
+component form?
+\begin{align*}
+  v_{xi} &= 20\sin(70) \\
+  v_{xf} &= -10\sin(70) \\
+  v_{yi} &= 20\cos(70) \\
+  v_{yf} &= 10\cos(70) \\
+  F_{net~x} &= \frac{mv_{xf}-mv_{xi}}{\Delta{t}} \\
+  &= \frac{(0.03)(-10\sin(70))-(0.03)(20\sin(70))}{0.03} \\
+  &= -28.2N \\
+  F_{net~y} &= \frac{mv_{yf}-mv_{yi}}{\Delta{t}} \\
+  &= \frac{(0.03)(10\cos(70))-(0.03)(20\cos(70))}{0.03} \\
+  &= -3.42N \\
+  F_{net} &= \langle-28.2,-3.42\rangle N
+\end{align*}
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
