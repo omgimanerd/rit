@@ -578,23 +578,353 @@ Show that there are no \( 2\times2 \) matrices \( A \) and \( B \) such that
 \end{align*}
 
 \section*{Section 3.3}
+
 \subsubsection*{Exercise 1}
+Find the inverse of the given matrix (if it exists) using Theorem 3.8.
+\[ A = \begin{bmatrix}4 & 7 \\ 1 & 2\end{bmatrix} \]
+\begin{align*}
+  ad-bc &= 1 \\
+  A' &= \begin{bmatrix}
+    2 & -7 \\
+    -1 & 4
+  \end{bmatrix}
+\end{align*}
+
 \subsubsection*{Exercise 3}
+Find the inverse of the given matrix (if it exists) using Theorem 3.8.
+\[ A = \begin{bmatrix}3 & 4 \\ 6 & 8\end{bmatrix} \]
+\[ ad-bc = 0 \]
+The matrix is not invertible.
+
 \subsubsection*{Exercise 5}
+Find the inverse of the given matrix (if it exists) using Theorem 3.8.
+\[ A = \begin{bmatrix}\frac{3}{4} & \frac{3}{5} \\[0.25em]
+  \frac{5}{6} & \frac{2}{3}\end{bmatrix} \]
+\begin{align*}
+  ad-bc &= \frac{1}{2}-\frac{1}{2} \\
+  &= 0
+\end{align*}
+The matrix is not invertible.
+
 \subsubsection*{Exercise 7}
+Find the inverse of the given matrix (if it exists) using Theorem 3.8.
+\[ A = \begin{bmatrix}-1.5 & -4.2 \\[0.25em] 0.5 & 2.4\end{bmatrix} \]
+\begin{align*}
+  ad-bc &= -3.6-(-2.1) \\
+  &= -1.5 \\
+  A' &= \begin{bmatrix}
+    \frac{2.4}{-1.5} & -\frac{-4.2}{-1.5} \\[0.25em]
+    -\frac{0.5}{-1.5} & \frac{-1.5}{-1.5}
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    -1.6 & -2.8 \\
+    0.33 & 1
+  \end{bmatrix} \\
+\end{align*}
+
 \subsubsection*{Exercise 9}
+Find the inverse of the given matrix (if it exists) using Theorem 3.8.
+\[ A = \begin{bmatrix}a & -b \\ b & a\end{bmatrix} \]
+\begin{align*}
+  \frac{1}{\det(A)} &= \frac{1}{a^2+b^2} \\
+  A' &= \begin{bmatrix}
+    \frac{a}{a^2+b^2} & \frac{b}{a^2+b^2} \\[0.25em]
+    -\frac{b}{a^2+b^2} & \frac{a}{a^2+b^2}
+  \end{bmatrix}
+\end{align*}
+
 \subsubsection*{Exercise 11}
+Solve the given system using the method of Example 3.25.
+\begin{align*}
+  2x+y &= -1 \\
+  5x+3y &= 2 \\
+  \begin{bmatrix}x \\ y\end{bmatrix} &= \left(\begin{bmatrix}
+    2 & 1 \\
+    5 & 3
+  \end{bmatrix}\right)^{-1}\begin{bmatrix}-1 \\ 2\end{bmatrix} \\
+  &= \frac{1}{6-5}\begin{bmatrix}
+    3 & -1 \\
+    -5 & 2
+  \end{bmatrix}\begin{bmatrix}-1 \\ 2\end{bmatrix} \\
+  &= \begin{bmatrix}-5 \\ 9\end{bmatrix}
+\end{align*}
+
 \subsubsection*{Exercise 18}
+By induction, prove that if \( A_1,A_2,\dots,A_n \) are invertible matrices of
+the same size, then the product \( A_1A_2\dots A_n \) is invertible and
+\( (A_1A_2\dots A_n)^{-1} = A_n^{-1}\dots A_2^{-1}A_1^{-1} \). \\
+Base Case:
+\[ (A_1A_2)^{-1} = A_2^{-1}A_1^{-1} \]
+Induction Hypothesis:
+\[ (A_1A_2\dots A_n)^{-1} = A_n^{-1}\dots A_2^{-1}A_1^{-1} \]
+Induction:
+\begin{align*}
+  (A_1A_2\dots A_nA_{n+1})^{-1} &= ((A_1A_2\dots A_n)(A_{n+1}))^{-1} \\
+  &= A_{n+1}^{-1}(A_1A_2\dots A_n)^{-1} \text{ by Theorem 3.9c} \\
+  &= A_{n+1}^{-1}A_n^{-1}\dots A_2^{-1}A_1^{-1}
+    \text{ by the induction hypothesis}
+\end{align*}
+
 \subsubsection*{Exercise 44}
+A square matrix \( A \) is called \textbf{idempotent} if \( A^2 = A \).
+\begin{enumerate}[(a)]
+  \item Find three idempotent \( 2\times2 \) matrices.
+  \[ \begin{bmatrix}0 & 0 \\ 0 & 0\end{bmatrix} \quad
+    \begin{bmatrix}1 & 0 \\ 0 & 1\end{bmatrix} \quad
+    \begin{bmatrix}1 & 0 \\ 0 & 0\end{bmatrix} \]
+  \item Prove that the only invertible idempotent \( n\times n \) matrix is the
+  identity matrix.
+  \begin{align*}
+    A &= A^2 \\
+    A(A^{-1}) &= A^2(A^{-1}) \\
+    I_n &= AAA^{-1} \\
+    I_n &= AI_n \\
+    A &= I_n
+  \end{align*}
+\end{enumerate}
+
 \subsubsection*{Exercise 45}
+Show that if \( A \) is a a square matrix that satisfies the equation
+\( A^2-2A+I = 0 \), then \( A^{-1} = 2I-A \).
+\begin{align*}
+  A^2-2A+I &= 0 \\
+  A^2(A^{-1})-2A(A^{-1})+I(A^{-1}) &= 0(A^{-1}) \\
+  AI-2(I)+A^{-1} &= 0 \\
+  A-2I+A^{-1} &= 0 \\
+  A^{-1} &= 2I-A
+\end{align*}
+
 \subsubsection*{Exercise 46}
+Prove that if a symmetric matris is invertible, then its inverse is symmetric
+also.
+\begin{align*}
+  A &= A^T \\
+  (A^{-1})^T &= (A^T)^{-1} \\
+  (A^{-1})^T &= A^{-1}
+\end{align*}
+Since the transpose of the inverse is equal to the inverse, the inverse must be
+symmetric.
+
 \subsubsection*{Exercise 47}
+Prove that if \( A \) and \( B \) are square matrices and \( AB \) is
+invertible, then both \( A \) and \( B \) are invertible. \\
+\begin{align*}
+  B\vec{x} &= 0 \\
+  (A)B\vec{x} &= (A)0 \\
+  AB\vec{x} &= 0 \\
+  \vec{x} &= 0 \quad \text{Theorem 3.12c} \\
+  & \therefore B \text{ is invertible} \\
+  A &= AI \\
+  &= A(BB^{-1}) \\
+  &= (AB)(B^{-1})
+\end{align*}
+Since \( A \) is the product of two invertible matrices, \( A \) is invertible
+as well.
+
 \subsubsection*{Exercise 49}
+Use the Gauss-Jordan method to find the inverse of the given matrix (if it
+exists).
+\begin{align*}
+  \begin{bmatrix}
+    -2 & 4 & 1 & 0 \\
+    3 & -1 & 0 & 1
+  \end{bmatrix} &= \begin{bmatrix}
+    10 & 0 & 1 & 4 \\
+    3 & -1 & 0 & 1
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    1 & 0 & \frac{1}{10} & \frac{2}{5} \\[0.25em]
+    -3 & 1 & 0 & -1
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    1 & 0 & \frac{1}{10} & \frac{2}{5} \\[0.25em]
+    0 & 1 & \frac{3}{10} & \frac{1}{5}
+  \end{bmatrix}
+\end{align*}
+
 \subsubsection*{Exercise 51}
+Use the Gauss-Jordan method to find the inverse of the given matrix (if it
+exists).
+\begin{align*}
+  \begin{bmatrix}
+    1 & a & 1 & 0 \\
+    -a & 1 & 0 & 1
+  \end{bmatrix} &= \begin{bmatrix}
+    1 & a & 1 & 0 \\
+    a^2 & -a & 0 & -a
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    1+a^2 & 0 & 1 & -a \\
+    a^2 & -a & 0 & -a
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    1 & 0 & \frac{1}{1+a^2} & \frac{-a}{1+a^2} \\[0.25em]
+    1 & \frac{-1}{a} & 0 & \frac{-1}{a}
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    1 & 0 & \frac{1}{1+a^2} & \frac{-a}{1+a^2} \\[0.25em]
+    0 & \frac{-1}{a} & -\frac{1}{1+a^2} & \frac{-1}{a}+\frac{a}{1+a^2}
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    1 & 0 & \frac{1}{1+a^2} & \frac{-a}{1+a^2} \\[0.25em]
+    0 & 1 & \frac{a}{1+a^2} & 1+\frac{-a^2}{1+a^2}
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    1 & 0 & \frac{1}{1+a^2} & \frac{-a}{1+a^2} \\[0.25em]
+    0 & 1 & \frac{a}{1+a^2} & \frac{1}{1+a^2}
+  \end{bmatrix}
+\end{align*}
+
 \subsubsection*{Exercise 53}
+Use the Gauss-Jordan method to find the inverse of the given matrix (if it
+exists).
+\begin{align*}
+  \begin{bmatrix}
+    1 & -1 & 2 & 1 & 0 & 0 \\
+    3 & 1 & 2 & 0 & 1 & 0 \\
+    2 & 3 & -1 & 0 & 0 & 1
+  \end{bmatrix} &= \begin{bmatrix}
+    1 & -1 & 2 & 1 & 0 & 0 \\
+    0 & 4 & -4 & -4 & 1 & 0 \\
+    0 & 5 & -5 & -2 & 0 & 1
+  \end{bmatrix}
+\end{align*}
+No inverse exists since the last two rows can cancel each other out.
+
 \subsubsection*{Exercise 55}
+Use the Gauss-Jordan method to find the inverse of the given matrix (if it
+exists).
+\begin{align*}
+  \begin{bmatrix}
+    a & 0 & 0 & 1 & 0 & 0 \\
+    1 & a & 0 & 0 & 1 & 0 \\
+    0 & 1 & a & 0 & 0 & 1
+  \end{bmatrix} &= \begin{bmatrix}
+    1 & 0 & 0 & \frac{1}{a} & 0 & 0 \\
+    1 & a & 0 & 0 & 1 & 0 \\
+    0 & 1 & a & 0 & 0 & 1
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    1 & 0 & 0 & \frac{1}{a} & 0 & 0 \\
+    0 & a & 0 & -\frac{1}{a} & 1 & 0 \\
+    0 & 1 & a & 0 & 0 & 1
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    1 & 0 & 0 & \frac{1}{a} & 0 & 0 \\
+    0 & 1 & 0 & -\frac{1}{a^2} & \frac{1}{a} & 0 \\
+    0 & 1 & a & 0 & 0 & 1
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    1 & 0 & 0 & \frac{1}{a} & 0 & 0 \\
+    0 & 1 & 0 & -\frac{1}{a^2} & \frac{1}{a} & 0 \\
+    0 & 0 & a & \frac{1}{a^2} & -\frac{1}{a} & 1
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    1 & 0 & 0 & \frac{1}{a} & 0 & 0 \\
+    0 & 1 & 0 & -\frac{1}{a^2} & \frac{1}{a} & 0 \\
+    0 & 0 & 1 & \frac{1}{a^3} & -\frac{1}{a^2} & \frac{1}{a}
+  \end{bmatrix}
+\end{align*}
+
 \subsubsection*{Exercise 57}
+Use the Gauss-Jordan method to find the inverse of the given matrix (if it
+exists).
+\begin{align*}
+  \begin{bmatrix}
+    0 & -1 & 1 & 0 & 1 & 0 & 0 & 0 \\
+    2 & 1 & 0 & 2 & 0 & 1 & 0 & 0 \\
+    1 & -1 & 3 & 0 & 0 & 0 & 1 & 0 \\
+    0 & 1 & 1 & -1 & 0 & 0 & 0 & 1
+  \end{bmatrix} &= \begin{bmatrix}
+    1 & -1 & 3 &  0 & 0 & 0 & 1 & 0 \\
+    2 &  1 & 0 &  2 & 0 & 1 & 0 & 0 \\
+    0 & -1 & 1 &  0 & 1 & 0 & 0 & 0 \\
+    0 &  1 & 1 & -1 & 0 & 0 & 0 & 1
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    1 & -1 & 3 & 0 & 0 & 0 & 1 & 0 \\
+    0 & 3 & -6 & 2 & 0 & 1 & -2 & 0 \\
+    0 & -1 & 1 & 0 & 1 & 0 & 0 & 0 \\
+    0 & 1 & 1 & -1 & 0 & 0 & 0 & 1
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    1 & -1 & 3 & 0 & 0 & 0 & 1 & 0 \\
+    0 & 3 & -6 & 2 & 0 & 1 & -2 & 0 \\
+    0 & -1 & 1 & 0 & 1 & 0 & 0 & 0 \\
+    0 & 0 & 2 & -1 & 1 & 0 & 0 & 1
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    1 & -1 & 3 & 0 & 0 & 0 & 1 & 0 \\
+    0 & 1 & -4 & 2 & 2 & 1 & -2 & 0 \\
+    0 & 0 & -3 & 2 & 3 & 1 & -2 & 0 \\
+    0 & 0 & 2 & -1 & 1 & 0 & 0 & 1
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    1 & -1 & 3 & 0 & 0 & 0 & 1 & 0 \\
+    0 & 1 & -4 & 2 & 2 & 1 & -2 & 0 \\
+    0 & 0 & 0 & -1 & -9 & -2 & 4 & -3 \\
+    0 & 0 & 1 & -1 & -4 & -1 & 2 & -1
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    1 & -1 & 3 & 0 & 0 & 0 & 1 & 0 \\
+    0 & 1 & -4 & 2 & 2 & 1 & -2 & 0 \\
+    0 & 0 & 1 & 0 & 5 & 1 & -2 & 2 \\
+    0 & 0 & 0 & 1 & 9 & 2 & -4 & 3
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    1 & -1 & 3 & 0 & 0 & 0 & 1 & 0 \\
+    0 & 1 & -4 & 2 & 2 & 1 & -2 & 0 \\
+    0 & 0 & 1 & 0 & 5 & 1 & -2 & 2 \\
+    0 & 0 & 0 & 1 & 9 & 2 & -4 & 3
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    1 & 0 & 0 & 1 & -2 & 0 & 1 & -1 \\
+    0 & 1 & -4 & 2 & 2 & 1 & -2 & 0 \\
+    0 & 0 & 1 & 0 & 5 & 1 & -2 & 2 \\
+    0 & 0 & 0 & 1 & 9 & 2 & -4 & 3
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    1 & 0 & 0 & 1 & -2 & 0 & 1 & -1 \\
+    0 & 1 & -4 & 2 & 2 & 1 & -2 & 0 \\
+    0 & 0 & 1 & 0 & 5 & 1 & -2 & 2 \\
+    0 & 0 & 0 & 1 & 9 & 2 & -4 & 3
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    1 & 0 & 0 & 0 & -11 & -2 & 5 & -4 \\
+    0 & 1 & 0 & 0 & 4 & 1 & -2 & 2 \\
+    0 & 0 & 1 & 0 & 5 & 1 & -2 & 2 \\
+    0 & 0 & 0 & 1 & 9 & 2 & -4 & 3
+  \end{bmatrix}
+\end{align*}
+
 \subsubsection*{Exercise 59}
+Use the Gauss-Jordan method to find the inverse of the given matrix (if it
+exists).
+\begin{align*}
+  \begin{bmatrix}
+    1 & 0 & 0 & 0 & 1 & 0 & 0 & 0 \\
+    0 & 1 & 0 & 0 & 0 & 1 & 0 & 0 \\
+    0 & 0 & 1 & 0 & 0 & 0 & 1 & 0 \\
+    a & b & c & d & 0 & 0 & 0 & 1
+  \end{bmatrix} &= \begin{bmatrix}
+    1 & 0 & 0 & 0 & 1 & 0 & 0 & 0 \\
+    0 & 1 & 0 & 0 & 0 & 1 & 0 & 0 \\
+    0 & 0 & 1 & 0 & 0 & 0 & 1 & 0 \\
+    0 & b & c & d & -a & 0 & 0 & 1
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    1 & 0 & 0 & 0 & 1 & 0 & 0 & 0 \\
+    0 & 1 & 0 & 0 & 0 & 1 & 0 & 0 \\
+    0 & 0 & 1 & 0 & 0 & 0 & 1 & 0 \\
+    0 & 0 & 0 & d & -a & -b & -c & 1
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    1 & 0 & 0 & 0 & 1 & 0 & 0 & 0 \\
+    0 & 1 & 0 & 0 & 0 & 1 & 0 & 0 \\
+    0 & 0 & 1 & 0 & 0 & 0 & 1 & 0 \\
+    0 & 0 & 0 & 1 & -\frac{a}{d} & -\frac{b}{d} & -\frac{c}{d} & \frac{1}{d}
+  \end{bmatrix} \\
+\end{align*}
 
 \begin{center}
   If you have any questions, comments, or concerns, please contact me at
