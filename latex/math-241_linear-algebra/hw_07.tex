@@ -1,0 +1,246 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\usepackage{enumerate}
+
+\geometry{letterpaper, margin=0.5in}
+
+\title{Linear Algebra: Homework 7}
+\author{Alvin Lin}
+\date{August 2016 - December 2016}
+
+\begin{document}
+
+\maketitle
+
+\section*{Section 3.5}
+
+\subsubsection*{Exercise 1}
+Let \( S \) be the collection of vectors \( \begin{bmatrix}x \\ y\end{bmatrix}
+\) in \( \R^2 \) that satisfy the given property. In each case, either prove
+that \( S \) forms a subspace of \( \R^2 \) or give a counterexample to show
+that it does not.
+\[ x = 0 \]
+\[ S = \begin{bmatrix}x \\ y\end{bmatrix} =
+  \begin{bmatrix}0 \\ y\end{bmatrix} =
+  y\begin{bmatrix}0 \\ 1\end{bmatrix} =
+  span\left(\begin{bmatrix}0 \\ 1\end{bmatrix}\right) \]
+Since \( \begin{bmatrix}0 \\ 1\end{bmatrix}\in\R^2 \), \( S \) is a subspace
+of \( \R^2 \).
+
+\subsubsection*{Exercise 3}
+Let \( S \) be the collection of vectors \( \begin{bmatrix}x \\ y\end{bmatrix}
+\) in \( \R^2 \) that satisfy the given property. In each case, either prove
+that \( S \) forms a subspace of \( \R^2 \) or give a counterexample to show
+that it does not.
+\[ y = 2x \]
+\[ S = \begin{bmatrix}x \\ y\end{bmatrix} =
+  \begin{bmatrix}x \\ 2x\end{bmatrix} =
+  x\begin{bmatrix}1 \\ 2\end{bmatrix} =
+  span\left(\begin{bmatrix}1 \\ 2\end{bmatrix}\right) \]
+Since \( \begin{bmatrix}1 \\ 2\end{bmatrix}\in\R^2 \), \( S \) is a subspace of
+\( \R^2 \).
+
+\subsubsection*{Exercise 5}
+Let \( S \) be the collection of vectors \( \begin{bmatrix}x \\ y \\ z
+\end{bmatrix} \) in \( \R^3 \) that satisfy the given property. In each case,
+either prove that \( S \) forms a subspace of \( \R^2 \) or give a
+counterexample to show that it does not.
+\[ x = y = z \]
+\[ S = \begin{bmatrix}x \\ y \\ z\end{bmatrix} =
+  \begin{bmatrix}x \\ x \\ x\end{bmatrix} =
+  x\begin{bmatrix}1 \\ 1 \\ 1\end{bmatrix} =
+  span\left(\begin{bmatrix}1 \\ 1 \\ 1\end{bmatrix}\right) \]
+Since \( \begin{bmatrix}1 \\ 1 \\ 1\end{bmatrix}\in\R^3 \), \( S \) is a
+subspace of \( \R^3 \).
+
+\subsubsection*{Exercise 7}
+Let \( S \) be the collection of vectors \( \begin{bmatrix}x \\ y \\ z
+\end{bmatrix} \) in \( \R^3 \) that satisfy the given property. In each case,
+either prove that \( S \) forms a subspace of \( \R^2 \) or give a
+counterexample to show that it does not.
+\[ x-y+z = 1 \]
+\[ 0-0+0 \ne 1 \]
+Since the zero vector is not in \( S \), \( S \) is not a subspace of
+\( \R^3 \).
+
+\subsubsection*{Exercise 9}
+Prove that every line through the origin in \( \R^3 \) is a subspace of
+\( \R^3 \).
+\[ \begin{bmatrix}x \\ y \\ z\end{bmatrix} =
+  t\begin{bmatrix}a_1 \\ a_2 \\ a_3\end{bmatrix} =
+  span\left(\begin{bmatrix}a_1 \\ a_2 \\ a_3\end{bmatrix}\right) \]
+Every line through the origin can be described as the span of a vector
+\( \begin{bmatrix}a_1 \\ a_2 \\ a_3\end{bmatrix}\in\R^3 \). Therefore, every
+line through the origin is a subspace of \( \R^3 \).
+
+\subsubsection*{Exercise 10}
+Suppose \( S \) consists of all points in \( \R^2 \) that are on the x-axis or
+the y-axis (or both). Is \( S \) a subspace of \( \R^2 \)? Why or why not?
+\begin{align*}
+  S &= \left\{\begin{bmatrix}x \\ 0\end{bmatrix}\mid x\in\R\right\}\cup
+  \left\{\begin{bmatrix}0 \\ y\end{bmatrix}\mid y\in\R\right\} \\
+  \begin{bmatrix}1 \\ 0\end{bmatrix} &\in S \\
+  \begin{bmatrix}0 \\ 1\end{bmatrix} &\in S \\
+  \begin{bmatrix}1 \\ 0\end{bmatrix}+\begin{bmatrix}0 \\ 1\end{bmatrix} &=
+    \begin{bmatrix}1 \\ 1\end{bmatrix}\notin S
+\end{align*}
+The subspace \( S \) is not closed under addition.
+
+\subsubsection*{Exercise 15}
+If \( A \) is the matrix in Exercise 11, is \( \vec{v} = \begin{bmatrix}
+-1 \\ 3 \\ -1\end{bmatrix} \) in \( null(A) \)?
+\begin{align*}
+  A &= \begin{bmatrix}
+    1 & 0 & -1 \\
+    1 & 1 & 1
+  \end{bmatrix} \\
+  A\vec{v} &= \begin{bmatrix}
+    1 & 0 & -1 \\
+    1 & 1 & 1
+  \end{bmatrix}\begin{bmatrix}-1 & 3 & -1\end{bmatrix} \\
+  &= \begin{bmatrix}0 \\ 1\end{bmatrix} \\
+  \therefore \vec{v} &\notin null(A)
+\end{align*}
+
+\subsubsection*{Exercise 16}
+If \( A \) is the matrix in Exercise 12, is \( \vec{v} = \begin{bmatrix}
+7 \\ -1 \\ 2\end{bmatrix} \) in \( null(A) \)?
+\begin{align*}
+  A &= \begin{bmatrix}
+    1 & 1 & -3 \\
+    0 & 2 & 1 \\
+    1 & -1 & -4
+  \end{bmatrix} \\
+  A\vec{v} &= \begin{bmatrix}
+    1 & 1 & -3 \\
+    0 & 2 & 1 \\
+    1 & -1 & -4
+  \end{bmatrix}\begin{bmatrix}7 \\ -1 \\ 2\end{bmatrix} \\
+  &= \begin{bmatrix}0 \\ 0 \\ 0\end{bmatrix} \\
+  \therefore \vec{v} &\in null(A)
+\end{align*}
+
+\subsubsection*{Exercise 17}
+Give bases for \( row(A), col(A), \text{ and } null(A) \).
+\begin{align*}
+  A &= \begin{bmatrix}1 & 0 & -1 \\ 1 & 1 & 1\end{bmatrix} \\
+  &= \begin{bmatrix}1 & 0 & -1 \\ 0 & 1 & 2\end{bmatrix} \\
+  \text{basis for } row(A) &= \left\{\begin{bmatrix}
+    1 & 0 & -1
+  \end{bmatrix},\begin{bmatrix}
+    0 & 1 & 2
+  \end{bmatrix}\right\} \\
+  \text{basis for } col(A) &= \left\{\begin{bmatrix}
+    1 \\ 1
+  \end{bmatrix},\begin{bmatrix}
+    0 \\ 1
+  \end{bmatrix}\right\} \\
+  A\begin{bmatrix}x_1 \\ x_2 \\ x_3\end{bmatrix} &= \vec{0} \\
+  1x_1-1x_3 &= 0 \\
+  1x_2+2x_3 &= 0 \\
+  null(A) &= \begin{bmatrix}x_1 \\ -2x_1 \\ x_1\end{bmatrix} \\
+  &= x_1\begin{bmatrix}1 \\ -2 \\ 1\end{bmatrix} \\
+  \text{basis for } null(A) &= \left\{\begin{bmatrix}
+    1 \\ -2 \\ 1
+  \end{bmatrix}\right\}
+\end{align*}
+
+\subsubsection*{Exercise 19}
+Give bases for \( row(A), col(A), \text{ and } null(A) \).
+\begin{align*}
+  A &= \begin{bmatrix}
+    1 & 1 & 0 & 1 \\
+    0 & 1 & -1 & 1 \\
+    0 & 1 & -1 & -1
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    1 & 1 & 0 & 1 \\
+    0 & 1 & -1 & 1 \\
+    0 & 0 & 0 & -2
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    1 & 1 & 0 & 0 \\
+    0 & 1 & -1 & 0 \\
+    0 & 0 & 0 & 1
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    1 & 0 & 1 & 0 \\
+    0 & 1 & -1 & 0 \\
+    0 & 0 & 0 & 1
+  \end{bmatrix} \\
+  \text{basis for } row(A) &= \left\{\begin{bmatrix}
+    1 & 0 & 1 & 0
+  \end{bmatrix},\begin{bmatrix}
+    0 & 1 & -1 & 0
+  \end{bmatrix},\begin{bmatrix}
+    0 & 0 & 0 & 1
+  \end{bmatrix}\right\} \\
+  \text{basis for } col(A) &= \left\{\begin{bmatrix}
+    1 \\ 0 \\ 0
+  \end{bmatrix},\begin{bmatrix}
+    1 \\ 1 \\ 1
+  \end{bmatrix},\begin{bmatrix}
+    1 \\ 1 \\ -1
+  \end{bmatrix}\right\} \\
+  A\vec{x} &= 0 \\
+  x_1+x_3 &= 0 \\
+  x_2-x_3 &= 0 \\
+  x_4 &= 0 \\
+  null(A) &= \begin{bmatrix}
+    x_1 \\ -x_1 \\ -x_1 \\ 0
+  \end{bmatrix} \\
+  \text{basis for } null(A) &= \left\{
+    \begin{bmatrix}1 \\ -1 \\ -1 \\ 0\end{bmatrix}\right\}
+\end{align*}
+
+\subsubsection*{Exercise 27}
+Find a basis for the span of the given vectors.
+\[ \begin{bmatrix}1 \\ -1 \\ 0\end{bmatrix}\quad
+  \begin{bmatrix}-1 \\ 0 \\ 1\end{bmatrix}\quad
+  \begin{bmatrix}0 \\ 1 \\ -1\end{bmatrix} \]
+
+\subsubsection*{Exercise 29}
+\subsubsection*{Exercise 35}
+\subsubsection*{Exercise 37}
+\subsubsection*{Exercise 39}
+\subsubsection*{Exercise 40}
+\subsubsection*{Exercise 41}
+\subsubsection*{Exercise 42}
+\subsubsection*{Exercise 43}
+\subsubsection*{Exercise 44}
+\subsubsection*{Exercise 45}
+\subsubsection*{Exercise 47}
+\subsubsection*{Exercise 51}
+\subsubsection*{Exercise 52}
+\subsubsection*{Exercise 57}
+\subsubsection*{Exercise 58}
+\subsubsection*{Exercise 59a}
+\subsubsection*{Exercise 60a}
+\subsubsection*{Exercise 61}
+\subsubsection*{Exercise 62}
+\subsubsection*{Exercise 63}
+\subsubsection*{Exercise 64}
+\subsubsection*{Exercise 65}
+\subsubsection*{Exercise 66}
+
+\section*{Section 3.6}
+\subsubsection*{Exercise 1}
+\subsubsection*{Exercise 3}
+\subsubsection*{Exercise 5}
+\subsubsection*{Exercise 7}
+\subsubsection*{Exercise 9}
+\subsubsection*{Exercise 11}
+\subsubsection*{Exercise 13}
+\subsubsection*{Exercise 40}
+\subsubsection*{Exercise 42}
+\subsubsection*{Exercise 44}
+\subsubsection*{Exercise 52}
+\subsubsection*{Exercise 53}
+\subsubsection*{Exercise 54}
+
+\begin{center}
+  If you have any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
