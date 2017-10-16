@@ -1,0 +1,36 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\title{Introduction to Computer Science Theory}
+\author{Alvin Lin}
+\date{August 2017 - December 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Regular Languages and Regular Expressions}
+A \textbf{regular expression} over \( \Sigma \) is a description of a language
+that can be built from \( \emptyset,\{\epsilon\},\{a\} \) for \( a\in\Sigma \),
+using operators, union, concatenation, and Kleene star. For example, the
+following language over \( \{a,b\} \) is described by a regular expression:
+\[ (\{a\}\cup\{b\})^*\circ\{a\}\circ\{a\}\circ(\{a\}\cup\{b\})^*\cup
+  (\{a\}\cup\{b\})^*\circ\{b\}\circ\{b\}\circ(\{a\}\cup\{b\})^* \]
+This can be written a bit more concisely as:
+\[ (\{a\}\cup\{b\})^*aa(\{a\}\cup\{b\})^*\cup
+  (\{a\}\cup\{b\})^*bb(\{a\}\cup\{b\})^* \]
+
+\subsubsection*{Example}
+Given regular expressions to describe:
+\begin{itemize}
+  \item The language of strings over \( \{a,b\} \) of even length.
+  \[ (aa\cup ab\cup ba\cup bb)^* \]
+  \[ ((a\cup b)(a\cup b))^* \]
+\end{itemize}
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}

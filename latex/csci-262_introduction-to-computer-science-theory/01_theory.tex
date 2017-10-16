@@ -80,8 +80,8 @@ indivisible objects, usually denoted by \( \Sigma \). Examples:
   \item \( \{a,b,c,d,e,\dots,x,y,z\} \)
 \end{itemize}
 
-A string over \( \Sigma \) is finite (possibly empty) sequence of elements of
-\( \Sigma \). Strings of alpha \( \{0,1\} \) are:
+\noindent A string over \( \Sigma \) is finite (possibly empty) sequence of
+elements of \( \Sigma \). Strings of alpha \( \{0,1\} \) are:
 \begin{itemize}
   \item \( \epsilon \)
   \item \( 0 \)
@@ -90,16 +90,16 @@ A string over \( \Sigma \) is finite (possibly empty) sequence of elements of
   \item \( 00000 \)
 \end{itemize}
 
-\( \epsilon \) denotes the \textbf{null string}: the empty sequence of elements
-of \( \Sigma \). Sometimes this is denoted \( \wedge \) or \( \lambda \). The
-following strings are not strings over \( \{0,1\} \):
+\noindent \( \epsilon \) denotes the \textbf{null string}: the empty sequence of
+elements of \( \Sigma \). Sometimes this is denoted \( \wedge \) or \( \lambda
+\). The following strings are not strings over \( \{0,1\} \):
 \begin{itemize}
   \item \( 1021 \)
   \item \( 1111111111\dots \)
 \end{itemize}
 
-If \( x \) is a string of \( \Sigma \), \( |x| \) denotes the length of \( x \),
-the number of alphabet symbols in the string.
+\noindent If \( x \) is a string of \( \Sigma \), \( |x| \) denotes the length
+of \( x \), the number of alphabet symbols in the string.
 \begin{itemize}
   \item \( |1| = 1 \)
   \item \( |10001010101| = 11 \)
@@ -107,11 +107,18 @@ the number of alphabet symbols in the string.
   \item \( |\epsilon| = 0 \)
 \end{itemize}
 
-The set of all strings over \( \Sigma \) is denoted by \( \Sigma^* \).
-For example, \( \{0,1\}^* = \{\epsilon,0,1,00,01,10,11,000,001,\dots\} \).
+\noindent The set of all strings over \( \Sigma \) is denoted by \( \Sigma^* \).
+For example:
+\[ \{0,1\}^* = \{\epsilon,0,1,00,01,10,11,000,001,\dots\} \]
 A language of \( \Sigma \) is a subset of \( \Sigma^* \).
-\[ \{a,b,c\}^* = \{\epsilon,a,b,c,aa,ab,ac,ba,bb,bc,\dots\} \]
-A language over \( \Sigma \) is a subset of \( \Sigma^* \). Example:
+\begin{align*}
+  \{a,b,c\}^* &= \{\epsilon,a,b,c,aa,ab,ac,ba,bb,bc,\dots\} \\
+  L^* &= \{\epsilon\}\cup L\cup L\circ L\cup L\circ L\circ L\cup\dots \\
+  &= \cup_{i=0}^{\infty}L^i \text{ where } L^0 = \{\epsilon\}
+\end{align*}
+This operation is known as the Kleene star.
+
+\noindent A language over \( \Sigma \) is a subset of \( \Sigma^* \). Example:
 \begin{itemize}
   \item \( \{1,010,111000,110\} \)
   \item \( \emptyset \)
@@ -120,8 +127,8 @@ A language over \( \Sigma \) is a subset of \( \Sigma^* \). Example:
   \item \( \{x\in\{0,1\}^*\mid |x|\ is\ even\} \)
 \end{itemize}
 
-Because languages are sets of strings, we can construct new languages using
-set operations (like union, intersection, and complementation).
+\noindent Because languages are sets of strings, we can construct new languages
+using set operations (like union, intersection, and complementation).
 \[ L_{1}, L_{2} \]
 \[ L_{1}\cup L_{2} \quad L_{1}\cap L_{2} \]
 If \( L \) is a language of \( \Sigma \), then \( \bar{L} \) (the complement of
