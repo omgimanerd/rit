@@ -1,0 +1,125 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\usepackage{tikz}
+
+\title{Multivariable and Vector Calculus}
+\author{Alvin Lin}
+\date{August 2017 - December 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Relative Maximum and Minimum}
+The function \( z = f(x,y) \) has a relative local maximum at \( x_0, y_0 \)
+if and only if there exist \( \epsilon > 0 \), \( f(x_0,y_0)\ge f(x,y) \) for
+all \( x,y \) and \( dist((x,y), (x_0,y_0))\le\epsilon \). There exist
+\textbf{saddle points} where it may be a local maximum with respect to the
+derivative in one direction, but a local minimum with respective to the
+derivative in other directions.
+
+\subsection*{Theorem}
+If \( f_x(x_0,y_0) = f_y(x_0,y_0) = 0 \) and
+\[ D(x_0,y_0) = f_{xx}f_{yy}-(f_{xy})^2 > 0 \]
+then \( f \) has a relative extremum. If \( f_{xx} > 0 \) then it is a
+minimum, if \( f_{xx} < 0 \) then it is a maximum. If \( D(x_0,y_0) < 0 \)
+we have a saddle point. If \( D(x_0,y_0) = 0 \), then the test is not
+conclusive.
+
+\subsubsection*{Example}
+Find the relative maximum, minimum, and saddle points of \( f(x,y) =
+3xy-x^y-xy^2 \).
+\begin{align*}
+  f_x &= 3y-2xy-y^2 = 0 \\
+  &\equiv y(3-2x-y) = 0 \\
+  y &= 0 \quad y = 3-2x \\ \\
+  f_y &= 3x-x^2-2xy = 0 \\
+  &\equiv x(3-x-2y) = 0
+\end{align*}
+\begin{align*}
+  \text{Plugging in } y &= 0 \\
+  x(3-x) &= 0 \\
+  x &= 0 \quad x = 3
+\end{align*}
+\begin{align*}
+  \text{Plugging in } y &= 3-2x \\
+  x(3-x-6+4x) &= 0 \\
+  x &= 0 \quad y = 3 \\
+  x &= 1 \quad y = 1
+\end{align*}
+Points of interest: \( (0,0), (3,0), (0,3), (1,1) \).
+\begin{align*}
+  D(x,y) &= (-2y)(-2x)-(3-2x-2y)^2 \\
+  D(0,0) &< 0 \text{ saddle} \\
+  D(3,0) &< 0 \text{ saddle} \\
+  D(0,3) &< 0 \text{ saddle} \\
+  D(1,1) &> 0 \text{ extremum, relative maximum}
+\end{align*}
+
+\subsubsection*{Example}
+Find the distance between the point \( P(1,2,3) \) and the plane \( \Pi: x+y+z
+= 7 \). \\
+In addition to the methods we have discussed earlier, we can also find this by
+minimizing the distance. We can pick a point \( (x,y,7-x-y) \) on the plane
+and find its distance to \( (1,2,3) \).
+\[ dist^2 = F(x,y) = (x-1)^2+(y-2)^2+(-4+x+y)^2 \]
+\begin{align*}
+  \pdiff{F}{x} &= 2(x-1)+2(-4+x+y) \\
+  &= 2x-2-8+2x+2y \\
+  &= 4x+2y-10 = 0 \\
+  y &= 5-2x \\
+  \pdiff{F}{y} &= 2(y-2)+2(-4+x+y) \\
+  &= 2y-4-8+2x+2y \\
+  &= 4y+2x-12 = 0
+\end{align*}
+\begin{align*}
+  4(5-2x)+2x-12 &= 0 \\
+  20-8x+2x-12 &= 0 \\
+  8 &= 6x \\
+  x &= \frac{4}{3} \quad y = \frac{7}{3}
+\end{align*}
+
+\subsubsection*{Example}
+Find the cheapest aquarium of volume 1 if the slate base costs 5 times the cost
+of glass.
+\[ xyz = 1 \]
+\[ C(x,y) = 5xy+(2x\frac{1}{xy}+y\frac{1}{xy}2) = 5xy+\frac{2}{y}+\frac{2}{x} \]
+\begin{align*}
+  C_x &= 5y-\frac{2}{x^2} = 0 \\
+  y &= \frac{2}{5x^2} \\
+  C_y &= 5x-\frac{2}{y^2} = 0 \\
+  5x-\frac{2}{(\frac{2}{5x^2})^2} &= 0 \\
+  5x(1-\frac{5x^3}{2}) &= 0 \\
+  x &= 0 \quad x = \sqrt[3]{\frac{2}{5}} \\
+  y &= \frac{2}{5(\frac{2}{5})^{\frac{2}{3}}} = \sqrt[3]{\frac{2}{5}} \\
+  z &= \left(\frac{2}{5}\right)^{-\frac{2}{3}}
+\end{align*}
+
+\subsubsection*{Example}
+Find the absolute maximum and minimum of \( f(x,y) = x+y-xy \) within the
+region of the triangle bounded by \( (0,0),(0,2),(4,0) \).
+\begin{align*}
+  f_x &= 1-y = 0 \\
+  f_y &= 1-x = 0
+\end{align*}
+The only candidate point is \( (1,1) \), and it is inside the triangular
+region defined. We also need to test the boundary points. Along the triangle's
+diagonal, there exists a relative maximum at the point \( (\frac{3}{2},
+\frac{5}{4}) \).
+\begin{align*}
+  f(1,1) &= 1 \\
+  f(0,0) &= 0 \\
+  f(4,0) &= 4 \\
+  f(0,2) &= 2 \\
+  f(\frac{3}{2},\frac{5}{4}) &= \frac{7}{8}
+\end{align*}
+Thus the absolute minimum is at \( (0,0) \) and the absolute maximum is at
+\( (4,0) \).
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
