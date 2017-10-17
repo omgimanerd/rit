@@ -323,39 +323,603 @@ Find all possible values of \( rank(A) \) as \( a \) varies.
     -2 & 4a & 2 \\
     a & -2 & 1
   \end{bmatrix} \\
+  &= \begin{bmatrix}
+    1 & 2 & a \\
+    0 & 4a+4 & 2+2a \\
+    1 & -\frac{2}{a} & \frac{1}{a}
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    1 & 2 & a \\
+    0 & 4a+4 & 2+2a \\
+    0 & -\frac{2}{a}-2 & \frac{1}{a}-a
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    1 & 2 & a \\
+    0 & 4a+4 & 2+2a \\
+    0 & -2-2a & 1-a^2
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    1 & 2 & a \\
+    0 & 2a+2 & 1+a \\
+    0 & 2a+2 & a^2-1
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    1 & 2 & a \\
+    0 & 2a+2 & 1+a \\
+    0 & 0 & a^2-a-2
+  \end{bmatrix} \\
+  2a+2 &= 0 \\
+  a &= -1 \\
+  &\to \begin{bmatrix}
+    1 & 2 & -1 \\
+    0 & 0 & 0 \\
+    0 & 0 & 2
+  \end{bmatrix} \\
+  a^2-a-2 &= 0 \\
+  (a-2)(a+1) &= 0 \\
+  a &= 1, -2 \\
+  &\to \begin{bmatrix}
+    1 & 2 & 1 \\
+    0 & 4 & 2 \\
+    0 & 0 & 0
+  \end{bmatrix} \\
+  &\to \begin{bmatrix}
+    1 & 2 & a \\
+    0 & -2 & -1 \\
+    0 & 0 & 0
+  \end{bmatrix} \\
+  rank(A) &= \begin{cases}
+    1 & \text{if } a = 1 \\
+    2 & \text{if } a = -1 \vee a = 2 \\
+    3 & \text{otherwise}
+  \end{cases}
 \end{align*}
 
-
 \subsubsection*{Exercise 44}
+Find all possible values of \( rank(A) \) as \( a \) varies.
+\begin{align*}
+  A &= \begin{bmatrix}
+    a & 2 & -1 \\
+    3 & 3 & -2 \\
+    -2 & -1 & a
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    1 & \frac{2}{a} & -\frac{1}{a} \\
+    1 & 2 & -2+a \\
+    -2 & -1 & a
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    1 & \frac{2}{a} & -\frac{1}{a} \\
+    1 & 2 & -2+a \\
+    0 & 3 & a+2(-2+a)
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    1 & \frac{2}{a} & -\frac{1}{a} \\
+    0 & 2-\frac{2}{a} & -2+a+\frac{1}{a} \\
+    0 & 3 & 3a-4
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    a & 2 & -1 \\
+    0 & 2a-2 & -2a+a^2+1 \\
+    0 & 3 & 3a-4
+  \end{bmatrix} \\
+  a &= 1 \\
+  &\to \begin{bmatrix}
+    1 & 2 & -1 \\
+    0 & 0 & 0 \\
+    0 & 3 & -1
+  \end{bmatrix} \\
+  rank(A) &= \begin{cases}
+    2 & \text{if } a = 1 \\
+    3 & \text{otherwise}
+  \end{cases}
+\end{align*}
+
 \subsubsection*{Exercise 45}
+Do \( \begin{bmatrix}1 \\ 1 \\ 0\end{bmatrix},\begin{bmatrix}1 \\ 0 \\ 1
+\end{bmatrix},\begin{bmatrix}0 \\ 1 \\ 1\end{bmatrix} \) form a basis for
+\( \R^3 \)?
+\begin{align*}
+  \begin{bmatrix}
+    1 & 1 & 0 \\
+    1 & 0 & 1 \\
+    0 & 1 & 1
+  \end{bmatrix} &= \begin{bmatrix}
+    1 & 0 & -1 \\
+    1 & 0 & 1 \\
+    0 & 1 & 1
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    1 & 0 & -1 \\
+    0 & 0 & 2 \\
+    0 & 1 & 1
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    1 & 0 & 0 \\
+    0 & 0 & 1 \\
+    0 & 1 & 0
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    1 & 0 & 0 \\
+    0 & 1 & 0 \\
+    0 & 0 & 1
+  \end{bmatrix}
+\end{align*}
+Since the vectors are linearly independent and form the standard basis vectors,
+they form a basis for \( \R^3 \).
+
 \subsubsection*{Exercise 47}
+Do \( \begin{bmatrix}1 \\ 1 \\ 1 \\ 0\end{bmatrix},\begin{bmatrix}1 \\ 1 \\ 0 \\
+1\end{bmatrix},\begin{bmatrix}1 \\ 0 \\ 1 \\ 1\end{bmatrix},\begin{bmatrix}0 \\
+1 \\ 1 \\ 1\end{bmatrix} \) for a basis for \( \R^4 \)?
+\begin{align*}
+  \begin{bmatrix}
+    1 & 1 & 1 & 0 \\
+    1 & 1 & 0 & 1 \\
+    1 & 0 & 1 & 1 \\
+    0 & 1 & 1 & 1
+  \end{bmatrix} &= \begin{bmatrix}
+    1 & 1 & 1 & 0 \\
+    0 & 0 & -1 & 1 \\
+    0 & -1 & 0 & 1 \\
+    0 & 1 & 1 & 1
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    1 & 1 & 1 & 0 \\
+    0 & 0 & -1 & 1 \\
+    0 & 0 & 1 & 2 \\
+    0 & 1 & 1 & 1
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    1 & 1 & 1 & 0 \\
+    0 & 0 & 0 & 3 \\
+    0 & 0 & 1 & 2 \\
+    0 & 1 & 1 & 1
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    1 & 0 & 0 & 0 \\
+    0 & 0 & 0 & 1 \\
+    0 & 0 & 1 & 0 \\
+    0 & 1 & 0 & 0
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    1 & 0 & 0 & 0 \\
+    0 & 1 & 0 & 0 \\
+    0 & 0 & 1 & 0 \\
+    0 & 0 & 0 & 1
+  \end{bmatrix}
+\end{align*}
+Since the vectors form the standard basis vectors, they form a basis for
+\( \R^4 \).
+
 \subsubsection*{Exercise 51}
+Show that \( w \) is in \( span(B) \) and find the coordinate vector
+\( [w]_B \).
+\[ B = \left\{\begin{bmatrix}1 \\ 2 \\ 0\end{bmatrix},
+  \begin{bmatrix}1 \\ 0 \\ -1\end{bmatrix}\right\} \quad
+  \vec{w} = \begin{bmatrix}1 \\ 6 \\ 2\end{bmatrix} \]
+\begin{align*}
+  c_1\begin{bmatrix}1 \\ 2 \\ 0\end{bmatrix}+
+    c_2\begin{bmatrix}1 \\ 0 \\ -1\end{bmatrix} &=
+    \begin{bmatrix}1 \\ 6 \\ 2\end{bmatrix} \\
+  \begin{bmatrix}
+    1 & 1 & 1 \\
+    2 & 0 & 6 \\
+    0 & -1 & 2
+  \end{bmatrix} &= \begin{bmatrix}
+    1 & 1 & 1 \\
+    0 & -2 & 4 \\
+    0 & -1 & 2
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    1 & 0 & 3 \\
+    0 & 1 & -2 \\
+    0 & 0 & 0
+  \end{bmatrix} \\
+  [w]_B = \begin{bmatrix}3 \\ -2\end{bmatrix}
+\end{align*}
+
 \subsubsection*{Exercise 52}
+Show that \( w \) is in \( span(B) \) and find the coordinate vector
+\( [w]_B \).
+\[ B = \left\{\begin{bmatrix}3 \\ 1 \\ 4\end{bmatrix},
+  \begin{bmatrix}5 \\ 1 \\ 6\end{bmatrix}\right\} \quad
+  \vec{w} = \begin{bmatrix}1 \\ 3 \\ 4\end{bmatrix} \]
+\begin{align*}
+  c_1\begin{bmatrix}3 \\ 1 \\ 4\end{bmatrix}+
+    c_2\begin{bmatrix}5 \\ 1 \\ 6\end{bmatrix} &=
+    \begin{bmatrix}1 \\ 3 \\ 4\end{bmatrix} \\
+  \begin{bmatrix}
+    3 & 5 & 1 \\
+    1 & 1 & 3 \\
+    4 & 6 & 4
+  \end{bmatrix} &= \begin{bmatrix}
+    0 & 2 & -8 \\
+    1 & 1 & 3 \\
+    2 & 3 & 2
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    0 & 1 & -4 \\
+    1 & 1 & 3 \\
+    0 & 1 & -4
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    1 & 0 & 7 \\
+    0 & 1 & -4 \\
+    0 & 0 & 0
+  \end{bmatrix} \\
+  [w]_B &= \begin{bmatrix}7 \\ -4\end{bmatrix}
+\end{align*}
+
 \subsubsection*{Exercise 57}
+If \( A \) is \( m\times n \), prove that every vector in \( null(A) \) is
+orthogonal to every vector in \( row(A) \).
+\begin{align*}
+  A\vec{x} &= \vec{0} \quad \forall{\vec{x}}\in\R^m \\
+  \vec{y} &= \sum_{i=1}^{m}c_ia_i \quad \forall{\vec{u}}\in row(A) \\
+  &= \begin{bmatrix}col_1(A) & \dots & col_m(A)\end{bmatrix}
+    \begin{bmatrix}c_1 \\ \vdots \\ c_m\end{bmatrix} \\
+  &= A^T\begin{bmatrix}c_1 \\ \vdots \\ c_m\end{bmatrix} \\
+  x^Ty &= x^TA^Tc \\
+  x^Ty &= (Ax)^Tc \\
+  x\cdot y
+   &= 0c = 0
+\end{align*}
+
 \subsubsection*{Exercise 58}
+If \( A \) and \( B \) are \( n\times n \) of rank \( n \), prove that \( AB \)
+has rank \( n \).
+\begin{align*}
+  nullity(A) &= 0 \\
+  nullity(B) &= 0 \\
+  B\vec{x} &= 0 \\
+  A(B\vec{x}) &= 0 \\
+  (AB)\vec{x} &= 0 \\
+  nullity(AB) &= 0 \\
+  rank(AB) &= n-nullity(AB) = n
+\end{align*}
+
 \subsubsection*{Exercise 59a}
+Prove that \( rank(AB)\le rank(B) \).
+\begin{align*}
+  n &= rank(AB)+nullity(AB) \\
+  &= rank(B)+nullity(B) \\
+  nullity(B) &= dim(null(B)) \\
+  &\le dim(null(AB)) \\
+  &\le nullity(AB) \\
+  rank(AB)+nullity(AB) &= rank(B)+nullity(B) \\
+  \therefore rank(AB) &\le rank(B)
+\end{align*}
+
 \subsubsection*{Exercise 60a}
+Prove that \( rank(AB)\le rank(A) \).
+\begin{align*}
+  AB &= A\begin{bmatrix}col_1(B) & \dots & col_n(B)\end{bmatrix} \\
+  col(AB) &\subseteq col(B) \\
+  dim(col(AB)) &\le dim(col(B)) \\
+  rank(AB) &\le rank(B)
+\end{align*}
+
 \subsubsection*{Exercise 61}
+Prove that if \( U \) is invertible, then \( rank(UA) = rank(A) \).
+\begin{align*}
+  A &= IA \\
+  A &= U^{-1}UA \\
+  rank(U) &= n \\
+  \therefore rank(A) &= n = rank(U)
+\end{align*}
+Prove that if \( V \) is invertible, then \( rank(AV) = rank(A) \).
+\begin{align*}
+  A &= AI \\
+  A &= AV^{-1}V \\
+  rank(U) &= n \\
+  \therefore rank(A) &= n = rank(V)
+\end{align*}
+
 \subsubsection*{Exercise 62}
+Prove that an \( m\times n \) matrix \( A \) has rank 1 if and only if \( A \)
+can be written as the outer product \( uv^T \) of a vector \( u\in\R^m \) and
+\( v\in\R^n \). \\
+Suppose:
+\begin{align*}
+  A &= \begin{bmatrix}a_1 \\ \vdots \\ a_n\end{bmatrix}
+    = \begin{bmatrix}c_1 \\ \vdots \\ c_n\end{bmatrix}w \\
+  u &= \begin{bmatrix}c_1 \\ \vdots \\ c_n\end{bmatrix} \\
+  w &= v^T \\
+  A &= uv^T \\
+  rank(A) &= rank(uv^T) \\
+  &\le rank(u) \\
+  &\le 1 \\
+  rank(A) &= 1
+\end{align*}
+
 \subsubsection*{Exercise 63}
+Prove that an \( m\times n \) matrix \( A \) has rank \( r \), prove that
+\( A \) can be written as the sum of \( r \) matrices, each of which has rank 1.
+\begin{align*}
+  rank(A) &= r \\
+  &= dim(row(A)) \\
+  A &= \begin{bmatrix}a_1 \\ \vdots \\ a_m\end{bmatrix} \\
+  &= \begin{bmatrix}
+    c_{11}v_1+c_{12}v_2+\dots+c_{1r}v_r \\
+    c_{21}v_1+c_{22}v_2+\dots+c_{2r}v_r \\
+    \vdots \\
+    c_{m1}v_1+v_{m2}v_2+\dots+c_{mr}v_r
+  \end{bmatrix} \\
+  &= \begin{bmatrix}c_{11} \\ c_{21} \\ \vdots \\ c_{m1}\end{bmatrix}v_1+\dots+
+    \begin{bmatrix}c_{1r} \\ c_{2r} \\ \vdots \\ c_{mr}\end{bmatrix}v_r \\
+\end{align*}
+Because \( \begin{bmatrix}c_{11} \\ c_{21} \\ \vdots \\ c_{m1}\end{bmatrix} \),
+has rank 1, each of the \( r \) matrices has rank 1.
+
 \subsubsection*{Exercise 64}
+Prove that, for \( m\times n \) matrices \( A \) and \( B \), \( rank(A+B)\le
+rank(A)+rank(B) \).
+\[ row_i(A+B) = row_i(A)+row_i(B) \]
+The rows of \( A+B \) can be expressed as linear combinations of the respective
+rows of \( A \) and \( B \).
+
 \subsubsection*{Exercise 65}
+Let \( A \) be an \( n\times n \) matrix such that \( A^2 = 0 \). Prove that
+\( rank(A) \le \frac{n}{2} \).
+\begin{align*}
+  A^2 &= A\begin{bmatrix}col_1(A) & \dots & col_n(A)\end{bmatrix} \\
+  &= 0 \\
+  A\vec{x} &= 0 \\
+  col(A) &\subseteq null(A) \\
+  rank(A)+nullity(A) &= n \\
+  rank(A)+rank(A) &\le n \\
+  2rank(A) &\le n \\
+  rank(A) &\le \frac{n}{2}
+\end{align*}
+
 \subsubsection*{Exercise 66}
+Let \( A \) be a skew-symmetric \( n\times n \) matrix.
+\begin{itemize}
+  \item Prove that \( x^TAx = 0 \) for all \( x\in\R^n \).
+  \begin{align*}
+    x^TAx &= (x^TAx)^T) \\
+    &= (Ax)^T(x^T)^T \\
+    &= x^TA^Tx \\
+    &= x^T(-A)x \\
+    x^TAx &= -x^TAx \\
+    \therefore x^TAx &= 0
+  \end{align*}
+  \item Prove that \( I+A \) is invertible. \\
+  If this is true \( (I+A)x = 0 \) has only the trivial solution.
+  \begin{align*}
+    (I+A)x &= 0 \\
+    x+Ax &= 0 \\
+    x^Tx+x^TAx &= 0(x^T) \\
+    x^Tx+0 &= 0 \\
+    \therefore x &= 0
+  \end{align*}
+\end{itemize}
 
 \section*{Section 3.6}
+
 \subsubsection*{Exercise 1}
+Let \( T_A:\R^2\to\R^2 \) be the matrix transformation corresponding to
+\( A = \begin{bmatrix}2 & -1 \\ 3 & 4\end{bmatrix} \). Find \( T_A(\vec{u}) \)
+and \( T_A(\vec{v}) \), where \( \vec{u} = \begin{bmatrix}1 \\ 2\end{bmatrix} \)
+and \( \vec{v} = \begin{bmatrix}3 \\ -2\end{bmatrix} \).
+\begin{align*}
+  T_A(\vec{u}) &= \begin{bmatrix}0 \\ 11\end{bmatrix} \\
+  T_A(\vec{v}) &= \begin{bmatrix}8 \\ 1\end{bmatrix}
+\end{align*}
+
 \subsubsection*{Exercise 3}
+Prove that the given transformation is a linear transformation, using the
+definition.
+\begin{align*}
+  T\begin{bmatrix}x \\ y\end{bmatrix} &=
+    \begin{bmatrix}x+y \\ x-y\end{bmatrix} \\
+  T(u+v) &= T\left(\begin{bmatrix}
+    u_x+v_x \\
+    u_y+v_y
+  \end{bmatrix}\right) \\
+  &= \begin{bmatrix}
+    u_x+v_x+u_y+v_y \\
+    u_x+v_x-u_y-v_y
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    (u_x+u_y)+(v_x+v_y) \\
+    (u_x-u_y)+(v_x-v_y)
+  \end{bmatrix} \\
+  &= T(u)+T(v) \\
+  T(cu) &= \begin{bmatrix}
+    cu_x+cu_y \\
+    cu_x-cu_y
+  \end{bmatrix} \\
+  &= c\begin{bmatrix}
+    u_x+u_y \\
+    u_x-u_y
+  \end{bmatrix} \\
+  &= cT(u)
+\end{align*}
+
 \subsubsection*{Exercise 5}
+Prove that the given transformation is a linear transformation, using the
+definition.
+\begin{align*}
+  T\begin{bmatrix}x \\ y \\ z\end{bmatrix} &= \begin{bmatrix}
+    x-y+z \\
+    2x+y-3z
+  \end{bmatrix} \\
+  T(u+v) &= T\left(\begin{bmatrix}
+    u_x+v_x \\
+    u_y+v_y
+  \end{bmatrix}\right) \\
+  &= \begin{bmatrix}
+    (u_x+v_x)-(u_y+v_y)+(u_z+v_z) \\
+    2(u_x+v_x)+(u_y+v_y)-3(u_z+v_z)
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    (u_x-u_y+u_z)+(v_x-v_y+v_z) \\
+    (2u_x+u_y-3u_z)+(2v_x+v_y-3v_z)
+  \end{bmatrix} \\
+  &= T(u)+T(v) \\
+  T(cu) &= \begin{bmatrix}
+    cu_x-cu_y+cu_z \\
+    c2u_x+cu_y-c3u_z
+  \end{bmatrix} \\
+  &= c\begin{bmatrix}
+    u_x-u_y+u_z \\
+    2u_x+u_y-3u_z
+  \end{bmatrix} \\
+  &= cT(u)
+\end{align*}
+
 \subsubsection*{Exercise 7}
+Give a counterexample to show that the given transformation is not a linear
+transformation.
+\[ T\begin{bmatrix}x \\ y\end{bmatrix} = \begin{bmatrix}y \\ x^2\end{bmatrix} \]
+\begin{align*}
+  T\left(2\begin{bmatrix}3 \\ 3\end{bmatrix}\right) &=
+    \begin{bmatrix}6 \\ 36\end{bmatrix} \\
+  &\ne 2T\left(\begin{bmatrix}3 \\ 3\end{bmatrix}\right) \\
+  &\ne \begin{bmatrix}6 \\ 18\end{bmatrix}
+\end{align*}
+
 \subsubsection*{Exercise 9}
+Give a counterexample to show that the given transformation is not a linear
+transformation.
+\[ T\begin{bmatrix}x \\ y\end{bmatrix} =
+  \begin{bmatrix}xy \\ x+y\end{bmatrix} \]
+\begin{align*}
+  T\left(2\begin{bmatrix}3 \\ 3\end{bmatrix}\right) &=
+    \begin{bmatrix}36 \\ 12\end{bmatrix} \\
+  &\ne 2T\left(\begin{bmatrix}3 \\ 3\end{bmatrix}\right) \\
+  &\ne \begin{bmatrix}18 \\ 12\end{bmatrix}
+\end{align*}
+
 \subsubsection*{Exercise 11}
+Find the standard matrix of the linear transformation.
+\begin{align*}
+  T\begin{bmatrix}x \\ y\end{bmatrix} &=
+    \begin{bmatrix}x+y \\ x-y\end{bmatrix} \\
+  &= \begin{bmatrix}
+    1 & 1 \\
+    1 & -1
+  \end{bmatrix}
+\end{align*}
+
 \subsubsection*{Exercise 13}
+Find the standard matrix of the linear transformation.
+\begin{align*}
+  T\begin{bmatrix}x \\ y \\ z\end{bmatrix} &= \begin{bmatrix}
+    x-y+z \\
+    2x+y-3z
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    1 & -1 & 1 \\
+    2 & 1 & -3
+  \end{bmatrix}
+\end{align*}
+
 \subsubsection*{Exercise 40}
+Use matrices to prove the given statements about the transformations from
+\( \R^2 \) to \( \R^2 \). If \( R_{\theta} \) denotes a rotation (about the
+origin) through the angle \( \theta \), then \( R_{\alpha}\circ R_{\beta} =
+R_{\alpha}+R_{\beta} \).
+\begin{align*}
+  R_{\alpha} &= \begin{bmatrix}
+    \cos\alpha & -\sin\alpha \\
+    \sin\alpha & \cos\alpha
+  \end{bmatrix} \\
+  R_{\beta} &= \begin{bmatrix}
+    \cos\beta & -\sin\beta \\
+    \sin\beta & \cos\beta
+  \end{bmatrix} \\
+  R_{\alpha}\circ R_{\beta} &= \begin{bmatrix}
+    \cos\alpha & -\sin\alpha \\
+    \sin\alpha & \cos\alpha
+  \end{bmatrix}\begin{bmatrix}
+    \cos\beta & -\sin\beta \\
+    \sin\beta & \cos\beta
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    \cos\alpha\cos\beta-\sin\alpha\sin\beta &
+      -\cos\alpha\sin\beta-\sin\alpha\cos\beta \\
+    \sin\alpha\cos\beta+\cos\alpha\sin\beta &
+      -\sin\alpha\sin\beta+\cos\alpha\cos\beta
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    \cos\alpha\cos\beta-\sin\alpha\sin\beta &
+      -(\cos\alpha\sin\beta+\sin\alpha\cos\beta) \\
+    \sin\alpha\cos\beta+\cos\alpha\sin\beta &
+      \cos\alpha\cos\beta-\sin\alpha\sin\beta
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    \cos(\alpha+\beta) & -\sin(\alpha+\beta) \\
+    \sin(\alpha+\beta) & \cos(\alpha+\beta)
+  \end{bmatrix} \\
+  &= R_{\alpha+\beta}
+\end{align*}
+
 \subsubsection*{Exercise 42}
+\begin{enumerate}[(a)]
+  \item If \( P \) is a projection, then \( P\circ P = P \).
+  \begin{align*}
+    P &= \begin{bmatrix}
+      \frac{d_x^2}{d_x^2+d_y^2} & \frac{d_xd_y}{d_x^2+d_y^2} \\[0.25em]
+      \frac{d_xd_y}{d_x^2+d_y^2} & \frac{d_y^2}{d_x^2+d_y^2}
+    \end{bmatrix} \\
+    P\circ P &= \begin{bmatrix}
+      \frac{d_x^4+d_x^2d_y^2}{(d_x^2+d_y^2)^2} &
+        \frac{d_x^3d_y+d_xd_y^3}{(d_x^2+d_y^2)^2} \\[0.25em]
+      \frac{d_x^3d_y+d_xd_y^3}{(d_x^2+d_y^2)^2} &
+        \frac{d_y^4+d_x^2d_y^2}{(d_1^2+d_2^2)^2}
+    \end{bmatrix} \\
+    &= P
+  \end{align*}
+\end{enumerate}
+
 \subsubsection*{Exercise 44}
+Let \( T \) be a linear transformation from \( \R^2 \) to \( \R^2 \). Prove
+that \( T \) maps a straight line to a straight line or a point.
+\begin{align*}
+  l &= \vec{x}+t\vec{d} \\
+  T(\vec{x}+t\vec{d}) &= T(\vec{x})+T(t\vec{d}) \\
+  &= T(\vec{x})+tT(\vec{d})
+\end{align*}
+When \( t = 0 \), the result is a point, otherwise, the resulting mapping is
+a line.
+
 \subsubsection*{Exercise 52}
+Prove that \( P_l(c\vec{v}) = cP_l(\vec{v}) \) for an scalar c.
+\begin{align*}
+  P_l(c\vec{v}) &=
+    \left(\frac{\vec{d}\cdot(c\vec{v})}{\vec{d}\cdot\vec{d}}\vec{d}\right) \\
+  &= \left(\frac{c(\vec{d}\cdot\vec{v})}{\vec{d}\cdot\vec{d}}\vec{d}\right) \\
+  &= c\left(\frac{\vec{d}\cdot\vec{v}}{\vec{d}\cdot\vec{d}}~\vec{d}\right) \\
+  &= cP_l(\vec{v})
+\end{align*}
+
 \subsubsection*{Exercise 53}
+Prove that \( T:\R^n\to\R^m \) is a linear transformation if and only if:
+\[ T(c_1\vec{v_1}+c_2\vec{v_2}) = c_1T(\vec{v_1})+c_2T(\vec{v_2}) \]
+\begin{align*}
+  T(c_1\vec{v_1}+c_2\vec{v_2}) &= T(c_1\vec{v_1})+T(c_2\vec{v_2}) \\
+  &= c_1T(\vec{v_1})+c_2T(\vec{v_2})
+\end{align*}
+
 \subsubsection*{Exercise 54}
+Prove that (as noted at the beginning of this section) the range of a linear
+transformation \( T:\R^n\to\R^m \) is the column space of its matrix \( [T] \).
+\begin{align*}
+  [T] &= \begin{bmatrix}
+    a_{11} & \dots & a_{1n} \\
+    \vdots & \vdots & \vdots \\
+    a_{m1} & \dots & a_{mn}
+  \end{bmatrix} \\
+  \vec{u} &= \begin{bmatrix}u_1 \\ \vdots \\ u_n\end{bmatrix} \\
+  T(\vec{u}) &= u_1\begin{bmatrix}a_{11} \\ \vdots \\ a_{m1}\end{bmatrix}+\dots+
+    u_n\begin{bmatrix}a_{1n} \\ \vdots \\ a_{mn}\end{bmatrix}
+\end{align*}
+The range of \( T \) is a linear combination of the columns, so it is a subset
+of the column space. The converse is also true, the column space is a subset of
+the range. Therefore, the two sets are equal.
 
 \begin{center}
   If you have any questions, comments, or concerns, please contact me at
