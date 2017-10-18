@@ -1,0 +1,168 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\title{CSCI 251: Concepts of Parallel and Distributed Systems}
+\author{Alvin Lin}
+\date{October 18th, 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Distributed Systems}
+Topics:
+\begin{itemize}
+  \item OS and distributed OS concepts
+  \item Interprocess communications
+  \item Clocks and global states
+  \item Coordination
+  \item Distributed Transactions
+  \item Blockchain
+  \item RMI and RPC
+  \item Request-Reply protocol
+  \item Marshalling and data representation
+\end{itemize}
+
+\subsection*{Distributed Computing}
+\begin{itemize}
+  \item Concurrent components
+  \begin{itemize}
+    \item Independent
+    \item Communicate and coordinate through message passing or shared memory
+  \end{itemize}
+  \item Lack of a global clock
+  \begin{itemize}
+    \item Each component has its own clock
+    \item Clock synchonization is a huge issue
+  \end{itemize}
+  \item Independent failure of components
+  \begin{itemize}
+    \item Components are isolated from one another for fault tolerance
+    \item Redundancy
+  \end{itemize}
+\end{itemize}
+
+\subsection*{Operation System Layer}
+\begin{itemize}
+  \item Middleware is on top of OS layers
+  \item OS on a particular node provides abstraction of local resources, such
+  as processing, storage, and communications.
+  \item Middleware is across all notes to utilize combinations of local and
+  remote resources. It controls the interactions among objects/processes.
+\end{itemize}
+
+\subsection*{OS Mechanisms}
+\begin{itemize}
+  \item Encapsulation: OS kernel and server processes provide server interfaces
+  to clients to meet their needs but hide the system details.
+  \item Protection: protection from illegitimate accesses, protect kernel
+  addressses and system registers.
+  \item Concurrent processing: sharing of resources among processes using
+  communication and scheduling for efficient utilization.
+\end{itemize}
+
+\subsection*{Core OS Components}
+\begin{itemize}
+  \item Process manager: handles creation and operations, resource management
+  for address space and threads.
+  \item Thread manager: handles creation, synchronization, and scheduling.
+  Threads are attached to processes.
+  \item Communication manager: handles communication between threads on the same
+  processor and threads on remote processors.
+  \item Memory manager: handles physical memory, virtual memory, and cache.
+  \item Supervisor: handles interrupts, system calls, and exceptions.
+\end{itemize}
+The time it takes to fetch data from the disk \( t_d \), memory \( t_m \), and
+cache \( t_c \) have the following relation:
+\[ t_d > t_m > t_c \]
+
+\subsection*{Protection}
+The operation system is expected to protect from illegitimate accesses. It
+maintains access privileges between users and supervisors and separates the
+address spaces between the user processes. During exceptions, control is
+transferred from the user to the kernel, but switching takes time and memory.
+
+\subsection*{Levels of Communication}
+Five Levels:
+\begin{itemize}
+  \item Message Passing: communication primitives, send and receive, direct,
+  consists of one direct logical communication path from a sending process to a
+  receiving process.
+  \item Request/Reply
+  \item Transactions
+  \item Transport Connection
+  \item Packet Switching
+\end{itemize}
+
+\subsection*{Message Synchronization}
+\begin{itemize}
+  \item Nonblocking send: source is released after copying message to buffer.
+  \item Blocking send: source is released after transmitting message to network.
+  \item Reliable blocking send: source is released after the message is
+  received by the receiver's buffer.
+  \item Explicit blocking send: source is released after the message has been
+  received by the receiving process.
+  \item Request and reply: the sender is released after the message is received
+  by the received, a service is executed at the received, and a response is
+  returned to the sender.
+\end{itemize}
+Buffer spaces at both kernels allow for asynchronous operations to reduce
+blocking and minimize deadlocks.
+
+\subsubsection*{Pipe}
+Pipes are APIs in Windows and Unix systems that allow for the transfer of
+uninterrupted byte sequences. Named pipes can be shared among disjoint
+processes.
+
+\subsubsection*{Sockets and Ports}
+A socket is a communication end point managed by transport services. But TCP
+and UDP use socket abstraction, messages are sent to an IP address and port
+number. The socket of a receiving process must be bound to a port and the IP
+address of the computer. A process can use multiple ports to receive messages.
+
+\subsection*{Connection-oriented Client/Server Socket Communication}
+\begin{enumerate}
+  \item Server and client issue socket calls separately.
+  \item Server issues a bind call.
+  \item Listen socket call: the server is willing to accept a connection.
+  \item Client issues a connect call to the server.
+  \item The server will reply with an accept call.
+  \item The server reads the client's request and responds.
+\end{enumerate}
+
+\subsection*{Data Representation and Marshalling}
+\begin{itemize}
+  \item Data in ``data structures'' must be converted to a sequence of bytes.
+  \item Data representation is different in different computers. This requires
+  the use of an agreed upon format for transmission, since conversion will
+  happen at the sender as well as the receiver.
+  \item The sender's format should provide details to the recipient.
+  \item Marshalling is the process of assembling data items for transmission.
+\end{itemize}
+
+\subsection*{Remote Procedure Call (RPC)}
+\begin{itemize}
+  \item RPC is the most popular request/reply communication process.
+  \item RPCs are very similar to procedure calls and provide access
+  transparency and communication transparency. It can be considered as an API
+  for the transport service.
+  \item RPC introduces vulnerabilities, so security features have to be built on
+  top of secure RPC. This usually involves an authenticated protocol for RPC
+  for mutual authentication, message integrity, confidentiality, and
+  originality.
+\end{itemize}
+
+\section*{Reminders}
+\noindent Professor Mohan Kumar: \\
+\url{mjkvcs@rit.edu} \\
+\url{https://cs.rit.edu/~mjk} \\
+
+\noindent Rahul Dashora (TA): \\
+\url{rd5476@mail.rit.edu} \\
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
