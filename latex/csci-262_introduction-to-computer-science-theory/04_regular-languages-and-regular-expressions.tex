@@ -25,7 +25,20 @@ Given regular expressions to describe:
   \item The language of strings over \( \{a,b\} \) of even length.
   \[ (aa\cup ab\cup ba\cup bb)^* \]
   \[ ((a\cup b)(a\cup b))^* \]
+  \item The language of strings over \( \{a,b,c\} \) in which all \( s \)'s
+  precede all \( b \)'s and \( c \)'s, and all \( b \)'s precede all \( c \)'s.
+  \[ a^*b^*c^* \]
+  \item The language of strings over \( \{0,1\} \) with length greater than
+  three.
+  \[ (0\cup1)(0\cup1)(0\cup1)(0\cup1)(0\cup1)^* \]
+  \[ (0\cup1)^4(0\cup1)^* \]
+  \item The language of strings of odd length of \( \{a,b\} \) that contain
+  the substring \( \{ bb \} \).
+  \[ ((a\cup b)^2)^*(abb\cup bba \cup bbb)((a\cup b)^2)^* \]
+  \item The language of strings of \( \{0,1\} \) that do not contain the
+  substring \( 000 \).
 \end{itemize}
+Is \( \{a^ib^i \mid i\in\N \} \)?
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
