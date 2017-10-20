@@ -1,0 +1,43 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\title{University Physics 1A}
+\author{Alvin Lin}
+\date{October 19th, 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Conservation of Momentum}
+If there is zero net external force on a system:
+\[ m_1\overrightarrow{v_{1i}}+m_2\overrightarrow{v_{2i}}+\dots =
+  m_1\overrightarrow{v_{2f}}+m_2\overrightarrow{v_{2f}}+\dots \]
+\[ \text{total initial momentum} = \text{total final momentum} \]
+\[ m_1v_{1ix}+m_2v_{2ix}+\dots = m_1v_{1fx}+m_2v_{2fx}+\dots \]
+\[ m_1v_{1iy}+m_2v_{2iy}+\dots = m_1v_{1fy}+m_2v_{2fy}+\dots \]
+
+\subsubsection*{Example}
+Two pucks move on a horizontal air-hockey table. One puck has mass 3.00 kg and
+initially moves east at 4.00 m/s. The other puck has a mass of 6.00 kg and
+moves at 5.00 m/s at \( 60.0^{\circ} \) north of east. The two pucks collide and
+stick together. Find the velocity after the collision of the combined pucks.
+\begin{align*}
+  m_1v_{1ix}+m_2v_{2ix} &= m_{12}v_{12fx} \\
+  3(4)+6(5\cos(60)) &= (3+6)v_{12fx} \\
+  v_{12fx} &= \frac{12+30\cos(60)}{9} \\
+  &= 3.00m/s \\
+  m_1v_{1iy}+m_2v_{2iy} &= m_{12}v_{12fy} \\
+  (3)(0)+6(5\sin(60)) &= (3+6)v_{12fy} \\
+  v_{12fy} &= \frac{30\sin(50)}{9} \\
+  &= 2.89m/s \\
+  v_{12f} &= 4.167m/s \\
+  \theta &= 43.8^{\circ}
+\end{align*}
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
