@@ -1,5 +1,7 @@
 \documentclass[letterpaper, 12pt]{math}
 
+\usepackage{enumerate}
+
 \title{Introduction to Computer Science Theory}
 \author{Alvin Lin}
 \date{August 2017 - December 2017}
@@ -39,6 +41,55 @@ Given regular expressions to describe:
   substring \( 000 \).
 \end{itemize}
 Is \( \{a^ib^i \mid i\in\N \} \)?
+
+\subsection*{Equivalence of Finite Automata and Regular Expressions}
+It is possible to construct a nondeterministic finite automata from a regular
+expression, and since deterministic finite automata can be constructed from
+nondeterministic finite automata, the three models can be represented
+equivalently using all three. This is something we can prove. \\
+\textbf{Theorem:} A language is regular if and only if some regular expressions
+describes it. \\
+\textbf{Lemma:} If a language is described by a regular expression, then it is
+regular. \\
+\textbf{Lemma:} If a language is regular, then it is described by a regular
+language. \\
+Recall the recursive definition of regular languages. \( R \) is a regular
+expression if it is:
+\begin{enumerate}
+  \item \( a \), for some \( a\in\Sigma \),
+  \item \( \emptyset \),
+  \item \( \epsilon \),
+  \item \( R_1\cup R_2, R_1R_2, R_1^*\text{ and }(R_1) \), where \( R_1 \) and
+  \( R_2 \) are regular expressions.
+\end{enumerate}
+
+\subsection*{Proof}
+Base Cases (from the recursive definition):
+\begin{enumerate}[{Case} 1:]
+  \item \( r = a\in\Sigma \)
+  \item \( r = \emptyset \)
+  \item \( r = \epsilon \)
+\end{enumerate}
+\textbf{Induction Hypothesis:} Assume that for arbitrary regular expressions
+\( r_1,r_2 \) that nondeterministic finite automata \( N_1 =
+(Q_1,\Sigma_1,\delta_1,q_1,F_1), N_2 = (Q_2,\Sigma_2,\delta_2,q_2,F_2) \) exist
+where \( L(r_1) = L(N_1) \) and \( L(r_2) = L(N_2) \). Assume without loss of
+generality \( Q_1\cap Q_2 = \emptyset \).
+\begin{enumerate}[{Case} 1:]
+  \item The following NFA \( N = (Q,\Sigma,\delta,q_0,F) \) recognizes
+  \( L(r_1\cup r_2) \):
+  \begin{align*}
+    Q &= Q_1\cup Q_2\cup \{q_0\} \text{ where } q_0\notin Q_1\cup Q_2 \\
+    F &= F_1\cup F_2 \\
+    \delta:Q\times\Sigma_{\epsilon} &\to 2^Q\text{ on }(q,x)\in
+      Q\times\Sigma_{\epsilon} \\
+    \delta(q,x) &= \begin{cases}
+      \{q_1,q_2\} & \text{if } (q,z) = (q_0,\epsilon) \\
+      \delta_i(q,x) & \text{if } q\in Q_i\text{ for }i\in\{1,2\} \\
+      \emptyset & otherwise
+    \end{cases} \\
+  \end{align*}
+\end{enumerate}
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
