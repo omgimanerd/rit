@@ -1,0 +1,101 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\title{University Physics 1A}
+\author{Alvin Lin}
+\date{October 23rd, 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Practice Test Review}
+
+\subsubsection*{Example}
+Car A of mass 800kg and car B of mass 1200kg are headed towards each other as
+show (top view) Immediately before impact, car A has a speed of 30.0 m/s and
+makes an angle of \( 40^{\circ} \) with the x-axis as shown. Car B has a speed
+of 20.0 m/s and makes an angle of \( 75^{\circ} \) with the y-axis as shown.
+After the collision, the cars stick together and move as one. What is the
+velocity of the cars immediately after the collision, expressed in unit vector
+notation.
+\begin{align*}
+  m_A\vec{v_A}+m_B\vec{v_B} &= (m_A+m_B)\vec{v_f} \\
+  (800)(30)(\cos(40)\i+\sin(40)\j)+(1200)(-20)(\sin(75)\i+\cos(75)\j) &=
+    (800+1200)\vec{v_f} \\
+  \vec{v_f} &= -2.4\i+10.8\j
+\end{align*}
+Is the collision elastic or inelastic? \\
+Totally inelastic.
+\begin{align*}
+  KE_i &= \frac{1}{2}m_A\vec{v_A}^2+\frac{1}{2}m_B\vec{v_B}^2 \\
+  &= \frac{1}{2}(800)(30^2)+\frac{1}{2}(1200)(20^2) \\
+  &= 600000J \\
+  KE_f &= \frac{1}{2}(1200+800)(2.4^2+10.8^2) \\
+  &= 122400J \\
+  &\ne KE_i
+\end{align*}
+
+\subsubsection*{Example}
+A block of mass \( m \) starts from rest at the top of a frictionless hill of
+height \( H \). It slides down the hill and then over another hill of height
+\( h \). The top of the second smaller hill can be modeled as part of a circle
+with radius \( h \). If \( H = \frac{5h}{4} \), what is the normal force that
+the track exerts on the block when it is at the top of the second hill? Express
+your answer in terms of \( m \) and \( g \).
+\begin{align*}
+  KE+PE &= 0+mgh \\
+  &= \frac{1}{2}mv^2+mgh \\
+  v^2 &= 2gH-2gh \\
+  &= 2g(H-h) \\
+  F_{net} &= F_N-mg = -m\frac{v^2}{r} \\
+  F_N-mg &= -m\frac{v^2}{r} \\
+  &= -\frac{m}{h}(2g(H-h)) \\
+  F_N &= -\frac{m}{h}2g(H-h)+mg \\
+  &= mg(3-2\frac{H}{h}) \\
+  &= mg(3-2\frac{\frac{5}{4}h}{h}) \\
+  &= mg(3-\frac{10}{4}) \\
+  &= \frac{1}{2}mg
+\end{align*}
+
+\subsubsection*{Example}
+A block of mass \( m \) travels over a frictionless circular hill of radius and
+height \( R \). At the top of the hill, the normal force on the moving block is
+found to be \( \frac{mg}{4} \).
+\begin{align*}
+  F_N-mg &= (\frac{1}{4}-1)mg \\
+  &= -\frac{3}{4}mg \\
+  &= -m\frac{v_0^2}{R} \\
+  v_0^2 &= \frac{3}{4}gR \\
+  PE_i+KE_i+W_{friction} &= PE_f+KE_f \\
+  mgR+\frac{1}{2}mv_0^2-\mu_k(4mg)d &= 0 \\
+  mgR(1+\frac{3}{8}) &= \mu_k(mgd) \\
+  R(\frac{11}{8}) &= \mu_k4d \\
+  d &= \frac{11R}{32\mu_k}
+\end{align*}
+
+\subsubsection*{Collisions}
+Inelastic Collision: \( KE_f < KE_i \) \\
+Perfectly Elastic Collision: \( KE_f = KE_i \) \\
+Superelastic Collision: \( KE_f > KE_i \)
+
+\subsubsection*{Example}
+A raft is floating in the water. A scout stands on the end of a raft nearest
+the shore. He is 150.0m from shore, and the raft is 8.00m long. The mass of the
+scout is 90.0 kg and the mass of the raft is 500.0 kg. The scout walks to the
+other end of the raft. How far is the scout from shore after he has walked to
+the far end?
+\begin{align*}
+  x_{CoM~initial} &= \frac{(90kg)(150m)+(500kg)(154m)}{500kg+90kg} = 153.4m \\
+  x_{CoM~final} &= x_{CoM~initial} = 153.4m \\
+  &= \frac{(90)x_{scout}+500x_{raft}}{590} \\
+  &= \frac{90x_{scout}+500(x_{scout}-4)}{590} \\
+  x_{scout} &= 156.8m
+\end{align*}
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
