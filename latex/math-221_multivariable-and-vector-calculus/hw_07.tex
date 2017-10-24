@@ -1,0 +1,147 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\usepackage{tikz}
+
+\geometry{letterpaper, margin=0.5in}
+
+\title{Multivariable and Vector Calculus: Homework 7}
+\author{Alvin Lin}
+\date{August 2016 - December 2016}
+
+\begin{document}
+
+\maketitle
+
+\section*{Section 14.7}
+
+\subsubsection*{Exercise 9}
+Find the local maximum and minimum values and saddle point(s) of the function.
+\[ f(x,y) = x^2+y^4+2xy \]
+\begin{align*}
+  f_x &= 2x+2y \\
+  f_y &= 4y^3+2x \\
+  f_x &= 0 = 2x+2y \\
+  x &= -y \\
+  f_y &= 4y^3+2x = 0 \\
+  &\equiv 4(-x)^3+2x = 0 \\
+  0 &= -4x^3+2x \\
+  0 &= x(-2x^2+1) \\
+  x &= 0 \quad x = \pm\frac{1}{\sqrt{2}} \\
+\end{align*}
+Points of interest: \( (0,0), (-\frac{1}{\sqrt{2}},\frac{1}{\sqrt{2}}),
+(\frac{1}{\sqrt{2}},-\frac{1}{\sqrt{2}}) \)
+\begin{align*}
+  f_{xx} &= 2 \\
+  f_{xy} &= 2 \\
+  f_{yy} &= 12y^2 \\
+  D(0,0) &= 2(0)-4 = -4 \quad \text{Saddle Point}\\
+  f(0,0) &= 0 \\
+  D(-\frac{1}{\sqrt{2}},\frac{1}{\sqrt{2}}) &= 2(6)-4 = 8
+    \quad \text{Relative Minimum}\\
+  f(-\frac{1}{\sqrt{2}},\frac{1}{\sqrt{2}}) &= \frac{1}{2}+\frac{1}{4}-1 =
+    -\frac{1}{4} \\
+  D(\frac{1}{\sqrt{2}},-\frac{1}{\sqrt{2}}) &= 2(6)-4 = 8
+    \quad \text{Relative Minimum} \\
+  f(\frac{1}{\sqrt{2}},-\frac{1}{\sqrt{2}}) &= -\frac{1}{4}
+\end{align*}
+
+\subsubsection*{Exercise 17}
+\[ f(x,y) = xy+\e^{-xy} \]
+\begin{align*}
+  f_x &= y-y\e^{xy} \\
+  f_y &= x-x\e^{xy} \\
+  f_x &= 0 = y-y\e^{xy} \\
+  0 &= y(1-\e^{xy}) \\
+  \e^{xy} &= 1 \\
+  xy &= 0 \\
+  y &= 0 \text{ or } x = 0 \\
+\end{align*}
+Points of interest: \( (0,y), (x,0) \)
+\begin{align*}
+  f_{xx} &= y^2\e^{xy} \\
+  f_{xy} &= 1+xy\e^{-xy}-\e^{-xy} \\
+  f_{yy} &= x^2\e^{-xy} \\
+  D(0,y) &= D(x,0) = 0
+\end{align*}
+Inconclusive. By inspection of graph, \( (0,y), (x,0) \text{ are local
+minima }\forall x,y \).
+\[ f(0,y) = 1 \quad f(x,0) = 1 \]
+
+\subsubsection*{Exercise 35}
+Find the absolute maximum or minimum values of \( f \) on the set \( D \).
+\[ f(x,y) = x^2+2y^2-2x-4y+1 \quad D = \{(x,y)\mid0\le x\le2,0\le y\le 3\} \]
+\begin{align*}
+  f_x &= 2x-2 \\
+  f_y &= 4y-4 \\
+  f_x &= 0 = 2x-2 \\
+  x &= 1 \\
+  f_y &= 0 = 4y-4 \\
+  y &= 1
+\end{align*}
+Points of interest: \( (1,1), (x,0), (x,3), (0,y), (2,y) \)
+\begin{itemize}
+  \item \( (0,0) \)
+  \[ f(1,1) = -2 \]
+  \item \( (x,0) \)
+  \begin{align*}
+    f(x,0) &= x^2-2x+1 \\
+    f_x &= 2x-2 = 0 \\
+    x &= 1 \\
+    f(1,0) &= 0 \quad f(0,0) = 1 \quad f(2,0) = 1
+  \end{align*}
+  \item \( (x,3) \)
+  \begin{align*}
+    f(x,3) &= x^2+18-2x-12+1 \\
+    f_x &= 2x-2 = 0 \\
+    x &= 1 \\
+    f(1,3) &= 0 \quad f(0,3) = 7 \quad f(2,3) = 7
+  \end{align*}
+  \item \( (0,y) \)
+  \begin{align*}
+    f(0,y) &= 2y^2-4y+1 \\
+    f_y &= 4y-4 = 0 \\
+    y &= 1 \\
+    f(0,1) &= -1 \quad f(0,0) = 1 \quad f(0,3) = 7
+  \end{align*}
+  \item \( (2,y) \)
+  \begin{align*}
+    f(2,y) &= 4+2y^2-4-4y+1 \\
+    f_y &= 4y-4 = 0 \\
+    y &= 1 \\
+    f(2,1) &= -1 \quad f(2,0) = 1 \quad f(2,3) = 7
+  \end{align*}
+\end{itemize}
+Absolute Minimum: -2 at (1,1) \\
+Absolute Maximum: 7 at (2,3), and (0,3)
+
+\subsubsection*{Exercise 47}
+Find the maximum volume of a rectangular box that is inscribed in a sphere of
+radius \( r \).
+\begin{align*}
+  \sqrt{l^2+w^2+h^2} &= 2r \\
+  l^2+w^2+h^2 &= 4r^2 \\
+  V &= lwh \\
+\end{align*}
+
+\subsubsection*{Exercise 53}
+
+\section*{Section 15.1}
+
+\subsubsection*{Exercise 1}
+
+\section*{Section 15.2}
+
+\subsubsection*{Exercise 9}
+\subsubsection*{Exercise 19}
+\subsubsection*{Exercise 23}
+\subsubsection*{Exercise 29}
+\subsubsection*{Exercise 47}
+\subsubsection*{Exercise 51}
+\subsubsection*{Exercise 53​}
+
+\begin{center}
+  If you have any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
