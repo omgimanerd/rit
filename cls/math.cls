@@ -17,7 +17,7 @@
 \newcommand*{\arccot}{\cot^{-1}}
 \newcommand*{\arcsec}{\sec^{-1}}
 \newcommand*{\arccsc}{\csc^{-1}}
-\newcommand*{\diff}{\text{d}}
+\newcommand*{\diff}{~\text{d}}
 \newcommand*{\ddiff}[2]{\frac{\diff{#1}}{\diff{#2}}}
 \newcommand*{\pdiff}[2]{\frac{\partial{#1}}{\partial{#2}}}
 \newcommand*{\gradientd}[1]{\overrightarrow{\triangledown #1}}

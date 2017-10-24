@@ -81,7 +81,7 @@ If we pick the center of each region (marked in red) as the approximation point:
 \end{align*}
 To find the exact volume:
 \begin{align*}
-  V &= \int_{0}^{4}\int_{0}^{2}y^2\diff{y}~\diff{x} \\
+  V &= \int_{0}^{4}\int_{0}^{2}y^2\diff{y}\diff{x} \\
   &= \int_{0}^{4}\left[\frac{y^3}{3}\right]_0^2\diff{x} \\
   &= \int_{0}^{4}\frac{8}{3}\diff{x} \\
   &= \left[\frac{8}{3}x\right]_0^4 \\
@@ -121,7 +121,102 @@ Evaluate:
   \int_{0}^{8}\int_{\sqrt[3]{y}}^{2}\e^{x^4}\diff{x}\diff{y} &=
     \int_{0}^{2}\left[\int_{0}^{x^3}\e^{x^4}\diff{y}\right]\diff{x} \\
   &= \int_{0}^{2}\left[\e^{x^4}y\right]_{0}^{x^3}\diff{x} \\
-  &= \left[\e^{x^4}\frac{1}{4}\right]_{0}^{2}
+  &= \int_{0}^{2}\e^{x^4}x^3\diff{x} \\
+  &= \left[\frac{1}{4}\e^{x^4}\right]_{0}^{2}
+\end{align*}
+
+\subsubsection*{Jacobian of Transformation}
+It is possible to simplify a problem by translating it between coordinate axes.
+\begin{center}
+  \begin{tikzpicture}[scale=0.8]
+    \draw[very thick,->] (0,0) -- (7,0) node[right] {u};
+    \draw[very thick,->] (0,0) -- (0,7) node[above] {v};
+    \draw (1,1) node[below] {\( (u_0,v_0) \)} -- (3,1)
+      node[right] {\( (u_0+\diff{u},v_0) \)} -- (3,3)
+      node[right] {\( (u_0+\diff{u},v_0+\diff{v}) \)} -- (1,3)
+      node[above, xshift=0.4cm] {\( (u_0,v_0+\diff{v}) \)} -- cycle;
+  \end{tikzpicture}
+  \begin{tikzpicture}[scale=0.8]
+    \draw[very thick,->] (0,0) -- (7,0) node[right] {x};
+    \draw[very thick,->] (0,0) -- (0,7) node[above] {y};
+    \draw[->] (1,1) node[below] {\( \vec{r}(u_0,v_0) \)} -- (4,2)
+      node[right] {\( \vec{r}(u_0+\diff{u},v_0) \)};
+    \draw[->] (1,1) -- (1,3) node[above, xshift=0.55cm, yshift=0.5cm]
+      {\( \vec{r}(u_0,v_0+\diff{v}) \)};
+    \draw[->] (1,3) -- (4,4)
+      node[right] {\( \vec{r}(u_0+\diff{u},v_0+\diff{v}) \)};
+    \draw[->] (4,2) -- (4,4);
+  \end{tikzpicture}
+\end{center}
+\begin{align*}
+  \diff{A} &\approx \bigg|
+    \bigg(\frac{\vec{r}(u_0+\diff{u},v_0)-\vec{r}(u_0,v_0)}{\diff{u}}\bigg)
+    \times
+    \bigg(\frac{\vec{r}(u_0,v_0+\diff{v})-\vec{r}(u_0,v_0)}{\diff{v}}\bigg)
+    \bigg| \diff{u}\diff{v} \\
+  &= \bigg|\pdiff{r}{u}\times\pdiff{r}{v}\bigg|\diff{u}\diff{v} \\
+  &= \begin{vmatrix}
+    \i & \j & \k \\
+    \pdiff{x}{u} & \pdiff{y}{u} & 0 \\
+    \pdiff{x}{v} & \pdiff{y}{v} & 0
+  \end{vmatrix}\diff{u}\diff{v} \\
+  &= \bigg|\left\langle
+    0,0,\pdiff{x}{u}\pdiff{y}{v}-\pdiff{y}{u}\pdiff{x}{v}\right\rangle\bigg|
+    \diff{u}\diff{v} \\
+  &= \pdiff{(x,y)}{(u,v)} \quad \text{Jacobian of transformation}
+\end{align*}
+
+\subsection*{Theorem}
+If \( \vec{r} \) is a one to one transformation of region \( D \) in the
+xy-plane and region \( \triangle \) in the \( u,v \) coordinate plane, then
+\[ \iint_{D}f(x,y)\diff{A} =
+  \iint_{\triangle}f(x(u,v),y(u,v))\pdiff{(x,y)}{(u,v)}\diff{u}\diff{v} \]
+\( C^T - x(u,v),y(u,v),\pdiff{x}{u},\pdiff{x}{v},\pdiff{y}{u},\pdiff{u}{v} \)
+are all continuous. In the specific case of polar coordinates:
+\[ \iint_{D}f(x,y)\diff{A} =
+  \iint_{\triangle}f(r\cos\theta,r\sin\theta)r\diff{r}\diff{\theta} \]
+\[ R(x,y) = \left\langle
+  \frac{r\cos\theta}{x},\frac{r\sin\theta}{y}\right\rangle \]
+
+\subsubsection*{Example}
+Find the volume of a solid under \( z = \sqrt{x^2+y^2} \) bounded by
+\( 1\le x^2+y^2\le 4 \).
+\begin{align*}
+  V &= \iint_{D}\sqrt{x^2+y^2}\diff{A} \\
+  &= \int_{0}^{2\pi}\int_{1}^{2}r^2\diff{r}\diff{\theta} \\
+\end{align*}
+
+\subsubsection*{Example}
+Find the volume of the solid under \( z = 1+2x^2+2y^2 \) bounded by
+\( z = 9 \) in the first octant.
+\begin{align*}
+  V &= \iint_{D}9-(1+2x^2+2y^2)\diff{A} \\
+  &= \int_{0}^{\frac{\pi}{2}}\int_{0}^{2}(8-2r^2)r\diff{r}\diff{\theta}
+\end{align*}
+
+\subsubsection*{Example}
+Evaluate:
+\begin{align*}
+  \int_{0}^{2}\int_{0}^{\sqrt{2x-x^2}}\sqrt{x^2+y^2}\diff{y}\diff{x}
+  &= \int_{0}^{\frac{\pi}{2}}\int_{0}^{2\cos\theta}r^2\diff{r}\diff{\theta} \\
+  &= \int_{0}^{\frac{\pi}{2}}
+    \bigg[\frac{r^3}{3}\bigg]_{0}^{2\cos\theta}\diff{\theta} \\
+  &= \int_{0}^{\frac{\pi}{2}}\frac{8}{3}\cos^3\theta\diff{\theta} \\
+  &= \frac{8}{3}
+    \bigg[\sin\theta-\frac{\sin^3\theta}{3}\bigg]_{0}^{\frac{\pi}{2}} \\
+  &= \frac{8}{3}\frac{2}{3} \\
+  &= \frac{16}{9}
+\end{align*}
+
+\subsubsection*{Example}
+Find the area inside \( r = 1+\cos\theta \) outside \( r = 3\cos\theta \).
+\begin{align*}
+  A &= 2\iint_{D}1\diff{A} \\
+  &= 2\bigg[
+    \int_{\frac{\pi}{2}}^{\pi}\int_{0}^{1+\cos\theta}r\diff{r}\diff{\theta}+
+    \int_{\frac{\pi}{3}}^{\frac{\pi}{2}}
+      \int_{3\cos\theta}^{1+\cos\theta}1\diff{r}\diff{\theta}
+    \bigg]
 \end{align*}
 
 \begin{center}
