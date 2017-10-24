@@ -1,0 +1,62 @@
+\documentclass[letterpaper, 12pt]{math}
+
+\usepackage{enumerate}
+
+\title{Intro to Computer Science Theory: Homework 6}
+\author{Alvin Lin and Joshua Cotton}
+\date{August 2017 - December 2017}
+
+\begin{document}
+
+\maketitle
+
+\subsection*{Problem 1}
+Give regular expressions for the following languages:
+\begin{enumerate}
+  \item The set of all strings over \( \{0,1\} \) that begin and end with the
+  same character.
+  \[ (0(0\cup1)^*0)\cup(1(0\cup1)^*1)\cup0\cup1 \]
+  \item The set of all strings over \( \{a,b\} \) containing at most two
+  occurrences of the substring ``aa'' (where ``aaa'' is considered two
+  occurrences).
+  \[ \bigg((ab\cup b)^*aa(b\cup ba)^*b^+aa(b\cup ba)^*\bigg)\cup
+    \bigg((ab\cup b)^*aaa(b\cup ba)^*\bigg) \]
+  \item The set of strings over \( \{a,b\} \) where the number of b's is even
+  and the number of a's is odd.
+  \[ a(bb)^*(bb)^* \]
+  \item The set of all strings over \( \{0,1,2\} \) that contain each character
+  at least once.
+  \begin{align*}
+    \bigg(0(0\cup1\cup2)^*1(0\cup1\cup2)^*2\bigg) &\cup \\
+    \bigg(0(0\cup1\cup2)^*2(0\cup1\cup2)^*1\bigg) &\cup \\
+    \bigg(1(0\cup1\cup2)^*0(0\cup1\cup2)^*2\bigg) &\cup \\
+    \bigg(1(0\cup1\cup2)^*2(0\cup1\cup2)^*0\bigg) &\cup \\
+    \bigg(2(0\cup1\cup2)^*0(0\cup1\cup2)^*1\bigg) &\cup \\
+    \bigg(2(0\cup1\cup2)^*1(0\cup1\cup2)^*0\bigg)
+  \end{align*}
+  \item The set of all strings over \( \{0,1\} \) where the number of ``01''
+  substrings equals the number of ``10'' substrings.
+\end{enumerate}
+
+\subsection*{Problem 2}
+For each regular expression, list all the strings of length three in the
+language described by the expression.
+\begin{enumerate}
+  \item \( b^*(abb^*)*a* \)
+  \[ abb, bbb, bba, baa, aaa \]
+  \item \( b^*(ab)^*a^* \)
+  \[ bab, aba, bbb, bba, baa, aaa \]
+  \item \( 0^*(1\cup01)^*1^* \)
+  \[ 000, 001, 011, 111, 101 \]
+  \item \( (b^*\cup a^*)(b^*\cup a^*)(b^*\cup a^*) \)
+  \[ aaa, aab, aba, abb, baa, bab, bba, bbb \]
+  \item \( 0^*1(0^*10^*1)*0* \)
+  \[ 001, 010, 011, 100, 101, 110 \]
+\end{enumerate}
+
+\begin{center}
+  If you have any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
