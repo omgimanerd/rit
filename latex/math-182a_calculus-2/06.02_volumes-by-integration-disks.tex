@@ -1,7 +1,6 @@
 \documentclass[letterpaper, 12pt]{math}
+
 \usepackage{pgfplots}
-
-
 \usepgfplotslibrary{fillbetween}
 \usetikzlibrary{patterns}
 \usetikzlibrary{calc}
@@ -50,10 +49,7 @@ Find the volume of \( y = 1-x^{2} \) rotated about the x-axis.
                  enlargelimits,
                  ytick=\empty,
                  xtick={-1,1}]
-      \addplot[name path=F,
-               blue,
-               domain={-1.5:1.5}]{1-x^2} node[pos=1, below]
-               {\(g\)};
+      \addplot[name path=F, blue, domain={-1.5:1.5}]{1-x^2};
       \addplot[name path=G, green, domain={-1.5:1.5}]{0};
       \addplot[name path=R1, red] coordinates {(0.25, 0) (0.25, 0.9375)};
       \addplot[name path=R1, red] coordinates {(0.5, 0) (0.5, 0.75)}
