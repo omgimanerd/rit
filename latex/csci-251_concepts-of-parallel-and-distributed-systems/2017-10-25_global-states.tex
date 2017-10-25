@@ -1,0 +1,46 @@
+\documentclass{math}
+
+\title{CSCI 251: Concepts of Parallel and Distributed Systems}
+\author{Alvin Lin}
+\date{October 23rd, 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Global States}
+A cut is nothing more than a snapshot of a distributed system. For a cut to be
+consistent, the events and messages must be a in state such that there is no
+state that depends on a state not inside the cut.
+
+\subsection*{Monitor Process}
+Assumtions:
+\begin{itemize}
+  \item During the snapshot operation, there are no faults.
+  \item There is a finite time for messages to flow from one process to another.
+  \item Any process can start the monitoring process.
+\end{itemize}
+
+\subsection*{Chandy \& Lampon Algorithm for Monitoring}
+\begin{enumerate}
+  \item Marker message is sent by the initiating process.
+  \item The marker process records its state and sends a marker message
+  \( m \) on every outgoing channel
+\end{enumerate}
+
+\section*{Reminders}
+Check MyCourses for details on Project 2. \\
+\noindent Professor Mohan Kumar: \\
+\url{mjkvcs@rit.edu} \\
+\url{https://cs.rit.edu/~mjk} \\
+
+\noindent Rahul Dashora (TA): \\
+\url{rd5476@mail.rit.edu} \\
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
