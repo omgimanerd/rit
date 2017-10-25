@@ -22,11 +22,30 @@ Assumtions:
 \end{itemize}
 
 \subsection*{Chandy \& Lampon Algorithm for Monitoring}
+Marker Process (initiating process):
 \begin{enumerate}
   \item Marker message is sent by the initiating process.
   \item The marker process records its state and sends a marker message
-  \( m \) on every outgoing channel
+  \( m \) on every outgoing channel before it sends to any other process.
 \end{enumerate}
+Receiving Process \( p_j \):
+\begin{enumerate}
+  \item If \( p_j \) has not recorded its state, \( p_j \) records its state
+  now and starts recording messages arriving on all the other incoming
+  channels.
+  \item If \( p_j \) has already recorded its state, it records the state of
+  each channel (recording of messages received since it saved its state).
+\end{enumerate}
+
+\subsection*{Coordination and Agreement}
+\begin{itemize}
+  \item Mutual Exclusion
+  \item Multicasting
+  \item Consensus
+  \item Performance: Latency, bandwidth consumption, energy consumption
+\end{itemize}
+With a mutual exclusion, only one process has access to a resource at any given
+time.
 
 \section*{Reminders}
 Check MyCourses for details on Project 2. \\
