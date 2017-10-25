@@ -23,7 +23,8 @@ Give regular expressions for the following languages:
     \bigg((ab\cup b)^*aaa(b\cup ba)^*\bigg) \]
   \item The set of strings over \( \{a,b\} \) where the number of b's is even
   and the number of a's is odd.
-  \[ a(bb)^*(bb)^* \]
+  \[ (a\cup bab\cup bba\cup baaab\cup baaba\cup bbbab\cup bbbba)
+    (bb\cup aa\cup abab\cup baba\cup abba\cup baab)^* \]
   \item The set of all strings over \( \{0,1,2\} \) that contain each character
   at least once.
   \begin{align*}
@@ -36,13 +37,14 @@ Give regular expressions for the following languages:
   \end{align*}
   \item The set of all strings over \( \{0,1\} \) where the number of ``01''
   substrings equals the number of ``10'' substrings.
+  \[ No~idea \]
 \end{enumerate}
 
 \subsection*{Problem 2}
 For each regular expression, list all the strings of length three in the
 language described by the expression.
 \begin{enumerate}
-  \item \( b^*(abb^*)*a* \)
+  \item \( b^*(abb^*)^*a^* \)
   \[ abb, bbb, bba, baa, aaa \]
   \item \( b^*(ab)^*a^* \)
   \[ bab, aba, bbb, bba, baa, aaa \]
@@ -50,7 +52,7 @@ language described by the expression.
   \[ 000, 001, 011, 111, 101 \]
   \item \( (b^*\cup a^*)(b^*\cup a^*)(b^*\cup a^*) \)
   \[ aaa, aab, aba, abb, baa, bab, bba, bbb \]
-  \item \( 0^*1(0^*10^*1)*0* \)
+  \item \( 0^*1(0^*10^*1)^*0^* \)
   \[ 001, 010, 011, 100, 101, 110 \]
 \end{enumerate}
 
