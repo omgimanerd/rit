@@ -258,6 +258,102 @@ Evaluate:
   \[ |3B^T| = 3^n|B^T| = (3^n)|B| = 3^n(-2) \]
 \end{enumerate}
 
+\subsubsection*{Example}
+If \( A \) is an \( n\times n \) invertible matrix, show that \( adjoint(A) \)
+is invertible.
+\begin{align*}
+  adjoint(A)^{-1} &= \frac{1}{|A|}A \\
+  &= adjoint(A^{-1}) \\
+  C &= [C_{ij}] \\
+  C_{ij} &= (-1)^{i+1}|A_{ij}| \\
+  adjoint(A) &= C^T \\
+  A^{-1} &= \frac{1}{|A|}adjoint(A) \\
+  \therefore |A|A^{-1} &= adjoint(A)
+\end{align*}
+
+\subsubsection*{Example}
+If \( A \) is an \( n\times n \) matrix, then show:
+\[ |adjoint(A)| = |A|^{n-1} \]
+\[ \bigg||A|A^{-1}\bigg| = |A|^n|A^{-1}| = |A|^n(\frac{1}{|A|}) = |A|^{n-1} \]
+
+\subsubsection*{Example}
+Show that, for any square matrix \( A \), \( A \) and \( A^T \) have the same
+characteristic polynomial.
+\[ (A-\lambda I)^T = A^T-(\lambda I)^T = A^T-\lambda I \]
+The characteristic polynomial of \( A = |A-\lambda I| = |(A-\lambda I)^T| =
+|A^T-\lambda I| \).
+
+\subsubsection*{Example}
+Let \( A \) be a nilpotent matrix. Show that \( \lambda = 0 \) is the only
+eigenvalue of \( A \). Show that \( \lambda = 0 \) is a legitimiate eigenvalue.
+\[ |A^m| = |0| = 0 \]
+Thus \( \lambda = 0 \) is an eigenvalue. Show that there are no other
+eigenvalues. \\
+Suppose \( \lambda \) is another eigenvalue \( (\lambda\ne0) \).
+Then \( \lambda^m \) is an eigenvalue of \( A^m \). This forces \( \lambda^m =
+0 \therefore \lambda = 0 \).
+
+\subsubsection*{Example}
+Let \( A \) be an idempotent matrix. Show that \( \lambda = 0,\lambda = 1 \) are
+the only eigenvalues. \\
+Since \( A \) is idempotent, it means that \( A^2 = A \). Let \( \lambda \) be
+an eigenvalue of \( A \), then \( \lambda^2 \) is an eigenvalue of
+\( A^2 = A \).
+\begin{align*}
+  \lambda^2 &= \lambda \\
+  \lambda^2-\lambda &= 0 \\
+  \lambda(\lambda-1) &= 0 \\
+  \lambda &= 0,1
+\end{align*}
+
+\subsubsection*{Example}
+If \( \vec{v} \) is an eigenvector of \( A \) with eigenvalue \( \lambda \) and
+\( c \) is a scalar, show that \( \vec{v} \) is an eigenvector of \( A-cI \)
+with corresponding eigenvalue \( \lambda-c \).
+\[ (A-cI)(\vec{v}) = A\vec{v}-(cI)(\vec{v}) = \lambda\vec{v}-c\vec{v} =
+  (\lambda-c)\vec{v} \]
+
+\subsection*{Companion Matrix}
+Let \( p(x) = x^n+a_{n-1}x^{n-1}+\dots+a_1x+a_0 \). The companion matrix of
+\( p \) is defined by:
+\[ C(p) = \begin{bmatrix}
+  -a_{n-1} & -a_{n-2} & \dots & -a_1 & -a_0 \\
+  1 & 0 & \dots & 0 & 0 \\
+  0 & 1 & \dots & 0 & 0 \\
+  \vdots & \vdots & \vdots & \vdots & \vdots \\
+  0 & 0 & \dots & 1 & 0
+\end{bmatrix} \]
+
+\subsubsection*{Example}
+Find the companion matrix of \( p(x) = x^2-7x+12 \).
+\[ C(p) = \begin{bmatrix}7 & -12 \\ 1 & 0\end{bmatrix} \]
+Now find the characteristic polynomial for \( C(p) \):
+\begin{align*}
+  |C(p)-\lambda I| &= \begin{vmatrix}
+    7-\lambda & -12 \\
+    1 & -\lambda
+  \end{vmatrix} \\
+  &= (-\lambda)(7-\lambda)-1(-12) \\
+  &= \lambda^2-7\lambda+12 \\
+  &= (-1)^2p(\lambda)
+\end{align*}
+
+\subsubsection*{Example}
+Find the companion matrix of \( p(x) = x^3+3x^2-4x+12 \).
+\[ C(p) = \begin{bmatrix}
+  -3 & 4 & 12 \\
+  1 & 0 & 0 \\
+  0 & 1 & 0
+\end{bmatrix} \]
+What is the characteristic polynomial for \( C(p) \)? We find the characteristic
+polynomial for \( C(p) \) by taking:
+\begin{align*}
+  |C(p)-\lambda I| &= -p(\lambda) \\
+  &= (-1)^3p(\lambda)
+\end{align*}
+In general, if \( p(x) = x^n+a_{n-1}x^{n-1}+\dots+a_1x+a_0 \), the
+characteristic polynomial of \( C(p) = (-1)^np(\lambda) \).
+
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
   any questions, comments, or concerns, please contact me at

@@ -172,6 +172,115 @@ Find the eigenvectors and eigenvalues over \( \R \) and \( \mathbb{C} =
   complex eigenvalues \( \pm i \).
 \end{enumerate}
 
+\subsection*{Theorems}
+\begin{enumerate}[Theorem 1.]
+  \item The eigenvalues of a triangular matrix are the entries on its main
+  diagonal. \\
+  \textbf{Proof:}
+  \begin{align*}
+    A &= \begin{bmatrix}
+      a_{11} & \dots & \dots & \dots \\
+      0 & a_{22} & \dots & \dots \\
+      \vdots & \vdots & \vdots & \vdots \\
+      0 & \dots & \dots & a_{nn}
+    \end{bmatrix} \\
+    0 &= |A-\lambda I| \\
+    &= \begin{vmatrix}
+      a_{11}-\lambda & \dots & \dots & \dots \\
+      0 & a_{22}-\lambda & \dots & \dots \\
+      \vdots & \vdots & \vdots & \vdots \\
+      0 & \dots & \dots & a_{nn}-\lambda
+    \end{vmatrix} \\
+    &= (a_{11}-\lambda)(a_{22}-\lambda)\dots(a_{nn}-\lambda) \\
+    \lambda &= a_{11},a_{22},\dots,a_{nn}
+  \end{align*}
+  \item A square matrix \( A \) is invertible if and only if \( 0 \) is not
+  an eigenvalue of \( A \). \\
+  \textbf{Proof:}
+  \begin{align*}
+    A \text{ is invertible} &\leftrightarrow |A|\ne0 \\
+    &\leftrightarrow |A-0I|\ne0 \\
+    &\leftrightarrow \lambda = 0 \text{ is not an eigenvalue of } A
+  \end{align*}
+  \item Let \( A \) be a square matrix with eigenvalue \( \lambda \) and
+  corresponding eigenvector \( \vec{x} \), then:
+  \begin{enumerate}[(i)]
+    \item For any positive integer \( n \), \( \lambda^n \) is an eigenvalue
+    of \( A^n \) with corresponding eigenvector \( \vec{x} \). \\
+    \textbf{Proof:} \\
+    Base Case \( n = 1 \): \\
+    \[ A'\vec{x} = \lambda'\vec{x} \]
+    Induction Step:
+    \begin{align*}
+      A^{n+1}\vec{x} &= A(A^n\vec{x}) \\
+      &= A(\lambda^n\vec{x}) \\
+      &= \lambda^n(A\vec{x}) \\
+      &= \lambda^n(\lambda\vec{x}) \\
+      &= \lambda^{n+1}\vec{x}
+    \end{align*}
+    \item If \( A \) is invertible, then \( \frac{1}{\lambda} \) is an
+    eigenvalue of \( A^{-1} \) with corresponding eigenvector \( \vec{x} \). \\
+    \textbf{Proof:}
+    \begin{align*}
+      \lambda(A^{-1}\vec{x}) &= A^{-1}(\lambda\vec{x}) \\
+      &= A^{-1}(A\vec{x}) \\
+      &= I\vec{x} \\
+      &= \vec{x} \\
+      \therefore \lambda(A^{-1}\vec{x}) &= \vec{x} \leftrightarrow
+        A^{-1}\vec{x} = (\frac{1}{\lambda})\vec{x}
+    \end{align*}
+    \item If \( A \) is invertible, the for any integer \( n \), \( \lambda^n \)
+    is an eigenvalue of \( A^n \) with corresponding eigenvector
+    \( \vec{x} \). \\
+    \textbf{Proof:} \\
+    We only need to show this for negative integers. \\
+    Base Case \( n = -1 \): Because of part (ii), this is true. \\
+    Induction Step: Assume it is true for \( -n \) and show it is true for
+    \( -n-1 \).
+    \begin{align*}
+      A^{-(n+1)}\vec{x} &= A^{-1}(A^{-n}\vec{x}) \\
+      &= A^{-1}(\frac{1}{\lambda^n}\vec{x}) \\
+      &= (\frac{1}{\lambda^n})(A^{-1}\vec{x}) \\
+      &= (\frac{1}{\lambda^n})(\frac{1}{\lambda}\vec{x}) \\
+      &= (\frac{1}{\lambda^{n+1}})\vec{x}
+    \end{align*}
+  \end{enumerate}
+  \item Suppose \( A \) is \( n\times n \), and \( A \) has eigenvectors
+  \( \vec{v_1},\dots,\vec{v_m} \) with corresponding eigenvalues \( \lambda_1,
+  \dots,\lambda_m \). If \( \vec{x}\in\R^n \) is \( \vec{x} = c_1\vec{v_1}+
+  \dots+c_m\vec{v_m} \), then for any integer \( k \):
+  \[ A^k\vec{x} = c_1\lambda_1^k\vec{v_1}+\dots+c_m\lambda_m^k\vec{v_m} \]
+  \textbf{Proof:}
+  \begin{align*}
+    \vec{x} &= c_1\vec{v_1}+\dots+c_m\vec{v_m} \\
+    A^k\vec{x} &= A^k(c_1\vec{v_1}+\dots+c_m\vec{v_m}) \\
+    &= c_1A^k\vec{v_1}+\dots+c_mA^k\vec{v_m} \\
+    &= c_1\lambda_1^k\vec{v_1}+\dots+c_m\lambda_m^k\vec{v_m}
+  \end{align*}
+  \item Let \( A \) be an \( n\times n \) matrix. Let \( \lambda_1,\dots,
+  \lambda_m \) be distinct eigenvalues of \( A \). Let \( \vec{v_1},\dots,
+  \vec{v_m} \) be the corresponding eigenvectors. Then \( \vec{v_1},\dots,
+  \vec{v_m} \) are linearly independent. \\
+  \textbf{Proof (by contradiction):} \\
+  Suppose \( \vec{v_1},\dots,\vec{v_m} \) are linearly dependent. Choose the
+  smallest index \( k+1 \) such that \( \overrightarrow{v_{k+1}} =
+  c_1\vec{v_1}+\dots+c_k\vec{v_k} \). Note that by the minimality of \( k+1 \),
+  \( \vec{v_1}, \dots,\vec{v_k} \) are linearly dependent.
+  \begin{align*}
+    A\overrightarrow{v_{k+1}} &= A(c_1\vec{v_1}+\dots+c_k\vec{v_k}) \\
+    \lambda_{k+1}\overrightarrow{v_{k+1}} &=
+      c_1\lambda_1\vec{v_1}+\dots+c_k\lambda_k\vec{v_k} \\
+    \lambda_{k+1}\overrightarrow{v_{k+1}} &= c_1\lambda_{k+1}\vec{v_1}+\dots+
+      c_k\lambda_{k+1}\vec{v_k} \\
+    \vec{0} &= c_1(\lambda_1-\lambda_{k+1})\vec{v_1}+\dots+
+      c_k(\lambda_k-\lambda_{k+1})\vec{v_k}
+  \end{align*}
+  By the linear independence of \( \vec{v_1},\dots,\vec{v_k} \) the scalars
+  are zero, this implies that \( c_1 = c_2 = -c_k = 0 \) and thus
+  \( \overrightarrow{v_{k+1}} = \vec{0} \). Since eigenvectors cannot be 0,
+  this is a contradiction and thus our initial assumption must be false.
+\end{enumerate}
+
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
   any questions, comments, or concerns, please contact me at
