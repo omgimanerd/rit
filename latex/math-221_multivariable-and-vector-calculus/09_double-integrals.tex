@@ -185,6 +185,7 @@ Find the volume of a solid under \( z = \sqrt{x^2+y^2} \) bounded by
   V &= \iint_{D}\sqrt{x^2+y^2}\diff{A} \\
   &= \int_{0}^{2\pi}\int_{1}^{2}r^2\diff{r}\diff{\theta} \\
 \end{align*}
+And the computation becomes trivial.
 
 \subsubsection*{Example}
 Find the volume of the solid under \( z = 1+2x^2+2y^2 \) bounded by
@@ -193,6 +194,7 @@ Find the volume of the solid under \( z = 1+2x^2+2y^2 \) bounded by
   V &= \iint_{D}9-(1+2x^2+2y^2)\diff{A} \\
   &= \int_{0}^{\frac{\pi}{2}}\int_{0}^{2}(8-2r^2)r\diff{r}\diff{\theta}
 \end{align*}
+And the computation becomes trivial.
 
 \subsubsection*{Example}
 Evaluate:
@@ -217,6 +219,70 @@ Find the area inside \( r = 1+\cos\theta \) outside \( r = 3\cos\theta \).
     \int_{\frac{\pi}{3}}^{\frac{\pi}{2}}
       \int_{3\cos\theta}^{1+\cos\theta}1\diff{r}\diff{\theta}
     \bigg]
+\end{align*}
+And the computation becomes trivial.
+
+\subsubsection*{Example}
+Find the center of mass of \( y = x^2, y = x+2 \) given the mass density
+\( \delta = x^2 \).
+\[ \bar{x} = \frac{M_y}{mass} =
+  \frac{\iint f\cdot x\diff{A}}{\iint f\diff{A}} \]
+\[ \bar{y} = \frac{M_x}{mass} =
+  \frac{\iint f\cdot y\diff{A}}{\iint f\diff{A}} \]
+\begin{align*}
+  \bar{x} &= \frac{\iint_{D}x^3\diff{A}}{\iint_{D}x^2\diff{A}} \\
+  &= \frac{\iint_{D}x^3\diff{A}}
+    {\int_{1}^{2}\int_{x^2}^{x+2}x^2\diff{y}\diff{x}} \\
+  &= \frac{\iint_{D}x^3\diff{A}}
+    {\int_{1}^{2}\bigg[x^y\bigg]_{x^2}^{x+2}\diff{x}} \\
+  &= \frac{\iint_{D}x^3\diff{A}}{\int_{1}^{2}x^3+2x^2-x^4\diff{x}}
+\end{align*}
+And the computation becomes trivial.
+
+\subsubsection*{Example}
+Find the moment of inertia of \( f(x,y) = x \) inside the square from (0,0) to
+(1,1).
+\begin{align*}
+  J_x &= \iint_{D}f\cdot y^2\diff{A} \\
+  &= \iint_{D}xy^2\diff{A} \\
+  &= \int_{0}^{1}\int_{0}^{1}xy^2\diff{y}\diff{x} \\
+  &= \int_{0}^{1}\frac{x}{3}\diff{x} \\
+  &= \frac{1}{6} \\
+  J_y &= \iint_{D}x\cdot x^2\diff{A} \\
+  &= \int_{0}^{1}\int_{0}^{1}x^3\diff{y}\diff{x} \\
+  &= \int_{0}^{1}x^3\diff{x} \\
+  &= \frac{1}{4}
+\end{align*}
+
+\subsection*{Extension to 3D}
+Find the mass of solid \( V:a\le x\le b, l(x)\le y\le u(x), g(x,y)\le z\le
+h(x,y) \) if the mass density is \( f(x,y,z) \).
+\begin{itemize}
+  \item \( V\subset B = [a,b]\times[c,d]\times[e,f] \)
+  \item divide \( [a,b],[c,d],[e,f] \) into \( n,m,l \) parts to form
+  \( B_{ijk} \) and pick point \( (x_{ijk},y_{ijk},z_{ijk})\in B_{ijk} \).
+  \[ \sum_{i=1}^{n}\sum_{j=1}^{m}\sum_{k=1}^{l}|B_{ijk}|\cdot
+    f(x_{ijk},y_{ijk},z_{ijk}) \]
+\end{itemize}
+\textbf{Theorem:} If \( f(x,y,z) \) is continuous in \( V \), \( y = l(x),
+y = u(x) \) are continuous for \( a\le x\le b \), and \( g(x,y),h(x,y) \) are
+continuous for \( (x,y)\in D \), then there exists a \( \lim_{n,m,l\to\infty} \)
+which does not depend on the choice of points in \( B_{ijk} \). This limit is
+called the triple integral of \( f(x,y,z) \) on \( V \) and:
+\[ \iiint_{V}f(x,y,z)\diff{V} = \int_{a}^{b}\bigg[\int_{l(x)}^{u(x)}\Big[
+  f(x,y,z)\diff{z}\Big]\diff{y}\bigg]\diff{x} \]
+
+\subsubsection*{Example}
+Find the volume of the region bounded by \( y = x^2, x = y^2, z = 0, z = y \).
+\begin{align*}
+  V &= \iiint_{V}1\diff{V} \\
+  &= \int_{0}^{1}\int_{x^2}^{\sqrt{x}}\int_{0}^{y}1\diff{z}\diff{y}\diff{x} \\
+  &= \int_{0}^{1}\int_{x^2}^{\sqrt{x}}\bigg[z\bigg]_{0}^{y}\diff{y}\diff{x} \\
+  &= \int_{0}^{1}\int_{x^2}^{\sqrt{x}}y\diff{y}\diff{x} \\
+  &= \int_{0}^{1}\bigg[\frac{y^2}{2}\bigg]_{x^2}^{\sqrt{x}}\diff{x} \\
+  &= \int_{0}^{1}\frac{x}{2}-\frac{x^4}{2}\diff{x} \\
+  &= \bigg[\frac{x^2}{4}-\frac{x^5}{10}\bigg]_{0}^{1} \\
+  &= \frac{1}{4}-\frac{1}{10} \\
 \end{align*}
 
 \begin{center}
