@@ -1,0 +1,68 @@
+\documentclass{math}
+
+\geometry{letterpaper, margin=0.5in}
+
+\title{Multivariable and Vector Calculus: Homework 7}
+\author{Alvin Lin}
+\date{August 2016 - December 2016}
+
+\begin{document}
+
+\maketitle
+
+\section*{Section 15.3}
+
+\subsubsection*{Exercise 9}
+Evaluate the given integral by changing to polar coordinates.
+\[ \iint_{R}\sin(x^2+y^2)\diff{A} \]
+where \( R \) is the region in the first quadrant between the circles with
+center the origin and radii 1 and 3.
+\begin{align*}
+  \iint_R\sin(x^2+y^2)\diff{A} &=
+    \int_{0}^{\frac{\pi}{2}}\int_{1}^{3}\sin(r^2)r\diff{r}\diff{\theta} \\
+  &= \int_{0}^{\frac{\pi}{2}}\bigg[-\frac{\cos(r^2)}{2}\bigg]_{1}^{3}
+    \diff{\theta} \\
+  &= \int_{0}^{\frac{\pi}{2}}\frac{1}{2}(-\cos(9)+\cos(1))\diff{\theta} \\
+  &= \frac{1}{2}\bigg[\cos(1)\theta-\cos(9)\theta\bigg]_{0}^{\frac{\pi}{2}} \\
+  &= \frac{\pi(\cos(1)-\cos(9))}{4}
+\end{align*}
+
+\subsubsection*{Exercise 15}
+Use a double integral to find the area of one loop of the rose
+\( r = \cos(3\theta) \).
+\begin{align*}
+  \iint_{D}\diff{A} &= \int_{-\frac{\pi}{4}}^{\frac{\pi}{4}}
+    \int_{0}^{\cos(3\theta)}r\diff{r}\diff{\theta} \\
+  &= \int_{-\frac{\pi}{4}}^{\frac{\pi}{4}}
+    \bigg[\frac{r^2}{2}\bigg]_{0}^{\cos(3\theta)}\diff{\theta} \\
+  &= \frac{1}{2}\int_{-\frac{\pi}{4}}^{\frac{\pi}{4}}
+    \cos^2(3\theta)\diff{\theta} \\
+  &= \frac{1}{2}\int_{-\frac{\pi}{4}}^{\frac{\pi}{4}}
+    \frac{(1+\cos(6\theta))}{2}\diff{\theta} \\
+  &= \frac{1}{4}\bigg[
+    \theta-\frac{\sin(6\theta)}{6}\bigg]_{-\frac{\pi}{4}}^{\frac{\pi}{4}} \\
+  &= \frac{1}{4}\left(\frac{\pi}{4}-\frac{1}{6}\sin(\frac{6\pi}{4})+
+    \frac{\pi}{4}+\frac{1}{6}\sin(-\frac{6\pi}{4})\right) \\
+  &= \frac{\pi}{8}
+\end{align*}
+
+\subsubsection*{Exercise 17}
+\subsubsection*{Exercise 21}
+\subsubsection*{Exercise 29}
+\subsubsection*{Exercise 31}
+
+\section*{Section 15.4}
+
+\section*{Section 15.6}
+
+
+15.3     page 1014    problems
+15.4     page 1024    problems   7,15
+15.6     page 1029   problems   11,13,21,33​
+
+\begin{center}
+  If you have any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
