@@ -1,0 +1,48 @@
+\documentclass{math}
+
+\title{Introduction to Computer Science Theory}
+\author{Alvin Lin}
+\date{August 2017 - December 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Pumping Lemmas}
+A general criteria for establishing non-regularity: If \( A \) is a regular
+language, then there is an integer \( p \) such that for any \( s\in A \) with
+\( |s|\ge p \) there are strings \( x,y,z \) such \( s = xyz \) and:
+\begin{enumerate}
+  \item for any \( i\ge0, xy^iz\in A \)
+  \item \( |y| > 0 \)
+  \item \( |xy|\le p \)
+\end{enumerate}
+This is called a pumping lemma because you repeat or pump the substring \( y \).
+
+\subsection*{Using the pumping lemma}
+The language \( L = \{a^jb^{2j}\mid j\ge 0\} \) is not regular. To prove this,
+suppose for a contradiction that \( L \) is regular. Then by the pumping lemma,
+let \( p \) be the integer such that every string \( s \) in \( L \) with
+\( |s|\ge p \) can be written as \( xyz \), where \( |xy|\le p, |y| > 0 \), and
+\( xy^iz\in L \) for all \( i\ge0 \).
+\begin{itemize}
+  \item Let \( s = a^pb^{2p} \). Then \( s\in L \) and \( |s|\ge p \). So, there
+  exist strings \( x,y,z \) such that \( s = xyz, |xy|\le p, |y| > 0 \), and
+  \( xy^iz\in L \) for all \( i\ge0 \).
+  \item In particular, \( xz\in L \) (choosing \( i = 0 \))
+  \item Since \( |xy|\le p \) and \( |y| > 0 \), \( y \) consists of 1 or more
+  \( a \)'s. If we remove \( y \) from \( a^pb^{2p} \), we get a string with
+  \( 2p~b \)'s and less than \( p~a \)'s.
+  \item \( xz \) has \( 2p~b \)'s and less than \( p~a \)'s. But then, by the
+  definition of \( L \), \( xz\notin L \). This is a contradiction.
+  \item It follows that the assumption that \( L \) is regular is wrong.
+  \item So, we have shown that \( L \) is not regular.
+\end{itemize}
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
