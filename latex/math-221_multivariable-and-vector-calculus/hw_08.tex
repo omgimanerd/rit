@@ -47,6 +47,28 @@ Use a double integral to find the area of one loop of the rose
 \end{align*}
 
 \subsubsection*{Exercise 17}
+Use a double integral to find the area of the region inside the circle
+\( (x-1)^2+y^2 = 1 \) and outside the circle \( x^2+y^2 = 1 \).
+\begin{align*}
+  (x-1)^2+y^2 &= 1 \\
+  x^2-2x+1+y^2 &= 1 \\
+  x^2+y^2-2x &= 0 \\
+  r^2-2r\cos\theta &= 0 \\
+  r &= 2\cos\theta \\
+  x^2+y^2 &= 1 \\
+  r &= 1 \\
+  r &= 1 = 2\cos\theta \\
+  \theta &= -\frac{\pi}{3} \quad \theta = \frac{\pi}{3} \\
+  \iint_{D}\diff{A} &= \int_{-\frac{\pi}{3}}^{\frac{\pi}{3}}
+    \int_{1}^{2\cos\theta}r\diff{r}\diff{\theta} \\
+  &= 2\int_{0}^{\frac{\pi}{3}}
+    \bigg[\frac{r^2}{2}\bigg]_{1}^{2\cos\theta}\diff{\theta} \\
+  &= \int_{0}^{\frac{\pi}{3}}4\cos^2\theta-1\diff{\theta} \\
+  &= \int_{0}^{\frac{\pi}{3}}4\frac{\cos2\theta-1}{2}-1\diff{\theta} \\
+  &= \int_{0}^{\frac{\pi}{3}}2\cos2\theta-3\diff{\theta} \\
+  &= \bigg[\bigg]_{0}^{\frac{\pi}{3}}
+\end{align*}
+
 \subsubsection*{Exercise 21}
 \subsubsection*{Exercise 29}
 \subsubsection*{Exercise 31}
