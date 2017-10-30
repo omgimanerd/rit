@@ -1,0 +1,80 @@
+\documentclass{math}
+
+\title{University Physics 1A}
+\author{Alvin Lin}
+\date{October 23rd, 2017}
+
+\usepackage{tikz}
+
+\begin{document}
+
+\maketitle
+
+\section*{Angular Motion}
+
+\begin{center}
+  \begin{tikzpicture}
+    \draw[<->] (-5,0) -- (5,0) node[right] {\( x \)};
+    \draw[<->] (0,-5) -- (0,5) node[above] {\( y \)};
+    \draw (0,0) circle (3cm);
+    \draw[thick,->] (0,0) -- (2,2.2) node[above right] {\( (x,y) \)}
+      node[pos=0.5,above] {\( r \)};
+    \draw (1,0) arc (0:48:1cm) node[pos=0.5,left] {\( \theta \)};
+    \draw[line width=2] (3,0) arc (0:48:3) node[pos=0.5, right] {\( s \)};
+  \end{tikzpicture}
+\end{center}
+\[ \theta = \frac{s}{r} \]
+
+\subsection*{Kinematics vs Rotational Motion}
+\begin{center}
+  \renewcommand{\arraystretch}{1.5}
+  \begin{tabular}{|c|c|c|c|}
+    \hline
+    position & \( x \) & average position & \( \theta \) \\
+    \hline
+    average velocity & \( \frac{\Delta x}{\Delta t} \) &
+      average angular velocity &
+      \( \omega_{avg} = \frac{\Delta\theta}{\Delta t} \) \\
+    \hline
+    instantaneous velocity & \( \ddiff{x}{t} = v \) &
+      instantaneous angular velocity & \( \omega = \ddiff{\theta}{t} \) \\
+    \hline
+    acceleration & \( a = \ddiff{v}{t} \) & average acceleration &
+      \( \alpha = \ddiff{\omega}{t} \) \\
+    \hline
+  \end{tabular}
+\end{center}
+\begin{align*}
+  s &= r\theta \\
+  \ddiff{s}{t} &= r\ddiff{\theta}{t} = r\omega = v \\
+  \alpha &= \frac{v^2}{r} = \frac{r^2\omega^2}{r} = r\omega^2
+\end{align*}
+\( \theta \) and \( \Delta\theta \) are not vectors. \( \omega \) and
+\( \alpha \) are vectors.
+\begin{align*}
+  \text{Linear} &\longleftrightarrow \text{Rotational} \\
+  v = \ddiff{x}{t} &\longleftrightarrow \omega \\
+  a = \ddiff{v}{t} &\longleftrightarrow \alpha
+\end{align*}
+
+\subsubsection*{Constant Acceleration}
+\begin{align*}
+  x &= x_0+v_0t+\frac{1}{2}at^2 \\
+  v &= v_0+at \\
+  v^2 &= v_0^2+2a\Delta x
+\end{align*}
+
+\subsubsection*{Constant \( \alpha \)}
+\begin{align*}
+  \theta &= \theta_0+\omega_0t+\frac{1}{2}\alpha t^2 \\
+  \omega &= \omega_0+\alpha t \\
+  \omega^2 &= \omega_0^2+2\alpha\Delta\omega
+\end{align*}
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
