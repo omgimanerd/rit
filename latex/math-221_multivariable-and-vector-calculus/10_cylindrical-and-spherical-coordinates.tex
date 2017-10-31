@@ -1,0 +1,66 @@
+\documentclass{math}
+
+\title{Multivariable and Vector Calculus}
+\author{Alvin Lin}
+\date{August 2017 - December 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Cylindrical Coordinates}
+\[ (x,y,z)\to(r,\theta,z) \]
+Cylindrical coordinates describe a point by using polar coordinates and an
+elevation.
+\begin{align*}
+  r &= \sqrt{x^2+y^2} \\
+  \theta &= \arctan(\frac{y}{x}) \\
+  z &= z
+\end{align*}
+
+\subsection*{Theorem}
+\[ \iiint_{V}f(x,y,z)\diff{V} =
+  \iiint_{C}f(r\cos\theta,r\sin\theta,z)r\diff{z}\diff{\theta}\diff{r} \]
+
+\section*{Cylindrical Coordinates}
+The distance between the origin and a point \( P(x,y,z) \) is \( \rho \). We
+can project this point onto the xy-plane to point \( P'(x,y,0) \). We can
+compute the polar angle \( \theta \) between \( P' \) and the x-axis. If we
+fix the distance \( \rho \) and let all other variables free, we get a sphere.
+If we fix \( \theta \) and \( \rho \), the resulting set of points yields a
+semicircle. If we take the angle \( \phi \) between \( P \) and the y-axis,
+we get a system of coordinates \( (\rho,\theta,\phi) \) described by:
+\begin{align*}
+  \rho &= \sqrt{x^2+y^2+z^2} \\
+  \theta &= \arctan(\frac{y}{x}) \\
+  \phi &= \arccos\left(\frac{z}{\sqrt{x^2+y^2+z^2}}\right) =
+    \arccos\left(\frac{z}{\rho}\right)
+\end{align*}
+Converting the other way:
+\begin{align*}
+  x &= \rho\sin\phi\cos\theta \\
+  y &= \rho\sin\phi\sin\theta \\
+  z &= \rho\cos\phi
+\end{align*}
+\[ \ddiff{(x,y,z)}{(\rho,\theta,\phi)} = \rho^2\sin\phi \]
+
+\subsubsection*{Example}
+\begin{align*}
+  (x,y,z) &\to (\rho,\theta,\phi) \\
+  P(2,2,3) &\equiv\left(
+    \sqrt{17},\frac{\pi}{4},\arccos\left(\frac{3}{\sqrt{17}}\right)\right)
+\end{align*}
+\( \rho = 1 \): Sphere \\
+\( \phi = \frac{\pi}{4} \): Cone \\
+\( \phi = \frac{\pi}{2} \): xy-plane \\
+\( \phi = \frac{3\pi}{4} \): Cone \\
+\( \phi = \pi \): Negative z-axis \\
+\( \phi = 0 \): Positive z-axis
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}

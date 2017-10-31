@@ -271,6 +271,10 @@ which does not depend on the choice of points in \( B_{ijk} \). This limit is
 called the triple integral of \( f(x,y,z) \) on \( V \) and:
 \[ \iiint_{V}f(x,y,z)\diff{V} = \int_{a}^{b}\bigg[\int_{l(x)}^{u(x)}\Big[
   f(x,y,z)\diff{z}\Big]\diff{y}\bigg]\diff{x} \]
+Mass:
+\[ \iiint_{V}f\diff{V} \]
+Volume:
+\[ \iint_{V}1\diff{V} \]
 
 \subsubsection*{Example}
 Find the volume of the region bounded by \( y = x^2, x = y^2, z = 0, z = y \).
@@ -284,6 +288,20 @@ Find the volume of the region bounded by \( y = x^2, x = y^2, z = 0, z = y \).
   &= \bigg[\frac{x^2}{4}-\frac{x^5}{10}\bigg]_{0}^{1} \\
   &= \frac{1}{4}-\frac{1}{10} \\
 \end{align*}
+
+\subsubsection*{Example}
+Find the volume of the solid bounded by \( x^2+z^2 = 4, y = -1, y+z = 4 \).
+\begin{align*}
+  V &= \int_{-2}^{2}\int_{-\sqrt{4-x^2}}^{\sqrt{4-x^2}}
+    \int_{-1}^{4-z}\diff{y}\diff{z}\diff{x} \\
+  &= \int_{-2}^{2}\int_{-1}^{4-z}\int_{-\sqrt{4-z^2}}^{\sqrt{4-z^2}}
+    \diff{x}\diff{y}\diff{z}
+\end{align*}
+
+\subsubsection*{Example}
+Find the mass of the solid if the mass is given by \( \iiint_{V}z\diff{V} \)
+and it is bounded by \( y^2+z^2 = 9, x = 0, y = 3x, z = 0 \) in the first
+octant.
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
