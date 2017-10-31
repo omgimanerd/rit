@@ -38,6 +38,8 @@ Use a double integral to find the area of one loop of the rose
     \bigg[\frac{r^2}{2}\bigg]_{0}^{\cos(3\theta)}\diff{\theta} \\
   &= \frac{1}{2}\int_{-\frac{\pi}{4}}^{\frac{\pi}{4}}
     \cos^2(3\theta)\diff{\theta} \\
+\end{align*}
+\begin{align*}
   &= \frac{1}{2}\int_{-\frac{\pi}{4}}^{\frac{\pi}{4}}
     \frac{(1+\cos(6\theta))}{2}\diff{\theta} \\
   &= \frac{1}{4}\bigg[
@@ -105,20 +107,172 @@ Evaluate the iterated integral by converting it to polar coordinates.
 \subsubsection*{Exercise 31}
 Evaluate the iterated integral by converting it to polar coordinates.
 \begin{align*}
-  \int_{0}^{\frac{1}{2}}\int_{\sqrt{3}y}^{\sqrt{1-y^2}}xy^2\diff{x}\diff{y}
+  \int_{0}^{\frac{1}{2}}\int_{\sqrt{3}y}^{\sqrt{1-y^2}}xy^2\diff{x}\diff{y} &=
+    \int_{0}^{\frac{\pi}{6}}\int_{0}^{1}
+      (r\cos\theta)(r\sin\theta)^2r\diff{r}\diff{\theta} \\
+  &= \int_{0}^{\frac{\pi}{6}}\int_{0}^{1}
+    r^4\cos\theta\sin^2\theta\diff{r}\diff{\theta} \\
+  &= \int_{0}^{\frac{\pi}{6}}
+    \bigg[\frac{r^5\cos\theta\sin^2\theta}{5}\bigg]_{0}^{1}\diff{\theta} \\
+  &= \frac{1}{5}\int_{0}^{\frac{\pi}{6}}
+    \cos\theta\sin^2\theta\diff{\theta} \\
+  &= \frac{1}{5}\bigg[\frac{\sin^3\theta}{3}\bigg]_{0}^{\frac{\pi}{6}} \\
+  &= \frac{1}{15}\bigg(\sin^3(\frac{\pi}{6})-\sin^3(0)\bigg) \\
+  &= \frac{1}{15}(\frac{1^3}{2^3}-0) \\
+  &= \frac{1}{120}
 \end{align*}
 
 \section*{Section 15.4}
 
 \subsubsection*{Exercise 7}
+Find the mass and center of mass of the lamina that occupies the region \( D \)
+and has the given density function \( \rho \).
+\[ D \text{ is bounded by } y = 1-x^2 \text{ and } y = 0;\quad\rho(x,y) = ky \]
+\begin{align*}
+  0 &= 1-x^2 \\
+  x &= \pm1 \\
+  mass &= \iint_{D}\rho(x,y)\diff{A} \\
+  &= \int_{-1}^{1}\int_{0}^{1-x^2}ky\diff{y}\diff{x} \\
+  &= 2\int_{0}^{1}\bigg[\frac{ky^2}{2}\bigg]_{0}^{1-x^2}\diff{x} \\
+  &= k\int_{0}^{1}1-2x^2+x^4\diff{x} \\
+  &= k\bigg[x-\frac{2x^3}{3}+\frac{x^5}{5}\bigg]_{0}^{1} \\
+  &= k(1-\frac{2}{3}+\frac{1}{5}) \\
+  &= \frac{8k}{15}
+\end{align*}
+\begin{align*}
+  x_{CoM} &= \frac{1}{mass}\iint_{D}x\rho(x,y)\diff{A} \\
+  &= \frac{15}{8k}\int_{-1}^{1}\int_{0}^{1-x^2}xky\diff{y}\diff{x} \\
+  &= k\frac{15}{8k}\int_{-1}^{1}\int_{0}^{1-x^2}xy\diff{y}\diff{x} \\
+  &= \frac{15}{8}\int_{-1}^{1}\bigg[\frac{xy^2}{2}\bigg]_{0}^{1-x^2}\diff{x} \\
+  &= \frac{15}{16}\int_{-1}^{1}x(1-2x^2+x^4)\diff{x} \\
+  &= \frac{15}{16}\int_{-1}^{1}x-2x^3+x^5\diff{x} \\
+  &= \frac{15}{16}
+    \bigg[\frac{x^2}{2}-\frac{2x^4}{4}+\frac{x^6}{6}\bigg]_{-1}^{1} \\
+  &= 0
+\end{align*}
+\begin{align*}
+  y_{CoM} &= \frac{1}{mass}\iint_{D}y\rho(x,y)\diff{A} \\
+  &= \frac{15}{8k}\int_{-1}^{1}\int_{0}^{1-x^2}ky^2\diff{y}\diff{x} \\
+  &= \frac{15}{8}\int_{-1}^{1}\bigg[\frac{y^3}{3}\bigg]_{0}^{1-x^2}\diff{y} \\
+  &= \frac{5}{8}\int_{-1}^{1}(1-x^2)^3\diff{x} \\
+  &= \frac{5}{8}\int_{-1}^{1}1-x^6-3x^2+3x^4\diff{x} \\
+  &= \frac{5}{8}\bigg[x-\frac{x^7}{7}-x^3+\frac{3x^5}{5}\bigg]_{-1}^{1} \\
+  &= \frac{5}{8}(1-\frac{1}{7}-1+\frac{3}{5}+1-\frac{1}{7}-1+\frac{3}{5}) \\
+  &= \frac{5}{8}(-\frac{2}{7}+\frac{6}{5}) \\
+  &= \frac{5}{8}\frac{32}{35} \\
+  &= \frac{4}{7}
+\end{align*}
+Center of mass: \( \langle0,\frac{4}{7}\rangle \)
+
 \subsubsection*{Exercise 15}
+Find the center of mass of a lamina in the shape of an isosceles right triangle
+with equal sides of length \( a \) is the density at any point is proportional
+to the square of the distance from the vertex opposite the hypotenuse. \\
+Treat the origin as the right angle with the legs \( a \) extending along the x
+and y axes.
+\[ \rho(x,y) = x^2+y^2 \]
+\begin{align*}
+  mass &= \iint_{D}\rho(x,y)\diff{A} \\
+  &= \int_{0}^{a}\int_{0}^{a-y}x^2+y^2\diff{x}\diff{y} \\
+  &= \int_{0}^{a}\bigg[\frac{x^3}{3}+xy^2\bigg]_{0}^{a-y}\diff{y} \\
+  &= \int_{0}^{a}\frac{(a-y)^3}{3}+y^2(a-y)\diff{y} \\
+  &= \int_{0}^{a}
+    \frac{1}{3}(a^3-3a^2y+3ay^2-y^3)+\frac{1}{3}(3ay^2-3y^3)\diff{y} \\
+  &= \frac{1}{3}\int_{0}^{a}a^3-3a^2y+6ay^2-4y^3\diff{y} \\
+  &= \frac{1}{3}\bigg[a^3y-\frac{3a^2y^2}{2}+2ay^3-y^4\bigg]_{0}^{a} \\
+  &= \frac{1}{3}(a^4-\frac{3a^4}{2}+2a^4-a^4) \\
+  &= \frac{a^4}{6} \\
+  x_{CoM} = y_{CoM} &= \frac{1}{mass}\iint_{D}y\rho(x,y)\diff{A} \\
+  &= \frac{6}{a^4}\int_{0}^{a}\int_{0}^{a-y}y(x^2+y^2)\diff{x}\diff{y} \\
+  &= \frac{6}{a^4}\int_{0}^{a}
+    \bigg[\frac{x^3y}{3}+xy^3\bigg]_{0}^{a-y}\diff{y} \\
+  &= \frac{6}{a^4}\int_{0}^{a}
+    \frac{y}{3}(a^3-3a^2y+3ay^2-y^3)+y^3(a-y)\diff{y} \\
+  &= \frac{6}{a^4}\int_{0}^{a}
+    \frac{a^3y}{3}-a^2y^2+ay^3-\frac{y^4}{3}+ay^3-y^4\diff{y} \\
+  &= \frac{6}{a^4}\int_{0}^{a}
+    \frac{a^3y}{3}-a^2y^2+2ay^3-\frac{4y^4}{3}\diff{y} \\
+  &= \frac{6}{a^4}\bigg[\frac{a^3y^2}{6}-\frac{a^2y^3}{3}+\frac{2ay^4}{4}-
+    \frac{4y^5}{15}\bigg]_{0}^{a} \\
+  &= \frac{6}{a^4}\bigg[
+    \frac{a^5}{6}-\frac{a^5}{3}+\frac{a^5}{2}-\frac{4a^5}{15}] \\
+  &= a-2a+3a-\frac{8a}{5} \\
+  &= \frac{2a}{5}
+\end{align*}
+Center of mass: \( \langle\frac{2a}{5},\frac{2a}{5}\rangle \)
 
 \section*{Section 15.6}
 
 \subsection*{Exercise 11}
+Evaluate the triple integral.
+\begin{align*}
+  \iiint_{E}\frac{z}{x^2+z^2}\diff{V} &=
+    \int_{1}^{4}\int_{y}^{4}\int_{0}^{z}
+    \frac{z}{x^2+z^2}\diff{x}\diff{z}\diff{y} \\
+  &= \int_{1}^{4}\int_{y}^{4}
+    z\bigg[\frac{1}{z}\arctan(\frac{x}{z})]_{0}^{z}\diff{z}\diff{y} \\
+  &= \int_{1}^{4}\int_{y}^{4}\frac{\pi}{4}\diff{z}\diff{y} \\
+  &= \int_{1}^{4}\bigg[\frac{\pi z}{4}\bigg]_{y}^{4}\diff{y} \\
+  &= \int_{1}^{4}\pi-\frac{\pi y}{4}\diff{y} \\
+  &= \bigg[\pi y-\frac{\pi y^2}{8}\bigg]_{1}^{4} \\
+  &= 4\pi-2\pi-(\pi-\frac{\pi}{8}) \\
+  &= \frac{9\pi}{8}
+\end{align*}
+
 \subsection*{Exercise 13}
+Evaluate the triple integral \( \iiint_{E}6xy\diff{V} \) where \( E \) lies
+below the plane \( z = 1+x+y \) and above the region in the xy-plane bounded by
+the curves \( y = \sqrt{x}, y = 0, x = 1 \).
+\begin{align*}
+  \iiint_{E}6xy\diff{V} &=
+    \int_{0}^{1}\int_{0}^{\sqrt{x}}\int_{0}^{1+x+y}
+    6xy\diff{z}\diff{y}\diff{x} \\
+  &= \int_{0}^{1}\int_{0}^{\sqrt{x}}
+    \bigg[6xyz\bigg]_{0}^{1+x+y}\diff{y}\diff{x} \\
+  &= \int_{0}^{1}\int_{0}^{\sqrt{x}}6xy(1+x+y)\diff{y}\diff{x} \\
+  &= \int_{0}^{1}\bigg[3xy^2+3x^2y^2+2xy^3\bigg]_{0}^{\sqrt{x}}\diff{x} \\
+  &= \int_{0}^{1}3x^2+3x^3+2x^{\frac{5}{2}}\diff{x} \\
+  &= \bigg[x^3+\frac{3x^4}{4}+\frac{4}{7}x^{\frac{4}{7}}\bigg]_{0}^{1} \\
+  &= 1+\frac{3}{4}+\frac{4}{7} \\
+  &= \frac{28}{28}+\frac{21}{28}+\frac{16}{28} \\
+  &= \frac{65}{28}
+\end{align*}
+
 \subsection*{Exercise 21}
+Use a triple integral to find the volume of the solid enclosed by the cylinder
+\( y = x^2 \) and the planes \( z = 0 \) and \( y+z = 1 \).
+\begin{align*}
+  \{ (x,y,z)&\in E\mid -1\le x\le 1, x^2\le y\le 1, 0\le z\le1-y\} \\
+  \iiint_{E}\diff{V} &= \int_{-1}^{1}\int_{x^2}^{1}\int_{0}^{1-y}
+    \diff{z}\diff{y}\diff{x} \\
+  &= \int_{-1}^{1}\int_{x^2}^{1}\bigg[z\bigg]_{0}^{1-y}\diff{y}\diff{x} \\
+  &= \int_{-1}^{1}\int_{x^2}^{1}1-y\diff{y}\diff{x} \\
+  &= \int_{-1}^{1}\bigg[y-\frac{y^2}{2}\bigg]_{x^2}^{1}\diff{x} \\
+  &= \int_{-1}^{1}1-\frac{1}{2}-x^2+\frac{x^4}{2}\diff{x} \\
+  &= \bigg[\frac{x^5}{10}-\frac{x^3}{3}+\frac{x}{2}\bigg]_{-1}^{1} \\
+  &= \frac{1}{10}-\frac{1}{3}+\frac{1}{2}+
+    \frac{1}{10}-\frac{1}{3}+\frac{1}{2} \\
+  &= \frac{1}{5}-\frac{2}{3}+1 \\
+  &= \frac{8}{15}
+\end{align*}
+
 \subsection*{Exercise 33}
+The figure shows the region of integration for the integral
+\[ \int_{0}^{1}\int_{\sqrt{x}}^{1}\int_{0}^{1-y}
+  f(x,y,z)\diff{z}\diff{y}\diff{x} \]
+Rewrite this integral as an equivalent iterated integral in the five other
+orders.
+\begin{align*}
+  \int_{0}^{1}\int_{\sqrt{x}}^{1}\int_{0}^{1-y}
+    f(x,y,z)\diff{z}\diff{y}\diff{x} &=
+  \int_{0}^{1}\int_{0}^{1-y}\int_{0}^{y^2}\diff{x}\diff{y}\diff{z} \\
+  &= \int_{0}^{1}\int_{0}^{1-z}\int_{0}^{y^2}\diff{x}\diff{z}\diff{y} \\
+  &= \int_{0}^{1}\int_{0}^{(1-z)^2}\int_{\sqrt{x}}^{1-z}
+    \diff{y}\diff{x}\diff{z} \\
+  &= \int_{0}^{1}\int_{0}^{1-\sqrt{x}}\int_{\sqrt{x}}^{1-z}
+    \diff{y}\diff{z}\diff{x} \\
+  &= \int_{0}^{1}\int_{0}^{y^2}\int_{0}^{1-y}\diff{z}\diff{x}\diff{y} \\
+\end{align*}
 
 \begin{center}
   If you have any questions, comments, or concerns, please contact me at
