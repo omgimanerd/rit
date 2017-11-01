@@ -32,7 +32,7 @@ gulp.task('latex', function() {
     .pipe(gulpChanged('./latex', { transformPath: getOutputFile }))
     .pipe(gulpPdflatex2({
       options: ['-shell-escape'],
-      TEXINPUTS: ['./cls']
+      texInputs: ['./cls']
     }))
     .pipe(gulpRename((path) => {
       path.dirname += '/output';
