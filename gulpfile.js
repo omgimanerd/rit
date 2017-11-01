@@ -3,78 +3,77 @@
  * @author Alvin Lin (alvin@omgimanerd.tech)
  */
 
-var fs = require('fs');
-var path = require('path');
+const del = require('del')
+const fs = require('fs')
+const glob = require('glob')
+const gulp = require('gulp')
+const gutil = require('gulp-util')
+const gulpChanged = require('gulp-changed')
+const gulpPdflatex = require('gulp-pdflatex2')
+const gulpPlumber = require('gulp-plumber')
+const gulpRename = require('gulp-rename')
+const path = require('path')
 
-var del = require('del');
-var glob = require('glob');
-var gulp = require('gulp');
-var gutil = require('gulp-util');
-var gulpChanged = require('gulp-changed');
-var gulpPdflatex2 = require('gulp-pdflatex2');
-var gulpPlumber = require('gulp-plumber');
-var gulpRename = require('gulp-rename');
+const getOutputFile = texFile => {
+  texFile = path.parse(texFile)
+  return path.join(texFile.dir, 'output', texFile.name + '.pdf')
+}
 
-gulp.task('default', ['latex']);
+gulp.task('default', ['latex'])
 
-var getOutputFile = function(texFile) {
-  texFile = path.parse(texFile);
-  return path.join(texFile.dir, 'output', texFile.name + '.pdf');
-};
-
-var errorHandler = function() {
-  this.emit('end');
-};
-
-gulp.task('latex', function() {
+gulp.task('latex', () => {
   return gulp.src('./latex/**/*.tex')
-    .pipe(gulpPlumber({ errorHandler: errorHandler }))
+    .pipe(gulpPlumber({
+      errorHandler: function() {
+        this.emit('end')
+      }
+    }))
     .pipe(gulpChanged('./latex', { transformPath: getOutputFile }))
-    .pipe(gulpPdflatex2({
+    .pipe(gulpPdflatex({
       cliOptions: ['-shell-escape'],
       texInputs: ['./cls']
     }))
-    .pipe(gulpRename((path) => {
-      path.dirname += '/output';
-      path.extname = '.pdf';
-    }))
-    .pipe(gulp.dest('./latex'));
-});
-
-gulp.task('latex-all', function() {
-  return gulp.src('./latex/**/*.tex')
-    .pipe(gulpPdflatex2({
-      cliOptions: ['-shell-escape'],
-      texInputs: ['./cls']
-    }))
-    .pipe(gulpRename((path) => {
-      path.dirname += '/output';
-      path.extname = '.pdf';
+    .pipe(gulpRename(path => {
+      path.dirname += '/output'
+      path.extname = '.pdf'
     }))
     .pipe(gulp.dest('./latex'))
-});
+})
 
-gulp.task('clean', function(done) {
+gulp.task('latex-all', () => {
+  return gulp.src('./latex/**/*.tex')
+    .pipe(gulpPdflatex({
+      cliOptions: ['-shell-escape'],
+      texInputs: ['./cls']
+    }))
+    .pipe(gulpRename(path => {
+      path.dirname += '/output'
+      path.extname = '.pdf'
+    }))
+    .pipe(gulp.dest('./latex'))
+})
+
+gulp.task('clean', done => {
   glob('./latex/**/*.tex', function(error, texFiles) {
     glob('./latex/**/output/*', function(error, outputFiles) {
-      var correctOutputFiles = texFiles.map(getOutputFile).map(function(path) {
-        return `./${path}`;
-      });
-      for (var file of outputFiles) {
+      const correctOutputFiles = texFiles.map(getOutputFile).map(path => {
+        return `./${path}`
+      })
+      for (const file of outputFiles) {
         if (!correctOutputFiles.includes(file)) {
-          gutil.log(`Deleted ${file}`);
-          del(file);
+          gutil.log(`Deleted ${file}`)
+          del(file)
         }
       }
-      done();
-    });
-  });
-});
+      done()
+    })
+  })
+})
 
-gulp.task('clean-all', function() {
-  return del(['./latex/**/output']);
-});
+gulp.task('clean-all', () => {
+  return del(['./latex/**/output'])
+})
 
-gulp.task('watch', function() {
-  gulp.watch('latex/**/*.tex', { cwd: './'}, ['latex']);
-});
+gulp.task('watch', () => {
+  gulp.watch('latex/**/*.tex', { cwd: './'}, ['latex'])
+})
