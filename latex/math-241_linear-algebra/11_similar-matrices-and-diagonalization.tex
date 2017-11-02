@@ -1,0 +1,191 @@
+\documentclass{math}
+
+\usepackage{enumerate}
+
+\title{Linear Algebra}
+\author{Alvin Lin}
+\date{August 2017 - December 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Similar Matrices and Diagonalization}
+Throughout \( A,B \) will be \( n\times n \) matrices unless stated otherwise.
+We say \( A \) \textbf{is similar to} \( B \) is there exists \( n\times n \)
+matric \( P \) such that \( P^{-1}AP = B \). We denote this as \( A\sim B \).
+Suppose we have:
+\[ P^{-1}AP = D \]
+To form \( P \), the columns of \( P \) are the eigenvectors of \( A \). To
+form \( D \), put the eigenvalues of \( A \) on the main diagonal of \( D \).
+If the eigenvector \( \vec{v} \) is in the column \( i \) of \( A \), then its
+corresponding eigenvalue goes in column \( i \) of \( D \).
+
+\subsection*{Theorems and Lemmas}
+\begin{enumerate}[{Theorem} 1:]
+  \item \( A,B,C \) are \( n\times n \) matrices, then:
+  \begin{enumerate}[(i)]
+    \item \( A\sim A \)
+    \[ I^{-1}AI = A \]
+    \item \( A\sim B \to B\sim A \)
+    \begin{align*}
+      A &= PBP^{-1} \\
+      Let~Q &= P^{-1} \\
+      A &= Q^{-1}BQ \\
+      \therefore B&\sim A
+    \end{align*}
+    \item \( A\sim B \wedge B\sim C \to A\sim C \)
+    \begin{align*}
+      A\sim B &\to P^{-1}AP = B \\
+      B\sim C &\to Q^{-1}BQ = C \\
+      B &= QCQ^{-1} \\
+      P^{-1}AP &= QCQ^{-1} \\
+      Q^{-1}P^{-1}APQ &= C \\
+      (PQ^{-1})A(PQ) &= C \\
+      Let~E &= PQ \\
+      E^{-1}AE &= C \\
+      \therefore A&\sim C
+    \end{align*}
+  \end{enumerate}
+  \item Suppose \( A\sim B \), then:
+  \begin{enumerate}[(a)]
+    \item \( |A| = |B| \)
+    \begin{align*}
+      P^{-1}AP &= B \\
+      |P^{-1}AP| &= |B| \\
+      |P^{-1}||A||P| &= |B| \\
+      \frac{1}{|P|}|A||P| &= |B| \\
+      |A| &= |B|
+    \end{align*}
+    \item \( A~invertible\leftrightarrow B~invertible \)
+    \item \( A,B \) have the same rank.
+    \item \( A,B \) have the same characteristic polynomial.
+    \begin{align*}
+      \text{characteristic polynomial of } B &= |B-\lambda I| \\
+      &= |P^{-1}AP-\lambda I| \\
+      &= |P^{-1}AP-P^{-1}(\lambda I)p| \\
+      &= |P^{-1}(A-\lambda I)P| = |P^{-1}||A-\lambda I||P| \\
+      &= \frac{1}{|P|}|A-\lambda I||P| \\
+      &= |A-\lambda I| \quad\text{characteristic polynomial of } B
+    \end{align*}
+    \item \( A,B \) have the same eigenvalues. Eigenvalues are the roots of the
+    characteristic polynomial, thus this follows from part (d).
+    \item \( A^m\sim B^m \) for all integers \( m \ge 0 \)
+    \begin{align*}
+      (P^{-1}AP)^2 &= (P^{-1}AP)(P^{-1}AP) \\
+      &= P^{-1}A^2P \\
+      (P^{-1}AP)^2 &= (P^{-1}A^2P)(P^{-1}AP) \\
+      &= P^{-1}A^3P
+    \end{align*}
+    and this can be proven through induction.
+    \item If \( A \) is invertible, then \( A^m\sim B~m \) for all integers
+    \( m \).
+  \end{enumerate}
+  \item We say \( A \) is \textbf{diagonalizable} if there exists an
+  \( n\times n \) diagonal matrix \( D \) such that \( A\sim D \). \( A \) is
+  diagonalizable if and only if \( A \) has \( n \) linearly independent
+  eigenvectors.
+  \begin{align*}
+    P^{-1}AP &= D \\
+    AP &= PD \\
+    P &= [\vec{p_1}\mid\vec{p_2}\mid\dots\mid\vec{p_m}] \\
+    AP &= A[\vec{p_1}\mid\vec{p_2}\mid\dots\mid\vec{p_m}] \\
+    &= [A\vec{p_1}\mid A\vec{p_2}\mid\dots\mid A\vec{p_m}] \\
+    PD &= P\begin{bmatrix}
+      \lambda_1 & 0 & \dots & 0 \\
+      0 & \lambda_2 & \dots & 0 \\
+      \vdots & \vdots & \vdots & \vdots \\
+      0 & 0 & \dots & \lambda_n
+    \end{bmatrix} \\
+    A\vec{p_1} &= \lambda\vec{p_1} \\
+    A\vec{p_2} &= \lambda\vec{p_2} \\
+    &\vdots \\
+    A\vec{p_n} &= \lambda\vec{p_n} \\
+  \end{align*}
+  The vectors \( \vec{p_i} \) are eigenvectors of \( A \) with eigenvalues
+  \( \lambda_i \).
+  \item Let \( \lambda_1,\dots,\lambda_k \) be distinct eigenvalues of \( A \).
+  If \( B_i \) is the basis of \( E_{\lambda_i} \), then \( \bigcup_iB_i \) is
+  linearly independent.
+  \begin{align*}
+    B_i &= \{\vec{v_{i1}},\vec{v_{i2}},\dots,\vec{v_{in_i}}\} \\
+    \sum_{i=1}^{k}\sum_{j=1}^{n}c_{ij}\vec{v_{ij}} &= \vec{0} \\
+    Let~\vec{x_i} &= \sum_{j=1}^{n_i}c_{ij}\vec{v_{ij}} \\
+    \vec{x_1}+\vec{x_2}+\dots+\vec{x_n} &= \vec{0} \\
+    \vec{x_i}&\in E_{\lambda_i} \\
+    All~\vec{x_i} &= 0 \\
+    All~\vec{c_{ij}} &= 0 \\
+    \therefore \quad & B\text{ is linearly independent}
+  \end{align*}
+  \item The \textbf{algebraic multiplicity} of eigenvalue \( \lambda_i \) is
+  the number of times it is an eigenvalue of \( A \) and the \textbf{geometric
+  multiplicity} is the dimension of the eigenspace \( E_{\lambda_i} \). The
+  geometric multiplicity of each eigenvalue is less than or equal to its
+  algebraic multiplicity.
+\end{enumerate}
+
+\subsection*{The Diagonalization Theorem}
+Say \( A \) has distinct eigenvalues \( \lambda_i,\dots,\lambda_k \). The
+following statements are equivalent:
+\begin{enumerate}[(a)]
+  \item \( A \) is diagonalizable.
+  \item The union of the bases of the eigenspaces of \( A \) contains exactly
+  \( n \) vectors.
+  \item The algebraic multiplicity of each eigenvalue equals its geometric
+  multiplicity
+\end{enumerate}
+
+\subsection*{Diagonalization Procedure}
+\begin{enumerate}[1)]
+  \item Find the characteristic polynomial \( p(\lambda) = |A-\lambda I| \).
+  \item Find all the roots of \( p(\lambda) \). Those are the eigenvalues.
+  \item Compute a basis for each eigenspace. If \( dim(E_{\lambda_i}) < \)
+  algebraic multiplicity for \( \lambda_i \) for any \( i \), stop. In this
+  case, we can't diagonalize \( A \).
+  \item Form \( P \) and \( D \) such that \( P^{-1}AP = D \)
+\end{enumerate}
+
+\subsubsection*{Example}
+\[ A = \begin{bmatrix}0 & 1 & 0 \\ 0 & 0 & 1 \\ 2 & -5 & 4\end{bmatrix} \]
+Diagonalize \( A \) if possible. If it is not diagonalizable, explain why not.
+Find the roots of \( |A-\lambda I| = 0 \), we get eigenvalues:
+\[ \lambda_1 = \lambda_2 = 1, \lambda_3 = 2 \]
+For \( \lambda_1 = \lambda_2 = 1 \):
+\begin{align*}
+  E_1 &= span\left(\begin{bmatrix}1 \\ 1 \\ 1\end{bmatrix}\right) \\
+  E_2 &= span\left(\begin{bmatrix}1 \\ 2 \\ 4\end{bmatrix}\right)
+\end{align*}
+\( A \) is not diagonalizable because \( \lambda_1 \) has algebraic multiplicity
+2 but \( dim(E_{\lambda_1}) = 1 \).
+
+\subsubsection*{Example}
+\[ A = \begin{bmatrix}-1 & 0 & 1 \\ 3 & 0 & -3 \\ 1 & 0 & -1\end{bmatrix} \]
+Find the roots of \( |A-\lambda I| \), we get eigenvalues:
+\[ \lambda_1 = \lambda_2 = 0, \lambda_3 = -2 \]
+\begin{align*}
+  E_0 &= span\left(
+    \begin{bmatrix}0 \\ 1 \\ 0\end{bmatrix},
+    \begin{bmatrix}1 \\ 0 \\ 1\end{bmatrix}\right) \\
+  E_{-2} &= span\left(\begin{bmatrix}-1 \\ 3 \\ 1\end{bmatrix}\right)
+\end{align*}
+Thus \( A \) is diagonalizable.
+\begin{align*}
+  A &= \begin{bmatrix}
+    0 & 1 & -1 \\
+    1 & 0 & 3 \\
+    0 & 1 & 1
+  \end{bmatrix} \\
+  D &= \begin{bmatrix}
+    0 & 0 & 0 \\
+    0 & 0 & 0 \\
+    0 & 0 & -2
+  \end{bmatrix}
+\end{align*}
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
