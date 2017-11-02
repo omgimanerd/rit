@@ -1,0 +1,66 @@
+\documentclass{math}
+
+\title{University Physics 1A}
+\author{Alvin Lin}
+\date{November 2nd, 2017}
+
+\usepackage{enumerate}
+\usepackage{tikz}
+
+\begin{document}
+
+\maketitle
+
+\section*{Angular Motion}
+A pulley consists of a hub of radius 0.160m attached to a wheel of radius
+0.600m. Initially the pulley is rotating clockwise at 6.50 rad/s, and at some
+time later it is rotating counterclockwise at 2.50 rad/s. The angular position
+at the second time is 24.0 rad clockwise relative to the first time. A string
+wrapped around the hub and is attached to a block.
+\begin{enumerate}[(a)]
+  \item Find the angular acceleration of the pulley. Be sure to give a vector
+  direction, not using ``clockwise'' or ``counterclockwise''.
+  \begin{align*}
+    \omega^2 &= \omega_0^2+2\alpha\theta \\
+    (-6.5)^2 &= 2.5^2+2\alpha24.0 \\
+    \alpha &= 0.75\frac{rad}{s} \quad (+\k \text{ direction})
+  \end{align*}
+  \item Find the time between the two points mentioned.
+  \begin{align*}
+    \omega &= \omega_0+\alpha t \\
+    2.5 &= (-6.5)+0.75t \\
+    t &= 12s
+  \end{align*}
+  \item Find the acceleration of the block, including its direction.
+  \begin{align*}
+    a_{tangential} &= \alpha r \\
+    &= 0.75(0.160) \\
+    &= 0.12\frac{m}{s^2}
+  \end{align*}
+  \item The string from the block touches the pulley at the hub. At the initial
+  time find the centripetal acceleration of that point on the hub.
+  \begin{align*}
+    a_{centripetal} &= \frac{v^2}{r} \\
+    &= r\omega^2 \\
+    &= 0.160(6.5^2) \\
+    &= 6.76\frac{m}{s^2}
+  \end{align*}
+\end{enumerate}
+
+\section*{Moment of Inertia}
+\begin{align*}
+  KE &= \frac{1}{2}mv^2 \\
+  &= \frac{1}{2}m(r\omega^2) \\
+  &= \frac{1}{2}(mr^2)\omega^2 \\
+  I_{ring} &= \text{moment of inertia} = mr^2 \\
+  I_{disk} &= \sum_{i}m_ir_i^2 \\
+  &= \int r^2\diff{m}
+\end{align*}
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}

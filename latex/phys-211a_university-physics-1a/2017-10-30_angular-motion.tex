@@ -2,7 +2,7 @@
 
 \title{University Physics 1A}
 \author{Alvin Lin}
-\date{October 23rd, 2017}
+\date{October 30th, 2017}
 
 \usepackage{tikz}
 
@@ -11,7 +11,6 @@
 \maketitle
 
 \section*{Angular Motion}
-
 \begin{center}
   \begin{tikzpicture}
     \draw[<->] (-5,0) -- (5,0) node[right] {\( x \)};
@@ -47,7 +46,8 @@
 \begin{align*}
   s &= r\theta \\
   \ddiff{s}{t} &= r\ddiff{\theta}{t} = r\omega = v \\
-  \alpha &= \frac{v^2}{r} = \frac{r^2\omega^2}{r} = r\omega^2
+  a_{centripetal} &= \frac{v^2}{r} = \frac{r^2\omega^2}{r} = r\omega^2 \\
+  a_{tangential} &= \alpha r
 \end{align*}
 \( \theta \) and \( \Delta\theta \) are not vectors. \( \omega \) and
 \( \alpha \) are vectors.
@@ -68,7 +68,7 @@
 \begin{align*}
   \theta &= \theta_0+\omega_0t+\frac{1}{2}\alpha t^2 \\
   \omega &= \omega_0+\alpha t \\
-  \omega^2 &= \omega_0^2+2\alpha\Delta\omega
+  \omega^2 &= \omega_0^2+2\alpha\Delta\theta
 \end{align*}
 
 \begin{center}
