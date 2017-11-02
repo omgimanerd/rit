@@ -1,0 +1,197 @@
+\documentclass{math}
+
+\usepackage{listings}
+\lstset{basicstyle=\ttfamily\footnotesize,breaklines=true}
+\title{Analysis of Algorithms}
+\author{Alvin Lin (axl1439) and William Leuschner (wel2138)}
+\date{August 2017 - December 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Problem 2}
+
+\subsubsection*{Algorithm Description}
+For this problem, we implemented a dynamic programming algorithm to find the
+maximum cost attainable with a sample of items placed in two backpacks. The
+heart of the solution is described as follows:
+\begin{align*}
+  S[k][w_1][w_2] =~& \text{the maximum cost of a subset of the first } \\
+  & k \text{ items where the weight of items in the subset is} \\
+  & \text{distributed in two backpacks with weight limits } w_1w_2 \\[3em]
+  S[k][w_1][w_2] =& \begin{cases}
+    0 & if~k = 0, w_1 = 0, w_2 = 0 \\[1em]
+    \begin{aligned}
+      \texttt{max}(&S[k-1][w_1][w_2], \\
+      & c_k+S[k-1][w_1-w_k][w_2], \\
+      & c_k+S[k-1][w_1][w_2-w_k])
+    \end{aligned} & if~w_k\le w_1\wedge w_k\le w_2 \\[2em]
+    \begin{aligned}
+      \texttt{max}(&S[k-1][w_1][w_2], \\
+      & c_k+S[k-1][w_1-w_k][w_2])
+    \end{aligned} & if~w_k\le w_1 \\[2em]
+    \begin{aligned}
+      \texttt{max}(&S[k-1][w_1][w_2], \\
+      & c_k+S[k-1][w_1][w_2-w_k])
+    \end{aligned} & if~w_k\le w_2 \\[2em]
+    S[k-1][w_1][w_2] & otherwise \\
+  \end{cases}
+\end{align*}
+With \( n \) items and respective weight limits of \( W_1,W_2 \), the solution
+is thus yielded by:
+\[ S[n][W_1][W_2] \]
+This algorithm works by trying to place the item into the two bags. If it fits
+in both, then it will use the maximum cost attained by placing it either, or
+not placing it at all. If it only fits it one, then it takes the maximum cost
+attained by placing it in that bag or not placing it in the bag.
+
+\subsubsection*{Running Time Estimate}
+Since the dynamic programming solution matrix is a three dimensional array with
+dimensions \( n\times W_1\times W_2 \), our running time is \( O(nW_1W_2) \)
+since we need to populate the entire solution matrix.
+
+\subsubsection*{Psuedocode}
+\begin{lstlisting}
+def solve(items, W1, W2):
+  let n = items.length
+  let s = matrix of size (n+1) x (W1+1) x (W2+1)
+  for k = 0 to n + 1:
+    for w1 = 0 to W1:
+      for w2 = 0 to W2:
+        if k == 0:
+          s[k][w1][w2] = 0
+        else:
+          let item = items[k - 1]
+          let previous = s[k - 1]
+          if item.weight <= w1 and item.weight <= w2:
+            solution[k][w1][w2] = max(
+              previous[w1][w2],
+              item.cost + previous[w1 - item.weight][w2],
+              item.cost + previous[w1][w2 - item.weight]
+            )
+          else if item.weight <= w1:
+            solution[k][w1][w2] = max(
+              previous[w1][w2],
+              item.cost + previous[w1 - item.weight][w2]
+            )
+          else if item.weight <= w2:
+            solution[k][w1][w2] = max(
+              previous[w1][w2],
+              item.cost + previous[w1][w2 - item.weight]
+            )
+          else:
+            solution[k][w1][w2] = previous[w1][w2]
+  return solution[n][W1][W2]
+\end{lstlisting}
+
+\section*{Problem 3}
+
+\subsubsection*{Algorithm Description}
+For this problem, we extended it off of problem 2's dynamic programming solution
+matrix. We iterate backwards over the items array and pull out the item's
+weight and cost and the current value in the solution matrix for that item. We
+can subtract the value in the solution matrix from the previous value in the
+solution matrix to determine if the item was included in the cost calculation
+during the construction of the solution matrix, and if it was, we can add it to
+the knapsack as a item included in the valid solution.
+
+\subsubsection*{Argument of Correctness}
+This algorithm reverses the construction of the optimal cost entry in the
+solution matrix, so we are guaranteed that the items it produces is part of the
+optimal set of items to maximize cost. By subtracting entries in the solution
+matrix, we can determine the cost of the item that was added.
+
+\subsubsection*{Running Time Estimate}
+Since this algorithm relies on the solution matrix to construct the solution,
+it is \( O(nW_1W_2) \). The solution construction simply needs to go through
+every item, so the construction is \( O(n) \). The entire runtime is upper
+bounded by the time it takes to generate the solution matrix.
+
+\subsubsection*{Pseudocode}
+\begin{lstlisting}
+def solve(solution, items, W1, W2):
+  let bag1 = []
+  let bag2 = []
+  let w1 = W1
+  let w2 = W2
+  for i = items.length - 1 to 0:
+    let item = items[i]
+    let current = solution[i + 1][w1][w2]
+    let prev = solution[i]
+    if w1 >= item.weight and
+        current == item.cost + prev[w1 - item.weight][w2]:
+      bag1.append(i + 1)
+      w1 -= item.weight
+    elif w2 >= item.weight and
+        current == item.cost + prev[w1][w2 - item.weight]:
+      bag2.append(i + 1)
+      w2 -= item.weight
+  return [bag1, bag2]
+\end{lstlisting}
+
+\section*{Problem 4}
+
+\subsubsection*{Algorithm Description}
+For this problem, we implemented a dynamic programming algorithm to solve for
+the minimum number of operations needed to multiply the optimally parenthesized
+groups of matrices. While populating the solution array, we also stored the
+groups of parenthesized matrices so that we could recursively reconstruct the
+solution. The heart of the solution is as follows:
+\begin{align*}
+  S[l][r] =~ & \text{the minimum number of steps required to multiply the} \\
+  & \text{matrices from index } l \text{ to } r \text{ and the grouping that} \\
+  & \text{yielded the resulting minimum number of steps}\\
+  S[l][r] =~ &
+    min(S[l,k] + S[k+1][r] + a_{l-1}a_ka_r)~\forall{k} (1\le k\le r-1)
+    \text{and} [l, k, r] \\
+\end{align*}
+The final result for the minimum number of steps is given by:
+\[ S[1][n] \]
+We can take the \( [l,k,r] \) grouping stored at \( S[1][n] \) and recursively
+expand it into solution string.
+
+\subsubsection*{Running Time Estimate}
+Populating the solution matrix requires \( O(n^3) \) time, but recursively
+reconstructing the solution only requires \( O(n) \) time because a recursive
+expansion can occur at most \( n \) times.
+
+\subsubsection*{Pseudocode}
+\begin{lstlisting}
+def solve(dimensions):
+  let n = dimensions.length - 1
+  let solution = list of length n
+  let groupings = matrix of size n x 3
+  for d = 1 to n:
+    for l = 0 to n - d:
+      let r = l + d
+      solution[l][r] = infinity
+      for k = l to r:
+        let tmp = solution[l][k] + solution[k + 1][r] +
+          dimensions[l] * dimensions[k + 1] * dimensions[r + 1]
+        if tmp < solution[l][r]:
+          solution[l][r] = tmp
+          groupings[l][r] = [l, k, r]
+  return solution, groupings
+
+def reconstruct(groupings):
+  let n = groupings.length
+  return reconstructRecursive(groupings, groupings[0][n - 1])
+
+def reconstructRecursive(groupings, solutionGroup):
+  let l, k, r = solutionGroup
+  if l + 1 == r:
+    return "( A%d x A %d )".format(l + 1, r + 1)
+  elif l == k:
+    return "( A%d x %s )".format(l + 1,
+      reconstructRecursive(groupings[k + 1][r]))
+  elif k + 1 == r:
+    return "( %s x A%d )".format(
+      reconstructRecursive(groupings[l][k]), r + 1)
+  else:
+    return "( %s x %s )".format(
+      reconstructRecursive(groupings[l][k]),
+      reconstructRecursive(groupings[k + 1][r]))
+\end{lstlisting}
+
+\end{document}
