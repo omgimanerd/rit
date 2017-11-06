@@ -27,7 +27,7 @@ let \( p \) be the integer such that every string \( s \) in \( L \) with
 \( xy^iz\in L \) for all \( i\ge0 \).
 \begin{itemize}
   \item Let \( s = a^pb^{2p} \). Then \( s\in L \) and \( |s|\ge p \). So, there
-  exist strings \( x,y,z \) such that \( s = xyz, |xy|\le p, |y| > 0 \), and
+  exist strings \( x,y,z \) such that \( s = xyz, |xy|\le p, |y|>0 \), and
   \( xy^iz\in L \) for all \( i\ge0 \).
   \item In particular, \( xz\in L \) (choosing \( i = 0 \))
   \item Since \( |xy|\le p \) and \( |y| > 0 \), \( y \) consists of 1 or more
@@ -38,6 +38,52 @@ let \( p \) be the integer such that every string \( s \) in \( L \) with
   \item It follows that the assumption that \( L \) is regular is wrong.
   \item So, we have shown that \( L \) is not regular.
 \end{itemize}
+
+\subsubsection*{Example}
+Prove \( L \) is not regular.
+\[ L = \{a^{p^2}\mid p\ge0\} \]
+Assume that \( L \) is regular. By the pumping lemma, there is a \( p\in\N \)
+such that for all \( s\in L \) such that \( |s|\ge p \) there exists \( x,y,z \)
+such that \( s = xyz, |xy|\le p, |y|>0 \) for all \( i\ge0, xy^iz\in L \). Let
+\( s = a^{p^2} \). So by definition of \( L \), \( s\in L \) and \( |s| \) is
+clearly greater than or equal to \( p \). So, there exist \( x,y,z \) such that
+\( s = xyz, |xy|\le p, |y|>0 \) and for all \( i\ge0, xy^iz\in L \). Let
+\( i = 2 \). \par
+By the pumping lemma, \( xy^2z\in L \). Since \( |y|>0,|xy^2z|>p^2 \). Thus
+\( |xy^2z|\ge(p+1)^2 \). Since \( |xy|\le p, |xy^2z|\le p^2+p \). \par
+So, \( (p+1)^2 \le p^2+p \). This is a contradiction and thus \( L \) is not
+regular.
+
+\subsubsection*{Example}
+\[ \Sigma = \left\{
+  \begin{bmatrix}0 \\ 0\end{bmatrix},
+  \begin{bmatrix}0 \\ 1\end{bmatrix},
+  \begin{bmatrix}1 \\ 0\end{bmatrix},
+  \begin{bmatrix}1 \\ 1\end{bmatrix}
+\right\} \]
+\[ L = \{x\in\Sigma^*\mid\text{the top string is the reverse of the bottom}\} \]
+\[ \begin{bmatrix}0 \\ 1\end{bmatrix}
+  \begin{bmatrix}1 \\ 1\end{bmatrix}
+  \begin{bmatrix}1 \\ 0\end{bmatrix}\in L \]
+\[ \begin{bmatrix}0 \\ 0\end{bmatrix}
+  \begin{bmatrix}1 \\ 1\end{bmatrix}
+  \begin{bmatrix}0 \\ 0\end{bmatrix}\in L \]
+\[ \begin{bmatrix}0 \\ 1\end{bmatrix}
+  \begin{bmatrix}0 \\ 1\end{bmatrix}
+  \begin{bmatrix}1 \\ 0\end{bmatrix}\notin L \]
+\[ \begin{bmatrix}0 \\ 0\end{bmatrix}
+  \begin{bmatrix}1 \\ 0\end{bmatrix}\notin L \]
+Assume that \( L \) is regular. By the pumping lemma, there exists \( p\in\N \)
+such that for all \( s\in L \) such that \( |s|\ge p \) there exist \( x,y,z \)
+such that \( s = xyz, |xy|\le p, |y|>0 \), and \( \forall{i}\ge0(xy^iz\le L) \).
+\par
+Let \( s = \begin{bmatrix}0 \\ 1\end{bmatrix}^p
+\begin{bmatrix}1 \\ 0\end{bmatrix}^p \). Let \( x,y,z \) be such that
+\( s = xyz, |xy|\le p, |y|>0 \) and for all \( i\ge0, xy^z\in L \). \par
+Let \( i = 3 \). By the pumping lemma, \( xy^3z\in L \). But \( xy^3z =
+\begin{bmatrix}0 \\ 1\end{bmatrix}^{p+2|y|}
+\begin{bmatrix}1 \\ 0\end{bmatrix}^p \) This is a contradiction and thus \( L \)
+is not regular.
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
