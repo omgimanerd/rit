@@ -1,0 +1,124 @@
+\documentclass{math}
+
+\usepackage{tikz}
+
+\title{CSCI 251: Concepts of Parallel and Distributed Systems}
+\author{Alvin Lin}
+\date{November 1st, 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Agreement and Consensus}
+Topics:
+\begin{itemize}
+  \item Agreement Algorithms:
+    \begin{itemize}
+      \item Consensus
+      \item Byzantine Generals
+      \item Interactive Consistence
+    \end{itemize}
+  \item Transactions
+\end{itemize}
+
+\subsection*{Consensus}
+Suppose there are decision variables. At the termination of the agreement
+algorithm, all the processes should agree on the decision variable. For
+processes \( p_1 \) to \( p_n \), each process proposes a value \( v_1 \) to
+\( v_n \). At the end of the consensus algorithm, all the processes should
+agree on one decision value. This can be done as either the majority value,
+the max value, the min value, or the average.
+
+\subsubsection*{Byzantine General's Problem}
+There is a distinguished process which decides the decision variable and every
+process sets their decision value to the one suggested by the distinguished
+process.
+\begin{center}
+  \begin{tikzpicture}
+    \draw (0,4) circle (1cm) node {\( p_1 \)};
+    \draw (-3,0) circle (1cm) node {\( p_2 \)};
+    \draw (3,0) circle (1cm) node {\( p_3 \)};
+    \draw[->] (1,3) -- (2.25,1) node[pos=0.5,right] {\( p_1,v \)};
+    \draw[->] (-1,3) -- (-2.25,1) node[pos=0.5,left] {\( p_1,v \)};
+    \draw[->] (-1.75,0.25) -- (1.75,0.25) node[pos=0.5,above] {\( p_2,p_1,v \)};
+    \draw[->] (1.75,-0.25) -- (-1.75,-0.25)
+      node[pos=0.5,below] {\( p_3,p_1,v \)};
+  \end{tikzpicture}
+\end{center}
+In the case where a propagated decision variable is faulty or corrupted, this
+degrades into making a decision via consensus instead. It is impossible to
+identify the number of faulty processes \( f \) out of \( n \) processes if:
+\[ n\le3f \]
+
+\subsubsection*{Interactive Consistency}
+In interactive consistency, each process proposes a value, which is its
+contribution to the vector of decision values. At the termination of the
+algorithm, all processes agree on the vector of values.
+
+\subsection*{Transactions}
+Transactions are series of a read/write operations on a server. A transaction
+has to satisfy four properties.
+\begin{itemize}
+  \item Atomicity - all or nothing, either the operation completes or it does
+  not complete, without a middle state.
+  \item Consistency - the transaction process moves from one consistent state to
+  another consistent state.
+  \item Isolation - there should be no interference from other transactions.
+  \item Durability - transaction objects must be recoverable and stored in
+  permanent memory.
+\end{itemize}
+
+\subsubsection*{Example}
+Banking Accounts A, B, C:
+\[ A = \$100; \quad B = \$200; \quad C = \$300 \]
+\begin{center}
+  \begin{tabular}{l|l}
+    \textbf{Transaction T} & \textbf{Transaction U} \\
+    \hline
+    \texttt{balance = b.getBalance()}; \$200 & \\
+    & \texttt{balance = b.getBalance()}; \$200 \\
+    & \texttt{b.setBalance(balance * 1.1)}; \$220 \\
+    \texttt{b.setBalance(balance * 1.1)}; \$220 &
+  \end{tabular}
+\end{center}
+A situation like this is problematic without ACID since transaction U's update
+is lost.
+\[ A = B = \$200; \]
+\begin{center}
+  \begin{tabular}{l|l}
+    \textbf{Transaction V} & \textbf{Transaction W} \\
+    \hline
+    \texttt{a.withdraw(100)}; \$100 & \\
+    & \texttt{total = a.getBalance()}; \$100 \\
+    & \texttt{total += b.getBalance()}; \$300 \\
+    \texttt{b.deposit(100)}; \$300 &
+  \end{tabular}
+\end{center}
+In this situation, \( W \) does not see the deposit done by \( V \) and only
+sees the withdrawal action. These issues are solved by:
+\begin{itemize}
+  \item Serialization - each transaction should appear as if it is the only
+  transaction on the server.
+  \item Locking - Inefficient and creates a bottleneck.
+  \item Optimistic Concurrency - Most efficient, uses multiple phases to resolve
+  transactions.
+  \item Timestamping - Resolves transactions in time stamp order.
+\end{itemize}
+
+\section*{Reminders}
+Check MyCourses for details on Project 2. \\
+\noindent Professor Mohan Kumar: \\
+\url{mjkvcs@rit.edu} \\
+\url{https://cs.rit.edu/~mjk} \\
+
+\noindent Rahul Dashora (TA): \\
+\url{rd5476@mail.rit.edu} \\
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
