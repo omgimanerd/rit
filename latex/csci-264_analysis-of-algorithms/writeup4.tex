@@ -1,5 +1,6 @@
 \documentclass{math}
 
+\usepackage{hyperref}
 \usepackage{listings}
 \lstset{basicstyle=\ttfamily\footnotesize,breaklines=true}
 \title{Analysis of Algorithms}
@@ -10,6 +11,62 @@
 
 \maketitle
 
+\section*{Problem 1}
+
+\subsubsection*{Algorithm Description}
+For this problem, we implemented a dynamic programming algorithm to find the
+maximum length of the longest convex subsequence in a sequence of numbers. The
+heart of the solution is described as follows:
+\begin{align*}
+  S[i][j] =& ~\text{the maximum length of a convex subsequence ending with} \\
+  & a_i \text{ where the second to last element in the subsequence is } a_j \\
+  S[i][j] =& \begin{cases}
+    i + 1 & if~ i < 3 \\
+    2 & if~ j = 1 \\
+    3 & if~ i = 3 \wedge a_1\dots a_3 \text{ is convex} \\
+    2 & if~ i = 3 \wedge a_1\dots a_3 \text{ is not convex} \\
+    max(S[i]) & if~ i = j \\
+    max(S[i][j], S[j][k] + 1, 2)~\forall k~(k\mid 1\le k<j) & otherwise
+  \end{cases}
+\end{align*}
+The solution is yielded by taking the maximum of the elements along the diagonal
+of the solution matrix (\( max(S[i][j]) \) where \( i = j \)).
+
+\subsubsection*{Running Time Estimate}
+The dynamic programming fills a two dimensional solution matrix, and requires
+a linear pass to fill each element of the solution matrix and to find the final
+solution, which makes the runtime \( n^3+n \), which is \( O(n^3) \).
+
+\subsubsection*{Psuedocode}
+\begin{lstlisting}
+def solve(sequence):
+  let n = sequence.length
+  let s = matrix of size n x n
+  for i = 0 to n:
+    for j = 0 to n:
+      if i < 2:
+        s[i][j] = i + 1
+      else if j == 0:
+        s[i][j] = 2
+      else if i == 2:
+        if sequence[0], sequence[1], sequence[2] is convex:
+          s[i][j] = 3
+        else:
+          s[i][j] = 2
+      else if i == j:
+        s[i][j] = max(s[i])
+      else:
+        for k = 0 to j:
+          if sequence[k], sequence[j], sequence[i] is convex:
+            s[i][j] = max(s[i][j], s[j][k] + 1)
+          else:
+            s[i][j] = max(s[i][j], 2)
+  result = 0
+  for i = 0 to n:
+    result = max(result, solution[i][i])
+  return result
+\end{lstlisting}
+
 \section*{Problem 2}
 
 \subsubsection*{Algorithm Description}
@@ -17,7 +74,7 @@ For this problem, we implemented a dynamic programming algorithm to find the
 maximum cost attainable with a sample of items placed in two backpacks. The
 heart of the solution is described as follows:
 \begin{align*}
-  S[k][w_1][w_2] =~& \text{the maximum cost of a subset of the first } \\
+  S[k][w_1][w_2] =& ~\text{the maximum cost of a subset of the first } \\
   & k \text{ items where the weight of items in the subset is} \\
   & \text{distributed in two backpacks with weight limits } w_1w_2 \\[3em]
   S[k][w_1][w_2] =& \begin{cases}
@@ -43,7 +100,7 @@ is thus yielded by:
 \[ S[n][W_1][W_2] \]
 This algorithm works by trying to place the item into the two bags. If it fits
 in both, then it will use the maximum cost attained by placing it either, or
-not placing it at all. If it only fits it one, then it takes the maximum cost
+not placing it at all. If it only fits in one, then it takes the maximum cost
 attained by placing it in that bag or not placing it in the bag.
 
 \subsubsection*{Running Time Estimate}
@@ -141,10 +198,10 @@ solution. The heart of the solution is as follows:
 \begin{align*}
   S[l][r] =~ & \text{the minimum number of steps required to multiply the} \\
   & \text{matrices from index } l \text{ to } r \text{ and the grouping that} \\
-  & \text{yielded the resulting minimum number of steps}\\
+  & \text{yielded the resulting minimum number of steps} \\
   S[l][r] =~ &
-    min(S[l,k] + S[k+1][r] + a_{l-1}a_ka_r)~\forall{k} (1\le k\le r-1)
-    \text{and} [l, k, r] \\
+    min(S[l,k] + S[k+1][r] + a_{l-1}a_ka_r)~\forall{k} (1\le k\le r-1) \\
+  & \text{and store } [l, k, r] \text{ in } groupings[l][k] \\
 \end{align*}
 The final result for the minimum number of steps is given by:
 \[ S[1][n] \]
@@ -193,5 +250,56 @@ def reconstructRecursive(groupings, solutionGroup):
       reconstructRecursive(groupings[l][k]),
       reconstructRecursive(groupings[k + 1][r]))
 \end{lstlisting}
+
+\section*{Problem 5}
+
+\subsubsection*{Algorithm Description}
+For this problem, we implemented a dynamic programming algorithm to solve for
+the minimum triangulation length of a convex polygon. The heart of the solution
+is as follows:
+\begin{align*}
+  S[i][j] =~ & \text{the minimum length of the triangulation of the polygon} \\
+  & \text{vertices formed by } i \text{ through } j \\
+  S[i][j] =& \begin{cases}
+    0 & if~ j - i < 2 \\
+    min\{S[i][t]+S[t][j]+dist(a_i,a_j)\mid i<t<j\} & otherwise
+  \end{cases}
+\end{align*}
+with the solution being \( S[0][n-1]-dist(a_0,a_{n-1}) \). This algorithm
+calculates the shortest possible triangulation for every consecutive group of
+\( k \) vertices and uses that value to construct the minimum possible
+triangulations for larger groups of vertices.
+
+\subsubsection*{Running Time Estimate}
+This algorithm populates an \( n\times n \) solution matrix. Since it requires
+linear time to populate each entry in the solution matrix, this algorithm runs
+in \( O(n^3) \).
+
+\subsubsection*{Pseudocode}
+\begin{lstlisting}
+def solve(coordinates):
+  let n = coordinates.length
+  let s = matrix of size n x n
+  for i = 0 to n:
+    let j = 0
+    for k = i to n:
+      let length = distance(coordinates[i], coordinates[k])
+      if k < j + 2:
+        s[j][k] = 0
+      else:
+        s[j][k] = infinity
+        for t = j + 1 to k:
+          s[j][k] = min(s[j][t] + s[t][k] + length, s[j][k])
+        if j == 0 and k == n - 1:
+          s[j][k] -= length
+      j += 1
+  return s[0][n-1]
+\end{lstlisting}
+
+\subsubsection*{References}
+For problem 5, we got stuck and looked up advice for dynamic programming on
+GeeksForGeeks: \\
+\href{http://www.geeksforgeeks.org/minimum-cost-polygon-triangulation/}
+{http://www.geeksforgeeks.org/minimum-cost-polygon-triangulation/}
 
 \end{document}
