@@ -1,0 +1,232 @@
+\documentclass{math}
+
+\usepackage{enumerate}
+
+\title{Linear Algebra}
+\author{Alvin Lin}
+\date{August 2017 - December 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Review 3}
+
+\subsubsection*{Example}
+If \( A \) and \( B \) are invertible matrices, show \( AB \) and \( BA \) are
+similar. Find an invertible matrix \( P \) such that:
+\[ P^{-1}ABP = BA \]
+\[ ABP = PAB \]
+\( P = A \) satisfies this.
+
+\subsubsection*{Example}
+If \( A \) and \( B \) are similar matrices, show \( tr(A) = tr(B) \). \par
+There exists an invertible matrix \( P \) such that \( P^{-1}AP = B \).
+\begin{align*}
+  tr(B) &= tr(P^{-1}AP) \\
+  &= tr((P^{-1}A)P) \\
+  &= tr(P(P^{-1}A)) \\
+  &= tr(PP^{-1}A) \\
+  &= tr(IA) \\
+  &= tr(A)
+\end{align*}
+
+\subsubsection*{Example}
+Show that if \( A\sim B \), then \( A^T\sim B^T \).
+\begin{align*}
+  A\sim B &\to P^{-1}AP = B \\
+  (P^{-1}AP)^T = B^T &\to P^TA^T(P^{-1})^T = B^T \\
+  Let~Q &= (P^{-1})^T \\
+  Q^{-1}A^TQ &= B^T \\
+  A^T &\sim B^T
+\end{align*}
+
+\subsubsection*{Example}
+Prove that if \( A \) is diagonalizable, so is \( A^T \). If \( A \) is
+diagonalizable, then \( A\sim D \) where \( D \) is the diagonal matrix.
+\par
+If \( A \) is diagonalizable, there exists an invertible matrix \( P \) such
+that \( P^{-1}AP = D \).
+\begin{align*}
+  (P^{-1}AP)^T = D^T &\to P^TA^T(P^{-1})^T = D^T = D \\
+  Q &= (P^{-1})^T \\
+  Q^{-1}A^TQ &= D \\
+  A^T &\sim D
+\end{align*}
+Thus, \( A^T \) is diagonalizable.
+
+\subsubsection*{Example}
+Let \( A \) be an invertible matrix. If \( A \) is diagonalizable, so is
+\( A^{-1} \).
+\begin{align*}
+  P^{-1}AP &= D \\
+  (P^{-1}AP)^{-1} &= D^{-1} \\
+  P^{-1}A^{-1}(P^{-1})^{-1} &= D^{-1} \\
+  P^{-1}A^{-1}P &= D^{-1} \\
+  A^{-1} &\sim D^{-1}
+\end{align*}
+Therefore, \( A \) is diagonalizable.
+
+\subsubsection*{Example}
+Prove that if \( A \) is a diagonalizable matrix with only 1 eigenvalue
+\( \lambda \), then \( A = \lambda I \).
+\begin{align*}
+  P^{-1}AP &= D \\
+  &= \begin{bmatrix}
+    \lambda & 0 & \dots & 0 \\
+    0 & \lambda & \dots & 0 \\
+    0 & \vdots & \vdots & 0 \\
+    0 & 0 & \dots & \lambda
+  \end{bmatrix} \\
+  &= \lambda I \\
+  A &= P(\lambda I)P^{-1} \\
+  &= \lambda(PIP^{-1}) \\
+  &= \lambda(IPP^{-1}) \\
+  &= \lambda(II) \\
+  &= \lambda I
+\end{align*}
+
+\subsubsection*{Example}
+Let \( A,B \) be similar matrices. Prove that the algebraic multiplicity of the
+eigenvalues of \( A,B \) are the same. \par
+Since \( A \) and \( B \) are similar, they have the same characteristic
+polynomial.
+
+\subsubsection*{Example}
+Prove that if \( A \) is a diagonalizable matrix such that every eigenvalue of
+\( A \) is 0 or 1, then \( A \) is idempotent (\( A^2 = A \)).
+\begin{align*}
+  P^{-1}AP &= D \\
+  A &= PDP^{-1} \\
+  A^2 &= (PDP^{-1})^2 \\
+  &= (PDP^{-1})(PDP^{-1}) \\
+  &= PD^2P^{-1} \\
+  &= PDP^{-1} \\
+  &= A
+\end{align*}
+
+\subsubsection*{Example}
+Let \( A \) be a nilpotent matrix (\( A^m = 0 \) for some \( m>1 \)). Prove that
+if \( A \) is diagonalizable, then \( A = 0 \). \par
+If \( A \) is diagonalizable, there exists an invertible matrix \( P \) such
+that:
+\begin{align*}
+  P^{-1}AP &= D \\
+  (P^{-1}AP)^m &= D^m \\
+  P^{-1}A^mP &= D^m \\
+  P^{-1}0P &= D^m \\
+  0 &= D^m \\
+  &= \begin{bmatrix}
+    \lambda & 0 & \dots & 0 \\
+    0 & \lambda & \dots & 0 \\
+    0 & \vdots & \vdots & 0 \\
+    0 & 0 & \dots & \lambda
+  \end{bmatrix} \\
+  \lambda_1^m &= \dots = \lambda_n^m = 0 \\
+  D &= 0 \\
+  P^{-1}AP &= 0 \\
+  A &= PDP^{-1} \\
+  &= P0P^{-1} \\
+  &= 0
+\end{align*}
+
+\subsubsection*{Example}
+Suppose \( A \) is a \( 6\times6 \) matrix with characteristic polynomial
+\( C_A(\lambda) = (1+\lambda)(1-\lambda)^2(2-\lambda)^3 \). Prove that we can
+not find 3 linearly independent vectors \( \vec{v_1},\vec{v_2},\vec{v_3} \)
+such that \( A\vec{v_1} = 1\vec{v_1}, A\vec{v_2} = 1\vec{v_2}, A\vec{v_3} =
+1\vec{v_3} \). \par
+The algebraic multiplicity of \( \lambda = 1 \) is 2. The geometric multiplicity
+of \( \lambda = 1 \) is at least 3. This cannot happen since the algebraic
+multiplicity must upper bound the geometric multiplicity. \\ \\
+If \( A \) is diagonalizable, compute the geometric multiplicities of
+\( \lambda = -1,1,2 \).
+\begin{align*}
+  dim(E_{-1}) &= 1 \\
+  dim(E_1) &= 2 \\
+  dim(E_2) &= 3
+\end{align*}
+
+\subsubsection*{Example}
+Assume we are working over just the real numbers.
+\[ A = \begin{bmatrix}a & b \\ c & d\end{bmatrix} \]
+Explain why \( A \) is diagonalizable if \( (a-d)^2+4bc>0 \).
+\begin{align*}
+  C_A(\lambda) &= |A-\lambda I| \\
+  &= \begin{vmatrix}
+    a-\lambda & b \\
+    c & d-\lambda
+  \end{vmatrix} \\
+  &= ad+\lambda(-a-d)+\lambda^2-bc \\
+  &= \lambda^2+\lambda(-a-d)+(ad-bc) \\
+  \textbf{Quadratic Discriminant } D &= B^2-4AC \\
+  &= (-a-d)^2-4(1)(ad-bc) \ge 0 \\
+  &= (a+d)^2-4ad+4bc \ge 0 \\
+  &= a^2+2ad+d^2-4ad+4bc \ge 0 \\
+  &= a^2-2ad+d^2+4bc \ge 0 \\
+  &= (a-d)^2+4bc \ge 0
+\end{align*}
+
+\subsubsection*{Example}
+Let \( A,B \) be similar matrices. Prove that the geometric multiplicities of
+\( A \) and \( B \) are the same. \par
+Show that if \( B = P^{-1}AP \), then every eigenvector of \( B \) is of the
+form \( P^{-1}\vec{v} \) for some eigenvector \( \vec{v} \) of \( A \). Let
+\( \vec{w} \) be an eigenvector of \( B \).
+\begin{align*}
+  B\vec{w} = \lambda\vec{w} &\to (P^{-1}AP)(\vec{w}) = \lambda\vec{w} \\
+  &\to (AP)\vec{w} = P(\lambda\vec{w}) \\
+  A(P\vec{w}) &= \lambda(P\vec{w}) \\
+  Let~\vec{v} &= P\vec{w} \\
+  A\vec{v} &= \lambda\vec{v} \\
+  \vec{v} = P\vec{w} &\to \vec{w} = P^{-1}\vec{v}
+\end{align*}
+Claim: Let \( \mathbb{B} \{\vec{v_1},\dots,\vec{v_k}\} \) be a basis for
+eigenspace \( E_{\lambda} \) of \( A \). Then \( \mathbb{B'} =
+\{P^{-1}\vec{v_1},P^{-1}\vec{v_2},\dots,P^{-1}\vec{v_k}\} \) is a basis for
+eigenspace \( E_{\lambda} \) of \( B \). Show that \( \mathbb{B'} \) is linearly
+independent.
+\begin{align*}
+  \vec{0} &= \sum_{i=1}^{k}c_iP^{-1}(\vec{v_i}) \\
+  &= P^{-1}(\sum_{i=1}^{k}c_i\vec{v_i}) \\
+  \vec{0} &= P\vec{0} \\
+  &= \sum_{i=1}^{k}c_i\vec{v_i} \\
+  c_1 &= c_2 = \dots = c_k = 0
+\end{align*}
+Show \( span(\mathbb{B'}) = E_{\lambda} \) in \( B \). Take \( \vec{w}\in
+E_{\lambda} \) of \( B \). Then \( \vec{w} = P^{-1}\vec{v} \) for some
+\( \vec{v}\in\R^n \).
+\[ \vec{w} = P^{-1}(\sum c_i\vec{v_i}) = \sum c_1P^{-1}(\vec{v_i})\in
+  span(\mathbb{B'}) \]
+\[ span(\mathbb{B'}) = E_{\lambda}~of~B \]
+
+\subsubsection*{Example}
+Let \( A,B \) be \( n\times n \) matrices with \( n \) distinct eigenvalues.
+Prove that \( A \) and \( B \) have the same eigenvectors if and only if
+\( AB = BA \). \par
+Suppose \( A \) and \( B \) have the same eigenvectors. \( A,B \) having \( n \)
+distinct eigenvectors implies that \( A,B \) are diagonalizable.
+\begin{align*}
+  P^{-1}AP = D_1 &\to A = PD_1P^{-1} \\
+  P^{-1}BP = D_2 &\to B = PD_2P^{-1} \\
+  AB &= (PD_1P^{-1})(PD_2P^{-1}) = PD_1D_2P^{-1} \\
+  BA &= (PD_1P^{-1})(PD_1P^{-1}) = PD_2D_1P^{-1}
+\end{align*}
+Since \( D_1,D_2 \) are diagonal: \( D_1D_2 = D_2D_1 \). Assume \( AB = BA \).
+Show that \( A \) and \( B \) have the same eigenvectors. Take \( \vec{v} \)
+as an eigenvector of \( A \).
+\[ A(B\vec{v}) = (AB)\vec{v} = B(A\vec{v}) = B(\lambda\vec{v}) =
+  \lambda(B\vec{v}) \]
+So \( B\vec{v} \) is an eigenvector of \( A \).
+\[ span(\vec{v}) = E_{\lambda} \]
+Since we know \( B\vec{v}\in span(\vec{v}) \) and \( B\vec{v} =
+\lambda_i\vec{v} \) for some \( \lambda_i \). So \( \vec{v} \) is an eigenvector
+of \( B \).
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
