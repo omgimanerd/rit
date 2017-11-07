@@ -1,0 +1,54 @@
+\documentclass{math}
+
+\title{Multivariable and Vector Calculus}
+\author{Alvin Lin}
+\date{August 2017 - December 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Line Integral}
+\[ \int_{C}f\diff{s} = \int_{a}^{b}f|v'(t)|\diff{t} \]
+\[ \int_{C}\vec{F}\diff{s} = \int_{C}(\vec{F}\cdot\vec{T})\diff{s} =
+  \int_{a}^{b}\vec{F}\cdot v'(t)\diff{t} \]
+Find the work done against gravity by a 160 pound man going 3 revolutions up a
+silo \( r = 20, h = 90 \), losing 9 pounds out of 25 pounds of paint as it leaks
+from the bucket he is carrying up the silo.
+\begin{align*}
+  \vec{r(t)} &= \langle20\cos(t),20\sin(t),\frac{15t}{\pi}\rangle \\
+  \vec{F} &= \langle0,0,-185+\frac{9t}{6\pi}\rangle \\
+  W &= \int_{C}\vec{F}\diff{r} \\
+  &= \int_{0}^{6\pi}\vec{F}\cdot\vec{r(t)}\diff{t} \\
+  &= \int_{0}^{6\pi}-185+\frac{9t}{6\pi}\diff{t}
+\end{align*}
+
+\subsection*{Fundamental Theorem for Line Integrals}
+\[ \int_{C_{AB}}\gradientd{f}\cdot\diff{r} = f(B)-f(A) \]
+Note:
+\begin{itemize}
+  \item If \( \vec{F} = \gradientd{f} \), then \( F \) is a conservative vector
+  field, and \( f \) is a potential function.
+  \item If \( \int_{C_{AB}^1}\gradientd{f}\diff{r} =
+  \int_{C_{AB}^2}\gradientd{f}\diff{r} \) for all paths \( A,B\in D \) and
+  for all curves \( C_{AB} \), then \( F \) is conservative in \( D \).
+  \item \( \int_{C_{AA}}\gradientd{f}\diff{r} = 0 \)
+  \item If \( F = \langle P(x,y),Q(x,y)\rangle \) and \( \pdiff{P}{y} =
+  \pdiff{Q}{x}, \pdiff{^2P}{y\diff{x}} = \pdiff{^2Q}{x\diff{y}} \) are
+  continuous, then \( F \) is conservative in \( D \).
+  \item \( D \) is open if and only if for every \( (x_0,y_0)\in D \) there
+  exist \( \epsilon>0 \) such that the distance of radius \( \epsilon \) and
+  \( (x_0,y_0)\in D \).
+  \item \( D \) is connected if and only if for every \( A,B\in D \) there exist
+  \( C_{AB}\subset D \).
+  \item \( D \) is simply connected if and only if it is connected and every
+  \( C_{AA}\subset D \) has interior \( C_{AA}\subset D \).
+\end{itemize}
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
