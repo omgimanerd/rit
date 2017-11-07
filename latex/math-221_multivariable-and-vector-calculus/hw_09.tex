@@ -13,22 +13,251 @@
 \section*{Section 15.7}
 
 \subsubsection*{Exercise 7}
+Identify the surface whose equation is given.
+\[ r^2+z^2 = 4 \]
+\[ x^2+y^2+z^2 = 4 \]
+A sphere centered at the origin with radius 2.
+
 \subsubsection*{Exercise 8}
+Identify the surface whose equation is given.
+\begin{align*}
+  r &= 2\sin\theta \\
+  r^2 &= 2r\sin\theta \\
+  x^2+y^2 &= 2y \\
+  x^2+y^2-2y &= 0 \\
+  x^2+y^2-2y+1 &= 1 \\
+  x^2+(y-1)^2 &= 1
+\end{align*}
+A cylinder with radius 1 centered at (0,1).
+
 \subsubsection*{Exercise 17}
+Use cylindrical coordinates to evaluate \( \iiint_{E}\sqrt{x^2+y^2}\diff{V} \)
+where \( E \) is the region that lies inside the cylinder \( x^2+y^2 = 16 \) and
+between the planes \( z = -5 \) and \( z = 4 \).
+\begin{align*}
+  \iiint_{E}\sqrt{x^2+y^2}\diff{V} &=
+    \int_{-5}^{4}\int_{0}^{4}\int_{0}^{2\pi}\sqrt{r^2}r
+    \diff{z}\diff{r}\diff{\theta} \\
+  &= \int_{-5}^{4}\int_{0}^{4}\bigg[zr^2\bigg]_{0}^{2\pi}
+    \diff{r}\diff{\theta} \\
+  &= \int_{-5}^{4}\int_{0}^{4}2\pi r^2\diff{r}\diff{\theta} \\
+  &= \int_{-5}^{4}\bigg[\frac{2\pi r^3}{3}\bigg]_{0}^{4}\diff{\theta} \\
+  &= \frac{2\pi}{3}\int_{-5}^{4}64\diff{\theta} \\
+  &= \frac{128\pi}{3}\bigg[\theta\bigg]_{-5}^{4} \\
+  &= \frac{128\pi(9)}{3} \\
+  &= 384\pi
+\end{align*}
+
 \subsubsection*{Exercise 21}
+Use cylindrical coordinates to evaluate \( \iiint_{E}x^2\diff{V} \) where
+\( E \) is the solid that lies within the cylinder \( x^2+y^2 = 1 \), above
+the plane \( z = 0 \) and below the cone \( z^2 = 4x^2+4y^2 \).
+\begin{align*}
+  \iiint_{E}x^2\diff{V} &=
+    \int_{0}^{2\pi}\int_{0}^{1}\int_{0}^{\sqrt{4r^2}}
+    r^2\sin^2(\theta)r\diff{z}\diff{r}\diff{\theta} \\
+  &= \int_{0}^{2\pi}\int_{0}^{1}\bigg[zr^3\cos^2\theta\bigg]_{0}^{2r}
+    \diff{r}\diff{\theta} \\
+  &= \int_{0}^{2\pi}\int_{0}^{1}2r^4\cos^2\theta\diff{r}\diff{\theta} \\
+  &= 2\int_{0}^{2\pi}\cos^2\theta\bigg[\frac{r^5}{5}\bigg]_{0}^{1}
+    \diff{\theta} \\
+  &= \frac{2}{5}\int_{0}^{2\pi}\frac{1+\cos(2\theta)}{2}\diff{\theta} \\
+  &= \frac{1}{5}\bigg[\theta+\frac{\sin(2\theta)}{2}\bigg]_{0}^{2\pi} \\
+  &= \frac{1}{2}\left(2\pi+\frac{\sin(4\pi)}{2}-0-\frac{\sin(0)}{2}\right) \\
+  &= \frac{2\pi}{5}
+\end{align*}
+
 \subsubsection*{Exercise 29}
+Evaluate the integral by changing to cylindrical coordinates.
+\begin{align*}
+  \int_{-2}^{2}\int_{-\sqrt{4-y^2}}^{\sqrt{4-y^2}}\int_{\sqrt{x^2+y^2}}^{2}
+    xz\diff{z}\diff{x}\diff{y} &= \int_{0}^{2\pi}\int_{0}^{2}\int_{r}^{2}
+    r\cos\theta zr\diff{z}\diff{r}\diff{\theta} \\
+  &= \int_{0}^{2\pi}\int_{0}^{2}r^2\cos\theta\bigg[z\bigg]_{r}^{2}
+    \diff{r}\diff{\theta} \\
+  &= \int_{0}^{2\pi}\cos\theta\int_{0}^{2}r^2(2-r)\diff{r}\diff{\theta} \\
+  &= \int_{0}^{2\pi}\cos\theta\int_{0}^{2}2r^2-r^3\diff{r}\diff{\theta} \\
+  &= \int_{0}^{2\pi}\cos\theta\bigg[\frac{2r^3}{3}-\frac{r^4}{4}\bigg]_{0}^{2}
+    \diff{\theta} \\
+  &= \int_{0}^{2\pi}\cos\theta\left(\frac{16}{3}-4\right)\diff{\theta} \\
+  &= \frac{4}{3}\bigg[-\sin\theta\bigg]_{0}^{2\pi} \\
+  &= \frac{4}{3}\bigg(-\sin(2\pi)+\sin(0)\bigg) \\
+  &= 0
+\end{align*}
 
 \section*{Section 15.8}
 
-\subsubsection*{Exericse 7}
-\subsubsection*{Exericse 13}
-\subsubsection*{Exericse 17}
-\subsubsection*{Exericse 21}
-\subsubsection*{Exericse 23}
-\subsubsection*{Exericse 25}
-\subsubsection*{Exericse 27}
-\subsubsection*{Exericse 29a}
-\subsubsection*{Exericse 35​}
+\subsubsection*{Exercise 7}
+Identify the surface whose equation is given.
+\[ \rho\cos\phi = 1 \]
+\[ z = 1 \]
+The plane \( z = 1 \).
+
+\subsubsection*{Exercise 13}
+Sketch the solid described by the given inequalities.
+\[ 2\le\rho\le4, 0\le\phi\le\frac{\pi}{3}, 0\le\theta\le\pi \]
+The region between half-spheres of radius of 2 and 4 contained between 0 and
+\( \frac{\pi}{3} \).
+
+\subsubsection*{Exercise 17}
+Sketch the solid whose volume is given by the integral and evaluate the
+integral. The slice of a quarter sphere of radius 3 contained between 0 and
+\( \frac{\pi}{6} \).
+\begin{align*}
+  \int_{0}^{\frac{\pi}{6}}\int_{0}^{\frac{\pi}{2}}\int_{0}^{3}
+    \rho^2\sin\phi\diff{\rho}\diff{\theta}\diff{\phi} &=
+    \int_{0}^{\frac{\pi}{6}}\sin\phi\int_{0}^{\frac{\pi}{2}}
+    \bigg[\frac{\rho^3}{3}\bigg]_{0}^{3}\diff{\theta}\diff{\phi} \\
+  &= 9\int_{0}^{\frac{\pi}{6}}\sin\phi\int_{0}^{\frac{\pi}{2}}
+    \diff{\theta}\diff{\phi} \\
+  &= 9\int_{0}^{\frac{\pi}{6}}\sin\phi\bigg[\theta\bigg]_{0}^{\frac{\pi}{2}}
+    \diff{\phi} \\
+  &= \frac{9\pi}{2}\int_{0}^{\frac{\pi}{6}}\sin\phi\diff{\phi} \\
+  &= \frac{9\pi}{2}\bigg[-\cos\phi\bigg]_{0}^{\frac{\pi}{6}} \\
+  &= \frac{9\pi}{2}\left(-\cos(\frac{\pi}{6})+\cos(0)\right) \\
+  &= \frac{9\pi}{2}\left(-\frac{\sqrt{3}}{2}+1\right) \\
+  &= \frac{18\pi-9\pi\sqrt{3}}{4}
+\end{align*}
+
+\subsubsection*{Exercise 21}
+Use spherical coordinates to evaluate \( \iiint_{B}(x^2+y^2+z^2)^2\diff{V} \)
+where \( B \) is the ball with center the origin and radius 5.
+\begin{align*}
+  \iiint_{B}(x^2+y^2+z^2)^2\diff{V} &=
+    \int_{0}^{\pi}\int_{0}^{2\pi}\int_{0}^{5}(\rho^2)^2\rho^2\sin\phi
+    \diff{\rho}\diff{\theta}\diff{\phi} \\
+  &= \int_{0}^{\pi}\sin\phi\int_{0}^{2\pi}
+    \bigg[\frac{\rho^7}{7}\bigg]_{0}^{5}\diff{\theta}\diff{\phi} \\
+  &= \frac{78125}{7}\int_{0}^{\pi}\sin\phi
+    \bigg[\theta\bigg]_{0}^{2\pi}\diff{\phi} \\
+  &= \frac{78125}{7}\int_{0}^{\pi}2\pi\sin\phi\diff{\phi} \\
+  &= \frac{2\pi(78125)}{7}\bigg[-\cos\phi\bigg]_{0}^{\pi} \\
+  &= \frac{2\pi(78125)}{7}\bigg(-\cos\pi+\cos(0)\bigg) \\
+  &= \frac{312500\pi}{7}
+\end{align*}
+
+\subsubsection*{Exercise 23}
+Use spherical coordinates to evaluate \( \iiint_{E}(x^2+y^2)\diff{V} \), where
+\( E \) lies between the spheres \( x^2+y^2+z^2 = 4 \) and
+\( x^2+y^2+z^2 = 9 \).
+\begin{align*}
+  \iiint_{E}(x^2+y^2)\diff{V} &= \int_{0}^{\pi}\int_{0}^{2\pi}\int_{2}^{3}
+    (\rho\sin\phi\cos\theta)^2+(\rho\sin\phi\sin\theta)^2\rho^2\sin\phi
+    \diff{\rho}\diff{\theta}\diff{\phi} \\
+  &= \int_{0}^{\pi}\int_{0}^{2\pi}\int_{2}^{3}
+    \rho^2\sin^2\phi(\cos^2\theta+\sin^2\theta)\rho^2\sin\phi
+    \diff{\rho}\diff{\theta}\diff{\phi} \\
+  &= \int_{0}^{\pi}\sin^3\phi\int_{0}^{2\pi}
+    \bigg[\frac{\rho^5}{5}\bigg]_{2}^{3}\diff{\theta}\diff{\phi} \\
+  &= \frac{211}{5}\int_{0}^{\pi}\sin^3\phi\int_{0}^{2\pi}
+    \diff{\theta}\diff{\phi} \\
+  &= \frac{422\pi}{5}\int_{0}^{\pi}\sin^3\phi\diff{\phi} \\
+  &= \frac{422\pi}{5}\int_{0}^{\pi}\sin\phi(1-\cos^2\phi)\diff{\phi} \\
+  &= \frac{422\pi}{5}\int_{0}^{\pi}\sin\phi-\sin\phi\cos^2\phi\diff{\phi} \\
+  &= \frac{422\pi}{5}\bigg[-\cos\phi+\frac{1}{3}\cos^3\phi\bigg]_{0}^{\pi} \\
+  &= \frac{422\pi}{5}
+    \bigg(-\cos\pi+\frac{1}{3}\cos^3\pi+\cos(0)-\frac{1}{3}\cos^3(0)\bigg) \\
+  &= \frac{422\pi}{5}\bigg(1-\frac{1}{3}+1-\frac{1}{3}\bigg) \\
+  &= \frac{422\pi}{5}\frac{4}{3} \\
+  &= \frac{1688\pi}{15}
+\end{align*}
+
+\subsubsection*{Exercise 25}
+Use spherical coordinates to evaluate \( \iiint_{E}x\e^{x^2+y^2+z^2}\diff{V} \),
+where \( E \) is the portion of the unit ball \( x^2+y^2+z^2\le1 \) that lies in
+the first octant.
+\begin{align*}
+  \iiint_{E}x\e^{x^2+y^2+z^2}\diff{V} &=
+    \int_{0}^{\frac{\pi}{2}}\int_{0}^{\frac{\pi}{2}}\int_{0}^{1}
+    \rho\sin\phi\cos\theta\e^{\rho^2}\rho^2\sin\phi
+    \diff{\rho}\diff{\theta}\diff{\phi} \\
+  &= \int_{0}^{\frac{\pi}{2}}\sin^2\phi\int_{0}^{\frac{\pi}{2}}\cos\theta
+    \int_{0}^{1}\rho^3\e^{\rho^2}\diff{\rho}\diff{\theta}\diff{\phi} \\
+  &= \frac{1}{2}\int_{0}^{\frac{\pi}{2}}\sin^2\phi
+    \int_{0}^{\frac{\pi}{2}}\cos\theta
+    \bigg[\e^{x^2}x^2-\e^{x^2}\bigg]_{0}^{1}\diff{\theta}\diff{\phi} \\
+  &= \frac{1}{2}\int_{0}^{\frac{\pi}{2}}\sin^2\phi
+    \int_{0}^{\frac{\pi}{2}}\cos\theta(\e-\e+1)\diff{\theta}\diff{\phi} \\
+  &= \frac{1}{2}\int_{0}^{\frac{\pi}{2}}\sin^2\phi
+    \bigg[\sin\theta\bigg]_{0}^{\frac{\pi}{2}}\diff{\phi} \\
+  &= \frac{1}{2}\int_{0}^{\frac{\pi}{2}}\sin^2\phi\diff{\phi} \\
+  &= \frac{1}{4}\int_{0}^{\frac{\pi}{2}}\phi\diff{\phi} \\
+\end{align*}
+
+\subsubsection*{Exercise 27}
+Use spherical coordinates to find the volume of the part of the ball \( \rho\le
+a \) that lies between the cones \( \phi = \frac{\pi}{6} \) and \( \phi =
+\frac{\pi}{3} \).
+\begin{align*}
+  \int_{\frac{\pi}{6}}^{\frac{\pi}{3}}\int_{0}^{2\pi}\int_{0}^{a}\rho^2\sin\phi
+    \diff{\rho}\diff{\theta}\diff{\phi} &=
+    \int_{\frac{\pi}{6}}^{\frac{\pi}{3}}\sin\phi\int_{0}^{2\pi}
+    \int_{0}^{a}\rho^2\diff{\rho}\diff{\theta}\diff{\phi} \\
+  &= \int_{\frac{\pi}{6}}^{\frac{\pi}{3}}\sin\phi\int_{0}^{2\pi}
+    \bigg[\frac{\rho^3}{3}\bigg]_{0}^{a}\diff{\theta}\diff{\phi} \\
+  &= \frac{a^3}{3}\int_{\frac{\pi}{6}}^{\frac{\pi}{3}}\sin\phi\int_{0}^{2\pi}
+    \diff{\theta}\diff{\phi} \\
+  &= \frac{2\pi a^3}{3}
+    \int_{\frac{\pi}{6}}^{\frac{\pi}{3}}\sin\phi\diff{\phi} \\
+  &= \frac{2\pi a^3}{3}\bigg[-\cos\phi\bigg]_{\frac{\pi}{6}}^{\frac{\pi}{3}} \\
+  &= \frac{\pi a^3\sqrt{3}-\pi a^3}{3}
+\end{align*}
+
+\subsubsection*{Exercise 29a}
+Use spherical coordinates to find the volume of the solid that lies above the
+cone \( \phi = \frac{\pi}{3} \) and below the sphere \( \rho = 4\cos\phi \).
+\begin{align*}
+  \int_{0}^{\frac{\pi}{3}}\int_{0}^{2\pi}\int_{0}^{4\cos\phi}\rho^2\sin\phi
+    \diff{\rho}\diff{\theta}\diff{\phi} &=
+    \int_{0}^{\frac{\pi}{3}}\sin\phi\int_{0}^{2\pi}
+    \bigg[\frac{\rho^{3}}{3}\bigg]_{0}^{4\cos\phi}
+    \diff{\theta}\diff{\phi} \\
+  &= \frac{64}{3}\int_{0}^{\frac{\pi}{3}}\sin\phi\cos^3\phi\int_{0}^{2\pi}
+    \diff{\theta}\diff{\phi} \\
+  &= \frac{128\pi}{3}\int_{0}^{\frac{\pi}{3}}\sin\phi\cos^3\phi\diff{\phi} \\
+  &= \frac{128\pi}{3}\bigg[-\frac{\cos^4\phi}{4}\bigg]_{0}^{\frac{\pi}{3}} \\
+  &= \frac{32\pi}{3}\bigg(-\cos^4\frac{\pi}{3}+\cos^4(0)\bigg) \\
+  &= \frac{32\pi}{3}\bigg(\frac{15}{16}\bigg) \\
+  &= 10\pi
+\end{align*}
+
+\subsubsection*{Exercise 35​}
+Use cylindrical or spherical coordinates, whichever seems more appropriate, to
+find the volume and centroid of the solid \( E \) that lies above the cone
+\( z = \sqrt{x^2+y^2} \) and below the sphere \( x^2+y^2+z^2 = 1 \).
+\begin{align*}
+  V &= \iiint_{E}\diff{V} \\
+  &= \int_{0}^{\frac{\pi}{4}}\int_{0}^{2\pi}\int_{0}^{1}\rho^2\sin\phi
+    \diff{\rho}\diff{\theta}\diff{\phi} \\
+  &= \int_{0}^{\frac{\pi}{4}}\sin\phi\int_{0}^{2\pi}
+    \bigg[\frac{\rho^3}{3}\bigg]_{0}^{1}\diff{\theta}\diff{\phi} \\
+  &= \frac{1}{3}\int_{0}^{\frac{\pi}{4}}\sin\phi\int_{0}^{2\pi}
+    \diff{\theta}\diff{\phi} \\
+  &= \frac{2\pi}{3}\int_{0}^{\frac{\pi}{4}}\sin\phi\diff{\phi} \\
+  &= \frac{2\pi}{3}\bigg[-\cos\phi\bigg]_{0}^{\frac{\pi}{4}} \\
+  &= \frac{2\pi-\sqrt{2}\pi}{3}
+\end{align*}
+This solid is symmetrical about x and y.
+\begin{align*}
+  centroid_z &= \frac{1}{V}\iiint_{E}z\diff{V} \\
+  &= \frac{3}{2\pi-\sqrt{2}\pi}\int_{0}^{\frac{\pi}{4}}\int_{0}^{2\pi}
+    \int_{0}^{1}\rho\cos\phi\rho^2\sin\phi\diff{\rho}\diff{\theta}\diff{\phi} \\
+  &= \frac{3}{2\pi-\sqrt{2}\pi}\int_{0}^{\frac{\pi}{4}}\cos\phi\sin\phi
+    \int_{0}^{2\pi}\bigg[\frac{\rho^4}{4}\bigg]_{0}^{1}
+    \diff{\theta}\diff{\phi} \\
+  &= \frac{3}{8(2\pi-\sqrt{2}\pi)}\int_{0}^{\frac{\pi}{4}}\cos\phi\sin\phi
+    \int_{0}^{2\pi}\diff{\theta}\diff{\phi} \\
+  &= \frac{6}{8(2-\sqrt{2})}\int_{0}^{\frac{\pi}{4}}\cos\phi\sin\phi
+    \diff{\phi} \\
+  &= \frac{6}{8(2-\sqrt{2})}\int_{0}^{\frac{\pi}{4}}\frac{\sin2\phi}{2}
+    \diff{\phi} \\
+  &= \frac{3}{16(2-\sqrt{2})}
+    \bigg[-\cos2\phi\bigg]_{0}^{\frac{\pi}{4}} \\
+  &= \frac{3}{16(2-\sqrt{2})}\bigg(-\cos\frac{\pi}{2}+\cos(0)\bigg) \\
+  &= \frac{3}{16(2-\sqrt{2})}(2) \\
+  &= \frac{3}{8(2-\sqrt{2})} \\
+\end{align*}
+Centroid: \( (0,0,\frac{3}{16-8\sqrt{2}}) \)
 
 \begin{center}
   If you have any questions, comments, or concerns, please contact me at
