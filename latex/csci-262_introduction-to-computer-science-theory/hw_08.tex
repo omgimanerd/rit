@@ -22,10 +22,13 @@ pumping lemma. (5 points each). All strings are over \( \{a,b\} \).
   \( |s|\ge p \) there exist \( x,y,z \) such that \( s = xyz, |xy|\le p, |y|>0
   \), and \( \forall{i}\ge0(xy^iz\in L) \). \par
   Let \( s = ab^{2p+1}a \). Let \( x,y,z \) be such that
-  \( s = xyz, |xy|\le p, |y|>0 \) and for all \( i\ge0, xy^iz\in L \). \par
+  \( s = xyz, |xy|\le p, |y|>0 \) and for all \( i\ge0, xy^iz\in L \). Since
+  \( |xy|\le p \), the string \( y \) must consist of one or more \( b \)'s.
+  \par
   Let \( i = 2 \). By the pumping lemma, \( xy^2z\in L \). But \( xy^2z =
-  ab^{4p+2}a \notin L\). This is a contradiction and thus \( L \) is not
-  regular. Choosing \( y \) for any other string also fails similarly.
+  ab^{2p+1-c}b^{2c}a \) for all \( c>0 \). Since this can result in even length
+  strings which are clearly not in the language \( L \), this results in a
+  contradiction and thus the language \( L \) is not regular.
 
   \item The set of all strings of the form \( xyz \), where \( |y|>0 \).
   (\( x \),\( y \), and \( z \) may be different characters for each string).
@@ -39,10 +42,15 @@ pumping lemma. (5 points each). All strings are over \( \{a,b\} \).
   \( |s|\ge p \) there exist \( x,y,z \) such that \( s = xyz, |xy|\le p, |y|>0
   \), and \( \forall{i}\ge0(xy^iz\in L) \). \par
   Let \( s = a^pb^{kp} \). Let \( x,y,z \) be such that
-  \( s = xyz, |xy|\le p, |y|>0 \) and for all \( i\ge0, xy^iz\in L \). \par
+  \( s = xyz, |xy|\le p, |y|>0 \) and for all \( i\ge0, xy^iz\in L \). Since
+  \( |xy|\le p \), the string \( xy \) must consist of all \( a \)'s, and thus
+  the string \( y \) must consist of all \( a \)'s.
+  \par
   Let \( i = 2 \). By the pumping lemma, \( xy^2z\in L \). But \( xy^2z =
-  a^pb^{2kp} \notin L\). This is a contradiction and thus \( L \) is not
-  regular. Choosing \( y \) for any other string also fails similarly.
+  a^{p-c}a^{2c}b^{2kp} \) where \( 0<c\le p \). In order for \( xy^2z\in L \) to
+  be true, \( p-c+2c = 2kp \) must be true for all \( c \) such that
+  \( 0<c\le p \). It follows that \( xy^2z\notin L \). This is a contradiction,
+  thus \( L \) is not a regular language.
 
   \item The set of all strings where the number of \( a \)'s is a power of 2.
   Let this language be \( L \) and assume that it is regular. By the pumping
@@ -50,10 +58,12 @@ pumping lemma. (5 points each). All strings are over \( \{a,b\} \).
   \( |s|\ge p \) there exist \( x,y,z \) such that \( s = xyz, |xy|\le p, |y|>0
   \), and \( \forall{i}\ge0(xy^iz\in L) \). \par
   Let \( s = a^{2^p} \). Let \( x,y,z \) be such that
-  \( s = xyz, |xy|\le p, |y|>0 \) and for all \( i\ge0, xy^iz\in L \). \par
-  Let \( i = 2 \). By the pumping lemma, \( xy^2z\in L \). Since \( |y|>0 \),
-  \( |xy^2z|>2^p \). \( |xy^2z|\ge 2^{p+1} \), which is a contradiction since
-  we know \( |xy|\le p \). Therefore, \( L \) is not a regular language.
+  \( s = xyz, |xy|\le p, |y|>0 \) and for all \( i\ge0, xy^iz\in L \). It
+  follows that the string \( y \) must consist of all \( a \)'s. \par
+  Let \( i = 2 \). By the pumping lemma, \( xy^2z\in L \). Since \( |y|>0 \) and
+  \( |xy^2z|>2^p \), it follows that \( |xy^2z| = 2^p+c \) where \( 0<c\le p \).
+  By the definition of \( L \), \( xy^2z\notin L \). This is a contradiction,
+  therefore the language \( L \) is not a regular language.
 
   \item The set of all strings with exactly 2 more \( a \)'s than \( b \)'s.
   Let this language be \( L \) and assume that it is regular. By the pumping
@@ -61,10 +71,13 @@ pumping lemma. (5 points each). All strings are over \( \{a,b\} \).
   \( |s|\ge p \) there exist \( x,y,z \) such that \( s = xyz, |xy|\le p, |y|>0
   \), and \( \forall{i}\ge0(xy^iz\in L) \). \par
   Let \( s = a^{p+2}b^{p} \). Let \( x,y,z \) be such that
-  \( s = xyz, |xy|\le p, |y|>0 \) and for all \( i\ge0, xy^iz\in L \). \par
+  \( s = xyz, |xy|\le p, |y|>0 \) and for all \( i\ge0, xy^iz\in L \). Since
+  \( |y|>0 \) and \( |xy|\le p \), it follows that \( xy \) must be a string of
+  all \( a \)'s and thus \( y \) is a string of only \( a \)'s. \par
   Let \( i = 2 \). By the pumping lemma, \( xy^2z\in L \). But \( xy^2z =
-  a^{2p+4}b^{p} \notin L\). This is a contradiction and thus \( L \) is not
-  regular. Choosing \( y \) for any other string also fails similarly.
+  a^{2+p-c}a^{2c}b^{p} = a^{2+p+c}b^{p} \) where \( 0<c\le p \). By the
+  definition of \( L \), \( xy^2z\notin L \). This is a contradiction and thus
+  the language \( L \) is not a regular language.
 \end{itemize}
 
 \begin{center}
