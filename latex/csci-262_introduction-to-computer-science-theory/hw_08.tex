@@ -20,18 +20,51 @@ pumping lemma. (5 points each). All strings are over \( \{a,b\} \).
   Let this language be \( L \) and assume that it is regular. By the pumping
   lemma, there exists \( p\in\N \) such that for all \( s\in L \) such that
   \( |s|\ge p \) there exist \( x,y,z \) such that \( s = xyz, |xy|\le p, |y|>0
-  \), and \( \forall{i}\ge0(xy^iz\le L) \). \par
-  Let \( s = a^pb^{2p+1}a^p \). Let \( x,y,z \) be such that
+  \), and \( \forall{i}\ge0(xy^iz\in L) \). \par
+  Let \( s = ab^{2p+1}a \). Let \( x,y,z \) be such that
   \( s = xyz, |xy|\le p, |y|>0 \) and for all \( i\ge0, xy^iz\in L \). \par
   Let \( i = 2 \). By the pumping lemma, \( xy^2z\in L \). But \( xy^2z =
-  abba \). This is a contradiction and thus \( L \) is not regular.
+  ab^{4p+2}a \notin L\). This is a contradiction and thus \( L \) is not
+  regular. Choosing \( y \) for any other string also fails similarly.
+
   \item The set of all strings of the form \( xyz \), where \( |y|>0 \).
   (\( x \),\( y \), and \( z \) may be different characters for each string).
-  \[ (a\cup b)^*(a\cup b)^+(a\cup b)^* \]
+  \[ (a\cup b)^+ \]
+  This language is regular.
+
   \item The set of all strings where the number of \( a \)'s is divisible by
   the number of \( b \)'s.
+  Let this language be \( L \) and assume that it is regular. By the pumping
+  lemma, there exists \( p\in\N \) such that for all \( s\in L \) such that
+  \( |s|\ge p \) there exist \( x,y,z \) such that \( s = xyz, |xy|\le p, |y|>0
+  \), and \( \forall{i}\ge0(xy^iz\in L) \). \par
+  Let \( s = a^pb^{kp} \). Let \( x,y,z \) be such that
+  \( s = xyz, |xy|\le p, |y|>0 \) and for all \( i\ge0, xy^iz\in L \). \par
+  Let \( i = 2 \). By the pumping lemma, \( xy^2z\in L \). But \( xy^2z =
+  a^pb^{2kp} \notin L\). This is a contradiction and thus \( L \) is not
+  regular. Choosing \( y \) for any other string also fails similarly.
+
   \item The set of all strings where the number of \( a \)'s is a power of 2.
+  Let this language be \( L \) and assume that it is regular. By the pumping
+  lemma, there exists \( p\in\N \) such that for all \( s\in L \) such that
+  \( |s|\ge p \) there exist \( x,y,z \) such that \( s = xyz, |xy|\le p, |y|>0
+  \), and \( \forall{i}\ge0(xy^iz\in L) \). \par
+  Let \( s = a^{2^p} \). Let \( x,y,z \) be such that
+  \( s = xyz, |xy|\le p, |y|>0 \) and for all \( i\ge0, xy^iz\in L \). \par
+  Let \( i = 2 \). By the pumping lemma, \( xy^2z\in L \). Since \( |y|>0 \),
+  \( |xy^2z|>2^p \). \( |xy^2z|\ge 2^{p+1} \), which is a contradiction since
+  we know \( |xy|\le p \). Therefore, \( L \) is not a regular language.
+
   \item The set of all strings with exactly 2 more \( a \)'s than \( b \)'s.
+  Let this language be \( L \) and assume that it is regular. By the pumping
+  lemma, there exists \( p\in\N \) such that for all \( s\in L \) such that
+  \( |s|\ge p \) there exist \( x,y,z \) such that \( s = xyz, |xy|\le p, |y|>0
+  \), and \( \forall{i}\ge0(xy^iz\in L) \). \par
+  Let \( s = a^{p+2}b^{p} \). Let \( x,y,z \) be such that
+  \( s = xyz, |xy|\le p, |y|>0 \) and for all \( i\ge0, xy^iz\in L \). \par
+  Let \( i = 2 \). By the pumping lemma, \( xy^2z\in L \). But \( xy^2z =
+  a^{2p+4}b^{p} \notin L\). This is a contradiction and thus \( L \) is not
+  regular. Choosing \( y \) for any other string also fails similarly.
 \end{itemize}
 
 \begin{center}
