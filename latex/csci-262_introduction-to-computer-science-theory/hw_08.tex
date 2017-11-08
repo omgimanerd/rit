@@ -1,0 +1,42 @@
+\documentclass{math}
+
+\usepackage{graphicx}
+
+\title{Intro to Computer Science Theory: Homework 8}
+\author{Alvin Lin and Joshua Cotton}
+\date{August 2017 - December 2017}
+
+\begin{document}
+
+\maketitle
+
+For each of the following problems, determine if the language is regular or
+not. If it is regular, provide an FA (state transition diagram), NFA (state
+transition diagram), or RE for it. If it is not regular, prove it via the
+pumping lemma. (5 points each). All strings are over \( \{a,b\} \).
+\begin{itemize}
+  \item The set of all strings of odd length where the middle character is b.
+  \par
+  Let this language be \( L \) and assume that it is regular. By the pumping
+  lemma, there exists \( p\in\N \) such that for all \( s\in L \) such that
+  \( |s|\ge p \) there exist \( x,y,z \) such that \( s = xyz, |xy|\le p, |y|>0
+  \), and \( \forall{i}\ge0(xy^iz\le L) \). \par
+  Let \( s = a^pb^{2p+1}a^p \). Let \( x,y,z \) be such that
+  \( s = xyz, |xy|\le p, |y|>0 \) and for all \( i\ge0, xy^iz\in L \). \par
+  Let \( i = 2 \). By the pumping lemma, \( xy^2z\in L \). But \( xy^2z =
+  abba \). This is a contradiction and thus \( L \) is not regular.
+  \item The set of all strings of the form \( xyz \), where \( |y|>0 \).
+  (\( x \),\( y \), and \( z \) may be different characters for each string).
+  \[ (a\cup b)^*(a\cup b)^+(a\cup b)^* \]
+  \item The set of all strings where the number of \( a \)'s is divisible by
+  the number of \( b \)'s.
+  \item The set of all strings where the number of \( a \)'s is a power of 2.
+  \item The set of all strings with exactly 2 more \( a \)'s than \( b \)'s.
+\end{itemize}
+
+\begin{center}
+  If you have any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
