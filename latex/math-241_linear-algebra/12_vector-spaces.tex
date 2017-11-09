@@ -1,0 +1,109 @@
+\documentclass{math}
+
+\title{Linear Algebra}
+\author{Alvin Lin}
+\date{August 2017 - December 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Vector Spaces}
+\textbf{Definition:} Let \( V \) be a set with 2 operations called addition or
+multiplication. If \( \vec{u},\vec{v}\in V \), denote their sum by \( \vec{u}+
+\vec{v} \). If \( c \) is a scalar, the \textbf{scalar multiple} of
+\( \vec{u} \) by \( c \) is denoted \( c\vec{u} \). If the following axioms
+hold for all \( \vec{u},\vec{v},\vec{w}\in V \) and for all scalars \( c,d \),
+then \( V \) is called a \textbf{vector space} and its elements are vectors.
+\begin{enumerate}
+  \item \( \vec{u}+\vec{v}\in V \) (Closure under addition)
+  \item \( \vec{u}+\vec{v} = \vec{v}+\vec{u} \)
+  \item \( (\vec{u}+\vec{v})+\vec{w} = \vec{u}+(\vec{v}+\vec{w}) \)
+  \item These exists and element \( \vec{0} \), called the zero vector such that
+  \( \vec{u}+\vec{0} = \vec{u} \).
+  \item For each vector \( \vec{u}\in V \), there exists \( -\vec{u}\in V \)
+  such that \( \vec{u}+(-\vec{u}) = \vec{0} \).
+  \item \( c\vec{u}\in V \) (Closure under scalar multiplication)
+  \item \( c(\vec{u}+\vec{v}) = c\vec{u}+c\vec{v} \)
+  \item \( (c+d)\vec{u} = c\vec{u}+d\vec{u} \)
+  \item \( c(d\vec{u}) = (cd)\vec{u} \)
+  \item \( 1\vec{u} = \vec{u} \)
+\end{enumerate}
+The scalars \( c,d \) will be taken from a field \( F \). Usually \( F = \R~or~
+\mathbb{C} \). If \( F = \R \), we say \( V \) is a real vector space. If
+\( F = \mathbb{C} \), we say \( V \) is a complex vector space.
+
+\subsubsection*{Examples of Vector Spaces}
+\begin{enumerate}
+  \item \( \R^n \)
+  \item \( M_{mn} \), the set of all \( m\times n \) matrices.
+  \item Consider the set \( P_2 = \{a_0+a_1x+a_2x^2\mid a_i\in\R\} \) is a
+  vector space where the zero polynomial is the zero vector.
+  \item Consider \( P_n = \{a_0+a_1x+\dots+a_nx^n\mid a_i\in\R\} \) is a
+  vector space.
+  \item \( P \) the set of all polynomials.
+  \item \( F = \{f:\R\to\R\} \)
+  \begin{itemize}
+    \item \( (f+g)(x) = f(x)+g(x) \)
+    \item \( (cf)(x) = c(f(x)) \)
+  \end{itemize}
+  \item \( F[a,b] = \{f:[a,b]\to\R\} \)
+\end{enumerate}
+The set of integers \( \Z \) is not a vector space since it is not closed under
+multiplication. The set of complex numbers \( \mathbb{C} \) is a complex vector
+space. \( \mathbb{C}^n \) is also a complex vector space.
+
+\subsection*{Theorem}
+Let \( V \) be a vector space with \( \vec{u}\in V \) and \( c \) a scalar.
+\begin{enumerate}
+  \item \( 0\vec{u} = \vec{0} \)
+  \item \( c\vec{0} = \vec{0} \)
+  \item \( (-1)\vec{u} = -\vec{u} \)
+  \item \( c\vec{u} = \vec{0}\to c = 0~or~\vec{u}=\vec{0} \)
+\end{enumerate}
+
+\subsection*{Subspaces of \( V \)}
+Let \( V \) be a vector space. A subset \( W\subseteq V \) is a subspace if:
+\begin{enumerate}
+  \item \( \vec{0}\in W \)
+  \item \( \vec{u},\vec{u}\in W\to \vec{u}+\vec{v}\in W \)
+  \item If \( \vec{u}\in W \), then \( c\vec{u}\in W \)
+\end{enumerate}
+
+\subsubsection*{Example}
+Let \( W \) be the subset of \( M_{nn} \) that are symmetric. Verify that
+\( W \) is a subspace.
+\begin{enumerate}
+  \item Is \( \vec{0}\in W \)?
+  \[ 0^T = 0 \]
+  \item Let \( A,B\in W \).
+  \[ (A+B)^T = A^T+B^T = A+B\in W \]
+  \item Let \( A\in W \)
+  \[ (cA)^T = ca^T = cA\in W \]
+\end{enumerate}
+
+\subsubsection*{Example}
+Let \( C \) be the set of continuous functions and let \( D \) be the set of
+differentiable functions. Verify that \( C \) is a subspace.
+\begin{enumerate}
+  \item \( \vec{0}\in C \)
+  \item Let \( f,g\in C \). Then \( (f+g)\in C \) by the limit laws.
+  \item Let \( f\in C \).
+  \[ (cf)\in C \]
+\end{enumerate}
+Verify that \( D \) is a subspace.
+\begin{enumerate}
+  \item \( \vec{0}\in D \)
+  \item Let \( f,g\in D \)
+  \[ (f+g)' = f'+g'\in D \]
+  \item Let \( f\in D \).
+  \[ (cf)' = cf'\in D \]
+\end{enumerate}
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}

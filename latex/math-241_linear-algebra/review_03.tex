@@ -11,6 +11,33 @@
 \maketitle
 
 \section*{Review 3}
+Test Topics:
+\begin{enumerate}
+  \item Use Cramer's Rule to solve a \( 2\times2 \) or \( 3\times3 \) linear
+  system.
+  \[ x_i = \frac{|A_i(\vec{b})|}{|A|} \]
+  \item Similar to \#45,46 from Section 4.2
+  \item Similar to Section 4.2: \#47-52
+  \item Similar to one or more exercises from Section 4.2: \#53-56, 65, 66
+  \item Similar to the following from Section 4.4: \#36, 37, 42-51, 52a
+\end{enumerate}
+
+\subsubsection*{Example}
+Solve the system:
+\begin{align*}
+  2x-y &= 5 \\
+  x+3y &= -1
+\end{align*}
+\begin{align*}
+  A &= \begin{bmatrix}2 & -1 \\ 1 & 3\end{bmatrix} \quad
+  \vec{b} = \begin{bmatrix}5 \\ -1\end{bmatrix} \\
+  |A_1(\vec{b})| &= \begin{vmatrix}5 & -1 \\ -1 & 3\end{vmatrix} = 14 \\
+  |A_2(\vec{b})| &= \begin{vmatrix}2 & 5 \\ 1 & -1\end{vmatrix} = -7 \\
+  |A| &= 6 \\
+  x_1 &= \frac{14}{7} = 2 \\
+  x_2 &= \frac{-7}{7} = -1 \\
+  \vec{x} &= \begin{bmatrix}2 \\ -1\end{bmatrix}
+\end{align*}
 
 \subsubsection*{Example}
 If \( A \) and \( B \) are invertible matrices, show \( AB \) and \( BA \) are
