@@ -1,0 +1,650 @@
+\documentclass{math}
+
+\usepackage{enumerate}
+
+\geometry{letterpaper, margin=0.5in}
+
+\title{Linear Algebra: Homework 8}
+\author{Alvin Lin}
+\date{August 2016 - December 2016}
+
+\begin{document}
+
+\maketitle
+
+\section*{Section 4.1}
+
+\subsubsection*{Exercise 1}
+Show that \( \vec{v} \) is an eigenvector of \( A \) and find the corresponding
+eigenvalue.
+\begin{align*}
+  A &= \begin{bmatrix}0 & 3 \\ 3 & 0\end{bmatrix} \\
+  \vec{v} &= \begin{bmatrix}1 \\ 1\end{bmatrix} \\
+  A\vec{v} &= \begin{bmatrix}3 \\ 3\end{bmatrix} \\
+  &= 3\vec{v} \\
+  \lambda &= 3
+\end{align*}
+
+\subsubsection*{Exercise 3}
+Show that \( \vec{v} \) is an eigenvector of \( A \) and find the corresponding
+eigenvalue.
+\begin{align*}
+  A &= \begin{bmatrix}-1 & 1 \\ 6 & 0\end{bmatrix} \\
+  \vec{v} &= \begin{bmatrix}1 \\ -2\end{bmatrix} \\
+  A\vec{v} &= \begin{bmatrix}-3 \\ 6\end{bmatrix} \\
+  &= -3\vec{v} \\
+  \lambda &= -3
+\end{align*}
+
+\subsubsection*{Exercise 5}
+Show that \( \vec{v} \) is an eigenvector of \( A \) and find the corresponding
+eigenvalue.
+\begin{align*}
+  A &= \begin{bmatrix}
+    3 & 0 & 0 \\
+    0 & 1 & -2 \\
+    1 & 0 & 1
+  \end{bmatrix} \\
+  \vec{v} &= \begin{bmatrix}2 \\ -1 \\ 1\end{bmatrix} \\
+  A\vec{v} &= \begin{bmatrix}6 \\ -3 \\ 3\end{bmatrix} \\
+  &= 3\vec{v} \\
+  \lambda &= 3
+\end{align*}
+
+\subsubsection*{Exercise 7}
+Show that \( \lambda \) is an eigenvalue of \( A \) and find one eigenvector
+corresponding to this eigenvalue.
+\begin{align*}
+  A &= \begin{bmatrix}2 & 2 \\ 2 & -1\end{bmatrix} \\
+  \lambda &= 3 \\
+  A-\lambda I &= \begin{bmatrix}-1 & 2 \\ 2 & -4\end{bmatrix} \\
+  \left[\begin{array}{cc|c}
+    -1 & 2 & 0 \\
+    2 & -4 & 0
+  \end{array}\right] &= \begin{bmatrix}
+    -1 & 2 & 0 \\
+    0 & 0 & 0
+  \end{bmatrix} \\
+  x_1 &= 2x_2 \\
+  \vec{x} &= span\left(\begin{bmatrix}2 \\ 1\end{bmatrix}\right)
+\end{align*}
+One possible eigenvector is \( \begin{bmatrix}2 \\ 1\end{bmatrix} \).
+
+\subsubsection*{Exercise 9}
+Show that \( \lambda \) is an eigenvalue of \( A \) and find one eigenvector
+corresponding to this eigenvalue.
+\begin{align*}
+  A &= \begin{bmatrix}0 & 4 \\ -1 & 5\end{bmatrix} \\
+  \lambda &= 1 \\
+  A-\lambda I &= \begin{bmatrix}-1 & 4 \\ -1 & 4\end{bmatrix} \\
+  \left[\begin{array}{cc|c}
+    -1 & 4 & 0 \\
+    -1 & 4 & 0
+  \end{array}\right] &= \begin{bmatrix}
+    -1 & 4 & 0 \\
+    0 & 0 & 0
+  \end{bmatrix} \\
+  4x_2 &= x_1 \\
+  \vec{x} &= span\left(\begin{bmatrix}4 \\ 1\end{bmatrix}\right)
+\end{align*}
+One possible eigenvector is \( \begin{bmatrix}4 \\ 1\end{bmatrix} \).
+
+\subsubsection*{Exercise 11}
+Show that \( \lambda \) is an eigenvalue of \( A \) and find one eigenvector
+corresponding to this eigenvalue.
+\begin{align*}
+  A &= \begin{bmatrix}
+    1 & 0 & 2 \\
+    -1 & 1 & 1 \\
+    2 & 0 & 1
+  \end{bmatrix} \\
+  \lambda &= -1 \\
+  A-\lambda I &= \begin{bmatrix}
+    2 & 0 & 2 \\
+    -1 & 2 & 1 \\
+    2 & 0 & 2
+  \end{bmatrix} \\
+  \left[\begin{array}{ccc|c}
+    2 & 0 & 2 & 0 \\
+    -1 & 2 & 1 & 0 \\
+    2 & 0 & 2 & 0
+  \end{array}\right] &= \begin{bmatrix}
+    1 & 0 & 1 & 0 \\
+    0 & 2 & 2 & 0 \\
+    0 & 0 & 0 & 0
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    1 & 0 & 1 & 0 \\
+    0 & 1 & 1 & 0 \\
+    0 & 0 & 0 & 0
+  \end{bmatrix} \\
+  x_1 &= -x_3 = x_2 \\
+  \vec{x} &= span\left(\begin{bmatrix}1 \\ 1 \\ -1\end{bmatrix}\right)
+\end{align*}
+One possible eigenvector is \( \begin{bmatrix}1 \\ 1 \\ -1\end{bmatrix} \).
+
+\subsubsection*{Exercise 27}
+Find all of the eigenvalues of the matrix \( A \) over the complex numbers
+\( \mathbb{C} \). Give bases for each of the corresponding eigenspaces.
+\begin{align*}
+  A &= \begin{bmatrix}1 & 1 \\ -1 & 1\end{bmatrix} \\
+  |A-\lambda I| &= \begin{vmatrix}
+    1-\lambda & 1 \\
+    -1 & 1-\lambda
+  \end{vmatrix} \\
+  &= (1-\lambda)(1-\lambda)+1 \\
+  &= 1-2\lambda+\lambda^2+1 \\
+  &= \lambda^2-2\lambda+2 \\
+  \lambda &= \frac{2\pm\sqrt{4-8}}{2} \\
+  &= 1\pm i \\
+\end{align*}
+\begin{align*}
+  A-(1+i)I &= \begin{bmatrix} -i & 1 \\ -1 & i \end{bmatrix} \\
+  \left[\begin{array}{cc|c}
+    -i & 1 & 0 \\
+    -1 & -i & 0
+  \end{array}\right] &= \begin{bmatrix}
+    -i & 1 & 0 \\
+    -i & 1 & 0
+  \end{bmatrix} \\
+  x_2 &= ix_1 \\
+  E_{1+i} &= span\left(\begin{bmatrix}i \\ 1\end{bmatrix}\right) \\
+  A-(1-i)I &= \begin{bmatrix} i & 1 \\ -1 & i \end{bmatrix} \\
+  \left[\begin{array}{cc|c}
+    i & 1 & 0 \\
+    -1 & i & 0
+  \end{array}\right] &= \begin{bmatrix}
+    i & 1 & 0 \\
+    -i & -1 & 0
+  \end{bmatrix} \\
+  ix_1 &= -1x_2 \\
+  E_{1-i} &= span\left(\begin{bmatrix}-i \\ 1\end{bmatrix}\right)
+\end{align*}
+
+\subsubsection*{Exercise 29}
+Find all of the eigenvalues of the matrix \( A \) over the complex numbers
+\( \mathbb{C} \). Give bases for each of the corresponding eigenspaces.
+\begin{align*}
+  A &= \begin{bmatrix}1 & i \\ i & 1\end{bmatrix} \\
+  |A-\lambda I| &= \begin{vmatrix}
+    1-\lambda & i \\
+    i & 1-\lambda
+  \end{vmatrix} \\
+  &= (1-\lambda)^2-(-1) \\
+  &= 1-2\lambda+\lambda^2+1 \\
+  \lambda &= 1\pm i \\
+  A-(1+i)I &= \begin{bmatrix}-i & i \\ i & -i\end{bmatrix} \\
+  \left[\begin{array}{cc|c}
+    -i & i & 0 \\
+    i & -i & 0
+  \end{array}\right] &= \begin{bmatrix}
+    1 & -1 & 0 \\
+    0 & 0 & 0
+  \end{bmatrix} \\
+  x_1 &= x_2 \\
+  E_{1+i} &= span\left(\begin{bmatrix}1 \\ 1\end{bmatrix}\right) \\
+  A-(1-i)I &= \begin{bmatrix}i & i \\ i & i\end{bmatrix} \\
+  \left[\begin{array}{cc|c}
+    i & i & 0 \\
+    i & i & 0
+  \end{array}\right] &= \begin{bmatrix}
+    -1 & -1 & 0 \\
+    0 & 0 & 0
+  \end{bmatrix} \\
+  x_1 &= -x_2 \\
+  E_{1-i} &= span\left(\begin{bmatrix}-1 \\ 1\end{bmatrix}\right)
+\end{align*}
+
+\section*{Section 4.2}
+
+\subsubsection*{Exercise 1}
+Compute the determinant using cofactor expansion along the first row and column.
+\begin{align*}
+  \begin{vmatrix}
+    1 & 0 & 3 \\
+    5 & 1 & 1 \\
+    0 & 1 & 2
+  \end{vmatrix} &= 1\begin{vmatrix}1 & 1 \\ 1 & 2\end{vmatrix}-
+    0+3\begin{vmatrix}5 & 1 \\ 0 & 1\end{vmatrix} \\
+  &= 1(2-1)+3(5) \\
+  &= 16 \\
+  &= 1\begin{vmatrix}1 & 1 \\ 1 & 2\end{vmatrix}-
+    5\begin{vmatrix}0 & 3 \\ 1 & 2\end{vmatrix}+0 \\
+  &= 1(2-1)-5(0-3) \\
+  &= 16
+\end{align*}
+
+\subsubsection*{Exercise 3}
+Compute the determinant using cofactor expansion along the first row and column.
+\begin{align*}
+  \begin{vmatrix}
+    1 & -1 & 0 \\
+    -1 & 0 & 1 \\
+    0 & 1 & -1
+  \end{vmatrix} &= 1\begin{vmatrix}0 & 1 \\ 1 & -1\end{vmatrix}-
+    (-1)\begin{vmatrix}-1 & 1 \\ 0 & -1\end{vmatrix}+0 \\
+  &= 1(-1)+1(1) \\
+  &= 0
+\end{align*}
+Since the matrix is symmetric, the expansion is the same along the first row and
+column.
+
+\subsubsection*{Exercise 5}
+Compute the determinant using cofactor expansion along the first row and column.
+\begin{align*}
+  \begin{vmatrix}
+    1 & 2 & 3 \\
+    2 & 3 & 1 \\
+    3 & 1 & 2
+  \end{vmatrix} &= 1\begin{vmatrix}3 & 1 \\ 1 & 2\end{vmatrix}-
+    2\begin{vmatrix}2 & 1 \\ 3 & 2\end{vmatrix}+
+    3\begin{vmatrix}2 & 3 \\ 3 & 1\end{vmatrix} \\
+  &= 1(6-1)-2(4-3)+3(2-9) \\
+  &= 5-2-21 \\
+  &= -18
+\end{align*}
+Since the matrix is symmetric, the expansion is the same along the first row and
+column.
+
+\subsubsection*{Exercise 7}
+Compute the determinant using cofactor expansion along any row or column that
+seems convenient.
+\begin{align*}
+  \begin{vmatrix}
+    5 & 2 & 2 \\
+    -1 & 1 & 2 \\
+    3 & 0 & 0
+  \end{vmatrix} &= 3\begin{vmatrix}2 & 2 \\ 1 & 2\end{vmatrix}-0+0 \\
+  &= 3(4-2) \\
+  &= 6
+\end{align*}
+
+\subsubsection*{Exercise 9}
+Compute the determinant using cofactor expansion along any row or column that
+seems convenient.
+\begin{align*}
+  \begin{vmatrix}
+    -4 & 1 & 3 \\
+    2 & -2 & 4 \\
+    1 & -1 & 0
+  \end{vmatrix} &= 1\begin{vmatrix}1 & 3 \\ -2 & 4\end{vmatrix}-
+    (-1)\begin{vmatrix}-4 & 3 \\ 2 & 4\end{vmatrix}+0 \\
+  &= 1(4+6)+1(-16-6) \\
+  &= -12
+\end{align*}
+
+\subsubsection*{Exercise 11}
+Compute the determinant using cofactor expansion along any row or column that
+seems convenient.
+\begin{align*}
+  \begin{vmatrix}
+    a & b & 0 \\
+    0 & a & b \\
+    a & 0 & b
+  \end{vmatrix} &= a\begin{vmatrix}a & b \\ 0 & b\end{vmatrix}-
+    b\begin{vmatrix}0 & b \\ a & b\end{vmatrix}+0 \\
+  &= a(ab)-b(-ba) \\
+  &= a^2b+ab^2 \\
+  &= ab(a+b)
+\end{align*}
+
+\subsubsection*{Exercise 13}
+Compute the determinant using cofactor expansion along any row or column that
+seems convenient.
+\begin{align*}
+  \begin{vmatrix}
+    1 & -1 & 0 & 3 \\
+    2 & 5 & 2 & 6 \\
+    0 & 1 & 0 & 0 \\
+    1 & 4 & 2 & 1
+  \end{vmatrix} &= 0-1\begin{vmatrix}
+    1 & 0 & 3 \\
+    2 & 2 & 6 \\
+    1 & 2 & 1
+  \end{vmatrix}+0-0 \\
+  &= -1\left(1\begin{vmatrix}2 & 6 \\ 2 & 1\end{vmatrix}-0+
+    3\begin{vmatrix}2 & 2 \\ 1 & 2\end{vmatrix}\right) \\
+  &= -1(1(2-12)+3(4-2)) \\
+  &= 4
+\end{align*}
+
+\subsubsection*{Exercise 15}
+Compute the determinant using cofactor expansion along any row or column that
+seems convenient.
+\begin{align*}
+  \begin{vmatrix}
+    0 & 0 & 0 & a \\
+    0 & 0 & b & c \\
+    0 & d & e & f \\
+    g & h & i & j
+  \end{vmatrix} &= 0-0+0-a\begin{vmatrix}
+    0 & 0 & b \\
+    0 & d & e \\
+    g & h & i
+  \end{vmatrix} \\
+  &= -a(0-0+b\begin{vmatrix}0 & d \\ g & h\end{vmatrix}) \\
+  &= -ab(-dg) \\
+  &= abdg
+\end{align*}
+
+\subsubsection*{Exercise 21}
+Prove Theorem 4.2: The determinant of a triangular matrix is the product of the
+entries on its main diagonal. Specifically, if \( A = [a_{ij}] \) is an
+\( n\times n \) triangular matrix, then
+\[ det(A) = a_{11}a_{22}\cdot\cdot\cdot a_{nn} \]
+Base Case:
+\[ |a_{11}| = a_{11} \]
+Induction Hypothesis:
+\[ det(A) = a_{11}a_{22}a_{33}\cdot\cdot\cdot a_{nn} \]
+Induction:
+\begin{align*}
+  \begin{vmatrix}
+    a_{11} & 0 & \dots & 0 \\
+    a_{21} & a_{22} & \dots & 0 \\
+    \vdots & \vdots & \vdots & 0 \\
+    a_{(n+1)1} & a_{(n+1)2} & \dots & a_{(n+1)(n+1)}
+  \end{vmatrix} &= a_{11}\begin{vmatrix}
+    a_{22} & \dots & 0 \\
+    \vdots & \vdots & 0 \\
+    a_{(n+1)2} & \dots & a_{(n+1)(n+1)}
+  \end{vmatrix} \\
+  &= a_{11}a_{22}a_{33}\cdot\cdot\cdot a_{nn}a_{(n+1)(n+1)}
+\end{align*}
+
+\subsubsection*{Exercise 23}
+Evaluate the given determinant using elementary row and/or column operations and
+Theorem 4.3 to reduce the matrix to row echelon form.
+\begin{align*}
+  A &= \begin{bmatrix}
+    -4 & 1 & 3 \\
+    2 & -2 & 4 \\
+    1 & -1 & 0
+  \end{bmatrix} (\frac{1}{2}R_2\to R_2) \\
+  &= \begin{bmatrix}
+    -4 & 1 & 3 \\
+    1 & -1 & 2 \\
+    1 & -1 & 0
+  \end{bmatrix} (R_3-R_2\to R_3)\quad (4R_2\to R_2) \\
+  &= \begin{bmatrix}
+    -4 & 1 & 3 \\
+    4 & -4 & 8 \\
+    0 & 0 & -2
+  \end{bmatrix} (R_2+R_1\to R_2) \\
+  &= \begin{bmatrix}
+    -4 & 1 & 3 \\
+    0 & -3 & 11 \\
+    0 & 0 & -2
+  \end{bmatrix} \\
+  \left(\frac{1}{2}\right)(4)det(A) &= (-4)(-3)(-2) \\
+  det(A) &= -12
+\end{align*}
+
+\subsubsection*{Exercise 25}
+Evaluate the given determinant using elementary row and/or column operations and
+Theorem 4.3 to reduce the matrix to row echelon form.
+\begin{align*}
+  A &= \begin{bmatrix}
+    2 & 0 & 3 & -1 \\
+    1 & 0 & 2 & 2 \\
+    0 & -1 & 1 & 4 \\
+    2 & 0 & 1 & -3
+  \end{bmatrix} (R_1-2R_2\to R_1) \\
+  &= \begin{bmatrix}
+    0 & 0 & -1 & -5 \\
+    1 & 0 & 2 & 2 \\
+    0 & -1 & 1 & 4 \\
+    2 & 0 & 1 & -3
+  \end{bmatrix} (R_4-2R_2\to R_2) \\
+  &= \begin{bmatrix}
+    0 & 0 & -1 & -5 \\
+    0 & 0 & -3 & -7 \\
+    0 & -1 & 1 & 4 \\
+    2 & 0 & 1 & -3
+  \end{bmatrix} (R_2-3R_1\to R_1) \\
+  &= \begin{bmatrix}
+    0 & 0 & 0 & 8 \\
+    0 & 0 & -3 & -7 \\
+    0 & -1 & 1 & 4 \\
+    2 & 0 & 1 & -3
+  \end{bmatrix} \\
+  (-2)(-3)det(A) &= (2)(-1)(-3)(8) \\
+  det(A) &= 8
+\end{align*}
+
+\subsubsection*{Exercise 27}
+Use properties of determinants to evaluate the given determinant by inspection.
+Explain your reasoning.
+\[ \begin{vmatrix}
+  3 & 1 & 0 \\
+  0 & -2 & 5 \\
+  0 & 0 & 4
+\end{vmatrix} = -24 \]
+The matrix is upper triangular. The determinant of a triangular matrix is the
+product of the elements on the diagonal.
+
+\subsubsection*{Exercise 29}
+Use properties of determinants to evaluate the given determinant by inspection.
+Explain your reasoning.
+\[ \begin{vmatrix}
+  2 & 3 & -4 \\
+  1 & -3 & -2 \\
+  -1 & 5 & 2
+\end{vmatrix} = 0 \]
+Multiplying column 1 by -2 would makes it identical to column 3.
+
+\subsubsection*{Exercise 31}
+Use properties of determinants to evaluate the given determinant by inspection.
+Explain your reasoning.
+\[ \begin{vmatrix}
+  4 & 1 & 3 \\
+  -2 & 0 & -2 \\
+  5 & 4 & 1
+\end{vmatrix} = 0 \]
+Subtracting the second column from the first column makes the first column
+identical to the third column.
+
+\subsubsection*{Exercise 33}
+Use properties of determinants to evaluate the given determinant by inspection.
+Explain your reasoning.
+\[ \begin{vmatrix}
+  0 & 2 & 0 & 0 \\
+  -3 & 0 & 0 & 0 \\
+  0 & 0 & 0 & 4 \\
+  0 & 0 & 1 & 0
+\end{vmatrix} = -24 \]
+Swapping the first and second rows and swapping the third and fourth rows makes
+it a triangular matrix. These two operations negate the determinant and cancel
+out. The determinant of a triangular matrix is the product of the elements on
+the diagonal.
+
+\subsubsection*{Exercise 35}
+Find the determinants assuming that
+\[ \begin{vmatrix}
+  a & b & c \\
+  d & e & f \\
+  g & h & i
+\end{vmatrix} = 4 \]
+\[ \begin{vmatrix}
+  2a & 2b & 2c \\
+  d & e & f \\
+  g & h & i
+\end{vmatrix} = 8 \]
+
+\subsubsection*{Exercise 37}
+Find the determinants assuming that
+\[ \begin{vmatrix}
+  a & b & c \\
+  d & e & f \\
+  g & h & i
+\end{vmatrix} = 4 \]
+\[ \begin{vmatrix}
+  d & e & f \\
+  a & b & c \\
+  g & h & i
+\end{vmatrix} = -4 \]
+
+\subsubsection*{Exercise 39}
+Find the determinants assuming that
+\[ \begin{vmatrix}
+  a & b & c \\
+  d & e & f \\
+  g & h & i
+\end{vmatrix} = 4 \]
+\[ \begin{vmatrix}
+  2c & b & a \\
+  2f & e & d \\
+  2i & h & g
+\end{vmatrix} = -8 \]
+
+\subsubsection*{Exercise 45}
+Use Theorem 4.6 to find all values of \( k \) for which \( A \) is invertible.
+\begin{align*}
+  A &= \begin{bmatrix}
+    k & -k & 3 \\
+    0 & k+1 & 1 \\
+    k & -8 & k-1
+  \end{bmatrix} \\
+  0 &\ne \begin{vmatrix}
+    k & -k & 3 \\
+    0 & k+1 & 1 \\
+    k & -8 & k-1
+  \end{vmatrix} \\
+  &\ne k\begin{vmatrix}k+1 & 1 \\ -8 & k-1\end{vmatrix}-0+
+    k\begin{vmatrix}-k & 3 \\ k+1 & 1\end{vmatrix} \\
+  &\ne k(k^2-1-(-8))+k(-k-(3k+3)) \\
+  &\ne k^3+7k-k^2-3k^2-3k \\
+  &\ne k^3-4k^2+4k \\
+  &\ne k(k^2-4k+4) \\
+  &\ne k(k-2)(k-2) \\
+  k &\ne 0 \quad k\ne2
+\end{align*}
+
+\subsubsection*{Exercise 46}
+Use Theorem 4.6 to find all values of \( k \) for which \( A \) is invertible.
+\begin{align*}
+  A &= \begin{bmatrix}
+    k & k & 0 \\
+    k^2 & 2 & k \\
+    0 & k & k
+  \end{bmatrix} \\
+  0 &\ne \begin{vmatrix}
+    k & k & 0 \\
+    k^2 & 2 & k \\
+    0 & k & k
+  \end{vmatrix} \\
+  &\ne k\begin{vmatrix}2 & k \\ k & k\end{vmatrix}-
+    k\begin{vmatrix}k^2 & k \\ 0 & k\end{vmatrix}+0 \\
+  &\ne k(2k-k^2)-k(k^3) \\
+  &\ne 2k^2-k^3-k^4 \\
+  &\ne -k^2(k^2+k-2) \\
+  &\ne -k^2(k+2)(k-1) \\
+  k &\ne 0 \quad k\ne-2 \quad k\ne1
+\end{align*}
+
+\subsubsection*{Exercise 47}
+Assume that \( A \) and \( B \) are \( n\times n \) matrices with
+\( det(A) = 3 \) and \( det(B) = -2 \). Find the indicated determinants.
+\[ det(AB) = -6 \]
+
+\subsubsection*{Exercise 48}
+Assume that \( A \) and \( B \) are \( n\times n \) matrices with
+\( det(A) = 3 \) and \( det(B) = -2 \). Find the indicated determinants.
+\[ det(A^2) = 9 \]
+
+\subsubsection*{Exercise 49}
+Assume that \( A \) and \( B \) are \( n\times n \) matrices with
+\( det(A) = 3 \) and \( det(B) = -2 \). Find the indicated determinants.
+\[ det(B^{-1}A) = \frac{1}{-2}3 = -\frac{3}{2} \]
+
+\subsubsection*{Exercise 50}
+Assume that \( A \) and \( B \) are \( n\times n \) matrices with
+\( det(A) = 3 \) and \( det(B) = -2 \). Find the indicated determinants.
+\[ det(2A) = 2^n(3) \]
+
+\subsubsection*{Exercise 51}
+Assume that \( A \) and \( B \) are \( n\times n \) matrices with
+\( det(A) = 3 \) and \( det(B) = -2 \). Find the indicated determinants.
+\[ det(3B^T) = 3^n(-2) \]
+
+\subsubsection*{Exercise 52}
+Assume that \( A \) and \( B \) are \( n\times n \) matrices with
+\( det(A) = 3 \) and \( det(B) = -2 \). Find the indicated determinants.
+\[ det(AA^T) = 9 \]
+
+\subsubsection*{Exercise 57}
+Use Cramer's Rule to solve the given linear system.
+\begin{align*}
+  x+y &= 1 \\
+  x-y &= 2 \\
+  A &= \begin{bmatrix}1 & 1 \\ 1 & -1\end{bmatrix} \quad
+    \vec{b} = \begin{bmatrix}1 \\ 2\end{bmatrix} \\
+  det(A) &= -2 \\
+  det(A_1\vec{b}) &= \begin{vmatrix}1 & 1 \\ 2 & -1\end{vmatrix} = -3 \\
+  det(A_2\vec{b}) &= \begin{vmatrix}1 & 1 \\ 1 & 2\end{vmatrix} = 1 \\
+  x &= \frac{-3}{-2} = \frac{3}{2} \\
+  y &= \frac{1}{-2} = -\frac{1}{2}
+\end{align*}
+
+\subsubsection*{Exercise 58}
+Use Cramer's Rule to solve the given linear system.
+\begin{align*}
+  2x-y &= 5 \\
+  x+3y &= -1 \\
+  A &= \begin{bmatrix}2 & -1 \\ 1 & 3\end{bmatrix} \quad
+    \vec{b} = \begin{bmatrix}5 \\ -1\end{bmatrix} \\
+  det(A) &= 7 \\
+  det(A_1\vec{b}) &= \begin{vmatrix}5 & -1 \\ -1 & 3 \end{vmatrix} = 14 \\
+  det(A_2\vec{b}) &= \begin{vmatrix}2 & 5 \\ 1 & -1\end{vmatrix} = -7 \\
+  x &= \frac{14}{7} = 2 \\
+  y &= \frac{-7}{7} = -1
+\end{align*}
+
+\subsubsection*{Exercise 59}
+Use Cramer's Rule to solve the given linear system.
+\begin{align*}
+\end{align*}
+
+\subsubsection*{Exercise 60}
+\subsubsection*{Exercise 61}
+\subsubsection*{Exercise 62}
+\subsubsection*{Exercise 63}
+\subsubsection*{Exercise 64}
+
+\section*{Section 4.3}
+
+\subsubsection*{Exercise 1}
+\subsubsection*{Exercise 3}
+\subsubsection*{Exercise 5}
+\subsubsection*{Exercise 7}
+\subsubsection*{Exercise 9}
+\subsubsection*{Exercise 11}
+\subsubsection*{Exercise 13}
+\subsubsection*{Exercise 14}
+\subsubsection*{Exercise 20}
+\subsubsection*{Exercise 21}
+\subsubsection*{Exercise 22}
+
+\section*{Section 4.4}
+
+\subsubsection*{Exercise 1}
+\subsubsection*{Exercise 3}
+\subsubsection*{Exercise 5}
+\subsubsection*{Exercise 7}
+\subsubsection*{Exercise 9}
+\subsubsection*{Exercise 11}
+\subsubsection*{Exercise 13}
+\subsubsection*{Exercise 15}
+\subsubsection*{Exercise 17}
+\subsubsection*{Exercise 19}
+\subsubsection*{Exercise 21}
+\subsubsection*{Exercise 23}
+\subsubsection*{Exercise 25}
+\subsubsection*{Exercise 27}
+\subsubsection*{Exercise 29}
+
+\begin{center}
+  If you have any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
