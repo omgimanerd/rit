@@ -602,12 +602,100 @@ Use Cramer's Rule to solve the given linear system.
 \subsubsection*{Exercise 59}
 Use Cramer's Rule to solve the given linear system.
 \begin{align*}
+  2x+y+3z &= 1 \\
+  y+z &= 1 \\
+  z &= 1 \\
+  A &= \begin{bmatrix}
+    2 & 1 & 3 \\
+    0 & 1 & 1 \\
+    0 & 0 & 1
+  \end{bmatrix}\quad \vec{b} = \begin{bmatrix}1 \\ 1 \\ 1\end{bmatrix} \\
+  det(A) &= 2 \\
+  det(A_1\vec{b}) &= \begin{vmatrix}
+    1 & 1 & 3 \\
+    1 & 1 & 1 \\
+    1 & 0 & 1
+  \end{vmatrix} = -2 \\
+  det(A_2\vec{b}) &= \begin{vmatrix}
+    2 & 1 & 3 \\
+    0 & 1 & 1 \\
+    0 & 1 & 1
+  \end{vmatrix} = 0 \\
+  det(A_3\vec{b}) &= \begin{vmatrix}
+    2 & 1 & 1 \\
+    0 & 1 & 1 \\
+    0 & 0 & 1
+  \end{vmatrix} = 2 \\
+  x &= \frac{-2}{2} = -1 \\
+  y &= \frac{0}{2} = 0 \\
+  z &= 1
 \end{align*}
 
 \subsubsection*{Exercise 60}
+Use Cramer's Rule to solve the given linear system.
+\begin{align*}
+  x+y-z &= 1 \\
+  x+y+z &= 2 \\
+  x-y &= 3 \\
+  A &= \begin{bmatrix}
+    1 & 1 & -1 \\
+    1 & 1 & 1 \\
+    1 & -1 & 0
+  \end{bmatrix}\quad \vec{b} = \begin{bmatrix}1 \\ 2 \\ 3\end{bmatrix} \\
+  det(A) &= 2+2 = 4 \\
+  det(A_1\vec{b}) &= \begin{vmatrix}
+    1 & 1 & -1 \\
+    2 & 1 & 1 \\
+    3 & -1 & 0
+  \end{vmatrix} = 6+3 = 9 \\
+  det(A_2\vec{b}) &= \begin{vmatrix}
+    1 & 1 & -1 \\
+    1 & 2 & 1 \\
+    1 & 3 & 0
+  \end{vmatrix} = 3-6 = -3 \\
+  det(A_3\vec{b}) &= \begin{vmatrix}
+    1 & 1 & 1 \\
+    1 & 1 & 2 \\
+    1 & -1 & 3
+  \end{vmatrix} = 1+1+0 = 2 \\
+  x &= \frac{9}{4} \\
+  y &= \frac{-3}{4} \\
+  z &= \frac{2}{4}
+\end{align*}
+
 \subsubsection*{Exercise 61}
+Compute the inverse of the coefficient matrix.
+\begin{align*}
+  A &= \begin{bmatrix}1 & 1 \\ 1 & -1\end{bmatrix} \\
+  C_{11} &= -1 \\
+  C_{12} &= -1 \\
+  C_{21} &= -1 \\
+  C_{22} &= 1 \\
+  A^{-1} &= \frac{1}{-2}\begin{bmatrix}-1 & -1 \\ -1 & 1\end{bmatrix} \\
+  &= \begin{bmatrix}
+    \frac{1}{2} & \frac{1}{2} \\[0.5em]
+    \frac{1}{2} & -\frac{1}{2}
+  \end{bmatrix}
+\end{align*}
+
 \subsubsection*{Exercise 62}
+Compute the inverse of the coefficient matrix.
+\begin{align*}
+  A &= \begin{bmatrix}2 & -1 \\ 1 & 3\end{bmatrix} \\
+  C_{11} &= 3 \\
+  C_{12} &= -1 \\
+  C_{21} &= 1 \\
+  C_{22} &= 2 \\
+  A^{-1} &= \frac{1}{7}\begin{bmatrix}3 & -1 \\ 1 & 2\end{bmatrix} \\
+  &= \begin{bmatrix}
+    \frac{3}{7} & -\frac{1}{7} \\[0.5em]
+    \frac{1}{7} & \frac{2}{7}
+  \end{bmatrix}
+\end{align*}
+
 \subsubsection*{Exercise 63}
+Compute the inverse of the coefficient matrix.
+
 \subsubsection*{Exercise 64}
 
 \section*{Section 4.3}
