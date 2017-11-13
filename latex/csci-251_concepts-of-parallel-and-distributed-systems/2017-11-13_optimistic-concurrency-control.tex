@@ -1,0 +1,56 @@
+\documentclass{math}
+
+\usepackage{tikz}
+
+\title{CSCI 251: Concepts of Parallel and Distributed Systems}
+\author{Alvin Lin}
+\date{November 1st, 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Optimistic Concurrency Control}
+There are three phases for optimistic concurrency control:
+\begin{itemize}
+  \item Working phase
+  \item Validation phase
+  \item Update phase
+\end{itemize}
+The time for the working phase is usually greater than the time for the
+validation and update. At any given time, only one transaction can be in
+validation and update phase. Several transactions can be in the working phase
+at any given time.
+
+\subsection*{Backwards Validation}
+For transaction \( T_v \), \( T_v \) must not read objects written by \( T_i \)
+such that \( i<v \). We check if \( RS(T_v)\cap WS(T_i) = \emptyset \) for each
+\( T_i \) that overlaps with \( T_v \). If this is true, then \( T_v \) passes
+the validation test, otherwise it fails the validation and is aborted.
+
+\subsection*{Forward Validation}
+If \( T_v \) fails validation:
+\begin{enumerate}
+  \item Abort \( T_v \)
+  \item Hold update of \( T_v \) until conflicting transactions finish
+  \item Abort all conflicting transactions
+\end{enumerate}
+
+\section*{Reminders}
+Project 2 details. Let Professor Kumar know if you are working solo or in a
+group by Monday, November 20th.
+
+\noindent Professor Mohan Kumar: \\
+\url{mjkvcs@rit.edu} \\
+\url{https://cs.rit.edu/~mjk} \\
+
+\noindent Rahul Dashora (TA): \\
+\url{rd5476@mail.rit.edu} \\
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
