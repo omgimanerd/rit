@@ -1,0 +1,35 @@
+\documentclass{math}
+
+\title{Introduction to Computer Science Theory}
+\author{Alvin Lin}
+\date{August 2017 - December 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Turing Machines}
+A Turing machine is a finite-state machine in which each transition prints a
+symbol on the tape. The tape head can move in either direction. The tape is
+infinite to the right. A Turing machineis a septuple \( T =
+(Q,\Sigma,\Gamma,\delta,q_0,q_{accept},q_{reject}) \) where:
+\begin{itemize}
+  \item \( Q \) is a finite set of states.
+  \item \( \Sigma \) is the input alphabet such that \( \sqcup\notin\Sigma \).
+  \item \( \Gamma \) is a finite set called the tape alphabet.
+  \( \Sigma\cup\{\sqcup\}\subseteq\Gamma \).
+  \item \( \delta \) is the transition function from
+    \( (Q-\{q_{reject},q_{accept})\times\Gamma \) to
+    \( Q\times\Gamma\times\{R,L\} \).
+  \item \( q_0\in Q \) is the initial state.
+  \item \( q_{accept}\in Q \) is the accept state.
+  \item \( q_{reject}\in Q \) is the reject state.
+\end{itemize}
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
