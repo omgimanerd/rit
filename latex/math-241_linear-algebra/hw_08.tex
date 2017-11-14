@@ -1218,7 +1218,8 @@ matrix \( P \) and a diagonal matrix \( D \) such that \( P^{-1}AP = D \).
   E_2 &= span\left(\begin{bmatrix}1 \\ 1 \\ 1\end{bmatrix}\right)
 \end{align*}
 The algebraic multiplicities of the eigenvectors are equal to their geometric
-multiplicities, so the matrix is diagonalizable.
+multiplicities, so the matrix is diagonalizable. The following matrices \( P \)
+and \( D \) satisfy \( P^{-1}AP = D \).
 \[ P = \begin{bmatrix}
     -1 & -1 & 1 \\
     1 & -1 & 1 \\
@@ -1257,8 +1258,106 @@ Since the geometric multiplicity is not equal to the algebraic multiplicity for
 \subsubsection*{Exercise 15}
 Determine whether \( A \) is diagonalizable and, if so, find an invertible
 matrix \( P \) and a diagonal matrix \( D \) such that \( P^{-1}AP = D \).
+\begin{align*}
+  A &= \begin{bmatrix}
+    2 & 0 & 0 & 4 \\
+    0 & 2 & 0 & 0 \\
+    0 & 0 & -2 & 0 \\
+    0 & 0 & 0 & -2
+  \end{bmatrix} \\
+  \lambda &= 2 \quad \lambda = 2 \\
+  [A-2I|0] &= \begin{bmatrix}
+    0 & 0 & 0 & 4 & 0 \\
+    0 & 0 & 0 & 0 & 0 \\
+    0 & 0 & -4 & 0 & 0 \\
+    0 & 0 & 0 & -4 & 0
+  \end{bmatrix} = \begin{bmatrix}
+    0 & 0 & 1 & 0 & 0 \\
+    0 & 0 & 0 & 1 & 0 \\
+    0 & 0 & 0 & 0 & 0 \\
+    0 & 0 & 0 & 0 & 0
+  \end{bmatrix} \\
+  x_3 &= x_4 = 0 \\
+  E_2 &= span\left(\begin{bmatrix}1 \\ 0 \\ 0 \\ 0\end{bmatrix},
+    \begin{bmatrix}0 \\ 1 \\ 0 \\ 0\end{bmatrix}\right)
+\end{align*}
+\begin{align*}
+  [A+2I|0] &= \begin{bmatrix}
+    4 & 0 & 0 & 4 & 0 \\
+    0 & 4 & 0 & 0 & 0 \\
+    0 & 0 & 0 & 0 & 0 \\
+    0 & 0 & 0 & 0 & 0
+  \end{bmatrix} = \begin{bmatrix}
+    1 & 0 & 0 & 1 & 0 \\
+    0 & 1 & 0 & 0 & 0 \\
+    0 & 0 & 0 & 0 & 0 \\
+    0 & 0 & 0 & 0 & 0
+  \end{bmatrix} \\
+  x_1 &= -x_4 \\
+  x_2 &= 0 \\
+  E_{-2} &= \begin{bmatrix}x_1 \\ 0 \\ x_3 \\ -x_1\end{bmatrix} =
+    x_1\begin{bmatrix}1 \\ 0 \\ 0 \\ -1\end{bmatrix}+
+    x_3\begin{bmatrix}0 \\ 0 \\ 1 \\ 0\end{bmatrix} \\
+  &= span\left(\begin{bmatrix}1 \\ 0 \\ 0 \\ -1\end{bmatrix},
+    \begin{bmatrix}0 \\ 0 \\ 1 \\ 0\end{bmatrix}\right)
+\end{align*}
+Since the algebraic multiplicities of the eigenvalues is equal to their
+respective geometric multiplicities, the matrix is diagonalizable. The
+following matrices \( P \) and \( D \) satisfy \( P^{-1}AP = D \).
+\[ D = \begin{bmatrix}
+    2 & 0 & 0 & 0 \\
+    0 & 2 & 0 & 0 \\
+    0 & 0 & -2 & 0 \\
+    0 & 0 & 0 & -2
+  \end{bmatrix} \quad P = \begin{bmatrix}
+    1 & 0 & 1 & 0 \\
+    0 & 1 & 0 & 0 \\
+    0 & 0 & 0 & 1 \\
+    0 & 0 & -1 & 0
+  \end{bmatrix} \]
 
 \subsubsection*{Exercise 17}
+Use the method of Example 4.29 to compute the indicated power of the matrix.
+\begin{align*}
+  A &= \begin{bmatrix}-1 & 6 \\ 1 & 0\end{bmatrix} \\
+  |A-\lambda I| &= \begin{vmatrix}
+    -1-\lambda & 6 \\
+    1 & -\lambda
+  \end{vmatrix} \\
+  &= -\lambda(-1-\lambda)-6 = \lambda^2+\lambda-6 \\
+  &= (\lambda+3)(\lambda-2) = 0 \\
+  \lambda &= -3 \quad \lambda = 2 \\
+  [A+3I|0] &= \begin{bmatrix}
+    2 & 6 & 0 \\
+    1 & 3 & 0
+  \end{bmatrix} = \begin{bmatrix}
+    1 & 3 & 0 \\
+    0 & 0 & 0
+  \end{bmatrix} \\
+  E_{-3} &= span\left(\begin{bmatrix}3 \\ -1\end{bmatrix}\right) \\
+  [A-2I|0] &= \begin{bmatrix}
+    -3 & 6 & 0 \\
+    1 & -2 & 0
+  \end{bmatrix} = \begin{bmatrix}
+    -1 & 2 & 0 \\
+    0 & 0 & 0
+  \end{bmatrix} \\
+  E_2 &= span\left(\begin{bmatrix}2 \\ 1\end{bmatrix}\right) \\
+  D &= \begin{bmatrix}2 & 0 \\ 0 & -3\end{bmatrix} \\
+  P &= \begin{bmatrix}2 & 3 \\ 1 & -1\end{bmatrix} \\
+  P^{-1} &= -1\begin{bmatrix}-1 & -3 \\ -1 & 2\end{bmatrix} \\
+  P^{-1}AP &= D \\
+  P^{-1}A^{10}P &= D^{10} \\
+  A^{10} &= PD^{10}P^{-1} \\
+  &= \begin{bmatrix}2 & 3 \\ 1 & -1\end{bmatrix}
+    \begin{bmatrix}2^{10} & 0 \\ 0 & (-3)^{10}\end{bmatrix}
+    \begin{bmatrix}1 & 3 \\ 1 & -2\end{bmatrix} \\
+  &= \begin{bmatrix}
+    179195 & -348150 \\
+    -58025 & 121170
+  \end{bmatrix}
+\end{align*}
+
 \subsubsection*{Exercise 19}
 \subsubsection*{Exercise 21}
 \subsubsection*{Exercise 23}
