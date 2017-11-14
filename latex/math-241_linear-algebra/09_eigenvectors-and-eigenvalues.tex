@@ -208,8 +208,10 @@ Find the eigenvectors and eigenvalues over \( \R \) and \( \mathbb{C} =
     \item For any positive integer \( n \), \( \lambda^n \) is an eigenvalue
     of \( A^n \) with corresponding eigenvector \( \vec{x} \). \\
     \textbf{Proof:} \\
-    Base Case \( n = 1 \): \\
-    \[ A'\vec{x} = \lambda'\vec{x} \]
+    Base Case \( n = 1 \):
+    \[ A^1\vec{x} = \lambda^1\vec{x} \]
+    Induction Hypothesis:
+    \[ A^n\vec{x} = \lambda^n\vec{x} \]
     Induction Step:
     \begin{align*}
       A^{n+1}\vec{x} &= A(A^n\vec{x}) \\
@@ -235,6 +237,8 @@ Find the eigenvectors and eigenvalues over \( \R \) and \( \mathbb{C} =
     \textbf{Proof:} \\
     We only need to show this for negative integers. \\
     Base Case \( n = -1 \): Because of part (ii), this is true. \\
+    Induction Hypothesis:
+    \[ A^{-n}\vec{x} = \frac{1}{\lambda^n}\vec{x} \]
     Induction Step: Assume it is true for \( -n \) and show it is true for
     \( -n-1 \).
     \begin{align*}
