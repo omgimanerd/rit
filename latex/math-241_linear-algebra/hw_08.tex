@@ -1333,7 +1333,9 @@ Use the method of Example 4.29 to compute the indicated power of the matrix.
   \end{bmatrix} = \begin{bmatrix}
     1 & 3 & 0 \\
     0 & 0 & 0
-  \end{bmatrix} \\
+  \end{bmatrix}
+\end{align*}
+\begin{align*}
   E_{-3} &= span\left(\begin{bmatrix}3 \\ -1\end{bmatrix}\right) \\
   [A-2I|0] &= \begin{bmatrix}
     -3 & 6 & 0 \\
@@ -1351,11 +1353,7 @@ Use the method of Example 4.29 to compute the indicated power of the matrix.
   A^{10} &= PD^{10}P^{-1} \\
   &= \begin{bmatrix}2 & 3 \\ 1 & -1\end{bmatrix}
     \begin{bmatrix}2^{10} & 0 \\ 0 & (-3)^{10}\end{bmatrix}
-    \begin{bmatrix}1 & 3 \\ 1 & -2\end{bmatrix} \\
-  &= \begin{bmatrix}
-    179195 & -348150 \\
-    -58025 & 121170
-  \end{bmatrix}
+    \begin{bmatrix}1 & 3 \\ 1 & -2\end{bmatrix}
 \end{align*}
 
 \subsubsection*{Exercise 19}
@@ -1383,7 +1381,9 @@ Use the method of Example 4.29 to compute the indicated power of the matrix.
     1 & 3 & 0 \\
     1 & 3 & 0
   \end{bmatrix} \\
-  E_{-2} &= span\left(\begin{bmatrix}3 \\ -1\end{bmatrix}\right) \\
+  E_{-2} &= span\left(\begin{bmatrix}3 \\ -1\end{bmatrix}\right)
+\end{align*}
+\begin{align*}
   D &= \begin{bmatrix}3 & 0 \\ 0 & -2\end{bmatrix} \\
   P &= \begin{bmatrix}1 & 3 \\ -1 & -1\end{bmatrix} \\
   P^{-1} &= \frac{1}{2}\begin{bmatrix}-1 & -3 \\ 1 & 1\end{bmatrix} \\
@@ -1399,10 +1399,219 @@ Use the method of Example 4.29 to compute the indicated power of the matrix.
 \end{align*}
 
 \subsubsection*{Exercise 21}
+Use the method of Example 4.29 to compute the indicated power of the matrix.
+\begin{align*}
+  A &= \begin{bmatrix}
+    1 & 1 & 1 \\
+    0 & -1 & 0 \\
+    0 & 0 & -1
+  \end{bmatrix} \\
+  |A-\lambda I| &= (1-\lambda)(-1-\lambda)(-1-\lambda) = 0 \\
+  \lambda &= -1 \quad \lambda = 1 \\
+  [A-1I|0] &= \begin{bmatrix}
+    0 & 1 & 1 & 0 \\
+    0 & -2 & 0 & 0 \\
+    0 & 0 & -2 & 0
+  \end{bmatrix} = \begin{bmatrix}
+    0 & 1 & 0 & 0 \\
+    0 & 0 & 1 & 0 \\
+    0 & 0 & 0 & 0
+  \end{bmatrix} \\
+  E_1 &= span\left(\begin{bmatrix}1 \\ 0 \\ 0\end{bmatrix}\right) \\
+  [A+1I|0] &= \begin{bmatrix}
+    2 & 1 & 1 & 0 \\
+    0 & 0 & 0 & 0 \\
+    0 & 0 & 0 & 0
+  \end{bmatrix} \\
+  E_{-1} &= \begin{bmatrix}x_1 \\ x_2 \\ -x_2-2x_1\end{bmatrix} =
+    x_1\begin{bmatrix}1 \\ 0 \\ -2\end{bmatrix}+
+    x_2\begin{bmatrix}0 \\ 1 \\ -1\end{bmatrix} \\
+  &= span\left(\begin{bmatrix}1 \\ 0 \\ -2\end{bmatrix},
+    \begin{bmatrix}0 \\ 1 \\ -1\end{bmatrix}\right)
+\end{align*}
+\begin{align*}
+  D &= \begin{bmatrix}
+    1 & 0 & 0 \\
+    0 & -1 & 0 \\
+    0 & 0 & -1
+  \end{bmatrix} \\
+  P &= \begin{bmatrix}
+    1 & 1 & 0 \\
+    0 & 0 & 1 \\
+    0 & -2 & -1
+  \end{bmatrix} \\
+  P^{-1} &= \begin{bmatrix}
+    1 & \frac{1}{2} & \frac{1}{2} \\
+    0 & -\frac{1}{2} & -\frac{1}{2} \\
+    0 & 1 & 0
+  \end{bmatrix} \\
+  A^{2015} &= \begin{bmatrix}
+    1 & 1 & 0 \\
+    0 & 0 & 1 \\
+    0 & -2 & -1
+  \end{bmatrix}\begin{bmatrix}
+    1^{2015} & 0 & 0 \\
+    0 & (-1)^{2015} & 0 \\
+    0 & 0 & (-1)^{2015}
+  \end{bmatrix}\begin{bmatrix}
+    1 & \frac{1}{2} & \frac{1}{2} \\
+    0 & -\frac{1}{2} & -\frac{1}{2} \\
+    0 & 1 & 0
+  \end{bmatrix}
+\end{align*}
+
 \subsubsection*{Exercise 23}
+Use the method of Example 4.29 to compute the indicated power of the matrix.
+\begin{align*}
+  A &= \begin{bmatrix}
+    1 & 1 & 0 \\
+    2 & -2 & 2 \\
+    0 & 1 & 1
+  \end{bmatrix} \\
+  |A-\lambda I| &= \begin{vmatrix}
+    1-\lambda & 1 & 0 \\
+    2 & -2-\lambda & 2 \\
+    0 & 1 & 1-\lambda
+  \end{vmatrix} = (1-\lambda)((-2-\lambda)(1-\lambda)-2)-2(1-\lambda) \\
+  &= (1-\lambda)(\lambda^2+\lambda-4)-2+2\lambda \\
+  &= \lambda^2+\lambda-4-\lambda^3-\lambda^2+4\lambda-2+2\lambda \\
+  &= -\lambda^3+7\lambda-6 = 0 \\
+  \lambda &= -3 \quad \lambda = 1 \quad \lambda = 2 \\
+  [A+3I|0] &= \begin{bmatrix}
+    4 & 1 & 0 & 0 \\
+    2 & 1 & 2 & 0 \\
+    0 & 1 & 4 & 0
+  \end{bmatrix} = \begin{bmatrix}
+    1 & 0 & -1 & 0 \\
+    0 & 1 & 4 & 0 \\
+    0 & 0 & 0 & 0
+  \end{bmatrix} \\
+  E_{-3} &= span\left(\begin{bmatrix}1 \\ 4 \\ 1\end{bmatrix}\right) \\
+  [A-1I|0] &= \begin{bmatrix}
+    0 & 1 & 0 & 0 \\
+    2 & -3 & 2 & 0 \\
+    0 & 1 & 0 & 0
+  \end{bmatrix} = \begin{bmatrix}
+    1 & 0 & 1 & 0 \\
+    0 & 1 & 0 & 0 \\
+    0 & 0 & 0 & 0
+  \end{bmatrix} \\
+  E_1 &= span\left(\begin{bmatrix}1 \\ 0 \\ -1\end{bmatrix}\right) \\
+  [A-2I|0] &= \begin{bmatrix}
+    -1 & 1 & 0 & 0 \\
+    0 & 1 & -1 & 0 \\
+    0 & 0 & 0 & 0
+  \end{bmatrix} \\
+  E_2 &= span\left(\begin{bmatrix}1 \\ 1 \\ 1\end{bmatrix}\right)
+\end{align*}
+\begin{align*}
+  D &= \begin{bmatrix}
+    -3 & 0 & 0 \\
+    0 & 1 & 0 \\
+    0 & 0 & 2
+  \end{bmatrix} \\
+  P &= \begin{bmatrix}
+    1 & 1 & 1 \\
+    4 & 0 & 1 \\
+    1 & -1 & 1
+  \end{bmatrix} \\
+  P^{-1} &= \begin{bmatrix}
+    -\frac{1}{6} & \frac{1}{3} & -\frac{1}{6} \\
+    \frac{1}{2} & 0 & -\frac{1}{2} \\
+    \frac{2}{3} & -\frac{1}{3} & \frac{2}{3}
+  \end{bmatrix} \\
+  A^k &= \begin{bmatrix}
+    1 & 1 & 1 \\
+    4 & 0 & 1 \\
+    1 & -1 & 1
+  \end{bmatrix}\begin{bmatrix}
+    (-3)^k & 0 & 0 \\
+    0 & 1^k & 0 \\
+    0 & 0 & 2^k
+  \end{bmatrix}\begin{bmatrix}
+    -\frac{1}{6} & \frac{1}{3} & -\frac{1}{6} \\
+    \frac{1}{2} & 0 & -\frac{1}{2} \\
+    \frac{2}{3} & -\frac{1}{3} & \frac{2}{3}
+  \end{bmatrix}
+\end{align*}
+
 \subsubsection*{Exercise 25}
+Find all real values of \( k \) for which \( A \) is diagonalizable.
+\begin{align*}
+  A &= \begin{bmatrix}
+    1 & k \\
+    0 & 1
+  \end{bmatrix} \\
+  |A-\lambda I| &= (1-\lambda)^2 = 0 \\
+  \lambda &= 1 \\
+  [A-1I|0] &= \begin{bmatrix}
+    0 & k & 0 \\
+    0 & 0 & 0
+  \end{bmatrix} \\
+  E_1 &= span\left(\begin{bmatrix}1 \\ 0\end{bmatrix}\right) \\
+\end{align*}
+The matrix is not diagonalizable as long as \( k\ne0 \) since the geometric
+multiplicity of \( \lambda = 1 \) will be less than its algebraic multiplicity.
+This matrix is only diagonalizable for \( k = 0 \).
+
 \subsubsection*{Exercise 27}
+Find all real values of \( k \) for which \( A \) is diagonalizable.
+\begin{align*}
+  A &= \begin{bmatrix}
+    1 & 0 & k \\
+    0 & 1 & 0 \\
+    0 & 0 & 1
+  \end{bmatrix} \\
+  |A-\lambda I| &= (1-\lambda)^3 = 0 \\
+  \lambda &= 1 \\
+  [A-1I|0] &= \begin{bmatrix}
+    0 & 0 & k \\
+    0 & 0 & 0 \\
+    0 & 0 & 0
+  \end{bmatrix} \\
+  E_1 &= span\left(\begin{bmatrix}1 \\ 0 \\ 0\end{bmatrix},
+    \begin{bmatrix}0 \\ 1 \\ 0\end{bmatrix}\right)
+\end{align*}
+By the same logic as Exercise 25, this matrix is only diagonalizable if
+\( k = 0 \).
+
 \subsubsection*{Exercise 29}
+Find all real values of \( k \) for which \( A \) is diagonalizable.
+\begin{align*}
+  A &= \begin{bmatrix}
+    1 & 1 & k \\
+    1 & 1 & k \\
+    1 & 1 & k
+  \end{bmatrix} \\
+  |A-\lambda I| &= \begin{vmatrix}
+    1-\lambda & 1 & k \\
+    1 & 1-\lambda & k \\
+    1 & 1 & k-\lambda
+  \end{vmatrix} = \\
+  &= (k-k+k\lambda)-(k-k\lambda-k)+(k-\lambda)((1-\lambda)^2-1) \\
+  &= k\lambda+k\lambda+(k-\lambda)(\lambda^2-2\lambda) \\
+  &= 2k\lambda+k\lambda^2-2k\lambda-\lambda^3+2\lambda^2 \\
+  &= -\lambda^3+(2+k)\lambda^2 \\
+  &= \lambda^2(-\lambda+2+k) = 0 \\
+  \lambda &= 0 \quad \lambda = k+2 \\
+  [A-0I|0] &= \begin{bmatrix}
+    1 & 1 & k & 0 \\
+    1 & 1 & k & 0 \\
+    1 & 1 & k & 0
+  \end{bmatrix} \\
+  E_0 &= span\left(\begin{bmatrix}-1 \\ 1 \\ 0\end{bmatrix},
+    \begin{bmatrix}k \\ 0 \\ -1\end{bmatrix}\right) \\
+  [A-(k+2)I|0] &= \begin{bmatrix}
+    -k-1 & 1 & k & 0 \\
+    1 & -k-1 & k & 0 \\
+    1 & 1 & -2 & 0
+  \end{bmatrix} = \begin{bmatrix}
+    -1 & -1 & 2 & 0 \\
+    1 & -k-1 & k & 0 \\
+    0 & 0 & 0 & 0
+  \end{bmatrix}
+\end{align*}
+A is diagonalizable for all real values of \( k \).
 
 \begin{center}
   If you have any questions, comments, or concerns, please contact me at
