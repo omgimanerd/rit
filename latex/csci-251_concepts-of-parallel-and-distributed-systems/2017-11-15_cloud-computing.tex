@@ -1,0 +1,128 @@
+\documentclass{math}
+
+\usepackage{tikz}
+
+\title{CSCI 251: Concepts of Parallel and Distributed Systems}
+\author{Alvin Lin}
+\date{November 1st, 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Cloud Computing}
+Cloud computing defines a mechanism for hosting and delivering services to
+applications over the Internet. Cloud services are sold on a ``pay as you go''
+model to give the perception of infinite computing resources. Services
+typically offered are storage and processing. The cloud consists of a data
+center's hardware and software.
+
+\subsection*{Services}
+A service is self-contained functional unit that accepts request and returns
+responses through a well-defined interface. They can be globally distributed
+across organizations and are typically reuseable. Examples:
+\begin{itemize}
+  \item Find account balance
+  \item Credit card validation
+  \item Account lookup
+\end{itemize}
+
+\subsection*{Definitions}
+Grid Computing:
+\begin{itemize}
+  \item For non-interactive but intensive workloads
+  \item The computers are interconnected over the network, possibly remotely
+  \item Middleware-based approach
+  \item Started by the High Performance Computing community
+\end{itemize}
+Cluster Computing:
+\begin{itemize}
+  \item Loosely or tightly connected computers in a fast local area network
+  \item Each node in the cluster uses similar hardware, OS, and software
+\end{itemize}
+Cloud Computing:
+\begin{itemize}
+  \item Provides on-demand network access to a shared pool of computing
+  resources
+  \item Computing resources can be quickly commissioned or decommissioned
+  \item Greater flexibility
+  \item Started by the business community
+\end{itemize}
+SaaS: Software as a Service \\
+IaaS: Infrastructure as a Service \\
+PaaS: Platform as a Service
+
+\subsection*{Cloud Computing's Motivation}
+Cloud computing provides a way to save in capital costs through on-demand
+operational costs. It provides a robustness to failure and allows for complex
+resource requirements.
+
+\subsection*{Eucalyptus Architecture}
+Elastic Utility Computing Architecture for Linking Your Program To Useful
+Systems
+\begin{itemize}
+  \item Allows sites with existing clusters to host a cloud that is interface
+  compatible with Amazon's AWS.
+  \item Enables users to explore new cloud computing functionality with no
+  impact on their existing application development software.
+\end{itemize}
+
+\subsubsection*{Commercial Products}
+\begin{itemize}
+  \item Amazon EC2
+  \item Windows Azure
+  \item Google App Engine
+  \item Dropbox (wtf for real my dude?)
+\end{itemize}
+
+\subsection*{Research Challenges}
+\begin{itemize}
+  \item Automated service provisioning
+  \item Virtual machine migration
+  \item Server consolidation
+  \item Energy management
+  \item Traffic management and analysis
+  \item Data security
+  \item Software frameworks
+  \item Storage technologies and data management
+  \item Novel cloud architectures
+\end{itemize}
+
+\subsection*{Virtualization}
+Virtualization is a computer architectural technique where multiple virtual
+machines take turns to use the same hardware architecture. Hardware or software
+resources can be virtualized. Virtualization enhances resource sharing and
+improves computer performance, resource utilization, and application
+flexibility.
+
+\subsection*{Virtualized Systems}
+Traditionally, computers run with an operating system that was specially
+tailored for its hardware architecture. In a virtualized system, one or more
+guest operating systems run on the same hardware. A virtualization layer
+known as the hypervisor or virtual machine monitor separates the host system
+from the virtual ones. \par
+The operating system is an abstract layer created between the host OS and the
+user applications. Virtualization layers live inside the OS, where resources
+are partitioned. Virtual machines at the OS level have minimal startup/shutdown
+costs, low resource requirements, and high scalability. Synchronizing state
+changes is possible when needed. The only disadvantage is the all virtual
+machines must run on the same OS.
+
+\section*{Reminders}
+Project 2 details. Let Professor Kumar know if you are working solo or in a
+group by Monday, November 20th.
+
+\noindent Professor Mohan Kumar: \\
+\url{mjkvcs@rit.edu} \\
+\url{https://cs.rit.edu/~mjk} \\
+
+\noindent Rahul Dashora (TA): \\
+\url{rd5476@mail.rit.edu} \\
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
