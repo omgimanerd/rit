@@ -1,0 +1,155 @@
+\documentclass{math}
+
+\usepackage{tikz}
+
+\title{Multivariable and Vector Calculus}
+\author{Alvin Lin}
+\date{August 2017 - December 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Surface Integrals}
+If we have a surface \( S \) described by \( r(u,v), (u,v)\in D \), the
+area of the surface can be approximated as:
+\[ \left|\pdiff{r}{u}\times\pdiff{r}{v}\right|\diff{u}\diff{v} \]
+Find the mass of the surface \( S \) if the density of the surface is
+\( f(x,y,z), S:\overrightarrow{r(u,v)}, (u,v)\in D \).
+\begin{center}
+  \begin{tikzpicture}
+    \draw[very thick,->] (0,0) -- (5,0) node[right] {x axis};
+    \draw[very thick,->] (0,0) -- (0,5) node[above] {y axis};
+    \draw (2,3.9) -- (2,-1) node[below] {\( a \)};
+    \draw (4,3.9) -- (4,-1) node[below] {\( b \)};
+    \draw (4,1.1) -- (-1,1.1) node[left] {\( c \)};
+    \draw (4,3.9) -- (-1,3.9) node[left] {\( d \)};
+    \node at (3.3,3.6) {\( D \)};
+    \draw[red] (2,2) .. controls (2,0.7) and (3,1) .. (4,2);
+    \draw[red] (2,2) .. controls (3,5) and (4,4) .. (4,2);
+    \draw (3,2) -- (3.2,2) -- (3.2,1.8) -- (3,1.8) -- cycle node[above]
+      {\( P_{ij} \)};
+  \end{tikzpicture}
+\end{center}
+\[ D\subset R = [a,b]\times[c,d] \]
+We divide \( [a,b],[c,d] \) into \( nm \) equal parts to get \( R_{ij} \).
+\[ mass \approx \sum_{i=1}^{n}\sum_{i=1}^{m}S_yf(P_{ij}) =
+  \sum_{i=1}^{n}\sum_{j=1}^{m}\left|\pdiff{r}{u}\times\pdiff{r}{v}\right|
+    f(P_{ij}) \diff{u}\diff{v} \]
+If we take the limit as \( n,m\to\infty \), this becomes the integral:
+\[ \iint_{S}f\diff{S} =
+  \iint_{D}f\left|\pdiff{r}{u}\times\pdiff{r}{v}\right|\diff{u}\diff{v} \]
+
+\subsubsection*{Example}
+Find \( \iint_{S}z^2\diff{S} \) given \( S:z=y^2+x^2, 0\le x\le1 \).
+\begin{align*}
+  S:r(R,\theta) &= \langle R^2,R\cos\theta, R\sin\theta\rangle \\
+  \left|\pdiff{r}{R}\times\pdiff{r}{\theta}\right| &= \left|\begin{vmatrix}
+    \i & \j & \k \\
+    2R & \cos\theta & \sin\theta \\
+    0 & -R\sin\theta & R\cos\theta
+  \end{vmatrix}\right| \\
+  &= \left|\langle R,-2R^2\cos\theta,-2R^2\sin\theta\rangle\right| \\
+  &= \sqrt{R^2+4R^4\cos^2\theta+4R^4\sin^2\theta} \\
+  &= R\sqrt{1+4R^2} \\
+  \iint_{S}z^2\diff{S} &= \int_{0}^{1}\int_{0}^{2\pi}R^2\sin^2\theta\diff{S} \\
+  &= \int_{0}^{1}\int_{0}^{2\pi}R^2\sin^2\theta R\sqrt{1+4R^2}
+    \diff{\theta}\diff{r} \\
+  &= \int_{0}^{1}R^3\sqrt{1+4R^2}
+    \left[\frac{\theta}{2}-\frac{\sin2\theta}{4}\right]_{0}^{2\pi}\diff{R} \\
+  &= \pi\int_{0}^{1}R^3\sqrt{1+4R^2}\diff{R} \\
+  Let:~u &= R^2 \quad \diff{v} = R\sqrt{1+4R^2}\diff{R} \\
+  \diff{u} &= 2R\diff{R} \quad
+    v = \frac{2}{3}(1+4R^2)^{\frac{3}{2}}\frac{1}{8} \\
+  &= \pi\left[R^2(1+4R^2)^{\frac{3}{2}}\frac{1}{2}-
+    \int_{0}^{1}\frac{1}{2}(1+4R^2)^{\frac{3}{2}}2R\diff{R}\right] \\
+  &= \pi\left[R^2(1+4R^2)^{\frac{3}{2}}\frac{1}{2}-
+    \frac{1}{6}\frac{2}{5}(1+4R^2)^{\frac{5}{2}}\frac{1}{8}\right]
+\end{align*}
+
+\subsubsection*{Example}
+Find \( \iint_{S}y^2\diff{S} \) given \( S:x^2+y^2+z^2 = 1 \) bounded above
+\( z = \sqrt{x^2+y^2} \).
+\begin{align*}
+  r(\phi,\theta) &=
+    \langle\sin\phi\cos\theta,\sin\phi\sin\theta,\cos\phi\rangle \\
+  \left|\pdiff{r}{\phi}\times\pdiff{r}{\theta}\right| &= \left|\begin{vmatrix}
+    \i & \j & \k \\
+    \cos\phi\cos\theta & \cos\phi\sin\theta & -\sin\phi \\
+    -\sin\phi\sin\theta & \sin\phi\cos\theta & 0
+  \end{vmatrix}\right| \\
+  &= \sin\phi \\
+  \iint_{S}y^2\diff{S} &= \int_{0}^{2\pi}\int_{0}^{1}\sin^2\phi\sin^2\theta
+    \sqrt{\sin^4\theta+\cos^2\phi\sin^2\theta}\diff{\phi}\diff{\theta}
+\end{align*}
+
+\subsubsection*{Example}
+Find the surface area of sphere of radius \( R \).
+\begin{align*}
+  r(\phi,\theta) &= \langle
+    R\sin\phi\cos\theta,R\sin\phi\cos\theta,R\cos\phi\rangle \\
+  \left|\pdiff{r}{\phi}\times\pdiff{r}{\theta}\right| &= \left|\begin{vmatrix}
+    \i & \j & \k \\
+    R\cos\phi\cos\theta & R\cos\phi\sin\theta & -R\sin\phi \\
+    -R\sin\phi\sin\theta & R\sin\phi\cos\theta & 0
+  \end{vmatrix}\right| \\
+  &= R^2\sin\phi \\
+  \iint_{S}1\diff{S} &= \int_{0}^{2\pi}\int_{0}^{1}
+    R^2\sin\phi\diff{\phi}\diff{\theta} \\
+  &= 4\pi R^2
+\end{align*}
+
+\subsubsection*{Example}
+Suppose there is a function \( \vec{F} \) on \( S \).
+\begin{align*}
+  \iint_{S}\vec{F}\diff{S} &= \iint_{S}(\vec{F}\cdot\vec{r})\diff{S} \\
+  &= \iint_{S}\vec{F}\cdot\frac{\pdiff{r}{u}\times\pdiff{r}{v}}
+    {\left|\pdiff{r}{u}\times\pdiff{r}{v}\right|}\diff{S} \\
+  &= \iint_{D}\vec{F}\cdot\frac{\pdiff{r}{u}\times\pdiff{r}{v}}
+    {\left|\pdiff{r}{u}\times\pdiff{r}{v}\right|}
+    \left|\pdiff{r}{u}\times\pdiff{r}{v}\right|\diff{u}\diff{v} \\
+  &= \iint_{D}\vec{F}\cdot\left(\pdiff{r}{u}\times\pdiff{r}{v}\right)
+    \diff{u}\diff{v}
+\end{align*}
+
+\subsubsection*{Example}
+Find \( \iint_{S}\langle x,y,5\rangle\diff{S} \) given \( S:x^2+y^2 = 1, y = 0,
+x+y = 2 \), picking an outwards normal vector to the surface.
+\begin{align*}
+  r(\theta,y) &= \langle\cos\theta,y,\sin\theta\rangle \\
+  \pdiff{r}{\theta}\times\pdiff{r}{y} &= \begin{vmatrix}
+    \i & \j & \k \\
+    -\sin\theta & 0 & \cos\theta \\
+    0 & 1 & 0
+  \end{vmatrix} \\
+  &= \langle-\cos\theta,0,-\sin\theta\rangle
+    \text{ reverse signs for outwards normal vector} \\
+  \iint_{S}\langle x,y,5\rangle\diff{S} &=
+    \int_{0}^{2\pi}\int_{0}^{2-\cos\theta}\langle\cos\theta,y,5\rangle\cdot
+    \langle\cos\theta,0,\sin\theta\rangle\diff{y}\diff{\theta} \\
+  &= \int_{0}^{2\pi}\int_{0}^{2-\cos\theta}\cos^2\theta+5\sin\theta
+    \diff{y}\diff{\theta} \\
+\end{align*}
+
+\subsection*{Divergence Theorem}
+Let \( S \) be a oriented and closed surface.
+\[ \iint_{S}\vec{F}\diff{S} =
+  \iiint_{V}\vec{\triangledown}\cdot\vec{F}\diff{V} \]
+\[ \vec{\triangledown}\cdot\vec{F} =
+  \langle\ddiff{}{x},\ddiff{}{y},\ddiff{}{z}\rangle\cdot
+  \langle P,Q,R\rangle = \pdiff{P}{x}+\pdiff{Q}{y}+\pdiff{R}{z} \]
+
+\subsubsection*{Example}
+\begin{align*}
+  \vec{\triangledown}\cdot\langle x^yz,xy^2z,xyz^2\rangle &= 2xyz+2xyz+2xyz \\
+  \iint_{S}\langle x^yz,xy^2z,xyz^2\rangle\diff{S} &=
+    \int_{0}^{1}\int_{0}^{1}\int_{0}^{1}6xyz\diff{z}\diff{y}\diff{x} \\
+\end{align*}
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
