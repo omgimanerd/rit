@@ -131,24 +131,104 @@ a connected set since all points can be joined with a path inside the set.
 
 \subsubsection*{Exercise 2}
 Determine whether the points \( P \) and \( Q \) lie on the given surface.
-\[ \vec{r}(u,v) = \langle1+u-v,u+v^2,u^2-v^2\rangle \quad P(1,2,1),Q(2,2,3) \]
+\[ \vec{r}(u,v) = \langle1+u-v,u+v^2,u^2-v^2\rangle \quad P(1,2,1),Q(2,3,3) \]
+\begin{align*}
+  1+u-v &= 1 \\
+  u+v^2 &= 2 \\
+  u^2-v^2 &= 1 \\
+  1+u-v-(u+v^2) = 1-2 \\
+  v^2+v-2 &= 0 \\
+  (v+2)(v-1) &= 0 \\
+  v &= -2 \quad v = 1 \\
+  u &= -2 \quad u = 1 \\
+  u^2-v^2 &\ne 1
+\end{align*}
+The point \( P \) does not lie on the surface.
+\begin{align*}
+  1+u-v &= 2 \\
+  u+v^2 &= 3 \\
+  u^2-v^2 &= 3 \\
+  1+u-v-(u+v^2) &= 2-3 \\
+  v^2+v-2 &= 0 \\
+  v &= -2 \quad v = 1 \\
+  u &= -1 \quad u = 2 \\
+  u^2-v^2 &= 1
+\end{align*}
+The point \( Q \) lies on the surface.
 
 \subsubsection*{Exercise 19}
 Find a parametric representation for the plane through the origin that contains
 the vectors \( \i-\j \) and \( \j-\k \).
+\begin{align*}
+  \overrightarrow{r(u,v)} &= \vec{p}+(\i-\j)u+(\j-\k)v \\
+  &= u\i-u\j+v\j-v\k \\
+  &= u\i+(v-u)\j-v\k \\
+  x &= u \quad y = v-u \quad z = -v \\
+\end{align*}
 
 \subsubsection*{Exercise 33}
 Find an equation of the tangent plane to the given parametric surface at the
 specified point.
 \[ x = u+v \quad y = 3u^2 \quad z = u-v \quad (2,3,0) \]
+\begin{align*}
+  u+v &= 2 \\
+  3u^2 &= 3 \\
+  u-v &= 0 \\
+  u &= \pm1 \\
+  v &= 1 \\
+  u &= v = 1 \\
+  \overrightarrow{r(u,v)} &= (u+v)\i+3u^2\j+(u-v)\k \\
+  \vec{r_u} &= \i+6u\j+\k \\
+  \vec{r_v} &= \i-\k \\
+  \vec{n} &= \vec{r_u}\times\vec{r_v} \\
+  &= \begin{vmatrix}
+    \i & \j & \k \\
+    1 & 6u & 1 \\
+    1 & 0 & -1
+  \end{vmatrix} \\
+  &= -6u\i+2\j+-6u\k \\
+  0 &= (\langle x,y,z\rangle-P)\cdot\vec{n} \\
+  &= (x-2)(-6(1))+(y-3)(2)+(z-0)(-6(1)) \\
+  &= -6x+12+2y-6-6z \\
+  6x-2y+6z &= 6 \\
+  3x-y+3z &= 3
+\end{align*}
 
 \subsubsection*{Exercise 39}
 Find the area of the part of the plane \( 3x+2y+z = 6 \) that lies in the first
 octant.
+\begin{align*}
+  z &= 6-3x-2y \\
+  \pdiff{z}{x} &= -3 \\
+  \pdiff{z}{y} &= -2
+\end{align*}
+\begin{align*}
+  A(S) &= \iint_{D}\sqrt{1+(\pdiff{z}{x})^2+(\pdiff{z}{y})^2}\diff{A} \\
+  &= \iint_{D}\sqrt{1+9+4}\diff{A} \\
+  &= \sqrt{14}\iint_{D}\diff{A} \\
+  &= \sqrt{14}\int_{0}^{2}\int_{0}^{3-\frac{3x}{2}}\diff{y}\diff{x} \\
+  &= \sqrt{14}\int_{0}^{2}3-\frac{3x}{2}\diff{x} \\
+  &= \sqrt{14}\left[3x-\frac{3x^2}{4}\right]_{0}^{2} \\
+  &= 3\sqrt{14}
+\end{align*}
 
 \subsubsection*{Exercise 45}
 Find the area of the part of the surface \( z = xy \) that lies within the
 cylinder \( x^2+y^2 = 1 \).
+\begin{align*}
+  z &= xy \\
+  \pdiff{z}{x} &= y \\
+  \pdiff{z}{y} &= x \\
+  A(S) &= \iint_{D}\sqrt{1+y^2+x^2}\diff{A} \\
+  &= \int_{-1}^{1}\int_{-\sqrt{1-x^2}}^{\sqrt{1-x^2}}\sqrt{1+y^2+x^2}
+    \diff{y}\diff{x} \\
+  &= \int_{0}^{2\pi}\int_{0}^{1}\sqrt{1+r^2}r\diff{r}\diff{\theta} \\
+  &= \int_{0}^{2\pi}\left[\frac{1}{3}(1+r^2)^{\frac{3}{2}}\right]_{0}^{1}
+    \diff{\theta} \\
+  &= \frac{1}{3}\int_{0}^{2\pi}2\sqrt{2}-1\diff{\theta} \\
+  &= \frac{2\sqrt{2}-1}{3}\bigg[\theta\bigg]_{0}^{2\pi} \\
+  &= \frac{2\pi(2\sqrt{2}-1)}{3}
+\end{align*}
 
 \section*{Section 16.7}
 

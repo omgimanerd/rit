@@ -1,0 +1,41 @@
+\documentclass{math}
+
+\usepackage{tikz}
+
+\title{University Physics 1A}
+\author{Alvin Lin}
+\date{November 16th, 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Angular Momentum}
+Angular Momentum:
+\[ L = I\omega = \vec{r}\times m\vec{v} \]
+
+\subsubsection*{Example}
+A thin rod of mass \( M_R \) and length \( d \) is pivoted at one end and can
+rotate without friction along a horizontal surface. The diagram is a top view.
+Initially it is rotating clockwise at \( \omega_{R,i} \). A piece of putty of
+mass \( m_p \) slides without friction toward the end of the rod as shown with
+a speed of \( v_p \). The putty collides and sticks to the rod at the very end.
+What is the final angular velocity of the rod and putty?
+\begin{center}
+  \begin{tikzpicture}
+    \draw[fill=black] (0.05,0) circle (0.1cm);
+    \draw (0,0) -- (0.1,0) -- (0.1,-4) -- (0,-4) -- cycle node[pos=0.5,left]
+      {\( d \)};
+    \draw[->] (0.5,-4.2) -- (-0.5,-4.2) node[pos=0.5,below]
+      {\( \omega_{R,i} \)};
+    \draw[fill=black] (-2,-4) circle (0.1cm) node[above] {\( m_p \)};
+    \draw[->] (-2,-4) -- (-1,-4) node[pos=0.5,below] {\( v_p \)};
+  \end{tikzpicture}
+\end{center}
+\begin{align*}
+  I_{rod}\omega_{R,i}-(dm_pv_p) &= I_{rod~and~putty}\omega_f \\
+  \frac{1}{3}M_Rd^2-dm_pv_p &= (\frac{1}{3}M_Rd^2+m_pd^2)\omega_f \\
+  \omega_f &= \frac{\frac{1}{3}M_Rd^2-dm_pv_p}{\frac{1}{3}M_Rd^2+m_pd^2}
+\end{align*}
+
+\end{document}
