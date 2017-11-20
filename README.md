@@ -1,5 +1,5 @@
 # RIT Class Notes
-[![Build Status](https://travis-ci.org/omgimanerd/rit-notes.svg?branch=master)](https://travis-ci.org/omgimanerd/rit-notes)
+[![Build Status](https://travis-ci.org/omgimanerd/rit-notes.svg?branch=master)](https://travis-ci.org/omgimanerd/rit)
 
 This repository contains notes and resources taken from my classes at RIT. Some
 of these are intended for the NTID/hard-of-hearing students, for which I am a
@@ -27,4 +27,4 @@ gulp latex-all
 [![GitHub followers](https://img.shields.io/github/followers/omgimanerd.svg?style=social&label=Follow)](https://github.com/omgimanerd)
 
 ## License
-[MIT](https://github.com/omgimanerd/rit-notes/blob/master/LICENSE)
+[MIT](https://github.com/omgimanerd/rit/blob/master/LICENSE)
