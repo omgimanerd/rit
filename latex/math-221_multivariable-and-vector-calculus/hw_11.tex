@@ -94,22 +94,44 @@ curve matter.
 Find the work done by the force field \( F \) in moving an object from \( P \)
 to \( Q \).
 \[ F(x,y) = x^3\i+y^3\j \quad P(1,0),Q(2,2) \]
+\begin{align*}
+  f_x &= x^3 \\
+  f_y &= y^3 \\
+  f(x,y) &= \int f_x\diff{x} \\
+  &= \int x^3\diff{x} \\
+  &= \frac{1}{4}x^4+h(y) \\
+  f_y(x,y) &= h'(y) = y^3 \\
+  h(y) &= \int y^3\diff{y} \\
+  &= \frac{1}{4}y^4+c \\
+  f(x,y) &= \frac{1}{4}x^4+(\frac{1}{4}y^4+c) \\
+  W &= \int f\cdot\diff{r} \\
+  &= f(2,2)-f(1,1) \\
+  &= \frac{1}{4}(32)-\frac{1}{4}(1) \\
+  &= \frac{31}{4}
+\end{align*}
 
 \subsubsection*{Exercise 31}
 Determine whether or not the given set is open, connected, and/or simply
 connected.
 \[ \{(x,y)\mid0<y<3\} \]
+This defines all points within the square from (0,0) to (3,3) but excluding
+the boundary of the square. This region is open since it does not include those
+boundary points. The set is connected since all points in the set can be joined
+by a path entirely composed of points into the set.
 
 \subsubsection*{Exercise 33}
 Determine whether or not the given set is open, connected, and/or simply
 connected.
 \[ \{(x,y)\mid1\le x^2+y^2\le 4\quad y\ge0\} \]
+This defines the area between the semicircles above the x-axis with radius 1 and
+2. This set is not an open set because it contains its boundary points. It is
+a connected set since all points can be joined with a path inside the set.
 
 \section*{Section 16.6}
 
 \subsubsection*{Exercise 2}
 Determine whether the points \( P \) and \( Q \) lie on the given surface.
-\[ \vec{r}(u,v) = \langle1+u-v,u+v^2,u^2-v^2\langle \quad P(1,2,1),Q(2,2,3) \]
+\[ \vec{r}(u,v) = \langle1+u-v,u+v^2,u^2-v^2\rangle \quad P(1,2,1),Q(2,2,3) \]
 
 \subsubsection*{Exercise 19}
 Find a parametric representation for the plane through the origin that contains
