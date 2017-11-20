@@ -1,0 +1,142 @@
+\documentclass{math}
+
+\geometry{letterpaper, margin=0.5in}
+
+\title{Multivariable and Vector Calculus: Homework 11}
+\author{Alvin Lin}
+\date{August 2016 - December 2016}
+
+\begin{document}
+
+\maketitle
+
+\section*{Section 16.3}
+
+\subsubsection*{Exercise 3}
+Determine whether or not \( F \) is a conservative vector field. If it is, find
+a function \( f \) such that \( F = \triangledown f \).
+\[ F(x,y) = (xy+y^2)\i+(x^2+2y)\j \]
+\begin{align*}
+  F(x,y) &= P\i+Q\j \\
+  \pdiff{P}{y} &= x+2y \\
+  \pdiff{Q}{x} &= 2x \\
+  \pdiff{P}{y} &\ne \pdiff{Q}{x}
+\end{align*}
+
+\subsubsection*{Exercise 5}
+Determine whether or not \( F \) is a conservative vector field. If it is, find
+a function \( f \) such that \( F = \triangledown f \).
+\[ F(x,y) = y^2\e^{xy}\i+(1+xy)\e^{xy}\j \]
+\begin{align*}
+  F(x,y) &= P\i+Q\j \\
+  \pdiff{P}{y} &= 2y\e^{xy}+xy^2\e^{xy} \\
+  \pdiff{Q}{x} &= y\e^{xy}+(1+xy)y\e^{xy} \\
+  &= 2y\e^{xy}+xy^2\e^{xy} \\
+  \int y^2\e^{xy} &= y\e^{xy}+h(y) \\
+  (1+xy)\e^{xy}+h'(y) &= (1+xy)\e^{xy} \\
+  h'(y) &= 0 \\
+  h(y) &= c \\
+  f(x,y) &= y\e^{xy}+c
+\end{align*}
+
+\subsubsection*{Exercise 13}
+Find a function \( f \) such that \( F = \triangledown f \) and use it to
+evaluate \( \int_{C}F\cdot\diff{r} \) along the given curve \( C \).
+\[ F(x,y) = x^2y^3\i+x^3y^2\j \]
+\( C \) is the arc of the hyperbola \( y = \frac{1}{x} \) from \( (1,1) \) to
+\( (4,\frac{1}{4}) \).
+
+\subsubsection*{Exercise 17}
+Find a function \( f \) such that \( F = \triangledown f \) and use it to
+evaluate \( \int_{C}F\cdot\diff{r} \) along the given curve \( C \).
+\[ F(x,y,z) = yz\e^{xz}\i+\e^{xz}\j+xy\e^{xz}\k \]
+\[ C: \vec{r(t)} = (t^2+1)\i+(t^2-1)\j+(t^2-2t)\k \quad 0\le t\le2 \]
+
+\subsubsection*{Exercise 21}
+Suppose you're asked to determine the curve that requires the least work for a
+force field \( F \) to move a particle from one point to another point. You
+decide to check first whether \( F \) is conservative, and indeed turns out that
+it is. How would you reply to the request?
+
+\subsubsection*{Exercise 23}
+Find the work done by the force field \( F \) in moving an object from \( P \)
+to \( Q \).
+\[ F(x,y) = x^3\i+y^3\j \quad P(1,0),Q(2,2) \]
+
+\subsubsection*{Exercise 31}
+Determine whether or not the given set is open, connected, and/or simply
+connected.
+\[ \{(x,y)\mid0<y<3\} \]
+
+\subsubsection*{Exercise 33}
+Determine whether or not the given set is open, connected, and/or simply
+connected.
+\[ \{(x,y)\mid1\le x^2+y^2\le 4\quad y\ge0\} \]
+
+\section*{Section 16.6}
+
+\subsubsection*{Exercise 2}
+Determine whether the points \( P \) and \( Q \) lie on the given surface.
+\[ \vec{r}(u,v) = \langle1+u-v,u+v^2,u^2-v^2\langle \quad P(1,2,1),Q(2,2,3) \]
+
+\subsubsection*{Exercise 19}
+Find a parametric representation for the plane through the origin that contains
+the vectors \( \i-\j \) and \( \j-\k \).
+
+\subsubsection*{Exercise 33}
+Find an equation of the tangent plane to the given parametric surface at the
+specified point.
+\[ x = u+v \quad y = 3u^2 \quad z = u-v \quad (2,3,0) \]
+
+\subsubsection*{Exercise 39}
+Find the area of the part of the plane \( 3x+2y+z = 6 \) that lies in the first
+octant.
+
+\subsubsection*{Exercise 45}
+Find the area of the part of the surface \( z = xy \) that lies within the
+cylinder \( x^2+y^2 = 1 \).
+
+\section*{Section 16.7}
+
+\subsubsection*{Exercise 5}
+Evaluate the surface integral.
+\[ \iint_{S}(x+y+z)\diff{S} \]
+\( S \) is the parallelogram with parametric equations \( x = u+v, y = u-v,
+z = 1+2u+v, 0\le u\le 2, 0\le v\le 1 \).
+
+\subsubsection*{Exercise 11}
+Evaluate the surface integral.
+\[ \iint_{S}x\diff{S} \]
+\( S \) is the triangular region with vertices \( (1,0,0),(0,-2,0),(0,0,4) \).
+
+\subsubsection*{Exercise 15}
+Evaluate the surface integral.
+\[ \iint_{S}x\diff{S} \]
+\( S \) is the surface \( y = x^2+4z,0\le x\le1,0\le z\le 1 \).
+
+\subsubsection*{Exercise 17}
+Evaluate the surface integral.
+\[ \iint_{S}(x^z+y^2z)\diff{S} \]
+\( S \) is the hemisphere \( x^2+y^2+z^2 = 4, z\ge0 \).
+
+\subsubsection*{Exercise 19}
+Evaluate the surface integral.
+\[ \iint_{S}xz\diff{S} \]
+\( S \) is the boundary of the region enclosed by the cylinder \( y^2+z^2 = 9 \)
+and the planes \( x = 0 \) and \( x+y = 5 \).
+
+\subsubsection*{Exercise 23}
+Evaluate the surface integral \( \iint_{S}F\cdot\diff{S} \) for the given vector
+field \( F \) and the oriented surface \( S \). In other words, find the flux of
+\( F \) across \( S \). For closed surfaces, use the positive (outward)
+orientation.
+\[ F(x,y,z) = xy\i+yz\j+zx\k \]
+\( S \) is the part of paraboloid \( z = 4-x^2-y^2 \) that lies above the square
+\( 0\le x\le1,0\le y\le1 \) and has upward orientation.
+
+\begin{center}
+  If you have any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
