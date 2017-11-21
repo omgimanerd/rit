@@ -131,7 +131,8 @@ a connected set since all points can be joined with a path inside the set.
 
 \subsubsection*{Exercise 2}
 Determine whether the points \( P \) and \( Q \) lie on the given surface.
-\[ \vec{r}(u,v) = \langle1+u-v,u+v^2,u^2-v^2\rangle \quad P(1,2,1),Q(2,3,3) \]
+\[ \overrightarrow{r(u,v)} = \langle1+u-v,u+v^2,u^2-v^2\rangle \quad
+  P(1,2,1),Q(2,3,3) \]
 \begin{align*}
   1+u-v &= 1 \\
   u+v^2 &= 2 \\
@@ -324,7 +325,34 @@ Evaluate the surface integral.
 \( S \) is the boundary of the region enclosed by the cylinder \( y^2+z^2 = 9 \)
 and the planes \( x = 0 \) and \( x+y = 5 \).
 \begin{align*}
+  S_1: y^2+z^2 &= 9 \\
+  \overrightarrow{r(x,\theta)} &= x\i+3\cos\theta\j+3\sin\theta\k \\
+  \vec{r_x} &= \i \\
+  \vec{r_\theta} &= -3\sin\theta\j+3\cos\theta\k \\
+  |\vec{r_x}\times\vec{r_\theta}| &= \left|\begin{vmatrix}
+    \i & \j & \k \\
+    1 & 0 & 0 \\
+    0 & -3\sin\theta & 3\cos\theta
+  \end{vmatrix}\right| \\
+  &= \sqrt{(-3\cos\theta)^2+(-3\sin\theta)^2} \\
+  &= 3 \\
+  \iint_{S_1}xz\diff{S} &= \int_{0}^{2\pi}\int_{0}^{5-3\cos\theta}
+    x(3\sin\theta)(3)\diff{x}\diff{\theta} \\
+  &= \int_{0}^{2\pi}\bigg[\frac{1}{2}9x^2\sin\theta\bigg]_{0}^{5-3\cos\theta}
+    \diff{\theta} \\
+  &= 0
 \end{align*}
+\begin{align*}
+  S_2: x = 0 \\
+  \iint_{S_2}xz\diff{S} &= \iint_{S_2}0\diff{S} \\
+  &= 0
+\end{align*}
+\begin{align*}
+  S_3: x+y &= 5 \\
+  z &= 0 \\
+  \iint_{D}xz\diff{S} &= 0
+\end{align*}
+\[ \iint_{S}xz\diff{S} = 0+0+0 = 0 \]
 
 \subsubsection*{Exercise 23}
 Evaluate the surface integral \( \iint_{S}F\cdot\diff{S} \) for the given vector
@@ -334,6 +362,7 @@ orientation.
 \[ F(x,y,z) = xy\i+yz\j+zx\k \]
 \( S \) is the part of paraboloid \( z = 4-x^2-y^2 \) that lies above the square
 \( 0\le x\le1,0\le y\le1 \) and has upward orientation.
+\[ ? \]
 
 \begin{center}
   If you have any questions, comments, or concerns, please contact me at
