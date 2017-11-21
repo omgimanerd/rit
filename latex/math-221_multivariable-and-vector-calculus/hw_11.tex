@@ -237,27 +237,94 @@ Evaluate the surface integral.
 \[ \iint_{S}(x+y+z)\diff{S} \]
 \( S \) is the parallelogram with parametric equations \( x = u+v, y = u-v,
 z = 1+2u+v, 0\le u\le 2, 0\le v\le 1 \).
+\begin{align*}
+  \overrightarrow{r(u,v)} &= (u+v)\i+(u-v)\j+(1+2u+v)\k \\
+  \vec{r_u} &= \i+\j+2\k \\
+  \vec{r_v} &= \i-\j+\k \\
+  \iint_{S}(x+y+z)\diff{S} &=
+    \iint_{D}f(\overrightarrow{r(u,v)})|\vec{r_u}\times\vec{r_v}|\diff{A} \\
+  &= \int_{0}^{2}\int_{0}^{1}(4u+1+v)|\vec{r_u}\times\vec{r_v}|
+    \diff{v}\diff{u} \\
+  &= \sqrt{14}\int_{0}^{2}\bigg[4uv+v+\frac{v^2}{2}\bigg]_{0}^{1}\diff{u} \\
+  &= \sqrt{14}\int_{0}^{2}4u+1+\frac{1}{2}\diff{u} \\
+  &= \sqrt{14}\bigg[\frac{4u^2}{2}+u+\frac{u}{2}\bigg]_{0}^{1} \\
+  &= \sqrt{14}(8+3-(0+0)) \\
+  &= 11\sqrt{14}
+\end{align*}
 
 \subsubsection*{Exercise 11}
 Evaluate the surface integral.
 \[ \iint_{S}x\diff{S} \]
 \( S \) is the triangular region with vertices \( (1,0,0),(0,-2,0),(0,0,4) \).
+\begin{align*}
+  \frac{x}{1}+\frac{y}{-2}+\frac{z}{4} &= 1 \\
+  4x-2y+z &= 4 \\
+  z &= 4-4x+2y \\
+  \pdiff{z}{x} &= -4 \\
+  \pdiff{z}{y} &= 2
+\end{align*}
+\begin{align*}
+  \iint_{S}x\diff{S} &=
+    \iint_{D}f(x,y,z)\sqrt{1+(\pdiff{z}{x})^2+(\pdiff{z}{y})^2}\diff{A} \\
+  &= \iint_{D}\sqrt{1+16+4}x\diff{A} \\
+  &= \sqrt{21}\int_{0}^{1}\int_{2x-2}^{0}x\diff{y}\diff{x} \\
+  &= \sqrt{21}\int_{0}^{1}\bigg[xy\bigg]_{2x-2}^{0}\diff{x} \\
+  &= \sqrt{21}\int_{0}^{1}-2x^2+2x\diff{x} \\
+  &= \sqrt{21}\bigg[\frac{2x^2}{2}-\frac{2x^3}{3}\bigg]_{0}^{1} \\
+  &= \sqrt{21}\bigg(\frac{2}{2}-\frac{2}{3}\bigg) \\
+  &= \frac{\sqrt{21}}{3}
+\end{align*}
 
 \subsubsection*{Exercise 15}
 Evaluate the surface integral.
 \[ \iint_{S}x\diff{S} \]
 \( S \) is the surface \( y = x^2+4z,0\le x\le1,0\le z\le 1 \).
+\begin{align*}
+  \pdiff{y}{x} &= 2x \\
+  \pdiff{y}{z} &= 4 \\
+  \iint_{S}x\diff{S} &= \iint_{D}x\sqrt{1+16+4x^2}\diff{x}\diff{z} \\
+  &= \int_{0}^{1}\int_{0}^{1}x\sqrt{17+4x^2}\diff{x}\diff{z} \\
+  &= \int_{0}^{1}\bigg[\frac{1}{12}(4x^2+17)^{\frac{3}{2}}\bigg]_{0}^{1}
+    \diff{z} \\
+  &= \int_{0}^{1}\frac{1}{12}(21^{\frac{3}{2}}-17^{\frac{3}{2}})\diff{z} \\
+  &= \frac{21^{\frac{3}{2}}-17^{\frac{3}{2}}}{12}
+\end{align*}
 
 \subsubsection*{Exercise 17}
 Evaluate the surface integral.
-\[ \iint_{S}(x^z+y^2z)\diff{S} \]
+\[ \iint_{S}(x^2z+y^2z)\diff{S} \]
 \( S \) is the hemisphere \( x^2+y^2+z^2 = 4, z\ge0 \).
+\begin{align*}
+  x^2+y^2+z^2 = 4 \equiv \rho = 2 \\
+  x &= 2\sin\phi\cos\theta \\
+  y &= 2\sin\phi\sin\theta \\
+  z &= 2\cos\phi \\
+  \vec{r_{\phi}} &= 2\cos\phi\cos\theta\i+2\cos\phi\cos\theta\j-2\sin\phi\k \\
+  \vec{r_{\phi}} &= 2\sin\phi\sin\theta\i+2\sin\phi\cos\theta\j+0\k \\
+  |\vec{r_{\phi}}\times\vec{r_{\theta}}| &= \left|\begin{vmatrix}
+    \i & \j & \k \\
+    2\cos\phi\cos\theta & 2\cos\phi\sin\theta & -2\sin\phi \\
+    -2\sin\phi\sin\theta & 2\sin\phi\cos\theta & 0 \\
+  \end{vmatrix}\right| \\
+  &= 4\sin\phi \\
+  \iint_{S}(x^2x+y^2z)\diff{S} &= \int_{0}^{\frac{\pi}{2}}\int_{0}^{2\pi}
+    (8\sin^2\phi\cos\phi\cos^2\theta+8\sin^2\phi\cos\phi\sin^2\theta)
+    (4\sin\phi)\diff{\theta}\diff{\phi} \\
+  &= \int_{0}^{\frac{\pi}{2}}\int_{0}^{2\pi}32\sin^3\phi\cos\theta
+    \diff{\phi}\diff{\theta} \\
+  &= 32\int_{0}^{2\pi}\diff{\theta}
+    \int_{0}^{\frac{\pi}{2}}\sin^3\theta\phi\cos\theta\diff{\theta} \\
+  &= 32(2\pi)(\frac{1}{4}) \\
+  &= 16\pi
+\end{align*}
 
 \subsubsection*{Exercise 19}
 Evaluate the surface integral.
 \[ \iint_{S}xz\diff{S} \]
 \( S \) is the boundary of the region enclosed by the cylinder \( y^2+z^2 = 9 \)
 and the planes \( x = 0 \) and \( x+y = 5 \).
+\begin{align*}
+\end{align*}
 
 \subsubsection*{Exercise 23}
 Evaluate the surface integral \( \iint_{S}F\cdot\diff{S} \) for the given vector
