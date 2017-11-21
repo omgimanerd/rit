@@ -362,7 +362,32 @@ orientation.
 \[ F(x,y,z) = xy\i+yz\j+zx\k \]
 \( S \) is the part of paraboloid \( z = 4-x^2-y^2 \) that lies above the square
 \( 0\le x\le1,0\le y\le1 \) and has upward orientation.
-\[ ? \]
+\begin{align*}
+  F &= P\i+Q\j+R\k \\
+  &= xy\i+yz\j+xz\k \\
+  z &= g(x,y) = 4-x^2-y^2 \\
+  \pdiff{g}{x} &= -2x \\
+  \pdiff{g}{y} &= -2y
+\end{align*}
+\begin{align*}
+  \iint_{S}F\cdot\diff{S} &=
+    \iint_{D}\left(-P\pdiff{g}{x}-Q\pdiff{g}{y}+R\right)\diff{A} \\
+  &= \iint_{D}-(xy)(-2x)-(yz)(-2y)+xz\diff{A} \\
+  &= \int_{0}^{1}\int_{0}^{1}2x^2y+2y^2z+xz\diff{y}\diff{x} \\
+  &= \int_{0}^{1}\int_{0}^{1}2x^2y+2y^2(4-x^2-y^2)+x(4-x^2-y^2)
+    \diff{y}\diff{x} \\
+  &= \int_{0}^{1}\int_{0}^{1}2x^2y+8y^2-2x^2y^2-2y^4+4x-x^3-xy^2
+    \diff{y}\diff{x} \\
+  &= \int_{0}^{1}\bigg[\frac{2x^2y}{2}+\frac{8y^3}{3}-\frac{2x^2y^3}{3}-
+    \frac{2y^5}{5}+4xy-x^3y-\frac{xy^3}{3}\bigg]_{0}^{1}\diff{x} \\
+  &= \int_{0}^{1}x^2+\frac{8}{3}-\frac{2x^2}{3}-\frac{2}{5}+4x-x^3-\frac{x}{3}
+    \diff{x} \\
+  &= \int_{0}^{1}-x^3+\frac{x^2}{3}+\frac{11x}{3}+\frac{34}{15}\diff{x} \\
+  &= \bigg[-\frac{x^4}{4}+\frac{x^3}{9}+\frac{11x^2}{6}+\frac{34x}{15}
+    \bigg]_{0}^{1} \\
+  &= -\frac{1}{4}+\frac{1}{9}+\frac{11}{6}+\frac{34}{15} \\
+  &\approx 3.96111
+\end{align*}
 
 \begin{center}
   If you have any questions, comments, or concerns, please contact me at
