@@ -134,12 +134,34 @@ def prerequisites(n, adjacencyList):
 \section*{Problem 3}
 
 \subsubsection*{Algorithm Description}
-
-\subsubsection*{Argument of Correctness}
+For this problem, we implemented a solution that is probably more complex than
+it needed to be. First, we generate a tree of all possible moves for the Things
+to make. This tree, rather than re-generating moves it has already generated,
+simply contains links to the portion of the tree where that generation first
+occurred. We did this by recording every configuration's node in a 4D matrix
+(where the indices are the row and column of each Thing), and checking to see if
+a node already exists in the matrix at that configuration's set of indices. If
+it does, we replace the node we just generated with the one from this matrix.
+\par
+Then, we search through the linked tree with BFS in order to find the closest
+node where the Things can leave the grid on the same edge in one more move (we
+call this the winning configuration).  Rather than the bizarre linking thing,
+the BFS simply uses a visited array in order to determine if we have already
+seen a node, and skip it if necessary.
+\par
+This solution seems to be correct by inspection, although our implementation of
+it is flawed in a way that we were unable to determine, and consequently does
+not work.
 
 \subsubsection*{Running Time Estimate}
-
-\subsubsection*{Pseudocode}
+If it \textbf{did} work, it would run in \( O((ab)^2) \) time, or equivalently
+\( O(m+n) \). The operation of searching the matrix to identify where Thing 1
+and Thing 2 are takes \( O(ab) \) time, twice, to look through at worst every
+location in the matrix. The operation of building the graph requires
+\( O((ab)^2) \) time, since it will touch every index of the matrix (ab) times
+in order to build the tree. Finally, searching through this tree will take
+\( O(m+n) \) time, since we are using BFS. All together, this makes an
+\( O((ab)^2) \) time algorithm.
 
 \section*{Problem 4}
 
@@ -195,5 +217,28 @@ def kruskal(n, edges):
       return -1
   return weight
 \end{lstlisting}
+
+\section*{Problem 5}
+
+\subsubsection*{Algorithm Description}
+For this problem, we implemented the Strongly Connected Components algorithm.
+The key insight we had into this problem was that if there is not exactly 1
+strongly connected component with 0 incoming edges and exactly 1 strongly
+connected component with 0 outgoing edges, it is not possible to draw 1
+additional edge and make the entire graph strongly connected.  In order to
+determine that information, we first run Strongly Connected Components on the
+forward topological ordering of the nodes, then run it again on the reversed
+topological ordering of the nodes.
+
+\subsubsection*{Running Time Estimate}
+This algorithm can be broken down into a few large pieces, all of which have
+known time complexities. First, it has to obtain the transpose of the graph.
+This is \( O(m+n) \) because it needs to touch every node and every edge. Next,
+it needs to find a topological ordering of the graph. This is also \( O(m+n) \)
+because it needs to touch every node in the graph. Finally, it needs to DFS
+through the graph, twice (once for the forward topological ordering, once for
+the backward). Each of these is \( O(m+n) \), and since they are run in
+sequence, they do not multiply. In total, the algorithm runs in
+\( O(4(m+n)) \), but we omit the 4 because that's how Big-Oh notation works.
 
 \end{document}
