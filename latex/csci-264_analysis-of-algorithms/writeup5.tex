@@ -37,7 +37,7 @@ shortest length paths from the start node to the end node \( t \) is simply
 
 \subsubsection*{Running Time Estimate}
 The conversion of the edge list to an adjacency matrix requires \( m+n \) time.
-The breadth first search touches every node and some of the vertices, requiring
+The breadth first search touches every node and some of the edges, requiring
 \( m+n \) time. The calculation of the number of shortest length paths is
 constant time, so our algorithm is \( O(m+n) \).
 
@@ -86,7 +86,7 @@ The solution is given as the largest element in \( S \).
 
 \subsubsection*{Running Time Estimate}
 The topological sort runs in \( m+n \) time since it is composed of a depth
-first search operations that touch every node and vertex. The dynamic
+first search operations that touch every node and edge. The dynamic
 programming part runs in \( m+n \) time as well since it must iterate
 through each node in the prerequisite graph and each neighbor of the nodes.
 This makes our algorithm \( O(m+n) \) overall.
