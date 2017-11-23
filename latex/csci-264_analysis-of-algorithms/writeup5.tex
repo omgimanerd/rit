@@ -228,7 +228,9 @@ connected component with 0 outgoing edges, it is not possible to draw 1
 additional edge and make the entire graph strongly connected.  In order to
 determine that information, we first run Strongly Connected Components on the
 forward topological ordering of the nodes, then run it again on the reversed
-topological ordering of the nodes.
+topological ordering of the nodes. If there is more than one strongly connected
+component produced by the algorithm for the reversed topological ordering, the
+problem is not solvable.
 
 \subsubsection*{Running Time Estimate}
 This algorithm can be broken down into a few large pieces, all of which have
@@ -240,5 +242,33 @@ through the graph, twice (once for the forward topological ordering, once for
 the backward). Each of these is \( O(m+n) \), and since they are run in
 sequence, they do not multiply. In total, the algorithm runs in
 \( O(4(m+n)) \), but we omit the 4 because that's how Big-Oh notation works.
+
+\subsubsection*{Pseudocode}
+\begin{lstlisting}
+let n be the number of nodes in the graph
+let transpose be the transpose of the graph
+let sorted be the topologically sorted array of nodes in the graph
+let seen be an array of size n
+let components be a linked list
+let backwardcomponents be a linked list
+
+for each node in sorted:
+  if not seen(node):
+    let component = dfs(node, transpose, seen)
+    components.add(component)
+
+for each element in seen:
+  element = false
+
+for each node in sorted, in reverse order:
+  if not seen(node):
+    let component = dfs(node, transpose, seen)
+    backwardcomponents.add(component)
+
+if backwardcomponents.length > 1:
+  output "NO"
+else
+  output "YES"
+\end{lstlisting}
 
 \end{document}
