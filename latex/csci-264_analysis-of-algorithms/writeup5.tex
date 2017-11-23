@@ -1,0 +1,199 @@
+\documentclass{math}
+
+\usepackage{hyperref}
+\usepackage{listings}
+\lstset{basicstyle=\ttfamily\footnotesize,breaklines=true}
+\title{Analysis of Algorithms}
+\author{Alvin Lin (axl1439) and William Leuschner (wel2138)}
+\date{August 2017 - December 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Problem 1}
+
+\subsubsection*{Algorithm Description}
+For this problem, we implemented a dynamic programming-esque solution to find
+the number of shortest paths from a starting node to every other node in the
+graph. By using breadth first search, we were able to populate the solution
+array in linear time by summing counting the frequencies of each path length
+and taking the frequency of the minimum path length. The dynamic programming
+heart of the solution is as follows:
+\begin{align*}
+  S[i] &= \text{the number of shortest length paths from the start node to node}
+    ~i \\
+\end{align*}
+\( S[i] \) is calculated by looking at the shortest length paths of all its
+neighbor nodes. Each neighbor node may have one or more shortest length paths
+leading to it, and we sum up the number of those shortest length paths for all
+the neighbors of node \( i \) for the shortest length path leading to node
+\( i \). The breadth-first search advances one neighbor during each loop
+iteration, thus when it touches a node, the path it has calculated to that node
+is guaranteed to be a shortest path. We simply count the multiplicities of
+these paths and propagate them to all the downstream nodes. Thus, the number of
+shortest length paths from the start node to the end node \( t \) is simply
+\( S[t] \).
+
+\subsubsection*{Running Time Estimate}
+The conversion of the edge list to an adjacency matrix requires \( m+n \) time.
+The breadth first search touches every node and some of the vertices, requiring
+\( m+n \) time. The calculation of the number of shortest length paths is
+constant time, so our algorithm is \( O(m+n) \).
+
+\subsubsection*{Pseudocode}
+\begin{lstlisting}
+def findNumPaths(n, start, target, adjacencyList):
+  let queue = new queue()
+  let visited = boolean array of size n
+  let pathMultiplicities = int array of size n
+
+  queue.push(s)
+  visited[s] = true
+  pathMultiplicities[s] = 1
+
+  while queue is not empty:
+    let queueSize = queue.size()
+    let visitedDuringCurrentStep = boolean array of size n
+    for i = 0 to queueSize:
+      let node = queue.pop()
+      for each neighbor of node:
+        if not visited[neighbor]:
+          queue.push(neighbor)
+          pathMultiplicities[neighbor] = pathMultiplicities[node]
+          visited[neighbor] = true
+          visitedDuringCurrentStep[neighbor] = true
+        else if visitedDuringCurrentStep[neighbor]:
+          pathMultiplicities[neighbor] += pathMultiplicities[node]
+
+  return pathMultiplicities[t]
+\end{lstlisting}
+
+\section*{Problem 2}
+
+\subsubsection*{Algorithm Description}
+For the problem, we implemented a dynamic programming solution to find the
+longest prerequisite chain by topologically sorting the graph and propagating
+each course to every upstream requirement. The dynamic programming part is as
+follows:
+\begin{align*}
+  S[i] &= \text{the longest chain of prerequisite courses required for course }
+    i \\
+  S[i] &= max(S[i], S[requirement]+1) \text{ for every prerequisite of course }
+    i \\
+\end{align*}
+The solution is given as the largest element in \( S \).
+
+\subsubsection*{Running Time Estimate}
+The topological sort runs in \( m+n \) time since it is composed of a depth
+first search operations that touch every node and vertex. The dynamic
+programming part runs in \( m+n \) time as well since it must iterate
+through each node in the prerequisite graph and each neighbor of the nodes.
+This makes our algorithm \( O(m+n) \) overall.
+
+\subsubsection*{Pseudocode}
+\begin{lstlisting}
+def getUnvisited(visited):
+  for i = 0 to visited.length:
+    if not visited[i]: return i
+  return -1
+
+def sortTopological(n, adjacencyList):
+  let sorted = new stack()
+  let visited = boolean array of size n
+  let unvisited = getUnvisited(visited)
+  while unvisited != -1:
+    visit(unvisited, adjacencyList, sorted, visited)
+    unvisited = getUnvisited(visited)
+
+  let result = int array of size n
+  while not sorted.isEmpty():
+    result.append(sorted.pop())
+  return result
+
+def visit(node, adjacencyList, sorted, visited):
+  if visited[node]:
+    return
+  for neighbor in adjacencyList[node]:
+    visit(neighbor, adjacencyList, sorted, visited)
+  visited[node] = true;
+  sorted.push(node)
+
+def prerequisites(n, adjacencyList):
+  let topologicalSort = sortTopological(n, adjacencyList)
+  let prerequisites = int array of size n
+  for node in topologicalSort:
+    for upstream in adjacencyList[node]:
+      prerequisites[upstream] = max(
+        prerequisites[upstream],
+        prerequisites[node] + 1
+      )
+  return max(prerequisites)
+\end{lstlisting}
+
+\section*{Problem 3}
+
+\subsubsection*{Algorithm Description}
+
+\subsubsection*{Argument of Correctness}
+
+\subsubsection*{Running Time Estimate}
+
+\subsubsection*{Pseudocode}
+
+\section*{Problem 4}
+
+\subsubsection*{Algorithm Description}
+For this problem, we implemented a variation of Kruskal's minimum spanning tree
+algorithm. Before running the greedy portion of Kruskal's algorithm, we sorted
+the edges first by whether or not they were in the subset F, and then by weight.
+During the edge inclusion part of Kruskal's algorithm, if an edge from set F is
+excluded, then we can stop immediately since no such spanning tree that includes
+all the edges in set F is possible.
+
+\subsubsection*{Argument of Correctness}
+This algorithm works because we prioritize the choosing of all the edges from
+set F first. If they are part of the minimum spanning tree containing all the
+edges of set F, then they will be chosen. If we exclude an edge that was
+included in the set F, then that edge would have caused a cycle in the minimum
+spanning tree, and thus no such spanning tree containing all the edges in set
+F would have been possible.
+
+\subsubsection*{Running Time Estimate}
+Kruskal's algorithm runs in \( O(m\log n) \) and the only modification to
+Kruskal's algorithm here is the sort order, so the runtime remains the same as
+the regular Kruskal's algorithm.
+
+\subsubsection*{Pseudocode}
+\begin{lstlisting}
+def sortComparator(edge1, edge2):
+  if edge1.isF == edge2.isF:
+    return edge1.weight - edge2.weight
+  if edge1.isF:
+    return -1
+  return 1
+
+def kruskal(n, edges):
+  let heap = heapSort(edges using sortComparator)
+  let tree = []
+  let set = new disjoint set
+  while heap is not empty:
+    let edge = heap.pop()
+    if set.getBoss(edge.vertex1) != set.getBoss(edge.vertex2):
+      tree.add(edge)
+      set.union(edge.vertex1, edge.vertex2)
+    else if edge.isF:
+      return -1
+  let weight = 0
+  let boss = -1
+  for i = 0 to tree.size():
+    let edge = tree[i]
+    weight += edge.weight
+    if boss == -1:
+      boss = set.getBoss(edge.vertex1)
+    else if boss != set.getBoss(edge.vertex1):
+      return -1
+  return weight
+\end{lstlisting}
+
+\end{document}
