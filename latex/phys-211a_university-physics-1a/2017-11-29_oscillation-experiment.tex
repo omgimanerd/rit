@@ -1,0 +1,33 @@
+\documentclass{math}
+
+\title{University Physics 1A}
+\author{Alvin Lin}
+\date{November 29th, 2017}
+
+\begin{document}
+
+\section*{Oscillation Experiment}
+\begin{align*}
+  F_{by~spring} &= -kx \\
+  -kx &= F = ma = m\ddiff{^2x}{t^2} \\
+  \ddiff{^2x}{t^2} &= \frac{m}{m}\ddiff{^2x}{t^2} \\
+  &= -\frac{kx}{m} \\
+\end{align*}
+Assume \( x(t) = A\cos(\omega t+\phi) \):
+\begin{align*}
+  x(t) &= A\cos(\omega t+\phi) \\
+  \ddiff{x}{t} &= -\omega A\sin(\omega t+\phi) \\
+  \ddiff{^2x}{t^2} &= -\omega^2A\cos(\omega t+\phi) \\
+  &\stackrel{?}{=} -\frac{k}{m}A\cos(\omega t+\phi) \\
+  \omega^2 &= \frac{k}{m} \\
+  \omega &= \sqrt{\frac{k}{m}}
+\end{align*}
+\( A \) is the maximum value of \( x \). \( \omega \) is the angular frequency.
+\begin{align*}
+  2\pi &= \omega T \\
+  T &= \frac{2\pi}{\omega}
+\end{align*}
+
+\maketitle
+
+\end{document}
