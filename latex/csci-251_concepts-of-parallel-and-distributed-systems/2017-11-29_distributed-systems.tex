@@ -1,0 +1,93 @@
+\documentclass{math}
+
+\usepackage{tikz}
+
+\title{CSCI 251: Concepts of Parallel and Distributed Systems}
+\author{Alvin Lin}
+\date{November 29th, 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Distributed Systems}
+Outline:
+\begin{itemize}
+  \item Bitcoin and blockchain
+  \item No block, no chain - directed acyclic graph
+  \item Distributed consensus algorithm: proof-of-stake,
+  proof-of-space-and-time, proof-of-retrievability
+  \item Smart contracts
+\end{itemize}
+
+\subsection*{How to Use Bitcoins}
+\begin{enumerate}
+  \item Download software to your computer or phone to set up a Bitcoin wallet.
+  This gives you the basic facilities to send, receive, and store Bitcoins.
+  \item Your software will generate a unique sting of letters and numbers: your
+  Bitcoin address. The address isn't tied to your name or any other personal
+  data, but it identifies you to the Bitcoin network. Give this address to
+  anyone who needs to pay you.
+  \item Buy Bitcoins with a standard offline currency, either from another user
+  or through a dedicated Bitcoin exchange. Your new digital funds are added to
+  your wallet.
+  \item The Bitcoin network authenticates transactions by recording them in the
+  `block chain' - the underlying code that preserves the integrity of the
+  currency.
+  \item Use your software to send payments to other addresses. Divisions as
+  small as 100,000,000th of a Bitcoin are possible - a unit called a
+  `Satoshi', after the currency's enigmatic inventor.
+\end{enumerate}
+
+\subsection*{Problems of Digital Tokens}
+\begin{itemize}
+  \item Ownership: who owns the digital currency?
+  \item Authorization: who authorizes a transaction?
+  \item Double Spending: what prevents a token from being transferred to
+  multiple owners by erasing a transaction?
+\end{itemize}
+
+\subsection*{The Bitcoin Transaction Life Cycle}
+\begin{enumerate}
+  \item Person A opens his bitcoin wallet, scans/copies Person B's address,
+  and sends a specific amount in a transaction.
+  \item The wallet signs the transaction using Person A's private key.
+  \item The transaction is propagated and validated by the network nodes.
+  \item Miners include the transaction in the next block to be mined.
+  \item The miner who solves the Proof of Work propagates the new block to the
+  network.
+  \item The nodes verify the result and propagate the block.
+  \item Person B sees the first confirmation.
+  \item New confirmations appear with each new block that is created.
+\end{enumerate}
+
+\subsection*{Key Elements}
+\begin{itemize}
+  \item Cryptographic Techniques: hash function (SHA256), public and private
+  keys; the hash of the private key is the address for receiving money;
+  pseudo-identity; digital signature/certificate
+  \item Data structure to record ``logs''
+  \item Consensus algorithms: proof-of-work
+\end{itemize}
+
+\subsection*{Proof of Work}
+A nonce is appended to the previous hash to produce a new hash. A miner that
+guesses the correct nonce can broadcast the new block to the chain.
+
+\section*{Reminders}
+Work on Project 2.
+
+\noindent Professor Mohan Kumar: \\
+\url{mjkvcs@rit.edu} \\
+\url{https://cs.rit.edu/~mjk} \\
+
+\noindent Rahul Dashora (TA): \\
+\url{rd5476@mail.rit.edu} \\
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
