@@ -118,6 +118,127 @@ Define \( \Pi_x:\R^2\to\R^2 \):
   \end{bmatrix}
 \end{align*}
 
+\subsection*{Theorems and Definitions}
+Let \( T:V\to W \) be linear. \( ker(T) \) is the set of all inputs where the
+output through the transformation \( T \) is 0. Then:
+\begin{enumerate}
+  \item \( ker(T) \) is a subspace of \( V \). Proof:
+  \begin{enumerate}
+    \item \( T(\vec{0}) = \vec{0} \). Thus \( \vec{0}\in ker(T) \).
+    \item Assume \( \vec{u},\vec{v}\in ker(T) \).
+    \[ T(\vec{u}+\vec{v}) = T(\vec{u})+T(\vec{V}) = \vec{0}+\vec{0} = \vec{0} \]
+    Thus \( \vec{u}+\vec{v}\in ker(T) \).
+    \item Assume \( \vec{u}\in ker(T) \) and \( c \) is a scalar.
+    \[ T(c\vec{u}) = cT(\vec{u}) = c\vec{0} = \vec{0} \]
+  \end{enumerate}
+  \item \( Range(T) \) is a subspace of \( W \). Proof:
+  \begin{enumerate}
+    \item \( T(\vec{0}) = \vec{0} \). So \( \vec{0}\in range(T) \).
+    \item Let \( \vec{u},\vec{v}\in range(T) \). Then there exists
+    \( \vec{\alpha_u},\vec{\alpha_v} \) such that \( T(\vec{\alpha_u}) =
+    \vec{u} \) and \( T(\vec{\alpha_v}) = \vec{v} \).
+    \[ \vec{u}+\vec{v} = T(\vec{\alpha_u})+T(\vec{\alpha_v}) =
+      T(\vec{\alpha_u}+\vec{\alpha_v}) \]
+    So \( \vec{u}+\vec{v}\in range(T) \).
+    \item Let \( \vec{u}\in range(T) \). There exists \( \vec{\alpha_u}\in V \)
+    such that \( T(\vec{\alpha_u}) = \vec{u} \).
+    \[ T(c\vec{\alpha_u}) = cT(\vec{\alpha_u}) = c\vec{u} \]
+    Thus \( c\vec{u}\in range(T) \).
+  \end{enumerate}
+\end{enumerate}
+
+\subsubsection*{Definition}
+Let \( T:V\to W \) be linear. The rank of \( T \) is:
+\[ dim(range(T)) = rank(T) \]
+
+\subsubsection*{Definition}
+The nullity of \( T \) is:
+\[ dim(ker(T)) = nullity(T) \]
+
+\subsubsection*{The Rank Theorem}
+If \( T:V\to W \) is linear, then:
+\[ dim(V) = rank(T)+nullity(T) \]
+
+\subsubsection*{Theorem}
+Let \( dim(V) = dim(W) \). Then a linear \( T:V\to W \) is one-to-one if and
+only if it is onto.
+
+\subsubsection*{Theorem}
+Let \( T:V\to W \) be linear. If \( S = \{\vec{v_1},\dots,\vec{v_2} \} \) is
+linearly independent, then \( T(S) = \{T(\vec{v_1}),\dots,T(\vec{v_2})\} \) is
+linearly independent in \( W \). Let \( dim(V) = dim(W) = n \). Then a
+one-to-one linear transformation \( T:V\to W \) maps a basis for \( V \) to a
+basis for \( W \).
+
+\subsubsection*{Theorem}
+A linear transformation \( T:V\to W \) is invertible if and only if it is
+one-to-one and onto.
+
+\subsubsection*{Example}
+Find the kernel and the range of the differential operator \( D:P_3\to P_2 \)
+defined by \( D(p(x)) = p'(x) \).
+\begin{align*}
+  ker(D) &= \{p(x)\in P_3\mid D(p(x)) = 0\} \\
+  D(a_0+a_1x+a_2x^2+a_3x^3) &= a_1+2a_2x+3a_3x^2 = 0 \\
+  a_1 &= a_2 = a_3 = 0 \\
+  ker(D) &= \{a_0\mid a_0\in\R \} \\
+  \text{Basis for } ker(D) &= \{1\} \\
+  nullity(D) &= 1 \\
+  4 &= dim(P_3) = rank(D)+nullity(D) \\
+  rank(D) &= 3 \\
+  range(D) &= P_2
+\end{align*}
+\( D \) is onto.
+
+\subsubsection*{Example}
+Define \( S:P_1\to R \) by: \( S(p(x)) = \int_{0}^{1}p(x)\diff{x} \). Find the
+kernel and range of the transformation.
+\begin{align*}
+  S(p(x)) &= 0 \\
+  S(a+bx) &= 0 \\
+  &= \int_{0}^{1}a+bx\diff{x} = \bigg[ax+\frac{bx^2}{2}\bigg]_{0}^{1} =
+    a+\frac{b}{2} = 0 \\
+  a &= \frac{-b}{2} \\
+  ker(D) &= \{-\frac{b}{2}+bx\mid b\in\R\} \\
+  \text{Basis for } ker(D) &= \{-\frac{1}{2}+x\} \\
+  nullity(D) &= 1 \\
+  2 &= dim(P_1) = rank(D)+nullity(D) \\
+  rank(D) &= 1 = dim(\R) \\
+  range(D) &= \R
+\end{align*}
+\( D \) is onto.
+
+\subsection*{Isomorphism}
+Let \( V,W \) be vector spaces. We say \( T:V\to W \) is an isomorphism if
+\( T \) is invertible. We say \( V \) is isomorphic to \( W \). We denote this
+as \( V\cong W \). Suppose \( V,W \) have finite dimension. Then \( V\cong W \)
+if and only if \( V \) and \( W \) have the same dimension. Example: Is
+\( R^4 \) isomorphic to \( M_{22} \)?
+\begin{align*}
+  dim(\R^4) &= 4 \\
+  B &= \left\{
+    \begin{bmatrix}1 & 0 \\ 0 & 0\end{bmatrix},
+    \begin{bmatrix}0 & 1 \\ 0 & 0\end{bmatrix},
+    \begin{bmatrix}0 & 0 \\ 1 & 0\end{bmatrix},
+    \begin{bmatrix}0 & 0 \\ 0 & 1\end{bmatrix}
+  \right\}\in M_{22} \\
+  dim(M_{22}) &= 4 \\
+  R^4 &\cong M_{22}
+\end{align*}
+
+\subsubsection*{Example}
+Is \( P_3 \) isomorphic to \( R^3 \)?
+\[ dim(P_3) = 4 \ne dim(R^3) = 3 \]
+
+\subsubsection*{Example}
+Suppose \( V,W \) are both n-dimensional. Compute the number of isomorphisms
+\( T:V\to W \).
+\begin{align*}
+  \text{Basis for } V &= \{\vec{v_1},\dots,\vec{v_n}\} \\
+  \text{Basis for } W &= \{\vec{w_1},\dots,\vec{w_n}\}
+\end{align*}
+Number of isomorphisms: \( n! \)
+
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
   any questions, comments, or concerns, please contact me at
