@@ -1,0 +1,27 @@
+\documentclass{math}
+
+\title{University Physics 1A}
+\author{Alvin Lin}
+\date{December 1st, 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Pendulum Lab}
+For a large physical pendulum:
+\[ -Lmg\sin\theta = I\ddiff{^2\theta}{t^2} \]
+For small angles \( \theta \) in radians, we can approximate this to:
+\[ \sin\theta \approx \theta \]
+\[ -Lmg\theta = I\ddiff{^2\theta}{t^2} \]
+We know that:
+\begin{align*}
+  \theta &= A\cos(\omega t+\phi) \\
+  \ddiff{\theta}{t} &= -A\omega\sin(\omega t+\phi) \\
+  \ddiff{^2\theta}{t^2} &= -A\omega^2\cos(\omega t+\phi) \\
+  &= -\omega^2\theta \\
+  -Lmg\theta &= I(-\omega^2\theta) \\
+  \omega &= \sqrt{\frac{Lmg}{I}}
+\end{align*}
+
+\end{document}
