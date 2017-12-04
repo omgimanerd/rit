@@ -1,0 +1,121 @@
+\documentclass{math}
+
+\usepackage{tikz}
+
+\title{CSCI 251: Concepts of Parallel and Distributed Systems}
+\author{Alvin Lin}
+\date{December 4th, 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Networking Architectures}
+Topics:
+\begin{enumerate}
+  \item Principles of network applications
+  \item Web and HTTP
+  \item Email: SMTP, POP3, IMAP
+  \item DNS
+  \item P2P applications
+  \item Video streaming and CDNs
+  \item Socket programming with UDP and TCP
+\end{enumerate}
+
+\subsection*{Networked Applications}
+Creating a networked app requires writing a program that runs on different end
+systems and communicate over a network. Network core devices do not need this
+software since they do not run the end user applications.
+
+\subsubsection*{Client-server Architecture}
+A client server architecture involves an always-on host with a permanent IP
+address and uses data centers for scaling. Clients communicate with the server,
+may be intermittently connected, may have dynamic IP addresses, and do not
+communicate directly with each other.
+
+\subsubsection*{P2P architecture}
+Peer to peer architecture does not have an always on server. An arbitrary number
+of end streams directly communicate with each other. Peers request and provide
+service to other peers. This architecture has the property of self-scalability,
+new peers bring new service capacity and meet the new service demands. The peers
+may be intermittently connected and change IP addresses.
+
+\section*{Processes}
+Processes are programs running within a host. Within the same host, two
+processes communicate using inter-process communication. Processes in
+different hosts communicate by exchanging messages. Generally, the client
+process is the one that initiates communication while the server process waits
+to be contacted. Applications with P2P architectures have client and server
+processes.
+
+\subsubsection*{Sockets}
+A process sends and receives messages to and from its socket. A socket is
+analogous to a door: the sending process shoves a message out the door and
+relies on the underlying transport infrastructure on the other side of the
+door to deliver the message.
+
+\subsubsection*{Addressing Processes}
+To receive messages, a process must have an identifier. A host device has a
+unique 32-bit IP address. Many processes can be running on the same host, so
+the identifier includes both the IP address and port numbers associated with
+the process on the host.
+
+\subsubsection*{Messages}
+The application layer protocol defines the types of messages exchanged, the
+message syntax, message semantics, and rules for when and how processes send
+and respond to messages. Open protocols like those defined in the IETF's
+RFCs, HTTP, and SMTP allow for application interoperability.
+
+\section*{Transport Services}
+\begin{itemize}
+  \item Data integrity: some applications (file transfer, web transactions)
+  require 100\% reliable data transfer. Audio streaming applications, however,
+  can tolerate some loss.
+  \item Timing: some applications (Internet telephony, multiplayer games)
+  require low delays in order to be effective.
+  \item Throughput: some apps (multimedia) require a higher minimum throughput
+  in order to be effective. Other apps may make use of whatever throughput they
+  get.
+  \item Security: some applications require encryption and data integrity.
+\end{itemize}
+
+\subsubsection*{TCP}
+\begin{itemize}
+  \item reliable transport between sending and receiving process
+  \item flow control: sending won't overwhelm receiver
+  \item congestion control: throttle sender when the network is overloaded
+  \item does not provide timing, minimum throughput guarantee, and security
+  \item connection-oriented: setup required between client and server processes
+  \item bottlenecked by acknowledgement
+\end{itemize}
+For security, applications use SSL libraries that talk to the TCP layer. This
+provides an encrypted TCP connection, data integrity, and end-point
+authentication.
+
+\subsubsection*{UDP}
+\begin{itemize}
+  \item unreliable data transfer between sending and receiving process
+  \item does not provide reliability, flow control, congestion control, timing,
+  throughput guarantee, security, or connection setup
+\end{itemize}
+
+\section*{HTTP/Web}
+Refer to the slides on MyCourses.
+
+\section*{Reminders}
+Work on Project 2.
+
+\noindent Professor Mohan Kumar: \\
+\url{mjkvcs@rit.edu} \\
+\url{https://cs.rit.edu/~mjk} \\
+
+\noindent Rahul Dashora (TA): \\
+\url{rd5476@mail.rit.edu} \\
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
