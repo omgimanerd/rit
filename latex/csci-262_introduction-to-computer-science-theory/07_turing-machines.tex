@@ -26,6 +26,13 @@ infinite to the right. A Turing machine is a septuple \( T =
   \item \( q_{reject}\in Q \) is the reject state.
 \end{itemize}
 
+\subsection*{Universal Turing Machines}
+Universal Turing Machines (UTMs) are Turing machines that can simulate any
+Turing machines. If \( M = (Q,\Sigma,\Gamma,\delta,q_0,q_a,q_r) \) is a
+Turing machines, let \( <M> \) be a binary encoding of \( M \). Let \( <M,x> \)
+be a binary encoding of \( M \) and input \( x \). \( U \) is a universal turing
+machine if on input \( <M,x> \), \( U(<M,x>) \) simulates \( M \) on \( x \).
+
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
   any questions, comments, or concerns, please contact me at
