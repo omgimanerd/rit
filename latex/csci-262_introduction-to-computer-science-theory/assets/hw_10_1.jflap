@@ -301,22 +301,22 @@
 			<state_point>
 				<state>4</state>
 				<point>
-					<x>399.0</x>
-					<y>412.0</y>
+					<x>379.0</x>
+					<y>403.0</y>
 				</point>
 			</state_point>
 			<state_point>
 				<state>5</state>
 				<point>
-					<x>548.0</x>
-					<y>338.0</y>
+					<x>547.0</x>
+					<y>402.0</y>
 				</point>
 			</state_point>
 			<state_point>
 				<state>6</state>
 				<point>
-					<x>547.0</x>
-					<y>491.0</y>
+					<x>174.0</x>
+					<y>400.0</y>
 				</point>
 			</state_point>
 		</state_point_map>
@@ -341,8 +341,8 @@
 				<from>1</from>
 				<to>4</to>
 				<point>
-					<x>320.5</x>
-					<y>334.0</y>
+					<x>310.5</x>
+					<y>329.5</y>
 				</point>
 			</control_point>
 			<control_point>
@@ -357,16 +357,16 @@
 				<from>4</from>
 				<to>4</to>
 				<point>
-					<x>399.0</x>
-					<y>342.0</y>
+					<x>379.0</x>
+					<y>333.0</y>
 				</point>
 			</control_point>
 			<control_point>
 				<from>0</from>
 				<to>6</to>
 				<point>
-					<x>275.0</x>
-					<y>477.0</y>
+					<x>122.17730247749088</x>
+					<y>337.22692405323494</y>
 				</point>
 			</control_point>
 			<control_point>
@@ -421,16 +421,16 @@
 				<from>4</from>
 				<to>6</to>
 				<point>
-					<x>473.0</x>
-					<y>451.5</y>
+					<x>276.5</x>
+					<y>401.5</y>
 				</point>
 			</control_point>
 			<control_point>
 				<from>4</from>
 				<to>5</to>
 				<point>
-					<x>473.5</x>
-					<y>375.0</y>
+					<x>463.0</x>
+					<y>402.5</y>
 				</point>
 			</control_point>
 		</control_point_map>
@@ -439,15 +439,15 @@
 		<note>
 			<value>accept</value>
 			<point>
-				<x>547.0</x>
-				<y>491.0</y>
+				<x>174.0</x>
+				<y>400.0</y>
 			</point>
 		</note>
 		<note>
 			<value>reject</value>
 			<point>
-				<x>548.0</x>
-				<y>338.0</y>
+				<x>547.0</x>
+				<y>402.0</y>
 			</point>
 		</note>
 	</state_label_map>
