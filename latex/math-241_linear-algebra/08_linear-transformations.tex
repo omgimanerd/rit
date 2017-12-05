@@ -1,5 +1,7 @@
 \documentclass{math}
 
+\usepackage{tikz}
+
 \title{Linear Algebra}
 \author{Alvin Lin}
 \date{August 2017 - December 2017}
@@ -238,6 +240,52 @@ Suppose \( V,W \) are both n-dimensional. Compute the number of isomorphisms
   \text{Basis for } W &= \{\vec{w_1},\dots,\vec{w_n}\}
 \end{align*}
 Number of isomorphisms: \( n! \)
+
+\subsection*{Matrix Associated to a Linear Transformation}
+\[ T:\R^n\to\R^m \]
+\[ A = [T(\vec{e_1})\mid T(\vec{e_2})\mid\dots\mid T(\vec{e_n})] \]
+\[ T:V\to W \quad dim(V) = n \quad dim(W) = m \]
+\( V \) has basis \( B = \{\vec{v_1},\dots,\vec{v_n}\} \) and \( W \) has basis
+\( G = \{\vec{w_1},\dots,\vec{w_n}\} \).
+\begin{center}
+  \begin{tikzpicture}
+    \node at (0,0) {\( V \)};
+    \draw[->] (0.5,0) -- (1.5,0) node[pos=0.5,above] {\( T \)};
+    \node at (2,0) {\( W \)};
+    \draw[->] (2,-0.5) -- (2,-1.5) node[pos=0.5,right] {\( S \)};
+    \node at (2,-2) {\( \R^m \)};
+    \draw[->] (0.5,-2) -- (1.5,-2) node[pos=0.5,below]
+      {\( S\circ T\circ R^{-1} \)};
+    \node at (0,-2) {\( \R^n \)};
+    \draw[->] (0,-0.5) -- (0,-1.5) node[pos=0.5,left] {\( S \)};
+  \end{tikzpicture}
+\end{center}
+
+\subsubsection*{Example}
+The transformation \( T:\R^3\to\R^2 \) is linear, defined by:
+\[ T\begin{bmatrix}x \\ y \\ z\end{bmatrix} =
+  \begin{bmatrix}x-2y \\ x+y-3z\end{bmatrix} \]
+The basis for \( \R^3 = \{\vec{e_1},\vec{e_2},\vec{e_3}\} = B \).
+The basis for \( \R^2 = \{\vec{e_2},\vec{e_1}\} = G \). Calculate \( T \).
+
+\subsubsection*{Example}
+The transformation \( T:P_2\to P_3 \) is defined by:
+\[ T(p(x)) = p(2x-1) \]
+The basis for \( P_2 = \mathbb{E} = \{1,x,x^2\} \). Calculate
+\( [T]_{\mathbb{E}\leftarrow\mathbb{E}} = [T]_{\mathbb{E}} \).
+\begin{align*}
+  T(1) &= 1 \\
+  T(x) &= 2x-1 \\
+  T(x^2) &= (2x-1)^2 = 4x^2-4x+1 \\
+  [T(1)]_{\mathbb{E}} &= \begin{bmatrix}1 \\ 0 \\ 0\end{bmatrix} \\
+  [T(x)]_{\mathbb{E}} &= \begin{bmatrix}-1 \\ 2 \\ 0\end{bmatrix} \\
+  [T(x^2)]_{\mathbb{E}} &= \begin{bmatrix}1 \\ -4 \\ 4\end{bmatrix} \\
+  [T]_{\mathbb{E}} &= \begin{bmatrix}
+    1 & -1 & 1 \\
+    0 & 2 & -4 \\
+    0 & 0 & 4
+  \end{bmatrix}
+\end{align*}
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have

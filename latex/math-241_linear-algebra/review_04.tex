@@ -11,6 +11,29 @@
 \section*{Review 4}
 \begin{enumerate}
   \item ``Vandermonde Matrix''
+  \begin{align*}
+    |V_n| &= \prod_{1\le i<j\le n}(x_j-x_i) \\
+    V_n &= \begin{vmatrix}
+      1 & x_1 & x_1^2 & \dots & x_1^{n-1} \\
+      1 & x_2 & x_2^2 & \dots & x_2^{n-1} \\
+      \vdots & \vdots & \vdots & \vdots & \vdots \\
+      1 & x_n & x_n^2 & \dots & x_n^{n-1}
+    \end{vmatrix} \\
+    &= \begin{vmatrix}
+      1 & 0 & 0 & \dots & 0 \\
+      1 & x_2-x_1 & x_2(x_2-x_1) & \dots x_2^{n-2}(x_2-x_1) \\
+      \vdots & \vdots & \vdots & \vdots & \vdots \\
+      1 & x_n-x_1 & x_n(x_n-x_1) & \dots & x_n^{n-2}(x_n-x_1)
+    \end{vmatrix} \\
+    &= \begin{vmatrix}
+      x_2-x_1 & x_2(x_2-x_1) & \dots & x_2^{n-2}(x_2-x_1) \\
+      \vdots & \vdots & \vdots & \vdots \\
+      x_n-x_1 & x_n(x_n-x_1) & \dots & x_n^{n-2}(x_n-x_1)
+    \end{vmatrix} \\
+    &= (x_2-x_1)(x_3-x_1)\dots(x_n-x_1)|V_{n-1}| \\
+    &= (x_2-x_1)(x_3-x_1)\dots(x_n-x_1)\prod_{1\le i<j\le n-1}(x_j-x_i) \\
+    &= \prod_{1\le i<j\le n}(x_j-x_i)
+  \end{align*}
   \item Finding the kernel of \( D^n \)
   \begin{align*}
     D^2 &= D\circ D \\
@@ -19,7 +42,9 @@
   \end{align*}
   \item This boils down to solving a differential equation.
   \item \( x^n-1 = (x-1)(\sum_{i=1}^{n-1}x^i) \)
-  \[ L^n-II = (L-I)(\sum_{i=0}^{n-1}L^i) \]
+  \[ I-L^2 = (I-L)(I+L) \]
+  \[ I = (I-L)(I+L) \]
+  \[ I-L^n = (I-L)\left(\sum_{i=0}^{n-1}L^i\right) \]
   Use this for part (a) and (c).
 \end{enumerate}
 
