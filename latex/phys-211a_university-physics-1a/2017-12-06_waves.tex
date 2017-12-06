@@ -1,0 +1,49 @@
+\documentclass{math}
+
+\usepackage{tikz}
+
+\title{University Physics 1A}
+\author{Alvin Lin}
+\date{December 6th, 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Waves}
+\[ v = \frac{\omega}{k} = f\lambda \]
+\[ \text{speed of wave} = v =
+  \sqrt{\frac{elastic~property}{inertial~property}} \]
+\[ \text{for a string(spring) v} = \sqrt{\frac{tension}{mass~density}} =
+  \sqrt{\frac{F_{tension}}{\lambda}} \]
+\[ \text{for air(sound) v} =
+  \sqrt{\frac{bulk~modulus~of~air}{volume~mass~density}} =
+  \sqrt{\frac{B}{\rho}} \]
+Principle of superposition: two waves at the same point just add their values.
+While this does not hold for other concepts, it holds for most of the mediums
+that we will work with.
+
+\subsubsection*{Interference}
+Two waves going in the same direction with the same amplitude:
+\begin{align*}
+  y &= y_{max}\sin(kx-\omega t)+y_{max}\sin(kx-\omega t+\phi) \\
+  &= 2y_{max}\cos(\frac{\phi}{2})\sin(kx-\omega t+\frac{\phi}{2}) \\
+\end{align*}
+If \( \phi = \pi \) and the two waves are half a wavelength apart, then the
+two waves are destructive and cancel each other out. If \( \phi = 0 \), then
+the two are constructive and amplify each other. Any other values of \( \phi \)
+are partially constructive. This is an example of wave interference. \par
+Two waves travelling in the opposite direction:
+\begin{align*}
+  y &= y_{max}\sin(kx-\omega t)-y_{max}\sin(kx-\omega t) \\
+  &= 2y_{max}\cos(\omega t)\sin(kx)
+\end{align*}
+This forms a standing wave.
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
