@@ -3,7 +3,7 @@
 \usepackage{enumerate}
 
 \title{Linear Algebra}
-\author{Alvin Lin, Michael Hennessey, Uno Myo}
+\author{Alvin Lin, Michael Hennessey, Zwe Htet Aung Myo}
 \date{August 2017 - December 2017}
 
 \begin{document}
@@ -143,10 +143,12 @@ coefficients. Let \( D:P\to P \) be the differentiation operator. In general,
 \subsection*{Problem 3}
 Let \( V \) be the vector space of all infinitely differentiable functions, and
 let \( D:V\to V \) be the derivative.
-\begin{enumerate}
+\begin{enumerate}[(a)]
   \item Let \( L = D-I \), where \( I \) is the identity mapping. Compute the
   kernel of \( L \).
+  \[ ker(L) = \{ a\e^x\mid a\in\R\} \]
   \item Let \( L = D-aI \), where \( a \) is a number.
+  \[ ker(L) = \{ b\e^{ax}\mid b\in\R\} \]
 \end{enumerate}
 
 \subsection*{Problem 4}
@@ -185,7 +187,7 @@ let \( D:V\to V \) be the derivative.
 \subsection*{Problem 5}
 Let \( V \) be a vector space. Let \( P:V\to V \) be a linear map such that
 \( P^2 = P \).
-\begin{enumerate}
+\begin{enumerate}[(a)]
   \item Show that \( V = ker(P)+range(P) \), and \( ker(P)\cap range(P) =
   \{\vec{0}\} \).
   \begin{align*}
