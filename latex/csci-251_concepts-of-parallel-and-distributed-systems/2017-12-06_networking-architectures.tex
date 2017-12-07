@@ -1,0 +1,72 @@
+\documentclass{math}
+
+\usepackage{tikz}
+
+\title{CSCI 251: Concepts of Parallel and Distributed Systems}
+\author{Alvin Lin}
+\date{December 4th, 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Peer to Peer Architectures}
+File distribution: client-server versus P2P. For the following models,
+\( \mu_s \) is the server upload rate, \( N \) is the number of clients, \( F \)
+is the file size, \( d_min \) is the minimum client download rate, and
+\( \mu_i \) is the upload rate of the i'th client.
+
+\subsection*{Client-Server Architecture}
+\begin{itemize}
+  \item Server transmission: the server must sequentially send (upload) \( N \)
+  file copies. Time to send one copy: \( \frac{F}{\mu_s} \). Time to send
+  \( N \) copies: \( \frac{NF}{\mu_s} \)
+  \item Client: each client must download the file copy. If the minimum client
+  download rate is \( d_{min} \), then the minimum client download time is
+  \( \frac{F}{d_{min}} \).
+\end{itemize}
+The total time to distribute is lower bounded by the maximum of
+\( \frac{NF}{\mu_s} \) and \( \frac{F}{d_{min}} \).
+
+\subsection*{Peer to peer architecture}
+\begin{itemize}
+  \item Server transmission: the server must upload at least one copy. This
+  requires \( \frac{F}{\mu_s} \) time.
+  \item Client: each client must download a file copy, taking a minimum of
+  \( \frac{F}{d_{min}} \). As an aggregate, they must download \( NF \) bits
+  with the max upload rate being \( \mu_s+\sum\mu_i \).
+\end{itemize}
+The total time to distribute is lower bounded by the maximum of
+\( \frac{F}{\mu_s} \), \( \frac{F}{d_{min}} \), and
+\( \frac{NF}{\mu_s+\sum\mu_i} \). Compared to the client-server model, whose
+total time increases linearly with the number of clients, the total
+distribution time for peer to peer architectures increases logarithmically.
+
+\subsubsection*{BitTorrent}
+In BitTorrent's file distribution system, the file is divided into 256 kilobyte
+chunks. Peers in torrents send and receive file chunks. A \textbf{tracker}
+tracks peers participating in the \textbf{torrent}, the group of peers
+exchanging chunks of a file. A peer joining the torrent starts with no chunks,
+but will accumulate them over time from other peers. It first registers with
+the tracker to get a list of peers and connects to a subset of peers. While
+downloading, the peer uploads chunks to other peers. The peer may change peers
+with whom it exchanges chunks, and once it has the entire file, it may leave
+or remain in the torrent to help propagate chunks.
+
+\section*{Reminders}
+Project 2 is due Friday, December 8th.
+
+\noindent Professor Mohan Kumar: \\
+\url{mjkvcs@rit.edu} \\
+\url{https://cs.rit.edu/~mjk} \\
+
+\noindent Rahul Dashora (TA): \\
+\url{rd5476@mail.rit.edu} \\
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}

@@ -1,0 +1,217 @@
+\documentclass{math}
+
+\usepackage{enumerate}
+
+\title{Linear Algebra}
+\author{Alvin Lin, Michael Hennessey, Uno Myo}
+\date{August 2017 - December 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Exam 4}
+
+\subsection*{Problem 1a}
+Let \( x_1, x_2, x_3 \) be numbers. Let
+\[ V_3 = \begin{bmatrix}
+  1 & x_1 & x_1^2 \\
+  1 & x_2 & x_2^2 \\
+  1 & x_3 & x_3^2
+\end{bmatrix} \]
+Show that \( |V_3| = (x_2-x_1)(x_3-x_1)(x_3-x_2) \).
+\begin{align*}
+  |V_3| &= \begin{vmatrix}
+    1 & x_1 & x_1^2 \\
+    1 & x_2 & x_2^2 \\
+    1 & x_3 & x_3^2
+  \end{vmatrix} \\
+  &= 1(x_2x_3^2-x_3x_2^2)-x_1(x_3^2-x_2^2)+x_1^2(x_3-x_2) \\
+  &= x_2x_3^2-x_3x_2^2-x_1x_3^2+x_1x_2^2+x_3x_1^2-x_2x_1^2 \\
+  &= x_2x_3^2-x_3x_2^2-x_1x_3^2+x_1x_2^2+x_3x_1^2-x_2x_1^2+
+    (x_1x_2x_3-x_1x_2x_3) \\
+  &= (x_2x_3^3-x_1x_2x_3-x_1x_3^2+x_1^2x_3)-
+    (x_2^2x_3+x_2^2x_1+x_1x_2x_3-x_1^2x_2) \\
+  &= (x_2x_3-x_2x_1-x_1x_3+x_1^2)(x_3-x_2) \\
+  &= (x_2-x_1)(x_3-x_1)(x_3-x_2)
+\end{align*}
+
+\subsection*{Problem 1b}
+Let \( x_1,x_2,\dots,x_n \) be numbers. Write:
+\[ V_n = \begin{bmatrix}
+  1 & x_1 & x_1^2 & \dots & x_1^{n-1} \\
+  1 & x_2 & x_2^2 & \dots & x_2^{n-1} \\
+  \vdots & \vdots & \vdots & \vdots & \vdots \\
+  1 & x_n & x_n^2 & \dots & x_n^{n-1}
+\end{bmatrix} \]
+Use mathematical induction to show that:
+\[ |V_n| = \prod_{i<j}(x_j-x_i) \]
+\begin{align*}
+  V_n &= \begin{vmatrix}
+    1 & x_1 & x_1^2 & \dots & x_1^{n-1} \\
+    1 & x_2 & x_2^2 & \dots & x_2^{n-1} \\
+    \vdots & \vdots & \vdots & \vdots & \vdots \\
+    1 & x_n & x_n^2 & \dots & x_n^{n-1}
+  \end{vmatrix} \\
+  & \text{subtract row 1 from all other rows} \\
+  &= \begin{vmatrix}
+    1 & x_1 & x_1^2 & \dots & x_1^{n-2} & x_1^{n-1} \\
+    0 & x_2-x_1 & x_2^2-x_1^2 & \dots & x_2^{n-2}-x_1^{n-2} &
+      x_2^{n-1}-x_1^{n-1} \\
+    0 & \vdots & \vdots & \vdots & \vdots & \vdots \\
+    0 & x_n-x_1 & x_n^2-x_1^2 & \dots & x_n^{n-2}-x_1^{n-2} &
+      x_n^{n-1}-x_1^{n-1}
+  \end{vmatrix} \\
+  & \text{subtract }(x_1\times\text{column }n-1) \text{ from column } n \\
+  & \text{subtract }(x_1\times\text{column }n-2) \text{ from column } n-1 \\
+  & \dots \\
+  & \text{subtract }(x_1\times\text{column 1}) \text{ from column } 2 \\
+  &= \begin{vmatrix}
+    1 & 0 & 0 & \dots & 0 \\
+    0 & x_2-x_1 & x_2^2-x_1^2-(x_1x_2-x_1^2) & \dots &
+      x_2^{n-1}-x_1^{n-1}-(x_1x_2^{n-2}-x_1^{n-1}) \\
+    0 & \vdots & \vdots & \vdots & \vdots \\
+    0 & x_n-x_1 & x_n^2-x_1^2-(x_1x_n-x_1^2) & \dots &
+      x_n^{n-1}-x_1^{n-1}-(x_1x_n^{n-2}-x_1^{n-1})
+  \end{vmatrix} \\ \\
+  &= \begin{vmatrix}
+    1 & 0 & 0 & \dots & 0 \\
+    0 & x_2-x_1 & x_2^2-x_1x_2 & \dots & x_2^{n-1}-x_1x_2^{n-2} \\
+    0 & \vdots & \vdots & \vdots & \vdots \\
+    0 & x_n-x_1 & x_n^2-x_1x_n & \dots & x_n^{n-1}-x_1x_n^{n-2}
+  \end{vmatrix}
+\end{align*}
+\begin{align*}
+  &= \begin{vmatrix}
+    1 & 0 & 0 & \dots & 0 \\
+    0 & x_2-x_1 & x_2(x_2-x_1) & \dots & x_2^{n-2}(x_2-x_1) \\
+    0 & \vdots & \vdots & \vdots & \vdots \\
+    0 & x_n-x_1 & x_n(x_n-x_1) & \dots & x_n^{n-2}(x_n-x_1)
+  \end{vmatrix} \\
+  &= (x_2-x_1)\begin{vmatrix}
+    1 & 0 & 0 & \dots & 0 \\
+    0 & 1 & x_2 & \dots & x_2^{n-2} \\
+    0 & \vdots & \vdots & \vdots & \vdots \\
+    0 & x_n-x_1 & x_n(x_n-x_1) & \dots & x_n^{n-2}(x_n-x_1)
+  \end{vmatrix} \\
+  &= (x_2-x_1)\dots(x_n-x_1)\begin{vmatrix}
+    1 & 0 & 0 & \dots & 0 \\
+    0 & 1 & x_2 & \dots & x_2^{n-2} \\
+    0 & \vdots & \vdots & \vdots & \vdots \\
+    0 & 1 & x_n & \dots & x_n^{n-2}
+  \end{vmatrix} \\
+  &= \prod_{i=2}^n(x_i-x_1)\begin{vmatrix}
+    1 & x_2 & \dots & x_2^{n-2} \\
+    \vdots & \vdots & \vdots & \vdots \\
+    1 & x_n & \dots & x_n^{n-2}
+  \end{vmatrix} \\
+  &= \prod_{i=2}^n(x_i-x_1)|V_{n-1}| \\
+  &= \prod_{i=2}^n(x_i-x_1)\prod_{i=3}^n(x_i-x_2)|V_{n-2}| \\
+  &= \prod_{i<j}^n(x_j-x_i)
+\end{align*}
+
+\subsection*{Problem 2}
+Let \( P \) be the vector space of all polynomials with real-valued
+coefficients. Let \( D:P\to P \) be the differentiation operator. In general,
+\( D^n:P\to P \) will be the linear transformation ``take the n'th derivative''.
+\begin{enumerate}[(a)]
+  \item Compute the kernel of \( D \).
+  \begin{align*}
+    D(a+bx) &= b \\
+    ker(D) &= \{a+bx\mid D(a+bx) = 0\} \\
+    &= \{a+bx\mid b = 0\} \\
+    &= \{a\mid a\in\R\}
+  \end{align*}
+  \item Compute the kernel of \( D^2 \).
+  \begin{align*}
+    D^2(a+bx+cx^2) &= 2c \\
+    ker(D^2) &= \{a+bx+cx^2\mid D^2(a+bx+cx^2) = 0\} \\
+    &= \{a+bx+cx^2\mid 2c = 0\} \quad (c = 0) \\
+    &= \{a+bx\mid a,b\in\R\}
+  \end{align*}
+  \item Compute the kernel of \( D^n \).
+  \[ D^n(a_0+a_1x+a_2x^2+\dots+a_nx^n) = na_n \]
+  \begin{align*}
+    ker(D^n) &= \{a_0+a_1x+a_2x^2+\dots+a_nx^n\mid
+      D^n(a_0+a_1x+a_2x^2+\dots+a_nx^n) = 0\} \\
+    &= \{a_0+a_1x+a_2x^2+\dots+a_nx^n\mid na_n = 0\} \quad (a_n = 0) \\
+    &= \{a_0+a_1x+a_2x^2+\dots+a_{n-1}x^{n-1}\mid
+      a_0,a_1,a_2,\dots,a_{n-1}\in\R\} \\
+  \end{align*}
+\end{enumerate}
+
+\subsection*{Problem 3}
+Let \( V \) be the vector space of all infinitely differentiable functions, and
+let \( D:V\to V \) be the derivative.
+\begin{enumerate}
+  \item Let \( L = D-I \), where \( I \) is the identity mapping. Compute the
+  kernel of \( L \).
+  \item Let \( L = D-aI \), where \( a \) is a number.
+\end{enumerate}
+
+\subsection*{Problem 4}
+\begin{enumerate}[(a)]
+  \item Let \( L:V\to V \) be a linear mapping such that \( L^2 = 0 \). Show
+  that \( I-L \) is invertible (\( I \) is the identity mapping on \( V \)).
+  \begin{align*}
+    L^2 &= 0 \\
+    I-L^2 &= (I-L)(I+L) \\
+    I+0 &= (I-L)(I+L) \\
+    I &= (I-L)(I+L) \\
+    (I-L)^{-1}I &= (I-L)^{-1}(I-L)(I+L) \\
+    (I-L)^{-1} &= (I+L)
+  \end{align*}
+  This yields the identity mapping when multiplied by \( (I-L) \).
+  \item Let \( L:V\to V \) be a linear mapping such that \( L^2+2L+I = 0 \).
+  Show that \( L \) is invertible.
+  \begin{align*}
+    L^2+2L+I &= 0 \\
+    L(L+2I+L^{-1}I) &= 0 \\
+    L+2I+L^{-1}I &= 0 \\
+    L^{-1} &= -L-2I \\
+  \end{align*}
+  This yields the identity mapping when multiplied by \( L \).
+  \item Let \( L:V\to V \) be a linear mapping such that \( L^n = 0 \), where
+  \( n\ge3 \) is an integer. Show that \( I-L \) is invertible.
+  \begin{align*}
+    L^n &= 0 \quad (n\ge3) \\
+    I-L^n &= (I-L)\left(\sum_{i=0}^{n-1}L^i\right) \\
+    (I-L)^{-1}(I-0) &= (I-L)^{-1}(I-L)\left(\sum_{i=0}^{n-1}L^i\right) \\
+    (I-L)^{-1} &= \left(\sum_{i=0}^{n-1}L^i\right)
+  \end{align*}
+  This yields the identity mapping when multiplied by \( I-L \).
+\end{enumerate}
+
+\subsection*{Problem 5}
+Let \( V \) be a vector space. Let \( P:V\to V \) be a linear map such that
+\( P^2 = P \).
+\begin{enumerate}
+  \item Show that \( V = ker(P)+range(P) \), and \( ker(P)\cap range(P) =
+  \{\vec{0}\} \).
+  \begin{align*}
+    P^2 &= P \\
+    P^2\vec{v} &= P\vec{v} \quad (\vec{v}\in V) \\
+    range(P) &= P(\vec{v}) \\
+    P^2\vec{v}-P\vec{v} &= \vec{0} \\
+    ker(P) &= \vec{v}-P(\vec{v}) \\
+    ker(P)+range(P) &= \vec{v}-P(\vec{v})+P(\vec{v}) \\
+    &= \vec{v}\in V \\
+    &= V
+  \end{align*}
+  \( P(P\vec{v}) \) can only be zero if only \( P\vec{v} \) is zero and no
+  other element in the range can be in the kernel, therefore \( ker(P)\cap
+  range(P) = \vec{0} \) since the zero vector is the only intersection.
+  \item Use the result of part (a) to conclude that \( V \) is the
+  \textit{direct sum} of \( ker(P) \) and \( range(P) \). \par
+  Because the kernel of \( P \) and the range of \( P \) only share the zero
+  vector (whose sum is \( \vec{0} \)), \( V \) is the \textit{direct sum} of
+  the kernel and range of \( P \).
+\end{enumerate}
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
