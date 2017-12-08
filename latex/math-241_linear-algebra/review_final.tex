@@ -1,0 +1,100 @@
+\documentclass{math}
+
+\title{Linear Algebra}
+\author{Alvin Lin}
+\date{August 2017 - December 2017}
+
+\begin{document}
+
+\maketitle
+
+\section*{Final Exam Review}
+\begin{enumerate}
+  \item Solve a linear system
+  \item Like \#8 from Exam 1. Given a 3 by 3 linear system with some
+  coefficients \( k \), find all values of \( k \) such that the solution has
+  no solutions, 1 solution, or infinitely many solution.
+  \item Similar to Exam 2, \#3. A square matrix \( M \) satisfies a given
+  polynomial equation. Find \( M^{-1}, rank(M), nullity(M) \).
+  \item Given a vector space \( V \) and some subsets of \( V \), determine if
+  those subsets are subspaces of \( V \).
+  \item Like Exam 2, \#7. Given a 3 by 3 matrix \( A \), with some entries in
+  terms of \( k \), find all values of \( k \) making \( A \) invertible.
+  \item Given 2 vector spaces \( V \), determine if they are isomorphic.
+  \item Compute some determinants.
+  \item Similar to Exam 3 \#5
+  \item Similar to Exam 3 \#4
+  \item A question involving linear transformation \( T:V\to W \) and the
+  rank-nullity theorem.
+  \item Similar to questions from the Exam 4.
+  \item Similar to questions from the Exam 4.
+\end{enumerate}
+\textbf{Bonus:} Given some vector space \( V \), compute its dimension. \\
+\textbf{Bonus:} Given transformation \( T:V\to W \), find
+\( [T]_{C\leftarrow B} \) where \( B \) is a basis for \( V \) and \( C \) is a
+basis for \( W \).
+
+\subsubsection*{Example}
+Given a linear transformation \( T:V\to W \) with \( dim(V) = 5 \) and
+\( dim(W) = 6 \). Are there any linear transformations \( T:V\to W \) that are
+also onto? No, the rank-nullity theorem states that
+\( dim(V) = rank(T)+nullity(T) \).
+\[ rank(T) = dim(range(T)) \le dim(V) < dim(W) \]
+\[ range(T) \ne W \]
+So \( T \) is not onto. \par
+Suppose \( dim(V) = 6, dim(W) = 5 \). Are there any one-to-one linear
+transformations \( T:V\to W \)?
+\begin{align*}
+  rank(T) \le dim(W) &= 5 \\
+  dim(V) &= rank(T)+nullity(T) \\
+  \therefore nullity(T) &\ge 1 \\
+  nullity(T) &\ne \{\vec{0}\}
+\end{align*}
+\( T \) is not one-to-one.
+
+\subsubsection*{Example}
+\( V \) is a vector space with subspaces \( U,W \). Prove \( U\cap W \) is a
+subspace of \( V \).
+\begin{enumerate}
+  \item Is \( \vec{0}\in U\cap W \)? \( U \) is a subspace so
+  \( \vec{0}\in U \). \( W \) is a subspace so \( \vec{0}\in W \). Therefore,
+  \( \vec{0}\in U\cap W \).
+  \item Let \( \vec{x},\vec{y}\in U\cap W \). So \( \vec{x},\vec{y}\in U \)
+  and \( \vec{x},\vec{y}\in W \). Then \( \vec{x}+\vec{y}\in U \) and
+  \( \vec{x}+\vec{y}\in W \). Thus, \( \vec{x}+\vec{y}\in U\cap W \).
+  \item Let \( \vec{u}\in U\cap W \) and \( c \) be a scalar. \( \vec{u}\in U \)
+  and \( \vec{u}\in W \). Then \( c\vec{u}\in U \) and \( c\vec{u}\in W \).
+  Therefore, \( c\vec{u}\in U\cap W \).
+\end{enumerate}
+
+\subsubsection*{Example}
+Let \( V \) be a vector space. Take \( U,W \) as subspaces of \( V \). Is it
+true that \( U\cap W \) is a subspace of \( V \)? Let \( V = \R^2 \).
+\( U = \{(x,0)\mid x\in\R\} \) and \( W = \{(0,y)\mid y\in\R\} \). \( U\cap W \)
+is the union of the x and y axes, which is not closed under addition. For
+\( U\cap W \) to be closed under addition, we need \( U\subseteq W \) or
+\( W\subseteq U \).
+
+\subsubsection*{Example}
+Say \( B \) is a set of vectors in a vector space \( V \) with the property that
+every \( \vec{v}\in V \) can be written uniquely as a linear combination of
+elements of \( B \). Explain why \( B \) is a basis for \( V \). Show that the
+\( span(B) = V \).
+\begin{align*}
+  \text{Take }\vec{v} &\in V \\
+  \vec{v} &= \sum_{i=1}^{n}c_i\vec{v_i} \\
+  span(B) = V
+\end{align*}
+Show that \( B \) is linearly independent.
+\[ \sum_{i=1}^{n}c_i\vec{v_i} = \vec{0} = 0\vec{v_1}+0\vec{v_2}+\dots+
+  0\vec{v_n} \]
+By uniqueness, \( c_1 = c_2 = \dots = c_n = 0 \). Thus, \( B \) is linearly
+independent, so \( B \) is a basis for \( V \).
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
