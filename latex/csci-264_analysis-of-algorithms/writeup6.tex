@@ -20,15 +20,51 @@
 
 
 \subsubsection*{Algorithm Description}
+The Bellman-Ford algorithm for finding the shortest path in a graph with
+negative edge weights conveniently encounters an error if there is a negative
+weight cycle.  In order to determine if the graph has a negative weight cycle,
+we simply run Bellman-Ford and return \texttt{true} if Bellman-Ford errors out,
+and \texttt{false} if it succeeds.
 
 
 \subsubsection*{Running Time Estimate}
+Since we're merely running Bellman-Ford, plus a very short constant time boolean
+value inversion at the end, our algorithm runs in the same time bounds as
+Bellman-Ford, namely \( O(n*m) \).  When we originally wrote this code, we
+figured, ``Oh, \( m \) is a function of \( n \), so it'll all work out fine in
+the end.''  Regrettably, we failed to account for the fact that, in the worst
+case, \( m \) is not a \emph{linear} function of \( n \).  In a fully-connected
+graph, the number of edges per node is \( (n - 1) \), making the number of edges
+in the graph \( (n - 1) * n \), and forcing our time complexity up to \( n * ((n
+- 1) * n)) \).
+
+We believe this running time is at least partially justifiable, since fully
+connected graphs are rare, and we couldn't think of a faster way to do it.
 
 
 \subsubsection*{Pseudocode}
 
-\begin{lstlisting}
-pass
+\begin{lstlisting}[mathescape=true]
+def bellmanFord(edges, vtxCount, source):
+    distances = []
+    let every element of distances = $\infty$
+    let distances[source] = 0
+    for i = 0 to vtxCount:
+        for edge in edges:
+            let newDist = distances[edge.src] + edge.weight
+            if distances[edge.dst] < newDist:
+                distances[edge.dst] = newDist
+    for edge in edges:
+        if distances[edge.dst] > distances[edge.src] + edge.weight:
+            return None
+    return distances
+
+let E be the set of input edges
+let |V| be the number of input vertices
+if bellmanFord(E, |V|, 1) is None:
+    output YES
+else:
+    output NO
 \end{lstlisting}
 
 
@@ -43,7 +79,7 @@ the remaining usable capacity of that edge.
 
 \usetikzlibrary{positioning}
 \usetikzlibrary{arrows.meta}
-\begin{figure}
+\begin{figure}[b]
     \centering
     \begin{tikzpicture}[
             node distance=5mm and 5mm,
