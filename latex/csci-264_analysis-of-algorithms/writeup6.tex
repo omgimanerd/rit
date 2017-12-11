@@ -7,6 +7,7 @@
 \usepackage{subcaption}
 \pgfplotsset{compat=1.8}
 \lstset{basicstyle=\ttfamily\footnotesize,breaklines=true}
+
 \title{Analysis of Algorithms}
 \author{Alvin Lin (axl1439) and William Leuschner (wel2138)}
 \date{August 2017 - December 2017}
@@ -15,9 +16,7 @@
 
 \maketitle
 
-
 \section*{Problem 1}
-
 
 \subsubsection*{Algorithm Description}
 The Bellman-Ford algorithm for finding the shortest path in a graph with
@@ -25,7 +24,6 @@ negative edge weights conveniently encounters an error if there is a negative
 weight cycle.  In order to determine if the graph has a negative weight cycle,
 we simply run Bellman-Ford and return \texttt{true} if Bellman-Ford errors out,
 and \texttt{false} if it succeeds.
-
 
 \subsubsection*{Running Time Estimate}
 Since we're merely running Bellman-Ford, plus a very short constant time boolean
@@ -40,7 +38,6 @@ in the graph \( (n - 1) * n \), and forcing our time complexity up to \( n * ((n
 
 We believe this running time is at least partially justifiable, since fully
 connected graphs are rare, and we couldn't think of a faster way to do it.
-
 
 \subsubsection*{Pseudocode}
 
@@ -67,10 +64,9 @@ else:
     output NO
 \end{lstlisting}
 
-
 \section*{Problem 2}
 
-For these diagrams, the residual graphs specify backward edges in red, where the
+For these diagrams (Figures \ref{fig:before}--\ref{fig:step4}), the residual graphs specify backward edges in red, where the
 weight of the backward edge is the capacity used on that edge.  Completely
 used-up forward edges are not shown.  The augmenting path graphs specify
 augmenting paths in blue, where the weight of the edge describes the flow of
@@ -79,7 +75,7 @@ the remaining usable capacity of that edge.
 
 \usetikzlibrary{positioning}
 \usetikzlibrary{arrows.meta}
-\begin{figure}[b]
+\begin{figure}[p]
     \centering
     \begin{tikzpicture}[
             node distance=5mm and 5mm,
@@ -108,7 +104,7 @@ the remaining usable capacity of that edge.
     \caption{Residual graph before running the algorithm}
     \label{fig:before}
 \end{figure}
-\begin{figure}
+\begin{figure}[p]
     \centering
     \begin{subfigure}[h]{0.49\textwidth}
         \centering
@@ -198,7 +194,7 @@ the remaining usable capacity of that edge.
     \label{fig:step1}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[p]
     \centering
     \begin{subfigure}[h]{0.49\textwidth}
         \centering
@@ -289,7 +285,7 @@ the remaining usable capacity of that edge.
     \label{fig:step2}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[p]
     \centering
     \begin{subfigure}[h]{0.49\textwidth}
         \centering
@@ -380,7 +376,7 @@ the remaining usable capacity of that edge.
     \label{fig:step3}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[p]
     \centering
     \begin{subfigure}[h]{0.49\textwidth}
         \centering
@@ -468,7 +464,6 @@ the remaining usable capacity of that edge.
 
 \section*{Problem 3}
 
-
 \subsubsection*{Algorithm Description}
 
 The key to this problem is that the only place an edge can be added is across
@@ -482,32 +477,52 @@ search this tree for the node with the lowest index (lexicographically first),
 and draw a new edge between that node and the source node.
 
 Although we cannot determine why this algorithm fails the sixth test case, we
-have a few hypotheses.
-
-\textbf{Hypothesis 1}: Our implementation of Edmonds-Karp is wrong.  We suspect
-this because debugging output shows that, for test case 5, our implementation of
-Edmonds-Karp reports that the \emph{s-t} cut slices every edge connected to
-\emph{t}.  We find this to be improbable, but we haven't tried to run the
-algorithm on test case 5's graph by hand to determine the exact nature of its
-improbability.  As a counter-argument, our implementation successfully finds the
-solutions for test cases 1--4, so it is at the very least \emph{mostly} right.
-
-\textbf{Hypothesis 2}: Our premises are wrong.  
+have a hypothesis: Our constraints are wrong and we are excluding nodes that
+we shouldn't be excluding during the search for a node to connect the source
+node to. This could be due to the fact that our algorithm for calculating the
+predecessor nodes in the breadth-first traversal is excluding the leaf node at
+the end of every branch of the tree, or at least some of them.
 
 
 \subsubsection*{Running Time Estimate}
+This algorithm is just Edmonds-Karp with some extra stuff at the end.
+Edmonds-Karp runs on \( O(m^2n) \) time because finding a single augmenting path
+requires \( O(m) \) time, and at worst, this needs to be done \( mn \) times.
 
+\pagebreak
 
 \subsubsection*{Pseudocode}
+\begin{lstlisting}[mathescape=true]
+def getBandwidthBottleneckEdge(graph, source, sink):
+  copy = deepCopy(graph)
+  predecessors, visited = bfs(graph, source)
+  while visited[sink]:
+    minFlow = $\infty$
+    currentNode = sink
+    while currentNode != source:
+      predecessor = predecessors[currentNode]
+      minFlow = min(minFlow, graph[predecessor][currentNode])
+      currentNode = predecessor
+    currentNode = sink
+    while currentNode != source:
+      predecessor = predecessors[currentNode]
+      graph[predecessor][currentNode] -= minFlow
+      graph[currentNode][predecessor] += minFlow
+      currentNode = predecessor
+    predecessors, visited = b{figure}fs(graph, source)
 
-\begin{lstlisting}
-
+  predecessors, visited = bfs(transpose(graph), sink)
+  nodes = filter(lambda x: x != -1, sorted(predecessors))
+  for node in nodes:
+    if copy[source][node] == 0:
+      return (source, node)
+  return "NO"
 \end{lstlisting}
 
 
 \section*{Problem 4}
 
-
+{figure}
 \subsection*{Reducing \( P \) to \( Q_1 \)}
 
 Because the longest path algorithm is capped at returning a path through every
