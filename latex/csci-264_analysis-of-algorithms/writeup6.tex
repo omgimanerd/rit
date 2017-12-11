@@ -471,6 +471,29 @@ the remaining usable capacity of that edge.
 
 \subsubsection*{Algorithm Description}
 
+The key to this problem is that the only place an edge can be added is across
+the minimum \emph{s-t} cut of the graph.  In order to locate the minimum
+\emph{s-t} cut, we apply the Edmonds-Karp algorithm to reduce the graph to a
+state where all of the existing augmenting paths from the server (source) to the
+client (sink) have been removed.  Once the graph is in this state, we can then
+transpose it and build a breadth-first traversal of the transpose.  This tree
+contains all of the nodes on the \emph{t} side of the \emph{s-t} cut.  We then
+search this tree for the node with the lowest index (lexicographically first),
+and draw a new edge between that node and the source node.
+
+Although we cannot determine why this algorithm fails the sixth test case, we
+have a few hypotheses.
+
+\textbf{Hypothesis 1}: Our implementation of Edmonds-Karp is wrong.  We suspect
+this because debugging output shows that, for test case 5, our implementation of
+Edmonds-Karp reports that the \emph{s-t} cut slices every edge connected to
+\emph{t}.  We find this to be improbable, but we haven't tried to run the
+algorithm on test case 5's graph by hand to determine the exact nature of its
+improbability.  As a counter-argument, our implementation successfully finds the
+solutions for test cases 1--4, so it is at the very least \emph{mostly} right.
+
+\textbf{Hypothesis 2}: Our premises are wrong.  
+
 
 \subsubsection*{Running Time Estimate}
 
@@ -478,7 +501,7 @@ the remaining usable capacity of that edge.
 \subsubsection*{Pseudocode}
 
 \begin{lstlisting}
-pass
+
 \end{lstlisting}
 
 
@@ -489,8 +512,7 @@ pass
 
 Because the longest path algorithm is capped at returning a path through every
 node, we can simply run our graph through it unchanged and check if the output
-length is equal to a path through every node.
-\begin{enumerate}
+length is equal to a path through every node.  \begin{enumerate}
 \renewcommand{\theenumi}{\alph{enumi}}
     \item Construct \( G_1, s_1, and t_1 \) by setting them equal to their
         subscript-less counterparts.
