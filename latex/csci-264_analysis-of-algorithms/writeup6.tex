@@ -1,5 +1,6 @@
 \documentclass{math}
 
+\usepackage{enumerate}
 \usepackage{hyperref}
 \usepackage{listings}
 \usepackage{xcolor}
@@ -43,429 +44,315 @@ connected graphs are rare, and we couldn't think of a faster way to do it.
 
 \begin{lstlisting}[mathescape=true]
 def bellmanFord(edges, vtxCount, source):
-    distances = []
-    let every element of distances = $\infty$
-    let distances[source] = 0
-    for i = 0 to vtxCount:
-        for edge in edges:
-            let newDist = distances[edge.src] + edge.weight
-            if distances[edge.dst] < newDist:
-                distances[edge.dst] = newDist
+  distances = []
+  let every element of distances = $\infty$
+  let distances[source] = 0
+  for i = 0 to vtxCount:
     for edge in edges:
-        if distances[edge.dst] > distances[edge.src] + edge.weight:
-            return None
-    return distances
+      let newDist = distances[edge.src] + edge.weight
+      if distances[edge.dst] < newDist:
+        distances[edge.dst] = newDist
+  for edge in edges:
+    if distances[edge.dst] > distances[edge.src] + edge.weight:
+      return None
+  return distances
 
 let E be the set of input edges
 let |V| be the number of input vertices
 if bellmanFord(E, |V|, 1) is None:
-    output YES
+  output YES
 else:
-    output NO
+  output NO
 \end{lstlisting}
 
 \section*{Problem 2}
-
-For these diagrams (Figures \ref{fig:before}--\ref{fig:step4}), the residual graphs specify backward edges in red, where the
-weight of the backward edge is the capacity used on that edge.  Completely
-used-up forward edges are not shown.  The augmenting path graphs specify
-augmenting paths in blue, where the weight of the edge describes the flow of
-commodity that is passing through that edge.  Weights on forward edges depict
-the remaining usable capacity of that edge.
+For these diagrams (Figures 1--5), the residual graphs specify backward edges
+in red, where the weight of the backward edge is the capacity used on that
+edge. Completely used-up forward edges are not shown. The augmenting path
+graphs specify augmenting paths in blue, where the weight of the edge describes
+the flow of commodity that is passing through that edge. Weights on forward
+edges depict the remaining usable capacity of that edge.
 
 \usetikzlibrary{positioning}
 \usetikzlibrary{arrows.meta}
 \begin{figure}[p]
+  \centering
+  \begin{tikzpicture}[
+      node distance=5mm and 5mm,
+      vertex/.style={
+          circle,
+          minimum size=3mm,
+          thick,
+          draw=black
+      }]
+    \node (1) [vertex] {1};
+    \node (2) [vertex,above right=of 1] {2};
+    \node (3) [vertex,below right=of 1] {3};
+    \node (4) [vertex,right=of 2] {4};
+    \node (5) [vertex,right=of 3] {5};
+    \node (6) [vertex,below right=of 4] {6};
+
+    \draw [-{Latex}] (1) -- (2) node [midway,above left] {1000};
+    \draw [-{Latex}] (1) -- (3) node [midway,below left] {1000};
+    \draw [-{Latex}] (2) -- (4) node [midway,above=2mm] {1000};
+    \draw [-{Latex}] (3) -- (5) node [midway,below=2mm] {1000};
+    \draw [-{Latex}] (4) -- (6) node [midway,above right] {1000};
+    \draw [-{Latex}] (5) -- (6) node [midway,below right] {1000};
+    \draw [-{Latex}] (3) -- (4) node [midway,above left] {1};
+  \end{tikzpicture}
+  \caption{Residual graph before running the algorithm}
+  \label{fig:before}
+\end{figure}
+\begin{figure}[p]
+  \centering
+  \begin{subfigure}[h]{0.49\textwidth}
     \centering
     \begin{tikzpicture}[
-            node distance=5mm and 5mm,
-            vertex/.style={
-                circle,
-                minimum size=3mm,
-                thick,
-                draw=black
-            }]
+        node distance=5mm and 5mm,
+        vertex/.style={ circle, minimum size=3mm, thick, draw=black },
+        fwd/.style={ -{Latex}, fill=black, draw=black },
+        bkwd/.style={ fill=red, draw=red }]
 
-            \node (1) [vertex] {1};
-            \node (2) [vertex,above right=of 1] {2};
-            \node (3) [vertex,below right=of 1] {3};
-            \node (4) [vertex,right=of 2] {4};
-            \node (5) [vertex,right=of 3] {5};
-            \node (6) [vertex,below right=of 4] {6};
+      \node (1) [vertex] {1};
+      \node (2) [vertex,above right=of 1] {2};
+      \node (3) [vertex,below right=of 1] {3};
+      \node (4) [vertex,right=of 2] {4};
+      \node (5) [vertex,right=of 3] {5};
+      \node (6) [vertex,below right=of 4] {6};
 
-            \draw [-{Latex}] (1) -- (2) node [midway,above left] {1000};
-            \draw [-{Latex}] (1) -- (3) node [midway,below left] {1000};
-            \draw [-{Latex}] (2) -- (4) node [midway,above=2mm] {1000};
-            \draw [-{Latex}] (3) -- (5) node [midway,below=2mm] {1000};
-            \draw [-{Latex}] (4) -- (6) node [midway,above right] {1000};
-            \draw [-{Latex}] (5) -- (6) node [midway,below right] {1000};
-            \draw [-{Latex}] (3) -- (4) node [midway,above left] {1};
+      \draw [fwd] (1) -- (2) node [midway,above left] {1000};
+      \draw [fwd] (1) -- (3) node [midway,below left] {999};
+      \draw [fwd] (2) -- (4) node [midway,above=2mm] {1000};
+      \draw [fwd] (3) -- (5) node [midway,below=2mm] {1000};
+      \draw [fwd] (4) -- (6) node [midway,above right] {999};
+      \draw [fwd] (5) -- (6) node [midway,below right] {1000};
+
+      \draw [bkwd] (6) edge[bend left] node [midway, below left] {1} (4);
+      \draw [bkwd] (3) edge[bend right]  node [midway,above right] {1} (1);
+      \draw [bkwd] (4) -- (3) node [midway,above left] {1};
     \end{tikzpicture}
-    \caption{Residual graph before running the algorithm}
-    \label{fig:before}
-\end{figure}
-\begin{figure}[p]
+    \caption{Residual}
+  \end{subfigure}
+  \begin{subfigure}[h]{0.49\textwidth}
     \centering
-    \begin{subfigure}[h]{0.49\textwidth}
-        \centering
-        \begin{tikzpicture}[
-                node distance=5mm and 5mm,
-                vertex/.style={
-                    circle,
-                    minimum size=3mm,
-                    thick,
-                    draw=black
-                },
-                fwd/.style={
-                    -{Latex},
-                    fill=black,
-                    draw=black
-                },
-                bkwd/.style={
-                    fill=red,
-                    draw=red
-                }
-            ]
+    \begin{tikzpicture}[
+        node distance=5mm and 5mm,
+        vertex/.style={ circle, minimum size=3mm, thick, draw=black },
+        fwd/.style={ -{Latex}, fill=black, draw=black },
+        aug/.style={ -{Latex}, fill=blue, draw=blue }]
 
-                \node (1) [vertex] {1};
-                \node (2) [vertex,above right=of 1] {2};
-                \node (3) [vertex,below right=of 1] {3};
-                \node (4) [vertex,right=of 2] {4};
-                \node (5) [vertex,right=of 3] {5};
-                \node (6) [vertex,below right=of 4] {6};
+      \node (1) [vertex] {1};
+      \node (2) [vertex,above right=of 1] {2};
+      \node (3) [vertex,below right=of 1] {3};
+      \node (4) [vertex,right=of 2] {4};
+      \node (5) [vertex,right=of 3] {5};
+      \node (6) [vertex,below right=of 4] {6};
 
-                \draw [fwd] (1) -- (2) node [midway,above left] {1000};
-                \draw [fwd] (1) -- (3) node [midway,below left] {999};
-                \draw [fwd] (2) -- (4) node [midway,above=2mm] {1000};
-                \draw [fwd] (3) -- (5) node [midway,below=2mm] {1000};
-                \draw [fwd] (4) -- (6) node [midway,above right] {999};
-                \draw [fwd] (5) -- (6) node [midway,below right] {1000};
+      \draw [fwd] (1) -- (2) node [midway,above left] {1000};
+      \draw [fwd] (1) -- (3) node [midway,below left] {999};
+      \draw [fwd] (2) -- (4) node [midway,above=2mm] {1000};
+      \draw [fwd] (3) -- (5) node [midway,below=2mm] {1000};
+      \draw [fwd] (4) -- (6) node [midway,above right] {999};
+      \draw [fwd] (5) -- (6) node [midway,below right] {1000};
 
-                \draw [bkwd] (6) edge[bend left] node [midway, below left] {1} (4);
-                \draw [bkwd] (3) edge[bend right]  node [midway,above right] {1} (1);
-                \draw [bkwd] (4) -- (3) node [midway,above left] {1};
-        \end{tikzpicture}
-        \caption{Residual}
-    \end{subfigure}
-    \begin{subfigure}[h]{0.49\textwidth}
-        \centering
-        \begin{tikzpicture}[
-                node distance=5mm and 5mm,
-                vertex/.style={
-                    circle,
-                    minimum size=3mm,
-                    thick,
-                    draw=black
-                },
-                fwd/.style={
-                    -{Latex},
-                    fill=black,
-                    draw=black
-                },
-                aug/.style={
-                    -{Latex},
-                    fill=blue,
-                    draw=blue
-                }
-            ]
-
-                \node (1) [vertex] {1};
-                \node (2) [vertex,above right=of 1] {2};
-                \node (3) [vertex,below right=of 1] {3};
-                \node (4) [vertex,right=of 2] {4};
-                \node (5) [vertex,right=of 3] {5};
-                \node (6) [vertex,below right=of 4] {6};
-
-                \draw [fwd] (1) -- (2) node [midway,above left] {1000};
-                \draw [fwd] (1) -- (3) node [midway,below left] {999};
-                \draw [fwd] (2) -- (4) node [midway,above=2mm] {1000};
-                \draw [fwd] (3) -- (5) node [midway,below=2mm] {1000};
-                \draw [fwd] (4) -- (6) node [midway,above right] {999};
-                \draw [fwd] (5) -- (6) node [midway,below right] {1000};
-
-                \draw [aug] (4) edge[bend right] node [midway, below left] {1} (6);
-                \draw [aug] (1) edge[bend left]  node [midway,above right] {1} (3);
-                \draw [aug] (3) -- (4) node [midway,above left] {1};
-        \end{tikzpicture}
-        \caption{Augmenting}
-    \end{subfigure}
-    \caption{Residual graph and augmenting path after 1 step of the algorithm.
-    Flow $f = 1$.}
-    \label{fig:step1}
+      \draw [aug] (4) edge[bend right] node [midway, below left] {1} (6);
+      \draw [aug] (1) edge[bend left]  node [midway,above right] {1} (3);
+      \draw [aug] (3) -- (4) node [midway,above left] {1};
+    \end{tikzpicture}
+    \caption{Augmenting}
+  \end{subfigure}
+  \caption{Residual graph and augmenting path after 1 step of the algorithm.
+  Flow $f = 1$.}
+  \label{fig:step1}
 \end{figure}
 
 \begin{figure}[p]
+  \centering
+  \begin{subfigure}[h]{0.49\textwidth}
     \centering
-    \begin{subfigure}[h]{0.49\textwidth}
-        \centering
-        \begin{tikzpicture}[
-                node distance=5mm and 5mm,
-                vertex/.style={
-                    circle,
-                    minimum size=3mm,
-                    thick,
-                    draw=black
-                },
-                bkwd/.style={
-                    -{Latex},
-                    fill=red,
-                    draw=red
-                },
-                fwd/.style={
-                    -{Latex},
-                    fill=black,
-                    draw=black
-                }
-            ]
+    \begin{tikzpicture}[
+        node distance=5mm and 5mm,
+        vertex/.style={ circle, minimum size=3mm, thick, draw=black },
+        bkwd/.style={ -{Latex}, fill=red, draw=red },
+        fwd/.style={ -{Latex}, fill=black, draw=black }]
 
-                \node (1) [vertex] {1};
-                \node (2) [vertex,above right=of 1] {2};
-                \node (3) [vertex,below right=of 1] {3};
-                \node (4) [vertex,right=of 2] {4};
-                \node (5) [vertex,right=of 3] {5};
-                \node (6) [vertex,below right=of 4] {6};
+      \node (1) [vertex] {1};
+      \node (2) [vertex,above right=of 1] {2};
+      \node (3) [vertex,below right=of 1] {3};
+      \node (4) [vertex,right=of 2] {4};
+      \node (5) [vertex,right=of 3] {5};
+      \node (6) [vertex,below right=of 4] {6};
 
-                \draw [fwd] (1) -- (2) node [midway,above left] {1};
-                \draw [fwd] (1) -- (3) node [midway,below left] {999};
-                \draw [fwd] (2) -- (4) node [midway,above=2mm] {1};
-                \draw [fwd] (3) -- (5) node [midway,below=2mm] {1000};
-                \draw [fwd] (5) -- (6) node [midway,below right] {1000};
+      \draw [fwd] (1) -- (2) node [midway,above left] {1};
+      \draw [fwd] (1) -- (3) node [midway,below left] {999};
+      \draw [fwd] (2) -- (4) node [midway,above=2mm] {1};
+      \draw [fwd] (3) -- (5) node [midway,below=2mm] {1000};
+      \draw [fwd] (5) -- (6) node [midway,below right] {1000};
 
-                \draw [bkwd] (2) edge[bend right=90] node [midway, above left] {999} (1);
-                \draw [bkwd] (4) edge[bend right=90] node [midway, above] {999} (2);
-                \draw [bkwd] (3) edge[bend right]  node [midway,above right] {1} (1);
-                \draw [bkwd] (4) -- (3) node [midway,above left] {1};
-                \draw [bkwd] (6) -- (4) node [midway, above right] {1000};
-        \end{tikzpicture}
-        \caption{Residual}
-    \end{subfigure}
-    \begin{subfigure}[h]{0.49\textwidth}
-        \centering
-        \begin{tikzpicture}[
-                node distance=5mm and 5mm,
-                vertex/.style={
-                    circle,
-                    minimum size=3mm,
-                    thick,
-                    draw=black
-                },
-                fwd/.style={
-                    -{Latex},
-                    fill=black,
-                    draw=black
-                },
-                aug/.style={
-                    -{Latex},
-                    fill=blue,
-                    draw=blue
-                }
-            ]
+      \draw [bkwd] (2) edge[bend right=90] node [midway, above left] {999} (1);
+      \draw [bkwd] (4) edge[bend right=90] node [midway, above] {999} (2);
+      \draw [bkwd] (3) edge[bend right]  node [midway,above right] {1} (1);
+      \draw [bkwd] (4) -- (3) node [midway,above left] {1};
+      \draw [bkwd] (6) -- (4) node [midway, above right] {1000};
+    \end{tikzpicture}
+    \caption{Residual}
+  \end{subfigure}
+  \begin{subfigure}[h]{0.49\textwidth}
+    \centering
+    \begin{tikzpicture}[
+        node distance=5mm and 5mm,
+        vertex/.style={ circle, minimum size=3mm, thick, draw=black },
+        fwd/.style={ -{Latex}, fill=black, draw=black },
+        aug/.style={ -{Latex}, fill=blue, draw=blue }]
 
-                \node (1) [vertex] {1};
-                \node (2) [vertex,above right=of 1] {2};
-                \node (3) [vertex,below right=of 1] {3};
-                \node (4) [vertex,right=of 2] {4};
-                \node (5) [vertex,right=of 3] {5};
-                \node (6) [vertex,below right=of 4] {6};
+      \node (1) [vertex] {1};
+      \node (2) [vertex,above right=of 1] {2};
+      \node (3) [vertex,below right=of 1] {3};
+      \node (4) [vertex,right=of 2] {4};
+      \node (5) [vertex,right=of 3] {5};
+      \node (6) [vertex,below right=of 4] {6};
 
-                \draw [fwd] (1) -- (2) node [midway,above left] {1};
-                \draw [fwd] (1) -- (3) node [midway,below left] {999};
-                \draw [fwd] (2) -- (4) node [midway,above=2mm] {1};
-                \draw [fwd] (3) -- (5) node [midway,below=2mm] {1000};
-                \draw [fwd] (5) -- (6) node [midway,below right] {1000};
+      \draw [fwd] (1) -- (2) node [midway,above left] {1};
+      \draw [fwd] (1) -- (3) node [midway,below left] {999};
+      \draw [fwd] (2) -- (4) node [midway,above=2mm] {1};
+      \draw [fwd] (3) -- (5) node [midway,below=2mm] {1000};
+      \draw [fwd] (5) -- (6) node [midway,below right] {1000};
 
-                \draw [aug] (1) edge[bend left=90] node [midway, above left] {999} (2);
-                \draw [aug] (2) edge[bend left=90] node [midway, above] {999} (4);
-                \draw [aug] (4) -- (6) node [midway, above right] {999};
-        \end{tikzpicture}
-        \caption{Augmenting}
-    \end{subfigure}
-    \caption{Residual graph and augmenting path after 2 steps of the algorithm.
-    Flow $f = 1000$}
-    \label{fig:step2}
+      \draw [aug] (1) edge[bend left=90] node [midway, above left] {999} (2);
+      \draw [aug] (2) edge[bend left=90] node [midway, above] {999} (4);
+      \draw [aug] (4) -- (6) node [midway, above right] {999};
+    \end{tikzpicture}
+    \caption{Augmenting}
+  \end{subfigure}
+  \caption{Residual graph and augmenting path after 2 steps of the algorithm.
+  Flow $f = 1000$}
+  \label{fig:step2}
 \end{figure}
 
 \begin{figure}[p]
+  \centering
+  \begin{subfigure}[h]{0.49\textwidth}
     \centering
-    \begin{subfigure}[h]{0.49\textwidth}
-        \centering
-        \begin{tikzpicture}[
-                node distance=5mm and 5mm,
-                vertex/.style={
-                    circle,
-                    minimum size=3mm,
-                    thick,
-                    draw=black
-                },
-                bkwd/.style={
-                    -{Latex},
-                    fill=red,
-                    draw=red
-                },
-                fwd/.style={
-                    -{Latex},
-                    fill=black,
-                    draw=black
-                }
-            ]
+    \begin{tikzpicture}[
+        node distance=5mm and 5mm,
+        vertex/.style={ circle, minimum size=3mm, thick, draw=black },
+        bkwd/.style={ -{Latex}, fill=red, draw=red },
+        fwd/.style={ -{Latex}, fill=black, draw=black }]
 
-                \node (1) [vertex] {1};
-                \node (2) [vertex,above right=of 1] {2};
-                \node (3) [vertex,below right=of 1] {3};
-                \node (4) [vertex,right=of 2] {4};
-                \node (5) [vertex,right=of 3] {5};
-                \node (6) [vertex,below right=of 4] {6};
+      \node (1) [vertex] {1};
+      \node (2) [vertex,above right=of 1] {2};
+      \node (3) [vertex,below right=of 1] {3};
+      \node (4) [vertex,right=of 2] {4};
+      \node (5) [vertex,right=of 3] {5};
+      \node (6) [vertex,below right=of 4] {6};
 
-                \draw [fwd] (1) -- (2) node [midway,above left] {1};
-                \draw [fwd] (2) -- (4) node [midway,above=2mm] {1};
-                \draw [fwd] (3) -- (5) node [midway,below=2mm] {1};
-                \draw [fwd] (5) -- (6) node [midway,below right] {1};
+      \draw [fwd] (1) -- (2) node [midway,above left] {1};
+      \draw [fwd] (2) -- (4) node [midway,above=2mm] {1};
+      \draw [fwd] (3) -- (5) node [midway,below=2mm] {1};
+      \draw [fwd] (5) -- (6) node [midway,below right] {1};
 
-                \draw [bkwd] (2) edge[bend right=90] node [midway, above left] {999} (1);
-                \draw [bkwd] (4) edge[bend right=90] node [midway, above] {999} (2);
-                \draw [bkwd] (6) edge[bend left=90] node [midway, below right] {999} (5);
-                \draw [bkwd] (5) edge[bend left=90] node [midway, below] {999} (3);
-                \draw [bkwd] (4) -- (3) node [midway,above left] {1};
-                \draw [bkwd] (6) -- (4) node [midway, above right] {1000};
-                \draw [bkwd] (3) -- (1) node [midway, below left] {1000};
-        \end{tikzpicture}
-        \caption{Residual}
-    \end{subfigure}
-    \begin{subfigure}[h]{0.49\textwidth}
-        \centering
-        \begin{tikzpicture}[
-                node distance=5mm and 5mm,
-                vertex/.style={
-                    circle,
-                    minimum size=3mm,
-                    thick,
-                    draw=black
-                },
-                fwd/.style={
-                    -{Latex},
-                    fill=black,
-                    draw=black
-                },
-                aug/.style={
-                    -{Latex},
-                    fill=blue,
-                    draw=blue
-                }
-            ]
+      \draw [bkwd] (2) edge[bend right=90] node [midway, above left] {999} (1);
+      \draw [bkwd] (4) edge[bend right=90] node [midway, above] {999} (2);
+      \draw [bkwd] (6) edge[bend left=90] node [midway, below right] {999} (5);
+      \draw [bkwd] (5) edge[bend left=90] node [midway, below] {999} (3);
+      \draw [bkwd] (4) -- (3) node [midway,above left] {1};
+      \draw [bkwd] (6) -- (4) node [midway, above right] {1000};
+      \draw [bkwd] (3) -- (1) node [midway, below left] {1000};
+    \end{tikzpicture}
+    \caption{Residual}
+  \end{subfigure}
+  \begin{subfigure}[h]{0.49\textwidth}
+    \centering
+    \begin{tikzpicture}[
+        node distance=5mm and 5mm,
+        vertex/.style={ circle, minimum size=3mm, thick, draw=black },
+        fwd/.style={ -{Latex}, fill=black, draw=black },
+        aug/.style={ -{Latex}, fill=blue, draw=blue }]
 
-                \node (1) [vertex] {1};
-                \node (2) [vertex,above right=of 1] {2};
-                \node (3) [vertex,below right=of 1] {3};
-                \node (4) [vertex,right=of 2] {4};
-                \node (5) [vertex,right=of 3] {5};
-                \node (6) [vertex,below right=of 4] {6};
+      \node (1) [vertex] {1};
+      \node (2) [vertex,above right=of 1] {2};
+      \node (3) [vertex,below right=of 1] {3};
+      \node (4) [vertex,right=of 2] {4};
+      \node (5) [vertex,right=of 3] {5};
+      \node (6) [vertex,below right=of 4] {6};
 
-                \draw [fwd] (1) -- (2) node [midway,above left] {1};
-                \draw [fwd] (2) -- (4) node [midway,above=2mm] {1};
-                \draw [fwd] (3) -- (5) node [midway,below=2mm] {1};
-                \draw [fwd] (5) -- (6) node [midway,below right] {1};
+      \draw [fwd] (1) -- (2) node [midway,above left] {1};
+      \draw [fwd] (2) -- (4) node [midway,above=2mm] {1};
+      \draw [fwd] (3) -- (5) node [midway,below=2mm] {1};
+      \draw [fwd] (5) -- (6) node [midway,below right] {1};
 
-                \draw [aug] (5) edge[bend right=90] node [midway, below right] {999} (6);
-                \draw [aug] (3) edge[bend right=90] node [midway, below] {999} (5);
-                \draw [aug] (1) -- (3) node [midway, below left] {999};
-        \end{tikzpicture}
-        \caption{Augmenting}
-    \end{subfigure}
-    \caption{Residual graph and augmenting path after 3 steps of the algorithm.
-    Flow $f = 1999$}
-    \label{fig:step3}
+      \draw [aug] (5) edge[bend right=90] node [midway, below right] {999} (6);
+      \draw [aug] (3) edge[bend right=90] node [midway, below] {999} (5);
+      \draw [aug] (1) -- (3) node [midway, below left] {999};
+    \end{tikzpicture}
+    \caption{Augmenting}
+  \end{subfigure}
+  \caption{Residual graph and augmenting path after 3 steps of the algorithm.
+  Flow $f = 1999$}
+  \label{fig:step3}
 \end{figure}
 
 \begin{figure}[p]
+  \centering
+  \begin{subfigure}[h]{0.49\textwidth}
     \centering
-    \begin{subfigure}[h]{0.49\textwidth}
-        \centering
-        \begin{tikzpicture}[
-                node distance=5mm and 5mm,
-                vertex/.style={
-                    circle,
-                    minimum size=3mm,
-                    thick,
-                    draw=black
-                },
-                bkwd/.style={
-                    -{Latex},
-                    fill=red,
-                    draw=red
-                },
-                fwd/.style={
-                    -{Latex},
-                    fill=black,
-                    draw=black
-                }
-            ]
+    \begin{tikzpicture}[
+        node distance=5mm and 5mm,
+        vertex/.style={ circle, minimum size=3mm, thick, draw=black },
+        bkwd/.style={ -{Latex}, fill=red, draw=red },
+        fwd/.style={ -{Latex}, fill=black, draw=black }]
 
-                \node (1) [vertex] {1};
-                \node (2) [vertex,above right=of 1] {2};
-                \node (3) [vertex,below right=of 1] {3};
-                \node (4) [vertex,right=of 2] {4};
-                \node (5) [vertex,right=of 3] {5};
-                \node (6) [vertex,below right=of 4] {6};
+      \node (1) [vertex] {1};
+      \node (2) [vertex,above right=of 1] {2};
+      \node (3) [vertex,below right=of 1] {3};
+      \node (4) [vertex,right=of 2] {4};
+      \node (5) [vertex,right=of 3] {5};
+      \node (6) [vertex,below right=of 4] {6};
 
-                \draw [fwd] (3) -- (4) node [midway, above left] {1};
+      \draw [fwd] (3) -- (4) node [midway, above left] {1};
 
-                \draw [bkwd] (2) -- (1) node [midway, above left] {1000};
-                \draw [bkwd] (3) -- (1) node [midway, below left] {1000};
-                \draw [bkwd] (4) -- (2) node [midway, above=2mm] {1000};
-                \draw [bkwd] (5) -- (3) node [midway, below=2mm] {1000};
-                \draw [bkwd] (6) -- (4) node [midway, above right] {1000};
-                \draw [bkwd] (6) -- (5) node [midway, below right] {1000};
-        \end{tikzpicture}
-        \caption{Residual}
-    \end{subfigure}
-    \begin{subfigure}[h]{0.49\textwidth}
-        \centering
-        \begin{tikzpicture}[
-                node distance=5mm and 5mm,
-                vertex/.style={
-                    circle,
-                    minimum size=3mm,
-                    thick,
-                    draw=black
-                },
-                aug/.style={
-                    -{Latex},
-                    fill=blue,
-                    draw=blue
-                },
-                fwd/.style={
-                    -{Latex},
-                    fill=black,
-                    draw=black
-                }
-            ]
+      \draw [bkwd] (2) -- (1) node [midway, above left] {1000};
+      \draw [bkwd] (3) -- (1) node [midway, below left] {1000};
+      \draw [bkwd] (4) -- (2) node [midway, above=2mm] {1000};
+      \draw [bkwd] (5) -- (3) node [midway, below=2mm] {1000};
+      \draw [bkwd] (6) -- (4) node [midway, above right] {1000};
+      \draw [bkwd] (6) -- (5) node [midway, below right] {1000};
+    \end{tikzpicture}
+    \caption{Residual}
+  \end{subfigure}
+  \begin{subfigure}[h]{0.49\textwidth}
+    \centering
+    \begin{tikzpicture}[
+        node distance=5mm and 5mm,
+        vertex/.style={ circle, minimum size=3mm, thick, draw=black },
+        aug/.style={ -{Latex}, fill=blue, draw=blue },
+        fwd/.style={ -{Latex}, fill=black, draw=black }]
 
-                \node (1) [vertex] {1};
-                \node (2) [vertex,above right=of 1] {2};
-                \node (3) [vertex,below right=of 1] {3};
-                \node (4) [vertex,right=of 2] {4};
-                \node (5) [vertex,right=of 3] {5};
-                \node (6) [vertex,below right=of 4] {6};
+      \node (1) [vertex] {1};
+      \node (2) [vertex,above right=of 1] {2};
+      \node (3) [vertex,below right=of 1] {3};
+      \node (4) [vertex,right=of 2] {4};
+      \node (5) [vertex,right=of 3] {5};
+      \node (6) [vertex,below right=of 4] {6};
 
-                \draw [aug] (4) -- (3) node [midway, above left] {1};
+      \draw [aug] (4) -- (3) node [midway, above left] {1};
 
-                \draw [aug] (1) -- (2) node [midway, above left] {1};
-                \draw [aug] (2) -- (4) node [midway, above=2mm] {1};
-                \draw [aug] (3) -- (5) node [midway, below=2mm] {1};
-                \draw [aug] (5) -- (6) node [midway, below right] {1};
-        \end{tikzpicture}
-        \caption{Augmenting}
-    \end{subfigure}
-    \caption{Residual graph and augmenting path after 4 steps of the algorithm.
-    Flow $f = 2000$}
-    \label{fig:step4}
+      \draw [aug] (1) -- (2) node [midway, above left] {1};
+      \draw [aug] (2) -- (4) node [midway, above=2mm] {1};
+      \draw [aug] (3) -- (5) node [midway, below=2mm] {1};
+      \draw [aug] (5) -- (6) node [midway, below right] {1};
+    \end{tikzpicture}
+    \caption{Augmenting}
+  \end{subfigure}
+  \caption{Residual graph and augmenting path after 4 steps of the algorithm.
+  Flow $f = 2000$}
+  \label{fig:step4}
 \end{figure}
 
 
 \section*{Problem 3}
 
 \subsubsection*{Algorithm Description}
-
 The key to this problem is that the only place an edge can be added is across
 the minimum \emph{s-t} cut of the graph.  In order to locate the minimum
 \emph{s-t} cut, we apply the Edmonds-Karp algorithm to reduce the graph to a
@@ -482,7 +369,6 @@ we shouldn't be excluding during the search for a node to connect the source
 node to. This could be due to the fact that our algorithm for calculating the
 predecessor nodes in the breadth-first traversal is excluding the leaf node at
 the end of every branch of the tree, or at least some of them.
-
 
 \subsubsection*{Running Time Estimate}
 This algorithm is just Edmonds-Karp with some extra stuff at the end.
@@ -522,33 +408,28 @@ def getBandwidthBottleneckEdge(graph, source, sink):
 
 \section*{Problem 4}
 
-{figure}
 \subsection*{Reducing \( P \) to \( Q_1 \)}
-
 Because the longest path algorithm is capped at returning a path through every
 node, we can simply run our graph through it unchanged and check if the output
-length is equal to a path through every node.  \begin{enumerate}
-\renewcommand{\theenumi}{\alph{enumi}}
-    \item Construct \( G_1, s_1, and t_1 \) by setting them equal to their
-        subscript-less counterparts.
-    \item Given \( \ell \), \( G \) will have a Hamiltonian path if and only
-        if \( \ell \) is equal to \( n - 1 \), where \( n \) is the number of
-        vertices in \( G \).
+length is equal to a path through every node.
+\begin{enumerate}[a.]
+  \item Construct \( G_1, s_1, and t_1 \) by setting them equal to their
+  subscript-less counterparts.
+  \item Given \( \ell \), \( G \) will have a Hamiltonian path if and only
+  if \( \ell \) is equal to \( n - 1 \), where \( n \) is the number of
+  vertices in \( G \).
 \end{enumerate}
 
 \subsection*{Reducing \( P \) to \( Q_2 \)}
-
 This problem is slightly more difficult, but not by much.  Becuase the black-box
 shortest path algorithm accepts negative weights, we can turn it into a
 longest-path algorithm by assigning every edge in \( G \) a weight of \( -1 \).
-\begin{enumerate}
-        \renewcommand{\theenumi}{\alph{enumi}}
-    \item Construct \( G_1 \) by assigning every edge a weight of \( -1 \).
-        Construct $s_1$ and $t_1$ by assigning to them $s$ and $t$,
-        respectively.
-    \item Given \( \ell \), \( G \) will have a Hamiltonian path if and only if
-        \( \|\ell\| = n - 1 \), where \( n \) is the number of vertices in \( G
-        \).
+\begin{enumerate}[a.]
+  \item Construct \( G_1 \) by assigning every edge a weight of \( -1 \).
+  Construct $s_1$ and $t_1$ by assigning to them $s$ and $t$,
+  respectively.
+  \item Given \( \ell \), \( G \) will have a Hamiltonian path if and only if
+  \( \|\ell\| = n - 1 \), where \( n \) is the number of vertices in \( G \).
 \end{enumerate}
 
 \end{document}
