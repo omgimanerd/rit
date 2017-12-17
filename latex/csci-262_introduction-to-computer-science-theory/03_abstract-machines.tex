@@ -113,7 +113,7 @@ We say that \( M \) accepts \( w = w_1w_2\dots w_n\in\Sigma^{*} \) if there is
 a sequence (repeats allowed) of states \( r_0,r_1,\dots,r_n\in Q \) such that:
 \begin{enumerate}
   \item \( r_0 = q_0 \)
-  \item \( \forall{i}\in\{0,\dots,n-1\}(\delta(r_i,w_i+1) = r_i+1) \)
+  \item \( \forall{i}\in\{0,\dots,n-1\}(\delta(r_i,w_{i+1} = r_i+1) \)
   \item \( r_n \in F \)
 \end{enumerate}
 A deterministic finite automaton \( M \) recognizes a language \( A \) if
