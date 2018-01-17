@@ -1,0 +1,68 @@
+\documentclass{math}
+
+\usepackage{tikz}
+
+\title{University Physics 2}
+\author{Alvin Lin}
+\date{January 2018 - May 2018}
+
+\begin{document}
+
+\maketitle
+
+\section*{Introduction to Electric Charge}
+Initial Ideas:
+\begin{itemize}
+  \item Charges are positive, negative, or neutral, and measured in units of
+  Coulombs. Charge is quantized in units of electrons, which has a charge of
+  \( e = -1.6\times10^{-19} \) coulombs.
+  \item They are related and analogous to electrons, protons, and neutrons in
+  atoms.
+  \item The movement of charges is the driving forces behind electricity and
+  magnetism.
+  \item Like charges repel and dislike charges attract.
+  \item The strength of the charge is distance dependent.
+  \item Conductors allows for the movement of charge through it, while
+  insulators do not.
+  \item Ground is the term for a large neutral conductor which excess charge
+  can go into.
+\end{itemize}
+
+\subsection*{Induced Charge}
+Induced charging creates unbalanced charges using only interactions, not
+physical touching.
+\begin{center}
+  \begin{tikzpicture}
+    \draw (-4,1) -- (0,1) -- (0,0) -- (-4,0) -- cycle;
+    \node[blue] at (-1,0.5) {+};
+    \node[blue] at (-0.5,0.5) {+};
+    \draw (2,0.5) circle (1cm);
+    \node[blue] at (2.6,1) {+};
+    \node[blue] at (2.6,0.5) {+};
+    \node[blue] at (2.6,0) {+};
+    \node[red] at (1.4,1) {-};
+    \node[red] at (1.4,0.5) {-};
+    \node[red] at (1.4,0) {-};
+  \end{tikzpicture}
+\end{center}
+\begin{center}
+  \begin{tikzpicture}
+    \draw (-4,1) -- (0,1) -- (0,0) -- (-4,0) -- cycle;
+    \node[blue] at (-1,0.5) {+};
+    \node[blue] at (-0.5,0.5) {+};
+    \draw (2,0.5) circle (1cm);
+    \draw (3,0.5) -- (5,0.5) node[right] {ground};
+    \node[red] at (2,1) {-};
+    \node[red] at (2,0.5) {-};
+    \node[red] at (2,0) {-};
+  \end{tikzpicture}
+\end{center}
+
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
