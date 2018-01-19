@@ -46,6 +46,106 @@ Consider this claim:
   \item Security is only possible in a world where no one trusts anyone.
 \end{itemize}
 
+\subsection*{What is Computer Security?}
+``The protection afforded to an automated information system in order to attain
+the applicable objectives of preserving the integrity, availability, and
+confidentiality of information system resources (includes hardware, software,
+firmware, information/data, and telecommunications).'' -NIST Computer Security
+Handbook.
+\par A computer scientist is someone who can apply computer science theory and
+software development fundamentals to produce computing-based solutions.
+Security should be involved in all factors of being a computer scientist.
+
+\clearpage
+
+\subsection*{Security: Knowledge Areas}
+\begin{center}
+  \begin{tabular}{|c|p{10cm}|}
+    \hline
+    Data Security & Protection of data at rest, during processing, and in
+      transit \\
+    \hline
+    Software Security & Development and use of software that reliably preserves
+      the security properties of the protected information and systems \\
+    \hline
+    Component Security & The security aspects of the design, procurement,
+      testing, analysis, and maintenance of compoents integrated into larger
+      systems \\
+    \hline
+    Connection Security & Security of the connections between components, both
+      physical and logical \\
+    \hline
+    System Security & Security aspects of systems that are composed of
+      components and connections, and use software \\
+    \hline
+    Human Security & The study of human behavior in the context of data
+      protection, privacy, and threat mitigation \\
+    \hline
+    Organizational Security & Protecting organizations from cybersecurity
+      threats and managing risk to support the successful accomplishment of the
+      organizations' missions \\
+    \hline
+    Societal Security & Aspects of cybersecurity that broadly impact society as
+      a whole \\
+    \hline
+  \end{tabular}
+\end{center}
+
+\subsection*{C-I-A Pillar: Three Objectives}
+\textbf{Confidentiality:}
+\begin{itemize}
+  \item Data confidentiality: private or confidential information is not made
+  available or disclosed to unauthorized individuals.
+  \item Privacy: assures that individuals can control or influence what
+  information related to them may be collected/stored, and by whom, and to whom
+  it may be disclosed.
+\end{itemize}
+\textbf{Integrity:}
+\begin{itemize}
+  \item Data integrity: assures that information and programs are changed only
+  in a specified and authorized manner.
+  \item System integrity: assures that a system performs its intended function
+  in an unimpaired manner, free from deliberate or inadvertent unauthorized
+  manipulation of the system.
+\end{itemize}
+\textbf{Availability:}
+\begin{itemize}
+  \item Assures that systems work promptly and service is never denied to
+  authorized users.
+\end{itemize}
+
+\subsection*{From CIA to CIANA}
+\textbf{Non-repudiation:}
+\begin{itemize}
+  \item Assures that the system has the ablity to correlate, with high
+  certainty, a recorded action with its originating individual or entity.
+\end{itemize}
+\textbf{Authentication:}
+\begin{itemize}
+  \item Assures that the system has the ability to verify the identity of an
+  individual or entity.
+\end{itemize}
+
+\subsection*{Security Principles}
+\begin{itemize}
+  \item Least privilege: a subject should be given only those priveleges that it
+  needs to complete its task.
+  \item Fail-safe defaults: unless a subject is given explicit access to an
+  object, it should be denied access to it.
+  \item Economy of mechanism: security mechanisms should be as simple as
+  possible.
+  \item Complete mediation: all accesses to objects be checked to ensure that
+  they are allowed.
+  \item Open design: security of a mechanism must not depend on
+  design/implementation secrecy.
+  \item Separation of privilege: system must not grant permission based on a
+  single condition.
+  \item Least common mechanism: mechanisms for resource access must not be
+  shared.
+  \item Psychological acceptability: security mechanisms must not make resources
+  more difficult to access than if they were not present.
+\end{itemize}
+
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
   any questions, comments, or concerns, please contact me at
