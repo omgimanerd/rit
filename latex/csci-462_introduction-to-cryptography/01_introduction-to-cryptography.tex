@@ -1,0 +1,91 @@
+\documentclass{math}
+
+\title{Introduction to Cryptography}
+\author{Alvin Lin}
+\date{January 2018 - May 2018}
+
+\begin{document}
+
+\maketitle
+
+\section*{Cryptography}
+Desired security properties in the digital world:
+\begin{itemize}
+  \item confidentiality, secrecy
+  \item data integrity
+  \item authentication, of data origin and entity
+  \item non-repudiation
+\end{itemize}
+Cryptography is an important, but only a relatively small part of security:
+\begin{itemize}
+  \item the right choice of tools is hard
+  \item implementation errors are common
+  \item a variety of side-channel attacks can bypass the best cryptography
+  \item social engineering
+\end{itemize}
+
+\subsection*{Unkeyed, Symmetric-Key, and Public-Key}
+Primitives, algorithms, and protocols can be \textbf{unkeyed},
+\textbf{symmetric-key}, or \textbf{public-key}.
+
+\subsubsection*{Unkeyed}
+This includes hashing and the SHA-family of algorithms. It can be used for
+signing and the generation of random sequences.
+
+\subsubsection*{Symmetric Keys}
+\begin{itemize}
+  \item Block ciphers since the 1970s: IBM's Lucifer, DES (Data Encryption
+  Standard), IDEA (International Data Encryption Standard), AES (Advanced
+  Encryption Standard).
+  \item Stream ciphers: RC4, also can come from counter mode of block ciphers
+  or hash functions.
+  \item MAC, HMAC: message authentication codes.
+  \item PRNG: pseudorandom number generators
+\end{itemize}
+
+\subsubsection*{Public Key}
+\begin{itemize}
+  \item Public-key cryptosystems: RSA (Rivest, Shamir, Adleman), ElGamal,
+  McEliece cryptosystems, ECC (elliptic curve cryptosystems).
+  \item Signatures: DSS/DSA (Digital Signature Standard/Algorithm), ECDSA
+  (Elliptic Curve Digital Signature Algorithm).
+  \item PKI: public key infrastructure, DH (Diffie Hellman key agreement),
+  key management, and distribution.
+  \item Homomorphic cryptography: Paillier, Gentry
+\end{itemize}
+
+\subsection*{Main Public-Key Systems in Use}
+RSA by Rivest-Shamir-Adleman (1977) has an edge of ECC because:
+\begin{itemize}
+  \item it is simple and well understood
+  \item links nicely to basic number theory
+  \item deployed earlier on many systems
+\end{itemize}
+ECC by Koblitz-Miller (1985) has an edge over RSA because:
+\begin{itemize}
+  \item it uses short keys (163+ bits vs 1024+ bits for RSA)
+  \item delivers much better performance
+  \item uses great theory of elliptic curves on top of classical number theory
+  used by RSA
+\end{itemize}
+
+\subsection*{Other composite and special functionalities}
+\begin{itemize}
+  \item Zero-knowledge protocols
+  \item Authenticated encryption CAESAR competition
+  \item Electronic cash: untraceable, no double-spending, bank-shop-customer
+  roles, central banks
+  \item Cryptocurrencies: Bitcoin, Zerocoin, Litecoin, Darkcoin, etc
+  \item Electronic voting: no individual vote auditing
+  \item Oblivious transfer: two millionaires problem
+  \item Quantum and post-quantum cryptography, quantum key distribution,
+  quantum computing
+\end{itemize}
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
