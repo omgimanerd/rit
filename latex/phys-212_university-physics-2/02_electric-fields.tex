@@ -1,0 +1,61 @@
+\documentclass{math}
+
+\usepackage{tikz}
+
+\title{University Physics 2}
+\author{Alvin Lin}
+\date{January 2018 - May 2018}
+
+\begin{document}
+
+\maketitle
+
+\section*{Electric Fields}
+We know positive charges feel repulsive forces from other positive charges. If
+we take a test charge and place it near an object of interest, how it would
+experience a force is the direction of the electric field, also known as the
+E-field. We define it as:
+\[ \vec{E} = \frac{\vec{F_{\circ}}}{q_{\circ}} \]
+where \( \vec{F_{\circ}} \) is the force on the test charge, \( q_{\circ} \)
+is the test charge, and \( \vec{E} \) is the electric field from some charge
+distribution. Usually, we will represent this in the form:
+\[ \vec{F} = q\vec{E} \]
+This allows us to calculate the force \( \vec{F} \) for some charge \( q \)
+exerted by an external electric field \( \vec{E} \). For a point charge, we
+calculate the field with:
+\[ \vec{E_{pc}} = \frac{Kq\hat{r}}{r^2} \]
+This is the same as Coulomb's Law but is measured in Newtons per Coulomb. This
+is due to the fact that there is no second charge from the observation charge.
+The field lines point away from positive charges and towards negative charges.
+\begin{center}
+  \begin{tikzpicture}[scale=1.5]
+    \draw (0,0) circle (0.2cm) node {+};
+    \draw[->] (0.2,0) -- (1,0);
+    \draw[->] (0.2,0.2) -- (0.7,0.7);
+    \draw[->] (0,0.2) -- (0,1);
+    \draw[->] (-0.2,0.2) -- (-0.7,0.7);
+    \draw[->] (-0.2,0) -- (-1,0);
+    \draw[->] (-0.2,-0.2) -- (-0.7,-0.7);
+    \draw[->] (0,-0.2) -- (0,-1);
+    \draw[->] (0.2,-0.2) -- (0.7,-0.7);
+  \end{tikzpicture}
+  \begin{tikzpicture}[scale=1.5]
+    \draw (0,0) circle (0.2cm) node {-};
+    \draw[<-] (0.2,0) -- (1,0);
+    \draw[<-] (0.2,0.2) -- (0.7,0.7);
+    \draw[<-] (0,0.2) -- (0,1);
+    \draw[<-] (-0.2,0.2) -- (-0.7,0.7);
+    \draw[<-] (-0.2,0) -- (-1,0);
+    \draw[<-] (-0.2,-0.2) -- (-0.7,-0.7);
+    \draw[<-] (0,-0.2) -- (0,-1);
+    \draw[<-] (0.2,-0.2) -- (0.7,-0.7);
+  \end{tikzpicture}
+\end{center}
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}

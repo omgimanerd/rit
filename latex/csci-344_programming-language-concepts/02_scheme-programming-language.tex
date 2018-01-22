@@ -1,0 +1,71 @@
+\documentclass{math}
+
+\title{Programming Language Concepts}
+\author{Alvin Lin}
+\date{January 2018 - May 2018}
+
+\begin{document}
+
+\maketitle
+
+\section*{Scheme}
+Scheme was invented at MIT in the 1970's and originally called Schemer.
+CommonLISP was developed in the 1980's after a merger between LISP and Scheme
+failed. We will use DrRacket in class. Since we are doing functional
+programming, we will not be using any \texttt{do} or \texttt{begin} commands or
+any functions ending with \texttt{!}.
+
+\subsection*{Scheme: an example of REPL}
+A REPL is a read-evaluate-print-loop. In the console, expressions entered are
+evaluated one at a time.
+
+\subsection*{Scheme Expression Types}
+\begin{itemize}
+  \item \textbf{Atoms}: numbers, strings, characters, symbols
+  \item \textbf{Symbols}: Scheme's identifiers. Symbols can be bound to values.
+  \item \textbf{Lists}: zero or more expressions enclosed in parentheses
+\end{itemize}
+
+\subsection*{Evaluation Rules}
+\begin{itemize}
+  \item Literals (numbers, strings, characters) evaluate to themselves.
+  \item Symbols evaluate to the values to which they are bound. They are both
+  names and values.
+  \item Lists are treated as function calls.
+\end{itemize}
+\texttt{(* 9 8)}
+\begin{itemize}
+  \item The symbol \texttt{*} is bound to the function's definition.
+  \item The two arguments to the function are 9 and 8, which are evaluated left
+  to right.
+  \item The values of the arguments are passed to the function bound to
+  \texttt{*} as a list.
+  \item Function \texttt{*} returns the value 72.
+\end{itemize}
+\texttt{(/ (+ 5 3) (- 4 2))} evaluates to 4.
+
+\subsection*{\texttt{define}}
+We can use the \texttt{define} function to set the values of global variables.
+Example: \texttt{(define x 3.14)}. Note that the first argument is not
+evaluated. This is normally only used for functions, because global variables
+are bad.
+
+\subsection*{Delayed Evaluation}
+The quote operator has a special function. It takes a symbol and returns it
+verbatim.
+
+\subsection*{Lists}
+Lists are linked, using 2-part \textit{cons cells}. The \texttt{cons} function
+builds cells from two values. The null value \texttt{()} is a proper list.
+\begin{itemize}
+  \item \texttt{(cons 4 (cons 3 '()))}
+  \item \texttt{(cons 4 otherlist)}
+\end{itemize}
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
