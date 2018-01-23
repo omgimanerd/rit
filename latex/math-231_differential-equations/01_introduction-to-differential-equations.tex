@@ -1,5 +1,8 @@
 \documentclass{math}
 
+\usepackage{tikz}
+\usetikzlibrary{math}
+
 \title{Differential Equations}
 \author{Alvin Lin}
 \date{January 2018 - May 2018}
@@ -258,6 +261,206 @@ Find constants \( c_1 \) and \( c_2 \) such that the initial conditions
   y'(0) &= 1 = 2+c_2 \\
   c_2 &= -1
 \end{align*}
+
+\subsection*{Direction Fields of 1st Order Equations}
+Consider the following:
+\[ \ddiff{y}{x} = f(x,y) \]
+\( x \) is the independent variable and \( y \) is the dependent variable.
+\begin{center}
+  \begin{tikzpicture}
+    \draw[very thick,->] (0,0) -- (5,0) node[right] {\( x \)};
+    \draw[very thick,->] (0,0) -- (0,5) node[above] {\( y \)};
+    \draw[red] (1,1) .. controls (1,3) and (3,1) .. (4,4)
+      node[right] {\( y = \phi(x) \)};
+    \draw[thick, blue] (2.6,2) -- (4,3.5) node[right] {tangent};
+    \draw[fill] (3.3,2.75) circle (0.05cm)
+      node[right,yshift=-0.2cm] {\( (x_1,y_1) \)};
+  \end{tikzpicture}
+\end{center}
+The idea is that the actual solution curve is \( y = \phi(x) \). If we
+evaluate \( \ddiff{y}{x} = f(x_1,y_1) \), it gives the slope of the
+tangent at \( (x_1, y_1) \). We can construct a direction field with this. For
+example, if we have the differential equation \( \ddiff{y}{x} = \frac{-y}{x} \).
+\begin{minipage}[c]{8cm}
+  \begin{center}
+    \begin{tikzpicture}[scale=0.6]
+      \draw[very thick,->] (-3.5,0) -- (3.5,0) node[right] {\( x \)};
+      \draw[very thick,->] (0,-3.5) -- (0,3.5) node[above] {\( y \)};
+      \foreach \x in {-3,-2,-1,1,2,3} {
+        \foreach \y in {-3,-2,-1,1,2,3} {
+          \tikzmath{
+            \m = \y/\x;
+            \ang = atan(\m);
+            \xa = \x-(0.5*cos(\ang));
+            \ya = \y-(0.5*sin(\ang));
+            \xb = \x+(0.5*cos(\ang));
+            \yb = \y+(0.5*sin(\ang));
+          };
+          \draw[fill] (\x,\y) circle (0.05cm);
+          \draw[thick,red] (\xa,\ya) -- (\xb,\yb);
+        }
+      }
+    \end{tikzpicture}
+  \end{center}
+\end{minipage}
+\begin{minipage}[c]{8cm}
+  \begin{tabular}{|c|c|c|}
+    \hline
+    \( x \) & \( y \) & \( \ddiff{y}{x} \) \\
+    \hline
+    1 & 1 & -1 \\
+    \hline
+    1 & 2 & -2 \\
+    \hline
+    1 & 3 & -3 \\
+    \hline
+    1 & -1 & 1 \\
+    \hline
+    -1 & 1 & 1 \\
+    \hline
+  \end{tabular}
+\end{minipage}
+
+\subsection*{Autonomous First-Order Equations}
+Autonomous first-order equations are equations of the form
+\[ \ddiff{y}{x} = f(y) \]
+where the independent variable \( x \) does not appear in the equation.
+Consider the following:
+\[ f(y) = \ddiff{y}{x} = y-y^2 \]
+This is an autonomous equation. In contrast:
+\[ \ddiff{y}{x} = xy = f(x,y) \]
+This is not an autonomous equation. Equilibrium solutions are found by solving
+\( f(y) = 0 = \ddiff{y}{x} \).
+\begin{itemize}
+  \item If \( y \) is bounded by a critical point, then the graph of \( y \)
+  approaches \( y(t) = c \) as \( t\to+\infty \).
+  \item \( \ddiff{y}{t} \) is either positive or negative except where
+  \( \ddiff{y}{t} = 0 \).
+  \item \( y \) is monotonic, either increasing or decreasing, there is no
+  oscillation.
+  \item The graph of non-constant soultions never cross an equilibrium solution.
+\end{itemize}
+
+\subsubsection*{Example}
+A model for the velocity \( v \) at time \( t \) of an object falling under the
+influence of gravity in a viscous medium is given by
+\[ \ddiff{v}{t} = 1-\frac{v^3}{8} \]
+Construct a direction field and determine the ``terminal'' velocity. Find values
+where \( 1-\frac{v^3}{8} = 0 \).
+\begin{center}
+  \begin{tikzpicture}
+    \draw[very thick,->] (0,0) -- (6,0) node[right] {\( x \)};
+    \draw[very thick,->] (0,-4) -- (0,4) node[above] {\( y \)};
+    \foreach \t in {1,2,3,4,5,6} {
+      \foreach \v in {-4,-3,-2,-1,0.5,1,1.5,2,3,4} {
+        \tikzmath{
+          \m = 1-((\v*\v*\v)/8);
+          \ang = atan(\m);
+          \ta = \t-(0.25*cos(\ang));
+          \va = \v-(0.25*sin(\ang));
+          \tb = \t+(0.25*cos(\ang));
+          \vb = \v+(0.25*sin(\ang));
+        };
+        \draw[thick,red] (\ta,\va) -- (\tb,\vb);
+      }
+    }
+  \end{tikzpicture}
+\end{center}
+\[ 1-\frac{v^3}{8} = 0 \Rightarrow v = 2 \]
+From this diagram, we can see all the families of solutions for this
+differential equation, but they all converge to \( v = 2 \) as \( t\to\infty \).
+
+\subsubsection*{Example}
+Consider the following equation for a population (in thousands) of a certain
+species (Logistic Equation).
+\[ \ddiff{p}{t} = 9p-7p^2 = f(p) \]
+\[ \ddiff{p}{t} = 9p-7p^2 = 0 \Rightarrow p(9-7p) = 0 \]
+Our solutions are \( p = 0 \) or \( p = \frac{9}{7} \).
+\begin{center}
+  \begin{tikzpicture}
+    \draw[very thick,->] (0,0) -- (6,0) node[right] {\( x \)};
+    \draw[very thick,->] (0,-1) -- (0,4) node[above] {\( y \)};
+    \foreach \t in {1,2,3,4,5,6} {
+      \foreach \p in {-0.5,0,0.5,1,9/7,2,3} {
+        \tikzmath{
+          \m = (9*\p)-(7*\p*\p);
+          \ang = atan(\m);
+          \ta = \t-(0.2*cos(\ang));
+          \pa = \p-(0.2*sin(\ang));
+          \tb = \t+(0.2*cos(\ang));
+          \pb = \p+(0.2*sin(\ang));
+        };
+        \draw[thick,red] (\ta,\pa) -- (\tb,\pb);
+      }
+    }
+  \end{tikzpicture}
+\end{center}
+\[ \lim_{t\to\infty} = \frac{9}{7} \]
+
+\subsection*{Euler's Method}
+Euler's method is also known as the tangent line method for finding numerical
+approximations to first-order initial value problems.
+\begin{center}
+  \begin{tikzpicture}
+    \draw[very thick,->] (0,0) -- (5,0) node[right] {\( x \)};
+    \draw[very thick,->] (0,0) -- (0,5) node[above] {\( y \)};
+    \draw[red] (1,1) .. controls (1,3) and (3,1) .. (4,4)
+      node[right] {\( y = \phi(x) \)};
+    \draw[thick, blue] (0.5,1) -- (1.8,2.5) node[above] {tangent};
+    \draw (1.2,0.25) -- (1.2,-0.25) node[below] {\( x_0 \)};
+    \draw (1.8,0.25) -- (1.8,-0.25) node[below] {\( x_1 \)};
+    \draw[|<->|] (1.2,-1) -- (1.8,-1) node[pos=0.5,below] {\( h \)};
+    \draw[dashed] (1.8,2) -- (3.5,2);
+    \draw[dashed] (1.8,2.5) -- (3.5,2.5);
+    \draw[|<->|] (3.5,2) -- (3.5,2.5) node[pos=0.5,right] {error};
+  \end{tikzpicture}
+\end{center}
+With this method, we also begin with some solution curve \( y = \phi(x) \) and
+some given \( (x_0,y_0) \) that lies on the solution curve.
+\begin{align*}
+  \ddiff{y}{x} &= f(x,y) \\
+  y(x_0) &= y_0
+\end{align*}
+\( f(x_0,y_0) \) is the slope of the tangent to the curve at \( (x_0,y_0) \).
+Given \( (x_0,y_0) \), a single step \( h \), and the slope \( f(x_0,y_0) \):
+\[ y-y_0 = h\big[f(x_0,y_0)\big] \]
+\[ y_1 = y_0+h\big[f(x_0,y_0)\big] \]
+This is an iterative process defined by:
+\[ y_{n+1} = y_n+h\big[f(x_0,y_0)\big] \]
+We determine the step size and iterate:
+\begin{center}
+  \begin{tabular}{|c|c|}
+    \hline
+    \( x_0 \) & \( y_0 \) \\
+    \hline
+    \( x_1 = x_0+h \) & \( y_1 \) \\
+    \hline
+    \( x_2 = x_1+h \) & \( y_2 \) \\
+    \hline
+    \vdots & \vdots \\
+    \hline
+    \( x_{n+1} = x_n+h \) & \( y_{n+1} \) \\
+    \hline
+  \end{tabular}
+\end{center}
+
+\subsubsection*{Example}
+\[ \ddiff{y}{x} = x^2+y^2 = f(x,y) \]
+If we take \( y(1) = 1 \) with \( h = 0.1 \) as our step size:
+\begin{center}
+  \begin{tabular}{|c|c|}
+    \hline
+    \( x_0 = 1 \) & \( y_0 = 1 \) \\
+    \hline
+    \( x_1 = 1.1 \) & \( y_1 = 1+0.1(2) = 1.2 \) \\
+    \hline
+    \\[-1em]
+    \( x_2 = 1.2 \) & \( y_2 = 1.2+0.1[(1.1)^2+(1.2)^2] = 1.465 \) \\
+    \hline
+    \vdots & \vdots \\
+    \hline
+  \end{tabular}
+\end{center}
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
