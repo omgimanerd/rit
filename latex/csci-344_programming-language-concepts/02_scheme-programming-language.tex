@@ -61,6 +61,34 @@ builds cells from two values. The null value \texttt{()} is a proper list.
   \item \texttt{(cons 4 (cons 3 '()))}
   \item \texttt{(cons 4 otherlist)}
 \end{itemize}
+An unquoted list is treated as an expression: evaluation of a list returns the
+value returned from the function call. Thus we use the function \texttt{list}
+to build lists.
+
+\subsection*{Pulling Lists Apart}
+\texttt{car} (Contents of Address Register) extracts the first element of a
+list. \texttt{cdr} (Contents of Decrement Register) extracts everything after
+the first element.
+
+\subsection*{Booleans}
+\begin{itemize}
+  \item \texttt{\#f} and \texttt{'()} are false.
+  \item \texttt{\#t} and everything else are true.
+  \item Predicate functions: \texttt{list?}, \texttt{number?}, etc
+  \item Boolean functions: \texttt{not}, \texttt{and}, and \texttt{or}
+  \item Number comparision: \texttt{=}, \texttt{<=}, etc
+\end{itemize}
+
+\subsection*{Alternation}
+\texttt{if} is another special function.
+\begin{center}
+  \texttt{(if then-expression else-expression)}
+\end{center}
+\texttt{cond} allows for multi-way conditionals.
+\begin{center}
+  \texttt{(cond
+    [(text-expression) (then-body)] [(test-expression) (then-body)] ...)}
+\end{center}
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
