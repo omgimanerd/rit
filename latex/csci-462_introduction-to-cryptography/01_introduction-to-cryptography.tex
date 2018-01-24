@@ -33,6 +33,10 @@ This includes hashing and the SHA-family of algorithms. It can be used for
 signing and the generation of random sequences.
 
 \subsubsection*{Symmetric Keys}
+All encryption schemes from ancient times until 1976 were symmetric ones. The
+same key is used for both encryption and decryption. Encryption and decryption
+are inverse operations if the same key is used on both sides. Keys must be
+transmitted via some other secure channel.
 \begin{itemize}
   \item Block ciphers since the 1970s: IBM's Lucifer, DES (Data Encryption
   Standard), IDEA (International Data Encryption Standard), AES (Advanced
@@ -43,7 +47,7 @@ signing and the generation of random sequences.
   \item PRNG: pseudorandom number generators
 \end{itemize}
 
-\subsubsection*{Public Key}
+\subsubsection*{Public Key (Asymmetric)}
 \begin{itemize}
   \item Public-key cryptosystems: RSA (Rivest, Shamir, Adleman), ElGamal,
   McEliece cryptosystems, ECC (elliptic curve cryptosystems).
@@ -81,6 +85,27 @@ ECC by Koblitz-Miller (1985) has an edge over RSA because:
   \item Quantum and post-quantum cryptography, quantum key distribution,
   quantum computing
 \end{itemize}
+The majority of today's protocols are hybrid schemes. We use symmetric ciphers
+for encryption and message authentication, and asymmetric ciphers for key
+exchange and digital signatures.
+
+\subsection*{Why do we need Cryptanalysis?}
+There is no mathematical proof of security for any practical cipher. The only
+way to have assurance that a cipher is secure is to try to break it (and fail).
+\textbf{Kerckhoff's Principle} is paramount in modern cryptography: A
+cryptosystem should be secure even if the attacker knows all details about the
+system, with the exception of the secret key. In order to use Kerckhoff's
+Principle in practice, only use widely known ciphers that have been
+cryptanalyzed for several years by good cryptographers.
+\par It is tempting to assume that a cipher is ``more secure'' if its details
+are kept secret. However, history has shown time and again that secret ciphers
+can almost always be broken once they have been reverse engineered.
+
+\subsection*{Cryptanalysis: Attacking Cryptosystems}
+Classical attacks involve mathematical analysis or brute-force attacks.
+Implementation attacks try to extract the key through reverse engineering
+and various side-channel attacks. Social engineering attacks try to trick
+users into giving up passwords and authentication details.
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
