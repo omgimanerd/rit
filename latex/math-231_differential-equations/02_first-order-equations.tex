@@ -1,0 +1,147 @@
+\documentclass{math}
+
+\usepackage{tikz}
+
+\title{Differential Equations}
+\author{Alvin Lin}
+\date{January 2018 - May 2018}
+
+\begin{document}
+
+\maketitle
+
+\section*{Separable Equations}
+Consider:
+\[ \ddiff{y}{x} = p(y)g(x) \]
+In this case, we can rewrite it as:
+\[ \frac{\diff{y}}{p(y)} = g(x)\diff{x} \]
+If we let \( h(y) = \frac{1}{p(y)} \):
+\begin{align*}
+  h(y)\diff{y} &= g(x)\diff{x} \\
+  \int h(y)\diff{y} &= \int g(x)\diff{x} \\
+  H(y) &= G(x)+c
+\end{align*}
+This yields an implicit solution. Separable equations can be linear or
+non-linear.
+
+\subsubsection*{Example}
+Solve the following:
+\[ \ddiff{y}{x} = 8x^3\e^{-2y} \]
+\begin{align*}
+  \ddiff{y}{x} &= 8x^3\e^{-2y} \\
+  \frac{\diff{y}}{\e^{-2y}} &= 8x^3\diff{x} \\
+  \e^{2y}\diff{y} &= 8x^3\diff{x} \\
+  \int\e^{2y}\diff{y} &= \int 8x^3\diff{x} \\
+  \frac{1}{2}\e^{2y}+c_1 &= 2x^4+c_2 \\
+  \frac{1}{2}\e^{2y} &= 2x^4+c
+\end{align*}
+We can also solve this explicitly:
+\begin{align*}
+  \frac{1}{2}\e^{2y} &= 2x^4+c \\
+  \ln(\e^{2y}) &= \ln(4x^4+c) \\
+  2y &= \ln(4x^4+c) \\
+  y &= \frac{\ln(4x^4+c)}{2}
+\end{align*}
+
+\subsubsection*{Example}
+Solve the following initial value problem:
+\[ \ddiff{y}{x} = (1+y^2)\tan(x) \quad y(0) = \sqrt{3} \]
+This is a non-linear separable equation.
+\begin{align*}
+  \ddiff{y}{x} &= (1+y^2)\tan(x) \\
+  \frac{\diff{y}}{1+y^2} &= \tan(x)\diff{x} \\
+  \int\frac{\diff{y}}{1+y^2} &= \int\tan(x)\diff{x} \\
+  \arctan(y) &= \ln|\sec(x)|+c
+\end{align*}
+Using our initial value \( y(0) = \sqrt{3} \):
+\begin{align*}
+  \arctan(\sqrt{3}) &= \ln|\sec(0)|+c \\
+  \arctan(\sqrt{3}) &= \ln|1|+c \\
+  \arctan(\sqrt{3}) &= c \\
+  c &= \frac{\pi}{3} \text{ over } \left(\frac{-\pi}{2},\frac{\pi}{2}\right)
+\end{align*}
+We can now solve explicitly for \( y \):
+\begin{align*}
+  \arctan(y) &= \ln|\sec(x)|+\frac{\pi}{3} \\
+  \tan(\arctan(y)) &= \tan\bigg(\ln|sec(x)|+\frac{\pi}{3}\bigg) \\
+  y &= \tan\bigg(\ln|sec(x)|+\frac{\pi}{3}\bigg) \\
+\end{align*}
+
+\subsubsection*{Example}
+Solve the following initial value problem over \( [0,\infty) \):
+\[ \sqrt{y}\diff{x}+(1+x)\diff{y} = 0 \quad y(0) = 1 \]
+\begin{align*}
+  \sqrt{y}\diff{x}+(1+x)\diff{y} &= 0 \\
+  (1+x)\diff{y} &= -\sqrt{y}\diff{x} \\
+  \ddiff{y}{x} &= (-\sqrt{y})\frac{1}{1+x} \\
+  \frac{\diff{y}}{\sqrt{y}} &= -\frac{\diff{x}}{1+x} \\
+  \int y^{-\frac{1}{2}}\diff{y} &= -\int\frac{\diff{x}}{1+x} \\
+  2y^{\frac{1}{2}} &= -\ln|1+x|+c
+\end{align*}
+Using our initial value \( y(0) = 1 \):
+\begin{align*}
+  2 &= -\ln|1|+c \\
+  c &= 2
+\end{align*}
+We can now solve explicitly for \( y \):
+\begin{align*}
+  2\sqrt{y} &= 2-\ln|1+x| \\
+  \sqrt{y} &= \frac{2-\ln|1+x|}{2} \\
+  y &= \bigg[\frac{2-\ln|1+x|}{2}\bigg]^2
+\end{align*}
+
+\subsubsection*{Example}
+Solve the initial value problem:
+\[ x^2\ddiff{y}{x} = y-xy \quad y(1) = 1 \]
+\begin{align*}
+  x^2\ddiff{y}{x} &= y-xy \\
+  x^2\ddiff{y}{x} &= y(1-x) \\
+  \ddiff{y}{x} &= (y)\bigg(\frac{1-x}{x^2}\bigg) \\
+  \frac{\diff{y}}{y} &= \frac{1-x}{x^2}\diff{x} \\
+  \int\frac{\diff{y}}{y} &= \int\bigg[\frac{1}{x^2}-\frac{1}{x}\bigg]\diff{x} \\
+  \ln|y| &= -\frac{1}{x}-\ln|x|+c \\
+  \e^{\ln|y|} &= \e^{-\frac{1}{x}-\ln|x|+c} \\
+  |y| &= \e^{-\frac{1}{x}}\e^{-\ln|x|}\e^c \\
+  &= \e^{-\frac{1}{x}}\frac{1}{|x|}\e^c \\
+  Let: k &= \pm\e^c \\
+  y &= \frac{k\e^{-\frac{1}{x}}}{x}
+\end{align*}
+Using our initial value \( y(1) = 1 \):
+\begin{align*}
+  1 &= \frac{k\e^{-1}}{1} \\
+  k &= \e
+\end{align*}
+We can now solve explicitly for \( y \):
+\begin{align*}
+  y &= \frac{k\e^{-\frac{1}{x}}}{x} \\
+  y &= \frac{\e^{1-\frac{1}{x}}}{x}
+\end{align*}
+
+\subsubsection*{Example}
+Solve the initial value problem:
+\[ \frac{1}{\theta}\ddiff{y}{\theta} = \frac{y\sin\theta}{y^2+1} \quad
+  y(\pi) = 1 \]
+\begin{align*}
+  \frac{1}{\theta}\ddiff{y}{\theta} &= \frac{y\sin\theta}{y^2+1} \\
+  \ddiff{y}{\theta} &= (\theta\sin\theta)(\frac{y}{y^2+1}) \\
+  \frac{y^2+1}{y}\diff{y} &= \theta\sin\theta\diff{\theta} \\
+  \int\frac{y^2+1}{y}\diff{y} &= \int\theta\sin\theta\diff{\theta} \\
+  \frac{y^2}{2}+\ln|y|+c &= -\theta\cos\theta-\int(-\cos\theta\diff{\theta}) \\
+  &= -\theta\cos\theta+\sin\theta+c
+\end{align*}
+Using our initial value \( y(\pi) = 1 \):
+\begin{align*}
+  \frac{1}{2} &= -\pi\cos(\pi)+\sin(\pi)+c \\
+  \frac{1}{2} &= -\pi(-1)+c \\
+  c &= \frac{1}{2}-\pi
+\end{align*}
+We can now solve explicitly for \( y \):
+\[ \frac{y^2}{2}+\ln|y| = -\theta\cos\theta+\sin\theta+(\frac{1}{2}-\pi) \]
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}

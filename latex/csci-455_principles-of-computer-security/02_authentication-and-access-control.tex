@@ -1,0 +1,118 @@
+\documentclass{math}
+
+\title{Principles of Computer Security}
+\author{Alvin Lin}
+\date{January 2018 - May 2018}
+
+\begin{document}
+
+\maketitle
+
+\section*{Authentication and Access Control}
+Authentication Process:
+\begin{itemize}
+  \item Basis for access control and user accountability
+  \item ``The process of verifying an identity claimed by or for a system
+  entity'' (RFC 4949)
+  \item Involves an indentification step (presenting an identifier to a
+  security system) and a verification step (presenting or generating
+  identification information to corroborate binding between the entity and
+  identifier)
+\end{itemize}
+
+\subsection*{Means of Authentication User Identity}
+\begin{tabular}{|p{5cm}|p{8cm}|}
+  \hline
+  Aspect & Example \\
+  \hline
+  Something an individual \textbf{knows} & Password, PIN, answers to prior
+    questions \\
+  \hline
+  Something an individual \textbf{possesses} (token) & Smart card, electronic
+    keycard, physical key \\
+  \hline
+  Something an individual \textbf{is} (static biometrics) & Fingerprint, retina,
+    face \\
+  \hline
+  Something an individual \textbf{does} (dynamic biometrics) & Voice pattern,
+    typing rhythm, handwriting \\
+  \hline
+\end{tabular}
+
+\subsection*{Password Authentication}
+Password authentication is a widely used line of defense against intruders where
+the user provides a name/login and password. The system compares the password
+with the one stored for that specified login. The user ID checks if the user is
+authorized to access the system, determines the privileges, and is used in
+discretionary access control. A widely used password security technique involves
+using hashed passwords and a salt value.
+
+\subsection*{Password Vulnerabilities}
+\begin{itemize}
+  \item Offline dictionary attack
+  \item Specific account attack
+  \item Popular password attack
+  \item Password guessing against a single user
+  \item Workstation hijacking
+  \item Exploiting user mistakes
+  \item Exploiting multiple password use
+  \item Electronic monitoring
+\end{itemize}
+
+\subsection*{Password Cracking}
+Dictionary attacks:
+\begin{itemize}
+  \item Keep a set of possible passwords and try each against password file
+  \item Each password must be hashed using each salt value and then compared to
+  stored hash values
+\end{itemize}
+Rainbow table attacks:
+\begin{itemize}
+  \item Pre-compute tables of hash values for all salts
+  \item A mammoth table of hash values
+  \item Countered by a sufficiently large salt value and a hash length
+\end{itemize}
+Password crackers exploit ``people choose guessable passwords'':
+\begin{itemize}
+  \item Shorter password lengths are also easier to crack
+\end{itemize}
+John the Ripper:
+\begin{itemize}
+  \item Open-source password cracker first developed in 1996
+  \item Uses a combination of brute-force and dictionary techniques
+\end{itemize}
+
+\subsection*{Modern Approaches}
+Complex password policies force users to pick stronger passwords. But
+password-cracking has also improved. We have increased processing capacity
+for password cracking, sophisticated algorithms to generate likely passwords,
+and we can study examples and structures of actual passwords. GPUs now allow
+password-cracking programs to work thousands to times faster than just a decade
+ago.
+
+\subsection*{Password File Access Control}
+We can block offline guessing attacks by denying access to encrypted passwords.
+They should be made available only to privileged users and shadow password file.
+Vulnerabilities:
+\begin{itemize}
+  \item Weakness in OS that allows access to the file
+  \item Accident with permissions making it readable
+  \item Users with same password on other systems
+  \item Access from backup media
+  \item Sniff passwords in network traffic
+\end{itemize}
+
+\subsection*{Password Selection Strategies}
+Users can be told or compelled to choose strong passwords. Users have trouble
+remembering computer generated passwords. Systems can also periodically run
+their own password crackers to find guessable passwords. Complex password
+policies allow users to select their own passwords, but the system checks if
+the password is acceptable and will reject it otherwise.
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
