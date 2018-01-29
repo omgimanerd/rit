@@ -90,6 +90,32 @@ the first element.
     [(text-expression) (then-body)] [(test-expression) (then-body)] ...)}
 \end{center}
 
+\subsection*{Functions}
+The \texttt{lambda} function allows you to declare an anonymous function, which
+can be bound to a symbol using \texttt{define}. Example: \\
+\texttt{(lambda (args..) expr)} \\
+\texttt{(lambda (x y) (+ x y))}
+
+\subsection*{IO (non-functional)}
+For input there is the functions \texttt{read readline}, and for output there
+is \texttt{display newline}.
+
+\subsection*{Acceptable Variable Binding}
+\texttt{(let ((symbol1 expr1) (symbol2 expr2)) expr...)} \\
+Binds a variable locally within \texttt{expr}.
+
+\subsection*{Command Line Programming}
+\texttt{racket [-i]}: Loads standard library; runs REPL \\
+\texttt{racket -f file}: Loads standard library and \texttt{file}; exits \\
+\texttt{racket -if file}: Loads standard library and \texttt{file}; runs REPL \\
+The comment character is \texttt{;}, which comments to the end of the line.
+Loaded programs just execute everything in them. In REPL mode, each line you
+type is loaded, and the result is displayed in the console.
+
+\subsection*{High Order Functions}
+Scheme treats functions like data. \\
+\texttt{(map car '((1 2) (2 3))) -> (1 3)}
+
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
   any questions, comments, or concerns, please contact me at
