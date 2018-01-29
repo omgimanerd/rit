@@ -1,0 +1,158 @@
+\documentclass{math}
+
+\title{Introduction to Cryptography}
+\author{Alvin Lin}
+\date{January 2018 - May 2018}
+
+\begin{document}
+
+\maketitle
+
+\section*{Cryptography and Mathematics}
+
+\subsection*{Greatest Common Divisor}
+The greatest common divisor is the largest number that divides evenly into two
+numbers \( a \) and \( b \). In general, we will denote the greatest common
+divisor of \( a \) and \( b \) as \( gcd(a,b) \). Formally:
+\[ gcd(a,b) = max[k, \text{such that } k|a \text{ and } k|b] \]
+Properties:
+\begin{itemize}
+  \item \( gcd(0,0) = 0 \)
+  \item Because we require that the greatest common divisor be positive:
+  \[ gcd(a,b) = gcd(a,-b) = gcd(-a,b) = gcd(-a,-b) \]
+  \item In general, \( gcd(a,b) = gcd(|a|,|b|) \)
+  \item Because all non-zero numbers divide 0, we have \( gcd(a,0) = |a| \).
+  \item Two integers \( a \) and \( b \) are \textbf{relatively prime} if their
+  only common positive integer factor is 1. This is equivalent to saying that
+  \( a \) and \( b \) are relatively prime if \( gcd(a,b) = 1 \).
+\end{itemize}
+
+\subsection*{Modular Arithmetic}
+Modular arithmetic is extremely important for aymmetric cryptography (RSA,
+elliptic curves, etc). Some historical ciphers can be elegantly described with
+modular arithmetic. Generally speaking, most cryptosystems are based on sets of
+numbers that are discrete and finite.
+\par Let \( a,r,m \) be integers and \( m>0 \). We write
+\[ a \equiv r\mod(m) \]
+if \( (r-a) \) is divisible by \( m \). \( m \) is called the modulus and
+\( r \) is called the remainder.
+\begin{itemize}
+  \item \( 12 \equiv 3\mod(9) \)
+  \item \( 34 \equiv 7\mod(9) \)
+  \item \( -7 \equiv 2\mid(0) \)
+\end{itemize}
+The remainder is not unique. It is somewhat surprising that for every given
+modulus \( m \) and a number \( a \), there are infinitely many valid
+remainders. By convention, we usually agree on the smallest positive integer
+\( r \) as the remainder. This integer can be computed as:
+\[ a \equiv qm+r \]
+where \( 0\le r\le m=1 \). This is just a convention. Algorithmically, we are
+free to choose any other valid remainder to compute our crypto functions.
+Properties:
+\begin{itemize}
+  \item \( (a+b)\mod(m) \equiv a\mod(m)+b\mod(m) \)
+  \item \( (a\cdot b)\mod(m) \equiv a\mod(m)\cdot b\mod(m) \)
+\end{itemize}
+
+\subsubsection*{Modular Division}
+Rather than performing a division, we prefer to multiply by the inverse:
+\[ \frac{b}{a}\equiv b\times a^{-1}\mod(m) \]
+The inverse \( a^{-1} \) is defined such that:
+\[ a\times a^{-1} \equiv 1\mod(m) \]
+The inverse of a number \( a\mod(m) \) only exists if and only if:
+\[ gcd(a,m) = 1 \]
+Example:
+\[ 5/7\mod(9) \]
+the inverse of \( 7\mod(9) \) is 4, since \( 7\times4 \equiv 28 \equiv
+1\mod(9) \), hence:
+\[ 5/7 \equiv 5\times4 = 20 \equiv 2\mod(9) \]
+
+\subsubsection*{Modular Reduction}
+Modular reduction can be performed at any point during a calculation.
+\[ 3^8 = 3^4\times3^4 = 81\times81 \equiv 4\times4\mod(7) = 16\mod(7) =
+  2\mod(7) \]
+
+\subsection*{An Algebraic View on Modulo Arithmetic: The Ring \( \Z_m \)}
+The integer ring \( \Z_m \) has the following properties:
+\begin{itemize}
+  \item \textbf{Closure:} We can add and multiply any two numbers and the result
+  is always in the ring.
+  \item \textbf{Addition and multiplication are associative:} For all \( a,b,c
+  \in \Z_m \):
+  \[ a+(b+c) = (a+b)+c \quad a\times(b\times c) = (a\times b)\times c \]
+  and addition is \textbf{commutative}: \( a+b = b+a \)
+  \item \textbf{The distributive law holds:} \( a\times(b+c) = (a\times
+  b)+(a\times c) \) for all \( a,b,c\in\Z_m \)
+  \item There is the \textbf{neutral element 0} with respect to addition. For
+  all \( a\in\Z_m, a+0\equiv a\mod(m) \).
+  \item For all \( a\in\Z_m \), there is always an \textbf{additive inverse}
+  element \( a \) such that \( a+(-a) \equiv 0\mod(m) \).
+  \item There is the \textbf{neutral element 1} with respect to multiplication.
+  For all \( a\in\Z_m, a\times1 \equiv a\mod(m) \)
+  \item The \textbf{multiplicative inverse \( a^{-1} \)} \( a\times a^{-1}
+  \equiv 1\mod(m) \) exists only for some, but not for all, elements in
+  \( \Z_m \).
+\end{itemize}
+Roughly speaking, a ring is a structure in which we can always add, subtract,
+and multiply, but we can only divide by certain elements (namely by those for
+which a multiplicative inverse exists). We consider the ring \( \Z_9 = \{0,1,2,
+3,4,5,6,7,8\} \). The elements 0, 3, and 6, do not have inverses since they are
+not coprime to 9.
+
+\subsection*{Shift (or Caesar) Cipher}
+The shift cipher is an ancient cipher allegedly used by Julius Caesar. To use
+it, each plaintext letter is replaced by another one. The replacement rule is
+very simple: take the letter that follows after \( k \) positions in the
+alphabet. Note that letters wrap around the end of the alphabet, which can be
+elegantly expressed as reduction modulo 26.
+\begin{itemize}
+  \item Encryption: \( y = e_k(x) \equiv x+k\mod(26) \)
+  \item Decryption: \( x = d_k(y) \equiv y-k\mod(26) \)
+\end{itemize}
+The shift cipher is not secure since it is vulnerable to an exhaustive key
+search since the key space is only 26. It is also vulnerable to letter
+frequency analysis, similar to any attack against substitution ciphers.
+
+\subsection*{Affine Cipher}
+The Affine cipher is an extension of the shift cipher, rather than just adding
+the key to the plaintext, we also multiply by the key. We use a key consisting
+of two parts: \( k = (a,b) \).
+\begin{itemize}
+  \item Encryption: \( y = e_k(x) \equiv ax+k\mod(26) \)
+  \item Decryption: \( x = d_k(y) \equiv a^{-1}(y-k)\mod(26) \)
+\end{itemize}
+Since the inverse of \( a \) is needed for decryption, we can only use values
+for which \( gcd(a,26) = 1 \).
+
+\subsection*{Vigen\'{e}re Cipher}
+The Vigen\'{e}re Cipher is one of the simplest and best known polyalphabetic
+substituion ciphers. In this scheme, each plaintext letter is Caesar-shifted
+by a different amount according to the key, which is usually a repeating
+keyword.
+
+\subsection*{The Euclidean Algorithm}
+Computing the greatest common divisor of two numbers \( a \) and \( b \) is
+easy for small numbers. We can factor both numbers and look for the highest one
+that they share in common. Factoring is complicated and often infeasible for
+large numbers. The Euclidean algorithm follows from the idea that \( gcd(a,b) =
+gcd(a-b,b) \). The core idea is to reduce the problem of finding the gcd of
+two numbers to that of the gcd of two smaller numbers. We repeat this process
+recursively until we reach \( gcd(b,0) = b \).
+
+\subsubsection*{Example}
+\[ gcd(710,310) \]
+\begin{align*}
+  710 &= 2\times310+90 \\
+  310 &= 3\times90+40 \\
+  90 &= 2\times40+10 \\
+  40 &= 4\times10
+\end{align*}
+\[ gcd(710,310) = 10 \]
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
