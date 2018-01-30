@@ -23,7 +23,7 @@ distribution. Usually, we will represent this in the form:
 This allows us to calculate the force \( \vec{F} \) for some charge \( q \)
 exerted by an external electric field \( \vec{E} \). For a point charge, we
 calculate the field with:
-\[ \vec{E_{pc}} = \frac{Kq\hat{r}}{r^2} \]
+\[ \overrightarrow{E_{pc}} = \frac{Kq\hat{r}}{r^2} \]
 This is the same as Coulomb's Law but is measured in Newtons per Coulomb. This
 is due to the fact that there is no second charge from the observation charge.
 The field lines point away from positive charges and towards negative charges.
@@ -66,10 +66,11 @@ The field lines point away from positive charges and towards negative charges.
     \draw[->,thick,black!60!green] (4,0) -- (4,-1) node[below] {\( E_{net} \)};
   \end{tikzpicture}
 \end{center}
-The x-components of the fields cancel.
+The x-components of the fields cancel by symmetry, so we are only concerned with
+the y-components.
 \begin{align*}
-  E_{+} &= \frac{kq}{r^2} \\
-  E_{+,y} &= E_{+}\sin\theta = \frac{kq\sin\theta}{r^2}
+  |\overrightarrow{E_{+}}| &= \frac{kq}{r^2} \\
+  E_{+,y} &= |E_{+}|\sin\theta = \frac{kq\sin\theta}{r^2}
 \end{align*}
 In the case where \( \frac{d}{x} << 1 \):
 \begin{align*}
@@ -84,7 +85,7 @@ In the case where \( \frac{d}{x} << 1 \):
   &= \frac{1}{2}kqdx^{-3}\bigg[1+\frac{d^2}{4x^2}\bigg]^{-\frac{3}{2}} \\
   &\approx \frac{1}{2}kqdx^{-3}\bigg(1+0\bigg)^{-\frac{3}{2}} \\
   &\approx \frac{kqd}{2x^3} \\
-  E_{net} &= 2E_{+,y} = \frac{kqd}{x^3}
+  |\overrightarrow{E_{net}}| &= 2E_{+,y} = \frac{kqd}{x^3}
 \end{align*}
 
 \subsection*{Electric Dipoles: On-Axis Field}
@@ -101,14 +102,16 @@ In the case where \( \frac{d}{x} << 1 \):
 In the case where \( d << x \), we can use the binomial expansion:
 \begin{align*}
   (1+\epsilon)^n &\approx 1+n\epsilon \\
-  E_{+} &= \frac{kq}{r_{+}^2} = \frac{kq}{(z-\frac{d}{2})^2} \\
+  |\overrightarrow{E_{+}}| &=
+    \frac{kq}{r_{+}^2} = \frac{kq}{(z-\frac{d}{2})^2} \\
   &= kqz^{-2}(1-\frac{d}{2z})^{-2} \\
   &\approx kqz^{-2}\bigg(1+(-2)(\frac{-d}{2n})\bigg) \\
   &\approx kqz^{-2}(1+\frac{d}{z}) \\
-  E_{-} &= \frac{kq}{(r_{+}+d)^2} = \frac{kq}{(z+\frac{d}{2})^2} \\
+  |\overrightarrow{E_{-}}| &=
+    \frac{kq}{(r_{+}+d)^2} = \frac{kq}{(z+\frac{d}{2})^2} \\
   &= kqz^{-2}(1+\frac{d}{2z})^{-2} \\
   &\approx kqz^{-2}(1-\frac{d}{z}) \\
-  E_{net} &= E_{+}-E_{-} \\
+  |\overrightarrow{E_{net}}| &= E_{+}-E_{-} \\
   &= (\frac{kq}{z^2}+\frac{kqd}{z^3})-(\frac{kq}{z^2}-\frac{kqd}{z^3}) \\
   &= \frac{2kqd}{z^3}
 \end{align*}
@@ -146,7 +149,7 @@ For the off-axis field:
 \end{center}
 \begin{align*}
   \vec{F} &= q\vec{E}+(-q\vec{E}) = 0 \\
-  |\tau| &= dq\vec{E}\sin\theta = \vec{p}\vec{E}\sin\theta \\
+  |\vec{\tau}| &= dq\vec{E}\sin\theta = \vec{p}\vec{E}\sin\theta \\
   \vec{\tau} &= \vec{p}\times\vec{E}
 \end{align*}
 
@@ -160,11 +163,11 @@ Strategy for calculating the electric field of a solid object:
   we need to integrate.
   \item Figure out \( \diff{q} \). \( \diff{q} = \lambda\diff{s} \). For a line
   \( \diff{s} = \diff{x} \). For an arc, \( \diff{s} = r\diff{\theta} \).
-  \item Find \( |\diff{E}| \)
-  \[ \diff{E} = \frac{k\diff{q}}{r^2} \]
+  \item Find \( |\overrightarrow{\diff{E}}| \)
+  \[ |\overrightarrow{\diff{E}}| = \frac{k\diff{q}}{r^2} \]
   \item Find the components.
-  \[ \diff{E_x} = |\diff{E}|\cos\theta \]
-  \[ \diff{E_y} = |\diff{E}|\sin\theta \]
+  \[ \diff{E_x} = |\overrightarrow{\diff{E}}|\cos\theta \]
+  \[ \diff{E_y} = |\overrightarrow{\diff{E}}|\sin\theta \]
   Note that this depends on whether or not \( \theta \) is from the horizontal.
   \item Get the limits of integration from the diagram.
   \item Check for symmetries to see if any integrals are zero.
@@ -185,19 +188,19 @@ Strategy for calculating the electric field of a solid object:
   \end{tikzpicture}
 \end{center}
 \begin{align*}
-  E &= \frac{kQ}{r^2} \quad \diff{E} = \frac{k\diff{q}}{r^2} \\
   r &= x \quad
     \lambda = \frac{Q}{L} \quad
     \diff{q} = \lambda\diff{s} = \frac{Q}{L}\diff{x} \\
-  |E| &= \int_{d}^{d+L}\frac{kQ}{Lx^2}\diff{x}
-    = \frac{kQ}{L}\bigg[-\frac{1}{x}\bigg]_{d}^{d+L} \\
+  |\vec{E}| &= \int_{d}^{d+L}\frac{k}{r^2}\diff{q}
+    = \int_{d}^{d+L}\frac{kQ}{Lx^2}\diff{x} \\
+  &= \frac{kQ}{L}\bigg[\frac{-1}{x}\bigg]_{d}^{d+L} \\
   &= \frac{kQ}{d(d+L)}
 \end{align*}
 Let's consider the field where the point is very far away from the rod.
 \[ d >> L \Rightarrow \frac{L}{d} << 1 \Rightarrow \frac{L}{d}\sim 0 \]
 In this case, where the point is very far away, the field of the rod looks like
 the field of a point charge:
-\[ |E| = \frac{kQ}{(d(d+L))} = \frac{kQ}{d^2(1+\frac{L}{d})} \sim
+\[ |\vec{E}| = \frac{kQ}{(d(d+L))} = \frac{kQ}{d^2(1+\frac{L}{d})} \sim
   \frac{kQ}{d^2} \]
 
 \subsubsection*{Example}
@@ -217,7 +220,8 @@ the field of a point charge:
 By symmetry, we can see that the field in the x-direction cancels out, but we
 will solve it for completeness. Our known values are as follows:
 \begin{align*}
-  E &= \frac{kQ}{r^2} \quad \diff{E} = \frac{k\diff{q}}{r^2} \\
+  |\vec{E}| &= \frac{kQ}{r^2} \quad
+    |\overrightarrow{\diff{E}}| = \frac{k\diff{q}}{r^2} \\
   r^2 &= x^2+h^2 \quad \lambda = \frac{Q}{L} \quad \\
   \diff{q} &= \lambda\diff{s} = \frac{Q}{L}\diff{x} \\
   \cos\theta &= \frac{x}{h} \\
@@ -226,12 +230,12 @@ will solve it for completeness. Our known values are as follows:
 Since the point is on a different axis than the rod, we have to separate the
 electric field into components.
 \begin{align*}
-  \diff{E_x} &= \diff{E}\cos\theta \\
+  \diff{E_x} &= |\overrightarrow{\diff{E}}|\cos\theta \\
   &= \frac{kQ}{Lr^2}\frac{x}{r}\diff{x} \\
   &= \frac{kQ}{L}\frac{x}{(x^2+h^2)^{\frac{3}{2}}}\diff{x} \\
   E_x &= \int_{-\frac{L}{2}}^{\frac{L}{2}}
     \frac{kQ}{L}\frac{x}{(x^2+h^2)^{\frac{3}{2}}}\diff{x} = 0 \\
-  \diff{E_y} &= \diff{E}\sin\theta \\
+  \diff{E_y} &= |\overrightarrow{\diff{E}}|\sin\theta \\
   &= \frac{kQ}{Lr^2}\frac{h}{r}\diff{x} \\
   &= \frac{kQh}{L}\frac{1}{(h^2+x^2)^{\frac{3}{2}}}\diff{x} \\
   E_y &= \int_{-\frac{L}{2}}^{\frac{L}{2}}
@@ -243,12 +247,15 @@ Since the field in the x-direction cancels out:
 Let's consider two limits: suppose the point is very far away from the rod:
 \[ h >> L \Rightarrow \frac{L}{h} << 1 \Rightarrow \frac{L}{h}\sim 0 \]
 Like before, the field of the rod looks like that of a point charge:
-\[ |E| = \frac{kQ}{h\sqrt{h^2+\frac{L^2}{4}}} =
+\[ |\vec{E}| = \frac{kQ}{h\sqrt{h^2+\frac{L^2}{4}}} =
   \frac{kQ}{h^2(1+\frac{L^2}{4h^2})} \sim \frac{kQ}{h^2} \]
 Let's consider now a very long rod (or having the point inside the rod):
 \[ L >> h \Rightarrow \frac{h}{L} \sim 0 \]
 This gives us a very interesting result:
-\[ |E| \]
+\[ |\vec{E}| = \frac{kQ}{h\sqrt{h^2+\frac{L^2}{4}}} =
+  \frac{kQ}{hL\sqrt{\frac{h^2}{L^2}+\frac{1}{4}}} =
+  \frac{kQ}{hL\sqrt{\frac{1}{4}}} = \frac{2kQ}{hL} = \frac{2k\lambda}{h} \]
+This is the electric field of a rod of infinite length.
 
 \subsubsection*{Example}
 \begin{center}
@@ -273,9 +280,9 @@ non-uniform charge density of \( \lambda = \beta x^{-3} \). The units of
   &= \frac{\beta}{2d^2} \\
 \end{align*}
 \begin{align*}
-  \diff{E} &= \frac{k\diff{q}}{r^2} \\
+  |\overrightarrow{\diff{E}}| &= \frac{k\diff{q}}{r^2} \\
   &= \frac{k\beta}{x^5}\diff{x} \\
-  |E| &= \int_{d}^{\infty}\diff{E} \\
+  |\vec{E}| &= \int_{d}^{\infty}\frac{k\beta}{x^5}\diff{x} \\
   &= k\beta\bigg[\frac{-1}{4}x^{-4}\bigg]_{d}^{\infty} \\
   &= -\frac{k\beta}{4}\bigg(\frac{1}{\infty^4}-\frac{1}{d^4}\bigg) \\
   &= \frac{k\beta}{4d^4}
