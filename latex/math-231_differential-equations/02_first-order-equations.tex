@@ -138,6 +138,108 @@ Using our initial value \( y(\pi) = 1 \):
 We can now solve explicitly for \( y \):
 \[ \frac{y^2}{2}+\ln|y| = -\theta\cos\theta+\sin\theta+(\frac{1}{2}-\pi) \]
 
+\section*{First Order Linear Equations}
+General form:
+\[ a_1(x)\ddiff{y}{x}+a_0(x)y = g(x) \]
+Let's consider:
+\[ x\ddiff{y}{x}+y = x^2 \]
+By the product rule we can see that the left hand side is equal to
+\( \ddiff{y}{x}\bigg[xy\bigg] \):
+\[ \ddiff{}{x}\bigg[xy\bigg] = x^2 \]
+Integrating both sides:
+\begin{align*}
+  \int\ddiff{}{x}\bigg[xy\bigg]\diff{x} &= \int x^2\diff{x} \\
+  xy &= \frac{x^3}{3}+c \\
+  y &= \frac{x^2}{3}+\frac{c}{x}
+\end{align*}
+
+\subsection*{Standard Form}
+Consider:
+\[ a_1(x)\ddiff{y}{x}+a_0(x)y = g(x) \]
+Write it in standard form:
+\[ \ddiff{y}{x}+\frac{a_0(x)}{a_1(x)}y = \frac{g(x)}{a_1(x)} \]
+Let \( P(x) = \frac{a_0(x)}{a_1(x)} \) and \( Q(x) = \frac{g(x)}{a_1(x)} \):
+\[ \ddiff{y}{x}+P(x)y = Q(x) \]
+This is a first order linear equation in standard form. In order to solve this,
+we need to determine a standard function of \( x \) called \( \mu \). We
+multiply the equation by \( \mu \):
+\[ \mu(x)\ddiff{y}{x}+\mu(x)P(x)y = \mu(x)Q(x) \]
+We require that that \( \mu'(x) = \mu(x)P(x) \). To find this function
+\( \mu \):
+\begin{align*}
+  \frac{\mu'(x)}{\mu(x)} &= P(x) \\
+  \int \frac{\mu'(x)}{\mu(x)} &= \mu P(x) \\
+  \ln|\mu(x)| &= \int P(x)\diff{x}+c \\
+  c &= 0 \\
+  \e^{\ln|\mu|} &= \e^{\int P(x)\diff{x}} \\
+  |\mu(x)| &= \e^{\int P(x)\diff{x}}
+\end{align*}
+This is called an integrating factor. From this, we can determine that:
+\begin{align*}
+  \ddiff{}{x}\bigg[\mu(x)y\bigg] &= \mu(x)Q(x) \\
+  \int\ddiff{}{x}\bigg[\mu(x)y\bigg] &= \int\mu(x)Q(x) \\
+  \mu(x)y &= \int\mu(x)Q(x)\diff{x} \\
+  y &= \frac{1}{\mu(x)}\bigg[\mu(x)Q(x)\diff{x}\bigg] \\
+  \mu(x) &= \e^{\int P(x)\diff{x}}
+\end{align*}
+
+\subsubsection*{Example}
+\[ \ddiff{y}{x}-3y = 6 \]
+This is a first order linear equation already in standard form. It is also
+separable, but we will solve using the method for first order linear equations.
+\begin{enumerate}
+  \item Identify \( P(x) \):
+  \[ P(x) = -3 \quad Q(x) = 6 \]
+  \item Find \( \mu(x) \):
+  \[ \mu(x) = \e^{\int-3\diff{x}} = \e^{-3x} \]
+  \item Multiply the given equation by \( \mu(x) \):
+  \begin{align*}
+    \e^{-3x}\ddiff{y}{x}-3\e^{-3x}y &= 6\e^{-3x} \\
+    \ddiff{y}{x}\bigg[\e^{-3x}y\bigg] &= 6\e^{-3x} \\
+    \int\ddiff{y}{x}\bigg[\e^{-3x}y\bigg] &= \int 6\e^{-3x} \\
+    \e^{-3x}y &= 6(-\frac{1}{3}\e^{-3x})+c \\
+    &= -2\e^{-3x}+c \\
+    y &= -2+C\e^{3x}
+  \end{align*}
+\end{enumerate}
+
+\subsubsection*{Example}
+\[ x\ddiff{y}{x}-4y = x^6\e^x \]
+\begin{enumerate}
+  \item Write it in standard form:
+  \[ \ddiff{y}{x}-\frac{4}{x}y = x^5\e^x \]
+  \item Identify \( P(x) \):
+  \[ P(x) = \frac{-4}{x} \]
+  \item Find \( \mu(x) \):
+  \[ \mu(x) = \e^{\int\frac{-4}{x}\diff{x}} = \e^{-4\ln|x|} =
+    \e^{\ln\frac{1}{x^4}} = \frac{1}{x^4} \]
+  \item Multiply the given equation by \( \mu(x) \):
+  \begin{align*}
+    \frac{1}{x^4}\ddiff{y}{x}-\frac{4}{x^5}y &= x\e^x \\
+    \ddiff{}{x}\bigg[\frac{1}{x^4}y\bigg] &= x\e^x \\
+    \frac{1}{x^4}y &= \int x\e^x\diff{x}
+      = x\e^x-\int\e^x\diff{x}
+      = x\e^x-\e^x+c \\
+    y &= x^5\e^x-x^4\e^x+Cx^4
+  \end{align*}
+\end{enumerate}
+
+\subsubsection*{Example}
+Solve over \( (0,\infty) \):
+\begin{align*}
+  x\ddiff{y}{x}+3(y+x^2) = \frac{\cos(x)}{x^2} \\
+  x\ddiff{y}{x}+3y &= \frac{\cos(x)}{x^2}-3x^2 \\
+  \ddiff{y}{x}+\frac{3}{x}y &= \frac{\cos(x)}{x^3}-3x \\
+  P(x) &= \frac{3}{x} \\
+  \mu(x) &= \e^{\int\frac{3}{x}\diff{x}}
+    = \e^{3\ln(x)} = \e^{\ln(x^3)} = x^3 \\
+  x^3\ddiff{y}{x}+3x^2y &= \cos(x)+3x^4 \\
+  \ddiff{y}{x}\bigg[x^3y\bigg] &= \cos(x)+3x^4 \\
+  \int\ddiff{y}{x}\bigg[x^3y\bigg] &= \int\cos(x)+3x^4 \\
+  x^3y &= \sin(x)+\frac{3x^5}{5}+c \\
+  y &= \frac{\sin(x)}{x^3}-\frac{3x^2}{5}+\frac{c}{x^3}
+\end{align*}
+
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
   any questions, comments, or concerns, please contact me at
