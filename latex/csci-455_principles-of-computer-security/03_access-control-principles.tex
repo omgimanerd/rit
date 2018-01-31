@@ -1,0 +1,59 @@
+\documentclass{math}
+
+\title{Principles of Computer Security}
+\author{Alvin Lin}
+\date{January 2018 - May 2018}
+
+\begin{document}
+
+\maketitle
+
+\section*{Access Control Principles}
+Subjects make requests to active entities such as users or processes. Subjects
+can be active users or processes, and objects are usually passive entities
+manipulated by a subject such as records, relations, or files. Access control
+helps protect objects from unauthorized disclosure and unauthorized
+modification. It is an approach to regulate access requests by subjects to
+objects to perform certain operations through a set of access policies.
+
+\subsection*{Access Control Policies}
+\begin{itemize}
+  \item Discretionary Access Control (DAC): based on requstor identity and
+  access rules stating what requestors are allowed or not allowed to do.
+  \item Mandatory Access Control (MAC): based on comparing security labels
+  with security clearances.
+  \item Role-based Access Control (RBAC): based on user roles within the system
+  and on rules stating what accesses are allowed to users in given roles.
+  \item Attribute-based Access Control (ABAC): based on user attributes, the
+  resource to be accessed, and current environmental conditions.
+  \item Content-based, Context-based, History-based, etc.
+\end{itemize}
+
+\subsection*{Access Control Matrix}
+\begin{center}
+  \begin{tabular}{|c|c|c|c|c|c|}
+    \hline
+    & Object 1 & Object 2 & Object 3 & Object 4 & Object 5 \\
+    \hline
+    S1 & r & r & rw & & \\
+    \hline
+    S2 & rw & & r & wx & \\
+    \hline
+    S3 & r & rw & rwx & rwx & w \\
+    \hline
+    S4 & & & & & \\
+    \hline
+  \end{tabular}
+\end{center}
+Each column in this matrix is an access control list that determines each
+object's list of access rights to subjects. Each row in the matrix is a
+capabilities list that determines each subject's list of capabilities for each
+object.
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}

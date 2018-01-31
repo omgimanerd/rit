@@ -109,6 +109,38 @@ their own password crackers to find guessable passwords. Complex password
 policies allow users to select their own passwords, but the system checks if
 the password is acceptable and will reject it otherwise.
 
+\subsection*{Identification Methods}
+\begin{itemize}
+  \item Smart Tokens: Physical tokens that include an embedded microprocessor.
+  Authenticates a user with a static key, a dynamic password generator, or a
+  challenge-response method. This provides a stronger proof of identity if it
+  is government issued for a variety of applications.
+  \item Biometric Authentication: Attempts to authenticate an individual based
+  on unique physical characteristics. This can be done through pattern
+  recognition, facial recognition, fingerprints, retinal patterns, voice
+  patterns, etc. It is technically complex and more expensive compared to
+  passwords and tokens.
+  \item Remote User Authentication: Authenticates a user over a network. This
+  is vulnerable to additional security threats such as eavesdropping and
+  password capture. A challenge-response protocol is usually needed to counter
+  threats.
+\end{itemize}
+
+\subsection*{Authentication Security Issues}
+\begin{itemize}
+  \item Eavesdropping: tries to learn a password by an attack that involves
+  physical proximity of a user and adversary.
+  \item Host Attacks: directed at user files on the host containing passwords,
+  tokens, and biometric templates.
+  \item Replay: tries a previously captured user response.
+  \item Client Attacks: tries user authentication without access to the remote
+  host or the communications path.
+  \item Trojan Horse: masquerades as an authentic application or device for
+  capturing a user password.
+  \item Denial-of-Service: attepts to disable a user authentication service by
+  flooding the service with numerous authentication attempts.
+\end{itemize}
+
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
   any questions, comments, or concerns, please contact me at
