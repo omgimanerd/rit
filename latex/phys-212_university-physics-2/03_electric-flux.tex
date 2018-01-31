@@ -1,0 +1,58 @@
+\documentclass{math}
+
+\usepackage{tikz}
+
+\title{University Physics 2}
+\author{Alvin Lin}
+\date{January 2018 - May 2018}
+
+\begin{document}
+
+\maketitle
+
+\section*{Electric Flux}
+Light, magnetism, heat, and water can all have flux. Flux is defined as the flow
+of some field through a surface.
+\[ \Phi_{E} = \vec{E}\cdot\vec{A} \]
+\[ \vec{A} = A\vec{n} \]
+\( \vec{A} \) is an area centered on the surface, with the magnitude equal to
+the area and the direction pointing normal to the surface. For a figure with
+multiple surfaces:
+\[ \Phi_E = \sum\vec{E}\cdot\Delta\vec{A} \]
+Gauss's Law states that the electric flux through a closed surface is
+proportional to the charge inside the surface (denoted \( Q_{enc} \)).
+\[ \Phi_E = \frac{Q_{enc}}{\epsilon_{\circ}} \quad
+  K = \frac{1}{4\pi\epsilon_{\circ}} \]
+\[ \Phi_E = \oint\vec{E}\cdot\diff{\vec{A}} =
+  \frac{Q_{enc}}{\epsilon_{\circ}} \]
+
+\subsection*{Gauss's Law for a Point Charge}
+\begin{center}
+  \begin{tikzpicture}
+    \draw[blue] (0,0) circle (0.2cm) node {+};
+    \draw (0,0) circle (1cm) node[xshift=1.2cm] {\( r \)};
+    \draw[->,black!60!green] (0,1) -- (0,2) node[above] {\( \vec{E} \)};
+    \draw[->,black!60!green] (0.34,0.93) -- (0.68,1.86)
+      node[right] {\( \diff{\vec{A}} \)};
+  \end{tikzpicture}
+\end{center}
+Use Gauss's Law to find \( \vec{E} \) at \( r \) given a point charge surrounded
+by a spherical shell of radius \( r \):
+\begin{align*}
+  \oint\vec{E}\cdot\diff{\vec{A}} &= \frac{Q_{enc}}{\epsilon_{\circ}} \\
+  &= \oint|E||\diff{\vec{A}}|\cos\theta \\
+  \theta &= 0 \text{ via spherical symmetry} \\
+  &= \oint|E||\diff{\vec{A}}| \\
+  &= |E|\oint|\diff{\vec{A}}| \text{ since } E \text{ is constant over } r \\
+  &= |E|4\pi r^2 \\
+  |E|4\pi r^2 &= \frac{Q}{\epsilon_{\circ}} \\
+  |E| &= \frac{1}{4\pi r^2}\frac{Q}{\epsilon_{\circ}} \text{ (Coulomb's Law)}
+\end{align*}
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}

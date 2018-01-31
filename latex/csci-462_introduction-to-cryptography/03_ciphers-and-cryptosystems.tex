@@ -1,0 +1,125 @@
+\documentclass{math}
+
+\title{Introduction to Cryptography}
+\author{Alvin Lin}
+\date{January 2018 - May 2018}
+
+\begin{document}
+
+\maketitle
+
+\section*{Ciphers and Cryptosystems}
+
+\subsection*{Hill Cipher}
+The Hill Cipher was developed by Lester Hill in 1929. It's strength was that it
+completely hid single-letter frequencies. It was strong against a
+ciphertext-only attack but easily broken by a known plaintext attack. The Hill
+cipher is done by taking a matrix as the key:
+\[ K = \begin{bmatrix}2 & 1 \\ 1 & 1\end{bmatrix} \]
+Given the plaintext HELP, we split it into \( 1\times2 \) column vectors so
+that they can be multiplied by the key vector:
+\[ \begin{bmatrix}H \\ E\end{bmatrix},
+  \begin{bmatrix}L \\ P\end{bmatrix}\to
+  \begin{bmatrix}7 \\ 4\end{bmatrix},
+  \begin{bmatrix}11 \\ 15\end{bmatrix} \]
+The ciphertext is produced by multiplying the key matrix with the column
+vectors.
+\begin{align*}
+  \begin{bmatrix}2 & 1 \\ 1 & 1\end{bmatrix}
+    \begin{bmatrix}7 \\ 4\end{bmatrix} &\equiv
+    \begin{bmatrix}18 \\ 11\end{bmatrix}\mod(26) \\
+  \begin{bmatrix}2 & 1 \\ 1 & 1\end{bmatrix}
+    \begin{bmatrix}11 \\ 15\end{bmatrix} &\equiv
+    \begin{bmatrix}11 \\ 0\end{bmatrix}\mod(26)
+\end{align*}
+This yields the cipher text 18-11-11-0 or RKKA. Decryption is done by computing
+the inverse of the key matrix \( K^{-1} \) and repeating the same process.
+
+\subsection*{Stream Ciphers}
+Stream ciphers were invented in 1917 by Gilbert Vernam. It involves a plaintext
+\( x \) and a key stream \( k \) to yield a ciphertext \( y \). Encryption
+and decryption operations are simple additions modulo 2 (aka XOR).
+\begin{itemize}
+  \item Encryption: \( y_i = x_i+k_i\mod2 \)
+  \item Decryption: \( x_i = y_i+k_i\mod2 \)
+\end{itemize}
+Stream ciphers encrypt bits individually. They're usually small and fast, and
+are common in embedded devices. Block ciphers on the other hand, encrypt whole
+blocks of information and are common for Internet applications. The security of
+stream ciphers depend entirely on the key stream. The key stream \( k \) should
+be random, but reproducible by the sender and the receiver. \textbf{Synchronous}
+stream ciphers use a key stream that only depends on the key, while
+\textbf{asynchronous} stream ciphers use a key stream that also depends on the
+ciphertext.
+
+\subsection*{Random Number Generators}
+Random number generators are needed in cryptography, particularly for stream
+ciphers. There are three types: true random number generators, pseudorandom
+number generators, and cryptographically secure random number generators. The
+basic requirements for randomness:
+\begin{itemize}
+  \item Uniform Distribution (The frequency of occurrence of ones and zeroes
+  should be approximately equal)
+  \item Independence (Each bit should be uncorrelated with all previous bits)
+\end{itemize}
+For cryptography, the compromise of one output must not compromise future or
+previous outputs.
+
+\subsubsection*{True Random Number Generators}
+True random number generators are based on some random physical processes, such
+as coin flipping, dice rolling, semiconductor noise, radioactive decay, mouse
+movement, or clock jitter of digital circuits. The output stream should have
+good statistical properties and should not be able to be predicted or
+reproduced. These are typically used for the generation of keys and nonces.
+
+\subsubsection*{Pseudorandom Number Generators}
+Pseudorandom number generators are algorithms used to produce an open-ended
+sequence of bits. They generate sequences from an initial seed value. The output
+stream has good statistical properties and can typically be reproduced and
+predicted.
+\par The basic requirement when a pseudorandom number generator or pseudorandom
+function is used for a cryptographic application is that an adversary who does
+not know the seed is unable to determine the pseudorandom string. The bit stream
+should appear random even though it is deterministic, and should have no
+correlation with the seed.
+
+\subsubsection*{Linear Congruential Generator}
+The linear congruential generator is an algorithm first proposed by Lehmer
+parameterized with four numbers \( a,b,m,seed \). The sequence of random
+numbers \( x_n \) is obtained via the following iterative equation:
+\[ x_{n+1} = (ax_n+b)\mod(m) \]
+This has bad cryptographic properties due to its linearity.
+
+\subsection*{One-Time Pad}
+The one-time pad was an improvement to the Vernam cipher propsed by Army
+Signal Corp officer Joseph Mauborgne. It uses and random key that is as long
+as the message so that the key does not need to be repeated. The key is used
+to encrypt and decrypt a single message and then is discarded. Each new message
+requires a new key of the same length as the new message.
+\par This scheme is unbreakable because it produces random output with no
+statistical relationship to the plaintext. The one-time pad offers complete
+security but has fundamental problems, namely key distribution and key
+generation. Thus, the one-time pad is useful primarily only in low-bandwidth
+channels requiring very high security.
+
+\subsection*{Linear Feedback Shift Registers}
+Linear feedback shift registers are cascades of flip flops, sharing the same
+clock, whose input bit is a linear function of its previous state. The feedback
+portion computes fresh input bits by calculating the XOR of certain state bits.
+Their degree is given by the number of storage elements \( m \), with the
+maximum output length being \( 2^m-1 \). Linear feedback shift registers are
+typically described by polynomials:
+\[ P(x) = x^m+p_{m-1}x^{m-1}+\dots+p_2x^2+p_1x+x_0 \]
+Single linear feedback shift registers generate highly predictable output. If
+\( 2m \) output bits of a linear shift feedback register of degree \( m \) are
+known, the feedback coefficients \( p_i \) can be found by solving a system of
+linear equations. Because of this, most stream ciphers use combinations of
+stream ciphers.
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
