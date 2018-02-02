@@ -163,11 +163,11 @@ Strategy for calculating the electric field of a solid object:
   we need to integrate.
   \item Figure out \( \diff{q} \). \( \diff{q} = \lambda\diff{s} \). For a line
   \( \diff{s} = \diff{x} \). For an arc, \( \diff{s} = r\diff{\theta} \).
-  \item Find \( |\overrightarrow{\diff{E}}| \)
-  \[ |\overrightarrow{\diff{E}}| = \frac{k\diff{q}}{r^2} \]
+  \item Find \( |\diff{\vec{E}}| \)
+  \[ |\diff{\vec{E}}| = \frac{k\diff{q}}{r^2} \]
   \item Find the components.
-  \[ \diff{E_x} = |\overrightarrow{\diff{E}}|\cos\theta \]
-  \[ \diff{E_y} = |\overrightarrow{\diff{E}}|\sin\theta \]
+  \[ \diff{E_x} = |\diff{\vec{E}}|\cos\theta \]
+  \[ \diff{E_y} = |\diff{\vec{E}}|\sin\theta \]
   Note that this depends on whether or not \( \theta \) is from the horizontal.
   \item Get the limits of integration from the diagram.
   \item Check for symmetries to see if any integrals are zero.
@@ -221,7 +221,7 @@ By symmetry, we can see that the field in the x-direction cancels out, but we
 will solve it for completeness. Our known values are as follows:
 \begin{align*}
   |\vec{E}| &= \frac{kQ}{r^2} \quad
-    |\overrightarrow{\diff{E}}| = \frac{k\diff{q}}{r^2} \\
+    |\diff{\vec{E}}| = \frac{k\diff{q}}{r^2} \\
   r^2 &= x^2+h^2 \quad \lambda = \frac{Q}{L} \quad \\
   \diff{q} &= \lambda\diff{s} = \frac{Q}{L}\diff{x} \\
   \cos\theta &= \frac{x}{h} \\
@@ -230,12 +230,12 @@ will solve it for completeness. Our known values are as follows:
 Since the point is on a different axis than the rod, we have to separate the
 electric field into components.
 \begin{align*}
-  \diff{E_x} &= |\overrightarrow{\diff{E}}|\cos\theta \\
+  \diff{E_x} &= |\diff{\vec{E}}|\cos\theta \\
   &= \frac{kQ}{Lr^2}\frac{x}{r}\diff{x} \\
   &= \frac{kQ}{L}\frac{x}{(x^2+h^2)^{\frac{3}{2}}}\diff{x} \\
   E_x &= \int_{-\frac{L}{2}}^{\frac{L}{2}}
     \frac{kQ}{L}\frac{x}{(x^2+h^2)^{\frac{3}{2}}}\diff{x} = 0 \\
-  \diff{E_y} &= |\overrightarrow{\diff{E}}|\sin\theta \\
+  \diff{E_y} &= |\diff{\vec{E}}|\sin\theta \\
   &= \frac{kQ}{Lr^2}\frac{h}{r}\diff{x} \\
   &= \frac{kQh}{L}\frac{1}{(h^2+x^2)^{\frac{3}{2}}}\diff{x} \\
   E_y &= \int_{-\frac{L}{2}}^{\frac{L}{2}}
@@ -280,7 +280,7 @@ non-uniform charge density of \( \lambda = \beta x^{-3} \). The units of
   &= \frac{\beta}{2d^2} \\
 \end{align*}
 \begin{align*}
-  |\overrightarrow{\diff{E}}| &= \frac{k\diff{q}}{r^2} \\
+  |\diff{\vec{E}}| &= \frac{k\diff{q}}{r^2} \\
   &= \frac{k\beta}{x^5}\diff{x} \\
   |\vec{E}| &= \int_{d}^{\infty}\frac{k\beta}{x^5}\diff{x} \\
   &= k\beta\bigg[\frac{-1}{4}x^{-4}\bigg]_{d}^{\infty} \\

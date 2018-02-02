@@ -195,8 +195,8 @@ separable, but we will solve using the method for first order linear equations.
   \item Multiply the given equation by \( \mu(x) \):
   \begin{align*}
     \e^{-3x}\ddiff{y}{x}-3\e^{-3x}y &= 6\e^{-3x} \\
-    \ddiff{y}{x}\bigg[\e^{-3x}y\bigg] &= 6\e^{-3x} \\
-    \int\ddiff{y}{x}\bigg[\e^{-3x}y\bigg] &= \int 6\e^{-3x} \\
+    \ddiff{}{x}\bigg[\e^{-3x}y\bigg] &= 6\e^{-3x} \\
+    \int\ddiff{}{x}\bigg[\e^{-3x}y\bigg]\diff{x} &= \int 6\e^{-3x}\diff{x} \\
     \e^{-3x}y &= 6(-\frac{1}{3}\e^{-3x})+c \\
     &= -2\e^{-3x}+c \\
     y &= -2+C\e^{3x}
@@ -225,7 +225,7 @@ separable, but we will solve using the method for first order linear equations.
 \end{enumerate}
 
 \subsubsection*{Example}
-Solve over \( (0,\infty) \):
+Solve the following over \( (0,\infty) \):
 \begin{align*}
   x\ddiff{y}{x}+3(y+x^2) = \frac{\cos(x)}{x^2} \\
   x\ddiff{y}{x}+3y &= \frac{\cos(x)}{x^2}-3x^2 \\
@@ -234,10 +234,115 @@ Solve over \( (0,\infty) \):
   \mu(x) &= \e^{\int\frac{3}{x}\diff{x}}
     = \e^{3\ln(x)} = \e^{\ln(x^3)} = x^3 \\
   x^3\ddiff{y}{x}+3x^2y &= \cos(x)+3x^4 \\
-  \ddiff{y}{x}\bigg[x^3y\bigg] &= \cos(x)+3x^4 \\
-  \int\ddiff{y}{x}\bigg[x^3y\bigg] &= \int\cos(x)+3x^4 \\
+  \ddiff{}{x}\bigg[x^3y\bigg] &= \cos(x)+3x^4 \\
+  \int\ddiff{}{x}\bigg[x^3y\bigg]\diff{x} &= \int\cos(x)+3x^4\diff{x} \\
   x^3y &= \sin(x)+\frac{3x^5}{5}+c \\
   y &= \frac{\sin(x)}{x^3}-\frac{3x^2}{5}+\frac{c}{x^3}
+\end{align*}
+
+\subsubsection*{Example}
+Solve the following initial value problem over \( (-\frac{\pi}{2},\frac{\pi}{2})
+\) given \( y(0) = 2 \):
+\begin{align*}
+  \cos(x)\ddiff{y}{x}+\sin(x)y &= 1 \\
+  \ddiff{y}{x}+\frac{\sin(x)}{\cos(x)}y &= \frac{1}{\cos(x)} \\
+  \ddiff{y}{x}+\tan(x)y &= \sec(x) \\
+  \mu(x) &= \e^{\int P(x)\diff{x}} = \e^{\int\tan(x)\diff{x}} =
+    \e^{\ln|\sec(x)|} = \sec(x) \\
+  \sec(x)\ddiff{y}{x}+\sec(x)\tan(x)y &= \sec^2(x)
+\end{align*}
+\begin{align*}
+  \ddiff{}{x}\bigg[\sec(x)y\bigg] &= \sec^2(x) \\
+  \int\ddiff{}{x}\bigg[\sec(x)y\bigg]\diff{x} &= \int\sec^2(x)\diff{x} \\
+  \sec(x)y &= \tan(x)+c \\
+  y &= \frac{\tan(x)}{\sec(x)}+\frac{c}{\sec(x)} \\
+  &= \sin(x)+c\cos(x)
+\end{align*}
+Using our initial value:
+\begin{align*}
+  y &= \sin(x)+c\cos(x) \\
+  2 &= \sin(0)+c\cos(0) \\
+  &= 0+c \\
+  c &= 2 \\
+  y &= \sin(x)+2\cos(x)
+\end{align*}
+
+\section*{Substitutions and Transformations}
+Consider:
+\[ \ddiff{y}{x}+P(x)y = Q(x)y^n \]
+where \( n \) is any real number. This is called a \textbf{Bernoulli Equation}.
+We use the substitution \( v = y^{1-n} \) to transform the equation into a new
+variable:
+\[ \ddiff{v}{x} = (1-n)y^{-n}\ddiff{y}{x} \]
+This gives a linear equation in \( v \):
+\[ \ddiff{y}{x} = \frac{1}{1-n}y^n\ddiff{v}{x} \]
+We divide the equation by \( y^n \):
+\[ y^{-n}\ddiff{y}{x}+P(x)yy^{-n} = Q(x) \]
+We can now substitute for \( \ddiff{y}{x} \):
+\begin{align*}
+  \frac{1}{1-n}y^n\ddiff{v}{n}y^{-n}+P(x)y^{1-n} &= Q(x) \\
+  \frac{1}{1-n}\ddiff{v}{x}+P(x)v &= Q(x) \\
+  \ddiff{v}{x}+(1-n)P(x)v &= (1-n)Q(x)
+\end{align*}
+Using this substitution allows us to change our equation into a first-order
+linear equation in standard form, which we can now solve.
+
+\subsubsection*{Example}
+Solve the following over \( (0,\infty) \):
+\begin{align*}
+  \ddiff{y}{x}+\frac{y}{x} &= x^2y^2 \\
+  \ddiff{y}{x}+\frac{1}{x}y &= x^2y^2 \\
+  v &= y^{1-2} = y^{-1} \\
+  \ddiff{v}{x} &= -y^{-2}\ddiff{y}{x} \\
+  \ddiff{y}{x} &= -y^2\ddiff{v}{x} \\
+  \frac{1}{y^2}\bigg(\ddiff{y}{x}+\frac{1}{x}y &= x^2y^2\bigg) \\
+  y^{-2}\ddiff{y}{x}+\frac{1}{x}yy^{-2} &= x^2 \\
+  y^{-2}(-y^2\ddiff{v}{x})+\frac{1}{x}y^{-1} &= x^2 \\
+  -\ddiff{v}{x}+\frac{1}{x}v &= x^2 \\
+  \ddiff{v}{x}-\frac{1}{x}v &= -x^2
+\end{align*}
+\begin{align*}
+  \ddiff{v}{x}-\frac{1}{x}v &= -x^2 \\
+  \mu(x) &= \e^{\int-\frac{\diff{x}}{x}} = \e^{-\ln|x|} =
+    \e^{\ln|\frac{1}{x}|} = \frac{1}{x} \\
+  \frac{1}{x}\ddiff{v}{x}-\frac{1}{x^2}v &= -x \\
+  \int\ddiff{}{x}\bigg[\frac{1}{x}v\bigg]\diff{x} &= -\int x\diff{x} \\
+  \frac{1}{x}v &= -\frac{x^2}{2}+c \\
+  v &= -\frac{x^3}{2}+cx \\
+  \frac{1}{y} &= -\frac{x^3}{2}+cx
+\end{align*}
+
+\subsubsection*{Example}
+Solve the following initial value problem given \( y(1) = 1 \):
+\begin{align*}
+  x^2\ddiff{y}{x}-2xy &= 3y^4 \\
+  \ddiff{y}{x}-\frac{2}{x}y &= \frac{3y^4}{x^2} \\
+  n &= 4 \quad v = y^{1-4} = y^{-3} \\
+  \ddiff{v}{x} &= -3y^{-4}\ddiff{y}{x} \\
+  \ddiff{y}{x} &= -\frac{1}{3}y^4\ddiff{v}{x} \\
+  \frac{1}{y^4}\bigg(\ddiff{y}{x} &= -\frac{1}{3}y^4\ddiff{v}{x}\bigg) \\
+  y^{-4}\ddiff{y}{x}-\frac{2}{x}yy^{-4} &= \frac{3}{x^2} \\
+  y^{-4}(-\frac{1}{3}y^4\ddiff{v}{x})-\frac{2}{x}v &= \frac{3}{x^2} \\
+  -\frac{1}{3}\ddiff{v}{x}-\frac{2}{x}v &= \frac{3}{x^2} \\
+  \ddiff{v}{x}+\frac{6}{x}v &= -\frac{9}{x^2}
+\end{align*}
+This equation is now a first order linear equation in \( v \).
+\begin{align*}
+  \ddiff{v}{x}+\frac{6}{x}v &= -\frac{9}{x^2} \\
+  \mu(x) &= \e^{\int\frac{6}{x}\diff{x}} = \e^{6\ln|x|} = \e^{\ln|x^6|} = x^6 \\
+  x^6\ddiff{v}{x}+\frac{6x^5}v &= -9x^4 \\
+  \ddiff{}{x}\bigg[x^6v\bigg] &= -9x^4 \\
+  \int\ddiff{}{x}\bigg[x^6v\bigg]\diff{x} &= \int-9x^4\diff{x} \\
+  x^6v &= -\frac{9}{5}x^5+c \\
+  v &= -\frac{9}{5x}+\frac{c}{x^6} \\
+  \frac{1}{y^3} &= -\frac{9}{5x}+\frac{c}{x^6}
+\end{align*}
+Using our initial value:
+\begin{align*}
+  \frac{1}{y^3} &= -\frac{9}{5x}+\frac{c}{x^6}
+  \frac{1}{1^3} &= -\frac{9}{5}+\frac{c}{1^6} \\
+  c &= \frac{14}{5} \\
+  \frac{1}{y^3} &= -\frac{9}{5}\frac{1}{x}+\frac{14}{5}\frac{1}{x^6}
 \end{align*}
 
 \begin{center}

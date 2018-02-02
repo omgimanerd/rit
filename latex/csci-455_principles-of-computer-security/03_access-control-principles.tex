@@ -50,6 +50,22 @@ object's list of access rights to subjects. Each row in the matrix is a
 capabilities list that determines each subject's list of capabilities for each
 object.
 
+\subsection*{RBAC Overview}
+\begin{itemize}
+  \item A subject has access to an object based on an assigned role.
+  \item Roles are typically defined based on job functions.
+  \item Permissions are defined based on job authority and responsibilities
+  within a job function.
+  \item Operations on an object invoked based on permissions.
+  \item Object access depends on a subject's role, not the subject.
+\end{itemize}
+This system is much more pragmatic, but has a lack of granularity and
+flexibility. Improper actions are not always the same as unauthorized actions.
+Certain users may be able to perform actions that are not proper for their role
+because it would be logistically difficult to enforce that level of granularity
+with RBAC systems. There is no connection between who the person is and who gets
+permission.
+
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
   any questions, comments, or concerns, please contact me at

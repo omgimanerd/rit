@@ -49,6 +49,33 @@ by a spherical shell of radius \( r \):
   |E| &= \frac{1}{4\pi r^2}\frac{Q}{\epsilon_{\circ}} \text{ (Coulomb's Law)}
 \end{align*}
 
+\subsection*{Solving Gauss's Law}
+\begin{enumerate}
+  \item Draw a picture with axes, distances, coordinates, \( \diff{q} \),
+  \( \vec{E} \) fields, \( \diff{\vec{A}} \).
+  \item Decide how to solve the problem. For 3D symmetric charge distribution,
+  use Gauss's Law. For 2D rings or lines, use the integral form of Coulomb's
+  Law.
+  \item Pick a Gaussian surface. For objects with spherical symmetry, use a
+  shell. For objects with cylindrical symmetry, use a hollow cylinder. For
+  objects with planar symmetry, use a box or cylinder.
+  \item Write Gauss's Law:
+  \[ \oint\vec{E}\cdot\diff{\vec{A}} = \frac{Q_{enc}}{\epsilon_{\circ}} \]
+  \item Use symmetry to solve the left hand side. Always pick a Gaussian surface
+  so that \( \vec{E} \) is parallel to \( \diff{\vec{A}} \) so that
+  \( \vec{E}\cdot\diff{\vec{A}} = |\vec{E}||\diff{\vec{A}}| \).
+  \item Also argue via symmetry that \( |\vec{E}| \) is independent of
+  integrating variables so that \( \int|\vec{E}||\diff{\vec{A}}| =
+  |\vec{E}|\oint\diff{\vec{A}} \).
+  \item Solve the integral for the area. \( |\vec{E}|\oint\diff{\vec{A}} =
+  |\vec{E}|A \). For a shell, \( A = 4\pi r^2 \). For the side of a cylindrical
+  surface, \( A = 2\pi rh \). For the top and bottom of a cylindrical surface,
+  \( A = \pi r^2 \).
+  \item Calculate \( Q_{enc} \), this can be easy or hard depending on the
+  problem. Remember that \( Q = \rho V \).
+  \item Solve for \( |\vec{E}| \).
+\end{enumerate}
+
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
   any questions, comments, or concerns, please contact me at
