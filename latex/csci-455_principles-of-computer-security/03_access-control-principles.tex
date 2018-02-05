@@ -66,6 +66,45 @@ because it would be logistically difficult to enforce that level of granularity
 with RBAC systems. There is no connection between who the person is and who gets
 permission.
 
+\subsection*{ABAC Overview}
+\begin{itemize}
+  \item CAn define authorizations that express conditions on properties of both
+  the resource and the subject.
+  \item Strength is its flexibility and expressive power.
+  \item The main obstacle to its adoption in real systems is its performance
+  impact when evaluating predicates on both resource and user properties for
+  each access.
+  \item Web services have been pioneering technologies through the introduction
+  of the eXtensible Access Control Markup Language (XAMCL).
+  \item There is a considerable interest in applying this model to cloud
+  services.
+  \item Subject attributes in this model define the identity and
+  characterestics of the subject.
+  \item Objects have attributes that can be leveraged to make access control
+  decisions.
+  \item Environment attributes describe operational, technical, and situational
+  environment or context in which information access occurs. It is largely
+  ignored in most other access control policies.
+\end{itemize}
+ABAC systems are capable of enforcing DAC, RBAC, and MAC concepts. They allow
+an unlimited number of attributes to be combined to satisfy any access control
+rule.
+
+\subsection*{RBAC vs ABAC}
+\begin{center}
+  \begin{tabular}{|c|c|}
+    \hline
+    \textbf{RBAC} & \textbf{ABAC} \\
+    \hline
+    Static & Dynamic \\
+    Coarse-grained & Fine-grained \\
+    Access decisions made in advance & Access decisions made at run-time \\
+    Simply policy & Complex policy \\
+    Complex setup & Simple setup \\
+    \hline
+  \end{tabular}
+\end{center}
+
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
   any questions, comments, or concerns, please contact me at

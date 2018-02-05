@@ -40,13 +40,15 @@ Use Gauss's Law to find \( \vec{E} \) at \( r \) given a point charge surrounded
 by a spherical shell of radius \( r \):
 \begin{align*}
   \oint\vec{E}\cdot\diff{\vec{A}} &= \frac{Q_{enc}}{\epsilon_{\circ}} \\
-  &= \oint|E||\diff{\vec{A}}|\cos\theta \\
+  &= \oint|\vec{E}||\diff{\vec{A}}|\cos\theta \\
   \theta &= 0 \text{ via spherical symmetry} \\
-  &= \oint|E||\diff{\vec{A}}| \\
-  &= |E|\oint|\diff{\vec{A}}| \text{ since } E \text{ is constant over } r \\
-  &= |E|4\pi r^2 \\
-  |E|4\pi r^2 &= \frac{Q}{\epsilon_{\circ}} \\
-  |E| &= \frac{1}{4\pi r^2}\frac{Q}{\epsilon_{\circ}} \text{ (Coulomb's Law)}
+  &= \oint|\vec{E}||\diff{\vec{A}}| \\
+  &= |\vec{E}|\oint|\diff{\vec{A}}|
+    \text{ since } E \text{ is constant over } r \\
+  &= |\vec{E}|4\pi r^2 \\
+  |\vec{E}|4\pi r^2 &= \frac{Q}{\epsilon_{\circ}} \\
+  |\vec{E}| &= \frac{1}{4\pi r^2}\frac{Q}{\epsilon_{\circ}}
+    \text{ (Coulomb's Law)}
 \end{align*}
 
 \subsection*{Solving Gauss's Law}
