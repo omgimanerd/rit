@@ -277,10 +277,10 @@ variable:
 This gives a linear equation in \( v \):
 \[ \ddiff{y}{x} = \frac{1}{1-n}y^n\ddiff{v}{x} \]
 We divide the equation by \( y^n \):
-\[ y^{-n}\ddiff{y}{x}+P(x)yy^{-n} = Q(x) \]
+\[ y^{-n}\ddiff{y}{x}+P(x)y(y^{-n}) = Q(x) \]
 We can now substitute for \( \ddiff{y}{x} \):
 \begin{align*}
-  \frac{1}{1-n}y^n\ddiff{v}{n}y^{-n}+P(x)y^{1-n} &= Q(x) \\
+  \frac{1}{1-n}y^n\ddiff{v}{x}y^{-n}+P(x)y^{1-n} &= Q(x) \\
   \frac{1}{1-n}\ddiff{v}{x}+P(x)v &= Q(x) \\
   \ddiff{v}{x}+(1-n)P(x)v &= (1-n)Q(x)
 \end{align*}
@@ -296,7 +296,7 @@ Solve the following over \( (0,\infty) \):
   \ddiff{v}{x} &= -y^{-2}\ddiff{y}{x} \\
   \ddiff{y}{x} &= -y^2\ddiff{v}{x} \\
   \frac{1}{y^2}\bigg(\ddiff{y}{x}+\frac{1}{x}y &= x^2y^2\bigg) \\
-  y^{-2}\ddiff{y}{x}+\frac{1}{x}yy^{-2} &= x^2 \\
+  y^{-2}\ddiff{y}{x}+\frac{1}{x}y(y^{-2}) &= x^2 \\
   y^{-2}(-y^2\ddiff{v}{x})+\frac{1}{x}y^{-1} &= x^2 \\
   -\ddiff{v}{x}+\frac{1}{x}v &= x^2 \\
   \ddiff{v}{x}-\frac{1}{x}v &= -x^2
@@ -321,7 +321,7 @@ Solve the following initial value problem given \( y(1) = 1 \):
   \ddiff{v}{x} &= -3y^{-4}\ddiff{y}{x} \\
   \ddiff{y}{x} &= -\frac{1}{3}y^4\ddiff{v}{x} \\
   \frac{1}{y^4}\bigg(\ddiff{y}{x} &= -\frac{1}{3}y^4\ddiff{v}{x}\bigg) \\
-  y^{-4}\ddiff{y}{x}-\frac{2}{x}yy^{-4} &= \frac{3}{x^2} \\
+  y^{-4}\ddiff{y}{x}-\frac{2}{x}y(y^{-4}) &= \frac{3}{x^2} \\
   y^{-4}(-\frac{1}{3}y^4\ddiff{v}{x})-\frac{2}{x}v &= \frac{3}{x^2} \\
   -\frac{1}{3}\ddiff{v}{x}-\frac{2}{x}v &= \frac{3}{x^2} \\
   \ddiff{v}{x}+\frac{6}{x}v &= -\frac{9}{x^2}

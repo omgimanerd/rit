@@ -159,13 +159,150 @@ Solve the initial value problem.
 \section*{Section 2.6}
 
 \subsubsection*{Exercise 21}
+Use the method discussed under ``Bernoulli Equations'' to solve:
+\begin{align*}
+  \ddiff{y}{x}+\frac{y}{x} &= x^2y^2 \\
+  v &= y^{-1} \\
+  \ddiff{v}{x} &= -y^{-2}\ddiff{y}{x} \\
+  \frac{1}{y^2}\ddiff{y}{x}+\frac{1}{y^2}\frac{y}{x} &= \frac{1}{y^2}x^2y^2 \\
+  \frac{1}{y^2}\ddiff{y}{x}+\frac{1}{xy} &= x^2 \\
+  -\ddiff{v}{x}+\frac{v}{x} &= x^2 \\
+  \ddiff{v}{x}-\frac{v}{x} &= -x^2 \\
+  \mu(x) &= \e^{\int-\frac{1}{x}\diff{x}} = \e^{-\ln(x)} = \frac{1}{x} \\
+  \frac{1}{x}\ddiff{v}{x}-\frac{v}{x^2} &= -x^2 \\
+  \int\bigg(\frac{1}{x}\ddiff{v}{x}-\frac{v}{x^2}\bigg)\diff{x} &= \int-x^2\diff{x} \\
+  \frac{v}{x} &= -\frac{x^3}{3}+c \\
+  \frac{1}{xy} &= -\frac{x^3}{3}+c
+\end{align*}
+
 \subsubsection*{Exercise 22}
+Use the method discussed under ``Bernoulli Equations'' to solve:
+\begin{align*}
+  \ddiff{y}{x}-y &= \e^{2x}y^3 \\
+  P(x) = -1 \quad Q(x) = \e^{2x} \quad n = 3 \quad
+    v &= y^{-2} \quad \ddiff{v}{x} = -\frac{1}{2}y^{-3}\ddiff{y}{x} \\
+  \ddiff{v}{x}+(1-n)P(x)v &= (1-n)Q(x) \\
+  \ddiff{v}{x}+2v &= -2\e^{2x} \\
+  \mu(x) &= \e^{\int2\diff{x}} = \e^{2x} \\
+  \e^{2x}\ddiff{v}{x}+2v\e^{2x} &= -2\e^{4x} \\
+  \int\bigg(\e^{2x}\ddiff{v}{x}+2v\e^{2x}\bigg)\diff{x} &=
+    \int-2\e^{4x}\diff{x} \\
+  v\e^{2x} &= \frac{-2}{4}\e^{4x}+c \\
+  \frac{\e^{2x}}{y^2} &= \frac{-\e^{4x}}{2}+c
+\end{align*}
+
 \subsubsection*{Exercise 23}
+Use the method discussed under ``Bernoulli Equations'' to solve:
+\begin{align*}
+  \ddiff{y}{x} &= \frac{2y}{x}-x^2y^2 \\
+  \ddiff{y}{x}-\frac{2y}{x} &= -x^2y^2 \\
+  v &= y^{-1} \quad \ddiff{v}{x} = -\frac{1}{y^2}\ddiff{y}{x} \\
+  \frac{1}{y^2}\ddiff{y}{x}-\frac{1}{y^2}\frac{2y}{x} &= -\frac{1}{y^2}x^2y^2 \\
+  \frac{1}{y^2}\ddiff{y}{x}-\frac{2}{xy} &= -x^2 \\
+  -\ddiff{v}{x}-\frac{2v}{x} &= -x^2 \\
+  \ddiff{v}{x}+\frac{2v}{x} &= x^2 \\
+  \mu(x) &= \e^{\int\frac{2}{x}\diff{x}} = \e^{2\ln(x)} = x^2 \\
+  x^2\ddiff{v}{x}+2vx &= x^4 \\
+  \int\bigg(x^2\ddiff{v}{x}+2vx\bigg)\diff{x} &= \int x^4\diff{x} \\
+  vx^2 &= \frac{x^5}{5}+c \\
+  \frac{x^2}{y} &= \frac{x^5}{5}+c
+\end{align*}
+
 \subsubsection*{Exercise 24}
+Use the method discussed under ``Bernoulli Equations'' to solve:
+\begin{align*}
+  \ddiff{y}{x}+\frac{y}{x-2} &= 5(x-2)y^{\frac{1}{2}} \\
+  v &= y^{\frac{1}{2}} \quad \ddiff{v}{x} = -\frac{1}{\sqrt{y}}\ddiff{y}{x} \\
+  \frac{1}{\sqrt{y}}\ddiff{y}{x}+\frac{1}{\sqrt{y}}\frac{y}{x-2} &=
+    \frac{1}{\sqrt{y}}5(x-2)\sqrt{y} \\
+  \frac{1}{\sqrt{y}}\ddiff{y}{x}+\frac{\sqrt{y}}{x-2} &= 5x-10 \\
+  -\ddiff{v}{x}+\frac{v}{x-2} &= 5x-10 \\
+  \ddiff{v}{x}-\frac{v}{x-2} &= 10-5x \\
+  \mu(x) &= \e^{\int\frac{-1}{x-2}\diff{x}} = \e^{-\ln(x-2)} = \frac{1}{x-2} \\
+  (x-2)\ddiff{v}{x}-\frac{v}{(x-2)^2} &= \frac{10-5x}{x-2}
+\end{align*}
+\begin{align*}
+  \int\bigg((x-2)\ddiff{v}{x}-\frac{v}{(x-2)^2}\bigg)\diff{x} &=
+    \int\frac{10-5x}{x-2}\diff{x} \\
+  v(x-2) &= -5x+c \\
+  (x-2)\sqrt{y} &= -5x+c
+\end{align*}
+
 \subsubsection*{Exercise 25}
+Use the method discussed under ``Bernoulli Equations'' to solve:
+\begin{align*}
+  \ddiff{x}{t}+tx^3+\frac{x}{t} &= 0 \\
+  \ddiff{x}{t}+\frac{x}{t} &= -x^3 \\
+  v &= x^{-2} \quad \ddiff{v}{t} = -\frac{1}{2}x^{-3} \\
+  \frac{1}{x^3}\ddiff{x}{t}+\frac{1}{x^3}\frac{x}{t} &= -\frac{1}{x^3}{x^3} \\
+  \frac{1}{x^3}\ddiff{x}{t}+\frac{1}{x^2t} &= -1 \\
+  -\ddiff{v}{t}+\frac{v}{t} &= -1 \\
+  \ddiff{v}{t}-\frac{v}{t} &= 1 \\
+  \mu(t) &= \e^{\int-\frac{1}{t}\diff{t}} = \e^{-\ln(t)} = \frac{1}{t} \\
+  \frac{1}{t}\ddiff{v}{t}-\frac{v}{t^2} &= \frac{1}{t} \\
+  \int\bigg(\frac{1}{t}\ddiff{v}{t}-\frac{v}{t^2}\bigg)\diff{t} &=
+    \int\frac{1}{t}\diff{t} \\
+  \frac{v}{t} &= \ln(t)+c \\
+  \frac{1}{tx^2} &= \ln(t)+c
+\end{align*}
+
 \subsubsection*{Exercise 26}
+Use the method discussed under ``Bernoulli Equations'' to solve:
+\begin{align*}
+  \ddiff{y}{x}+y &= \e^xy^{-2} \\
+  v &= y^{3} \quad \ddiff{v}{x} = 3y^2\ddiff{y}{x} \\
+  y^2\ddiff{y}{x}+y(y^2) &= \e^xy^{-2}(y^2) \\
+  \frac{1}{3}\ddiff{v}{x}+v &= \e^x \\
+  \ddiff{v}{x}+3v &= 3\e^x \\
+  \mu(x) &= \e^{\ln3\diff{x}} = \e^{3x} \\
+  \e^{3x}\ddiff{v}{x}+3v\e^{3x} &= 3\e^{4x}
+\end{align*}
+\begin{align*}
+  \int\bigg(\e^{3x}\ddiff{v}{x}+3v\e^{3x}\bigg)\diff{x} &=
+    \int3\e^{4x}\diff{x} \\
+  v\e^{3x} &= \frac{3}{4}\e^{4x}+c \\
+  y^{3}\e^{3x} &= \frac{3}{4}\e^{4x}+c \\
+\end{align*}
+
 \subsubsection*{Exercise 27}
+Use the method discussed under ``Bernoulli Equations'' to solve:
+\begin{align*}
+  \ddiff{r}{\theta} &= \frac{r^2+2r\theta}{\theta^2} \\
+  &= \frac{r^2}{\theta^2}+\frac{2r}{\theta} \\
+  \ddiff{r}{\theta}-\frac{2r}{\theta} &= \frac{r^2}{\theta^2} \\
+  v &= r^{-1} \quad \ddiff{v}{\theta} = -\frac{1}{r^2}\ddiff{r}{\theta} \\
+  \frac{1}{r^2}\ddiff{r}{\theta}-\frac{1}{r^2}\frac{2r}{\theta} &=
+    \frac{1}{r^2}\frac{r^2}{\theta^2} \\
+  -\ddiff{v}{\theta}-\frac{2v}{\theta} &= \frac{1}{\theta^2} \\
+  \ddiff{v}{\theta}+\frac{2v}{\theta} &= -\frac{1}{\theta^2} \\
+  \mu(\theta) &= \e^{\int\frac{2}{\theta}\diff{\theta}} = \e^{2\ln(\theta)} =
+    \theta^2 \\
+  \theta^2\ddiff{v}{\theta}+2v\theta &= -1 \\
+  \int\bigg(\theta^2\ddiff{v}{\theta}+2v\theta\bigg)\diff{\theta} &=
+    \int-1\diff{\theta} \\
+  v\theta^2 &= -\theta+c \\
+  \frac{\theta^2}{r} &= -\theta+c
+\end{align*}
+
 \subsubsection*{Exercise 28}
+Use the method discussed under ``Bernoulli Equations'' to solve:
+\begin{align*}
+  \ddiff{y}{x}+y^3x+y &= 0 \\
+  \ddiff{y}{x}+y &= -xy^3 \\
+  v &= y^{-2} \quad \ddiff{v}{x} = -\frac{1}{2}y^{-3}\ddiff{y}{x} \\
+  \frac{1}{y^3}\ddiff{y}{x}+\frac{1}{y^3}y &= \frac{1}{y^3}-xy^3 \\
+  -2\ddiff{v}{x}+v &= -x
+\end{align*}
+\begin{align*}
+  \ddiff{v}{x}-\frac{v}{2} &= \frac{x}{2} \\
+  \mu(x) &= \e^{\int-\frac{1}{2}\diff{x}} = \e^{-\frac{x}{2}} \\
+  \e^{-\frac{x}{2}}\ddiff{v}{x}-\e^{-\frac{x}{2}}\frac{v}{2} &=
+    \frac{x\e^{\frac{x}{2}}}{2} \\
+  \int\bigg(\e^{-\frac{x}{2}}\ddiff{v}{x}-\frac{v\e^{-\frac{x}{2}}}{2}\bigg)
+    \diff{x} &= \int\frac{x\e^{-\frac{x}{2}}}{2}\diff{x} \\
+  v\e^{-\frac{x}{2}} &= -\e^{-\frac{x}{2}}(x-2)+c \\
+  \frac{1}{y^2} &= 2-x+c
+\end{align*}
 
 \begin{center}
   If you have any questions, comments, or concerns, please contact me at
