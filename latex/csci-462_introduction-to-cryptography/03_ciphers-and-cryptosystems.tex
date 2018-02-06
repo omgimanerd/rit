@@ -102,7 +102,7 @@ security but has fundamental problems, namely key distribution and key
 generation. Thus, the one-time pad is useful primarily only in low-bandwidth
 channels requiring very high security.
 
-\subsection*{Linear Feedback Shift Registers}
+\subsection*{Linear Feedback Shift Registers (LSFR)}
 Linear feedback shift registers are cascades of flip flops, sharing the same
 clock, whose input bit is a linear function of its previous state. The feedback
 portion computes fresh input bits by calculating the XOR of certain state bits.
@@ -115,6 +115,71 @@ Single linear feedback shift registers generate highly predictable output. If
 known, the feedback coefficients \( p_i \) can be found by solving a system of
 linear equations. Because of this, most stream ciphers use combinations of
 stream ciphers.
+
+\subsection*{RC4 Stream Cipher}
+The RC4 stream cipher was designed by Ron Rivest for RSA Data Security in 1987.
+The algorithm had been a trade secret, allegedly revealed on the Internet in
+1994. The design of RC4 avoids the use of LSFRs and is ideal for software
+implementation. RC4 generates a keystream (pseudorandom stream of bits), that is
+used for encryption by combining it with the plaintext using the XOR gate
+(similar to the Vernam cipher).
+\begin{itemize}
+  \item Input: key (typically from 40 to 2048 bits)
+  \item Heart: S-box - a permutation of all 256 possible bytes
+  \item Output: a pseudo-random keystream in bytes
+\end{itemize}
+The RC4 cipher has two components, a key scheduling algorithm (KSA) and a
+pseudo-random generation algorithm (PRGA).
+
+\subsection*{Block Ciphers}
+A stream cipher algorithm defines how to encrypt or decrypt arbitrary length
+messages. A block cipher algorithm does not define how to encrypt or decrypt
+arbitrary length messages. You can only encrypt or decrypt B bits, no more, no
+less. Arbitrary length message are handled by a separate algorithm called a
+block cipher mode of operation (ECB). A stream cipher's encryption and
+decryption operations are the same. A block cipher's encryption and decryption
+operations are different. To decrypt, the encryption operation must be run
+backwards. The encryption operation must be invertible.
+
+\subsubsection*{Block Cipher Primitives}
+Claude Shannon: there are two primitives operations with which strong encryption
+algorithms can be built.
+\begin{enumerate}
+  \item \textbf{Confusion:} An encryption operation where the relationship
+  between the key and ciphertext is obscured. Today, a common element for
+  achieving confusion is substitution, which is found in both AES and DES.
+  \item \textbf{Diffusion:} An encryption operation where the influence of one
+  plaintext symbol is spread of over many ciphertext symbols with the goal of
+  hiding statistical properties of the plaintext. A simple diffusion element is
+  the bit permuataion, which is frequently used within DES.
+\end{enumerate}
+Both operations by themselves cannot provide security. The idea is to
+concatenate confusion and diffusion elements to build so called product ciphers.
+Most of today's block ciphers are product ciphers as they consist of rounds
+which are applied repeatedly to the data. This can reach excellent diffusion, as
+changing one bit of the plaintext results on average in the change of half the
+output bits.
+
+\subsection*{Feistel Cipher (Feistel network)}
+Horst Feistel proposed the use of a cipher that alternates substitutions and
+permutations. This is a practical application of a proposal by Claude Shannon to
+develop a product cipher. A large set of block ciphers use the scheme (it is a
+design model from which many different block ciphers are derived), including the
+Data Encryption Standard (DES). DES is just one example of a Feistel Cipher.
+
+\subsubsection*{DES Facts}
+\begin{itemize}
+  \item Data Encryption Standard (DES) encrypts blocks of size 64 bit.
+  \item Developed by IBM based on the cipher Lucifer under the influence of the
+  National Security Agency (NSA).
+  \item Standardized in 1977 by the National Bureau of Standards (NBS), now
+  called the National Institute of Standards and Technology (NIST).
+  \item Most popular block cipher for most of the last 30 years.
+  \item By far the best studied symmetric algorithm.
+  \item Nowadays considered insecure due to the small key length of 56 bits.
+  \item 3DES is still a very secure cipher and widely used today.
+  \item Replaced by the Advanced Encryption Standard (AES) in 2000.
+\end{itemize}
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
