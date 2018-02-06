@@ -339,10 +339,74 @@ This equation is now a first order linear equation in \( v \).
 \end{align*}
 Using our initial value:
 \begin{align*}
-  \frac{1}{y^3} &= -\frac{9}{5x}+\frac{c}{x^6}
+  \frac{1}{y^3} &= -\frac{9}{5x}+\frac{c}{x^6} \\
   \frac{1}{1^3} &= -\frac{9}{5}+\frac{c}{1^6} \\
   c &= \frac{14}{5} \\
   \frac{1}{y^3} &= -\frac{9}{5}\frac{1}{x}+\frac{14}{5}\frac{1}{x^6}
+\end{align*}
+
+\section*{Exact Equations}
+Consider:
+\[ z = f(x,y) \quad \text{ vs } \quad y = f(x) \]
+\( z = f(x,y) \) is a surface in 3D, while \( y = f(x) \) is a curve in 2D.
+Recall that when differentiating \( y = f(x) \), \( \ddiff{y}{x} = f'(x) \)
+and \( \diff{y} = f'(x)\diff{x} \). To differentiate \( z = f(x,y) \) we need
+to find partial derivatives. These are computed by treating \( y \) or \( x \)
+as a constant and taking the derivative with respect to other variable.
+\begin{align*}
+  x &= f(x,y) = x^3y^4-2x^3y^5 \\
+  f_x &= \pdiff{f}{x} = 3x^2y^4-6x^2y^5 \\
+  f_y &= \pdiff{f}{y} = 4x^3y^3-10x^3y^4 \\
+  f_{xy} &= \frac{\partial^2f}{\partial{y}\partial{x}} = 12x^2y^3-30x^2y^4 \\
+  f_{yx} &= \frac{\partial^2f}{\partial{y}\partial{x}} = 12x^2y^3-30x^2y^4 \\
+\end{align*}
+We can also integrate \( f(x,y) \) with respect to \( x \) or with respect to
+\( y \).
+\[ \int xy^3\diff{y} = x\int y^2\diff{y} = \frac{xy^3}{3}+c \]
+\( \diff{y} \) tells us the variable of integration, with \( x \) being constant
+with respect to \( y \).
+\[ \int xy^2\diff{x} = \frac{x^2y^2}{2}+c \]
+\( \diff{x} \) tells us the variable of integration, with \( y \) being constant
+with respect to \( x \). \\
+Consider again \( z = f(x,y) \), the total differential is:
+\[ \diff{z} = \pdiff{f}{x}\diff{x}+\pdiff{f}{y}\diff{y} \]
+This is a first order equation. This equation is called an exact equation if:
+\[ \pdiff{}{y}\bigg[\pdiff{f}{x}\bigg] = \pdiff{}{x}\bigg[\pdiff{f}{y}\bigg] \]
+We can write this as:
+\[ M(x,y)\diff{x}+N(x,y)\diff{y} = 0 \]
+where \( M = \pdiff{f}{x} \) and \( N = \pdiff{f}{y} \). We want to find
+\( f(x,y) = c \), geometrically represented as a level curve, or a slice of the
+curve \( z = f(x,y) \). Initially:
+\[ f(x,y) = \int M(x,y)\diff{x}+h(y) \]
+We need to find \( h(y) \) by differentiating with respect to \( y \):
+\begin{align*}
+  \pdiff{}{y}\bigg[\int M(x,y)\diff{y}\bigg] &= h'(y) \\
+  \int h'(y)\diff{y} &= h(y)+c \\
+  f(x,y) &= \int M(x,y)\diff{x}+h(y)+c = 0
+\end{align*}
+
+\subsubsection*{Example}
+Solve the initial value problem given \( y(1) = 1 \):
+\begin{align*}
+  (x^2y^3)\diff{x}+(x^3y^3)\diff{y} &= 0 \\
+  M(x,y) &= x^2y^3 \quad N(x,y) = x^3y^2 \\
+  \pdiff{M}{y} &= 3x^2y^2 \quad \pdiff{N}{x} = 3x^2y^2
+\end{align*}
+From this, we can determine that it is an exact equation.
+\begin{align*}
+  f(x,y) &= \int x^2y^3\diff{x}+h(y) \\
+  &= \frac{x^3y^3}{3}+h(y) \\
+  \pdiff{f}{y} &= x^3y^2+h'(y) = N(x,y) = x^3y^2 \\
+  \therefore h'(y) &= 0 \\
+  h(y) &= k \\
+  f(x,y) &= c = \frac{x^3y^3}{3}+k \\
+  \frac{x^3y^3}{3} &= c
+\end{align*}
+Using our initial value:
+\begin{align*}
+  \frac{x^3y^3}{3} &= c \\
+  \frac{(1)(1)}{3} &= c \\
+  \frac{x^3y^3}{3} &= \frac{1}{3}
 \end{align*}
 
 \begin{center}
