@@ -18,7 +18,7 @@ objects to perform certain operations through a set of access policies.
 
 \subsection*{Access Control Policies}
 \begin{itemize}
-  \item Discretionary Access Control (DAC): based on requstor identity and
+  \item Discretionary Access Control (DAC): based on requestor identity and
   access rules stating what requestors are allowed or not allowed to do.
   \item Mandatory Access Control (MAC): based on comparing security labels
   with security clearances.
@@ -50,6 +50,35 @@ object's list of access rights to subjects. Each row in the matrix is a
 capabilities list that determines each subject's list of capabilities for each
 object.
 
+\subsection*{DAC Overview}
+With discretionary access control, entities are able to access resources based
+on some access control matrix. Each entry in the access matrix controls a
+subject's permission to access some object. The UNIX file access control uses
+discretionary access control by allowing file users, various groups, or the
+public to read, write, or execute the file based on the permission bits set for
+the file.
+
+\subsection*{MAC Overview}
+The mandatory acccess control model is sometimes known as the non-discretionary
+model. It works with multi-level security and is suited for handling data with
+multiple sensitivity levels. It permits simultaneous data access by users with
+different clearance levels and need-to-know, while prevent users from obtaining
+access to information for which they lack authorization.
+\begin{center}
+  \begin{tabular}{|c|c|c|}
+    \hline
+    Clearance Groups & Read Access & Write Access \\ \hline
+    Top Secret & \checkmark & \checkmark \\ \hline
+    Secret & \checkmark & \checkmark \\ \hline
+    Confidential & \checkmark & \\ \hline
+    Public & \checkmark & \\
+    \hline
+  \end{tabular}
+\end{center}
+A lattice is often used to categorize different objects into categories under a
+clearance level. If a subject's access label does not encompass the object's
+label and category, then the subject is denied access.
+
 \subsection*{RBAC Overview}
 \begin{itemize}
   \item A subject has access to an object based on an assigned role.
@@ -68,7 +97,7 @@ permission.
 
 \subsection*{ABAC Overview}
 \begin{itemize}
-  \item CAn define authorizations that express conditions on properties of both
+  \item Can define authorizations that express conditions on properties of both
   the resource and the subject.
   \item Strength is its flexibility and expressive power.
   \item The main obstacle to its adoption in real systems is its performance

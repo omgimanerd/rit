@@ -151,7 +151,8 @@ algorithms can be built.
   \item \textbf{Diffusion:} An encryption operation where the influence of one
   plaintext symbol is spread of over many ciphertext symbols with the goal of
   hiding statistical properties of the plaintext. A simple diffusion element is
-  the bit permuataion, which is frequently used within DES.
+  the bit permutation, which is frequently used within DES. This obscures the
+  relationship between the ciphertext and the key.
 \end{enumerate}
 Both operations by themselves cannot provide security. The idea is to
 concatenate confusion and diffusion elements to build so called product ciphers.
@@ -167,7 +168,8 @@ develop a product cipher. A large set of block ciphers use the scheme (it is a
 design model from which many different block ciphers are derived), including the
 Data Encryption Standard (DES). DES is just one example of a Feistel Cipher.
 
-\subsubsection*{DES Facts}
+\subsection*{DES Algorithm}
+DES Facts:
 \begin{itemize}
   \item Data Encryption Standard (DES) encrypts blocks of size 64 bit.
   \item Developed by IBM based on the cipher Lucifer under the influence of the
@@ -177,9 +179,16 @@ Data Encryption Standard (DES). DES is just one example of a Feistel Cipher.
   \item Most popular block cipher for most of the last 30 years.
   \item By far the best studied symmetric algorithm.
   \item Nowadays considered insecure due to the small key length of 56 bits.
-  \item 3DES is still a very secure cipher and widely used today.
   \item Replaced by the Advanced Encryption Standard (AES) in 2000.
 \end{itemize}
+The DES algorithm encrypts 64-bit blocks using a 56-bit key. It is a symmetric
+cipher, so it uses the same key for encryption and decryption. It uses 16 rounds
+which all perform the same operation. A different subkey derived from the main
+key is used in each round. DES is quite robust against known analytical attacks.
+In practice, it is very difficult to break the cipher with linear or analytical
+cryptanalysis. By encrypting with DES three times in a row, triple DES (3DES)
+was created, against which no practical attack is currently known. 3DES is still
+widely in use today.
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
