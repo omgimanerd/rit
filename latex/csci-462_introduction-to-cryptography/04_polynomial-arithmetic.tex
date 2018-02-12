@@ -1,0 +1,43 @@
+\documentclass{math}
+
+\title{Introduction to Cryptography}
+\author{Alvin Lin}
+\date{January 2018 - May 2018}
+
+\begin{document}
+
+\maketitle
+
+\section*{Polynomial Arithmetic}
+
+\subsection*{Finite Fields of the Form \( GF(p^m) \)}
+\textbf{Galois' Theorem:} An order-\textit{n} finite field exists if and only if
+\( n = p^m \) for some prime \( p \) and some positive integer \( m \).
+\begin{itemize}
+  \item \( p \) is called the characteristic of this finite field.
+  \item The order of a finite field is its number of elements.
+  \item We use \( GF(p^m) \) or \( \mathbb{F}_{p^m} \) to represent the finite
+  field of order \( p^m \).
+  \item An order-\textit{n} finite field is unique (up to isomorphism).
+  \item Addition and multiplication module a prime number \( p \) form a finite
+  field \( \Z_p = GF(p) \).
+  \item If \( m = 1 \), then \( \Z_p = GF(p) \)
+  \item One way to construct a finite field with \( m > 1 \) is using the
+  polynomial basis. The field is constructed as a set of \( p^m \) polynomials
+  along with two polynomial operations.
+\end{itemize}
+
+\subsection*{Polynomial Arithmetic}
+A polynomial \( f(x) \) is a mathematical expression of the form:
+\[ a_nx^n+a_{n-1}x^{n-1}+\dots+a_0 \]
+The highest exponent of \( x \) is the degree of the polynomial. \( a_n,
+a_{n-1}, \dots, a_0 \) are called coefficients. We can add, subtract, multiply,
+and divide polynomials.
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
