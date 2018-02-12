@@ -79,6 +79,22 @@ A lattice is often used to categorize different objects into categories under a
 clearance level. If a subject's access label does not encompass the object's
 label and category, then the subject is denied access.
 
+\subsubsection*{Multi-level Security Models}
+Bell-LaPadula:
+\begin{itemize}
+  \item Designed to protect confidentiality
+  \item Top secret, Secret, Confidential, Public
+  \item No Read Down, No Write Down
+  \item Trusted subjects are allowed to violate insert, update, and delete MACs
+\end{itemize}
+Biba:
+\begin{itemize}
+  \item Designed to protect integrity
+  \item Top secret, Secret, Confidential, Public
+  \item No Read Down, No Write Up
+  \item Trusted subjects are allowed to violate insert, update, and delete MACs
+\end{itemize}
+
 \subsection*{RBAC Overview}
 \begin{itemize}
   \item A subject has access to an object based on an assigned role.

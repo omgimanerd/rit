@@ -1,0 +1,51 @@
+\documentclass{math}
+
+\usepackage{tikz}
+
+\title{University Physics 2}
+\author{Alvin Lin}
+\date{January 2018 - May 2018}
+
+\begin{document}
+
+\maketitle
+
+\section*{Electric Potential}
+Conservation of Energy:
+\[ \Delta K+\Delta U = W_{ext} \]
+The change in potential energy plus the change in kinetic energy is equal to
+the external work by non-conservative forces. If there is no outside work:
+\begin{align*}
+  \Delta K+\Delta U &= 0 \\
+  E_i &= E_f \\
+  K_i+U_i &= K_f+U_f
+\end{align*}
+\( K \) is usually \( \frac{1}{2}mv^2 \) while \( U \) depends on the specifics
+of the problem. Also recall the formula for work:
+\[ W = \vec{F}\cdot\Delta\vec{r} \]
+With many different forces:
+\[ W = \sum\vec{F}\cdot\Delta\vec{r_i} \]
+\( \vec{F} \) will generally not be constant, which requires us to integrate:
+\[ W = \int_{i}^{f}\vec{F}\cdot\diff{\vec{r}} \]
+If a potential energy is doing the work:
+\[ W = -\Delta U_{internal} \]
+For electrial fields, we will start with:
+\[ W = \int\vec{F}\cdot\diff{r} \]
+and plug in forces from electric fields.
+\begin{align*}
+  W &= \int\vec{F}\cdot\diff{\vec{r}} \\
+  &= \int(q\vec{E})\cdot\diff{\vec{r}} \\
+  &= qE\Delta x \\
+  \Delta U &= -W = -qE\Delta x \\
+  \text{Electric potential} &= \Delta V = \frac{\Delta U}{q} = -E\Delta x
+\end{align*}
+Electric potential is measured in volts, where one volt is equal to one joule
+per Coulomb.
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
