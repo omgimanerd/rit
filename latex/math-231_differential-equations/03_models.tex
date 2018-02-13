@@ -1,0 +1,91 @@
+\documentclass{math}
+
+\usepackage{circuitikz}
+
+\title{Differential Equations}
+\author{Alvin Lin}
+\date{January 2018 - May 2018}
+
+\begin{document}
+
+\maketitle
+
+\section*{Circuits}
+Consider an RL series circuit:
+\begin{center}
+  \begin{circuitikz}
+    \draw (0,0) to[battery, l=voltage source (volts)] (0,4)
+      to[resistor, l=resistance in \( \Omega \) (ohms)] (4,4) -- (4,0)
+      to[inductor, l=stores current \( i(t) \) (henrys)] (0,0);
+  \end{circuitikz}
+\end{center}
+We want to find the current at time \( t \). The current \( i \) is in amperes.
+According to \textbf{Kirchhoff's Law}, the sum of the the voltage drops across
+the inductor and the resistor is equal to the impressed voltage \( E(t) \).
+The governing equation is:
+\[ L\ddiff{i}{t}+Ri = E(t) \]
+where \( E_L = L\ddiff{i}{t} \) is the voltage drop across the inductor and
+\( Ri \) is the voltage drop across the resistor. This is a first order linear
+equation.
+
+\subsection*{Example}
+A 12-volt battery is connected to a series circuit where the inductance is
+\( \frac{1}{2} \)H and the resistance is \( 10\Omega \). Find the current at
+time \( t \) if the initial current is 0. Find the steady state current.
+\begin{align*}
+  L\ddiff{i}{t}+Ri &= E(t) \\
+  \ddiff{i}{t}+\frac{R}{L}i &= \frac{E(t)}{L} \\
+  E &= 12V \quad L = \frac{1}{2} \quad R = 10\Omega \\
+  \ddiff{i}{t}+\frac{10}{\frac{1}{2}}i &= \frac{12}{\frac{1}{2}} \\
+  \ddiff{i}{t}+20i &= 24 \\
+  \mu(t) &= \e^{\int20\diff{t}} = \e^{20t} \\
+  \e^{20t}\ddiff{i}{t}+20i\e^{20t} &= 24\e^{20t} \\
+  \int\bigg(\e^{20t}\ddiff{i}{t}+20i\e^{20t}\bigg)\diff{t} &=
+    \int24\e^{20t}\diff{t} \\
+  \e^{20t}i &= \frac{24}{20}\e^{20t}+c \\
+  i(t) &= \frac{6}{5}+c\e^{-20t}
+\end{align*}
+Initially, \( i(0) = 0 \):
+\begin{align*}
+  0 &= \frac{6}{5}+c \\
+  c &= -\frac{6}{5} \\
+  i(t) &= \frac{6}{5}-\frac{6}{5}\e^{-20t} \\
+  \lim_{t\to\infty}\frac{6}{5}-\frac{6}{5}\e^{-20t} &= \frac{6}{5} \\
+\end{align*}
+\( \frac{6}{5}A \) is the steady state and \( -\frac{6}{5}\e^{20t} \) is the
+transient term.
+
+\subsection*{Example}
+An electromagnet is modeled as an RL circuit while it is being energized with
+a voltage source. If the inductance is 10H and the resistor is \( 30\Omega \),
+how long does it take a constant voltage to energize the electromagnet to
+80\% of its final value?
+\begin{align*}
+  10\ddiff{i}{t}+3i &= V \\
+  \ddiff{i}{t}+\frac{3}{10}i &= \frac{V}{10} \\
+  \mu(t) &= \e^{\int\frac{3}{10}\diff{t}} = \e^{\frac{3}{10}t} \\
+  \e^{\frac{3}{10}t}\ddiff{i}{t}+\frac{3}{10}\e^{\frac{3}{10}t}i &=
+    \frac{1}{10}\e^{\frac{3}{10}t}V \\
+  \int\bigg(\e^{\frac{3}{10}t}\ddiff{i}{t}+\frac{3}{10}\e^{\frac{3}{10}t}i\bigg)
+    \diff{t} &= \int\frac{1}{10}\e^{\frac{3}{10}t}V\diff{t} \\
+  \e^{\frac{3}{10}t}i &= \frac{1}{10}\frac{10}{3}\e^{\frac{3}{10}t}+c \\
+  i &= \frac{V}{3}+c\e^{-\frac{3}{10}t} \\
+\end{align*}
+Using \( i(0) = 0 \):
+\begin{align*}
+  0 &= \frac{V}{3}+c \\
+  c &= -\frac{V}{3} \\
+  i(t) &= \frac{V}{3}-\frac{V}{3}\e^{\frac{3}{10}t} \\
+  0.8 &= 1-\e^{\frac{-3}{10}t} \\
+  -0.2 &= -\e^{-\frac{3}{10}t} \\
+  \ln(0.2) &= -\frac{3}{10}t \\
+  t &\approx 5.4
+\end{align*}
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
