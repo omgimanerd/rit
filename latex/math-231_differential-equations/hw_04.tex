@@ -1,0 +1,218 @@
+\documentclass{math}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.13}
+
+\geometry{letterpaper, margin=0.5in}
+
+\title{Differential Equations: Homework 4}
+\author{Alvin Lin}
+\date{January 2018 - May 2018}
+
+\begin{document}
+
+\maketitle
+\clearpage
+
+\section*{Section 2.4}
+
+\subsubsection*{Exercise 1}
+Classify the equation as separable, linear, exact, or none of these. Notice that
+some equations may have more than one classification.
+\begin{align*}
+  (x^2y+x^4\cos(x))\diff{x}-x^3\diff{y} &= 0 \\
+  M(x,y) &= x^2y+x^4\cos(x) \quad N(x,y) = -x^3 \\
+  \pdiff{M}{y} &= x^2 \quad \pdiff{N}{x} = -3x^2 \\
+  \pdiff{M}{y} &\ne \pdiff{N}{x}
+\end{align*}
+Not an exact equation.
+\begin{align*}
+  (x^2y+x^4\cos(x))\diff{x}-x^3\diff{y} &= 0 \\
+  x^3\diff{y} &= (x^2y+x^4\cos(x))\diff{x} \\
+  \ddiff{y}{x} &= \frac{x^2y+x^4\cos(x)}{x^3} \\
+  \ddiff{y}{x}-\frac{y}{x} &= x\cos(x)
+\end{align*}
+Linear.
+
+\subsubsection*{Exercise 3}
+Classify the equation as separable, linear, exact, or none of these. Notice that
+some equations may have more than one classification.
+\begin{align*}
+  \sqrt{-2y-y^2}\diff{x}+x\diff{y} &= 0 \\
+  M(x,y) &= \sqrt{-2y-y^2} \quad N(x,y) = x \\
+  \pdiff{M}{y} &= (-2-2y)\frac{1}{\sqrt{-2y-y^2}} \\
+  \pdiff{N}{x} &= 1 \\
+  \pdiff{M}{y} &\ne \pdiff{N}{x}
+\end{align*}
+Not an exact equation.
+\begin{align*}
+  \sqrt{-2y-y^2}\diff{x}+x\diff{y} &= 0 \\
+  \sqrt{-2y-y^2}\diff{x} &= -x\diff{y} \\
+  -\frac{1}{x}\diff{x} &= \frac{1}{\sqrt{-2y-y^2}}\diff{y}
+\end{align*}
+Separable.
+
+\subsubsection*{Exercise 5}
+Classify the equation as separable, linear, exact, or none of these. Notice that
+some equations may have more than one classification.
+\begin{align*}
+  xy\diff{x}+\diff{y} &= 0 \\
+  M(x,y) &= xy \quad N(x,y) = 1 \\
+  \pdiff{M}{y} &= x \quad \pdiff{N}{x} = 0 \\
+  \pdiff{M}{y} &\ne \pdiff{N}{x}
+\end{align*}
+Not an exact equation.
+\begin{align*}
+  xy\diff{x}+\diff{y} &= 0 \\
+  x\diff{x} &= -\frac{1}{y}\diff{y}
+\end{align*}
+Separable.
+
+\subsubsection*{Exercise 7}
+Classify the equation as separable, linear, exact, or none of these. Notice that
+some equations may have more than one classification.
+\begin{align*}
+  \bigg[2x+y\cos(xy)\bigg]\diff{x}+\bigg[x\cos(xy)-2y\bigg]\diff{y} &= 0 \\
+  M(x,y) = 2x+y\cos(xy) \quad N(x,y) &= x\cos(xy)-2y \\
+  \pdiff{M}{y} = \cos(xy)-xy\sin(xy) \quad
+    \pdiff{N}{x} &= \cos(xy)-xy\sin(xy) \\
+  \pdiff{M}{y} &= \pdiff{N}{x}
+\end{align*}
+This is an exact equation. Not linear or separable.
+
+\subsubsection*{Exercise 9}
+Determine whether the equation is exact. If it is, then solve it.
+\begin{align*}
+  (2xy+3)\diff{x}+(x^2-1)\diff{y} &= 0 \\
+  M(x,y) = 2xy+3 \quad N(x,y) &= x^2-1 \\
+  \pdiff{M}{y} = 2x \quad \pdiff{N}{x} &= 2x \\
+  \pdiff{M}{y} &= \pdiff{N}{x}
+\end{align*}
+This is an exact equation.
+\begin{align*}
+  f(x,y) &= \int M(x,y)\diff{x}+h(y) \\
+  &= \int(2xy+3)\diff{x}+h(y) \\
+  &= x^2y+2x+h(y) \\
+  \pdiff{f}{y} &= x^2+h'(y) = N(x,y) \\
+  h'(y) &= -1 \\
+  h(y) &= -y+c \\
+  f(x,y) &= x^2y+2x-y-c
+\end{align*}
+
+\subsubsection*{Exercise 11}
+Determine whether the equation is exact. If it is, then solve it.
+\begin{align*}
+  (\e^x\sin(y)-3x^2)\diff{x}+(\e^x\cos(y)+\frac{y^{-2/3}}{3})\diff{y} &= 0 \\
+  M(x,y) = \e^x\sin(y)-3x^2 \quad N(x,y) &= \e^x\cos(y)+\frac{y^{-2/3}}{3} \\
+  \pdiff{M}{y} = \e^x\cos(y) \quad \pdiff{N}{y} &= \e^x\cos(y) \\
+  \pdiff{M}{y} &= \pdiff{N}{x}
+\end{align*}
+This is an exact equation.
+\begin{align*}
+  f(x,y) &= \int M(x,y)\diff{x}+h(y) \\
+  &= \int(\e^x\sin(y)-3x^2)\diff{x}+h(y) \\
+  &= \e^x\sin(y)-x^3+h(y) \\
+  \pdiff{f}{y} &= \e^x\cos(y)+h'(y) = N(x,y) \\
+  h'(y) &= \frac{y^{-2/3}}{3} \\
+  h(y) &= -\frac{3}{2}\frac{1}{3}y^{\frac{1}{3}}+c =
+    -\frac{1}{2}y^{\frac{1}{3}}+c \\
+  f(x,y) &= \e^x\sin(y)-x^3-\frac{1}{2}y^{\frac{1}{3}}+c
+\end{align*}
+
+\subsubsection*{Exercise 13}
+Determine whether the equation is exact. If it is, then solve it.
+\begin{align*}
+  \e^t(y-t)\diff{t}+(1+\e^t)\diff{y} &= 0 \\
+  M(t,y) = \e^t(y-t) \quad N(t,y) &= 1+\e^t \\
+  \pdiff{M}{y} = \e^t \quad \pdiff{N}{t} &= \e^t
+\end{align*}
+This is exactly an equation.
+\begin{align*}
+  f(t,y) &= \int M(x,y)\diff{t}+h(y) \\
+  &= \int(\e^t(y-t))\diff{t}+h(y) \\
+  &= \int(y\e^t-t\e^t)\diff{t}+h(y) \\
+  &= y\e^t-t\e^t+\e^t+h(y) \\
+  \pdiff{f}{y} &= \e^t+h'(y) = N(t,y) \\
+  h'(y) &= 1 \\
+  h(y) &= y+c \\
+  f(t,y) &= y\e^t-t\e^t+\e^t+y+c \\
+\end{align*}
+
+\subsubsection*{Exercise 15}
+Determine whether the equation is exact. If it is, then solve it.
+\begin{align*}
+  \cos\theta\diff{r}-(r\sin\theta-\e^\theta)\diff\theta &= 0 \\
+  M(r,\theta) = \cos\theta \quad N(r,\theta) &= -r\sin\theta+\e^\theta \\
+  \pdiff{M}{\theta} = -\sin\theta \quad \pdiff{N}{r} &= -\sin\theta \\
+\end{align*}
+This be an exact equation.
+\begin{align*}
+  f(r,\theta) &= \int M(r,\theta)\diff{r}+h(\theta) \\
+  &= \int\cos\theta\diff{r}+h(\theta) \\
+  &= r\cos\theta+h(\theta) \\
+  \pdiff{f}{\theta} &= -r\sin\theta+h'(\theta) = N(r,\theta) \\
+  h'(\theta) &= \e^\theta \\
+  h(\theta) &= \e^\theta \\
+  f(r,\theta) &= r\cos\theta+\e^\theta
+\end{align*}
+
+\subsubsection*{Exercise 21}
+Solve the initial value problem given \( y(1) = \pi \).
+\begin{align*}
+  (\frac{1}{x}+2y^2x)\diff{x}+(2yx^2-\cos(y))\diff{y} &= 0 \\
+  M(x,y) = \frac{1}{x}+2y^2x \quad N(x,y) &= 2yx^2-\cos(y) \\
+  \pdiff{M}{y} = 4xy \quad \pdiff{N}{x} &= 4xy
+\end{align*}
+This is an equation of the exact variety.
+\begin{align*}
+  f(x,y) &= \int M(x,y)\diff{x}+h(y) \\
+  &= \int(\frac{1}{x}+2y^2x)\diff{x}+h(y) \\
+  &= \ln(x)+y^2x^2+h(y) \\
+  \pdiff{f}{y} &= 2x^2y+h'(y) = N(x,y) \\
+  h'(y) &= -\cos(y) \\
+  h(y) &= -\sin(y)+k \\
+  f(x,y) &= k = \ln(x)+y^2x^2-\sin(y)+c \\
+  &= \ln(1)+\pi^21^2-\sin(\pi) = \pi^2 \\
+  \pi^2 &= \ln(x)+y^2x^2-\sin(y)
+\end{align*}
+
+\subsubsection*{Exercise 23}
+Solve the initial value problem given \( y(0) = -1 \).
+\begin{align*}
+  (\e^ty+t\e^ty)\diff{t}+(t\e^t+2)\diff{y} &= 0 \\
+  \frac{\e^t(1+t)}{t\e^t+2}\diff{t} &= -\frac{1}{y}\diff{y} \\
+  \int\frac{\e^t(1+t)}{t\e^t+2}\diff{t} &= \int-\frac{1}{y}\diff{y} \\
+  \ln(t\e^t+2) &= -\ln(y)+c \\
+  t\e^t+2 &= \frac{1}{y}\e^c \\
+  y &= \frac{\e^c}{t\e^t+2} \\
+  -1 &= \frac{\e^c}{0+2} \\
+  -2 &= \e^c \\
+\end{align*}
+What the fuck happened here?
+
+\subsubsection*{Exercise 24}
+Solve the initial value prolem given \( x(1) = 1 \).
+\begin{align*}
+  (\e^tx+1)\diff{t}+(\e^t-1)\diff{x} &= 0 \\
+  M(t,x) = \e^tx+1 \quad N(t,x) &= \e^t-1 \\
+  \pdiff{M}{x} = \e^t \quad \pdiff{N}{t} &= \e^t \\
+\end{align*}
+This is an exact equation.
+\begin{align*}
+  f(t,x) &= \int M(t,x)\diff{t}+h(x) \\
+  &= \int(\e^tx+1)\diff{t}+h(x) \\
+  &= x\e^t+t+h(x) \\
+  \pdiff{f}{x} &= \e^t+h'(x) = N(t,x) \\
+  h'(x) &= -1 \\
+  h(x) &= -x+c \\
+  f(t,x) &= k = x\e^t+t-x \\
+  k &= 1\e^1+1-1 = \e \\
+  \e &= x\e^t+t-x
+\end{align*}
+
+\begin{center}
+  If you have any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
