@@ -1,0 +1,185 @@
+\documentclass{math}
+
+\usepackage{tikz}
+
+\title{Differential Equations}
+\author{Alvin Lin}
+\date{January 2018 - May 2018}
+
+\begin{document}
+
+\maketitle
+
+\section*{Homogeneous Linear Equations}
+Consider:
+\[ ay''+by'+cy = f(t) \]
+where \( a,b,c \) are constants and \( a \ne 0 \). If \( f(t) = 0 \):
+\[ ay''+by'+cy = 0 \]
+And this is a second order linear homogeneous equation. Consider \( y(t) =
+\e^{rt} \) is a solution:
+\begin{align*}
+  y'(t) &= r\e^{rt} \\
+  y''(t) &= r^2\e^{rt}
+\end{align*}
+If we substitute:
+\begin{align*}
+  ar^2\e^{rt}+br\e^{rt}+c\e^{rt} &= 0 \\
+  \e^{rt}\bigg[ar^2+br+c\bigg] &= 0
+\end{align*}
+To satisfy this equation, we have \( ar^2+br+c = 0 \). This is called the
+\textbf{characteristic equation} or the \textbf{auxiliary equation}. We can
+determine the roots of \( ar^2+bc+r = 0 \) using the quadratic formula.
+\[ r = \frac{-b\pm\sqrt{b^2-4ac}}{2a} \]
+Using this equation, there are three cases:
+\begin{enumerate}
+  \item When \( b^2-4ac > 0 \), the roots are real and distinct.
+  \item When \( b^2-4ac = 0 \), the root \( r = \frac{-b}{2a} \) is a repeated
+  root.
+  \item When \( b^2-4ac < 0 \), the roots are complex conjugates \( r = \alpha
+  \pm i\beta \) where \( i = \sqrt{-1} \).
+\end{enumerate}
+
+\subsection*{Case 1: Real and Distinct Roots}
+We can use the roots to solve the differential equation.
+\begin{align*}
+  y''+y'-2y &= 0 \\
+  r^2+r-2 &= 0 \\
+  (r+2)(r-2) &= 2 \\
+  r_1 = -2 \quad r_1 &= 1
+\end{align*}
+Using this characteristic equation, we can determine \( y_1 = \e^{-2t} \) and
+\( y_2 = \e^t \). We can verify \( y_1 \) and \( y_2 \) are both solutions.
+\begin{align*}
+  y_1 &= \e^{-2t} &\quad y_2 &= \e^t \\
+  y_1' &= -2\e^{-2t} &\quad y_2' &= \e^t \\
+  y_1'' &= 4\e^{-2t} &\quad y_2'' &= \e^t
+\end{align*}
+\begin{align*}
+  y''+y'-2y &= 0 \\
+  4\e^{-2t}-2\e^{-2t}-2\e^{-2t} &= 0 \\
+  \e^t+\e^t-2\e^t &= 0
+\end{align*}
+Furthermore, \( y = y_1+y_2 \) also satisfies the equation.
+\begin{align*}
+  y &= \e^{-2t}+\e^t \\
+  y' &= -2\e^{-2t}+\e^t \\
+  y'' &= 4\e^{-2t}+\e^t \\
+  4\e^{-2t}+\e^t-2\e^{-2t}-2(\e^{-2t}+\e^t) &= 0
+\end{align*}
+Also, note that \( y = c_1\e^{r_1t}+c_2\e^{r_2t} \) also satisfies
+\[ ay''+by'+cy = 0 \]
+This is a general solution since it contains two arbitrary constants. If we
+are given initial conditions \( y(x_0) = y_0 \) and \( y'(x_0) = y_1 \), then
+we can solve for \( c_1 \) and \( c_2 \) and treat it as an initial value
+problem. For example:
+\begin{gather*}
+  y''+y' = 0 \\
+  y(0) = 2 \quad y'(0) = 1
+\end{gather*}
+The characteristic equation is \( r^2+r = 0 \), giving us roots \( r_1 = 0 \)
+and \( r_2 = -1 \). Thus we have the general solution
+\[ y = c_1\e^{0t}+c_2\e^{-t} = c_1+c_2\e^{-t} \]
+We can use our initial conditions to solve for an explicit solution:
+\begin{align*}
+  y &= c_1+c_2\e^{-t} \\
+  y' &= -c_2\e^{-t} \\
+  y(0) &= 2 = c_1+c_2 \\
+  y'(0) &= 1 = -c_2 \\
+  c_2 &= -1 \quad c_1 = 3 \\
+  y &= 3-\e^{-t}
+\end{align*}
+
+\subsubsection*{Example}
+Solve the initial value problem given \( y(0) = 0 \) and \( y'(0) = 1 \):
+\begin{align*}
+  y''+2y'-y &= 0 \\
+  r^2+2r-1 &= 0 \\
+  r &= \frac{-2\pm\sqrt{4-4(-1)}}{2} \\
+  &= -1\pm\sqrt{2} \\
+  y &= c_1\e^{(-1+\sqrt{2})t}+c_2\e^{(-1-\sqrt{2})t} \\
+  y' &= (-1+\sqrt{2})c_1\e^{(-1+\sqrt{2})t}+
+    (-1-\sqrt{2})c_2\e^{(-1-\sqrt{2})t} \\
+  y(0) &= 0 = c_1+c_2 \\
+  y'(0) &= 1 = (-1+\sqrt{2})c_1+(-2-\sqrt{2})c_2 \\
+  c_1 &= \frac{1}{2\sqrt{2}} \quad c_2 = -\frac{1}{2\sqrt{2}}
+\end{align*}
+
+\subsubsection*{Existence and Uniqueness}
+If we have existence and uniqueness for the solution to the initial value
+problem:
+\begin{gather*}
+  ay''+by'+cy = 0 \\
+  y(x_0) = y_0 \\
+  y'(x_0) = y_1
+\end{gather*}
+then the solution is valid of \( (-\infty,\infty) \). If \( y_1(t) \) and
+\( y_2(t) \) are any two solutions that are linearly independent over
+\( (-\infty,\infty) \), then \( y = c_1y_1+c_2y_2 \) form a fundamental set of
+solutions. If two functions \( y_1 \) and \( y_2 \) exist such that one is not
+a constant multiple of the other, then \( y_1 \) and \( y_2 \) are linearly
+independent. For example, \( y_1 = \cos(x) \) and \( y_2 = \sin(x) \) are
+linearly independent. \( y_1 = \e^{2t} \) and \( y_2 = \e^t \) are also
+linearly independent. Consider the Wronskian, \( W \):
+\[ W(y_1,y_2) = \begin{vmatrix}
+  y_1 & y_2 \\
+  y_1' & y_2'
+\end{vmatrix} = y_1y_2'-y_2y_1' \]
+If \( W = 0 \), then \( y_1 \) and \( y_2 \) are linearly dependent. Otherwise,
+\( y_1 \) and \( y_2 \) are linearly independent.
+
+\subsubsection*{Example}
+\begin{align*}
+  y_1 &= \cos(x) \\
+  y_2 &= \sin(x) \\
+  W(\cos(x),\sin(x)) &= \begin{vmatrix}
+    \cos(x) & \sin(x) \\
+    -\sin(x) & \cos(x)
+  \end{vmatrix} \\
+  &= \cos^2(x)-(-\sin^2(x)) = 1 \ne 0
+\end{align*}
+
+\subsubsection*{Example}
+\begin{align*}
+  y_1 &= 3\e^{2t} \\
+  y_2 &= \e^{2t} \\
+  W(y_1,y_2) &= \begin{vmatrix}
+    3\e^{2t} & \e^{2t} \\
+    6\e^{2t} & 2\e^{2t}
+  \end{vmatrix} \\
+  &= 6\e^{2t}-6\e^{2t} = 0
+\end{align*}
+
+\subsection*{Case 2: Real and Repeated Roots}
+If the roots of the auxiliary equation are real and repeated (\( r =
+\frac{-b}{2a} \)), then \( y = c_1\e^{rt}+c_2\e^{rt} \). Note that
+\( y_1 = c_1\e^{rt} \) and \( y_2 = c_2\e^{rt} \) will be linearly dependent.
+We want another linearly independent solution to
+\[ ay''+by'+cy = 0 \]
+If \( y_1 = c_1\e^{rt} \), then \( y_2 = c_2t\e^{rt} \) gives a second solution
+when \( y_1 \) and \( y_2 \) are linearly independent. We append a factor of
+\( t \) to \( y_1 = c_1\e^{rt} \). For this case, our general solution is of
+the form
+\[ y = c_1\e^{rt}+c_2t\e^{rt} \]
+
+\subsubsection*{Example}
+Solve the initial value problem given \( y(0) = 1 \) and \( y'(0) = 3 \):
+\begin{align*}
+  y''+10y'+25 &= 0 \\
+  r^2+10r+25 &= 0 \\
+  (r+5) &= 0 \\
+  r &= -5 \\
+  y &= c_1\e^{-5t}+c_2t\e^{-5t} \\
+  y(0) &= 1 = c_1 \\
+  y' &= -5c_1\e^{-5t}+c_2\e^{-5t}-5c_2t\e^{-5t} \\
+  y'(0) &= 3 = -5c_1+c_2 \\
+  c_2 &= 8 \\
+  y &= \e^{-5t}+8t\e^{-5t}
+\end{align*}
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
