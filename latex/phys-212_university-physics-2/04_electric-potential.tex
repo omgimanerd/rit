@@ -114,7 +114,22 @@ to break it into its components. The voltage is also proportional to
 \( \frac{1}{r} \) instead of \( \frac{1}{r^2} \).
 
 \subsection*{Finding the Electric Field from Voltage}
-\[ \vec{E} = -\bigg(\pdiff{V}{x}\i+\pdiff{V}{y}\j+\pdiff{V}{z}\k\bigg) \]
+We know the following:
+\[ V_b-V_a = -\int_{a}^{b}\vec{E}\cdot\diff{\vec{r}} \]
+Also by definition:
+\[ V_b-V_a = \int_{a}^{b}\diff{V} \]
+Therefore:
+\begin{align*}
+  \int_{a}^{b}\diff{V} &= -\int_{a}^{b}\vec{E}\cdot\diff{\vec{r}} \\
+  \diff{V} &= -\vec{E}\cdot\diff{\vec{r}} \\
+  \diff{r} &= \diff{x}\i+\diff{y}\j+\diff{z}\k \\
+  -\diff{V} &= E_x\diff{x}\i+E_y\diff{y}\j+E_z\diff{z}\k \\
+  E_x &= -\pdiff{V}{x} \quad E_y = -\pdiff{V}{y} \quad E_z -\pdiff{V}{z} \\
+  \vec{E} &= E_x\i+E_y\j+E_z\k \\
+  &= -\bigg(\pdiff{V}{x}\i+\pdiff{V}{y}\j+\pdiff{V}{z}\k\bigg) \\
+  &= -\triangledown V
+\end{align*}
+Thus the electric field is just the gradient of the voltage.
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
