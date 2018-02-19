@@ -62,6 +62,52 @@ lines are closest together.
   &= -\int_{i}^{f}\vec{E}\cdot\diff{\vec{r}}
 \end{align*}
 
+\subsection*{Voltage Difference for a Point Charge}
+If we ask for \( V_r \), this means with respect to infinity, where \( V(\infty)
+= 0 \).
+\begin{align*}
+  \Delta V &= V_{\infty}-V_r = -\int_{r}^{\infty}\vec{E}\cdot\diff{\vec{r}} \\
+  V_r &= \int_{r}^{\infty}\vec{E}\cdot\diff{\vec{r}} \\
+  \diff{\vec{r}} &= \diff{r'}\hat{r} \\
+  V_r &= \int_{r}^{\infty}\frac{kq}{r'^2}\diff{r'} \\
+  &= \bigg[-kq\frac{1}{r}\bigg]_{r}^{\infty} \\
+  &= \frac{1}{4\pi\epsilon_{\circ}}\frac{q}{r} = \frac{kq}{r}
+\end{align*}
+With multiple point charges:
+\[ V_{total} = \sum_{point~charge} = V_1+V_2+V_3+\dots \]
+The potential energy between two point charges is:
+\[ \Delta U = q\Delta V = \frac{kq_1q_2}{r} \]
+Additionally:
+\[ W_{ext} = -W_e = \Delta U \]
+To find \( V(r) \) for a charge distribution:
+\[ \diff{V} = \frac{k\diff{q}}{r} \]
+\clearpage
+
+\subsubsection*{Example}
+These problems are analogous to finding the electric field of a charge
+distribution. Assume a constant charge density of \( \lambda \):
+\begin{center}
+  \begin{tikzpicture}
+    \draw (0,0) -- (4,0) -- (4,1) -- (0,1) -- cycle;
+    \fill (-2,0.5) circle (0.1cm) node[left] {\( p \)};
+    \fill (1,0) -- (1.25,0) -- (1.25,1) -- (1,1) node[above] {\( \diff{q} \)};
+    \draw[|<->|] (-2,2.5) -- (0,2.5) node[pos=0.5,above] {\( d \)};
+    \draw[|<->|] (-2,2) -- (1.125,2) node[pos=0.5,above] {\( x \)};
+    \draw[|<->|] (1,-0.2) -- (1.25,-0.2) node[pos=0.5,below] {\( \diff{x} \)};
+    \draw[|<->|] (0,-1) -- (4,-1) node[pos=0.5,below] {\( L \)};
+  \end{tikzpicture}
+\end{center}
+\begin{align*}
+  \diff{V} &= \frac{k\diff{q}}{x} \\
+  &= \frac{k\lambda\diff{x}}{x} \\
+  V &= \int_{d}^{d+L}\frac{k\lambda\diff{x}}{x} \\
+  &= k\lambda\bigg[\ln(x)\bigg]_{d}^{d+L} \\
+  &= k\lambda\ln\bigg(\frac{d}{d+L}\bigg)
+\end{align*}
+Unlike the electric field problems, the voltage is a scalar, so we don't need
+to break it into its components. The voltage is also proportional to
+\( \frac{1}{r} \) instead of \( \frac{1}{r^2} \).
+
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
   any questions, comments, or concerns, please contact me at

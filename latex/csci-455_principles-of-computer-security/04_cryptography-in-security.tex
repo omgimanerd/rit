@@ -1,0 +1,71 @@
+\documentclass{math}
+
+\title{Principles of Computer Security}
+\author{Alvin Lin}
+\date{January 2018 - May 2018}
+
+\begin{document}
+
+\maketitle
+
+\section*{The Role of Cryptography in Security}
+There are always ways to get around cryptography barriers and these methods have
+nothing to do with breaking codes. While systems may use cryptography to make
+sure that data is transmitted with perfect security, who's to ensure the
+integrity of the person who programs the computer?
+
+\subsection*{Kerckhoff and Shannon}
+``A cryptographic system should be designed to be secure, even if all of the
+details, except for the key, are publicly known.'' - Auguste Kerckhoff, 1883 \\
+``One ought to design systems under the assumption that the enemy will
+immediately gain full familiarity with them.'' - Claude Shannon, 1949 \\
+These are also related to the Saltzer and Schroeder principles.
+
+\subsection*{Shannon's Characteristics of Good Ciphers}
+\begin{enumerate}
+  \item The amount of secrecy needed should determine the amount of labor
+  appropriate for encryption and decryption.
+  \item The set of keys and enciphering algorithm should be free from
+  complexity.
+  \item The process implementation should be as simple as possible.
+  \item Errors in ciphering should not propagate and cause further corruption
+  of message information.
+  \item The size of enciphered text should not be larger than the original
+  message text.
+\end{enumerate}
+
+\subsection*{Cryptographic Primitives}
+\begin{itemize}
+  \item Substitution: one set of bits is exchanged for another
+  \item Transposition: rearranging ciphertext order to break repeating patterns
+  in plaintext
+  \item Confusion: an algorithm providing good confusion has a complex
+  functional relationship between the plaintext and ciphertext, so that changing
+  one character causes unpredictable changes to ciphertext
+  \item Diffusion: distributes information from single plaintext characters over
+  the entire ciphertext output
+\end{itemize}
+
+\subsection*{Properties of a Trustworthy Cryptosystem}
+\begin{itemize}
+  \item Must be based on sound mathematics
+  \item Must have been analyzed by competent experts and found to be sound
+  \item Mus thave stood the test of time
+  \item Producing good cryptographic algorithms is a difficult task and
+  should be left to those who know how to create such algorithms
+\end{itemize}
+
+\subsection*{Symmetric Encryption}
+Symmetric encryption is a standard technique for ensuring confidentiality for
+data at rest or in transit. It has two requirements: a strong encryption
+algorithm, and a secure secret key that is shared by the sender and receiver.
+Secure symmetric encryption has one point of failure. Once the key is
+compromised, the integrity of the message is compromised.
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
