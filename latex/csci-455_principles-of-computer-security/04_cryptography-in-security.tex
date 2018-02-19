@@ -61,6 +61,132 @@ data at rest or in transit. It has two requirements: a strong encryption
 algorithm, and a secure secret key that is shared by the sender and receiver.
 Secure symmetric encryption has one point of failure. Once the key is
 compromised, the integrity of the message is compromised.
+\begin{itemize}
+  \item Cryptanalytic Attacks: these attacks make use of some knowledge of
+  general characteristics of the plaintext and use the nature fo the algorithm
+  to figure out the specific plaintext or the key used. If this is successful,
+  all future and past messages encrypted with that key are compromised.
+  \item Brute-Force Attacks: these attacks try all possible keys on some
+  ciphertext until an intelligible translation into plaintext is obtained. On
+  average, half of all possible keys must be tried for success.
+\end{itemize}
+
+\subsection*{DES, 3DES, and AES}
+\begin{itemize}
+  \item Data Encryption Standard (DES): the DES algorithm uses 64-bit plaintext
+  blocks and a 56-bit key to produce a 64-bit ciphertext block. It is no longer
+  considered secure due to the inadequacy of 56-bit keys.
+  \item Triple DES (3DES): the 3DES algorithm repeats DES three times using two
+  or three unique keys. 168-bits help prevent brute-force attacks but it is a
+  sluggish algorithm.
+  \item Advanced Encryption Standard (AES): AES was developed as a replacement
+  for 3DES that significantly improved efficiency without sacrificing security
+  strength.
+\end{itemize}
+Typical symmetric encryption is applied to a unit of data larger than a single
+64-bit or 128-bit block.
+
+\subsubsection*{Average Time Required for Exhaustive Key Search}
+\begin{center}
+  \begin{tabular}{|p{1cm}|c|c|p{3cm}|p{3cm}|}
+    \hline
+    Key size (bits) & Cipher & Number of Alternative Keys &
+      Time Required at \( 10^9 \) decryptions/s &
+      Time Required at \( 10^13 \) decryptions/s \\
+    \hline
+    56 & DES & \( 2^{56}\approx7.2\times10^{16} \) & 1.125 years & 1 hour \\
+    \hline
+    128 & AES & \( 2^{128}\approx3.4\times10^{38} \) & \( 5.3\times10^{21} \)
+      years & \( 5.3\times10^{17} \) years \\
+    \hline
+    168 & 3DES & \( 2^{168}\approx3.7\times10^{50} \) & \( 5.8\times10^{33} \)
+      years & \( 5.8\times10^{29} \) years \\
+    \hline
+    192 & AES & \( 2^{192}\approx6.3\times10^{57} \) & \( 9.8\times10^{40} \)
+      years & \( 9.8\times10^{36} \) years \\
+    \hline
+    256 & AES & \( 2^{256}\approx1.2\times10^{77} \) & \( 1.8\times10^{60} \)
+      years & \( 1.8\times10^{56} \) years \\
+    \hline
+  \end{tabular}
+\end{center}
+
+\subsection*{Block and Stream Ciphers}
+Block Cipher:
+\begin{itemize}
+  \item processes input, one block of elements at a time
+  \item produces an output block for each input block
+  \item can reuse keys
+  \item more common
+\end{itemize}
+Stream Cipher:
+\begin{itemize}
+  \item processes input elements continuously
+  \item produces output one element at a time
+  \item usually always faster, with less code
+  \item encrypts plaintext one byte at a time
+  \item pseudorandom stream is one that is unpredictable without knowledge of
+  the input key
+\end{itemize}
+
+\subsection*{Message Authentication}
+Message authentication protects against active attacks and verifies that a
+received message is authentic. A message is authentic if its contents have not
+been altered, it is from an authentic source, and it is timely and in the
+correct sequence. For message authentication, hash functions with the following
+properties are used:
+\begin{itemize}
+  \item applicable to a block of data of any size
+  \item produces a fixed-length output
+  \item one-way or pre-image resistant, computationally infeasible to find
+  \( x \) such that \( H(x) = h \)
+  \item computationally infeasible to find \( y\ne x \) such that
+  \( H(y) = H(x) \)
+  \item collision resistant or strong collision resistance, computationally
+  infeasible to find any pair \( (x,y) \) such that \( H(x) = H(y) \)
+\end{itemize}
+Secure hash functions can be attacked by cryptanalysis, which exploits
+logical weaknesses in the algorithm, or by brute force, which solely depends
+on the hash code length produced.
+
+\subsection*{Public-Key Encryption}
+Public-key encryption is based and mathematicaly functions and was publicly
+proposed by Diffie and Hellman in 1976. It is asymmetric and uses two separate
+keys, a public and private key. Ideally, it should be computationally easy to
+create and distribute key pairs, but it should be computationally infeasible
+to determine the private key from the public key or otherwise recover the
+original message.
+
+\subsubsection*{Asymmetric Encryption Algorithms}
+\begin{itemize}
+  \item \textbf{RSA (Rivest, Shamir, Adleman), 1977} is the most widely
+  accepted and implemented PKE approach. It involves a block cipher in which
+  the plaintext and ciphertext are integers are between 0 and \( n-1 \) for
+  \( n \).
+  \item The \textbf{Diffie-Hellman key exchange algorithm} enables two users to
+  securely reach agreement about a shared secret for use as a secret key for
+  subsequent symmetric encryption.
+  \item The \textbf{Digital Signature Standard (DSS)} provides a digital
+  signature function with SHA-1 and cannot be used for encryption or key
+  exchange.
+  \item \textbf{Elliptic Curve Cryptography (ECC)} has security like RSA, but
+  with much smaller keys.
+\end{itemize}
+
+\subsection*{Random Numbers}
+Random numbers are used to generate keys for public-key algorithms, keys for
+symmetric stream ciphers, handshaking, or session keys. In order for a number
+sequence to be considered random, it must have uniform distribution,
+independence, and unpredictability. The frequency of each number occurrence
+should be approximately the same and no value in the sequence should be
+inferred from another. Each number should be statistically independent from
+other numbers in the sequence and attacks should not be able to predict future
+elements of the sequence based on earlier sequences.
+\par Cryptographic applications typically use algorithms for random number
+generation. Since they are deterministic, they typically produce sequences
+that are not statistically random. Thus, they are likely to be predictable.
+True random number generators use some nondeterministic source to produce
+randomness, such as radiation, gas discharge, or leaky capacitors.
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
