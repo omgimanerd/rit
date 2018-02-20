@@ -1,5 +1,7 @@
 \documentclass{math}
 
+\usepackage{graphicx}
+
 \title{Introduction to Cryptography}
 \author{Alvin Lin}
 \date{January 2018 - May 2018}
@@ -133,16 +135,24 @@ pseudo-random generation algorithm (PRGA).
 
 \subsection*{Block Ciphers}
 A stream cipher algorithm defines how to encrypt or decrypt arbitrary length
-messages. A block cipher algorithm does not define how to encrypt or decrypt
-arbitrary length messages. You can only encrypt or decrypt B bits, no more, no
+messages. A block cipher can only encrypt or decrypt \( b \) bits, no more, no
 less. Arbitrary length message are handled by a separate algorithm called a
 block cipher mode of operation (ECB). A stream cipher's encryption and
 decryption operations are the same. A block cipher's encryption and decryption
 operations are different. To decrypt, the encryption operation must be run
-backwards. The encryption operation must be invertible.
+backward. Thus, the encryption operation must be invertible. Additionally, block
+ciphers are much more than just an encryption algorithm, they can be used:
+\begin{itemize}
+  \item to build different types of block-based encryption schemes
+  \item to realize stream ciphers
+  \item to construct hash functions
+  \item to make message authentication codes
+  \item to build key establishment protocols
+  \item to make a pseudo-random number generator
+\end{itemize}
 
 \subsubsection*{Block Cipher Primitives}
-Claude Shannon: there are two primitives operations with which strong encryption
+Claude Shannon: there are two primitive operations with which strong encryption
 algorithms can be built.
 \begin{enumerate}
   \item \textbf{Confusion:} An encryption operation where the relationship
@@ -160,6 +170,95 @@ Most of today's block ciphers are product ciphers as they consist of rounds
 which are applied repeatedly to the data. This can reach excellent diffusion, as
 changing one bit of the plaintext results on average in the change of half the
 output bits.
+
+\subsection*{Block Cipher Modes of Operation}
+There are several ways of encrypting long plaintexts with a block cipher:
+\begin{itemize}
+  \item Electronic Code Book mode (ECB)
+  \item Cipher Block Chaining mode (CBC)
+  \item Output Feedback mode (OFB)
+  \item Cipher Feedback mode (CFB)
+  \item Counter mode (CTR)
+  \item Galois Counter Mode (GCM)
+\end{itemize}
+These modes have the goal of providing authenticity and integrity in addition to
+confidentiality. It ascertains that the message is coming from the original
+sender and that it was not altered during transmission.
+
+\subsubsection*{Electronic Code Book mode (ECB)}
+This is the simplest of the encryption modes. Messages which exceed \textit{b}
+bits are partitioned into \textit{b}-bit blocks, which are encrypted separately.
+In case the plaintext message's length is not a multiple of \textit{b}, we add
+padding to the end.
+\begin{center}
+  \includegraphics[width=12cm]{assets/ecb.png}
+\end{center}
+\textbf{Advantages:}
+\begin{itemize}
+  \item No block synchronization between the sender and receiver is required.
+  \item Bit errors caused by noisy channels only affect the corresponding block
+  but not succeeding blocks.
+  \item Encryption can be parallelized, which is an advantage for high-speed
+  implementations.
+\end{itemize}
+\textbf{Disadvantages:}
+\begin{itemize}
+  \item Encryption is highly deterministic.
+  \item Identical plaintexts result in identical ciphertexts.
+  \item An attacker recognizes if the same message has been sent twice.
+  \item Plaintext blocks are encrypted independently of previous blocks.
+  \item An attacker may reorder ciphertext blocks which result in valid
+  plaintext.
+  \item Statistical properties in the plaintext are preserved in the
+  ciphertext.
+\end{itemize}
+Once a particular plaintext to ciphertext block mapping is known, a sequence of
+ciphertext blocks can easily be manipulated.
+
+\subsubsection*{Cipher Block Chaining mode (CBC)}
+There are two main ideas behind this mode: the encryption of all blocks are
+chained together, and the encryption is randomized by using an initialization
+vector.
+\begin{center}
+  \includegraphics[width=12cm]{assets/cbc.png}
+\end{center}
+This mode also requires padding, but messages longer than \( 2^{\frac{n}{2}} \)
+blocks (where \( n \) is the block size in bits) shouldn't be encrypted with
+this mode, since it gives an attacker more information about the ciphertext.
+Encryption cannot be parallelized, but decryption can be. The initialization
+vector does not need to be secret, but it should be a randomized nonce.
+
+\subsubsection*{Output Feedback mode (OFB)}
+This mode builds a synchronous stream cipher from a block cipher, where the key
+stream is generated in a blockwise fashion. The output of the cipher gives us
+key stream bits with which we can encrypt plaintext bits using the XOR
+operation. This mode also requires an initialization vector (which also should
+be a randomized nonce).
+\begin{center}
+  \includegraphics[width=12cm]{assets/ofb.png}
+\end{center}
+
+\subsubsection*{Cipher Feedback mode (CFB)}
+This mode uses a block cipher as a building block for an synchronous stream
+cipher. The key stream is generated in a blockwise fashion and is also a
+function of the ciphertext. Since it also uses a randomized initialization
+vector, the ciphertext is also nondeterministic. It can be used in situations
+where short plaintext blocks are to be encrypted, but has no real advantage
+over Output Feedback mode.
+\begin{center}
+  \includegraphics[width=12cm]{assets/cfb.png}
+\end{center}
+
+\subsubsection*{Counter mode (CTR)}
+This mode turns a block cipher into a stream cipher where the keystream is
+computed in a blockwise fashion (similar to OFB and CFB mode). The input to the
+block cipher is a counter which assumes a different value every time the block
+cipher computes a new key stream block. Unlike CFB, and OFB however, this is
+highly parallelizable and does not require padding since the unneeded portion
+of the last key block can be discarded (because it is a stream cipher).
+\begin{center}
+  \includegraphics[width=12cm]{assets/ctr.png}
+\end{center}
 
 \subsection*{Feistel Cipher (Feistel network)}
 Horst Feistel proposed the use of a cipher that alternates substitutions and
@@ -189,6 +288,27 @@ In practice, it is very difficult to break the cipher with linear or analytical
 cryptanalysis. By encrypting with DES three times in a row, triple DES (3DES)
 was created, against which no practical attack is currently known. 3DES is still
 widely in use today.
+
+\subsubsection*{Exhaustive Key Search}
+A simple exhaustive search for a DES key pair knowing one plaintext-ciphertext
+pair requires has a key space of size \( 2^56 \). However, for most other block
+ciphers, a key search is somewhat more complicated. A brute-force attack can
+produce false positive results, where a key is found that is not the one used
+for the encryption. The likelihood of this is related to the relative size of
+the key space and the plaintext space.
+
+\subsubsection*{Example}
+Assume a cipher with a block width of 64 bits and a key size of 80 bits is used
+to encrypt a plaintext. If we encrypt once under all possible \( 2^80 \) keys,
+we obtain \( 2^80 \) possible ciphertexts. However, there exist only \( 2^64 \)
+different ones. If we run through all keys for a given plaintext-ciphertext
+pairs, we find on average \( \frac{2^80}{2^64} = 2^16 \) keys that perform the
+mapping \( e_k(x) = y \). Given a block cipher with a key length of \( k \)
+bits and a block size of \( n \) bits, as well as \( t \) plaintext-ciphertext
+pairs, the expected number of false keys which encrypts all plaintexts to the
+corresponding ciphertexts is:
+\[ 2^{k-tn} \]
+
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
