@@ -28,11 +28,24 @@ and voltage.
   \int\bigg(\e^{100t}\ddiff{i}{t}+\e^{100t}100i\bigg)\diff{t} &=
     \int100\cos(120t)\e^{100t}\diff{t} \\
   i\e^{100t}+c &= \int100\cos(120t)\e^{100t}\diff{t} \\
-  i &= \e^{-100t}\bigg(\int100\cos(120t)\e^{100t}\diff{t}+c\bigg) \\
-  &= \frac{5}{61}(6\sin(120t)+5\cos(120t))+c\e^{-100t} \\
-  1 &= \frac{5}{61}(6\sin(0)+5\cos(0))+c \\
-  c &= 1-\frac{25}{61} \\
-  i(t) &= \frac{30}{61}\sin(120t)+\frac{25}{61}\cos(120t)+\frac{36}{61}\e^{-100t} \\
+  i &= 100\e^{-100t}\bigg(\int\cos(120t)\e^{100t}\diff{t}+c\bigg) \\
+  &= 100\e^{-100t}\bigg[
+    \frac{\e^{100t}(100\cos(120t)+120\sin(120t))}{100^2+120^2}+c\bigg] \\
+  &= \frac{100\cos(120t)+120\sin(120t)}{244}+100c\e^{-100t}
+\end{align*}
+Using our initial value of \( i(0) = 1 \):
+\begin{align*}
+  i(t) &= \frac{100\cos(120t)+120\sin(120t)}{244}+k\e^{-100t} \\
+  1 &= i(0) = \frac{100\cos(0)+120\sin(0)}{244}+k\e^{0} \\
+  &= \frac{100}{244}+k \\
+  k &= \frac{144}{244} \\
+  i(t) &= \frac{100\cos(120t)+120\sin(120t)}{244}+\frac{144}{244}\e^{-100t} \\
+  i(t) &= \frac{100\cos(120t)+120\sin(120t)+144\e^{-100t}}{244} \\
+\end{align*}
+To find the voltage drop:
+\begin{align*}
+  L\ddiff{i}{t} &= 0.5\bigg(
+    \frac{-12000\cos(120t)+12000\cos(120t)-14400\e^{-100t}}{244}\bigg) \\
 \end{align*}
 
 \subsubsection*{Exercise 7}
