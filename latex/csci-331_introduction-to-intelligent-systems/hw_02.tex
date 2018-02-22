@@ -85,6 +85,21 @@ child, add them to the open list in the left-to-right order as they as shown
 in the tree (not alphabetical search). For IDS, give a list of the states that
 are examined for each limit (starting with limit 0), in the order that the
 states are examined.
+\begin{center}
+  \begin{forest}
+    [A
+      [B
+        [E [J] [K] [L] ]
+        [F]
+      ]
+      [C [G [M] [N] ] ]
+      [D
+        [H [O] [P] ]
+        [I [Q] ]
+      ]
+    ]
+  \end{forest}
+\end{center}
 \begin{enumerate}[(a)]
   \item Breadth-First Search
   \begin{center}
