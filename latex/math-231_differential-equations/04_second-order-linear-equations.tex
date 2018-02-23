@@ -176,6 +176,128 @@ Solve the initial value problem given \( y(0) = 1 \) and \( y'(0) = 3 \):
   y &= \e^{-5t}+8t\e^{-5t}
 \end{align*}
 
+\section*{The Method of Undetermined Coefficients}
+Consider:
+\[ ay''+by'+cy = f(t) \ne 0 \]
+This is a second order non-homogeneous equation with constant coefficients. The
+method of undetermined coefficients applies to functions that are exponentials,
+polynomials, sines and consines, or products of these types of functions. For
+example:
+\[ y''-3y'+2y = 5\e^{3t} \]
+We seek a particular solution, \( y_p \). We can try \( y_p = A\e^{3t} \) where
+\( A \) is a constant.
+\begin{align*}
+  y_p &= A\e^{3t} \\
+  y_p' &= 3A\e^{3t} \\
+  y_p'' &= 9A\e^{3t} \\
+  9A\e^{3t}-3(3A\e^{3t})+2A\e^{3t} &= 5\e^{3t} \\
+  9A\e^{3t}-9A\e^{3t}+2A\e^{3t} \\
+  2A &= 5\e^{3t} \\
+  2A &= 5 \\
+  y_p &= \frac{5}{2}\e^{3t}
+\end{align*}
+
+\subsubsection*{Example}
+Consider another example:
+\begin{align*}
+  y''-3y'+2y &= 5\e^{2t} \\
+  y_p &= A\e^{2t} \\
+  y_p' &= 2A\e^{2t} \\
+  y_p'' &= 4A\e^{2t} \\
+  4A\e^{2t}-3(2A\e^{2t})+2A\e^{2t} &= 0 \ne 5\e^{2t}
+\end{align*}
+The key is to consider the associated auxiliary equation.
+\begin{align*}
+  r^2-3r+2 &= 0 \\
+  (r-2)(r-1) &= 0 \\
+  r_1 &= 1 \quad r_2 = 2
+\end{align*}
+In this case, \( r = 2 \) matched one of the roots of \( r^2-3r+2 = 0 \). This
+means that \( y = c\e^{2t} \) is a solution to the associated homogeneous
+equation, and not the given non-homogeneous equation. We append a factor of
+\( t \):
+\[ y_p = At\e^{2t} \]
+If we try this form:
+\begin{align*}
+  y_p &= At\e^{2t} \\
+  y_p' &= A\e^{2t}+2At\e^{2t} \\
+  y_p'' &= 2A\e^{2t}+2A\e^{2t}+4At\e^{2t} \\
+  &= 4A\e^{2t}+4At\e^{2t}
+\end{align*}
+\begin{align*}
+  (4A\e^{2t}+4At\e^{2t})-3(A\e^{2t}+2At\e^{2t})+2At\e^{2t} &= 5\e^{2t} \\
+  4A\e^{2t}+4At\e^{2t}-A\e^{2t}-6At\e^{2t}+2At\e^{2t} &= 5\e^{2t} \\
+  A\e^{2t} &= 5\e^{2t} \\
+  A &= 5 \\
+  y_p &= 5\e^{2t}
+\end{align*}
+
+\subsubsection*{Example}
+\begin{align*}
+  y''+3y'+2y &= 3\e^{0t} \\
+  r^2+3r+2 &= 0 \\
+  (r+1)(r+2) &= 0 \\
+  r_1 &= -1 \quad r_2 = -2
+\end{align*}
+Neither of these solutions match \( r = 0 \), so we do not need to append a term
+\( t \). Consider \( y_p \) to be a polynomial of degree 1.
+\begin{align*}
+  y_p &= At+B \\
+  y_p' &= A \\
+  y_p'' &= 0 \\
+  0+3A+2At+B &= 3t \\
+  2At &= 3t \\
+  2A &= 3 \\
+  3A+2B &= 0 \\
+  B &= -\frac{9}{4} \\
+  y_p &= \frac{3}{2}t-\frac{9}{4}
+\end{align*}
+
+\subsubsection*{Example}
+\begin{align*}
+  y''-y &= 10\e^{-t} \\
+  r &= -1 \\
+  r^2-1 &= 0 \\
+  r_1 &= 1 \quad r_2 = -1
+\end{align*}
+Since we have a matching root, we append a factor of \( t \) to the solution:
+\begin{align*}
+  y_p &= At\e^{-t} \\
+  y_p' &= A\e{-t}-At\e^{-t} \\
+  y_p'' &= -A\e^{-t}-(A\e^{-t}-At\e^{-t}) \\
+  &= -2A\e^{-t}+At\e^{-t} \\
+  (-2A\e^{-t}+At\e^{-t})-(At\e^{-t}) &= 10\e^{-t} \\
+  -2A\e^{-t} &= 10\e^{-t} \\
+  -2A &= 10 \\
+  A &= 5 \\
+  y_p &= -5t\e^{-t}
+\end{align*}
+
+\subsubsection*{Example}
+\begin{align*}
+  y''+17y &= -7\e^{0t} \\
+  r &= 0 \\
+  r^2+17 &= 0 \\
+  r_1 &= 0+17i \quad r_2 = 0-17i \\
+  y_p &= A \\
+  y_p' &= y_p'' = 0 \\
+  0+17A &= -7 \\
+  A &= -\frac{7}{17} \\
+  y_p &= -\frac{7}{17}
+\end{align*}
+
+\subsection*{Summary}
+The method of undetermined coefficients is a method to find a particular
+solution \( y_p \) to \( ay''+by'+cy = f(t) \ne 0 \). When \( f(t) =
+Ct^m\e^{rt} \) where \( C \) is any constant, \( r \) is a real number, and
+\( m \) is a non-negative integer, the general form of \( y_p \) will be:
+\[ y_p(t) = t^s\bigg[A_mt^m+A_{m-1}t^{m-1}+\dots+A_1t+A_0\bigg]\e^{rt} \]
+where:
+\( s = 0 \) if \( r \) doesn't match the roots of the characteristic
+equation, \( s = 1 \) if \( r \) is a match to the roots of the characteristic
+equation and the roots are non-repeated, and \( s = 2 \) if \( r \) is a
+repeated real root of the corresponding auxiliary equation.
+
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
   any questions, comments, or concerns, please contact me at
