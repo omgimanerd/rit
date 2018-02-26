@@ -176,6 +176,66 @@ Solve the initial value problem given \( y(0) = 1 \) and \( y'(0) = 3 \):
   y &= \e^{-5t}+8t\e^{-5t}
 \end{align*}
 
+\subsection*{Case 3: Complex Roots}
+If the roots of the auxiliary equation are complex terms \( r = \alpha\pm
+i\beta \) where \( i = \sqrt{-1} \), then as in previous cases:
+\[ y = \e^{(\alpha+i\beta)t} \]
+We can start by using the rules of exponents to split the complex term in the
+exponent.
+\[ y = \e^{\alpha t}\e^{i\beta t} \]
+We can use Euler's formula to resolve this:
+\[ \e^{it} = \cos\theta+i\sin\theta \]
+If we let \( \theta = \beta t \), then we have:
+\[ y = \e^{\alpha t}\bigg[\cos(\beta t)+i\sin(\beta t)\bigg] \]
+We can see from this point that the solution is going to oscillate because
+cosine is a sinusoidal wave. Thus, the general form of the solution is:
+\[ y = \e^{\alpha t}\bigg[c_1\cos(\beta t)+ic_2\sin(\beta t)\bigg] \]
+Given an initial value problem, this would solve it, but going through it would
+involve complex arithmetic. Typically, the constants \( c_1 \) and \( c_2 \) are
+complex values themselves. However, we can avoid complex arithmetic in this
+particular situation. The equation we are trying to solve is:
+\[ ay''+by'+cy = 0 \]
+Consider a complex valued function \( z = u+iv \) that is a solution to 1.
+\begin{align*}
+  z &= u+iv \\
+  z' &= u'+iv' \\
+  z'' &= u''+iv''
+\end{align*}
+If we substitute this into the function:
+\begin{align*}
+  a\bigg[u''+iv''\bigg]+b\bigg[u'+iv'\bigg]+c\bigg[u+iv\bigg] &= 0 \\
+  \bigg[au''+bu'+cu\bigg]+i\bigg[av''+bv'+cv\bigg] &= 0
+\end{align*}
+If \( s+it = 0 \), then \( s = t = 0 \). Therefore, both the real and imaginary
+parts are zero. Thus, both \( u \) and \( v \) are solutions to our differential
+equation. We can form our general solution as:
+\[ y(t) = \e^{\alpha t}\bigg[c_1\cos(\beta t)+c_2\sin(\beta t)\bigg] \]
+where \( r = \alpha\pm i\beta \) are complex valued roots.
+
+\subsubsection*{Example}
+Consider this example:
+\begin{align*}
+  y''+2y'+2y &= 0 \\
+  r^2+2r+2 &= 0 \\
+  r &= \frac{-2\pm\sqrt{4-(4)(2)}}{2} \\
+  r &= -1\pm i \\
+  \alpha &= -1 \quad \beta = 1 \\
+  y(t) &= \e^{-t}\bigg[c_1\cos(t)+c_2\sin(t)\bigg]
+\end{align*}
+If we have the initial values \( y(0) = 1 \) and \( y'(0) = 1 \):
+\begin{align*}
+  y(t) &= \e^{-t}\bigg[c_1\cos(t)+c_2\sin(t)\bigg] \\
+  y'(t) &= \e{-t}\bigg[-c_1\sin(t)+c_2\cos(t)\bigg]-
+    e^{-t}\bigg[c_1\cos(t)+c_2\sin(t)\bigg] \\
+  y(0) &= 1 = \e^{0}\bigg[c_1\cos(0)+c_2\sin(0)\bigg] \\
+  &= c_1 \\
+  y'(0) &= 1 = \e^{0}\bigg[-c_1\sin(0)+c_2\cos(0)\bigg]-
+    \e^{0}\bigg[c_1\cos(0)+c_2\sin(0)\bigg] \\
+  &= c_2-1(c_1) \\
+  c_1 &= 1 \quad c_2 = 2 \\
+  y &= \e^{-t}\bigg[\cos(t)+2\sin(t)\bigg]
+\end{align*}
+
 \section*{The Method of Undetermined Coefficients}
 Consider:
 \[ ay''+by'+cy = f(t) \ne 0 \]

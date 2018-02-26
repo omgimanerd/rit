@@ -94,6 +94,30 @@ By conservation of energy:
   &= C_1+C_2
 \end{align*}
 
+\subsection*{Energy in a Capacitor}
+To find the energy in a capacitor, find the work needed to charge it. Recall:
+\[ C = \frac{Q}{V} \]
+Suppose it is partially charged:
+\[ V = \frac{q}{C} \quad \diff{V} = \frac{\diff{q}}{C} \]
+where \( V \) is the intermediate voltage and \( q \) is the intermediate
+charge.
+\begin{align*}
+  W &= \int\vec{F}\cdot\diff{\vec{r}} \\
+  \diff{W} &= \vec{F}\cdot\diff{\vec{r}} \\
+  V &= -\int\vec{E}\cdot\diff{\vec{r}} \\
+  \diff{V} &= |\vec{E}|\diff{r} \\
+  \diff{W} &= F\diff{r} = (q|\vec{E}|)\diff{r} = q\diff{V} \\
+  W &= \int q\diff{V} = \int_{0}^{Q}q(\frac{\diff{q}}{c}) = \frac{Q^2}{2C}
+\end{align*}
+As a relation to the equations for voltage:
+\[ U = \frac{Q^2}{2C} = \frac{1}{2}CV^2 = \frac{1}{2}QV \]
+If we want energy density as energy over volume:
+\begin{align*}
+  u &= \frac{U}{volume} \\
+  &= \frac{\frac{1}{2}CV^2}{Ad} \\
+  &= \frac{\frac{1}{2}(\frac{\epsilon_{\circ}A}{d})(Ed)^2}{Ad} \\
+  &= \frac{1}{2}\epsilon_{\circ}E^2
+\end{align*}
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
