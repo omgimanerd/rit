@@ -243,6 +243,7 @@ If we have the initial values \( y(0) = 1 \) and \( y'(0) = 1 \):
   y &= \e^{-t}\bigg[\cos(t)+2\sin(t)\bigg]
 \end{align*}
 
+\clearpage
 \section*{The Method of Undetermined Coefficients}
 Consider:
 \[ ay''+by'+cy = f(t) \ne 0 \]
@@ -311,11 +312,14 @@ Neither of these solutions match \( r = 0 \), so we do not need to append a term
 \begin{align*}
   y_p &= At+B \\
   y_p' &= A \\
-  y_p'' &= 0 \\
-  0+3A+2At+B &= 3t \\
-  2At &= 3t \\
-  2A &= 3 \\
-  3A+2B &= 0 \\
+  y_p'' &= 0
+\end{align*}
+Substituting these into our differential equation allows us to solve for an
+explicit solution:
+\begin{align*}
+  0+3A+2(At+B) &= 3t \\
+  (3A)t+(3A+2B) &= 3t \\
+  2A &= 3 \quad 3A+2B = 0 \\
   B &= -\frac{9}{4} \\
   y_p &= \frac{3}{2}t-\frac{9}{4}
 \end{align*}
@@ -353,17 +357,98 @@ Since we have a matching root, we append a factor of \( t \) to the solution:
   y_p &= -\frac{7}{17}
 \end{align*}
 
-\subsection*{Summary}
+\subsection*{Methodology}
 The method of undetermined coefficients is a method to find a particular
-solution \( y_p \) to \( ay''+by'+cy = f(t) \ne 0 \). When \( f(t) =
-Ct^m\e^{rt} \) where \( C \) is any constant, \( r \) is a real number, and
-\( m \) is a non-negative integer, the general form of \( y_p \) will be:
-\[ y_p(t) = t^s\bigg[A_mt^m+A_{m-1}t^{m-1}+\dots+A_1t+A_0\bigg]\e^{rt} \]
-where:
-\( s = 0 \) if \( r \) doesn't match the roots of the characteristic
-equation, \( s = 1 \) if \( r \) is a match to the roots of the characteristic
-equation and the roots are non-repeated, and \( s = 2 \) if \( r \) is a
-repeated real root of the corresponding auxiliary equation.
+solution \( y_p \) to \( ay''+by'+cy = f(t) \ne 0 \).
+\begin{enumerate}
+  \item When \( f(t) = Ct^m\e^{rt} \) where \( C \) is any constant, \( r \) is
+  a real number, and \( m \) is a non-negative integer, the general form of
+  \( y_p \) will be:
+  \[ y_p(t) = t^s\bigg[A_mt^m+A_{m-1}t^{m-1}+\dots+A_1t+A_0\bigg]\e^{rt} \]
+  where \( s = 0 \) if \( r \) doesn't match the roots of the characteristic
+  equation, \( s = 1 \) if \( r \) is a match to the roots of the characteristic
+  equation and the roots are non-repeated, and \( s = 2 \) if \( r \) is a
+  repeated real root of the corresponding auxiliary equation.
+  \item When \( f(t) = Ct^m\e^{\alpha t}\cos(\beta t) \) or \( f(t) =
+  Ct^m\e^{\alpha t}\sin(\beta t) \) where \( m \) is a positive integer, \( C \)
+  is any constant, \( \alpha \) is real, and \( \beta \) is a nonzero real
+  number, the form of \( y_p \) will be:
+  \begin{align*}
+    y_p(t) =\ & t^s\bigg[A_mt^m+A_{m-1}t^{m-1}+\dots+A_1t+A_0\bigg]\e^{\alpha t}
+      \cos(\beta t)+ \\
+    & t^s\bigg[B_mt^m+B_{m-1}t^{m-1}+\dots+B_1t+B_0\bigg]\e^{\alpha t}
+      \sin(\beta t)
+  \end{align*}
+  where \( s = 0 \) if \( r = \alpha\pm i\beta \) is a root of the
+  characteristic equation and there is no match with \( \alpha \) and
+  \( \beta \), or \( s = 1 \) if \( r = \alpha\pm i\beta \) is a root of the
+  characteristic equation.
+\end{enumerate}
+Note that these two cases only cover functions \( f(t) \) that can be rewritten
+as the forms above. If \( f(t) \) cannot be expressed in the forms above, then
+the problem cannot be solved using the method of undetermined coefficients.
+
+\subsubsection*{Example}
+\begin{align*}
+  y''+3y'+2y &= 5\sin(t)t^0\e^0t \\
+  r^2+3r+2 &= (r+2)(r+1) = 0 \\
+  r &= -1 \quad r = -2 \\
+  y_p &= A\cos(t)+B\sin(t) \\
+  y_p' &= -A\sin(t)+B\cos(t) \\
+  y_p'' &= -A\cos(t)-B\sin(t)
+\end{align*}
+Since the roots are real, there is no match to \( \alpha \) or \( \beta \).
+\begin{align*}
+  y''+3y'+2y &= 5\sin(t) \\
+  -A\cos(t)-B\sin(t)+3(-A\sin(t)+B\cos(t))+2(A\cos(t)+B\sin(t)) &= 5\sin(t) \\
+  -3A\sin(t)+B\sin(t)-A\cos(t)+3B\cos(t) &= 5\sin(t) \\
+  (-3A+B)\sin(t)+(-A+3B)\cos(t) &= 5\sin(t) \\
+  -3A+B = 5 \quad -A+3B &= 0 \\
+  A = -\frac{3}{2} \quad B &= \frac{1}{2}
+\end{align*}
+By equating the like coefficients, we can find an explicit solution:
+\[ y_p = -\frac{3}{2}\cos(t)+\frac{1}{2}\sin(t) \]
+
+\subsubsection*{Example}
+Find the general form of a particular solution \( y_p \):
+\begin{align*}
+  y''+8y'-9y &= 10t^2\e^t\cos(2t) \\
+  r^2+8r-9 &= (r+9)(r-1) = 0 \\
+  r &= -9 \quad r = 1 \quad s = 0 \\
+  \e^t &= \e^{1t} \quad \alpha = 1 \quad \beta = 2 \\
+  y_p &= \bigg[At^2+Bt+C\bigg]\e^t\cos(2t)+\bigg[Dt^2+Et+F\bigg]\e^t\sin(2t)
+\end{align*}
+
+\clearpage
+\section*{Superposition}
+Let \( y_1 \) be a solution to \( ay''+by'+cy = f_1(t) \) and let \( y_2 \) be
+a solution to \( ay''+by'+cy = f_2(t) \). Then \( y = k_1y_1+k_2y_2 \) is a
+solution to \( ay''+by'+cy = k_1f_1(t)+k_2f_2(t) \). If \( f_1(t) = 0 \), then
+we can solve the homogeneous equation:
+\[ y_h = c_1y_2+c_2y_2 \]
+and \( ay''+by'+cy = f_2(t) \ne 0 \). We find a particular solution to the
+second equation, \( y_p \), and the general solution to \( ay''+by'+cy = f(t) \)
+will be \( y = y_h+y_p \), where \( y_h \) is the general solution to the
+corresponding homogeneous equation.
+
+\subsubsection*{Example}
+Solve the initial value problem given \( y(0) = 4 \) and \( y'(0) = 6 \):
+\begin{align*}
+  y''+9y &= 27 \\
+  y &= y_h+y_p \\
+  r^2+9 &= 0 \\
+  r &= 0\pm3i \quad \alpha = 0 \quad \beta = 3 \\
+  y_h &= \e^{0t}\bigg[c_1\cos(3t)+c_2\sin(3t)\bigg] \\
+  y_p &= A \\
+  y_p' &= y_p'' = 0 \\
+  0+9(A) &= 27 \quad A = 3 \\
+  y_p &= 3 \\
+  y &= y_h+y_p = c_1\cos(3t)+c_2\sin(3t)+3 \\
+  y(0) &= 4 = c_1+3 \\
+  y' &= -3c_1\sin(3t)+3c_2\cos(3t) \\
+  y'(0) &= 6 = 3c_2 \quad c_2 = 2 \\
+  y &= \cos(3t)+2\sin(3t)+3
+\end{align*}
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
