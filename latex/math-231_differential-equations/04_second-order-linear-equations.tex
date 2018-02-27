@@ -188,7 +188,8 @@ We can use Euler's formula to resolve this:
 If we let \( \theta = \beta t \), then we have:
 \[ y = \e^{\alpha t}\bigg[\cos(\beta t)+i\sin(\beta t)\bigg] \]
 We can see from this point that the solution is going to oscillate because
-cosine is a sinusoidal wave. Thus, the general form of the solution is:
+cosine is a sinusoidal wave. From this, one way to write the general form of
+the solution is:
 \[ y = \e^{\alpha t}\bigg[c_1\cos(\beta t)+ic_2\sin(\beta t)\bigg] \]
 Given an initial value problem, this would solve it, but going through it would
 involve complex arithmetic. Typically, the constants \( c_1 \) and \( c_2 \) are
@@ -207,8 +208,14 @@ If we substitute this into the function:
   \bigg[au''+bu'+cu\bigg]+i\bigg[av''+bv'+cv\bigg] &= 0
 \end{align*}
 If \( s+it = 0 \), then \( s = t = 0 \). Therefore, both the real and imaginary
-parts are zero. Thus, both \( u \) and \( v \) are solutions to our differential
-equation. We can form our general solution as:
+parts of the equation above are zero.
+\begin{align*}
+  au''+bu'+cu &= 0 \\
+  av''+bv'+cv &= 0
+\end{align*}
+Since we have manipulated \( u \) and \( v \) into the forms of our original
+equation, we can conclude that both \( u \) and \( v \) are solutions to our
+differential equation. We can write a general solution as:
 \[ y(t) = \e^{\alpha t}\bigg[c_1\cos(\beta t)+c_2\sin(\beta t)\bigg] \]
 where \( r = \alpha\pm i\beta \) are complex valued roots.
 
@@ -225,7 +232,7 @@ Consider this example:
 If we have the initial values \( y(0) = 1 \) and \( y'(0) = 1 \):
 \begin{align*}
   y(t) &= \e^{-t}\bigg[c_1\cos(t)+c_2\sin(t)\bigg] \\
-  y'(t) &= \e{-t}\bigg[-c_1\sin(t)+c_2\cos(t)\bigg]-
+  y'(t) &= \e^{-t}\bigg[-c_1\sin(t)+c_2\cos(t)\bigg]-
     e^{-t}\bigg[c_1\cos(t)+c_2\sin(t)\bigg] \\
   y(0) &= 1 = \e^{0}\bigg[c_1\cos(0)+c_2\sin(0)\bigg] \\
   &= c_1 \\
