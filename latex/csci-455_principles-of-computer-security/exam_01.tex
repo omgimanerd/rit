@@ -1,0 +1,105 @@
+\documentclass{math}
+
+\title{Principles of Computer Security}
+\author{Alvin Lin}
+\date{January 2018 - May 2018}
+
+\begin{document}
+
+\maketitle
+
+\section*{Exam Key}
+\begin{enumerate}
+  \item \begin{enumerate}
+    \item CI no-A: Each student can look up their own data and modify their
+    registration for a semester (they can do both C and I), but SIS is down (no
+    A) to the student.
+    \item IA no-C: Each student's data is public, but is only modifiable by
+    an authorized faculty member.
+  \end{enumerate}
+  \item The two steps of authentication are identification (where the subject
+  presents an identifier) and verification (where the system corroborates the
+  binding between the subject and presented identifier).
+  \item Capability lists are the rows of an access control matrix. Each row is
+  for a subject (or role), which denotes the access privileges of that subject
+  to different objects. For example, a subject Jo's capability list would show
+  what Jo can do to each object.
+  \item \begin{enumerate}
+    \item MAC Lattice
+    \item Clearance is a label associated with each subject while
+    classification is a label associated with each object. Each label has two
+    parts: a level of access and the applicable type of objects.
+    \item In Bell-LaPadula, a node x above another node y in the MAC lattice
+    dominates y for \textbf{confidentiality (reading)}. When a subject Jo with
+    clearance (Secret, {Maps}) wants to \textbf{read} RITCampusMaps with
+    classification (Public, {Maps}), the BLP reference monitor checks the
+    lattice, and grants access if Jo's label dominates the map's label. It
+    rejects access otherwise to maintain confidentiality.
+    \item In Biba, a node x above another node y in the MAC lattice dominates
+    y for \textbf{integrity (writing)}. When a subject Jo with clearance
+    (Secret, {Maps}) wants to \textbf{update} RITCampusMaps with classification
+    (Public, {Maps}), the reference monitor checks the lattice and grants Jo
+    permission to modify it if Jo's label dominates the map's label.
+  \end{enumerate}
+  \item Because BLP restricts too much acces, it really needs the notion of a
+  trusted subject for it to work correctly and efficiently. Having trusted
+  subjects means that BLP is pushing a great deal of power to people who work
+  outside the software system.
+  \item RBAC's drawbacks are that it is coarse-grained and requires a complex
+  initial setup ahead of time.
+  \item ABAC's strengths are that it is flexible and fine-grained.
+  \item ABAC's drawbacks are that its run-time access decisions can't be
+  analyzed ahead of time, policies are complex so making changes to permissions
+  is hard, and it is difficult to review permissions.
+  \item ``Encraption'' does not meet the needs of a trusted cryptosystem as it
+  may violate any or all of the following:
+  \begin{enumerate}
+    \item sound mathematics
+    \item anayzed by competent experts and found to be sound
+    \item stood the test of time
+  \end{enumerate}
+  \item Homomorphic encryption permits operations on ciphertext, reducing
+  opportunities for information leakage.
+  \item ElGamal supports homomorphic addition between two ciphertexts, and thus
+  scalar multiplication. Therefore, the scalar has to be in plaintext and so the
+  threshold value used in the secure comparision protocol is also in the clear.
+  This limits existing solutions to be in two-party settings only.
+  \item \begin{enumerate}
+    \item Economy of mechanism: security mechanisms should be as simple as
+    possible.
+    \item Open design: security of a mechanism should not depend on the secrecy
+    its design or implementation.
+    \item Separation of privilege: must not grant permission only on a single
+    condition.
+    \item Complete mediation: check each object access to ensure they are
+    allowed.
+  \end{enumerate}
+  \item \begin{enumerate}
+    \item Physical access to a computer renderse all software security
+    meaningless. Servers and protected data should also be physically isolated,
+    locked, and protected.
+    \item Human error and bad practice renders security systems meaningless.
+    A human writing passcodes on paper negates the purpose of a password
+    authentication system.
+    \item Attacks should not be able to compromise all systems irreversibly.
+    Sensitive data should be encrypted and backed up.
+  \end{enumerate}
+  \item \begin{enumerate}
+    \item Active risks should be monitored constantly, with prevention systems
+    ready to address and mitigate the disaster. Prevention systems should be
+    prioritized by the threat level.
+    \item Prevention systems should be used to address and mitigate
+    disaster. The scope and effect should be minimized as much as possible.
+    \item If the prevention systems were not effective, they should be modified
+    and adjusted according to the threat. Damage assessment and correct should
+    also occur after the disaster.
+  \end{enumerate}
+\end{enumerate}
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}

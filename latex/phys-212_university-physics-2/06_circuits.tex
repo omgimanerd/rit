@@ -65,6 +65,83 @@ charge, but in a wire, the charges that are moving are electrons.
   \end{tikzpicture}
 \end{center}
 
+\subsection*{Temperature Dependence of Resistance}
+Resistivity depends on temperature:
+\[ (\rho-\rho_{\circ}) = \rho_{\circ}\alpha(T-T_{\circ}) \]
+where \( \rho \) is resistivity, \( T \) is temperature, \( \alpha \) is the
+temperature coefficient, and \( T_{\circ},\rho_{\circ} \) are reference values.
+Note that this is similar to the equation of a line. Thus, the temperature
+coefficient can be determined by measuring these values and determining the
+slope of the line plotted by the resistivity at certain temperatures.
+
+\subsection*{Power}
+Power is energy per unit time. Recall that current is change in current over
+unit time.
+\[ I = \frac{\Delta Q}{\Delta t} \quad \Delta Q = I\Delta t \]
+With potential energy:
+\begin{align*}
+  \Delta U &= \Delta QV \\
+  \Delta U &= I\Delta tV \\
+  \frac{\Delta U}{\Delta t} &= IV \\
+  P &= IV
+\end{align*}
+In relation to Ohm's Law:
+\[ P = IV = I^2R = \frac{V^2}{R} \]
+
+\subsection*{Equivalent Resistance (In Series)}
+\begin{center}
+  \begin{circuitikz}
+    \draw (0,0) to[battery, l=\( \Delta V \)] (0,2)
+      to[resistor,label=\( R_1 \)] (2,2)
+      to[resistor,label=\( R_2 \)] (4,2) -- (4,0) -- (0,0);
+  \end{circuitikz} \\[1cm]
+  \begin{circuitikz}
+    \draw (0,0) to[battery, l=\( \Delta V \)] (0,2)
+      to[resistor,label=\( R_{eq} \)] (4,2) -- (4,0) -- (0,0);
+  \end{circuitikz}
+\end{center}
+From conservation of charge:
+\[ I_1 = I_2 = I_{eq} \]
+From conservation of energy and the equivalent circuit:
+\[ \Delta V = \Delta V_1+\Delta V_2 \]
+From the equivalent circuit:
+\begin{align*}
+  \Delta V &= IR_{eq} \\
+  \Delta V_1+\Delta V_2 &= IR_{eq}
+\end{align*}
+Using Ohm's Law:
+\begin{align*}
+  IR_1+IR_2 &= IR_{eq} \\
+  R_1+R_2 &= R_{eq}
+\end{align*}
+Compared to capacitance:
+\[ \frac{1}{C_{eq}} = \frac{1}{C_1}+\frac{1}{C_2} \]
+
+\subsection*{Equivalent Resistance (In Parallel)}
+\begin{center}
+  \begin{circuitikz}
+    \draw (0,0) to[battery, l=\( \Delta V \)] (0,2) -- (2,2)
+      to[resistor,label=\( R_1 \)] (2,0) -- (0,0);
+    \draw (2,2) -- (4,2)
+      to[resistor,label=\( R_2 \)] (4,0) -- (2,0);
+  \end{circuitikz} \\[1cm]
+  \begin{circuitikz}
+    \draw (0,0) to[battery, l=\( \Delta V \)] (0,2) -- (2,2)
+      to[resistor,label=\( R_{eq} \)] (2,0) -- (0,0);
+  \end{circuitikz}
+\end{center}
+From conservation of energy:
+\[ \Delta V = \Delta V_1 = \Delta V_2 \]
+From conservation of charge:
+\[ I = I_1+I_2 \]
+Using Ohm's Law:
+\begin{align*}
+  \frac{\Delta V}{R_{eq}} &= \frac{\Delta V}{R_1}+\frac{\Delta V}{R_2} \\
+  \frac{1}{R_{eq}} &= \frac{1}{R_1}+\frac{1}{R_2} \\
+  R_{eq} &= \frac{R_1R_2}{R_1+R_2}
+\end{align*}
+
+
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
   any questions, comments, or concerns, please contact me at
