@@ -27,17 +27,26 @@ With many different forces:
 \[ W = \sum\vec{F}\cdot\Delta\vec{r_i} \]
 \( \vec{F} \) will generally not be constant, which requires us to integrate:
 \[ W = \int_{i}^{f}\vec{F}\cdot\diff{\vec{r}} \]
-If a potential energy is doing the work:
+If a potential energy is doing the work with no external non-conservative force:
 \[ W = -\Delta U_{internal} \]
-For electrial fields, we will start with:
+For electrical potential, we will start with:
 \[ W = \int\vec{F}\cdot\diff{r} \]
-and plug in forces from electric fields.
+We can assume this is for a charge \( q \) in a constant field.
+\[ W = \int(q\vec{E})\cdot\diff{\vec{r}} \]
+Let the force be in the same direction as the electric field.
+\[ W = qE\Delta x \]
+This yields the following relation:
+\[ \Delta U = -W = -qE\Delta x \]
+Just like for Coulomb's Law, we can divide out the test charge:
+\[ \text{Electric potential} = \Delta V = \frac{\Delta U}{q} = -E\Delta x \]
+Using this, we can also derive the formula for potential difference between two
+points:
 \begin{align*}
-  W &= \int\vec{F}\cdot\diff{\vec{r}} \\
-  &= \int(q\vec{E})\cdot\diff{\vec{r}} \\
-  &= qE\Delta x \\
-  \Delta U &= -W = -qE\Delta x \\
-  \text{Electric potential} &= \Delta V = \frac{\Delta U}{q} = -E\Delta x
+  W &= -\Delta U = -q\Delta V = \int_{i}^{f}\vec{F}\cdot\diff{r} \\
+  \Delta V &= -\frac{1}{q}\int_{i}^{f}\vec{F}\cdot\diff{\vec{r}} \\
+  &= -\int_{i}^{f}\frac{\vec{F}}{q}\cdot\diff{\vec{r}} \\
+  &= -\int_{i}^{f}\vec{E}\cdot\diff{\vec{r}} \\
+  &= V_f-V_i
 \end{align*}
 Electric potential is measured in volts, where one volt is equal to one joule
 per Coulomb.
@@ -54,14 +63,6 @@ perpendicular to the equipotential lines at all points and points from high to
 low. The region with the largest electric field is where the equipotential
 lines are closest together.
 
-\subsection*{Work/Energy}
-\begin{align*}
-  W &= -\Delta U = -q\Delta V = \int_{i}^{f}\vec{F}\cdot\diff{r} \\
-  \Delta V &= -\frac{1}{q}\int_{i}^{f}\vec{F}\cdot\diff{\vec{r}} \\
-  &= -\int_{i}^{f}\frac{\vec{F}}{q}\cdot\diff{\vec{r}} \\
-  &= -\int_{i}^{f}\vec{E}\cdot\diff{\vec{r}}
-\end{align*}
-
 \subsection*{Voltage Difference for a Point Charge}
 If we ask for \( V_r \), this means with respect to infinity, where \( V(\infty)
 = 0 \).
@@ -77,20 +78,13 @@ With multiple point charges:
 \[ V_{total} = \sum_{point~charge} = V_1+V_2+V_3+\dots \]
 The potential energy between two point charges is:
 \[ \Delta U = q\Delta V = \frac{kq_1q_2}{r} \]
-Additionally:
-\[ W_{ext} = -W_e = \Delta U \]
 To find \( V(r) \) for a charge distribution:
 \[ \diff{V} = \frac{k\diff{q}}{r} \]
-In summary:
-\begin{enumerate}
-  \item \( \Delta V = \int\vec{E}\cdot\diff{\vec{r}} \)
-  \item \( \Delta V = \int\frac{k\diff{q}}{r} \)
-  \item \( \Delta U = q\Delta V \)
-\end{enumerate}
+This goes through a process similar to finding the electric field given a charge
+distribution.
 
 \subsubsection*{Example}
-These problems are analogous to finding the electric field of a charge
-distribution. Assume a constant charge density of \( \lambda \):
+Assume a constant charge density of \( \lambda \):
 \begin{center}
   \begin{tikzpicture}
     \draw (0,0) -- (4,0) -- (4,1) -- (0,1) -- cycle;
