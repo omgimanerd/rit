@@ -1,0 +1,58 @@
+\documentclass{math}
+
+\title{Principles of Computer Security}
+\author{Alvin Lin}
+\date{January 2018 - May 2018}
+
+\begin{document}
+
+\maketitle
+
+\section*{Secure Coding}
+Code that is weak in quality is likely to introduce security flaws and
+vulnerabilities that would otherwise not be an issue. Secure code is very much
+related to writing high quality code. Secure code is usually a three-way
+partnership between the code itself, the compiler, and the operating system it
+will run on. The programmer can utilize all three to ensure the behavior of a
+certain program.
+
+\subsection*{Terminology}
+\begin{itemize}
+  \item Security Policy: the set of rules/practices that specify what security
+  an organization provides.
+  \item Security Mechanism: code that conforms to security policy.
+  \item Assurance: proof that the security mechanism conforms to the security
+  policy.
+  \item Security Flaw: software defect posing a potential security risk.
+  \item Vulnerability: conditions that allow attackers to violate security
+  policy.
+  \item Exploit: technique that takes advantage of security vulnerabilities to
+  violate a security policy.
+  \item Mitigation: methods, techniques, processes, tools, or runtime libraries
+  that cna prevent or limit exploits against vulnerabilities.
+\end{itemize}
+
+\subsection*{Then vs Now}
+In the past, systems were smaller and operated on less code. Computers operated
+behind closed doors with limited network access. Computer users were mostly
+experts, backed by defense mechanisms such as ``guns, gates, and guards''.
+Today, everyone has a computer and they are becoming increasingly networked.
+Often systems are very large, and many have legacy code. For convenience, code
+is reused and sacrifices performance.
+
+\subsection*{Trusted Computer Base}
+A trusted computing base is the part of a system that must work correctly to
+ensure proper function, for example, the OS kernel and hardware. We need to
+rely on languages, compilers, and the OS to help enforce protection and security
+mechanisms. Dijkstra, in addition to being known for his famous search
+algorithm, is known for his Technische Hogeschool Eindhoven (THE) operating
+system which conformed to this standard by creating a layered system in which
+higher levels ONLY depended on the lower layers.
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
