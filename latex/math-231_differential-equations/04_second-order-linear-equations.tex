@@ -397,10 +397,12 @@ the problem cannot be solved using the method of undetermined coefficients.
   y_p' &= -A\sin(t)+B\cos(t) \\
   y_p'' &= -A\cos(t)-B\sin(t)
 \end{align*}
-Since the roots are real, there is no match to \( \alpha \) or \( \beta \).
+Since the roots are real, there is no match to \( \alpha \) or \( \beta \) when
+forming the particular solution.
 \begin{align*}
   y''+3y'+2y &= 5\sin(t) \\
-  -A\cos(t)-B\sin(t)+3(-A\sin(t)+B\cos(t))+2(A\cos(t)+B\sin(t)) &= 5\sin(t) \\
+  -A\cos(t)-B\sin(t)+3\bigg[-A\sin(t)+B\cos(t)\bigg]+
+    2\bigg[A\cos(t)+B\sin(t)\bigg] &= 5\sin(t) \\
   -3A\sin(t)+B\sin(t)-A\cos(t)+3B\cos(t) &= 5\sin(t) \\
   (-3A+B)\sin(t)+(-A+3B)\cos(t) &= 5\sin(t) \\
   -3A+B = 5 \quad -A+3B &= 0 \\
@@ -410,7 +412,7 @@ By equating the like coefficients, we can find an explicit solution:
 \[ y_p = -\frac{3}{2}\cos(t)+\frac{1}{2}\sin(t) \]
 
 \subsubsection*{Example}
-Find the general form of a particular solution \( y_p \):
+Find the general form of a particular solution \( y_p \).
 \begin{align*}
   y''+8y'-9y &= 10t^2\e^t\cos(2t) \\
   r^2+8r-9 &= (r+9)(r-1) = 0 \\
@@ -432,22 +434,122 @@ will be \( y = y_h+y_p \), where \( y_h \) is the general solution to the
 corresponding homogeneous equation.
 
 \subsubsection*{Example}
-Solve the initial value problem given \( y(0) = 4 \) and \( y'(0) = 6 \):
+Solve the following initial value problem.
+\[ y''-y = -11t+1 \quad y(0) = -1 \quad y'(0) = 1 \]
+We can use the method of superposition to solve this as:
+\[ y = y_h+y_p \]
+We first need to find the solution to the corresponding homogeneous equation
+\( y_h \):
+\begin{align*}
+  y''-y &= 0 \\
+  r^2-1 &= 0 \\
+  r &= \pm1 \\
+  y_h &= c_1\e^t+c_2\e^{-t}
+\end{align*}
+Now we need to find a particular solution \( y_p \):
+\begin{align*}
+  y_p &= At+B \\
+  y_p' &= A \\
+  y_p'' &= 0 \\
+  0-(At+B) &= -11t+1 \\
+  -At-B &= -11t+1 \\
+  -A &= 11 \quad -B = 11 \\
+  y_p &= 11t-1
+\end{align*}
+Now we have both solutions and we can solve for the arbitrary constants:
+\begin{align*}
+  y &= y_h+y_p = c_1\e^t+c_2\e^{-t}+11t-1 \\
+  y(0) &= -1 = c_1+c_2-1 \\
+  c_1 &= -c_2 \\
+  y' &= c_1\e^t-c_2\e^{-t}+11 \\
+  y'(0) &= 1 = c_1-c_2+11 \\
+  -1 &= -2c_2 \\
+  c_2 &= 5 \quad c_1 = -5 \\
+  y &= -5\e^t+5\e^{-t}+11t-1
+\end{align*}
+
+\subsubsection*{Example}
+Solve the following initial value problem.
+\[ y''+9y = 27 \quad y(0) = 4 \quad y'(0) = 6 \]
+Homogeneous solution:
 \begin{align*}
   y''+9y &= 27 \\
   y &= y_h+y_p \\
   r^2+9 &= 0 \\
   r &= 0\pm3i \quad \alpha = 0 \quad \beta = 3 \\
-  y_h &= \e^{0t}\bigg[c_1\cos(3t)+c_2\sin(3t)\bigg] \\
+  y_h &= \e^{0t}\bigg[c_1\cos(3t)+c_2\sin(3t)\bigg]
+\end{align*}
+Particular solution:
+\begin{align*}
   y_p &= A \\
   y_p' &= y_p'' = 0 \\
   0+9(A) &= 27 \quad A = 3 \\
-  y_p &= 3 \\
+  y_p &= 3
+\end{align*}
+Solve for arbitrary constants:
+\begin{align*}
   y &= y_h+y_p = c_1\cos(3t)+c_2\sin(3t)+3 \\
   y(0) &= 4 = c_1+3 \\
   y' &= -3c_1\sin(3t)+3c_2\cos(3t) \\
   y'(0) &= 6 = 3c_2 \quad c_2 = 2 \\
   y &= \cos(3t)+2\sin(3t)+3
+\end{align*}
+
+\subsubsection*{Example}
+Find the general solution to the following differential equation.
+\[ y''+9y = \cos(t)+1 \]
+Homogeneous solution:
+\begin{align*}
+  y''+9y &= 0 \\
+  r^2+9 &= 0 \\
+  r &= 0\pm3i \quad \alpha = 0 \quad \beta = 3 \\
+  y_h &= c_1\cos(3t)+c_2\sin(3t)
+\end{align*}
+Particular solution:
+\begin{align*}
+  y_p &= A\cos(t)+B\sin(t)+C \\
+  y_p' &= -A\sin(t)+B\cos(t) \\
+  y_p'' &= -A\cos(t)-B\sin(t) \\
+  -A\cos(t)-B\sin(t)+9\bigg[A\cos(t)+B\sin(t)+C\bigg] &= \cos(t)+1 \\
+  8A\cos(t)+8B\sin(t)+9C &= \cos(t)+1 \\
+  8A &= 1 \quad 8B = 0 \quad 9C = 1 \\
+  A &= \frac{1}{8} \quad B = 0 \quad C = \frac{1}{9} \\
+  y_p &= \frac{\cos(t)}{8}+\frac{1}{9}
+\end{align*}
+General solution:
+\[ y = c_1\cos(3t)+c_2\sin(3t)+\frac{\cos(t)}{8}+\frac{1}{9} \]
+
+\subsubsection*{Example}
+Solve the following initial value problem.
+\[ y''+4y = \sin(t)-\cos(t) \quad y(0) = 1 \quad y'(0) = 0 \]
+Homogeneous solution:
+\begin{align*}
+  y''+4y &= 0 \\
+  r^2+4 &= 0 \\
+  r &= 0\pm2i \quad \alpha = 0 \quad \beta = 2
+\end{align*}
+Particular solution:
+\begin{align*}
+  y_p &= A\cos(t)+B\sin(t) \\
+  y_p' &= -A\sin(t)+B\cos(t) \\
+  y_p'' &= -A\cos(t)-B\sin(t) \\
+  -A\cos(t)-B\sin(t)+4\bigg[A\cos(t)+B\sin(t)\bigg] &= \sin(t)-\cos(t) \\
+  3A\cos(t)+3B\sin(t) &= \sin(t)-\cos(t) \\
+  3A &= -1 \quad A = -\frac{1}{3} \\
+  3B &= 1 \quad B = \frac{1}{3} \\
+  y_p &= -\frac{1}{3}\cos(t)+\frac{1}{3}\sin(t)
+\end{align*}
+Solve for arbitrary constants:
+\begin{align*}
+  y &= y_h+y_p \\
+  y &= c_1\cos(2t)+c_2\sin(2t)-\frac{1}{3}\cos(t)+\frac{1}{3}\sin(t) \\
+  y(0) &= 1 = c_1-\frac{1}{3} \\
+  c_1 &= \frac{4}{3} \\
+  y' &= -2c_1\sin(2t)+2c_2\cos(2t)+\frac{1}{3}\sin(t)+\frac{1}{3}\cos(t) \\
+  y'(0) &= 0 = 2c_2+\frac{1}{3} \\
+  c_2 &= -\frac{1}{6} \\
+  y &= \frac{4}{3}\cos(2t)-\frac{1}{6}\sin(2t)-\frac{1}{3}\cos(t)+
+    \frac{1}{3}\sin(t)
 \end{align*}
 
 \begin{center}
