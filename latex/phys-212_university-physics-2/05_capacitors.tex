@@ -57,16 +57,16 @@ being the dielectric constant for a vacuum.
 \subsection*{Capacitors in Series}
 \begin{center}
   \begin{circuitikz}
-    \draw (0,0) to[battery, l=\( \Delta V_{total} \)] (0,2) -- (2,2)
-      to[capacitor, l=\( C_1 \)] (2,1)
-      to[capacitor, l=\( C_2 \)] (2,0) -- (0,0);
+    \draw (0,0) to[battery, label=\( \Delta V_{total} \)] (0,2) -- (2,2)
+      to[capacitor, label=\( C_1 \)] (2,1)
+      to[capacitor, label=\( C_2 \)] (2,0) -- (0,0);
   \end{circuitikz}
 \end{center}
 We can simplify this circuit to:
 \begin{center}
   \begin{circuitikz}
-    \draw (0,0) to[battery, l=\( \Delta V_{total} \)] (0,2) -- (2,2)
-      to[capacitor, l=\( C_{eq} \)] (2,0) -- (0,0);
+    \draw (0,0) to[battery, label=\( \Delta V_{total} \)] (0,2) -- (2,2)
+      to[capacitor, label=\( C_{eq} \)] (2,0) -- (0,0);
   \end{circuitikz}
 \end{center}
 Both \( C_1 \) and \( C_2 \) have the same charge \( Q \) due to being in series
@@ -87,17 +87,17 @@ Thus, for capacitors in series, the equivalent capacitance can be calculated as:
 \subsection*{Capacitors in Parallel}
 \begin{center}
   \begin{circuitikz}
-    \draw (0,0) to[battery, l=\( \Delta V_{total} \)] (0,2) -- (2,2)
-      to[capacitor, l=\( C_1 \)] (2,0) -- (0,0);
+    \draw (0,0) to[battery, label=\( \Delta V_{total} \)] (0,2) -- (2,2)
+      to[capacitor, label=\( C_1 \)] (2,0) -- (0,0);
     \draw (2,2) -- (4,2)
-      to[capacitor, l=\( C_2 \)] (4,0) -- (2,0);
+      to[capacitor, label=\( C_2 \)] (4,0) -- (2,0);
   \end{circuitikz}
 \end{center}
 Again, we can simplify this circuit to:
 \begin{center}
   \begin{circuitikz}
-    \draw (0,0) to[battery, l=\( \Delta V_{total} \)] (0,2) -- (2,2)
-      to[capacitor, l=\( C_{eq} \)] (2,0) -- (0,0);
+    \draw (0,0) to[battery, label=\( \Delta V_{total} \)] (0,2) -- (2,2)
+      to[capacitor, label=\( C_{eq} \)] (2,0) -- (0,0);
   \end{circuitikz}
 \end{center}
 Because the capacitors are in parallel:

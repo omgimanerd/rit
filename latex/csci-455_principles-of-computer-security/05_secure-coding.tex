@@ -49,6 +49,19 @@ algorithm, is known for his Technische Hogeschool Eindhoven (THE) operating
 system which conformed to this standard by creating a layered system in which
 higher levels ONLY depended on the lower layers.
 
+\subsection*{Process Memory Layout}
+\begin{itemize}
+  \item Text: Read-only segment with instructions for CPU execution. No
+  uncontrolled instruction modification, changing this segment results in a
+  segmentation fault.
+  \item Data: Global initialized static variables.
+  \item Block Started by Symbol (BSS): Global uninitialized static variables.
+  This section is zeroed out by the operating system before program execution.
+  \item Heap: Dynamic memory allocated at runtime.
+  \item Stack: Memory for function variables allocated automatically on call
+  and deallocated on return. Process execution control information.
+\end{itemize}
+
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
   any questions, comments, or concerns, please contact me at

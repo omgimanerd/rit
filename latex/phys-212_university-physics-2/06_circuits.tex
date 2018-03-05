@@ -15,8 +15,8 @@
 We will start with a microscopic pictures of current and resistance.
 \begin{center}
   \begin{circuitikz}
-    \draw (0,0) to[battery, l=\( \Delta V \)] (0,2) -- (4,2)
-      to[resistor, l=R] (4,0) -- (0,0);
+    \draw (0,0) to[battery, label=\( \Delta V \)] (0,2) -- (4,2)
+      to[resistor, label=R] (4,0) -- (0,0);
    \draw[->] (1.5,2.5) -- (2.5,2.5) node[pos=0.5,above] {\( I \)};
   \end{circuitikz}
 \end{center}
@@ -91,12 +91,12 @@ In relation to Ohm's Law:
 \subsection*{Equivalent Resistance (In Series)}
 \begin{center}
   \begin{circuitikz}
-    \draw (0,0) to[battery, l=\( \Delta V \)] (0,2)
+    \draw (0,0) to[battery, label=\( \Delta V \)] (0,2)
       to[resistor,label=\( R_1 \)] (2,2)
       to[resistor,label=\( R_2 \)] (4,2) -- (4,0) -- (0,0);
   \end{circuitikz} \\[1cm]
   \begin{circuitikz}
-    \draw (0,0) to[battery, l=\( \Delta V \)] (0,2)
+    \draw (0,0) to[battery, label=\( \Delta V \)] (0,2)
       to[resistor,label=\( R_{eq} \)] (4,2) -- (4,0) -- (0,0);
   \end{circuitikz}
 \end{center}
@@ -120,13 +120,13 @@ Compared to capacitance:
 \subsection*{Equivalent Resistance (In Parallel)}
 \begin{center}
   \begin{circuitikz}
-    \draw (0,0) to[battery, l=\( \Delta V \)] (0,2) -- (2,2)
+    \draw (0,0) to[battery, label=\( \Delta V \)] (0,2) -- (2,2)
       to[resistor,label=\( R_1 \)] (2,0) -- (0,0);
     \draw (2,2) -- (4,2)
       to[resistor,label=\( R_2 \)] (4,0) -- (2,0);
   \end{circuitikz} \\[1cm]
   \begin{circuitikz}
-    \draw (0,0) to[battery, l=\( \Delta V \)] (0,2) -- (2,2)
+    \draw (0,0) to[battery, label=\( \Delta V \)] (0,2) -- (2,2)
       to[resistor,label=\( R_{eq} \)] (2,0) -- (0,0);
   \end{circuitikz}
 \end{center}
@@ -141,6 +141,96 @@ Using Ohm's Law:
   R_{eq} &= \frac{R_1R_2}{R_1+R_2}
 \end{align*}
 
+\subsection*{Kirchhoff's Laws}
+At a junction or node, the current going in is equal to the current going out.
+\[ I_{in} = I_{out} \]
+\begin{center}
+  \begin{tikzpicture}
+    \draw[->,thick] (-2,0) -- (0,0) node[pos=0.5,above] {\( I_1 \)};
+    \draw[->,thick] (0,0) -- (2,0) node[pos=0.5,above] {\( I_2 \)};
+    \draw[->,thick] (0,0) -- (0,-2) node[pos=0.5,right] {\( I_3 \)};
+  \end{tikzpicture}
+\end{center}
+\[ I_1 = I_2+I_3 \]
+This arises from the conservation of current/charge and is always true in a
+steady state. For a loop in a circuit, conservation of energy says:
+\begin{center}
+  \begin{circuitikz}
+    \draw (0,0) to[battery, label=\( \Delta V_{battery} \)] (0,2) -- (2,2)
+      to[resistor,label=\( R \)] (2,0) -- (0,0);
+  \end{circuitikz}
+\end{center}
+\begin{align*}
+  \Delta V_{total} &= 0 \\
+  \Delta V_{battery}+\Delta V_{resistor} &= 0 \\
+  \Delta V_{battery} &= -\Delta V_{resistor} \\
+  \Delta E &= 0 = \Delta U = q\Delta V
+\end{align*}
+The voltage drop is zero for a closed loop. The voltage drop across a resistor
+is negative if the loop chosen is in the same direction as the current. The
+voltage drop is positive if the opposite is true. For a battery, the voltage
+drop across it is positive if the loop goes from negative to positive.
+
+\subsubsection*{Solving Kirchhoff's Law Problems}
+\begin{enumerate}
+  \item Draw currents through each element. If you don't know the directions,
+  guess.
+  \item Identify the number of loops and nodes.
+  \item Draw the chosen loops.
+  \item Write down one equation for each node and loop using Kirchhoff's Law.
+  \item Solve it as a system of equations.
+\end{enumerate}
+
+\subsubsection*{Example}
+\begin{center}
+  \begin{circuitikz}
+    \draw (0,0) to[battery, label=1.5 V] (0,4)
+      to[resistor, label=\mbox{\( R_{1} = 1000 \Omega \)}] (4,4)
+      to[resistor, label=\mbox{\( R_{3} = 100 \Omega \)}] (4,0) -- (0,0);
+    \draw (4,0) -- (8,0)
+      to[battery, l_=1.5 V] (8,4)
+      to[resistor, l_=\mbox{\( R_{2} = 220 \Omega \)}] (4,4);
+  \end{circuitikz}
+\end{center}
+This yields a few equations. We will use these three to solve for the voltage
+drop:
+\begin{align*}
+  1.5-\Delta V_1-\Delta V_3 &= 0 \\
+  1.5-\Delta V_2-\Delta V_3 &= 0 \\
+  I_1+I_2 &= I_3
+\end{align*}
+We can substitute with Ohm's Law to yield a system of equations to solve for the
+voltage drops:
+\begin{align*}
+  1.5-\Delta V_1-\Delta V_3 &= 0 \\
+  1.5-\Delta V_2-\Delta V_3 &= 0 \\
+  \frac{\Delta V_1}{R_1}+\frac{\Delta V_2}{R_2} &= \frac{\Delta V_3}{R_3} \\
+  \Delta V_1 &= \frac{55}{57} \\
+  \Delta V_2 &= \frac{55}{57} \\
+  \Delta V_3 &= \frac{61}{114}
+\end{align*}
+
+\subsection*{RC Circuits}
+\begin{center}
+  \begin{circuitikz}
+    \draw (0,0) to[battery, label=\( \epsilon \)] (0,2)
+      to[capacitor, label=C] (2,2)
+      to[resistor, label=R] (2,0) -- (0,0);
+  \end{circuitikz}
+\end{center}
+We can analyze this circuit using Kirchhoff's Law as well.
+\begin{align*}
+  \epsilon-\Delta V_C-\Delta V_R &= 0 \\
+  \epsilon-\frac{Q}{C}-IR &= 0 \\
+  I &= \ddiff{Q}{t} \\
+  I &= \frac{\epsilon}{R}-\frac{Q}{RC} \\
+  \ddiff{}{t}I &= \ddiff{}{t}\bigg[\frac{\epsilon}{R}-\frac{Q}{RC}\bigg] \\
+  \ddiff{I}{t} &= 0-\frac{1}{RC}\ddiff{Q}{t} \\
+  \ddiff{I}{t} &= -\frac{1}{RC}I \\
+  I(t) &= I_{\circ}\e^{-\frac{1}{RC}t}
+\end{align*}
+This is the equation of the current through an RC circuit with an uncharged
+capacitor.
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
