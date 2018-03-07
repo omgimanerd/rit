@@ -130,7 +130,23 @@ known, otherwise it becomes computationally infeasible for large numbers.
 Given a prime \( p \) and an integer \( a \) such that \( a^p \equiv a\mod p \),
 the following is true:
 \[ a^{p-1} \equiv 1\mod p \]
-This is used to find the modular inverse if \( p \) is prime.
+This is used to find the modular inverse if \( p \) is prime. We can rewrite
+the relation above as follows:
+\begin{align*}
+  a^{p-1} &\equiv 1\mod p \\
+  a\cdot a^{p-2} &\equiv 1\mod p
+\end{align*}
+By the definition of the modular inverse:
+\begin{align*}
+  a\cdot a^{-1} &\equiv 1\mod p \\
+  a^{-1} \equiv a^{p-2}\mod p
+\end{align*}
+For example, \( a = 2, p = 7 \):
+\begin{align*}
+  2^7 &\equiv 2\mod7
+  2^{-1} &\equiv 2^5\mod7 \equiv 4\mod7 \\
+  2\cdot4 &\equiv 1\mod 7
+\end{align*}
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
