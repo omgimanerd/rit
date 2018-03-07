@@ -62,6 +62,65 @@ higher levels ONLY depended on the lower layers.
   and deallocated on return. Process execution control information.
 \end{itemize}
 
+\subsection*{Strings}
+Strings are a major mechanism for information exchange between users and
+software and between software as well. They are used in text fields, command
+line arguments, environment variables, and other methods of information storage
+and propagation. Even though they are so basic, they are not a built-in type
+in C or C++. The standard C library supports strings of type \texttt{char} and
+wide strings of type \texttt{wchar\_t}. Software vulnerabilities arise due to
+weaknesses in string management, representation, and manipulation. They
+are represented with 8 bit ASCII or 16 bit Unicode and must be null terminated.
+Multiple string types (like \texttt{std::basic\_string}, \texttt{std::string},
+\texttt{std:wstring}) cause issues with secure coding in C++. Common errors
+arise from:
+\begin{itemize}
+  \item Improperly bounded string copies when copying an unbounded string to a
+  fixed length \texttt{char} array.
+  \item Copying and concatenating strings, since many library calls such as
+  \texttt{strcopy()}, \texttt{strcat()}, and \texttt{sprintf()} perform
+  unbounded copy operations.
+  \item Off-by-one errors
+  \item Null termination errors
+  \item Incorrect string truncation
+\end{itemize}
+
+\subsubsection*{Exploits}
+\begin{itemize}
+  \item Unsanitized data entered from a user outside of the program control can
+  cause security issues.
+  \item Buffer overflows from data written outside memory boundaries allow for
+  users to leak or modify program data.
+  \item Stack smashing allows users to overwrite data in the execution stack and
+  execute arbitrary code.
+  \item Code injection allows an overwritten stack return address to point to
+  a malicious function.
+  \item Arc injection allows for the transfer of control from the existing code
+  to some in-process memory.
+\end{itemize}
+
+\subsection*{Concurrency and Race Conditions}
+Concurrency is essential to modern computing. Multiple separate execution flows
+running simultaneously allow for speed and optimization. Uncontrolled
+concurrency can lead to non-determinism however. An unanticipated execution
+ordering in concurrent code flow can lead to a defect known as a race condition.
+Three conditions are necessary for a race condition to occur:
+\begin{enumerate}
+  \item Concurrency: there must be at least two concurrent control flows
+  \item Shared Object: a shared race object must be accessed by both concurrent
+  flows
+  \item State Change: at least one control flow must alter the state of the race
+  object
+\end{enumerate}
+Attackers can exploit a race condition to manipulate data in unpredictable ways.
+
+\subsubsection*{Eliminating Race Conditions}
+Race conditions are caused by unregulated access to shared resources due to
+process scheduling. To prevent it, access to critical sections must be atomic
+and code accessing it must execute alone. Synchronization primitives such as
+locks, counting semaphores, binary semaphores, pipes, monitors, and
+condition variables help implement mutual exclusion.
+
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
   any questions, comments, or concerns, please contact me at
