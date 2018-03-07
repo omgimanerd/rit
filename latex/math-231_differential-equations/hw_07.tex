@@ -16,18 +16,206 @@
 \clearpage
 
 \section*{Section 4.4}
-13
-16
-17
+
+\subsubsection*{Exercise 13}
+Find a particular solution to the differential equation.
+\begin{align*}
+  y''-y'+9y &= 3\sin(3t) \\
+  r^2-r+9 &= 0 \\
+  r &= \frac{1\pm\sqrt{1-4(9)}}{2} \\
+  &= \frac{1}{2}\pm\frac{\sqrt{35}}{2}i \\
+  y_p &= A\sin(3t)+B\cos(3t) \\
+  y_p' &= 3A\cos(3t)-3B\sin(3t) \\
+  y_p'' &= -9A\sin(3t)-9B\cos(3t)
+\end{align*}
+\begin{align*}
+  -9A\sin(3t)-9B\cos(3t)-(3A\cos(3t)-3B\sin(3t))+9(A\sin(3t)+B\cos(3t)) &=
+    3\sin(3t) \\
+  -3A\cos(3t)-3B\sin(3t) &= 3\sin(3t) \\
+  -3A = 0 \quad -3B &= 3 \\
+  A = 0 \quad B &= -1 \\
+  y_p &= \cos(3t)
+\end{align*}
+
+\subsubsection*{Exercise 16}
+Find a particular solution to the differential equation.
+\begin{align*}
+  \theta''(t)-\theta(t) &= t\sin(t) \\
+  r^2-r &= r(r-1) = 0 \\
+  r &= 0 \quad r = 1 \\
+  y_p &= (At+B)\cos(t)+(Ct+D)\sin(t) \\
+  y_p' &= (At+B)(-\sin(t))+A\cos(t)+(Ct+D)\cos(t)+C\sin(t) \\
+  y_p'' &=
+    (At+B)(-\cos(t))-A\sin(t)-A\sin(t)+(Ct+D)(-\sin(t))+C\cos(t)+C\cos(t) \\
+  &= (2C-At-B)\cos(t)-(2A+Ct+D)\sin(t) \\
+\end{align*}
+\begin{align*}
+  (2C-At-B)\cos(t)-(2A+Ct+D)\sin(t)-((At+B)\cos(t)+(Ct+D)\sin(t)) &= 0 \\
+  (2C-2B)\cos(t)+(-2A)t\cos(t)+(-2A-2D)\sin(t)+(-2C)t\sin(t) &= t\sin(t) \\
+  2C-2B = 0 \quad -2A = 0 \quad -2A-2D = 0 \quad -2C &= 1 \\
+  A = 0 \quad B = -\frac{1}{2} \quad C = -\frac{1}{2} \quad D &= 0 \\
+\end{align*}
+\[ y_p = -\frac{1}{2}\cos(t)-\frac{1}{2}t\sin(t) \]
+
+\subsubsection*{Exercise 17}
+Find a particular solution to the differential equation.
+\begin{align*}
+  y''+4y &= 8\sin(2t) \\
+  r^2+4 &= 0 \\
+  r &= 0\pm2i \\
+  y_p &= At\sin(2t)+Bt\cos(2t) \\
+  y_p' &= 2At\cos(2t)+A\sin(2t)-2Bt\sin(2t)+B\cos(2t) \\
+  &= (2At+B)\cos(2t)+(-2Bt+A)\sin(2t) \\
+  y_p'' &= (2At+B)(-2\sin(2t))+2A\cos(2t)+(-2Bt+A)(2\cos(2t))-2B\sin(2t) \\
+  &= (-4At-4B)\sin(2t)+(-4Bt+4A)\cos(2t) \\
+  8\sin(2t) &= (-4At-4B)\sin(2t)+(-4Bt+4A)\cos(2t)+4(At\sin(2t)+Bt\cos(2t)) \\
+  &= (-4B)\sin(2t)+(4A)\cos(2t) \\
+  -4B &= 8 \quad 4A = 0 \\
+  B &= -2 \quad A = 0 \\
+  y_p &= -2t\cos(2t)
+\end{align*}
 
 \section*{Section 4.5}
-1
-5
-7
-17
-19
-25
-29
+
+\subsubsection*{Exercise 1}
+Given that \( y_1(t) = \cos(t) \) is a solution to \( y''-y'+y = \sin(t) \) and
+\( y_2(t) = \e^{\frac{\e^{2t}}{3}} \) is a solution to \( y''-y'+y = \e^{2t} \)
+use the superposition principle to find solutions to the following differential
+equations.
+\begin{enumerate}
+  \item \( y''-y'+y = 5\sin(t) \)
+  \begin{align*}
+    y''-y'+y &= 5\sin(t) \\
+    y &= 5y_1(t)+0y_2(t) = 5\cos(t)
+  \end{align*}
+  \item \( y''-y'+y = \sin(t)-3\e^{2t} \)
+  \begin{align*}
+    y''-y'+y &= \sin(t)-3\e^{2t} \\
+    y &= 1y_1(t)-3y_2(t) = \cos(t)-3\e^{\frac{2t}{3}}
+  \end{align*}
+  \item \( y''-y'+y = 4\sin(t)+18\e^{2t} \)
+  \begin{align*}
+    y''-y+y &= 4\sin(t)+18\e^{2t} \\
+    y &= 4y_t(t)+18y_2(t) = 4\cos(t)+18\e^{\frac{2t}{3}}
+  \end{align*}
+\end{enumerate}
+
+\subsubsection*{Exercise 5}
+A nonhomogeneous equation and a particular solution are given. Find a general
+solution for the equation.
+\begin{align*}
+  \theta''-\theta'-2\theta &= 1-2t \quad \theta_p(t) = t-1 \\
+  r^2-r-2 &= (r-2)(r+1) = 0 \\
+  r &= 2 \quad r = -1 \\
+  \theta_h(t) &= c_1\e^{2t}+c_2\e^{-t} \\
+  \theta(t) &= \theta_h(t)+\theta_p(t) \\
+  &= c_1\e^{2t}+c_2\e^{-t}+t-1
+\end{align*}
+
+\subsubsection*{Exercise 7}
+A nonhomogeneous equation and a particular solution are given. Find a general
+solution for the equation.
+\begin{align*}
+  y'' &= 2y+2\tan^3(x) \quad y_p(x) = \tan(x) \\
+  y''-2y &= 2\tan^3(x) \\
+  r^2-2 &= 0 \quad r = \pm\sqrt{2} \\
+  y_h(x) &= c_1\e^{\sqrt{2}x}+c_2\e^{-\sqrt{2}x} \\
+  y(x) &= y_h(x)+y_p(x) \\
+  &= c_1\e^{\sqrt{2}x}+c_2\e^{-\sqrt{2}x}+\tan(x) \\
+\end{align*}
+
+\subsubsection*{Exercise 17}
+Find a general solution to the given differential equation.
+\begin{align*}
+  y''-2y'-3y &= 3t^2-5 \\
+  r^2-2r-3 &= (r-3)(r+1) = 0 \\
+  r &= 3 \quad r = -1 \\
+  y_h &= c_1\e^{3t}+c_2\e^{-t} \\
+  y_p &= At^2+Bt+C \\
+  y_p' &= 2At+B \\
+  y_p'' &= 2A \\
+  2A-2(2At+B)-3(At^2+Bt+C) &= 3t^2-5 \\
+  -3At^2+(-4A-3B)t+(2A-2B-3C) &= 3t^2-5 \\
+  -3A = 3 \quad -4A-3B = 0 \quad 2A-2B-3C &= -5 \\
+  A = -1 \quad B = \frac{4}{3} \quad C &= \frac{1}{9} \\
+  y_p &= -t^2+\frac{4}{3}t+\frac{1}{9} \\
+  y &= y_h+y_p \\
+  &= c_1\e^{3t}+c_2\e^{-t}-t^2+\frac{4}{3}t+\frac{1}{9}
+\end{align*}
+
+\subsubsection*{Exercise 19}
+Find a general solution to the given differential equation.
+\begin{align*}
+  y''(x)-3y'(x)+2y(x) &= \e^x\sin(x) \\
+  r^2-3r+2 &= (r-2)(r-1) = 0 \\
+  r &= 2 \quad r = 1 \\
+  y_h &= c_1\e^{2x}+c_2\e^{x} \\
+  y_p &= A\e^x\sin(x)+B\e^x\cos(x) \\
+  y_p' &= A\e^x\cos(x)+A\e^x\sin(x)-B\e^x\sin(x)+B\e^x\cos(x) \\
+  &= (A\e^x+B\e^x)\cos(x)+(A\e^x-B\e^x)\sin(x) \\
+  y_p'' &= (A\e^x+B\e^x)(-\sin(x))+(A\e^x+B\e^x)\cos(x)+ \\
+    &\quad~ (A\e^x-B\e^x)\cos(x)+(A\e^x-B\e^x)\sin(x) \\
+  &= -2B\e^x\sin(x)+2A\e^x\cos(x) \\
+  \e^x\sin(x) &= -2B\e^x\sin(x)+2A\e^x\cos(x)- \\
+    &\quad~ 3((A\e^x+B\e^x)\cos(x)+(A\e^x-B\e^x)\sin(x))+ \\
+    &\quad~ 2(A\e^x\sin(x)+B\e^x\cos(x)) \\
+  \sin(x) &= (-2B+3B-3A+2A)\sin(x)+(2A-3A-3B+2B)\cos(x) \\
+  B-A &= 1 \quad -A-B = 0 \\
+  A &= -\frac{1}{2} \quad B = \frac{1}{2} \\
+  y_p &= -\frac{1}{2}\e^x\sin(x)+\frac{1}{2}\e^x\cos(x) \\
+  y &= y_h+y_p \\
+  &= c_1\e^{2x}+c_2\e^{x}-\frac{1}{2}\e^x\sin(x)+\frac{1}{2}\e^x\cos(x)
+\end{align*}
+
+\subsubsection*{Exercise 25}
+Find the solution to the initial value problem.
+\begin{align*}
+  z''(x)+z(x) &= 2\e^{-x} \quad z(0) = 0 \quad z'(0) = 0 \\
+  r^2+1 &= 0 \\
+  r &= 0\pm i \\
+  z_h(x) &= \e^{0x}\bigg[c_1\cos(1x)+c_2\sin(1x)\bigg] \\
+  &= c_1\cos(x)+c_2\sin(x) \\
+  z_p(x) &= \e^{-x} \\
+  z(x) &= z_h(x)+z_p(x) \\
+  &= c_1\cos(x)+c_2\sin(x)+\e^{-x} \\
+  z(0) &= 0 = c_1\cos(0)+c_2\sin(0)+\e^0 \\
+  c_1 &= -1 \\
+  z'(x) &= -c_1\sin(x)+c_2\cos(x)-\e^{-x} \\
+  z'(0) &= 0 = -c_1\sin(0)+c_2\cos(0)-\e^0 \\
+  c_2 &= 1 \\
+  z(x) &= -\cos(x)+\sin(x)+\e^{-x}
+\end{align*}
+
+\subsubsection*{Exercise 29}
+Find the solution to the initial value problem.
+\begin{align*}
+  y''(\theta)-y(\theta) &= \sin\theta-\e^{2\theta} \quad y(0) = 1 \quad
+    y'(0) = -1 \\
+  r^2-1 &= 0 \\
+  r &= \pm1 \\
+  y_h(\theta) &= c_1\e^{\theta}+c_2\e^{-\theta} \\
+  y_p(\theta) &= A\sin\theta+B\cos\theta+C\e^{2\theta} \\
+  y_p'(\theta) &= A\cos\theta-B\sin\theta+2C\e^{2\theta} \\
+  y_p''(\theta) &= -A\sin\theta-B\cos\theta+4C\e^{2\theta} \\
+  \sin\theta-\e^{2\theta} &= -A\sin\theta-B\cos\theta+4C\e^{2\theta}-
+    (A\sin\theta+B\cos\theta+C\e^{2\theta}) \\
+  \sin\theta-\e^{2\theta} &= (-2A)\sin\theta+(-2B)\cos\theta+(3C)\e^{2\theta} \\
+  -2A &= 1 \quad -2B = 0 \quad 3C = -1 \\
+  A &= -\frac{1}{2} \quad B = 0 \quad C = -\frac{1}{3} \\
+  y_p(\theta) &= -\frac{1}{2}\sin\theta-\frac{1}{3}\e^{2\theta} \\
+  y(\theta) &= y_h(\theta)+y_p(\theta) \\
+  &= c_1\e^{\theta}+c_2\e^{-\theta}-\frac{\sin\theta}{2}-
+    \frac{\e^{2\theta}}{3} \\
+  y(0) &= 1 = c_1\e^0+c_2\e^0-\frac{\sin(0)}{2}-\frac{\e^0}{3} \\
+  1 &= c_1+c_2-\frac{1}{3} \\
+  y'(\theta) &=
+    c_1\e^\theta-c_2\e^{-\theta}-\frac{\cos\theta}{2}-\frac{2\e^{2\theta}}{3} \\
+  y'(0) &= -1 = c_1\e^0-c_2\e^0-\frac{\cos0}{2}-\frac{2\e^0}{3} \\
+  -1 &= c_1-c_2-\frac{1}{2}-\frac{2}{3} \\
+  c_1 &= \frac{3}{4} \quad c_2 = \frac{7}{12} \\
+  y(\theta) &= \frac{3}{4}\e^\theta+\frac{7}{12}\e^{-\theta}-
+    \frac{\sin\theta}{2}-\frac{\e^{2\theta}}{3}
+\end{align*}
 
 \begin{center}
   If you have any questions, comments, or concerns, please contact me at
