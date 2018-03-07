@@ -1,0 +1,141 @@
+\documentclass{math}
+
+\usepackage{graphicx}
+
+\title{Introduction to Cryptography}
+\author{Alvin Lin}
+\date{January 2018 - May 2018}
+
+\begin{document}
+
+\maketitle
+
+\section*{Public Key Cryptosystems}
+
+\subsection*{Properties of Symmetric Key Cryptography}
+\begin{itemize}
+  \item The same secret key is used for encryption and decryption.
+  \item Encryption and decryption are very similar (or even identical
+  functions).
+  \item Symmetric algorithms like AES or 3DES are secure, fast, and widespread
+  but face a key distribution problem. The secret key must be transported
+  securely because the security depends on the key.
+  \item In a network of users, each pair of users requires an individual key.
+  \( n \) users in a network would require \( \frac{n(n-1)}{2} \), where each
+  user stores \( n-1 \) keys.
+  \item Two users can cheat each other since they have identical keys.
+  Non-repudiation is not guaranteed by symmetric key cryptography.
+\end{itemize}
+
+\subsection*{Asymmetric Key Cryptography}
+The idea behind asymmetric key is similar to the idea of a mailbox. Anyone can
+drop a letter into it, but only the owner can open it. The first publication of
+such an algorithm was made by Whitfield Diffie and Martin Hellman in 1976. In
+principle, the key is split up into a public key \( K_{pub} \) and a private key
+\( K_{pr} \). This allows for mechanisms such as:
+\begin{itemize}
+  \item \textbf{Key Distribution}, like the Diffie-Hellman key exchange,
+  without the need for a pre-shared secret.
+  \item \textbf{Nonrepudiation and Digital Signatures} to prove message
+  integrity.
+  \item \textbf{Identification} using challenge-response protocols with
+  digital signatures.
+  \item \textbf{Encryption} using algorithms like RSA, though it is
+  computationally expensive and 1000 times slower than symmetric algorithms.
+\end{itemize}
+In practice, hybrid systems are used, incorporating both asymmetric and
+symmetric algorithms. Key exchanges and digital signatures are performed using
+asymmetric algorithms, while data encryption is done using fast symmetric
+ciphers.
+
+\subsection*{Public Key Algorithm Theory}
+Asymmetric schemes are based on some one-way function \( f \), where computing
+\( y = f(x) \) is computationally easy, but computing \( x = f^{-1}(y) \) is
+computationally infeasible. One way functions are usually based on
+mathematically difficult problems, such as:
+\begin{itemize}
+  \item \textbf{Factoring Integers}: given a composite integer \( n \), find its
+  prime factors.
+  \item \textbf{Discrete Logarithm (DL)}: given \( a,y,m \), find \( x \) such
+  that \( a^x = y\mod m \).
+  \item \textbf{Elliptic Curves (EC)}: generalization of discrete logarithm.
+\end{itemize}
+
+\subsubsection*{Key Lengths and Security Levels}
+\begin{center}
+  \begin{tabular}{|c|c|c|c|}
+    \hline
+    Symmetric & ECC & RSA, DL & Remark \\
+    \hline
+    64 bit & 128 bit & \( \approx \) 700 bit & short term security \\
+    \hline
+    80 bit & 160 bit & \( \approx \) 1024 bit & medium security \\
+    \hline
+    128 bit & 256 bit & \( \approx \) 3072 bit &  long term security \\
+    \hline
+  \end{tabular}
+\end{center}
+The exact complexity of RSA and DL is difficult to estimate. The existence of
+quantum computers would probably be the end for ECC, RSA, and DL, but that is
+still decades away. Some researchers doubt that quantum computers will ever
+exist.
+
+\subsection*{Euclidean Algorithm}
+Earlier, we explored the Euclidean algorithm for finding the greatest common
+divisor, which is based on the observation that:
+\[ gcd(r_0) = gcd(r_0-r_1,r_1) \]
+By reducing the problem recursive, we find that \( gcd(r_i,0) = r_i \) is the
+answer to the original problem. We can extend the Euclidean algorithm to find
+the modular inverse of \( r_1 \mod r_0 \). In order for the inverse to exist:
+\[ gcd(r_0,r_1) = 1 \]
+The extended Euclidean algorithm computes \( s,t \) such that:
+\[ gcd(r_0,r_1) = s\cdot r_0+t\cdot r_1 = 1 \]
+If we take this relation mod \( r_0 \):
+\begin{align*}
+  s\cdot r_0+t\cdot r_1 &= 1
+  s\cdot r_0+t\cdot r_1 &\equiv 1\mod r_0 \\
+  t\cdot r_1 &\equiv 1\mod r_0
+\end{align*}
+By definition, \( t \) is the inverse of \( r_1 \mod r_0 \).
+
+\subsection*{Euler's Phi Function}
+Euler's Phi function \( \phi(m) \) gives the numbers in the set of integers from
+0 to \( m-1 \) that are relatively prime to \( m \). Example:
+\begin{align*}
+  gcd(0,6) = 6 \\
+  gcd(1,6) = 1 \\
+  gcd(2,6) = 2 \\
+  gcd(3,6) = 3 \\
+  gcd(4,6) = 2 \\
+  gcd(5,6) = 1 \\
+  \phi(6) = 2
+\end{align*}
+\( \phi(6) = 2 \) since only 1 and 5 are relatively prime to \( m = 6 \). If the
+canonical factorization (prime factorization) of \( m \) is known, where:
+\[ m = p_1^{e_1}\cdot p_2^{e_2}\cdot\dots\cdot p_n^{e_n} \]
+such that \( p_i \) are primes and \( e_i \) are positive integer exponents,
+then \( \phi(m) \) can be calculated by:
+\[ \phi(m) = \prod_{i=1}^{n}(p_i^{e_i}-p_i^{e_i-1}) \]
+For example:
+\begin{align*}
+  m &= 12 = 2^2\cdot3^1 \\
+  \phi(12) &= (2^2-2^1)\cdot(3^1-3^0) = 4 \\
+  m &= 899 = 29^1\cdot31^1 \\
+  \phi(899) &= (29^1-29^0)\cdot(31^1-31^0) = 38\cdot30 = 840
+\end{align*}
+Finding \( \phi(m) \) is computationally easy if the factorization of \( m \) is
+known, otherwise it becomes computationally infeasible for large numbers.
+
+\subsection*{Fermat's Little Theorem}
+Given a prime \( p \) and an integer \( a \) such that \( a^p \equiv a\mod p \),
+the following is true:
+\[ a^{p-1} \equiv 1\mod p \]
+This is used to find the modular inverse if \( p \) is prime.
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
