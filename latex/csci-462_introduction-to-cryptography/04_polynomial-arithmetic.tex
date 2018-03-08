@@ -43,6 +43,55 @@ of maximum degree that divides both \( a(x) \) and \( b(x) \). Similar to
 integers, you can do modular arithmetic with polynomials over a field. Now the
 operands and modulus are polynomials.
 
+\subsubsection*{Polynomial Arithmetic Modulo (\( x^3+x+1 \))}
+Over addition: \\[0.5cm]
+\scalebox{0.7}{
+  \begin{tabular}{|c||c|c|c|c|c|c|c|c|}
+    \hline
+    + & 0 & 1 & \( x \) & \( x+1 \) & \( x^2 \) & \( x^2+1 \) & \( x^2+x \) &
+    \( x^2+x+1 \) \\ \hline\hline
+    0 & 0 & 1 & \( x \) & \( x+1 \) & \( x^2 \) & \( x^2+1 \) & \( x^2+x \) &
+    \( x^2+x+1 \) \\ \hline
+    1 & 1 & 0 & \( x + 1 \) & \( x \) & \( x^2+1 \) & \( x^2 \) &
+    \( x^2+x+1 \) & \( x^2+x \) \\ \hline
+    \( x \) & \( x \) & \( x+1 \) & 0 & 1 & \( x^2+x \) & \( x^2+x+1 \) &
+    \( x^2 \) & \( x^2+1 \) \\ \hline
+    \( x+1 \) & \( x+1 \) & \( x \) & 1 & 0 & \( x^2+x+1 \) & \( x^2+x \) &
+    \( x^2+1 \) & \( x^2 \) \\ \hline
+    \( x^2 \) & \( x^2 \) & \( x^2+1 \) & \( x^2+x \) & \( x^2+x+1 \) &
+    0 & 1 & \( x \) & \( x+1 \) \\ \hline
+    \( x^2+1 \) & \( x^2+1 \) & \( x^2 \) & \( x^2+x+1 \) & \( x^2+x \) &
+    1 & 0 & \( x+1 \) & \( x \) \\ \hline
+    \( x^2+x \) & \( x^2+x \) & \( x^2+x+1 \) & \( x^2 \) & \( x^2+1 \) &
+    \( x \) & \( x+1 \) & 0 & 1 \\ \hline
+    \( x^2+x+1 \) & \( x^2+x+1 \) & \( x^2+x \) & \( x^2+1 \) & \( x^2 \) &
+    \( x+1 \) & \( x \) & 1 & 0 \\ \hline
+  \end{tabular}
+} \\[0.5cm]
+Over multiplication: \\[0.5cm]
+\scalebox{0.7}{
+  \begin{tabular}{|c||>{\centering\arraybackslash}p{2cm}|c|c|c|c|c|c|c|}
+    \hline
+    \( \times \) & 0 & 1 & \( x \) & \( x+1 \) & \( x^2 \) & \( x^2+1 \) &
+      \( x^2+x \) & \( x^2+x+1 \) \\ \hline\hline
+    0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\ \hline
+    1 & 0 & 1 & \( x \) & \( x+1 \) & \( x^2 \) & \( x^2+1 \) & \( x^2+x \) &
+      \( x^2+x+1 \) \\ \hline
+    \( x \) & 0 & \( x \) & \( x^2 \) & \( x^2+x \) & \( x+1 \) & 1 &
+      \( x^2+x+1 \) & \( x^2+1 \) \\ \hline
+    \( x+1 \) & 0 & \( x+1 \) & \( x^2+x \) & \( x^2+1 \) & \( x^2+x+1 \) &
+      \( x^2 \) & 1 & \( x \) \\ \hline
+    \( x^2 \) & 0 & \( x^2 \) & \( x+1 \) & \( x^2+x+1 \) & \( x^2+x \) &
+      \( x \) & \( x^2+1 \) & 1 \\ \hline
+    \( x^2+1 \) & 0 & \( x^2+1 \) & 1 & \( x^2 \) & \( x \) & \( x^2+x+1 \) &
+      \( x+1 \) & \( x^2+x \) \\ \hline
+    \( x^2+x \) & 0 & \( x^2+x \) & \( x^2+x+1 \) & 1 & \( x^2+1 \) &
+      \( x+1 \) & \( x \) & \( x^2 \) \\ \hline
+    \( x^2+x+1 \) & 0 & \( x^2+x+1 \) & \( x^2+1 \) & \( x \) & 1 &
+      \( x^2+x \) & \( x^2 \) & \( x+1 \) \\ \hline
+  \end{tabular}
+} \\[0.5cm]
+
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
   any questions, comments, or concerns, please contact me at

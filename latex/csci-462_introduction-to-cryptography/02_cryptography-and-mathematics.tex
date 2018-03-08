@@ -130,6 +130,31 @@ substituion ciphers. In this scheme, each plaintext letter is Caesar-shifted
 by a different amount according to the key, which is usually a repeating
 keyword.
 
+\subsection*{Hill Cipher}
+The Hill Cipher was developed by Lester Hill in 1929. It's strength was that it
+completely hid single-letter frequencies. It was strong against a
+ciphertext-only attack but easily broken by a known plaintext attack. The Hill
+cipher is done by taking a matrix as the key:
+\[ K = \begin{bmatrix}2 & 1 \\ 1 & 1\end{bmatrix} \]
+Given the plaintext HELP, we split it into \( 1\times2 \) column vectors so
+that they can be multiplied by the key vector:
+\[ \begin{bmatrix}H \\ E\end{bmatrix},
+  \begin{bmatrix}L \\ P\end{bmatrix}\to
+  \begin{bmatrix}7 \\ 4\end{bmatrix},
+  \begin{bmatrix}11 \\ 15\end{bmatrix} \]
+The ciphertext is produced by multiplying the key matrix with the column
+vectors.
+\begin{align*}
+  \begin{bmatrix}2 & 1 \\ 1 & 1\end{bmatrix}
+    \begin{bmatrix}7 \\ 4\end{bmatrix} &\equiv
+    \begin{bmatrix}18 \\ 11\end{bmatrix}\mod(26) \\
+  \begin{bmatrix}2 & 1 \\ 1 & 1\end{bmatrix}
+    \begin{bmatrix}11 \\ 15\end{bmatrix} &\equiv
+    \begin{bmatrix}11 \\ 0\end{bmatrix}\mod(26)
+\end{align*}
+This yields the cipher text 18-11-11-0 or RKKA. Decryption is done by computing
+the inverse of the key matrix \( K^{-1} \) and repeating the same process.
+
 \subsection*{The Euclidean Algorithm}
 Computing the greatest common divisor of two numbers \( a \) and \( b \) is
 easy for small numbers. We can factor both numbers and look for the highest one
