@@ -13,22 +13,22 @@
 \section*{Networking}
 Topics:
 \begin{itemize}
-  \item Exercise Problems
-  \item Mobility: direct and indirect routing
+  \item Circuit Switching
+  \item Packet Switching
 \end{itemize}
 
 \subsection*{Circuit Switching}
 \begin{center}
   \begin{tikzpicture}
-    \draw (0,0) -- (3,0) -- (3,2) -- (0,2) -- cycle
-      node[pos=0.5,right] {Link: 100Mbps};
+    \draw (0,0) -- (4,0) -- (4,2) -- (0,2) -- cycle;
+    \node at (2,1) {Link: 100Mbps};
     \draw (-2,0.5) -- (0,0.5);
     \draw (-2,1) -- (0,1);
     \draw (-2,1.5) -- (0,1.5);
     \node[fill=none] at (-4,1) {Users: 25Mbps each};
-    \draw (3,0.5) -- (5,0.5);
-    \draw (3,1) -- (5,1);
-    \draw (3,1.5) -- (5,1.5);
+    \draw (4,0.5) -- (6,0.5);
+    \draw (4,1) -- (6,1);
+    \draw (4,1.5) -- (6,1.5);
   \end{tikzpicture}
 \end{center}
 The maximum number of users that can be supported is 4 users, each with a
@@ -58,7 +58,7 @@ high mobility. We can let the routing hardware handle the mobility or have the
 end systems handle mobility. The former is much more expensive and not scalable.
 \begin{center}
   \begin{tikzpicture}
-    \draw (0,0) circle (0.1cm) node[above] {mobile host};
+    \node[above] at (0,0) {mobile host};
     \draw (0,0) circle (1.5cm) node[above,yshift=1.5cm] {home network};
     \draw (8,0) circle (1.5cm) node[above,yshift=1.5cm] {foreign network};
     \draw (4,-4) circle (1.5cm) node[below,yshift=-1.5cm] {correspondent host};

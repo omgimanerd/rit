@@ -91,7 +91,7 @@ The extended Euclidean algorithm computes \( s,t \) such that:
 If we take this relation mod \( r_0 \):
 \begin{align*}
   s\cdot r_0+t\cdot r_1 &= 1
-  s\cdot r_0+t\cdot r_1 &\equiv 1\mod r_0 \\
+  s\cdot r_0+t\cdot r_1 \equiv 1\mod r_0 \\
   t\cdot r_1 &\equiv 1\mod r_0
 \end{align*}
 By definition, \( t \) is the inverse of \( r_1 \mod r_0 \).
@@ -141,10 +141,86 @@ By the definition of the modular inverse:
 \end{align*}
 For example, \( a = 2, p = 7 \):
 \begin{align*}
-  2^7 &\equiv 2\mod7
+  2^7 &\equiv 2\mod7 \\
   2^{-1} &\equiv 2^5\mod7 \equiv 4\mod7 \\
   2\cdot4 &\equiv 1\mod 7
 \end{align*}
+
+\subsection*{The RSA Cryptosystem}
+After Martin Hellman and Whitfield Diffie published their public key paper in
+1976, Ronald Rivest, Adi Shamir, and Leonard Adleman proposed the asymmetric
+RSA cryptosystem in 1977. Until now, RSA was the most widely used asymmetric
+cryptosystem, with elliptic curve cryptography gaining popularity. It has two
+main applications, the transport of symmetric keys, and digital signatures.
+RSA operations are done over the integer ring \( Z_n \) where \( n = pq \)
+such that \( p \) and \( q \) are large primes. Encryption and decryption are
+simply exponentiations in the ring. Given the public key \( (n,e) = k_{pub} \)
+and the private key \( d = k_{pr} \):
+\begin{align*}
+  y &= e_{k_{pub}}(x) \equiv x^e\mod n \\
+  x &= d_{k_{pr}}(y) \equiv y^d\mod n
+\end{align*}
+where \( x,y \in Z_n \). In practice, \( x,y,n,d \) are very long integer
+numbers, usually greater than 1024 bits. The security of the scheme relies on
+the fact that it is hard to derive the private exponent \( d \) given the
+public key \( (n,e) \).
+
+\subsubsection*{Key Generation}
+Like all asymmetric schemes, RSA has set up phases during which the private and
+public keys are computed. To generate an rsa key pair:
+\begin{enumerate}
+  \item Choose two large primes \( p,q \)
+  \item Compute \( n = pq \)
+  \item Compute \( \phi(n) = (p-1)(q-1) \)
+  \item Select the public exponent \( e\in\{1,2,3,\dots,\phi(n)-1\} \) such that
+  \( gcd(e,\phi(n)) = 1 \).
+  \item Compute the private key \( d \) such that \( de = 1\mod\phi(n) \)
+  \item \( k_{pub} = (n,e) \quad k_{pr} = d \)
+\end{enumerate}
+Choose the two large distinct primes \( p,q \) in step 1 is non trivial. Step
+4, ensures that \( e \) has an inverse and thus there is always a private key
+\( d \).
+
+\subsubsection*{Implementation Aspects}
+The RSA cryptosystem uses only one arithmetic operation (modular
+exponentiation), which makes it conceptually a simple asymmetric scheme. Even
+though it is conceptually simple, it is orders of magnitude slower than
+symmetric schemes such as DES or AES due to the use of very long numbers.
+When implementation RSA on devices with memory constraints, arithmetic
+algorithms must be selected very carefully.
+
+\subsubsection*{The Square and Multiply Algorithm}
+The square and multiply algorithm allows for fast exponentiation for very long
+numbers. This is done by converting the exponent to binary and squaring or
+multiplying the base depending on the current bit of the exponent. Modular
+reduction can be applied during each step to keep the operands small. Example
+for \( x^26 \) (without modular reduction):
+\[ 26 = (11010)_2 \]
+\begin{center}
+  \begin{tabular}{|c|c|c|c|}
+    \hline
+    Step & Accumulated Result & Binary Exponent & Operation \\
+    \hline
+    1 & \( r = (1^2)x = x \) & 1 & Square and Multiply \\
+    \hline
+    2 & \( r = (x^2)x = x^3 \) & 11 & Square and Multiply \\
+    \hline
+    3 & \( r = (x^3)^2 = x^6 \) & 110 & Square \\
+    \hline
+    4 & \( r = (x^6)^2x = x^{13} \) & 1101 & Square and Multiply \\
+    \hline
+    5 & \( r = (x^{13})^2 = x^{26} \) & 11010 & Square \\
+    \hline
+  \end{tabular}
+\end{center}
+This algorithm has a logarithmic complexity since its run time is proportional
+to the bit length of the exponent. Given an exponent with \( t+1 \) bits, we
+need to perform \( t \) squarings and an average of \( 0.5t \) multiplications.
+Since exponents are chosen randomly, \( 1.5t \) is a good estimate for the
+average number of operations. Modular exponentiation is still computationally
+expensive. For devices with memory constraints, RSA can still be quite slow.
+Choosing a small public exponent \( e \) to perform RSA with does not weaken
+the security of the algorihtm, but significantly improves the speed.
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have

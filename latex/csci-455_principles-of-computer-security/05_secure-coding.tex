@@ -99,12 +99,15 @@ arise from:
   to some in-process memory.
 \end{itemize}
 
-\subsection*{Concurrency and Race Conditions}
+\subsection*{Concurrency}
 Concurrency is essential to modern computing. Multiple separate execution flows
 running simultaneously allow for speed and optimization. Uncontrolled
-concurrency can lead to non-determinism however. An unanticipated execution
-ordering in concurrent code flow can lead to a defect known as a race condition.
-Three conditions are necessary for a race condition to occur:
+concurrency can lead to non-determinism however.
+
+\subsubsection*{Race Conditions}
+An unanticipated execution ordering in concurrent code flow can lead to a
+defect known as a race condition. Three conditions are necessary for a race
+condition to occur:
 \begin{enumerate}
   \item Concurrency: there must be at least two concurrent control flows
   \item Shared Object: a shared race object must be accessed by both concurrent
@@ -113,13 +116,49 @@ Three conditions are necessary for a race condition to occur:
   object
 \end{enumerate}
 Attackers can exploit a race condition to manipulate data in unpredictable ways.
+To prevent it, access to critical sections must be atomic and code accessing it
+must execute alone. Synchronization primitives such as locks, counting
+semaphores, binary semaphores, pipes, monitors, and condition variables help
+implement mutual exclusion.
 
-\subsubsection*{Eliminating Race Conditions}
-Race conditions are caused by unregulated access to shared resources due to
-process scheduling. To prevent it, access to critical sections must be atomic
-and code accessing it must execute alone. Synchronization primitives such as
-locks, counting semaphores, binary semaphores, pipes, monitors, and
-condition variables help implement mutual exclusion.
+\subsubsection*{Deadlock}
+Deadlock occurs whenever a set of tasks are blocked waiting for one another to
+finish. This often leads to a denial of service vulnerability. Four necessary
+conditions are necessary for a deadlock to occur:
+\begin{enumerate}
+  \item Circular wait cycle
+  \item Mutual exclusion
+  \item No preemption
+  \item Hold and wait
+\end{enumerate}
+Deadlocks can be exploited by altering processor speeds, changes in task
+scheduling algorithms, different memory constraints on execution, or any
+asynchronous event capable of interrupting program execution. Attacks often
+automate the creation of race conditions to cause load in executing a race
+window.
+
+\subsubsection*{Time of Check/Time of Use (TOCTOU)}
+TOCTOU race conditions are caused by check and access conditions happening on
+a shared object at separate times. An untrusted script running in parallel can
+modify an object state after the check but before the access, influencing the
+execution of the following code. Consider the following C code:
+\begin{lstlistings}
+#include <stdio.h>
+#include <unistd.h>
+int main(int argc, char* argv[]) {
+  FILE* fd;
+  if (access("/oldfile", W_OK) == 0) {
+    printf("access granted.\n");
+    fd = fopen("/oldfile", "wb+");
+    /* write data to the file */
+    fclose(fd);
+  }
+  return 0;
+}
+\end{lstlistings}
+If a malicious entity removed the file \texttt{oldfile} and symlinked it to
+another file, they could gain access to the data written. These attacks are
+usually mitigated by combining the file check and open in an atomic operation.
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
