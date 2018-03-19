@@ -1,5 +1,8 @@
 \documentclass{math}
 
+\usepackage{listings}
+\lstset{basicstyle=\ttfamily\footnotesize,breaklines=true}
+
 \title{Introduction to Cryptography}
 \author{Alvin Lin}
 \date{January 2018 - May 2018}
@@ -221,6 +224,179 @@ average number of operations. Modular exponentiation is still computationally
 expensive. For devices with memory constraints, RSA can still be quite slow.
 Choosing a small public exponent \( e \) to perform RSA with does not weaken
 the security of the algorihtm, but significantly improves the speed.
+
+\subsection*{The Chinese Remainder Theorem (CRT)}
+Sun Tzu, the author of \textit{The Art of War}, is said to have created the
+Chinese remainder theorem as a method of counting the size of the ancient
+Chinese armies. Let \( n_1,\dots,n_i,\dots,n_r \) be integers greater than 1.
+If the \( n_i \) are pairwise coprime, and if \( a_1,\dots,a_r \) are integers
+such that \( 0\le a_i\le n_i \) for every \( i \), then the Chinese Remainder
+Theorem states that the system
+\begin{align*}
+  x &\equiv a_1\mod n_1 \\
+  x &\equiv a_2\mod n_2 \\
+  &\dots \\
+  x &\equiv a_r\mod n_r
+\end{align*}
+has a unique solution \( x \) such that \( 0\le x<N \). Additionally, let
+\( N = n_1\cdot n_2\cdot n_3\cdot\dots\cdot n_r \). Then
+\[ x \equiv (a_1b_1N_1+a_2b_2N_2+\dots+a_rb_rN_r)\mod N \]
+where \( N_i = \frac{N}{n_i} \) and \( b_i \) is determined from
+\[ b_iN_i \equiv 1\mod n_i \]
+for \( i \) from 1 to \( r \).
+
+\subsubsection*{Example}
+\begin{align*}
+  x &\equiv 2\mod3 \\
+  x &\equiv 3\mod5 \\
+  x &\equiv 2\mod7 \\
+  N &= n_1n_2n_3 = 105 \\
+  N_1 &= 35 \quad N_2 = 21 \quad N_3 = 15 \\
+  35b_1 &\equiv 1\mod3 \quad 2b_1 \equiv 1\mod3 \\
+  21b_2 &\equiv 1\mod5 \quad 1b_2 \equiv 1\mod5 \\
+  15b_3 &\equiv 1\mod7 \quad 1b_3 \equiv 1\mod7 \\
+  b_1 &= 2 \quad b_2 = 1 \quad b_3 = 1 \\
+  x &\equiv (2\cdot2\cdot35+3\cdot1\cdot21+2\cdot1\cdot15)\mod105 \\
+  &\equiv 233\mod105 \\
+  &\equiv 23
+\end{align*}
+
+\subsubsection*{Example}
+\begin{align*}
+  x &\equiv 0\mod3 \\
+  x &\equiv 3\mod4 \\
+  x &\equiv 4\mod5 \\
+  N &= 3\cdot4\cdot5 = 60 \\
+  N_1 &= 20 \quad N_2 = 15 \quad N_3 = 12 \\
+  20b_1 &\equiv 1\mod3 \quad 2b_1 \equiv 1\mod3 \\
+  15b_2 &\equiv 1\mod4 \quad 3b_2 \equiv 1\mod4 \\
+  12b_3 &\equiv 1\mod5 \quad 2b_3 \equiv 1\mod5 \\
+  b_1 &= 2 \quad b_2 = 3 \quad b_3 = 3 \\
+  x &\equiv (0\cdot2\cdot20+3\cdot3\cdot15+4\cdot3\cdot12)\mod70 \\
+  &\equiv 39
+\end{align*}
+
+\subsubsection*{Application to RSA}
+With regard to its application to public key cryptography, choosing a small
+private key \( d \) for RSA results in security weaknesses. \( d \) must have
+at least \( 0.3t \) bits, where \( t \) is the bit length of the modulus
+\( n \). However, the Chinese Remainder Theorem can be used to somewhat
+accelerate exponentiation with the private key \( d \). We can replace the
+computation of
+\[ x^{d\mod\phi(n)}\mod n \]
+by two computations:
+\[ x^{d\mod(p-1)}\mod p \]
+\[ x^{d\mod(q-1)}\mod q \]
+where \( q \) and \( p \) are ``small'' compared to \( n \). This involves
+three distinct steps.
+\begin{enumerate}
+  \item Transformation of the operand into the CRT domain
+  \item Modular exponentiation in the CRT domain
+  \item Inverse transformation into the problem domain
+\end{enumerate}
+For example, consider the problem \( 90^{547}\mod899 \). First we need to
+transform it into the CRT domain. Transformation into the CRT domain requires
+knowledge of \( p \) and \( q \). These are only known to the owner of the
+private key, hence it cannot be applied to speed up encryption. The
+transformation computes \( (x_p,x_q) \) which is the representation of \( x \)
+in the CRT domain.
+\begin{align*}
+  d &= 547 \\
+  n &= 899 = 29\cdot31 \\
+  x_p &= x\mod p = 90\mod29 = 3 \\
+  x_q &= x\mod q = 90\mod31 = 28 \\
+\end{align*}
+The next step is exponentiation. Given \( d_p \) and \( d_q \) such that
+\( d_p\equiv d\mod(p-1) \) and \( d_q\equiv d\mod(q-1) \), one exponentiation
+in the problem domain requires two exponentiations in the CRT domain.
+\begin{align*}
+  d_p &= 547\mod28 = 15 \\
+  d_q &= 547\mod30 = 7 \\
+  y_p &\equiv x_p^{d_p}\mod p = 3^{15}\mod29 = 26 \\
+  y_q &\equiv x_q^{d_q}\mod q = 28^7\mod31 = 14 \\
+\end{align*}
+In practice, \( p \) and \( q \) are chosen to have half the bit length of
+\( n \). Inverse transformation requires modular inversion twice, which is
+computationally expensive.
+\begin{align*}
+  c_p &= q^{-1}\mod p = 31^{-1}\mod29 = 15 \\
+  c_q &= p^{-1}\mod q = 29^{-1}\mod31 = 15
+\end{align*}
+This is assembled with \( y_p,y_q \) into the final result \( y\mod n \) in
+the problem domain.
+\begin{align*}
+  y &\equiv \bigg[(q\cdot c_p)\cdot y_p+(p\cdot c_q)\cdot y_q\bigg]\mod n \\
+  y &\equiv \bigg[(31\cdot13)\cdot26+(29\cdot15)\cdot14\bigg]\mod899 = 200
+\end{align*}
+The primes \( p \) and \( q \) typically change infrequently. Therefore, the
+cost of inversion can be neglected because \( q\cdot c_p \) and \( p\cdot c_q \)
+can be precomputed and stored. We ignore the transformation and inverse
+transformation steps since their costs can be neglected under reasonable
+assumptions. If we assume that \( n \) has \( t+1 \) bits, both \( p \) and
+\( q \) are about \( \frac{t}{2} \) bits long. The complexity is determined by
+the two exponentiations in the CRT domain. The operands are only
+\( \frac{t}{2} \) bits long. For the exponentiations, we use the
+square-and-multiply algorithm. This gives a total complexity of \( 1.5t \) as
+well, but since the operands have half the bit length of the problem exponent,
+each operation is 4 times faster.
+
+\subsection*{Finding Large Primes}
+Generating keys for RSA requires finding two large primes \( p \) and \( q \)
+such that \( n = pq \) is sufficiently large. The size of \( p \) and \( q \)
+is typically half the size of the desired size of \( n \). To find primes,
+random integers are generated and tested for primality. The random number
+generator should be non-predictable otherwise an attacker could guess the
+factorization of \( n \).
+\par Factoring \( p \) and \( q \) to test for primality is typically not
+feasible. However, we are not interested in the factorization, we only want to
+know whether \( p \) and \( q \) are composite. Primality test are typically
+probabilistic. They are not 100\% accurate but their output is correct with
+very high probability. A probabilistic test has two outputs:
+\begin{itemize}
+  \item The input is composite. This is always true if it is returned.
+  \item The input is a prime. This is only true with a certain probability.
+\end{itemize}
+
+\subsubsection*{Fermat Primality Test}
+The basic idea is that Fermat's Little Theorem holds for all primes. If a
+number \( p' \) is found for which \( a^{p'-1}\not\equiv1\mod p' \), it is not a
+prime. For certain numbers like the Carmichael numbers, this test returns a
+false positive when the numbers are composite. The Fermat-Primality test is
+usually implemented using a candidate number \( p' \) and a security parameter
+\( s \).
+\begin{lstlisting}[mathescape=true]
+for i = 1 to s:
+  choose a random $a\in\{2,3,\dots,p'-2\}$
+  if $a^{p'-1}\not\equiv1\mod p'$ then:
+    return $p'$ is composite
+  return $p'$ is likely a prime
+\end{lstlisting}
+We call \( a \) a \textbf{Fermat witness} if it shows that \( p' \) is composite
+or a \textbf{Fermat liar} if it makes the algorithm give a false result.
+
+\subsubsection*{Miller-Rabin Primality Test}
+Given the decomposition of an odd prime candidate \( p' \) as
+\[ p'-1 = 2^u\cdot r \]
+where \( r \) is odd, if we can find an integer \( a \) such that
+\[ a^r\not\equiv1\mod p' \]
+\[ a^{r\cdot2j}\not\equiv p'-1\mod p' \]
+for all \( j\in\{0,1,\dots,u-1\} \), then \( p' \) is composite. Otherwise, it
+is probably a prime. The Miller-Rabin primality test is also implemented
+using a candidate number \( p' \) and a security parameter \( s \) such that
+\( p'-1 = 2^u\cdot r \).
+\begin{lstlisting}[mathescape=true]
+for i = 1 to s:
+  choose a random $a\in\{2,3,\dots,p'-2\}$
+  $z\equiv a^r\mod p'$
+  if $z\ne1$ and $z\ne p'-1$ then:
+    for $j=1$ to $u-1$:
+      $z\equiv z^2\mod p'$
+      if $z=1$ then:
+        return $p'$ is composite
+    if $z=p'-1$ then:
+      return $p'$ is composite
+return $p'$ is likely a prime
+\end{lstlisting}
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
