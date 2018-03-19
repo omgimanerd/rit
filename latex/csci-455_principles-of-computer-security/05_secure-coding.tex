@@ -1,5 +1,8 @@
 \documentclass{math}
 
+\usepackage{listings}
+\lstset{basicstyle=\ttfamily\footnotesize,breaklines=true}
+
 \title{Principles of Computer Security}
 \author{Alvin Lin}
 \date{January 2018 - May 2018}
@@ -142,7 +145,7 @@ TOCTOU race conditions are caused by check and access conditions happening on
 a shared object at separate times. An untrusted script running in parallel can
 modify an object state after the check but before the access, influencing the
 execution of the following code. Consider the following C code:
-\begin{lstlistings}
+\begin{lstlisting}
 #include <stdio.h>
 #include <unistd.h>
 int main(int argc, char* argv[]) {
@@ -155,7 +158,7 @@ int main(int argc, char* argv[]) {
   }
   return 0;
 }
-\end{lstlistings}
+\end{lstlisting}
 If a malicious entity removed the file \texttt{oldfile} and symlinked it to
 another file, they could gain access to the data written. These attacks are
 usually mitigated by combining the file check and open in an atomic operation.
