@@ -1,0 +1,239 @@
+\documentclass{math}
+
+\usepackage{enumerate}
+\usepackage{multirow}
+
+\geometry{letterpaper, margin=0.5in}
+
+\title{Introduction to Intelligent Systems: Homework 4}
+\author{Alvin Lin - Section 1}
+\date{August 2017 - December 2017}
+
+\begin{document}
+
+\maketitle
+
+\subsection*{Problem 1}
+It's February 1943, the Island of New Guinea during World War II. The Allies
+control the southern coast of the island, the Japanese control the northern
+coast. The Japanese are bringing in reinforcements - lost of them - from China
+and Japan. They've already reached the city of Rabaul. Rabaul is on the eastern
+tip of an island called New Britain. The troops massed in Rabaul tended for the
+city of Lae in New Guinea. They'll be convoyed by ship, and everybody knows it.
+What's not clear is what route they'll take. New Britain runs east-west, so the
+trip will be either along the north coast of New Britain or the southern coast.
+Either way, it's a three-day trip. The significant difference is the expected
+weather. To the south, the weather is clear; to the north, the weather is
+stormy. The Japanese fleet is fine with either kind of weather.
+\par It's the Allies who care about the weather. They're going to send recon
+planes to find the fleet, then bombers to bomb it. In clear weather, both of
+these things can be done on the same day. In bad weather, the bombers go out a
+day after the enemy is sighted. That cuts down on bombing days, and of course,
+if you don't find the fleet, you can't bomb it at all. The recon planes can't
+search both routes on the same day. All of this information is known to both
+sides. Which route (north or south) should the Japanese commanders sail, and
+which route (north or south) should the Allied Forces commanders search?
+\begin{center}
+  \begin{tabular}{|p{4cm}|p{6cm}|p{6cm}|}
+    \hline
+    & Allies search north (stormy) & Allies search south (clear) \\
+    \hline
+    Japanese sail north (stormy) &
+      Japanese fleet found on first day and bombed on second and third days &
+      Japanese fleet not found on the first day, found on second day, and
+        bombed on the third day \\
+    \hline
+    Japanese sail south (clear) &
+      Japanese fleet found on second day and bombed on the second and third
+        days &
+      Japanese fleet found on first day and bombed all three days \\
+    \hline
+  \end{tabular}
+\end{center}
+In terms of days of safety/bombing:
+\begin{center}
+  \begin{tabular}{|p{4cm}|p{6cm}|p{6cm}|}
+    \hline
+    & Allies search north (stormy) & Allies search south (clear) \\
+    \hline
+    Japanese sail north (stormy) &
+      Japanese = 1, Allies = 2 &
+      Japanese = 2, Allies = 1 \\
+    \hline
+    Japanese sail south (clear) &
+      Japanese = 1, Allies = 2 &
+      Japanese = 0, Allies = 3 \\
+    \hline
+  \end{tabular}
+\end{center}
+The Japanese should sail to the north, and the Allied commanders should search
+the northern route as well.
+
+\subsection*{Problem 2}
+A dominant strategy is a Nash equilibrium. Is a Nash equilibrium necessarily a
+dominant strategy? (If your answer is ``yes'', prove this. If your answer is
+``no'' provide a counter-example.)
+\par Yes. It is irrational for a dominated strategy to be played and thus they
+cannot be part of Nash equilibrium. A Nash equilibrium will always consist of
+both player's dominant strategy (strong or weak).
+
+\subsection*{Problem 3}
+Two vendors are selling breakfast items. The price depends on demand. The fixed
+cost for making breakfast sandwiches is \$2; the fixed cost for a danish is \$1.
+Payoffs are repesented as profits for danish and sandwich sellers respectively.
+\begin{center}
+  \begin{tabular}{|l||c|c|c|c|c}
+    \hline
+    & Sandwich: \$3 & Sandwich: \$4 & Sandwich: \$5 & Sandwich: \$6 \\ \hline
+    \hline
+    Danish: \$3 & $D=40,S=12$ & $D=44,S=22$ & $D=48, S=28$ & $D=39,S=18$ \\
+    \hline
+    Danish: \$4 & $D=36,S=14$ & $D=42,S=24$ & $D=46,S=32$ & $D=38,S=24$ \\
+    \hline
+    Danish: \$5 & $D=16,S=17$ & $D=24,S=26$ & $D=32,S=36$ & $D=40,S=16$ \\
+    \hline
+    Danish: \$6 & $D=32, S=18$ & $D=48,S=25$ & $D=50, S=29$ & $D=41, S=32$ \\
+    \hline
+    Danish: \$7 & $D=42, S=19$ & $D=36,S=18$ & $D=49, S=17$ & $D=42, S=28$ \\
+    \hline
+  \end{tabular}
+\end{center}
+\begin{enumerate}[(a)]
+  \item Find the Nash Equilibrium using Iterated Elimination of Dominated
+  Strategies (IEDS). Show your work with each iteration by specifying which
+  row/column is dominated and eliminated. \\
+  Sandwich: \$3 and Sandwich: \$4 are eliminated first because they are
+  dominated by either Sandwich: \$5 or Sandwich: \$6.
+  \begin{center}
+    \begin{tabular}{|l||c|c|}
+      \hline
+      & Sandwich: \$5 & Sandwich: \$6 \\ \hline
+      \hline
+      Danish: \$3 & $D=48, S=28$ & $D=39,S=18$ \\
+      \hline
+      Danish: \$4 & $D=46,S=32$ & $D=38,S=24$ \\
+      \hline
+      Danish: \$5 & $D=32,S=36$ & $D=40,S=16$ \\
+      \hline
+      Danish: \$6 & $D=50, S=29$ & $D=41, S=32$ \\
+      \hline
+      Danish: \$7 & $D=49, S=17$ & $D=42, S=28$ \\
+      \hline
+    \end{tabular}
+  \end{center}
+  Given this choice, Danish: \$3, \$5, and \$5 are eliminated because they are
+  dominated by Danish: \$6 and Danish: \$7.
+  \begin{center}
+    \begin{tabular}{|l||c|c|}
+      \hline
+      & Sandwich: \$5 & Sandwich: \$6 \\ \hline
+      \hline
+      Danish: \$6 & $D=50, S=29$ & $D=41, S=32$ \\
+      \hline
+      Danish: \$7 & $D=49, S=17$ & $D=42, S=28$ \\
+      \hline
+    \end{tabular}
+  \end{center}
+  Sandwich \$6 is a strongly dominant strategy at this point.
+  \begin{center}
+    \begin{tabular}{|l||c|}
+      \hline
+      & Sandwich: \$6 \\ \hline
+      \hline
+      Danish: \$6 & $D=41, S=32$ \\
+      \hline
+      Danish: \$7 & $D=42, S=28$ \\
+      \hline
+    \end{tabular}
+  \end{center}
+  The best choice for the Danish seller is Danish: \$7, making (Sandwich: \$6,
+  Danish: \$7) the Nash equilibrium value.
+  \begin{center}
+    \begin{tabular}{|l||c|}
+      \hline
+      & Sandwich: \$6 \\ \hline
+      \hline
+      Danish: \$7 & $D=42, S=28$ \\
+      \hline
+    \end{tabular}
+  \end{center}
+  \item Show any/all cells that strongly Pareto Dominate the Nash Equilibrium
+  value.
+  \par (Sandwich: \$5, Danish: \$4) and (Sandwich: \$5, Danish: ) strongly
+  dominate the Nash Equilibrium value. (Sandwich: \$5, Danish: \$3) will result
+  in a higher payoff for Danish and an equal payoff for Sandwich.
+\end{enumerate}
+
+\subsection*{Problem 4}
+The game ``Rock-Paper-Scissors-Lizard-Spock'' is an extension of the popular
+``Rock-Paper-Scissors''. In addition to the usual rules of Rock smashes
+Scissors, Scissors cuts Paper, and Paper covers Rock, we also have:
+\begin{itemize}
+  \item Rock crushes Lizard
+  \item Lizard poisons Spock
+  \item Spock smashes Scissors
+  \item Scissors decapitates Lizard
+  \item Lizard eats Paper
+  \item Paper disproves Spock
+  \item Spock vaporizes Rock
+\end{itemize}
+\begin{enumerate}[(a)]
+  \item Fill in the payoff matrix for this game using values of 0 for a tie,
+  -1 for a loss, and +1 for a win.
+  \begin{center}
+    \begin{tabular}{|c|c|c|c|c|c|c|}
+      \hline
+      \multicolumn{7}{|c|}{Player A} \\ \hline
+      \multirow{6}{*}{Player B}
+      & & Rock & Paper & Scissors & Lizard & Spock \\ \cline{2-7}
+      & Rock & 0,0 & -1,1 & 1,-1 & 1,-1 & -1,1 \\ \cline{2-7}
+      & Paper & 1,-1 & 0,0 & -1,1 & -1,1 & 1,-1 \\ \cline{2-7}
+      & Scissors & -1,1 & 1,-1 & 0,0 & 1,-1 & -1,1 \\ \cline{2-7}
+      & Lizard & -1,1 & 1,-1 & -1,1 & 0,0 & 1,-1 \\ \cline{2-7}
+      & Spock & 1,-1 & -1,1 & 1,-1 & -1,1 & 0,0 \\ \hline
+    \end{tabular}
+  \end{center}
+  \item If Player A is utilizing the following mixed strategy: \\
+  Lizard = 22\% \\
+  Spock = 25\% \\
+  Rock = 20\% \\
+  Paper = 15\% \\
+  Scissors = 18\% \\
+  What are the expected Payoff values for each option for Player B?
+  \begin{center}
+    \begin{tabular}{|c|c|c|c|c|c|c|}
+      \hline
+      \multicolumn{7}{|c|}{Player A} \\ \hline
+      \multirow{6}{*}{Player B}
+      & & Rock (0.20) & Paper (0.15) & Scissors (0.18) & Lizard (0.22) &
+        Spock (0.25) \\ \cline{2-7}
+      & Rock & 0,0 & -1,1 & 1,-1 & 1,-1 & -1,1 \\ \cline{2-7}
+      & Paper & 1,-1 & 0,0 & -1,1 & -1,1 & 1,-1 \\ \cline{2-7}
+      & Scissors & -1,1 & 1,-1 & 0,0 & 1,-1 & -1,1 \\ \cline{2-7}
+      & Lizard & -1,1 & 1,-1 & -1,1 & 0,0 & 1,-1 \\ \cline{2-7}
+      & Spock & 1,-1 & -1,1 & 1,-1 & -1,1 & 0,0 \\ \hline
+    \end{tabular} \\[0.5cm]
+    \begin{tabular}{|c|c|c|}
+      \hline
+      \multirow{5}{*}{Player B}
+      & Rock & 0-0.15+0.18+0.22-0.25 = 0 \\ \cline{2-3}
+      & Paper & 0.2+0-0.18-0.22+0.25 = 0.05 \\ \cline{2-3}
+      & Scissors & -0.2+0.15+0+0.22-0.25 = -0.08 \\ \cline{2-3}
+      & Lizard & -0.2+0.15-0.18+0+0.25 = 0.02 \\ \cline{2-3}
+      & Spock & 0.2-0.15+0.18-0.22+0 = 0.01 \\ \hline
+    \end{tabular}
+  \end{center}
+  \item Based on the expected Payoff values for Player B, what is the best
+  mixed strategy for Player B?
+  \par Given these values, Player B should expect to lose more when playing
+  scissors and win slightly more when playing paper. The best mixed strategy for
+  Player B would be to favor playing Paper, Lizard, Spock while playing Scissors
+  less.
+\end{enumerate}
+
+\begin{center}
+  If you have any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
