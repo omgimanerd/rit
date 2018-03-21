@@ -140,7 +140,7 @@ the relation above as follows:
 By the definition of the modular inverse:
 \begin{align*}
   a\cdot a^{-1} &\equiv 1\mod p \\
-  a^{-1} \equiv a^{p-2}\mod p
+  a^{-1} &\equiv a^{p-2}\mod p
 \end{align*}
 For example, \( a = 2, p = 7 \):
 \begin{align*}
@@ -177,7 +177,7 @@ public keys are computed. To generate an rsa key pair:
   \item Compute \( \phi(n) = (p-1)(q-1) \)
   \item Select the public exponent \( e\in\{1,2,3,\dots,\phi(n)-1\} \) such that
   \( gcd(e,\phi(n)) = 1 \).
-  \item Compute the private key \( d \) such that \( de = 1\mod\phi(n) \)
+  \item Compute the private key \( d \) such that \( de \equiv 1\mod\phi(n) \)
   \item \( k_{pub} = (n,e) \quad k_{pr} = d \)
 \end{enumerate}
 Choose the two large distinct primes \( p,q \) in step 1 is non trivial. Step
@@ -197,7 +197,7 @@ The square and multiply algorithm allows for fast exponentiation for very long
 numbers. This is done by converting the exponent to binary and squaring or
 multiplying the base depending on the current bit of the exponent. Modular
 reduction can be applied during each step to keep the operands small. Example
-for \( x^26 \) (without modular reduction):
+for \( x^{26} \) (without modular reduction):
 \[ 26 = (11010)_2 \]
 \begin{center}
   \begin{tabular}{|c|c|c|c|}
