@@ -34,6 +34,58 @@ Recall the following properties of cross products:
   \end{align*}
 \end{enumerate}
 
+\subsection*{Lorentz Force Law}
+If we're dealing with magnetic fields only:
+\begin{align*}
+  \vec{F_B} &= q(\vec{V}\times\vec{B}) \\
+  |\vec{F_B}| &= q|\vec{V}||\vec{B}|\sin\theta \\
+  If: \theta &= 90 \\
+  |\vec{F_B}| &= q|\vec{V}||\vec{B}|
+\end{align*}
+Moving charge is current, recall that:
+\[ I = nq|\vec{V}|A \]
+where \( n \) is charge density. Thus the force on all charges is equal to:
+\begin{align*}
+  |\vec{F}| &= N(q|\vec{V}||\vec{B}|) \\
+  &= nALq|\vec{V}||\vec{B}| \\
+  &= (nq|\vec{V}|A)L|\vec{B}| \\
+  &= IL|\vec{B}| \\
+  \vec{F_B} &= I\vec{L}\times\vec{B}
+\end{align*}
+where \( N \) is the number of charges and \( \vec{L} \) is a vector with the
+length of the wire, pointing in the direction of current. This is only true if
+the magnetic field is constant over the length of the wire. Otherwise,
+integration is necessary in order to calculate \( \vec{F_B} \).
+
+\subsection*{Electric Dipoles}
+TODO
+
+\subsection*{Magnetic Dipoles}
+TODO
+
+\subsection*{Magnetic Field Creation}
+Magnetic fields all arise from current loops. Atoms are current loops as well.
+In physical materials, these current loops are evenly distributed and cancel
+out. For magnets, these current loops are aligned, creating a stronger magnetic
+field. An atom is the simplest current loop and the simply way to generate an
+magnetic field. Electric monopole can exists which propagate an electric field
+outwards in all direction. No analogous magnetic monopole exists. Magnetic field
+lines always close on themselves.
+\[ \vec{B} = \frac{\mu_{\circ}}{4\pi}\frac{q\vec{V}\times\vec{r}}{r^2} \]
+
+\subsection*{Magnetic Field in a Wire}
+\begin{center}
+  \begin{tikzpicture}
+    \draw (-2,0) -- (2,0);
+    \draw (-2,1) -- (2,1);
+    \draw (2,0.5) circle (0.5cm);
+    \draw[|<->|] (0,1.5) -- (0.5,1.5) node[above,pos=0.5] {\( \diff{L} \)};
+    \draw[->] (2,-1) -- (0.25,0.5) node[below,pos=0] {\( \diff{q} = \)};
+  \end{tikzpicture}
+\end{center}
+\[ \vec{V} = \frac{\mu_{\circ}}{4\pi}
+  \int I\frac{\diff{\vec{l}}\times\vec{r}}{r^2} \]
+
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
   any questions, comments, or concerns, please contact me at
