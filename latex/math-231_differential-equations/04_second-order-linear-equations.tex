@@ -654,17 +654,17 @@ We can solve this equation using the techniques above.
   y''+\omega^2y &= 0 \\
   r^2+\omega^2 &= 0 \\
   r^2 &= -\omega^2 \\
-  r &= \omega i \\
+  r &= 0\pm\omega i \quad \alpha = 0 \quad \beta = \omega \\
   y &= c_1\cos(\omega t)+c_2\sin(\omega t)
 \end{align*}
 Given an initial value problem, we can solve for \( c_1 \) and \( c_2 \). We can
 express \( y \) as the following equation:
 \[ y = A\sin(\omega t+\phi) \]
-where \( A \) is the amplitude, \( \phi \) is a phase angle, \( \omega \) is
-the angular frequency in radians per second, \( T = \frac{2\pi}{\omega} \) is
-the period in seconds, and \( \frac{\omega}{2\pi} \) is the natural frequency
-in cycles per second. To find \( \phi \) and \( A \) in terms of \( c_1 \) and
-\( c_2 \), consider the following:
+where \( A = \sqrt{c_1^2+c_2^2} \) is the amplitude, \( \phi \) is a phase
+angle, \( \omega \) is the angular frequency in radians per second, \( T =
+\frac{2\pi}{\omega} \) is the period in seconds, and \( \frac{\omega}{2\pi} \)
+is the natural frequency in cycles per second. To find \( \phi \) and \( A \)
+in terms of \( c_1 \) and \( c_2 \), consider the following:
 \begin{align*}
   \sin\phi &= \frac{c_1}{A} \\
   c_1 &= A\sin\phi \\
@@ -684,6 +684,124 @@ Why does this make sense? Consider the trig identity:
   A\sin\phi &= c_1 \\
   A\cos\phi &= c_2
 \end{align*}
+
+\subsubsection*{Example}
+A 1kg mass is attached to a spring with stiffness \( k = 64\frac{N}{m} \). The
+mass is stretched in the positive direction from the equilibrium position
+\( y = 0 \) by \( \frac{2}{3}m \), and given an initial velocity of
+\( -\frac{4}{3}\frac{m}{s} \) in the opposite direction. Neglecting external
+forces and friction:
+\begin{enumerate}
+  \item Find the equation of motion.
+  \begin{align*}
+    y''+64y &= 0 \\
+    y(0) &= \frac{2}{3} \quad y'(0) = -\frac{4}{3} \\
+    r^2+64 &= 0 \quad r = 0\pm8i \\
+    y(t) &= c_1\cos(8t)+c_2\sin(8t) \\
+    y'(t) &= -8c_1\sin(8t)+8c_2\cos(8t)
+  \end{align*}
+  \begin{align*}
+    y(0) &= \frac{2}{3} = c_1 \\
+    y'(0) &= -\frac{4}{3} = 8c_2 \\
+    y &= \frac{2}{3}\cos(8t)-\frac{1}{6}\sin(8t) \\
+    A &= \sqrt{\bigg(\frac{2}{3}\bigg)^2+\bigg(-\frac{1}{6}\bigg)^2} =
+      \frac{\sqrt{17}}{6} \\
+    \tan\phi &= \frac{c_1}{c_2} = -4
+  \end{align*}
+  From the signs of \( c_1 \) and \( c_2 \), we know \( \phi \) lies in quadrant
+  II.
+  \begin{align*}
+    \phi &= \arctan(-4) \approx (-1.326+\pi)~rad \approx 1.816~rad \\
+    y(t) &= \frac{\sqrt{17}}{6}\sin(8t+1.816)
+  \end{align*}
+  \item Find the first time that the mass passes over the equilibrium position.
+  \begin{align*}
+    y(t) &= 0 = \frac{\sqrt{17}}{6}\sin(8t+1.816) \\
+    \sin(8t+1.816) &= 0 \\
+    8t+1.816 &= n\pi, \quad n\in\Z \\
+    8t &= n\pi-1.816 \\
+    t &= \frac{n\pi-1.816}{8} \\
+    t &= \frac{\pi-1.816}{8}
+  \end{align*}
+\end{enumerate}
+
+\subsection*{Under-damped Motion}
+When the damping coefficient exists but is small relative to the spring's
+stiffness, oscillation occurs and eventually flattens out. The roots of the
+characteristic equation will typically be complex.
+
+\subsubsection*{Example}
+A 1kg mass is attached to a spring with constant \( k = 10\frac{N}{m} \) and a
+damping coefficient of \( b = 2\frac{N\cdot s}{m} \). Find the equation of
+motion given the initial conditions \( y(0) = -1 \) and \( y'(0) = 0 \).
+\begin{align*}
+  my''+by'+ky &= 0 \\
+  y''+2y'+10 &= 0 \\
+  r &= \frac{-2\pm\sqrt{4-(4)(10)}}{2} \\
+  &= -1\pm3i \quad \alpha = -1 \quad \beta = 3 \\
+  y &= \e^{-t}\bigg[c_1\cos(3t)+c_2\sin(3t)\bigg] \\
+  y' &= \e^{-t}\bigg[-3c_1\sin(3t)+3c_2\cos(3t)\bigg]-
+    \e^{-t}\bigg[c_1\cos(3t)+c_2\sin(3t)\bigg] \\
+  y(0) &= -1 = c_1 \\
+  y'(0) &= 0 = 3c_2-c_1 \\
+  c_2 &= -\frac{1}{3} \\
+  y &= \e^{-t}\bigg[-\cos(3t)-\frac{1}{3}\sin(3t)\bigg]
+\end{align*}
+Now we need to rewrite this in the form \( y =
+A\e^{-t}\bigg[\sin(3t+\phi)\bigg] \):
+\begin{align*}
+  A &= \sqrt{(-1)^2+(-\frac{1}{3})^2} = \frac{\sqrt{10}}{3} \\
+  \tan\phi &= \frac{c_1}{c_2} = 3 \\
+\end{align*}
+From the signs of \( c_1 \) and \( c_2 \), we know \( \phi \) lies in quadrant
+III.
+\begin{align*}
+  \phi &= \arctan(-4) \approx (1.25+\pi)~rad \approx 4.39~rad \\
+  y(t) &= \frac{\sqrt{10}}{3}\e^{-t}\bigg[\sin(3t+4.39)\bigg]
+\end{align*}
+Note the following property of this equation of motion:
+\[ \lim_{t\to\infty}y(t) = 0 \]
+This is due the the amplitude also being a variable function of time that
+approaches 0 as time goes to infinity. This is not a periodic function. A
+``quasi-period`` \( \frac{2\pi}{\beta} = \frac{2\pi}{3} \) exists, as well
+as a ``quasi-frequency'' \( \frac{\beta}{2\pi} = \frac{3}{2\pi} \).
+
+\subsection*{Over-damped Motion}
+This can occur when the damping coefficient is large compared to the spring
+stiffness. The roots of the characteristic equation will typically be real
+and distinct.
+
+\subsubsection*{Example}
+Find the equation of motion for \( y''+3y'+2y = 0 \) given the initial
+conditions \( y(0) = 1 \) and \( y'(0) = 0 \).
+\begin{align*}
+  y''+3y'+2y &= 0 \\
+  r^2+3r+2 &= (r+1)(r+2) = 0 \\
+  r &= -1 \quad r = -2 \\
+  y(t) &= c_1\e^{-t}+c_2\e^{-2t} \\
+  y'(t) &= -c_1\e^{-t}-2c_2\e^{-t} \\
+  y(0) &= 1 = c_1+c_2 \quad c_1 = 1-c_2 \\
+  y'(0) &= 0 = -c_1-c_2 \\
+  c_1 &= 2 \quad c_2 = -1 \\
+  y(t) &= 2\e^{-t}-\e^{-2t}
+\end{align*}
+Notice here that \( \lim_{t\to\infty}y(t) = 0 \) and there is no oscillation.
+
+\subsection*{Critically-damped Systems}
+Suppose we a spring system defined by \( y''+10y'+25y = 0 \) with the initial
+conditions \( y(0) = 1 \) and \( y'(0) = 0 \).
+\begin{align*}
+  y''+10y'+25y &= 0 \\
+  r^2+10r+25 &= (r+5)^2 = 0 \\
+  r &= -5 \\
+  y(t) &= c_1\e^{-5t}+c_2t\e^{-5t} \\
+  y'(t) &= -5c_1\e^{-5t}+c_2\e^{-5t}-5c_2t\e^{-5t} \\
+  y(0) &= 1 = c_1 \\
+  y'(0) &= 0 = -5+c_2 \quad c_2 = 5 \\
+  y(t) &= \e^{-5t}+5t\e^{-5t}
+\end{align*}
+Note that this system also will not oscillate as \( \lim_{t\to\infty}y(t) =
+0 \).
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
