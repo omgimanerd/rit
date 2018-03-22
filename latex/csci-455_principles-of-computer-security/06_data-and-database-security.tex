@@ -22,6 +22,38 @@ that row. This enables the creation of multiple tables linked together by a
 unique identifier that is present in all tables. A relational query language
 allows users to request data in this database to fit a given criteria.
 
+\subsubsection*{Relational Database Elements}
+Terminology:
+\begin{itemize}
+  \item A database is composed of relations/tables/files, which holds
+  tuples/rows/records that have attributes/columns/fields.
+  \item A primary key uniquely identifies a row and consists of one or more
+  column names.
+  \item A foreign key links one table to attributes in another.
+  \item A view or virtual table shows the result of a query that returns
+  selected rows and columns from one or more tables.
+\end{itemize}
+
+\subsubsection*{Structured Query Language (SQL)}
+SQL is a language for data manipulation. At its core, it supports a standard
+known as CRUD:
+\begin{itemize}
+  \item Create data
+  \item Read data
+  \item Update data
+  \item Delete data
+\end{itemize}
+It also defines the database structure as a data definition language, allowing
+for a database structure with tables, views, indexes, unique keys. Database
+structures can be created, modified, and deleted. The database schema generates
+tables stored in a data dictionary which contains metadata about how the table
+should store data.
+
+\subsection*{Security}
+Security with data is not merely securing the database. The data, database,
+DBMS must be secure along with applications, operation systems, web servers,
+and network environments that can access the data.
+
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
   any questions, comments, or concerns, please contact me at
