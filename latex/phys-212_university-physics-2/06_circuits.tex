@@ -227,7 +227,8 @@ We can analyze this circuit using Kirchhoff's Law as well.
   \ddiff{}{t}I &= \ddiff{}{t}\bigg[\frac{\epsilon}{R}-\frac{Q}{RC}\bigg] \\
   \ddiff{I}{t} &= 0-\frac{1}{RC}\ddiff{Q}{t} \\
   \ddiff{I}{t} &= -\frac{1}{RC}I \\
-  I(t) &= I_{\circ}\e^{-\frac{1}{RC}t}
+  I(t) &= I_{\circ}\e^{-\frac{1}{RC}} \\
+  I(t) &= \frac{\epsilon}{R}\e^{\frac{-t}{RC}}
 \end{align*}
 This is the equation of the current through an RC circuit with an uncharged
 capacitor with \( \tau = RC \) as the time constant. We can also calculate
@@ -236,10 +237,9 @@ the charge as it changes over time:
   I &= \ddiff{Q}{t} \\
   \ddiff{Q}{t} &= \frac{\epsilon}{R}\e^{\frac{-t}{RC}} \\
   Q(t) &= \int_{0}^{t}\frac{\epsilon}{R}\e^{\frac{-t'}{RC}}\diff{t'} \\
-  &= -\frac{\epsilon}{R}RC\e^{-t}{RC}+K \\
-  Q(0) = 0 \\
-  K &= \epsilon C \\
-  Q(t) &= \epsilon C(1-\e^{-t}{RC})
+  &= -\frac{\epsilon}{R}RC\e^{\frac{-t}{RC}}+K \\
+  Q(0) &= 0 \quad\therefore\quad K = \epsilon C \\
+  Q(t) &= \epsilon C(1-\e^{\frac{-t}{RC}})
 \end{align*}
 When the capacitor is discharging:
 \begin{align*}
