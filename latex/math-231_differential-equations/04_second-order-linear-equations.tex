@@ -664,26 +664,21 @@ where \( A = \sqrt{c_1^2+c_2^2} \) is the amplitude, \( \phi \) is a phase
 angle, \( \omega \) is the angular frequency in radians per second, \( T =
 \frac{2\pi}{\omega} \) is the period in seconds, and \( \frac{\omega}{2\pi} \)
 is the natural frequency in cycles per second. To find \( \phi \) and \( A \)
-in terms of \( c_1 \) and \( c_2 \), consider the following:
-\begin{align*}
-  \sin\phi &= \frac{c_1}{A} \\
-  c_1 &= A\sin\phi \\
-  \cos\phi &= \frac{c_2}{A} \\
-  c_2 &= A\cos\phi \\
-  A &= \sqrt{c_1^2+c_2^2} \\
-  \tan\phi &= \frac{c_1}{c_2} \\
-  \phi &= \arctan(\frac{c_1}{c_2})
-\end{align*}
-The signs of \( c_1 \) and \( c_2 \) determine what quadrant \( \phi \) lies in.
-Why does this make sense? Consider the trig identity:
+in terms of \( c_1 \) and \( c_2 \), consider the following trigonometric
+identity:
 \begin{align*}
   \sin(\alpha+\beta) &= \cos\alpha\sin\beta+\cos\beta\sin\alpha \\
+  \sin(\omega t+\phi) &= \cos(\omega t)\sin\phi+\cos\phi\sin(\omega t) \\
   A\bigg[\sin(\omega t+\phi)\bigg] &=
     A\cos(\omega t)\sin\phi+A\cos\phi\sin(\omega t) \\
-  y &= c_1\cos(\omega t)+c_2\sin(\omega t) \\
-  A\sin\phi &= c_1 \\
-  A\cos\phi &= c_2
+  y = A\sin(\omega t+\phi) &= c_1\cos(\omega t)+c_2\sin(\omega t) \\
+  A\sin\phi &= c_1 \quad c_1 = A\sin\phi \\
+  A\cos\phi &= c_2 \quad c_2 = A\cos\phi \\
+  A &= \sqrt{c_1^2+c_2^2} \\
+  \tan\phi &= \frac{c_1}{c_2} \quad \phi = \arctan(\frac{c_1}{c_2})
 \end{align*}
+The signs of \( c_1 \) and \( c_2 \) will determine what quadrant \( \phi \)
+lies in.
 
 \subsubsection*{Example}
 A 1kg mass is attached to a spring with stiffness \( k = 64\frac{N}{m} \). The
