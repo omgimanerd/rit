@@ -49,10 +49,63 @@ structures can be created, modified, and deleted. The database schema generates
 tables stored in a data dictionary which contains metadata about how the table
 should store data.
 
-\subsection*{Security}
+\subsubsection*{Security}
 Security with data is not merely securing the database. The data, database,
 DBMS must be secure along with applications, operation systems, web servers,
-and network environments that can access the data.
+and network environments that can access the data. Continuous patching of DBMS
+is needed in order to fix new vulnerabilities that come to light. The
+interaction of the DBMS with the OS must be secure, with secure administrative
+accounts, policies, and permissions. The interaction of the DBMS with the OS
+must be secure. Connections between the clients and the server must be secure,
+though this may have the side effect of limiting possible connections. The
+network that the DBMS is on must enforce authentication, integrity, and
+encryption. Generally, the database server lies behind a firewall and is
+separated from the web server.
+
+\subsubsection*{Secure Application Development}
+Applications that access DBMS services can be subject to SQL injections. If
+sensitive data is stored in the database, it can be leaked if the user input
+is not sanitized, allowing for arbitrary queries to be executed on the DBMS.
+
+\subsubsection*{Data Privacy}
+Data privacy is a field that overlaps with data security, especially
+confidentiality. In today's world, there has been a dramatic increase in the
+amount of data aggregated and stored, often motivated by law enforcement,
+national security, and economic incentives. People have become increasingly
+aware of the access and use of their personal information. Concerns about the
+extent of privacy compromise have led to a variety of legal and technical
+approaches to protect privacy.
+
+\subsubsection*{Security Specifications with SQL Databases}
+\begin{itemize}
+  \item The grant statement is used to confer authorization. It does not grant
+  privilege to access any underlying views, and the grantor must already have
+  permission to access the specified item before granting permission.
+  \item Permission can be granted to select, insert, update, or delete data.
+  \item Roles are often assigned to users to specify common classes of
+  privileges.
+  \item The revoke statement revokes permissions on a user or group. Revoking
+  a user privilege may cascade to others, and this can cause interesting
+  security issues with both timing and doubly granted permissions.
+  \item SQL does not support tuple level authorization. Authorization to access
+  individual data must be done by the web application on top of the database.
+  This is often difficult because authorization loopholes can occur in multiple
+  parts of the web application.
+\end{itemize}
+
+\subsubsection*{SQL Injection Attacks}
+SQL injection is the most common network based security threat to SQL databases.
+It exploits the basic web application design by sending malicious SQL queries to
+the database server. The most common use of this is bulk data extraction, but
+this can be used to modify data, delete data, execute arbitrary OS commands, or
+even launch DDOS attacks. This is often done by prematurely terminating a text
+string and appending a command to the end of it. Attack avenues:
+\begin{itemize}
+  \item User input attack: inject SQL commands by crafting suitable user inputs
+  to send
+  \item Server variables attack: forge HTTP values and network headers to
+  exploit vulnerabilities by placing data directly into the headers
+\end{itemize}
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
