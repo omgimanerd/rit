@@ -49,7 +49,7 @@ structures can be created, modified, and deleted. The database schema generates
 tables stored in a data dictionary which contains metadata about how the table
 should store data.
 
-\subsubsection*{Security}
+\subsection*{Security in SQL Databases}
 Security with data is not merely securing the database. The data, database,
 DBMS must be secure along with applications, operation systems, web servers,
 and network environments that can access the data. Continuous patching of DBMS
@@ -93,7 +93,7 @@ approaches to protect privacy.
   parts of the web application.
 \end{itemize}
 
-\subsubsection*{SQL Injection Attacks}
+\subsection*{SQL Injection Attacks}
 SQL injection is the most common network based security threat to SQL databases.
 It exploits the basic web application design by sending malicious SQL queries to
 the database server. The most common use of this is bulk data extraction, but
@@ -105,7 +105,55 @@ string and appending a command to the end of it. Attack avenues:
   to send
   \item Server variables attack: forge HTTP values and network headers to
   exploit vulnerabilities by placing data directly into the headers
+  \item Second order injection attack: rely on existing system data to trigger
+  an SQL injection attack, modifying the system data from within
+  \item Cookies attack: modify an SQL query using malicious cookie data
+  \item Physical user input attack: apply user input to construct an attack
+  outside the realm of web requests
 \end{itemize}
+
+\subsubsection*{Inband Attacks}
+These attacks often use the same channel for injecting SQL code and retrieving
+the result. Attackers can facilitate these attacks through different methods:
+\begin{itemize}
+  \item Tautology attacks inject code into conditional statements so that they
+  always return true.
+  \item End-of-line comments injected into an input field can nullify the
+  legitimate code that follows.
+  \item Piggybacked queries allow attackers to put additional queries on top of
+  a legitimate query.
+\end{itemize}
+
+\subsubsection*{Inferential Attacks}
+Inferential attacks do not involve a transfer of data, but an attacker can
+reconstruct information by sending particular requests and observing the
+resulting behavior of the website or database server. Illegal or logically
+incorrect queries allow an attacker to gather important information about the
+type and structure of the backend database of a Web application. This is
+often done as a preliminary and information gathering step for other attacks.
+Blind SQL injection can also be done to infer the data present in a database
+even when the system is sufficiently secure to not display any erroneous
+information back to the attacker.
+
+\subsubsection*{Out-of-band Attacks}
+Data is retrieved using a different channel than the attacking channel. This
+can be used when there are limitations on information retrieval, but outbound
+connectivity from the database server is lax.
+
+\subsection*{Countermeasures}
+SQL injection can be countered by defensive coding, parameterized query
+injection, and input sanitizing. Detection of an attack can be signature based,
+anomaly based, or through code analysis. During run-time, queries can be checked
+to see if they conform to a model of expected queries.
+
+\subsection*{Database Encryption}
+The database is typically the most valuable information resource and is
+protected by multiple layers of security such as firewalls, authentication,
+access control systems, and encryption. Encryption becomes the last line of
+database security defense and can be applied to the entire database, the
+record level, the attribute level, or to the invididual fields in the database.
+Encryption has the disadvantage of key management and is often inflexible due
+to the difficulty in record searching.
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
