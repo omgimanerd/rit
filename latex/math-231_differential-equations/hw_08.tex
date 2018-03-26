@@ -1,0 +1,169 @@
+\documentclass{math}
+
+\usepackage{pgfplots}
+\usepackage{tikz}
+
+\geometry{letterpaper, margin=0.5in}
+\pgfplotsset{compat=1.13}
+
+\title{Differential Equations: Homework 8}
+\author{Alvin Lin}
+\date{January 2018 - May 2018}
+
+\begin{document}
+
+\maketitle
+\clearpage
+
+\section*{Section 4.6}
+
+\subsubsection*{Exercise 1}
+Find a general solution to the differential equation using the method of
+variation of parameters.
+\begin{align*}
+  y''+4y &= \tan(2t) \\
+  r^2+4 &= 0 \\
+  r &= 0\pm2i \quad \alpha = 0 \quad \beta = 2 \\
+  y_h &= c_1\cos(2t)+c_2\sin(2t) \\
+  y_1 &= \cos(2t) \quad y_2 = \sin(2t) \\
+  y_p &= v_1y_1+v_2y_2 \\
+  W[y_1,y_2] &= \begin{vmatrix}
+    \cos(2t) & \sin(2t) \\
+    -2\sin(2t) & 2\cos(2t)
+  \end{vmatrix} = 2\cos^2(2t)+2\sin^2(2t) = 2 \\
+  v_1 &= -\int\frac{\tan(2t)\sin(2t)}{2}\diff{t} \\
+  &= -\frac{1}{2}\int\frac{1-\cos^2(2t)}{\cos(2t)}\diff{t} \\
+  &= -\frac{1}{2}\int\sec(2t)-\cos(2t)\diff{t} \\
+  &= -\frac{1}{2}\bigg(\frac{\ln|\sec(2t)+\tan(2t)|-\sin(2t)}{2}\bigg) \\
+  v_2 &= -\int\frac{\tan(2t)\cos(2t)}{2}\diff{t} \\
+  &= -\frac{1}{4}\cos(2t) \\
+  y_p &= \frac{-\ln|\sec(2t)+\tan(2t)|\cos(2t)-\sin(2t)\cos(2t)}{4}-
+    \frac{\cos(2t)\sin(2t)}{4} \\
+  y &= c_1\cos(2t)+c_2\sin(2t)-\frac{\ln|\sec(2t)+\tan(2t)|\cos(2t)}{4}
+\end{align*}
+
+\subsubsection*{Exercise 2}
+Find a general solution to the differential equation using the method of
+variation of parameters.
+\begin{align*}
+  y''+y &= \sec(t) \\
+  r^2+1 &= 0 \\
+  r &= 0\pm i \quad \alpha = 0 \quad \beta = 1 \\
+  y_h &= c_1\cos(t)+c_2\sin(t) \\
+  y_1 &= \cos(t) \quad y_2 = \sin(t) \\
+  y_p &= v_1y_1+v_2y_2 \\
+  W[y_1,y_2] &= \begin{vmatrix}
+    \cos(t) & \sin(t) \\
+    -\sin(t) & \cos(t)
+  \end{vmatrix} = \cos^2(t)+\sin^2(t) = 1 \\
+  v_1 &= -\int\frac{\sec(t)\sin(t)}{1}\diff{t} = -\ln|\sec(t)| \\
+  v_2 &= \int\frac{\sec(t)\cos(t)}{1}\diff{t} = t \\
+  y_p &= -\ln|\sec(t)|\cos(t)+t\sin(t) \\
+  y &= c_1\cos(t)+c_2\sin(t)-\ln|\sec(t)|\cos(t)+t\sin(t)
+\end{align*}
+
+\subsubsection*{Exercise 4}
+Find a general solution for the differential equation using the method of
+variation of parameters.
+\begin{align*}
+  y''+2y'+y &= \e^{-t} \\
+  r^2+2r+1 &= (r+1)^2 = 0 \\
+  r &= -1 \\
+  y_h &= c_1\e^{-t}+c_2t\e^{-t} \\
+  y_1 &= \e^{-t} \quad y_2 = t\e^{-t} \\
+  y_p &= v_1y_1+v_2y_2 \\
+  W[y_1,y_2] &= \begin{vmatrix}
+    \e^{-t} & t\e^{-t} \\
+    -\e^{-t} & -t\e^{-t}+\e^{-t}
+  \end{vmatrix} = \e^{-2t} \\
+  v_1 &= -\int\frac{\e^{-2t}}{t\e^{-2t}}\diff{t} = -\frac{t^2}{2} \\
+  v_2 &= \int\frac{\e^{-2t}}{\e^{-2t}}\diff{t} = t \\
+  y_p &= -\frac{t^2\e^{-t}}{2}+t^2\e^{-t} \\
+  y &= c_1\e^{-t}+c_2t\e^{-t}+\frac{t^2\e^{-t}}{2}
+\end{align*}
+
+\subsubsection*{Exercise 5}
+Find a general solution for the differential equation using the method of
+variation of parameters.
+\begin{align*}
+  y''(\theta)+16y(\theta) &= \sec(4\theta) \\
+  r^2+16 &= 0 \\
+  r &= 0\pm4i \quad \alpha = 0 \quad \beta = 4 \\
+  y_h &= c_1\cos(4\theta)+c_2\sin(4\theta) \\
+  y_1 &= \cos(4\theta) \quad y_2 = \sin(4\theta) \\
+  y_p &= v_1y_1+v_2y_2 \\
+  W[y_1,y_2] &= \begin{vmatrix}
+    \cos(4\theta) & \sin(4\theta) \\
+    -4\sin(4\theta) & 4\cos(4\theta)
+  \end{vmatrix} = 4\cos^2(4\theta)+4\sin^2(4\theta) = 4 \\
+  v_1 &= -\int\frac{\sec(4\theta)\sin(4\theta)}{4}\diff\theta =
+    -\frac{\ln|\sec\theta|}{16} \\
+  v_2 &= \int\frac{\sec(4\theta)\cos(4\theta)}{4}\diff\theta =
+    \frac{\theta}{4} \\
+  y_p &= \frac{-\ln|\sec\theta|\cos(4\theta)}{16}+
+    \frac{\theta\sin(4\theta)}{4} \\
+  y &= c_1\cos(4\theta)+c_2\sin(4\theta)+
+    \frac{\theta\sin(4\theta)}{4}-\frac{\ln|\sec\theta|\cos(4\theta)}{16} \\
+\end{align*}
+
+\subsubsection*{Exercise 7}
+Find a general solution to the differential equation using the method of
+variation of parameters.
+\begin{align*}
+  y''+4t'+4y &= \e^{-2t}\ln(t) \\
+  r^2+4t+4 &= (r+2)^2 = 0 \\
+  r &= -2 \\
+  y_h &= c_1\e^{-2t}+c_2t\e^{-2t} \\
+  y_1 &= \e^{-2t} \quad y_2 = t\e^{-2t} \\
+  y_p &= v_1y_1+v_2y_2 \\
+  W[y_1,y_2] &= \begin{vmatrix}
+    \e^{-2t} & t\e^{-2t} \\
+    -2\e^{-2t} & -2t\e^{-2t}+\e^{-2t}
+  \end{vmatrix} = \e^{-4t} \\
+  v_1 &= -\int\frac{\e^{-2t}\ln(t)t\e^{-2t}}{\e^{-4t}}\diff{t} =
+    -\int t\ln(t)\diff{t} = \frac{t^2}{4}-\frac{t^2\ln(t)}{2} \\
+  v_2 &= \int\frac{\e^{-2t}\ln(t)\e^{-2t}}{\e^{-4t}}\diff{t} =
+    \int\ln(t)\diff{t} = t\ln(t)-t \\
+  y_p &= \frac{t^2\e^{-2t}}{4}-\frac{t^2\ln(t)\e^{-2t}}{2}+
+    t^2\ln(t)\e^{-2t}-t^2\e^{-2t} \\
+  &= \frac{t^2\ln(t)\e^{-2t}}{2}-\frac{3t^2\e^{-2t}}{4} \\
+  y &= c_1\e^{-2t}+c_2t\e^{-2t}+
+    \frac{t^2\ln(t)\e^{-2t}}{2}-\frac{3t^2\e^{-2t}}{4}
+\end{align*}
+
+\subsubsection*{Exercise 11}
+Find a general solution to the differential equation.
+\begin{align*}
+  y''+y &= \tan(t)+\e^{3t}-1 \\
+  r^2+1 &= 0 \\
+  r &= 0\pm i \quad \alpha = 0 \quad \beta = 1 \\
+  y_h &= c_1\cos(t)+c_2\sin(t) \\
+  y_1 &= \cos(t) \quad y_2 = \sin(t) \\
+  y_p &= v_1y_1+v_2y_2 \\
+  W[y_1,y_2] &= \begin{vmatrix}
+    \cos(t) & \sin(t) \\
+    -\sin(t) & \cos(t)
+  \end{vmatrix} = \cos^2(t)+\sin^2(t) = 1 \\
+  v_1 &= -\int(\tan(t)+\e^{3t}-1)\sin(t)\diff{t} =
+    \int\tan(t)\sin(t)-\e^{3t}\sin(t)+\sin(t)\diff{t} \\
+  &= \sin(t)-\ln|\sec(t)+\tan(t)|-\frac{\e^{3t}(\cos(t)-3\sin(t))}{10}-
+    \cos(t) \\
+  v_2 &= \int(\tan(t)+\e^{3t}-1)\cos(t)\diff{t} =
+    \int\sin(t)+\e^{3t}\sin(t)-\cos(t) \\
+  &= -\cos(t)+\frac{\e^{3t}(\sin(t)+3\cos(t))}{10}-\sin(t) \\
+  y_p &= \frac{\e^{3t}}{10}-\ln|\sec(t)+\tan(t)|\cos(t)-1 \\
+  y &= c_1\cos(t)+c_2\sin(t)+\frac{\e^{3t}}{10}-\ln|\sec(t)+\tan(t)|\cos(t)-1
+\end{align*}
+
+\section*{4.9}
+
+\subsubsection*{Exercise 1}
+\subsubsection*{Exercise 3}
+\subsubsection*{Exercise 7}
+
+\begin{center}
+  If you have any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
