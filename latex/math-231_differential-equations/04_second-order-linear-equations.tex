@@ -1,7 +1,5 @@
 \documentclass{math}
 
-\usepackage{tikz}
-
 \title{Differential Equations}
 \author{Alvin Lin}
 \date{January 2018 - May 2018}
@@ -797,6 +795,78 @@ conditions \( y(0) = 1 \) and \( y'(0) = 0 \).
 \end{align*}
 Note that this system also will not oscillate as \( \lim_{t\to\infty}y(t) =
 0 \).
+
+\subsection*{Forced Mechanical Vibrations}
+Consider a mass-spring system where an external force imparts energy on the
+system. This system can be modeled by the same equation
+\[ my''+by'+ky = f(t) \ne 0 \]
+except in this case \( f \) is a non-zero forcing function.
+
+\subsubsection*{Example}
+Interpret and solve the following in terms of a mass-spring system.
+\begin{align*}
+  y''+2y'+2y &= 4\cos(t)+2\sin(t) \quad y(0) = 0 \quad y'(0) = 0 \\
+  r^2+2r+2 &= 0 \\
+  r &= \frac{-2\pm\sqrt{4-(4)(2)}}{2} \\
+  &= -1\pm i \quad \alpha = -1 \quad \beta = 1 \\
+  y_h &= \e^{-t}\bigg[c_1\cos(t)+c_2\sin(t)\bigg] \\
+  y_p &= A\cos(t)+B\sin(t) \\
+  y_p' &= -A\sin(t)+B\cos(t) \\
+  y_p'' &= -A\cos(t)-B\sin(t) \\
+  y''+2y'+2y &= 4\cos(t)+2\sin(t) \\
+  &= -A\cos(t)-B\sin(t)+2\bigg[-A\sin(t)+B\cos(t)\bigg]+
+    2\bigg[A\cos(t)+B\sin(t)\bigg] \\
+  &= (A+2B)\cos(t)+(B-2A)\sin(t) \\
+  A+2B &= 4 \quad B-2A = 2 \\
+  A &= 0 \quad B = 2 \\
+  y_p &= 2\sin(t) \\
+  y &= \e^{-t}\bigg[c_1\cos(t)+c_2\sin(t)\bigg]+2\sin(t) \\
+  y' &= \e^{-t}\bigg[-c_1\sin(t)+c_2\cos(t)\bigg]-
+    \e^{-t}\bigg[c_1\cos(t)+c_2\sin(t)\bigg]+2\cos(t)
+\end{align*}
+\begin{align*}
+  y(0) &= 0 = c_1 \\
+  y'(0) &= 0 = c_2+2 \quad c_2 = -2 \\
+  y &= \e^{-t}\bigg[-2\sin(t)\bigg]+2\sin(t) \\
+\end{align*}
+Note that \( \e^{-t}\bigg[-2\sin(t)\bigg] \) will go to zero as \( t \) goes
+to infinity. This is known as the transient term. The only thing that's left
+in the motion is \( 2\sin(t) \), which is a steady state solution.
+
+\subsubsection*{Pure Resonance}
+When the external force has the same resonance frequency as the system, pure
+resonance can occur. Consider this example:
+\begin{align*}
+  y''+y &= 5\cos(t) \quad y(0) = 0 \quad y'(0) = 1 \\
+  y''+y &= 0 \\
+  r^2+1 &= 0 \\
+  r &= 0\pm i \quad \alpha = 0 \quad \beta = 1 \\
+  y_h &= c_1\cos(t)+c_2\sin(t) \\
+  y_p &= t\bigg[A\cos(t)+B\sin(t)\bigg] \\
+  &= At\cos(t)+Bt\cos(t) \\
+  y_p' &= A\cos(t)-At\sin(t)+B\sin(t)+Bt\cos(t) \\
+  y_p'' &= -A\sin(t)-\bigg[A\sin(t)+At\cos(t)\bigg]+
+    B\cos(t)+\bigg[B\cos(t)-Bt\sin(t)\bigg] \\
+  y''+y &= 5\cos(t) \\
+  &= -A\sin(t)-A\sin(t)-At\cos(t)+B\cos(t)+B\cos(t)- \\
+  &~~~~ Bt\sin(t)+At\cos(t)+Bt\sin(t) \\
+  &= -2A\sin(t)+2B\cos(t) \\
+  -2A &= 0 \quad 2B = 5 \\
+  A &= 0 \quad B = \frac{5}{2} \\
+  y_p &= \frac{5}{2}t\sin(t)
+\end{align*}
+\begin{align*}
+  y &= c_1\cos(t)+c_2\sin(t)+\frac{5}{2}t\sin(t) \\
+  y' &=
+    -c_1\sin(t)+c_2\cos(t)+c_2\cos(t)+\frac{5}{2}\sin(t)+\frac{5}{2}t\cos(t) \\
+  y(0) &= 0 = c_1 \\
+  y'(0) &= 1 = c_2 \\
+  y &= \sin(t)+\frac{5}{2}t\sin(t) \\
+  &= (1+\frac{5}{2}t)\sin(t)
+\end{align*}
+Note that this is a sine function with a variable amplitude that will go to
+infinity as \( t \) goes to infinity. The external force can be thought of as
+an amplifying factor for the sine wave.
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have

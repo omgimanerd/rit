@@ -1,0 +1,55 @@
+\documentclass{math}
+
+\usepackage{tikz}
+
+\title{Differential Equations}
+\author{Alvin Lin}
+\date{January 2018 - May 2018}
+
+\begin{document}
+
+\maketitle
+
+\section*{Laplace Transforms}
+Let \( f \) be a function defined on \( [0,\infty) \). The Laplace transform
+of \( f \), \( \laplace{f(s)} \), is a function \( F(s) \), where \( s \)
+is the new variable. The domain of \( \laplace{f} \), or \( F(s) \), is all
+values of \( s \) for which the following converges:
+\[ \laplace{f} = \int_{0}^{\infty}\e^{-st}f(t)\diff{t} \]
+Recall the following:
+\[ \int_{0}^{\infty}g(t)\diff{t} = \lim_{N\to\infty}\int_{0}^{N}g(t)\diff{t} \]
+If this limit exists, it converges. Otherwise, it diverges.
+
+\subsubsection*{Example}
+Find \( \laplace{f(t)} \) where \( f(t) = 1 \).
+\begin{align*}
+  \laplace{1} &= \int_{0}^{\infty}\e^{-st}\diff{t} \\
+  &= \lim_{N\to\infty}\int_{0}^{\infty}\e^{-st}\diff{t} \\
+  &= \lim_{N\to\infty}\bigg[-\frac{1}{s}\e^{-st}\bigg]_{0}^{N} \\
+  &= \lim_{N\to\infty}\bigg[-\frac{1}{\e^{sN}}-\bigg(-\frac{1}{s}\bigg)\bigg] \\
+  &= \frac{1}{s}, \quad s > 0
+\end{align*}
+Additional fact: \( \laplace{0} = 0 \).
+
+\subsubsection*{Example}
+Find \( \laplace{\e^{at}} \) where \( a \) is real.
+\begin{align*}
+  f(t) &= \e^{at} \\
+  \laplace{\e^{at}} &= \int_{0}^{\infty}\e^{-st}\e^{at}\diff{t} \\
+  &= \int_{0}^{\infty}\e^{-(s-a)t}\diff{t} \\
+  &= \lim_{N\to\infty}\int_{0}^{N}\e^{-(s-a)t}\diff{t} \\
+  &= \lim_{N\to\infty}\bigg[-\frac{1}{s-a}\e^{-(s-a)t}\bigg]_{0}^{N} \\
+  &= \lim_{N\to\infty}\bigg[-\frac{1}{s-a}\e^{-(s-a)N}-
+    \bigg(-\frac{1}{s-a}\bigg)\bigg] \\
+  &= \lim_{N\to\infty}-\frac{1}{s-a}\e^{-(s-a)N}+\frac{1}{s-a} \\
+  &= 0, \quad s-a > 0 \\
+  &= 0, \quad s>a
+\end{align*}
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
