@@ -81,7 +81,7 @@ quantum computers would probably be the end for ECC, RSA, and DL, but that is
 still decades away. Some researchers doubt that quantum computers will ever
 exist.
 
-\subsection*{Euclidean Algorithm}
+\subsubsection*{Euclidean Algorithm}
 Earlier, we explored the Euclidean algorithm for finding the greatest common
 divisor, which is based on the observation that:
 \[ gcd(r_0) = gcd(r_0-r_1,r_1) \]
@@ -99,7 +99,7 @@ If we take this relation mod \( r_0 \):
 \end{align*}
 By definition, \( t \) is the inverse of \( r_1 \mod r_0 \).
 
-\subsection*{Euler's Phi Function}
+\subsubsection*{Euler's Phi Function}
 Euler's Phi function \( \phi(m) \) gives the numbers in the set of integers from
 0 to \( m-1 \) that are relatively prime to \( m \). Example:
 \begin{align*}
@@ -127,7 +127,7 @@ For example:
 Finding \( \phi(m) \) is computationally easy if the factorization of \( m \) is
 known, otherwise it becomes computationally infeasible for large numbers.
 
-\subsection*{Fermat's Little Theorem}
+\subsubsection*{Fermat's Little Theorem}
 Given a prime \( p \) and an integer \( a \) such that \( a^p \equiv a\mod p \),
 the following is true:
 \[ a^{p-1} \equiv 1\mod p \]
@@ -397,6 +397,89 @@ for i = 1 to s:
       return $p'$ is composite
 return $p'$ is likely a prime
 \end{lstlisting}
+
+\subsection*{Using RSA Securely}
+\begin{enumerate}
+  \item Do not use primes too close together. If the difference between \( p \)
+  and \( q \) is small, then \( p \) and \( q \) are both close to
+  \( \sqrt{n} \), and dividing \( n \) by odd numbers around \( \sqrt{n} \) will
+  find them. \( p \) and \( q \) should be chosen at random.
+  \item Be careful using a small public exponent. We would like \( e \) to be
+  small so the encryption operation is efficient, but if \( e \) is small and
+  the message \( m \) is small, then \( me \) may be less than \( n \) and
+  the private key can be computed.
+  \item Don't send the same message \( m \) encrypted with different public
+  keys, each with \( e = 3 \). Using the Chinese Remainder Theorem, the
+  message can be commputed.
+  \item Make sure no legitimate message is ever the product of two or more
+  other legitimate messages since RSA is homomorphic. The signature of the
+  product message can be computed without knowing the private key.
+  \item Shared factor attacks: suppose Alice choose \( p \) and \( q_A \) as
+  her RSA primes and Bob chooses \( p \) and \( q_B \). If they both publish
+  their RSA modules \( n_A \) and \( n_B \), \( p \) can be quickly computed
+  as \( gcd(n_A, n_B) \), which allows for for an attacker to reconstruct
+  both Bob and Alice's private keys.
+\end{enumerate}
+These attacks can all be thwarted if the message \( m \) is about the same
+size as \( n \), the public operation is never performed with different public
+keys on the same \( m \), and the random primes are generated with proper
+randomness.
+
+\subsubsection*{Mathematical Attacks on RSA}
+Mathematical attacks on RSA typically fall into three categories:
+\begin{enumerate}
+  \item Factoring \( n \) into its two prime factors. This enables the
+  calculation of \( \phi(n) \), which in turn allows for the private key to be
+  computed.
+  \item Determining \( \phi(n) \) directly without first determining \( p \) and
+  \( q \). This allows for the private key to be reconstructed.
+  \item Determining \( d \) directly without first determining \( \phi(n) \).
+\end{enumerate}
+
+\subsubsection*{Factoring Problem}
+The general number field sieve (GNFS) is the most efficient classical algorithm
+known for factoring integers larger than \( 10^{100} \). The special number
+field sieve (SNFS) is a special purpose integer factorization algorithm. GNFS
+was derived from SNFS. The special number field sieve is efficient for integers
+of the form \( r^e\pm s \), where \( r \) and \( s \) are small.
+
+\subsubsection*{Other Attacks on RSA}
+\begin{enumerate}
+  \item Hardware Fault-Based Attack: this involves inducing hardware faults in
+  the processor that is generating digital signatures.
+  \item Chosen Ciphertext Attacks: this type of attack exploits properties of
+  the RSA algorithm.
+  \item Brute Force: this involves trying all possible private keys.
+  \item Timing Attacks: this involves the leaking information from the running
+  time of the decryption algorithm.
+\end{enumerate}
+
+\subsection*{Diffie-Hellman Key Exchange}
+The Diffie-Hellman key exchange was proposed in 1976 by Whitfield Diffie and
+Martin Hellman. It is widely used in SSH, TLS, and IPSec. It is a key
+exchange protocol based on the discrete logarithm problem. To use this:
+\begin{enumerate}
+  \item Choose a large prime \( q \).
+  \item Choose an integer \( \alpha\in\{2,3,\dots,p-2\} \) such that
+  \( \alpha \) is a primitive root of \( q \).
+  \item Publish \( q \) and \( \alpha \).
+\end{enumerate}
+A number \( a \) is a primitive root modulo \( q \) if for every integer \( a \)
+coprime to \( q \), there is an integer \( k \) such that \( a^k\equiv a\mod p
+\). In other words, \( \alpha \) is a generator of the multiplicative group of
+integers module \( q \). To do a key exchange:
+\begin{enumerate}
+  \item \( q \) and \( \alpha \) are shared between two parties Alice and Bob.
+  \item Alice and Bob each generate a private key \( X_A < q \) and
+  \( X_B < q \).
+  \item Alice calculates a public key \( Y_A = \alpha^{X_A}\mod q \) while Bob
+  calculates a public key \( Y_B = \alpha^{X_B}\mod q \).
+  \item Alice and Bob exchange public keys in plaintext.
+  \item Alice calculates a shared secret key \( K = (Y_B)^{X_A}\mod q \) while
+  Bob calculates the same shared secret key using \( K = (Y_A)^{X_B}\mod q \).
+\end{enumerate}
+Alice and Bob end up with the same key \( K = (\alpha^{X_B})^{X_A}\mod q \equiv
+(\alpha^{X_A})^{X_B}\mod q \).
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have

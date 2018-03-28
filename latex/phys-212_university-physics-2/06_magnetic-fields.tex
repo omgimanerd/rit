@@ -173,6 +173,23 @@ fingers point in the direction of \( \diff{\vec{s}} \) and are curled in the
 direction of \( \vec{r} \), thus pointing in the direction of
 \( \diff{\vec{B}} \).
 
+\subsection*{Ampere's Law}
+\[ \oint\vec{B}\cdot\diff{\vec{s}} = \mu_{\circ}I_{enc} \]
+Suppose we have a wire with current coming out of the page.
+\begin{center}
+  \begin{tikzpicture}
+    \draw (0,0) circle (0.3cm) node {\( I \)};
+    \draw (0,0) circle (1cm);
+    \draw[->,red] (1,0) -- (1,1) node[right] {\( \diff{\vec{s}} \)};
+    \draw[->,green] (0,1) -- (-1,1) node[above] {\( \vec{B} \)};
+  \end{tikzpicture}
+\end{center}
+Ampere's Law is applied very similarly to Gauss's Law.
+\[ \oint\vec{B}\cdot\diff{\vec{s}} = \int B\diff{s} = B\int\diff{s} = B2\pi r \]
+This simplification can be made because of circular symmetry and because the
+magnetic field \( \vec{B} \) is parallel to \( \diff{\vec{s}} \) around the
+wire.
+
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
   any questions, comments, or concerns, please contact me at
