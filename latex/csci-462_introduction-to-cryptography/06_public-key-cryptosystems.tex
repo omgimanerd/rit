@@ -1,5 +1,6 @@
 \documentclass{math}
 
+\usepackage{graphicx}
 \usepackage{listings}
 \lstset{basicstyle=\ttfamily\footnotesize,breaklines=true}
 
@@ -465,9 +466,9 @@ exchange protocol based on the discrete logarithm problem. To use this:
   \item Publish \( q \) and \( \alpha \).
 \end{enumerate}
 A number \( a \) is a primitive root modulo \( q \) if for every integer \( a \)
-coprime to \( q \), there is an integer \( k \) such that \( a^k\equiv a\mod p
-\). In other words, \( \alpha \) is a generator of the multiplicative group of
-integers module \( q \). To do a key exchange:
+coprime to \( q \), there is an integer \( k \) such that \( \alpha^k\equiv
+a\mod p \). \( \alpha \) is known as a generator of the multiplicative group of
+integers modulo \( q \) (\( \Z_{p}^{*} \)). To do a key exchange:
 \begin{enumerate}
   \item \( q \) and \( \alpha \) are shared between two parties Alice and Bob.
   \item Alice and Bob each generate a private key \( X_A < q \) and
@@ -480,6 +481,76 @@ integers module \( q \). To do a key exchange:
 \end{enumerate}
 Alice and Bob end up with the same key \( K = (\alpha^{X_B})^{X_A}\mod q \equiv
 (\alpha^{X_A})^{X_B}\mod q \).
+
+\subsubsection*{Man-in-the-middle Attacks}
+A malicious party (Darth) sitting between Alice and Bob can intercept the
+messages and send their own public key during the key exchange to gain access
+to the messages being between Alice and Bob. Alice and Bob will never directly
+communicate with each other, instead proxying their messages through the
+malicious middleman. This can be solved by using digital signatures to
+authenticate the key exchange messages.
+\begin{center}
+  \includegraphics[width=10cm]{assets/diffie_hellman_mitm.png}
+\end{center}
+
+\subsubsection*{Multiplicative Group Modulo \( p \)}
+The multiplicative group modulo \( p \) is denoted \( \Z_p^{*} =
+\{1,2,\dots,p-1 \} \). The group operation is multiplication modulo \( p \) and
+the group is closed under multiplication modulo \( p \). The product
+\( \mod p \) of any two elements in the set is also in the set. Multiplication
+is associative for any elements \( a,b,c \):
+\[ a\cdot(b\cdot c) \equiv (a\cdot b)\cdot c\mod p \]
+and also commutative for any elements \( a \) and \( b \):
+\[ a\cdot b \equiv b\cdot a\mod p \]
+1 is the identity element, and for every element \( a \) there is an inverse
+\( a^{-1} \) such that \( a\cdot a^{-1}\equiv 1\mod p \). Recall from earlier
+that a number \( a \) is a primitive root modulo \( q \) if for every integer
+\( a \) coprime to \( q \), there is an integer \( k \) such that
+\( \alpha^k\equiv a\mod p \) where \( \alpha \) is a generator of the
+multiplicative group of integers modulo \( q \) (\( \Z_{p}^{*} \)).
+\par An order-\( q \) subgroup of the group \( \Z_p^{*} \) is a \( q \)-element
+subset of \( \{1,2,\dots,p-1\} \) such that the subset is itself a group with
+the group operation being multiplication modulo \( p \). A generator of an
+order-\( q \) subgroup of the group \( \Z_p^{*} \) is a number \( g \) such that
+the set
+\[ \{g^0\mod p, g^1\mod p,g^2\mod p,\dots,g^{q-1}\mod p\} \]
+is an order-\( q \) subgroup of \( \Z_p^{*} \). If the size of the set generated
+by \( g \) is \( q \), we say that the order of \( g \) is \( q \). The orders
+of the subgroups of \( \Z_p^{*} \) are equal to the factors of \( p-1 \). There
+is always an order-\( p-1 \) subgroup, the full group itself, and there is
+always an order-1 subgroup \( \{1\} \). If \( p \) is prime, then there is
+always an order-2 subgroup with generator \( p-1 \). If \( p \) is prime, then
+there is always an order-\( \frac{p-1}{2} \) subgroup.
+
+\subsection*{El Gamal Encryption}
+El Gamal encryption was proposed by Taher Elgamal in 1985 as a public key
+cryptosystem and a signature scheme based on discrete logarithms. It can
+be viewed as an extension of the DHKE protocol based on the intractability of
+the discrete logarithm problem and the Diffie Hellman problem. It begins
+with the same public parameters as Diffie Hellman, a large prime \( p \),
+a subgroup order \( q \), and a generator \( \alpha \) of the group
+\( \Z_p^{*} \). A recipient Bob generates a key by doing the following:
+\begin{enumerate}
+  \item Bob picks a random number \( b \) in the range \( 1<b\le p-2 \).
+  \item Bob's private key is \( X_B = b \).
+  \item Bob's public key is \( Y_B = \alpha^b\mod p \).
+\end{enumerate}
+Alice encrypts a message \( m\in\Z_p^{*} \) for Bob by doing the following:
+\begin{enumerate}
+  \item The message \( m \) is padded.
+  \item Alice picks a random number \( a \) in the range \( 1<a<p-2 \).
+  \item Alice computes an ephemeral key \( Y_A = \alpha^a\mod p \).
+  \item Alice computes a masking key \( k_M = (Y_B)^a\mod p \) from Bob's
+  public key.
+  \item Alice computes the ciphertext \( c = m\cdot k_M\mod p \) and sends
+  \( Y_A, c \) to Bob.
+\end{enumerate}
+Bob decrypts the ciphertext by doing the following:
+\begin{enumerate}
+  \item Bob computes the masking key \( k_M = (Y_A)^b\mod p \).
+  \item Bob computes the modular inverse of \( k_M\mod p \).
+  \item Bob computes the original message \( m = c\cdot (k_M)^{-1}\mod p \).
+\end{enumerate}
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
