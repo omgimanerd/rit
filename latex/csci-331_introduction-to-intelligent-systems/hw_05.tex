@@ -1,6 +1,10 @@
 \documentclass{math}
 
+\usepackage{color}
+\usepackage{colortbl}
 \usepackage{enumerate}
+\usepackage{etoolbox}
+\AtBeginEnvironment{align}{\setcounter{equation}{0}}
 
 \geometry{letterpaper, margin=0.5in}
 
@@ -23,20 +27,299 @@ KB is true and those in which each of the following sentences is true: \\
 \( \alpha2 \) = ``There is not a pit in [2,2]'' \\
 \( \alpha3 \) = ``There is a wumpus in [1,3]'' \\
 Hence show that \( KB\models\alpha2 \) and \( KB\models\alpha3 \).
+\begin{center}
+  % ROW 1
+  \begin{tabular}{|p{0.6cm}|p{0.6cm}|p{0.6cm}|p{0.6cm}|}
+    \hline
+    \multicolumn{4}{|c|}{\( \alpha2 \)} \\ \hline
+    - & - & - & - \\ \hline
+    - & - & - & - \\ \hline
+    AS & - & - & - \\ \hline
+    - & B & - & - \\ \hline
+  \end{tabular}
+  \begin{tabular}{|p{0.6cm}|p{0.6cm}|p{0.6cm}|p{0.6cm}|}
+    \hline
+    \multicolumn{4}{|c|}{\( \alpha2,\alpha3 \)} \\ \hline
+    - & - & - & - \\ \hline
+    W & - & - & - \\ \hline
+    AS & - & - & - \\ \hline
+    - & B & - & - \\ \hline
+  \end{tabular}
+  \begin{tabular}{|p{0.6cm}|p{0.6cm}|p{0.6cm}|p{0.6cm}|}
+    \hline
+    \multicolumn{4}{|c|}{\( \alpha2 \)} \\ \hline
+    - & - & - & - \\ \hline
+    - & - & - & - \\ \hline
+    AS & W & - & - \\ \hline
+    - & B & - & - \\ \hline
+  \end{tabular}
+  \begin{tabular}{|p{0.6cm}|p{0.6cm}|p{0.6cm}|p{0.6cm}|}
+    \hline
+    \multicolumn{4}{|c|}{\( \alpha2 \)} \\ \hline
+    - & - & - & - \\ \hline
+    - & - & - & - \\ \hline
+    AS & - & - & - \\ \hline
+    - & B & W & - \\ \hline
+  \end{tabular} \\[0.5cm]
+
+  % ROW 2
+  \begin{tabular}{|p{0.6cm}|p{0.6cm}|p{0.6cm}|p{0.6cm}|}
+    \hline
+    \multicolumn{4}{|c|}{\( \alpha2 \)} \\ \hline
+    - & - & - & - \\ \hline
+    P & - & - & - \\ \hline
+    AS & - & - & - \\ \hline
+    - & B & - & - \\ \hline
+  \end{tabular}
+  \begin{tabular}{|p{0.6cm}|p{0.6cm}|p{0.6cm}|p{0.6cm}|}
+    \hline
+    \multicolumn{4}{|c|}{\( \alpha2,\alpha3 \)} \\ \hline
+    - & - & - & - \\ \hline
+    WP & - & - & - \\ \hline
+    AS & - & - & - \\ \hline
+    - & B & - & - \\ \hline
+  \end{tabular}
+  \begin{tabular}{|p{0.6cm}|p{0.6cm}|p{0.6cm}|p{0.6cm}|}
+    \hline
+    \multicolumn{4}{|c|}{\( \alpha2 \)} \\ \hline
+    - & - & - & - \\ \hline
+    P & - & - & - \\ \hline
+    AS & W & - & - \\ \hline
+    - & B & - & - \\ \hline
+  \end{tabular}
+  \begin{tabular}{|p{0.6cm}|p{0.6cm}|p{0.6cm}|p{0.6cm}|}
+    \hline
+    \multicolumn{4}{|c|}{\( \alpha2 \)} \\ \hline
+    - & - & - & - \\ \hline
+    P & - & - & - \\ \hline
+    AS & - & - & - \\ \hline
+    - & B & W & - \\ \hline
+  \end{tabular} \\[0.5cm]
+
+  % ROW 3
+  \begin{tabular}{|p{0.6cm}|p{0.6cm}|p{0.6cm}|p{0.6cm}|}
+    \hline
+    \multicolumn{4}{|c|}{} \\ \hline
+    - & - & - & - \\ \hline
+    - & - & - & - \\ \hline
+    AS & P & - & - \\ \hline
+    - & B & - & - \\ \hline
+  \end{tabular}
+  \begin{tabular}{|p{0.6cm}|p{0.6cm}|p{0.6cm}|p{0.6cm}|}
+    \hline
+    \multicolumn{4}{|c|}{\( \alpha3 \)} \\ \hline
+    - & - & - & - \\ \hline
+    W & - & - & - \\ \hline
+    AS & P & - & - \\ \hline
+    - & B & - & - \\ \hline
+  \end{tabular}
+  \begin{tabular}{|p{0.6cm}|p{0.6cm}|p{0.6cm}|p{0.6cm}|}
+    \hline
+    \multicolumn{4}{|c|}{} \\ \hline
+    - & - & - & - \\ \hline
+    - & - & - & - \\ \hline
+    AS & WP & - & - \\ \hline
+    - & B & - & - \\ \hline
+  \end{tabular}
+  \begin{tabular}{|p{0.6cm}|p{0.6cm}|p{0.6cm}|p{0.6cm}|}
+    \hline
+    \multicolumn{4}{|c|}{} \\ \hline
+    - & - & - & - \\ \hline
+    - & - & - & - \\ \hline
+    AS & P & - & - \\ \hline
+    - & B & W & - \\ \hline
+  \end{tabular} \\[0.5cm]
+
+  % ROW 4
+  \begin{tabular}{|p{0.6cm}|p{0.6cm}|p{0.6cm}|p{0.6cm}|}
+    \hline
+    \multicolumn{4}{|c|}{\( \alpha2 \)} \\ \hline
+    - & - & - & - \\ \hline
+    - & - & - & - \\ \hline
+    AS & - & - & - \\ \hline
+    - & B & P & - \\ \hline
+  \end{tabular}
+  \begin{tabular}{|p{0.6cm}|p{0.6cm}|p{0.6cm}|p{0.6cm}|}
+    \hline
+    \multicolumn{4}{|c|}{\( \alpha2,\alpha3 \),KB} \\ \hline
+    - & - & - & - \\ \hline
+    W & - & - & - \\ \hline
+    AS & - & - & - \\ \hline
+    - & B & P & - \\ \hline
+  \end{tabular}
+  \begin{tabular}{|p{0.6cm}|p{0.6cm}|p{0.6cm}|p{0.6cm}|}
+    \hline
+    \multicolumn{4}{|c|}{\( \alpha2 \)} \\ \hline
+    - & - & - & - \\ \hline
+    - & - & - & - \\ \hline
+    AS & W & - & - \\ \hline
+    - & B & P & - \\ \hline
+  \end{tabular}
+  \begin{tabular}{|p{0.6cm}|p{0.6cm}|p{0.6cm}|p{0.6cm}|}
+    \hline
+    \multicolumn{4}{|c|}{\( \alpha2 \)} \\ \hline
+    - & - & - & - \\ \hline
+    - & - & - & - \\ \hline
+    AS & - & - & - \\ \hline
+    - & B & WP & - \\ \hline
+  \end{tabular} \\[0.5cm]
+
+  % ROW 5
+  \begin{tabular}{|p{0.6cm}|p{0.6cm}|p{0.6cm}|p{0.6cm}|}
+    \hline
+    \multicolumn{4}{|c|}{} \\ \hline
+    - & - & - & - \\ \hline
+    P & - & - & - \\ \hline
+    AS & P & - & - \\ \hline
+    - & B & - & - \\ \hline
+  \end{tabular}
+  \begin{tabular}{|p{0.6cm}|p{0.6cm}|p{0.6cm}|p{0.6cm}|}
+    \hline
+    \multicolumn{4}{|c|}{\( \alpha3 \)} \\ \hline
+    - & - & - & - \\ \hline
+    WP & - & - & - \\ \hline
+    AS & P & - & - \\ \hline
+    - & B & - & - \\ \hline
+  \end{tabular}
+  \begin{tabular}{|p{0.6cm}|p{0.6cm}|p{0.6cm}|p{0.6cm}|}
+    \hline
+    \multicolumn{4}{|c|}{} \\ \hline
+    - & - & - & - \\ \hline
+    P & - & - & - \\ \hline
+    AS & WP & - & - \\ \hline
+    - & B & - & - \\ \hline
+  \end{tabular}
+  \begin{tabular}{|p{0.6cm}|p{0.6cm}|p{0.6cm}|p{0.6cm}|}
+    \hline
+    \multicolumn{4}{|c|}{} \\ \hline
+    - & - & - & - \\ \hline
+    P & - & - & - \\ \hline
+    AS & P & - & - \\ \hline
+    - & B & W & - \\ \hline
+  \end{tabular} \\[0.5cm]
+
+  % ROW 6
+  \begin{tabular}{|p{0.6cm}|p{0.6cm}|p{0.6cm}|p{0.6cm}|}
+    \hline
+    \multicolumn{4}{|c|}{\( \alpha2 \)} \\ \hline
+    - & - & - & - \\ \hline
+    P & - & - & - \\ \hline
+    AS & - & - & - \\ \hline
+    - & B & P & - \\ \hline
+  \end{tabular}
+  \begin{tabular}{|p{0.6cm}|p{0.6cm}|p{0.6cm}|p{0.6cm}|}
+    \hline
+    \multicolumn{4}{|c|}{\( \alpha2,\alpha3 \)} \\ \hline
+    - & - & - & - \\ \hline
+    WP & - & - & - \\ \hline
+    AS & - & - & - \\ \hline
+    - & B & P & - \\ \hline
+  \end{tabular}
+  \begin{tabular}{|p{0.6cm}|p{0.6cm}|p{0.6cm}|p{0.6cm}|}
+    \hline
+    \multicolumn{4}{|c|}{\( \alpha2 \)} \\ \hline
+    - & - & - & - \\ \hline
+    P & - & - & - \\ \hline
+    AS & W & - & - \\ \hline
+    - & B & P & - \\ \hline
+  \end{tabular}
+  \begin{tabular}{|p{0.6cm}|p{0.6cm}|p{0.6cm}|p{0.6cm}|}
+    \hline
+    \multicolumn{4}{|c|}{\( \alpha2 \)} \\ \hline
+    - & - & - & - \\ \hline
+    P & - & - & - \\ \hline
+    AS & - & - & - \\ \hline
+    - & B & WP & - \\ \hline
+  \end{tabular} \\[0.5cm]
+
+  % ROW 7
+  \begin{tabular}{|p{0.6cm}|p{0.6cm}|p{0.6cm}|p{0.6cm}|}
+    \hline
+    \multicolumn{4}{|c|}{} \\ \hline
+    - & - & - & - \\ \hline
+    - & - & - & - \\ \hline
+    AS & P & - & - \\ \hline
+    - & B & P & - \\ \hline
+  \end{tabular}
+  \begin{tabular}{|p{0.6cm}|p{0.6cm}|p{0.6cm}|p{0.6cm}|}
+    \hline
+    \multicolumn{4}{|c|}{\( \alpha3 \)} \\ \hline
+    - & - & - & - \\ \hline
+    W & - & - & - \\ \hline
+    AS & P & - & - \\ \hline
+    - & B & P & - \\ \hline
+  \end{tabular}
+  \begin{tabular}{|p{0.6cm}|p{0.6cm}|p{0.6cm}|p{0.6cm}|}
+    \hline
+    \multicolumn{4}{|c|}{} \\ \hline
+    - & - & - & - \\ \hline
+    - & - & - & - \\ \hline
+    AS & WP & - & - \\ \hline
+    - & B & P & - \\ \hline
+  \end{tabular}
+  \begin{tabular}{|p{0.6cm}|p{0.6cm}|p{0.6cm}|p{0.6cm}|}
+    \hline
+    \multicolumn{4}{|c|}{} \\ \hline
+    - & - & - & - \\ \hline
+    - & - & - & - \\ \hline
+    AS & P & - & - \\ \hline
+    - & B & WP & - \\ \hline
+  \end{tabular} \\[0.5cm]
+
+  % ROW 8
+  \begin{tabular}{|p{0.6cm}|p{0.6cm}|p{0.6cm}|p{0.6cm}|}
+    \hline
+    \multicolumn{4}{|c|}{} \\ \hline
+    - & - & - & - \\ \hline
+    P & - & - & - \\ \hline
+    AS & P & - & - \\ \hline
+    - & B & P & - \\ \hline
+  \end{tabular}
+  \begin{tabular}{|p{0.6cm}|p{0.6cm}|p{0.6cm}|p{0.6cm}|}
+    \hline
+    \multicolumn{4}{|c|}{\( \alpha3 \)} \\ \hline
+    - & - & - & - \\ \hline
+    WP & - & - & - \\ \hline
+    AS & P & - & - \\ \hline
+    - & B & P & - \\ \hline
+  \end{tabular}
+  \begin{tabular}{|p{0.6cm}|p{0.6cm}|p{0.6cm}|p{0.6cm}|}
+    \hline
+    \multicolumn{4}{|c|}{} \\ \hline
+    - & - & - & - \\ \hline
+    P & - & - & - \\ \hline
+    AS & WP & - & - \\ \hline
+    - & B & P & - \\ \hline
+  \end{tabular}
+  \begin{tabular}{|p{0.6cm}|p{0.6cm}|p{0.6cm}|p{0.6cm}|}
+    \hline
+    \multicolumn{4}{|c|}{} \\ \hline
+    - & - & - & - \\ \hline
+    P & - & - & - \\ \hline
+    AS & P & - & - \\ \hline
+    - & B & WP & - \\ \hline
+  \end{tabular}
+\end{center}
+The set of worlds where KB is true is a subset of the set of worlds where
+\( \alpha2 \) is true and the set of worlds where \( \alpha3 \) is true.
+Therefore, \( KB\models\alpha2 \) and \( KB\models\alpha3 \).
 
 \subsection*{Problem 2}
 Use a truth table to show that
 \[ \{p\to q,(m\to p\vee q),m\}\models q \]
 \begin{center}
-  \begin{tabular}{|c|c|c|c|c|}
+  \definecolor{True}{gray}{0.7}
+  \begin{tabular}{|p{0.6cm}|p{0.6cm}|p{0.6cm}|p{0.6cm}|c|}
     \hline
     \( p \) & \( q \) & \( m \) & \( p\to q \) & \( m\to p\vee q \) \\
     \hline
-    T & \textbf{T} & T & T & T \\
+    \rowcolor{True}
+    T & T & T & T & T \\
     T & T & F & T & T \\
     T & F & T & F & T \\
     T & F & F & F & T \\
-    F & \textbf{T} & T & T & T \\
+    \rowcolor{True}
+    F & T & T & T & T \\
     F & T & F & T & T \\
     F & F & T & T & F \\
     F & F & F & T & T \\
@@ -55,21 +338,78 @@ Use a direct proof (not a proof by contradiction) to show the following.
 \end{gather*}
 For each step of the proof, indicate the premise and the logic rule used.
 Use only the rules from the notes.
-\begin{align*}
+\begin{align}
   p\to q \quad q\to r &\quad \text{Assumptions} \\
-  p\to q\wedge q\to r &\quad \text{And-Introduction} \\
-  p\to r &\quad \text{Hypothetical Syllogism}
-\end{align*}
+  p\to q\wedge q\to r &\quad \text{And-Introduction on step 1} \\
+  p\to r &\quad \text{Hypothetical Syllogism on step 2}
+\end{align}
 
 \subsection*{Problem 4}
 Which of the following are correct? If they are incorrect, show the truth
 assignments that show it. (Hint: Look at page 249 in R\&N).
 \begin{enumerate}
-  \item \( False\models True \)
-  \item \( True\models False \)
+  \item \( False\models True \) \\
+  Correct. \( False\models True \) is correct if and only if
+  \( False\to True \) is valid. \( False\to True \) is a tautology so it is
+  valid.
+  \item \( True\models False \) \\
+  Incorrect. \( False\models True \) is correct if and only if
+  \( True\to False \) is valid. \( True\to False \) is not a tautology since it
+  is always false.
   \item \( (A\wedge B)\models (A\Leftrightarrow B) \)
+  \begin{center}
+    \begin{tabular}{|c|c|c|c|c|}
+      \hline
+      \( A \) & \( B \) & \( A\wedge B \) & \( A\Leftrightarrow B \) &
+        \( A\wedge B\to A\Leftrightarrow B \) \\
+      \hline
+      T & T & T & T & T \\
+      T & F & F & F & T \\
+      F & T & F & F & T \\
+      F & F & F & T & T \\
+      \hline
+    \end{tabular}
+  \end{center}
+  Correct, the statement \( A\wedge B\to A\Leftrightarrow B \) is a tautology
+  and is valid in all models.
   \item \( (A\Leftrightarrow B)\models A\vee B \)
+  \begin{center}
+    \begin{tabular}{|c|c|c|c|c|}
+      \hline
+      \( A \) & \( B \) & \( A\Leftrightarrow B \) & \( A\wedge B \) &
+        \( A\wedge B\to A\Leftrightarrow B \) \\
+      \hline
+      T & T & T & T & T \\
+      T & F & F & F & T \\
+      F & T & F & F & T \\
+      F & F & T & F & F \\
+      \hline
+    \end{tabular}
+  \end{center}
+  Incorrect, the statement \( (A\Leftrightarrow B)\models A\vee B \) is not
+  a tautology. The entailment is incorrect because the implication is false
+  when \( A \) and \( B \) are both false.
   \item \( (A\wedge B)\to C\models (A\to C)\vee(B\to C) \)
+  \begin{center}
+    \begin{tabular}{|c|c|c|c|c|c|}
+      \hline
+      \( A \) & \( B \) & \( C \) & \( (A\wedge B)\to C \) &
+        \( (A\to C)\vee(B\to C) \) &
+        \( ((A\wedge B)\to C)\to((A\to C)\vee(B\to C)) \) \\
+      \hline
+      T & T & T & T & T & T \\
+      T & T & F & F & F & T \\
+      T & F & T & T & T & T \\
+      T & F & F & F & T & T \\
+      F & T & T & T & T & T \\
+      F & T & F & F & T & T \\
+      F & F & T & T & T & T \\
+      F & F & F & T & T & T \\
+      \hline
+    \end{tabular}
+  \end{center}
+  Correct, the statement \( ((A\wedge B)\to C)\to((A\to C)\vee(B\to C)) \) is a
+  tautology.
 \end{enumerate}
 
 \subsection*{Problem 5}
@@ -82,9 +422,46 @@ indicate the premise and the logic rule used.
   \neg L \\
   \vdash\neg(H\vee J)
 \end{gather*}
-\begin{align*}
-  -
-\end{align*}
+Direct Proof:
+\begin{align}
+  (I\vee K)\to L &\quad \text{Assumption} \\
+  \neg L\to\neg(I\vee K) &\quad \text{Contraposition on step 1} \\
+  \neg L &\quad \text{Assumption} \\
+  \neg(I\vee K) &\quad \text{Modus Ponens using steps 2 and 3} \\
+  \neg I\wedge\neg K &\quad \text{De Morgan's Laws on step 7} \\
+  \neg I &\quad \text{And-Elimination on step 8} \\
+  \neg K &\quad \text{And-Elimination on step 8} \\
+  H\to I\wedge J\to K &\quad \text{Assumption} \\
+  H\to I &\quad \text{And-Elimination on step 11} \\
+  \neg I\to\neg H &\quad \text{Contraposition on step 12} \\
+  J\to K &\quad \text{And-Elimination on step 11} \\
+  \neg K\to\neg J &\quad \text{Contraposition on step 14} \\
+  \neg H &\quad \text{Modus Ponens using step 9 and step 13} \\
+  \neg J &\quad \text{Modus Ponens using step 10 and step 15} \\
+  \neg H\wedge\neg J &\quad \text{And-Introduction using step 16 and step 17} \\
+  \neg(H\vee J) &\quad \text{De Morgan's Laws on step 18}
+\end{align}
+Reductio Ad Absurdum:
+\begin{align}
+  H\vee J &\quad \text{Assumption} \\
+  (I\vee K)\to L &\quad \text{Assumption} \\
+  \neg L\to\neg(I\vee K) &\quad \text{Contraposition on step 2} \\
+  \neg L &\quad \text{Assumption} \\
+  \neg(I\vee K) &\quad \text{Modus Ponens using step 3 and step 4} \\
+  \neg I\wedge\neg K &\quad \text{De Morgan's Laws on step 5} \\
+  \neg I &\quad \text{And-Elimination on step 6} \\
+  \neg K &\quad \text{And-Elimination on step 6} \\
+  K\to\bot &\quad \text{Rewriting step 8} \\
+  H\to I\wedge J\to K &\quad \text{Assumption} \\
+  H\to I &\quad \text{And-Elimination on step 10} \\
+  \neg I\to\neg H &\quad \text{Contraposition on step 11} \\
+  \neg H &\quad \text{Modus Ponens using step 7 and step 12} \\
+  J\to K &\quad \text{And-Elimination on step 10} \\
+  J &\quad \text{Disjunctive Syllogism using step 1 and step 13} \\
+  K &\quad \text{Modus Ponens using step 14 and step 15} \\
+  \bot &\quad \text{Modus Ponens using step 9 and step 16} \\
+  \neg(H\vee J) &\quad \text{Reductio Ad Absurdum}
+\end{align}
 
 \subsection*{Problem 6}
 Convert the following to CNF notation: \\
