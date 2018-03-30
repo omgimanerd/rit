@@ -62,6 +62,19 @@ account the following:
   \item Cost: the effort needed for the initial implementation and any
   additional query processing overhead
 \end{itemize}
+\begin{center}
+  \begin{tabular}{|c|ccc|}
+    \hline
+    Method & Security & Information Richness & Costs \\ \hline \hline
+    Query Set Restriction & Low & Low & Low \\
+    Micro-aggregation & Moderate & Moderate & Moderate \\
+    Data Perturbation & High & High-Moderate & Low \\
+    Output Perturbation & Moderate & Moderate-Low & Low \\
+    Sampling & Moderate & Moderate-Low & Moderate \\
+    Auditing & Moderate-Low & Moderate & High \\
+    \hline
+  \end{tabular}
+\end{center}
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have

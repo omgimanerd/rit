@@ -1,0 +1,105 @@
+\documentclass{math}
+
+\title{Principles of Computer Security}
+\author{Alvin Lin}
+\date{January 2018 - May 2018}
+
+\begin{document}
+
+\maketitle
+
+\section*{Privacy}
+Privacy is a concept that overlaps with security, especially confidentiality.
+There has been a dramatic increase in the scale of information that is collected
+and stored for law enforcement, national security, and economic incentives.
+Individuals have become increasingly aware of access and use of personal
+information and private details about their lives. Concerns about the extend
+of privacy compromise have led to a variety of legal and technical approaches
+to reinforcing privacy rights.
+
+\subsection*{European Union Directive on Data Protection}
+This directive was adopted in 1998 and states that members must protect
+fundamental privacy rights when processing personal information. It was
+organized around the following principles:
+\begin{itemize}
+  \item Notice
+  \item Consent
+  \item Consistency
+  \item Access
+  \item Security
+  \item Onward transfer
+  \item Enforcement
+\end{itemize}
+
+\subsection*{United States Privacy Initiatives}
+The Privacy Act of 1974 dealt with personal information collected and used by
+federal agencies. It permitted individuals to determine the records kept on
+them, forbid records being used for other purposes, and obtain access to
+records, and correct and amend records appropriately. This act ensured agencies
+would properly collect, maintain, and use personal information. It created a
+private right of action for individuals.
+
+\subsection*{Code of Practice for Information Security Management (ISO 27002)}
+\begin{itemize}
+  \item Organizations must develop and implement a data policy for the privacy
+  and protection of personally identifiable information.
+  \item They must communicate the policy to all persons who process personally
+  identifiable information.
+  \item They must develop appropriate management structure and control to comply
+  with this policy and relevant legislation/regulations.
+  \item They must appoint a responsible person (a privacy officer) to guide
+  managers, users, and service providers on their individual responsibilities
+  and specific procedures.
+  \item Their responsibility for handling personally identifiable information
+  and awareness of privacy principles must following relevant laws and
+  regulations.
+  \item They must implement appropriate technical and organizational measures to
+  protect personally identificable information.
+\end{itemize}
+
+\subsection*{Properties of Privacy}
+\begin{itemize}
+  \item Unobservability: A user may use the resource or service without others
+  being aware of its use. Germany views unobservability essential to
+  constitutional rights.
+  \item Anonymity: A user may use the resource or service without disclosing
+  their identity. The service should protect the user identity. This makes
+  it harder to establish trust between the system and users.
+  \item Unlinkability: A user may use the resource or service multiple times
+  without others being able to link the uses together.
+  \item Pseudonymity: A user may use the resource or service without disclosing
+  their identity, but can still be accountable for that use.
+\end{itemize}
+None of these properties can be implemented totally. Any interaction between a
+user and a security system leaks information about users. The main threat is
+that attacks can collect long-term user data and use statistical methods to
+deanonymize users.
+
+\subsection*{Privacy and Data Surveillance}
+The demands of homeland security and counterterrorism have imposed new threats
+to personal privacy. Police and intelligence agencies are now aggressive in
+using data surveillance to fulfill their missions. Private organizations are
+also exploiting their abilities to build details profiles of individuals
+through the Internet, increases in electronic payments, cell phones, and other
+mobile devices. Both policy and technical approaches are needed to protect
+privacy when both government and nongovernment organizations seek to learn as
+much as possible about individuals.
+
+\subsection*{K-Anonymity}
+Can private data about people be shared with researchers with guarantees that
+individuals cannot be re-identified while the data is practically useful? The
+k-anonymity protection model allows for data to be released only when any
+one person cannot be distinguished from at least k-1 individuals whose data is
+also in the release.
+
+\subsection*{Differential Privacy}
+Differential privacy approaches only allow queries where the result is claimed
+to have strong, provable privacy guarantees.
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
