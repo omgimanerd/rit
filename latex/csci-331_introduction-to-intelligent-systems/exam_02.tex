@@ -1,0 +1,124 @@
+\documentclass{math}
+
+\usepackage{enumerate}
+\usepackage{tikz}
+
+\geometry{letterpaper, margin=0.5in}
+
+\title{Introduction to Intelligent Systems: Exam 2}
+\author{Alvin Lin}
+\date{August 2017 - December 2017}
+
+\begin{document}
+
+\maketitle
+
+\subsection*{Problem 1}
+Consider differences in policy between politicians and the Federal Reserve
+Board. Politicians can expand or contract fiscal policy, while the feds can
+expand or contract monetary policy (and of course, each side can choose to do
+nothing). Each side also has preferences for who should do what - neither side
+wants to look like the ``bad guy''. The payoff matrix for the two sides is shown
+below (P = politicians, F = federal reserve).
+\begin{center}
+  \begin{tabular}[h!]{|l||c|c|c|}
+    \hline
+    & Fed: contract  & Fed: do nothing & Fed: expand \\ \hline \hline
+    Pol: contract & \( P=1, F=7 \) & \( P=4, F=9 \) & \( P=6, F=6 \) \\ \hline
+    Pol: do nothing & \( P=2, F=8 \) & \( P=5, F=5 \) & \( P=9, F=4 \) \\ \hline
+    Pol: expand & \( P=3, F=3 \) & \( P=7, F=2 \) & \( P=8, F=1 \) \\ \hline
+  \end{tabular}
+\end{center}
+\begin{enumerate}
+  \item Find the pure strategy Nash equilibrium. Assuming that both sides play
+  their Nash equilibrium, what will each side decide to do?
+  \par Fed: expand is eliminated first because it is a dominated strategy for
+  the feds.
+  \begin{center}
+    \begin{tabular}[h!]{|l||c|c|}
+      \hline
+      & Fed: contract  & Fed: do nothing \\ \hline \hline
+      Pol: contract & \( P=1, F=7 \) & \( P=4, F=9 \) \\ \hline
+      Pol: do nothing & \( P=2, F=8 \) & \( P=5, F=5 \) \\ \hline
+      Pol: expand & \( P=3, F=3 \) & \( P=7, F=2 \) \\ \hline
+    \end{tabular}
+  \end{center}
+  Pol: contract and Pol: do nothing are eliminated next because they are
+  dominated by Pol: expand.
+  \begin{center}
+    \begin{tabular}[h!]{|l||c|c|}
+      \hline
+      & Fed: contract  & Fed: do nothing \\ \hline \hline
+      Pol: expand & \( P=3, F=3 \) & \( P=7, F=2 \) \\ \hline
+    \end{tabular}
+  \end{center}
+  Fed: do nothing is eliminated since it is dominated by Fed: contract. Thus
+  the pure strategy Nash equilibrium is Fed: contract, Pol: expand.
+  \begin{center}
+    \begin{tabular}[h!]{|l||c|c|}
+      \hline
+      & Fed: contract \\ \hline \hline
+      Pol: expand & \( P=3, F=3 \) \\ \hline
+    \end{tabular}
+  \end{center}
+  \item Is this a Pareto optimal solution? If yes, explain why. If no, explain
+  why not.
+  \par This is not a Pareto optimal solution because there exist situations
+  that give both of them a higher payoffs. (Fed: do nothing, Pol: contract),
+  (Fed: expand, Pol: contract), (Fed: do nothing, Pol: do nothing), and
+  (Fed: expand, Pol: do nothing) all have higher payoffs for both players.
+\end{enumerate}
+
+\subsection*{Problem 2}
+Construct a formal \textbf{direct} proof of validity for the following. For each
+line in your proof you must include the ruel you are using AND the line(s) it
+refers to:
+\par Steve took the bus or the train. If he took the bus or drove his own car,
+then he arrived late and missed the first session. He did not arrive late.
+Therefore, he took the train.
+\begin{align}
+  B\vee T &\quad \text{Assumption: (Steve took the bus or the train)} \\
+  (B\vee C)\to (L\wedge M) &\quad \text{Assumption: (If he took the bus or drove
+  his own car,} \\
+  &\quad \text{then he arrived late and missed the first session)} \\
+  \neg L &\quad \text{Assumption: (He did not arrive late)} \\
+  \neg L\vee\neg M &\quad \text{Or-Introduction on line 4} \\
+  \neg(L\wedge M) &\quad \text{De Morgan's Law on line 5} \\
+  \neg(L\wedge M)\to\neg(B\vee C) &\quad \text{Contraposition on line 2} \\
+  \neg(B\vee C) &\quad \text{Modus Ponens on line 7 using line 6} \\
+  \neg B\wedge\neg C &\quad \text{De Morgan's Law on line 8} \\
+  \neg B &\quad \text{And-Elimination on line 9} \\
+  T &\quad \text{Disjunctive Syllogism using lines 10 and 1} \\
+  &\quad \text{Conclusion: T (Therefore, he took the train)}
+\end{align}
+
+\subsection*{Problem 3}
+Give the \textit{most general unifier} for each pair of atomic sentences, if it
+exists. If it does not exist, explain why. You may assume that an uppercase
+letter represents a variable and a lowercase letter represents a constant.
+\begin{enumerate}
+  \item \( p(a,b,b) \) and \( p(X,Y,Z) \)
+  \[ \{X/a, Y/b, Z/b\} \]
+  \item \( q(Y,g(a,b)) \) and \( q(Z,g(X,X)) \) \\
+  Does not exist, this would require the variable \( Z \) to be bound to another
+  variable and the variable \( X \) to be bound to two different constants.
+  \item Convert the following to PNF:
+  \[ (\forall X)(a(X)\vee\neg b(X))\to(\exists Y)(a(Y)) \]
+  \begin{align}
+    \neg(\exists Y)(a(Y))\vee(\forall X)(a(X)\vee\neg b(X))
+      &\quad \text{Implication Eliminination} \\
+    \neg(\exists Y)a(Y)\vee(\forall X)a(X)\vee\neg b(X)
+      &\quad \text{Logical Equivalence} \\
+    (\forall Y)\neg a(Y)\vee(\forall X)a(X)\vee\neg b(X)
+      &\quad \text{Negation of quantifiers} \\
+    (\forall Y)(\forall X)(a(Y)\vee a(X)\vee\neg b(X))
+      &\quad \text{Logical Equivalence}
+  \end{align}
+\end{enumerate}
+
+\begin{center}
+  If you have any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
