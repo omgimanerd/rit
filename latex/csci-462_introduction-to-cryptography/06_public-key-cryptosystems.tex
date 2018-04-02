@@ -552,6 +552,13 @@ Bob decrypts the ciphertext by doing the following:
   \item Bob computes the original message \( m = c\cdot (k_M)^{-1}\mod p \).
 \end{enumerate}
 
+\subsection*{The Discrete Logarithm Problem}
+Given the finite cyclic group \( \Z_q^* \) of order \( q-1 \) and a primitive
+element \( \alpha\in\Z_q^* \) and another element \( \beta\in\Z_q^* \), the
+discrete logarithm problem is the problem of determining the integer
+\( 1\le x\le q-1 \) such that:
+\[ a^x\equiv\beta\mod q \]
+
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
   any questions, comments, or concerns, please contact me at
