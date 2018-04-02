@@ -1,0 +1,43 @@
+\documentclass{math}
+
+\usepackage{tikz}
+
+\title{University Physics 2}
+\author{Alvin Lin}
+\date{January 2018 - May 2018}
+
+\begin{document}
+
+\maketitle
+
+\section*{Magnetic Induction}
+Lenz's Law states that if there is a change in magnetic flux through a
+conductor, there will be an induced magnetic field to oppose that change. This
+is done by the creation of an induced current through the conductor. The
+direction is given by the right hand rule.
+
+\subsection*{Faraday's Law}
+Recall the formula for magnetic flux:
+\[ \Phi_B = \oint\vec{B}\cdot\diff{\vec{A}} = 0 \]
+Magnetic flux through a closed loop is zero because there are no magnetic
+monopoles. Faraday's Law is the following:
+\[ \epsilon = -\ddiff{\Phi_B}{t} \]
+We also know the following about EMF:
+\[ \epsilon = \oint\vec{E}\cdot\diff{\vec{L}} \]
+Therefore:
+\[ \oint\vec{E}\cdot\diff{L} = -\ddiff{\Phi_B}{t} \]
+Note that this implies a changing magnetic fields creates an electric field.
+If we substitute the formulas for magnetic flux:
+\[ \epsilon = -\ddiff{}{t}\bigg(\oint\vec{B}\cdot\diff{\vec{A}}\bigg) \]
+We can get EMF three ways:
+\[ \epsilon = -\ddiff{}{t}\bigg(BA\cos\theta\bigg) \]
+If we have \( N \) wires:
+\[ \epsilon = -N\ddiff{\Phi_B}{t} \]
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
