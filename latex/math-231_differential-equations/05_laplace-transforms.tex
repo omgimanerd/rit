@@ -119,12 +119,10 @@ over \( [0,\infty) \) if \( f \) is piecewise continuous over \( [0,N] \) for
 all \( N > 0 \).
 \[ \int_{a}^{d}f(t) = \int_{a}^{b}f(t)+\int_{b}^{c}f(t)+\int_{c}^{d}f(t) \]
 
-\subsection*{Exponential Order \( \alpha \)}
+\subsubsection*{Exponential Order \( \alpha \)}
 A function \( f \) is of exponential order \( \alpha \) if there exists
 positive constants \( M \) and \( T \) such that \( |f(t)|\le M\e^{\alpha t} \)
-for all \( t > T \).
-
-\subsubsection*{Example}
+for all \( t > T \). For example:
 \begin{align*}
   f(t) &= \e^{2t}\sin(t) \\
   |\e^{2t}\sin(t)| &= \e^{2t}|\sin(2t)| \le
@@ -133,13 +131,95 @@ for all \( t > T \).
 \end{align*}
 \( f(t) \) is of exponential order \( \alpha = 2 \).
 
-\subsection*{Theorem}
-Conditions for existence of the Laplace transform:
+\subsubsection*{Conditions for existence of the Laplace Transform}
 \begin{enumerate}
   \item If \( f(t) \) is piecewise continuous and of exponential order
   \( \alpha \), then the Laplace transform \( \laplace{f(t)} \) exists for
   \( s>a \).
+  \item We need to know that
+  \[ \laplace{f(t)} = \int_{0}^{\infty}\e^{-st}f(t)\diff{t} \]
+  converges for \( s>a \). We can rewrite it as
+  \[ \int_{0}^{\infty}\e^{-st}f(t)\diff{t} = \int_{0}^{T}\e^{-st}f(t)\diff{t}+
+    \int_{T}^{\infty}\e^{-st}f(t)\diff{t} \]
+  where we have \( |f(t)|\le M\e^{\alpha t} \) for all \( t > T \). By
+  continuity, \( \int_{0}^{T}\e^{-st}f(t)\diff{t} \) exists, so we only need to
+  consider \( \int_{T}^{\infty}\e^{-st}f(t)\diff{t} \).
+  \begin{align*}
+    \int_{T}^{\infty}\e^{-st}f(t)\diff{t} &=
+      \lim_{N\to\infty}\int_{T}^{N}\e^{-st}f(t)\diff{t} \\
+    &\le \lim_{N\to\infty}\int_{T}^{N}M\e^{-st}\e^{\alpha t}\diff{t} \\
+    &= \lim_{N\to\infty}M\int_{T}^{N}\e^{-(s-\alpha)t}\diff{t} \\
+    &= \lim_{N\to\infty}M\bigg[
+      -\frac{1}{s-\alpha}\e^{-(s-\alpha)t}\bigg]_{T}^{N} \\
+    &= \lim_{N\to\infty}M\bigg[-\frac{1}{s-\alpha}\e^{-(s-\alpha)N}-
+      (-\frac{1}{s-\alpha}\e^{-(s-\alpha)T})\bigg] \\
+    &= \frac{M}{s-\alpha}\e^{-(s-\alpha)T} < \infty
+  \end{align*}
 \end{enumerate}
+Since \( M \) and \( T \) are positive constants, this integral converges by
+the comparison test for improper integrals.
+
+\subsection*{Properties of the Transform}
+\begin{itemize}
+  \item Translation in \( s \): If the Laplace transform \( \laplace{f(t)} =
+  F(s) \) exists, then \( \laplace{\e^{\alpha t}f(t)} = F(s-a) \).
+  \( \e^{\alpha t} \) indicates a translation in the \( s \) domain, where we
+  replace \( s \) by \( s-a \) in the transform of \( f(t) \). For example:
+  \begin{align*}
+    \laplace{\e^{2t}\sin(2t)} & \quad \alpha = 2 \\
+    \laplace{\sin(2t)} &= \frac{2}{s^2+4} \\
+    \laplace{\e^{2t}\sin(2t)} &= \frac{2}{(s-2)^2+4}
+  \end{align*}
+  Another example:
+  \begin{align*}
+    \laplace{\e^{-2t}\cos(2t)} & \quad \alpha = -2 \\
+    \laplace{\cos(2t)} &= \frac{s}{s^2+4} \\
+    \laplace{\e^{-2t}\cos(2t)} &= \frac{s+2}{(s+2)^2+4}
+  \end{align*}
+\end{itemize}
+
+\subsection*{The Laplace Transform of the Derivative}
+Let \( f \) be continuous on \( [0,\infty) \) and \( f' \) be piecewise
+continuous on \( [0,\infty) \) and both are of exponential order \( \alpha \).
+\begin{align*}
+  \laplace{f'(t)} &= \int_{0}^{\infty}\e^{-st}f'(t)\diff{t} \\
+  &= \lim_{N\to\infty}\int_{0}^{N}\e^{-st}f'(t)\diff{t} \\
+  u &= \e^{-st} \quad\quad\quad\quad \diff{v} = f'(t)\diff{t} \\
+  \diff{u} &= -s\e^{-st}\diff{t} \quad\quad v = f(t) \\
+  &= \lim_{N\to\infty}\bigg[\e^{-st}f(t)\bigg]_{0}^{N}+
+    \lim_{N\to\infty}s\int_{0}^{N}\e^{-st}f(t)\diff{t} \\
+  &= -f(0)+sF(s) \\
+  &= sF(s)-f(0)
+\end{align*}
+In summary:
+\begin{align*}
+  \laplace{y'} &= sY(s)-y(0) \\
+  \laplace{y''} &= s^2Y(s)-sy(0)-y'(0)
+\end{align*}
+
+\subsection*{Derivatives of the Laplace Transform}
+Let \( F(S) = \laplace{f(t)} \). Then for \( s>a \):
+\[ \laplace{t^nf(t)} = (-1)^n\ddiff{^nF}{s^n} \]
+For example:
+\begin{align*}
+  \laplace{t\sin(t)} & \quad n = 1 \quad f(t) = \sin(t) \\
+  \laplace{\sin(t)} &= \frac{1}{s^2+1} = F(s) \\
+  \ddiff{F}{s} &= \ddiff{}{s}\bigg[\frac{1}{s^2+1}\bigg] \\
+  &= \frac{(s^2+1)(0)-1(2s)}{(s^2+1)^2} \\
+  &= \frac{-2s}{(s^2+1)^2} \\
+  \laplace{t\sin(t)} &= (-1)^1\frac{-2s}{(s^2+1)^2} = \frac{2s}{(s^2+1)^2}
+\end{align*}
+Another example:
+\begin{align*}
+  \laplace{t\e^{-2t}\sin(3t)} & \quad n = 1 \quad f(t) = \e^{-2t}\sin(3t) \\
+  F(s) &= \laplace{\e^{-2t}\sin(3t)} \\
+  \laplace{\sin(3t)} &= \frac{3}{s^2+9} \\
+  \laplace{\e^{-2t}\sin(3t)} &= \frac{3}{(s+2)^2+9} = F(s) \\
+  \ddiff{}{s}F(s) &= \frac{0-(3(2(s+2)))}{((s+2)^2+9)^2} \\
+  &= \frac{-6(s+2)}{((s+2)^2+9)^2} \\
+  \laplace{t\e^{-2t}\sin(3t)} &= (-1)^1\frac{-6(s+2)}{((s+2)^2+9)^2} \\
+  &= \frac{6(s+2)}{((s+2)^2+9)^2} \\
+\end{align*}
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
