@@ -155,6 +155,76 @@ record level, the attribute level, or to the invididual fields in the database.
 Encryption has the disadvantage of key management and is often inflexible due
 to the difficulty in record searching.
 
+\subsection*{Database Auditing}
+A security audit is an independent review or examination of system records and
+activities for the purpose of:
+\begin{itemize}
+  \item Determining the adequacy of system controls
+  \item Ensuring compliance with established security policy and procedures
+  \item Detecting breaches in security services
+  \item Recommending any changes needed for countermeasures
+\end{itemize}
+The basic object of an audit is to establish accountability for system entities
+that initiate or participate in security-relevant events and actions. Means are
+needed to generate and record a security audit trail and to review and analyze
+the audit trail to discover and investigate attacks. Usually this is done by
+having a chronological record of system activities enabling the reconstruction
+and examination of a sequence of environments and activities surrounding
+or leading to an operation, procedure, or event in a security relevant
+transaction.
+
+\subsubsection*{Events Subject to Audits}
+In order to gain useful insights, we need to define the set of events that are
+subject to audit:
+\begin{itemize}
+  \item Introduction of objects
+  \item Deletion of objects
+  \item Distribution or revocation of access rights or capabilities
+  \item Changes to subject or object security attributes
+  \item Policy checks performed by the security software
+  \item Use of access rights to bypass a policy check
+  \item Use of identification and authentication functions
+  \item Security related actions taken by an operator or user
+  \item Import or export of data from/to removable media
+\end{itemize}
+
+\subsubsection*{Event Detection}
+Appropriate hooks must be available in the application and system software to
+enable event detection. Monitoring software needs to be added to the system and
+to appropriate places to capture relevant activity. An event recording function
+is needed, which includes the need to provide for a secure storage resistant to
+tampering or deletion. Event and audit trail analysis software, tools, and
+interfaces may be used to analyze collected data as well as for investigating
+data trends and anomalies. Any auditing system should have a minimal effect on
+functionality.
+
+\subsubsection*{Implementation Guidelines}
+\begin{itemize}
+  \item Audit requirements should be agreed upon with appropriate management.
+  \item The scope of technical audit tests should be agreed upon and controlled.
+  \item Audio tests should be limited to read-only access to software and data.
+  \item Access other than read-only should only be allowed for isolated copies
+  of system files.
+  \item Any requirements for special or additional processing should be
+  identified and agreed upon.
+  \item Audit tests that could affect system availability should be run outside
+  business hours.
+  \item All access should be monitored and logged to produce a reference trail.
+\end{itemize}
+
+\subsubsection*{Database Audit Trail}
+A mechanism should be provided for the complete reconstruction of every action
+taken on the database:
+\begin{itemize}
+  \item Who: Identify the person viewing/modifying the data
+  \item What: Full listing of data viewed or modified
+  \item When: Reliable datetime-stamp
+  \item Where: Specific application used for access
+  \item Why: Context information on data disclosure
+\end{itemize}
+We are particularly interested in who made and approved the transaction,
+what they did, and what the result was.
+
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
   any questions, comments, or concerns, please contact me at
