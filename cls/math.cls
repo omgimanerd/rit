@@ -34,3 +34,4 @@
 \newcommand*{\nCr}[2]{_{#1}C_{#2}}
 \newcommand*{\nCrf}[2]{\frac{#1!}{(#1-#2)!#2!}}
 \newcommand*{\laplace}[1]{\mathcal{L}\{#1\}}
+\newcommand*{\ilaplace}[1]{\mathcal{L}^{-1}\{#1\}}

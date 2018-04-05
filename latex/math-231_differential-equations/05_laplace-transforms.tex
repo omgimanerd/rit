@@ -131,7 +131,7 @@ for all \( t > T \). For example:
 \end{align*}
 \( f(t) \) is of exponential order \( \alpha = 2 \).
 
-\subsubsection*{Conditions for existence of the Laplace Transform}
+\subsubsection*{Conditions for Existence of the Laplace Transform}
 \begin{enumerate}
   \item If \( f(t) \) is piecewise continuous and of exponential order
   \( \alpha \), then the Laplace transform \( \laplace{f(t)} \) exists for
@@ -220,6 +220,127 @@ Another example:
   \laplace{t\e^{-2t}\sin(3t)} &= (-1)^1\frac{-6(s+2)}{((s+2)^2+9)^2} \\
   &= \frac{6(s+2)}{((s+2)^2+9)^2} \\
 \end{align*}
+
+\subsection*{Inverse Laplace Transforms}
+The Laplace transform maps a function \( f(t) \) to a function \( F(s) =
+\laplace{f(t)} \). The transform has an inverse denoted by:
+\[ \ilaplace{f(t)} = f(t) \]
+Consider the following initial value problem:
+\[ y''-y = -t \quad y(0) = 0 \quad y'(0) = 1 \]
+If we apply the Laplace transform to the entire equation:
+\begin{align*}
+  \laplace{y''-y} &= \laplace{-t} \\
+  \laplace{y''}-\laplace{y} &= -\laplace{t} \\
+  s^2Y(s)-(s)y(0)-y'(0)-Y(s) &= -\frac{1}{s^2} \\
+  (s^2-1)Y(s) &= -\frac{1}{s^2}+1 \\
+  &= \frac{-1+s^2}{s^2} \\
+  Y(s) &= \frac{1}{s^2} \\
+  \ilaplace{Y(s)} &= \ilaplace{\frac{1}{s^2}} \\
+  t &= y(t)
+\end{align*}
+Given \( F(s) \), if there exists a function \( f(t) \) that is continuous on
+\( [0,\infty) \) where \( \laplace{f(t)} = F(s) \), \( f(t) \) is the inverse
+of \( F(s) \). The inverse Laplace transform is a linear operator. Given
+\( F_1(s), F_2(s) \) and \( k \) a constant, the properties of linearity apply:
+\begin{enumerate}
+  \item \( \ilaplace{F_1(s)\pm F_2(s)} =
+  \ilaplace{F_1(s)}\pm\ilaplace{F_2(s)} \)
+  \item \( \ilaplace{kF_1(s)}\pm = k\ilaplace{F_1} \)
+\end{enumerate}
+
+\subsubsection*{Example}
+\begin{align*}
+  \ilaplace{\frac{3}{s^2+9}} &= \ilaplace{\frac{3}{s^2+3^2}} \\
+  &= \sin(3t) \\
+  \ilaplace{\frac{s-2}{(s-2)^2+4}} &= \e^{2t}\cos(2t) \\
+  \ilaplace{\frac{1}{s-6}} &= \e^{6t}
+\end{align*}
+
+\subsubsection*{Review of Partial Fraction Decomposition: Case 1}
+Suppose we have \( f(x) = \frac{P(x)}{Q(x)} \) and the degree
+of \( P \) is less than the degree of \( Q \).
+\[ \frac{P(x)}{Q(x)} =
+  \frac{P}{(a_1x+b_1)(a_2x+b_2)\cdot\cdot\cdot(a_nx+b_n)} \]
+We have \( n \) distinct linear factors that are irreducible, which we can
+rewrite as:
+\[ \frac{P(x)}{Q(x)} =
+  \frac{A_1}{a_1x+b_1}+\frac{A_2}{a_2x+b_2}+\dots+\frac{A_n}{a_nx+b_n} \]
+where all \( A_i \)'s are constants. For example:
+\begin{align*}
+  \frac{x+4}{x^2+3x+2} &= \frac{x+4}{(x+1)(x+2)} \\
+  &= \frac{A}{x+1}+\frac{B}{x+2} = \frac{A(x+2)+B(x+1)}{(x+1)(x+2)} \\
+  x+4 &= A(x+2)+B(x+1) \\
+  Let: x &= -2 \\
+  -2+4 &= -B \quad B = -2 \\
+  Let: x &= -1 \\
+  A &= 3 \\
+\end{align*}
+This can be applied to inverse Laplace transforms:
+\[ \ilaplace{\frac{3s+2}{s^2+s-2}} \]
+\begin{align*}
+  \frac{3s+2}{s^2+s-2} &= \frac{3s+2}{(s+2)(s-1)} \\
+  &= \frac{A}{s+2}+\frac{B}{s-1} \\
+  &= \frac{A(s-1)+B(s+2)}{(s+2)(s-1)} \\
+  3s+2 &= A(s-1)+B(s+2) \\
+  Let: s &= 1 \quad 5 = 3B \quad B = \frac{5}{3} \\
+  Let: s &= -2 \quad A = \frac{4}{3}
+\end{align*}
+\begin{align*}
+  \ilaplace{\frac{3s+2}{s^2+s-2}} &=
+    \ilaplace{\frac{4}{3}\frac{1}{s-1}+\ilaplace{\frac{5}{3}\frac{1}{s+2}}} \\
+  &= \frac{4}{3}\ilaplace{\frac{1}{s-1}}+\frac{5}{3}\ilaplace{\frac{1}{s+2}} \\
+  &= \frac{4}{3}\e^t+\frac{5}{3}\e^{-2t}
+\end{align*}
+
+\subsubsection*{Review of Partial Fraction Decomposition: Case 2}
+In this case, we can have \( n \) repeated linear factors:
+\[ f(x) = \frac{P(x)}{Q(x)} = \frac{P(x)}{(a_1x+b_1)^n} = \frac{A_1}{a_1x+b_1}+
+  \frac{A_2}{(a_1x+b_1)^2}+\dots+\frac{A_n}{(a_1x+b_1)^n} \]
+For example:
+\[ \ilaplace{\frac{s^2+9s+2}{(s-2)^2(s+3)}} \]
+\begin{align*}
+  \frac{A}{s+3}+\frac{B}{s-1}+\frac{C}{(s-1)^2}
+    &= \frac{A(s-1)^2+B(s+3)(s-1)+C(s+3)}{(s-1)^2(s+3)} \\
+  s^2+9s+2 &= A(s-1)^2+B(s+3)(s-1)+C(s+3) \\
+  Let: s &= 1 \\
+  1+9+2 &= 4C \quad 4C = 12 \quad C = 3 \\
+  Let: s &= -3 \\
+  9-27+2 &= 16A \quad A = -1 \\
+  Let: S &= 0 \\
+  2 &= -1-3B+3C \quad B = 2 \\
+  \ilaplace{\frac{s^2+9s+2}{(s-2)^2(s+3)}} &= \ilaplace{\frac{-1}{s+3}+
+    \frac{2}{s-1}+\frac{3}{(s-1)^2}} \\
+  &= -\ilaplace{\frac{1}{s+3}}+2\ilaplace{\frac{1}{s-1}}+
+    3\ilaplace{\frac{1}{(s-1)^2}} \\
+  &= -\e^{-3t}+2\e^t+3t\e^t
+\end{align*}
+
+\subsubsection*{Review of Partial Fraction Decomposition: Case 3}
+In this case, we have \( n \) irreducible distinct quadratics:
+\begin{align*}
+  \frac{P(x)}{Q(x)} &=
+    \frac{P(x)}{(a_1x^2+b_1x+c)\cdot\cdot\cdot(a_nx^2+b_nx+c_n)} \\
+  &= \frac{A_1x+B_1}{a_1x^2+b_1x+c_1}+\dots+\frac{A_nx+B_n}{a_nx^2+b_nx+c_n} \\
+\end{align*}
+For example:
+\[ \ilaplace{\frac{7s-8}{(s^2+4)(s+1)(s-2)}} \]
+\begin{align*}
+  \frac{7s-8}{(s^2+4)(s+1)(s-2)} &=
+    \frac{A}{s-1}+\frac{B}{s-2}+\frac{Cs+D}{s^2+4} \\
+  7s-8 &= A(s-2)(s^2+4)+B(s+1)(s^2+4)+(Cs+D)(s+1)(s-2) \\
+  Let: s &= 2 \quad B = \frac{1}{4} \\
+  Let: s &= -1 \quad A = 1 \\
+  Let: s &= 0 \quad D = \frac{1}{2} \\
+  Let: s &= 1 \quad C = -\frac{5}{4} \\
+  \ilaplace{\frac{7s-8}{(s^2+4)(s+1)(s-2)}} &= \ilaplace{\frac{1}{s+1}}+
+    \ilaplace{\frac{1}{4}\frac{1}{s-2}}+
+    \ilaplace{\frac{-\frac{5}{4}s+\frac{1}{2}}{s^2+4}} \\
+  &= \ilaplace{\frac{1}{s+1}}+\frac{1}{4}\ilaplace{\frac{1}{s-2}}-
+    \frac{5}{4}\ilaplace{\frac{s}{s^2+4}}+
+    \frac{1}{2}\ilaplace{\frac{1}{s^2+4}} \\
+  &= \e^{-t}+\frac{1}{4}\e^{2t}-\frac{5}{4}\cos(2t)+\frac{1}{4}\sin(2t)
+\end{align*}
+
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
