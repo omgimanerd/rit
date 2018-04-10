@@ -1,6 +1,6 @@
 \documentclass{math}
 
-\usepackage{tikz}
+\usepackage{circuitikz}
 
 \title{University Physics 2}
 \author{Alvin Lin}
@@ -51,6 +51,61 @@ of energy:
 \end{align*}
 As you step up the voltage using a transformer, your current proportionally
 goes down.
+
+\subsection*{Inductance}
+Consider two concentric solenoids:
+\begin{align*}
+  \epsilon_2 &= -N_2\ddiff{\phi_B}{t} \\
+  B_1 &= n\mu_{\circ}I \\
+  \phi_B &= B_1\cdot A_1 \\
+  &= n\mu_{\circ}IA \\
+  &= M_{12}i_1(t)
+\end{align*}
+where \( M_{12} \) is the mutual inductance between solenoids 1 and 2 and
+\( i_1(t) \) is a current that varies over time.
+\begin{align*}
+  N_2\ddiff{\phi_B}{t} &= M_{21}\ddiff{i}{t} \\
+  \epsilon_2 &= -M_{21}\ddiff{i}{t} \\
+  M_{21} &= \frac{N_2\phi_B}{i_1}
+\end{align*}
+
+\subsubsection*{Self-Inductance}
+An inductor is a circuit element that opposes change in current because of
+Faraday's Law.
+\begin{align*}
+  L &= \frac{N\phi_B}{i} \\
+  \epsilon &= -L\ddiff{i}{t}
+\end{align*}
+The unit of \( L \) is a Henry, and the voltage drop across an inductor is
+measured as:
+\begin{align*}
+  \Delta V_L &= L\ddiff{i}{t} \\
+  P &= IV = iL\ddiff{i}{t}
+\end{align*}
+Power is energy per time:
+\begin{align*}
+  P &= \ddiff{U}{t} \\
+  \diff{U} &= P\diff{t} \\
+  U_L &= \frac{1}{2}Li^2 \\
+\end{align*}
+
+\subsection*{RL Circuits}
+\begin{center}
+  \begin{circuitikz}
+    \draw (0,0) to[battery, label=voltage source (volts)] (0,4)
+      to[resistor, label=resistance in \( \Omega \) (ohms)] (4,4) -- (4,0)
+      to[inductor, label=inductor \( i(t) \) (henrys)] (0,0);
+  \end{circuitikz}
+\end{center}
+We can use Kirchoff's Loop Rule to solve this circuit.
+\begin{align*}
+  \epsilon-\Delta V_R-\Delta V_L &= 0 \\
+  \epsilon-iR-L\ddiff{i}{t} &= 0 \\
+  \ddiff{i}{t} &= \frac{\epsilon}{L}-\frac{R}{L}i \\
+  i &= \frac{\epsilon}{R}(1-\e^{-\frac{R}{L}t}) \\
+  &= \frac{\epsilon}{R}(1-\e^{-\frac{t}{\tau}}) \\
+  \tau &= \frac{L}{R}
+\end{align*}
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
