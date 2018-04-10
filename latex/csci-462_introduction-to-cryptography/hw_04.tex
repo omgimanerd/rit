@@ -1,0 +1,324 @@
+\documentclass{math}
+
+\geometry{letterpaper, margin=0.5in}
+
+\title{Introduction to Cryptography: Homework 4}
+\author{Alvin Lin}
+\date{January 2018 - May 2018}
+
+\begin{document}
+
+\maketitle
+
+\subsection*{Exercise 8.5 (page 235)}
+Compute the two public keys and the common key for the DHKE scheme with
+the parameters \( p = 467, \alpha = 2 \) and
+\begin{enumerate}
+  \item \( a = 3, b = 5 \)
+  \begin{align*}
+    k_{pub,a} &\equiv \alpha^a\mod p \equiv 2^3\mod467 \equiv 8 \\
+    k_{pub,b} &\equiv \alpha^b\mod p \equiv 2^5\mod467 \equiv 32 \\
+    k_{AB} &\equiv (k_{pub,b})^a\mod p \equiv (k_{pub,a})^b\mod p \\
+    &\equiv 8^5\mod 467
+  \end{align*}
+  \[ 5 = 101_2 \]
+  \begin{center}
+    \begin{tabular}{|c|c|c|}
+      \hline
+      Step & Accumulated Result & Binary Exponent \\
+      \hline
+      1 & \( 1^2\times8 \equiv 8\mod467 \) & 1 \\
+      \hline
+      2 & \( 8^2 \equiv 64\mod467 \) & 10 \\
+      \hline
+      3 & \( 64^2\times8 \equiv 78\mod467 \) & 101 \\
+      \hline
+    \end{tabular}
+  \end{center}
+  \item \( a = 400, b = 134 \)
+  \[ k_{pub,a} \equiv \alpha^a\mod p \equiv 2^{400}\mod467 \equiv 137 \]
+  \[ 400_2 = 110010000 \]
+  \begin{center}
+    \begin{tabular}{|c|c|c|}
+      \hline
+      Step & Accumulated Result & Binary Exponent \\
+      \hline
+      1 & \( 1^2\times2 \equiv 2\mod467 \) & 1 \\
+      \hline
+      2 & \( 2^2\times2 \equiv 8\mod467 \) & 11 \\
+      \hline
+      3 & \( 8^2 \equiv 64\mod467 \) & 110 \\
+      \hline
+      4 & \( 64^2 \equiv 360\mod467 \) & 1100 \\
+      \hline
+      5 & \( 360^2\times2 \equiv 15\mod467 \) & 11001 \\
+      \hline
+      6 & \( 15^2 \equiv 225\mod467 \) & 110010 \\
+      \hline
+      7 & \( 225^2 \equiv 189\mod467 \) & 1100100 \\
+      \hline
+      8 & \( 189^2 \equiv 229\mod467 \) & 11001000 \\
+      \hline
+      9 & \( 229^2 \equiv 137\mod467 \) & 110010000 \\
+      \hline
+    \end{tabular}
+  \end{center}
+  \[ k_{pub,b} \equiv \alpha^b\mod p \equiv 2^{134}\mod467 \equiv 84 \]
+  \[ 134_2 = 10000110 \]
+  \begin{center}
+    \begin{tabular}{|c|c|c|}
+      \hline
+      Step & Accumulated Result & Binary Exponent \\
+      \hline
+      1 & \( 1^2\times2 \equiv 2\mod467 \) & 1 \\
+      \hline
+      2 & \( 2^2 \equiv 4\mod467 \) & 10 \\
+      \hline
+      3 & \( 4^2 \equiv 16\mod467 \) & 100 \\
+      \hline
+      4 & \( 16^2 \equiv 256\mod467 \) & 1000 \\
+      \hline
+      5 & \( 256^2 \equiv 156\mod467 \) & 10000 \\
+      \hline
+      6 & \( 156^2\times2 \equiv 104\mod467 \) & 100001 \\
+      \hline
+      7 & \( 104^2\times2 \equiv 150\mod467 \) & 1000011 \\
+      \hline
+      7 & \( 150^2 \equiv 84\mod467 \) & 10000110 \\
+      \hline
+    \end{tabular}
+  \end{center}
+  \[ k_{AB} = k_{BA} \equiv (k_{pub,a})^b\mod p = 84^{134}\mod467 = 389 \]
+  \begin{center}
+    \begin{tabular}{|c|c|c|}
+      \hline
+      Step & Accumulated Result & Binary Exponent \\
+      \hline
+      1 & \( 1^2\times84 \equiv 84\mod467 \) & 1 \\
+      \hline
+      2 & \( 84^2 \equiv 51\mod467 \) & 10 \\
+      \hline
+      3 & \( 51^2 \equiv 266\mod467 \) & 100 \\
+      \hline
+      4 & \( 266^2 \equiv 239\mod467 \) & 1000 \\
+      \hline
+      5 & \( 239^2 \equiv 147\mod467 \) & 10000 \\
+      \hline
+      6 & \( 147^2\times84 \equiv 394\mod467 \) & 100001 \\
+      \hline
+      7 & \( 394^2\times84 \equiv 250\mod467 \) & 1000011 \\
+      \hline
+      7 & \( 250^2 \equiv 389\mod467 \) & 10000110 \\
+      \hline
+    \end{tabular}
+  \end{center}
+  \item \( a = 228, b = 57 \)
+  \[ k_{pub,a} \equiv \alpha^a\mod p \equiv 2^{228}\mod467 \equiv 394 \]
+  \[ 228_2 = 11100100 \]
+  \begin{center}
+    \begin{tabular}{|c|c|c|}
+      \hline
+      Step & Accumulated Result & Binary Exponent \\
+      \hline
+      1 & \( 1^2\times2 \equiv 2\mod467 \) & 1 \\
+      \hline
+      2 & \( 2^2\times2 \equiv 8\mod467 \) & 11 \\
+      \hline
+      3 & \( 8^2\times2 \equiv 128\mod467 \) & 111 \\
+      \hline
+      4 & \( 128^2 \equiv 39\mod467 \) & 1110 \\
+      \hline
+      5 & \( 39^2 \equiv 120\mod467 \) & 11100 \\
+      \hline
+      6 & \( 120^2\times2 \equiv 313\mod467 \) & 111001 \\
+      \hline
+      7 & \( 313^2 \equiv 366\mod467 \) & 1110010 \\
+      \hline
+      8 & \( 366^2 \equiv 394\mod467 \) & 11100100 \\
+      \hline
+    \end{tabular}
+  \end{center}
+  \[ k_{pub,b} \equiv \alpha^b\mod p \equiv 2^{57}\mod467 \equiv 313 \]
+  \begin{center}
+    \begin{tabular}{|c|c|c|}
+      \hline
+      Step & Accumulated Result & Binary Exponent \\
+      \hline
+      1 & \( 1^2\times2 \equiv 2\mod467 \) & 1 \\
+      \hline
+      2 & \( 2^2\times2 \equiv 8\mod467 \) & 11 \\
+      \hline
+      3 & \( 8^2\times2 \equiv 128\mod467 \) & 111 \\
+      \hline
+      4 & \( 128^2 \equiv 39\mod467 \) & 1110 \\
+      \hline
+      5 & \( 39^2 \equiv 120\mod467 \) & 11100 \\
+      \hline
+      6 & \( 120^2\times2 \equiv 313\mod467 \) & 111001 \\
+      \hline
+    \end{tabular}
+  \end{center}
+  \[ k_{AB} = k_{BA} \equiv (k_{pub,a})^b\mod p = 394^{57}\mod467 = 206 \]
+  \begin{center}
+    \begin{tabular}{|c|c|c|}
+      \hline
+      Step & Accumulated Result & Binary Exponent \\
+      \hline
+      1 & \( 1^2\times394 \equiv 394\mod467 \) & 1 \\
+      \hline
+      2 & \( 394^2\times394 \equiv 461\mod467 \) & 11 \\
+      \hline
+      3 & \( 461^2\times394 \equiv 174\mod467 \) & 111 \\
+      \hline
+      4 & \( 174^2 \equiv 388\mod467 \) & 1110 \\
+      \hline
+      5 & \( 388^2 \equiv 170\mod467 \) & 11100 \\
+      \hline
+      6 & \( 170^2\times394 \equiv 206\mod467 \) & 111001 \\
+      \hline
+    \end{tabular}
+  \end{center}
+\end{enumerate}
+
+\subsection*{Exercise 8.6 (page 235)}
+We now design another DHKE scheme with the same prime \( p = 467 \) as in
+Problem 8.5. This time, however, we use the element \( \alpha = 4 \). The
+element 4 has order 233 and generates thus a subgroup with 233 elements. Compute
+\( k_{AB} \) for:
+\begin{enumerate}
+  \item \( a = 400, b = 134 \) \\
+  Work is the same as above.
+  \begin{align*}
+    k_{pub,a} &= \alpha^a\mod p \equiv 4^{400}\mod467 = 89 \\
+    k_{AB} &= (k_{pub,a})^b\mod p \equiv 89^{134}\mod467 = 161
+  \end{align*}
+  \item \( a = 167, b = 134 \) \\
+  Work is the same as above.
+  \begin{align*}
+    k_{pub,a} &= \alpha^a\mod p \equiv 4^{167}\mod467 = 89 \\
+    k_{AB} &= (k_{pub,a})^b\mod p \equiv 89^{134}\mod467 = 161
+  \end{align*}
+\end{enumerate}
+Why are the session keys identical? \\
+Both 167 and 400 are solutions to the discrete logarithm problem
+\( 4^x\equiv89\mod467 \).
+
+\subsection*{Exercise 8.7 (page 235)}
+In the DHKE protocol, the private keys are chosen from the set
+\[ \{2,\dots,p-2\} \]
+Why are the values \( 1 \) and \( p-1 \) excluded? Describe the weakness of
+those two values. \\
+1 is a weak value to use as a private key because the published public key will
+be equal to \( \alpha \), which allows an attacker to infer the private key.
+\( p-1 \) is also a weak value because \( \alpha^{p-1}\mod p \equiv 1 \) for any
+\( \alpha \) since \( p \) is a prime number, which would also allow an
+attacker to infer the private key.
+
+\subsection*{Exercise 9.5 (page 256)}
+Let \( E \) be an elliptic curve defined over \( \Z_7 \):
+\[ E: y^2 = x^3+3x+2 \]
+\begin{enumerate}
+  \item Compute all points on \( E \) over \( \Z_7 \).
+  \begin{align*}
+    P &= (0,3) \\
+    P &= (0,4) \\
+    P &= (2,3) \\
+    P &= (2,4) \\
+    P &= (4,1) \\
+    P &= (4,6) \\
+    P &= (5,3) \\
+    P &= (5,4)
+  \end{align*}
+  \item What is the order of the group? \\
+  \begin{align*}
+    P &= (2,4) \\
+    2P &= P+P = (4,1) \\
+    3P &= 2P+P = (5,4) \\
+    4P &= 3P+P = (0,3) \\
+    5P &= 4P+P = (0,4) \\
+    6P &= 5P+P = (5,3) \\
+    7P &= 6P+P = (4,6) \\
+    8P &= 7P+P = (2,3) \\
+    9P &= 8P+P = \text{neutral element} \\
+  \end{align*}
+  This group has order 9.
+  \item Given the element \( \alpha = (0,3) \), determine the order of
+    \( \alpha \). Is \( \alpha \) a primitive element?
+  \begin{align*}
+    P &= (0,3) \\
+    2P &= P+P \\
+    s &= \frac{3(x_1)^2+a}{2y_1}\mod p \equiv \frac{3(0)^2+3}{6}\mod 7 \equiv
+      \frac{3}{6}\mod 7 \equiv 4 \\
+    2P &= (s^2-x_1-x_2\mod p, s(x_1-x_3)-y_1\mod p) = (2,3) \\
+    3P &= 2P+P \\
+    s &= \frac{y_2-y_1}{x_2-x_1} \equiv \frac{0}{2}\mod7 \equiv 0 \\
+    3P &= (s^2-x_1-x_2\mod p, s(x_1-x_3)-y_1\mod p) = (5,4) \\
+    4P &= 3P+P \\
+    s &= \frac{y_2-y_1}{x_2-x_1} \equiv \frac{1}{5}\mod7 \equiv 3 \\
+    4P &= (s^2-x_1-x_2\mod p, s(x_1-x_3)-y_1\mod p) = (4,6) \\
+    5P &= 4P+P \\
+    s &= \frac{y_2-y_1}{x_2-x_1} \equiv \frac{3}{4}\mod7 \equiv 6 \\
+    5P &= (s^2-x_1-x_2\mod p, s(x_1-x_3)-y_1\mod p) = (4,1) \\
+    6P &= 5P+P \\
+    s &= \frac{y_2-y_1}{x_2-x_1} \equiv \frac{-2}{4}\mod7 \equiv 3 \\
+    6P &= (s^2-x_1-x_2\mod p, s(x_1-x_3)-y_1\mod p) = (5,3) \\
+    7P &= 6P+P \\
+    s &= \frac{y_2-y_1}{x_2-x_1} \equiv \frac{0}{5}\mod7 \equiv 0 \\
+    7P &= (s^2-x_1-x_2\mod p, s(x_1-x_3)-y_1\mod p) = (2,4) \\
+    8P &= 7P+P \\
+    s &= \frac{y_2-y_1}{x_2-x_1} \equiv \frac{1}{2}\mod7 \equiv 3 \\
+    8P &= (s^2-x_1-x_2\mod p, s(x_1-x_3)-y_1\mod p) = (0,4) \\
+    9P &= 8P+P \\
+    s &= \frac{y_2-y_1}{x_2-x_1} \equiv \frac{1}{0}\mod7 \equiv \emptyset \\
+    9P &= (s^2-x_1-x_2\mod p, s(x_1-x_3)-y_1\mod p) = \text{neutral element} \\
+  \end{align*}
+  \( \alpha \) has order 9 and is a primitive element.
+\end{enumerate}
+
+\subsection*{Exercise 9.7 (page 256)}
+Given an elliptic curve \( E \) over \( \Z_{29} \) and the base point
+\( P = (8,10) \):
+\[ E: y^2 = x^3+4x+20\mod29 \]
+Calculate the following point multiplication \( k\cdot P \) using the
+Double-and-Add algorithm. Provide the intermediate results after each step.
+\begin{enumerate}
+  \item \( k = 9 \)
+  \begin{align*}
+    9P &= (1001_2)P \\
+    P &= (1_2)P = (8,10) \\
+    2P &= P+P = (10_2)P = (0,22) \\
+    4P &= 2P+2P = (100_2)P = (6,17) \\
+    8P &= 4P+4P = (1000_2)P = (13,6) \\
+    9P &= 8P+P = (1001_2)P = (4,10)
+  \end{align*}
+  \item \( k = 20 \)
+  \begin{align*}
+    20P &= (10100_2)P \\
+    P &= (1_2)P = (8,10) \\
+    2P &= P+P = (10_2)P = (0,22) \\
+    4P &= 2P+2P = (100_2)P = (6,17) \\
+    5P &= 4P+P = (101_2)P = (20,3) \\
+    10P &= 5P+5P = (1010_2)P = (17,19) \\
+    20P &= 10P+10P = (10100_2)P = (19,3)
+  \end{align*}
+\end{enumerate}
+
+\subsection*{Exercise 9.9 (page 256)}
+Your task is to compute a session key in a DHKE protocol based on elliptic
+curves. Your private key is \( a = 6 \). You receive Bob's public key
+\( B = (5,9) \). The elliptic curve being used is defined by:
+\[ y^2 \equiv x^3+x+6\mod11 \]
+\begin{align*}
+  T_{AB} &= aB = 6B = (110)_2B \\
+  B &= (1_2)B = (5,9) \\
+  2B &= B+B = (10_2)B = (10,9) \\
+  3B &= 2B+B = (11_2)B = (7,2) \\
+  6B &= 3B+3B = (110_2)B = (2,7)
+\end{align*}
+
+\begin{center}
+  If you have any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
