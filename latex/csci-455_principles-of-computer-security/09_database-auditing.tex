@@ -121,7 +121,11 @@ monitored. This can be done through system triggers or other mechanisms.
 \subsection*{Auditing Architectures}
 Auditing architectures should not create a false sense of security. They should
 provide an independent audit trail. The audit system should be archived, secure,
-and also itself be auditable. Ideally, it should be sustainably automatable.
+and also itself be auditable. Ideally, it should be sustainably automatable. The
+data stored from auditing can be massive, and this can present other logistical
+issues since it needs to be stored to generate reports and alerts in addition
+to being capable of archival and restoration. This usually implies the need for
+data warehouse capable of handling dynamic changes as demanded by auditors.
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
