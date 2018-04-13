@@ -1,0 +1,70 @@
+\documentclass{math}
+
+\title{Introduction to Cryptography}
+\author{Alvin Lin}
+\date{January 2018 - May 2018}
+
+\begin{document}
+
+\maketitle
+
+\section*{Message Authentication and Hash Functions}
+\textbf{Message authentication} is a procedure to verify that received messages
+from the alleged source have not been altered. Message authentication may also
+verify sequencing and timeliness. A \textbf{digital signature} is an
+authentication technique that also includes measures to counter repudiation by
+the source.
+
+\subsection*{Message Authentication Functions}
+\begin{itemize}
+  \item Message encryption: the ciphertext of the entire message serves as its
+  authenticator.
+  \item Hash function: a function that maps a message of any length into a
+  fixed-length hash value which serves as the authenticator.
+  \item Message authentication code (MAC): a function of the message and a
+  secret key that produces a fixed-length value that serves as the
+  authenticator.
+\end{itemize}
+
+\subsubsection*{Hash Functions}
+A hash function \( H \) accepts a variable-length block of data \( M \) as input
+and produces a fixed-size hash value. The principal objective of a hash function
+is data integrity. Cryptographic hash functions are algorithms for which it is
+computationally infeasible to find a data object that maps to a pre-specified
+hash result (one-way property), or two data objects that map to the same hash
+result (the collision-free property). Hash functions are also commonly used for:
+\begin{itemize}
+  \item Creating one-way password files
+  \item Intrusion detection and virus detection
+  \item Constructing a pseudorandom function or pseudorandom number generator
+\end{itemize}
+
+\subsubsection*{Message Authentication Code (MAC) Functions}
+A message authentication code is also known as a keyed has function. It is
+typically used between two parties that share a secret key to authenticate
+information exchanges. A MAC function takes a secret key and a data block as
+input and produces a hash value referred to as the MAC, which is then associated
+with the protected message. An attacker who alters the message will be unable to
+alter the associated MAC value without knowledge of the secret key.
+
+\subsubsection*{Digital Signatures}
+Digital signatures operate similar to that of a MAC. The hash value of a message
+is encrypted with a user's private key. Anyone who knows the user's public key
+can verify the integrity of the message. An attack who wishes to alter the
+message would need to know the user's private key.
+
+\subsubsection*{Digital Signatures vs MAC}
+The combination of hashing and encryption results in an overall function that is
+conceptually a MAC. Its goal is to be a function \( E(K,H(M)) \) for a variable
+length message \( M \) and a secret key \( K \) to produce a fixed length output
+that is secure against an opponent who does not know the secret key. In
+practice, specific MAC algorithms are designed to be more efficient that an
+encryption algorithm.
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
