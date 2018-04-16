@@ -122,6 +122,101 @@ Bob can then verify the signature \( (R,S) \) by using \( y \) from Alice's
 public key to check if:
 \[ g^{Hash(X)} = y^RR^S\mod p \]
 
+\subsection*{Digital Signature Algorithm (DSA)}
+The digital signature algorithm is based on the El Gamal signature scheme. It
+was proposed by the National Institute of Standards and Technology and uses a
+320 bit signature. Signature verification for this algorithm is significantly
+slower compared to RSA. To generate a key:
+\begin{enumerate}
+  \item Generate a prime \( p \) with \( 2^{1023} < p < 2^{1024} \).
+  \item Find a prime divisor \( q \) of \( p-1 \) with
+  \( 2^{159} < q < 2^{160} \).
+  \item Find an integer \( \alpha \) with \( order(\alpha) = q \).
+  \item Choose a random integer \( d \) with \( 1 < d < q \).
+  \item Compute \( \beta = a^d\mod p \).
+  \item \( k_{pub} = (p,q,\alpha,\beta) \quad k_{pr} = d \)
+\end{enumerate}
+Given a message \( x \), a private key \( d \) and a the public key
+\( (p,q,\alpha,\beta) \), generating a signature requires the following:
+\begin{enumerate}
+  \item Choose an integer as a random ephemeral key \( k_E \) with
+  \( 0 < k_E < q \).
+  \item Compute \( r \equiv (\alpha^{k_E}\mod p)\mod q \).
+  \item Compute the signature \( s \equiv (SHA(x)+d\cdot r)(k_E)^{-1}\mod q \).
+\end{enumerate}
+The message signature consists of the pair \( (r,s) \) \( SHA(x) \) denotes the
+hash function SHA-1 which computes a 160-bit fingerprint of message \( x \). To
+verify the signature:
+\begin{enumerate}
+  \item Compute the auxiliary value \( w \equiv s^{-1}\mod q \).
+  \item Compute the auxiliary value \( u_1 \equiv w\cdot SHA(x)\mod q \).
+  \item Compute the auxiliary value \( u_2 \equiv w\cdot r\mod q \).
+  \item Compute \( v \equiv (a^{u_1}\cdot\beta^{u_2}\mod p)\mod q \).
+  \item If \( v \equiv r\mod q \), the signature is valid. Otherwise, it is
+  invalid.
+\end{enumerate}
+
+\subsection*{Elliptic Curve Digital Signature Algorithm (ECDSA)}
+The elliptic curve digital signature algorithm is based on elliptic curve
+cryptography. Bit lengths in the range of 160-256 bits can be chosen to provide
+security equivalent to 1024-3072 bit RSA. One signature consists of two points,
+hence the signature is twice the used bit length. The shorter bit length of this
+algorithm often results in shorter processing time. To generate a key using this
+algorithm:
+\begin{enumerate}
+  \item We use an elliptic curve \( E \) with a modulus \( p \), coefficients
+  \( a \) and \( b \), and a point \( A \) which generates a cyclic group of
+  prime order \( q \).
+  \item Choose a random integer \( d \) with \( 1 < d < q \).
+  \item Compute \( B = dA \).
+  \item \( k_{pub} = (p,a,b,q,A,B) \quad k_{pr} = d \)
+\end{enumerate}
+Generating a message signature is very similar to the DSA algorithm:
+\begin{enumerate}
+  \item Choose an integer as a random ephemeral key \( k_E \) with
+  \( 1 < k_E < q \).
+  \item Compute \( R = k_EA \)
+  \item Let \( r = x_R \) from the message \( x \).
+  \item Compute the signature \( s \equiv (SHA(x)+d\cdot r)(k_E)^{-1}\mod q \).
+\end{enumerate}
+To verify the signature:
+\begin{enumerate}
+  \item Compute the auxiliary value \( w\equiv s^{-1}\mod q \).
+  \item Compute the auxiliary value \( u_1\equiv w\cdot SHA(x)\mod q \).
+  \item Compute the auxiliary value \( u_2\equiv w\cdot r\mod q \).
+  \item Compute \( P = u_1A+u_2B \).
+  \item If \( x_P \equiv r\mod q \), the signature is valid. Otherwise, it is
+  invalid.
+\end{enumerate}
+
+\subsection*{Digital Signature Standard (DSS)}
+The federal government standards for digital signatures specifies a suite of
+algorithms that can be used to generate a digital signature. The DSS permits
+the usage of the three following digital signature algorithms:
+\begin{enumerate}
+  \item RSA
+  \item Digital Signature Algorithm (DSA)
+  \item Elliptic Curve Digital Signature Algorithm (ECDSA)
+\end{enumerate}
+For hash functions, the Digital Signature Standard permits the usage of SHA-1
+or SHA-2 hash functions. With RSA, the standard mandates a 1024, 2048, or
+3072-bit modulus \( n \) since the security is based on the hardness of integer
+factorization. DSA uses a subgroup \( \Z_p^* \) with order \( q \) and is based
+on the hardness of the discrete logarithm problem in \( \Z_p^* \), which
+the standard allows to be either any of the following:
+\begin{itemize}
+  \item \( p = 1024, q = 160 \)
+  \item \( p = 2048, q = 224 \)
+  \item \( p = 2048, q = 256 \)
+  \item \( p = 3072, q = 256 \)
+\end{itemize}
+For ECDSA, the standard recommends the curves P-192, P-224, P-256, P-384, P-521
+with bit sizes \( q \). The security of ECDSA is based on the hardness of the
+discrete logarithm problem in the elliptic curve group. It is worthwhile to note
+that these systems allow messages to be authenticated, but not the public keys.
+An attacker can still execute a man-in-the-middle attack if they can intercept
+the public keys being exchanged.
+
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
   any questions, comments, or concerns, please contact me at
