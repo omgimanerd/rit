@@ -61,6 +61,112 @@ that is secure against an opponent who does not know the secret key. In
 practice, specific MAC algorithms are designed to be more efficient that an
 encryption algorithm.
 
+\subsection*{Attacks on Hash Functions}
+\textbf{Brute Force Attacks} do not depend on the specific algorithm, they only
+depend on the bit length. In the case of a hash function, the attack depends
+only on the bit length of the hash value. This method involves picking values
+and random and hashing each one until a collision occurs. \par
+\textbf{Cryptanalysis} attacks are based on weaknesses in a particular
+cryptographic algorithm. They seek to exploit some property of the algorithm to
+perform some attack other than an exhaustive search. \par
+If we have a hash with an output digest length \( n \), we can find a preimage
+using a brute force search in \( 2^n \) operations. We can find a second
+preimage also with \( 2^n \) operations. Thus we can find a collision with
+\( \sqrt{2^n} = 2^{\frac{n}{2}} \) operations using a brute force search
+(birthday attack). Collision resistance causes most of the security problems
+with hash functions. It is related to the birthday problem.
+
+\subsubsection*{Birthday Paradox}
+How many people are needed such that two of them have the same birthday with a
+probability of 0.5? Conventionally, one would think \( \frac{365}{2} = 183 \),
+but in fact only 23 people are required because the search takes \( \approx
+\sqrt{2^n} \) steps. To deal with this paradox, hash functions need an output
+size of at least 160 bits.
+
+\subsubsection*{Using Collision Attacks}
+For attacks based on hash collisions, an adversary wishes to find two messages
+or data blocks that yield the same hash function. The effort required is
+explained above by the birthday paradox. The strategy to use is as follows:
+\begin{enumerate}
+  \item Suppose Alice is prepared to sign a correct message \( X \) by appending
+  the appropriate \( n \)-bit hash code and encrypting that hash code with the
+  private key.
+  \item An opponent generates \( 2^{\frac{n}{2}} \) varations \( X' \) of
+  \( X \), all with essentially the same meaning, and stores the messages and
+  their hash values.
+  \item The opponent prepares a deceptive message \( Y \) for which Alice's
+  signature is desired.
+  \item The opponent generates minor variations \( Y' \) of \( Y \), all of
+  which convey essentially the same meaning. For each \( Y' \), the opponent
+  computes \( H(Y') \) and checks for matches with any of the \( H(X') \) until
+  a match is found. The process continues until a \( Y' \) is generated with a
+  hash value equal to the hash value of one of the \( X' \) values.
+  \item The opponent offers the valid message variation to Alice for signing.
+  The signature can then be attached to to the fraudulent variation for
+  transmission to the intended recipient.
+\end{enumerate}
+Because the two varations have the same hash code, they will produce the same
+signature and the opponent is assured of success even though the encryption key
+is not know. The generation of many variations that convey the same meaning is
+not difficult. An opponent can insert extra spaces in between words or simply
+reword the message while retaining the meaning.
+
+\subsubsection*{Examples of Cryptographic Hash Functions}
+\begin{center}
+  \begin{tabular}{|c|c|c|c|}
+    \hline
+    Hash Algorithm & Date & Digest Length (bits) & Security \\
+    \hline
+    Message Digest 4 (MD4) & 1990 & 128 & Broken \\
+    \hline
+    Message Digest 5 (MD5) & 1991 & 129 & Broken \\
+    \hline
+    Secure Hash Algorithm 0 (SHA-0) & 1993 & 160 & Broken \\
+    \hline
+    Secure Hash Algorithm 1 (SHA-1) & 1995 & 160 & Broken \\
+    \hline
+    Secure Hash Algorithm 2 (SHA-2) & 2002 & 224,256,384,512 & Questionable \\
+    \hline
+    Secure Hash Algorithm 3 (SHA-3) & 2015 & 224,256,384,512 & Secure \\
+    \hline
+  \end{tabular}
+\end{center}
+
+\subsection*{Hash Functions Based On Cipher Block Chaining}
+A number of proposals have been made for hash functions based on using a
+cipher block chaining technique, but without using a secret key. One of the
+first proposals was that of Rabin, where we divide a message \( M \) into fixed
+sized blocks \( M_1,M_2,\dots,M_n \) and use a symmetric encryption system such
+as DES to compute the hash code \( h \) as:
+\begin{align*}
+  H_0 &= \text{initial value} \\
+  H_i &= E(M_i,H_{i-1}) \\
+  h &= H_n
+\end{align*}
+This is similar to the cipher block chaining technique but uses no secret key.
+As with any hash code, this scheme is subject to the birthday attack. If the
+encryption algorithm is DES and only a 64-bit hash code is produced, the
+system is susceptible.
+
+\subsection*{The Merkle-Damg{\aa}rd Construction}
+The Merkle-Damg{\aa}rd Construction was invented by Ralph Merkle and Ivan
+Damg{\aa}rd working independently. The message to hash is extended with padding
+bits (1000,000+) plus the message length. The padded message is fed through an
+iterated compression function. In 1989, Merkle and Damg{\aa} proved that if
+the compression function is collision-resistance, then the whole hash funcion
+will be collision resistance. Because of this proof, most hash functions
+proposed since then use the Merkle-Damg{\aa}rd construction or a variation.
+Possible attacks:
+\begin{itemize}
+  \item Distinguishing attack
+  \item Length extension attack
+  \item Partial-message collision attack
+  \item Fixed-point attack
+  \item Multicollision attack
+  \item Expandable message attack
+  \item Herding attack
+\end{itemize}
+
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
   any questions, comments, or concerns, please contact me at

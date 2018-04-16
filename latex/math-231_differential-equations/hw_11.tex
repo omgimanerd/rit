@@ -58,6 +58,37 @@ Solve the given initial value problem using the method of Laplace transforms.
 \end{align*}
 
 \subsubsection*{Exercise 4}
+Solve the given initial value problem using the method of Laplace transforms.
+\begin{align*}
+  y''+6y'+5y &= 12\e^t \quad y(0) = -1 \quad y'(0) = 7 \\
+  \laplace{y''+6y'+5y} &= \laplace{12\e^t} \\
+  \laplace{y''}+6\laplace{y'}+5\laplace{y} &= 12\laplace{\e^t} \\
+  \bigg[s^2Y(s)-sy(0)-y'(0)\bigg]+6\bigg[sY(s)-y(0)\bigg]+5Y(s) &=
+    12\frac{1}{s-1} \\
+  s^2Y(s)+s-7+6sY(s)+6+5Y(s) &= \frac{12}{s-1} \\
+  s^2Y(s)+6sY(s)+5Y(s) &= \frac{12}{s-1}-s+1 \\
+  Y(s)(s^2+6s+5) &= \frac{12}{s-1}-s+1 \\
+  Y(s) &= \frac{12}{(s-1)(s+5)(s+1)}-\frac{s-1}{(s+5)(s+1)} \\
+  y(t) &= \ilaplace{Y(s)} \\
+  \frac{A}{s-1}+\frac{B}{s+5}+\frac{C}{s+1} &= \frac{12}{(s-1)(s+5)(s+1)} \\
+  A(s+5)(s+1)+B(s-1)(s+1)+C(s-1)(s+5) &= 12 \\
+  Let: s = -5 \quad B &= \frac{1}{2} \\
+  Let: s = -1 \quad C &= -\frac{3}{2} \\
+  Let: s = 1 \quad A &= 1 \\
+  \frac{D}{s+5}+\frac{E}{s+1} &= \frac{s-1}{(s+5)(s+1)} \\
+  D(s+1)+E(s+5) &= s-1 \\
+  Let: s = -5 \quad D &= \frac{3}{2} \\
+  Let: s = -1 \quad E &= -\frac{1}{2} \\
+  Y(s) &= \frac{1}{s-1}+\frac{1}{2}\frac{1}{s+5}-\frac{3}{2}\frac{1}{s+1}
+    -\frac{3}{2}\frac{1}{s+5}+\frac{1}{2}\frac{1}{s+1} \\
+  y(t) &= \ilaplace{\frac{1}{s-1}+\frac{1}{2}\frac{1}{s+5}-
+    \frac{3}{2}\frac{1}{s+1}-\frac{3}{2}\frac{1}{s+5}+
+    \frac{1}{2}\frac{1}{s+1}} \\
+  &= \ilaplace{\frac{1}{s-1}}-\frac{3}{2}\ilaplace{\frac{1}{s+5}}-
+    \frac{3}{2}\ilaplace{\frac{1}{s+1}} \\
+  &= \e^{t}-\frac{1}{2}\e^{-5t}-\frac{3}{2}\e^{-t}
+\end{align*}
+
 \subsubsection*{Exercise 7}
 \subsubsection*{Exercise 10}
 
