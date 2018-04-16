@@ -1,0 +1,69 @@
+\documentclass{math}
+
+\usepackage{graphicx}
+
+\geometry{letterpaper, margin=0.5in}
+
+\title{Differential Equations: Homework 9}
+\author{Alvin Lin}
+\date{January 2018 - May 2018}
+
+\begin{document}
+
+\maketitle
+\clearpage
+
+\section*{Section 7.5}
+
+\subsubsection*{Exercise 2}
+Solve the given initial value problem using the method of Laplace transforms.
+\begin{align*}
+  y''-y'-2y &= 0 \quad y(0) = -2 \quad y'(0) = 5 \\
+  \laplace{y''-y'-2y} &= \laplace{0} \\
+  \laplace{y''}-\laplace{y'}-2\laplace{y} &= 0 \\
+  \bigg[s^2Y(s)-sy(0)-y'(0)\bigg]-\bigg[sY(s)-y(0)\bigg]-2(Y(s)) &= 0 \\
+  s^2Y(s)+2s-5-sY(s)-2-2Y(s) &= 0 \\
+  s^2Y(s)-sY(s)-2Y(s) &= 7-2s \\
+  Y(s)(s^2-s-2) &= 7-2s \\
+  Y(s) &= \frac{7-2s}{s^2-s-2} \\
+  y(t) &= \ilaplace{Y(s)} \\
+  \frac{A}{s-2}+\frac{B}{s+1} &= \frac{7-2s}{(s-2)(s+1)} \\
+  A(s+1)+B(s-2) &= 7-2s \\
+  Let: s = -1 \quad B &= -3 \\
+  Let: s = 2 \quad A &= 1 \\
+  y(t) &= \ilaplace{\frac{1}{s-2}-\frac{3}{s+1}} \\
+  &= \ilaplace{\frac{1}{s-2}}-3\ilaplace{\frac{1}{s+1}} \\
+  &= \e^{2t}-3\e^{-t}
+\end{align*}
+
+\subsubsection*{Exercise 3}
+Solve the given initial value problem using the method of Laplace transforms.
+\begin{align*}
+  y''+6y'+9y &= 0 \quad y(0) = -1 \quad y'(0) = 6 \\
+  \laplace{y''+6y'+9y} &= \laplace{0} \\
+  \laplace{y''}+6\laplace{y'}+9\laplace{y} &= 0 \\
+  \bigg[s^2Y(s)-sy(0)-y'(0)\bigg]+6\bigg[sY(s)-y(0)\bigg]+9(Y(s)) &= 0 \\
+  s^2Y(s)+s-6+6sY(s)+6+9Y(s) &= 0 \\
+  s^2Y(s)+6sY(s)+9Y(s) &= -s \\
+  Y(s)(s^2+6s+9) &= -s \\
+  Y(s) &= \frac{-s}{s^2+6s+9} \\
+  y(t) &= \ilaplace{Y(s)} \\
+  \frac{A}{(s+3)^2}+\frac{B}{s+3} &= \frac{-s}{(s+3)^2} \\
+  A+B(s+3) &= -s \\
+  Let: s = -3 \quad A &= 3 \\
+  Let: s = 1 \quad B &= -1 \\
+  y(t) &= \ilaplace{\frac{3}{(s+3)^2}-\frac{1}{s+3}} \\
+  &= 3\ilaplace{\frac{1}{(s+3)^2}}-\ilaplace{\frac{1}{s+3}} \\
+  &= 3t\e^{3t}-\e^{3t}
+\end{align*}
+
+\subsubsection*{Exercise 4}
+\subsubsection*{Exercise 7}
+\subsubsection*{Exercise 10}
+
+\begin{center}
+  If you have any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
