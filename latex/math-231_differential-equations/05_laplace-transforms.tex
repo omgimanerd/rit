@@ -452,6 +452,93 @@ The same logic can be applied for inverse transforms:
   &= \e^{t-\pi}\sin(t-\pi)u(t-\pi)+(t-2\pi)u(t-2\pi)
 \end{align*}
 
+\subsubsection*{Example}
+We can use these techniques to solve differential equations as well. Suppose
+we have:
+\begin{align*}
+  y''+y &= f(t) \\
+  f(t) &= \begin{cases}
+    0, &\quad 0<t<2 \\
+    1, &\quad 2<t<4 \\
+    0, &\quad 4<t
+  \end{cases} \\
+  y(0) &= 1 \\
+  y'(0) = 0
+\end{align*}
+We can rewrite \( f(t) \) using the unit step function.
+\[ f(t) = u(t-2)-u(t-4) \]
+Now we can use the method of Laplace transforms to solve the differential
+equation.
+\begin{align*}
+  y''+y &= u(t-2)-u(t-4) \\
+  \laplace{y''+y} &= \laplace{u(t-2)}-\laplace{u(t-4)} \\
+  \laplace{y''}+\laplace{y} &= \laplace{u(t-2)}-\laplace{u(t-4)} \\
+  \bigg[s^2Y(s)-sy(0)-y'(0)\bigg]+Y(s) &=
+    \frac{\e^{-2s}}{s}-\frac{\e^{-4s}}{s} \\
+  Y(s)(s^2+1)-s &= \frac{\e^{-2s}}{s}-\frac{\e^{-4s}}{s} \\
+  Y(s) &= \frac{s}{s^2+1}+\frac{\e^{-2s}}{s(s^2+1)}-\frac{\e^{-4s}}{s(s^2+1)} \\
+  y(t) &= \ilaplace{Y(s)} \\
+  &= \ilaplace{\frac{s}{s^2+1}}+\ilaplace{\e^{-2s}\frac{1}{s(s^2+1)}}-
+    \ilaplace{\e^{-4s}\frac{1}{s(s^2+1)}}
+\end{align*}
+We will need to use partial fraction decomposition to solve these inverse
+transforms.
+\begin{align*}
+  \frac{1}{s(s^2+1)} &= \frac{A}{s}+\frac{Bs+C}{s^2+1} \\
+  &= \frac{A(s^2+1)+(Bs+C)s}{s(s^2+1)} \\
+  Let: s = 0 \quad A &= 1 \\
+  B &= -1 \\
+  C &= 0 \\
+  y(t) &= \ilaplace{\frac{s}{s^2+1}}+
+    \ilaplace{\e^{-2s}(\frac{1}{s}-\frac{s}{(s^2+1)})}
+    -\ilaplace{\e^{-4s}(\frac{1}{s}-\frac{s}{(s^2+1)})} \\
+  &= \cos(t)+u(t-2)-\cos(t-2)u(t-2)-u(t-4)+\cos(t-4)u(t-4)
+\end{align*}
+
+\subsubsection*{Example}
+\begin{align*}
+  y'-4y &= \sin(t)u(t-2\pi) \quad y(0) = 1 \\
+  y'-4y &= \sin(t-2\pi)u(t-2\pi) \\
+  \laplace{y'-4y} &= \laplace{\sin(t-2\pi)u(t-2\pi)} \\
+  \laplace{y'}-4\laplace{y} &= \laplace{\sin(t-2\pi)u(t-2\pi)} \\
+  sY(s)-1-4Y(s) &= \e^{-2\pi s}\frac{1}{s^2+1} \\
+  (s-4)Y(s) &= 1+\e^{-2\pi s}\frac{1}{s^2+1} \\
+  Y(s) &= \frac{1}{s-4}+\e^{-2\pi s}\frac{1}{(s-4)(s^2+1)} \\
+  \frac{1}{(s-4)(s^2+1)} &= \frac{A}{s-4}+\frac{Bs+C}{s^2+1} \\
+  1 &= A(s^2+1)+(Bs+C)(s-4) \\
+  A &= -\frac{1}{17} \quad B = -\frac{4}{17} \quad C = \frac{1}{17}
+\end{align*}
+\begin{align*}
+  Y(s) &= \frac{1}{s-4}+\e^{-2\pi s}\bigg[
+    -\frac{1}{17}\frac{1}{s-4}-\frac{4}{17}\frac{s}{s^2+1}+
+    \frac{1}{17}\frac{1}{s^2+1}\bigg] \\
+  y(t) &= \ilaplace{Y(s)} \\
+  &= \e^{4t}-\frac{1}{17}\e^{4(t-2\pi)}u(t-2\pi)-
+    \frac{4}{17}\cos(t-2\pi)u(t-2\pi)+\frac{1}{17}\sin(t-2\pi)u(t-2\pi) \\
+\end{align*}
+In general, for transformations in the \( t \) domain, the following Laplace
+transform rules apply:
+\begin{align*}
+  \laplace{u(t-a)} &= \frac{\e^{-as}}{s}, \quad a\ge0 \\
+  \laplace{f(t-a)u(t-a)} &= \e^{-as}F(s), \quad a>0 \\
+  \laplace{g(t)u(t-a)} &= \e^{-as}\laplace{g(t+a)}, \quad a>0
+\end{align*}
+
+\subsection*{Impulses and the Dirac Delta Function}
+The Dirac Delta function is defined as:
+\[ \delta(t-a) = \begin{cases}
+  \infty, &\quad t=a \\
+  0, &\quad \text{otherwise}
+\end{cases} \]
+Property of \( \delta(t-a) \):
+\[ \int_{0}^{\infty}f(t)\delta(t-a)\diff{t} = f(a) \]
+It ``shifts'' out one value of \( f \), out of all possible values of \( f \),
+which is \( f(a) \).
+\[ \laplace{\delta(t-a)} = \int_{0}^{\infty}\e^{-st}\delta(t-a)\diff{t} =
+  \e^{-as} \]
+Additionally:
+\[ \int_{0}^{\infty}\delta(t-a) = 1 \]
+
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
   any questions, comments, or concerns, please contact me at
