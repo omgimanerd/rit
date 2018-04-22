@@ -341,6 +341,203 @@ For example:
   &= \e^{-t}+\frac{1}{4}\e^{2t}-\frac{5}{4}\cos(2t)+\frac{1}{4}\sin(2t)
 \end{align*}
 
+\subsection*{Solving Differential Equations with Laplace Transforms}
+We can use the Laplace transform to solve certain initial value problems.
+The general strategy is to take the Laplace transform of both sides of the
+equation, simplify, and then take the inverse Laplace transform. Given the
+following initial value problem:
+\[ y''-y'-2y = 0 \quad y(0) = -2 \quad y'(0) = 5 \]
+First we take the Laplace transform of both sides.
+\begin{align*}
+  \laplace{y''-y'-2y} &= \laplace{0} \\
+  \laplace{y''}-\laplace{y'}-2\laplace{y} &= \laplace{0}
+\end{align*}
+We can solve for the Laplace transforms and isolate \( Y(s) \), which is the
+Laplace transform of our solution \( y(t) \).
+\begin{align*}
+  \bigg[s^2Y(s)-sy(0)-y'(0)\bigg]-\bigg[sY(s)-y(0)\bigg]-2(Y(s)) &= 0 \\
+  s^2Y(s)+2s-5-sY(s)-2-2Y(s) &= 0 \\
+  s^2Y(s)-sY(s)-2Y(s) &= 7-2s \\
+  Y(s)(s^2-s-2) &= 7-2s \\
+  Y(s) &= \frac{7-2s}{s^2-s-2}
+\end{align*}
+Now we simply take the inverse Laplace transform of \( Y(s) \) using partial
+fraction decomposition to get our solution \( y(t) \).
+\begin{align*}
+  y(t) &= \ilaplace{Y(s)} \\
+  \frac{A}{s-2}+\frac{B}{s+1} &= \frac{7-2s}{(s-2)(s+1)} \\
+  A(s+1)+B(s-2) &= 7-2s \\
+  Let: s = -1 \quad B &= -3 \\
+  Let: s = 2 \quad A &= 1 \\
+  y(t) &= \ilaplace{\frac{1}{s-2}-\frac{3}{s+1}} \\
+  &= \ilaplace{\frac{1}{s-2}}-3\ilaplace{\frac{1}{s+1}} \\
+  &= \e^{2t}-3\e^{-t}
+\end{align*}
+This strategy can be used to solve other differential equations of similar form.
+
+\subsection*{Transforms of Discontinuous Functions}
+First, let's introduce the idea of the unit step function:
+\[ u(t) = \begin{cases}
+  0, &\quad t<0 \\
+  1, &\quad t\ge0
+\end{cases} \]
+For \( a>0 \):
+\[ u(t-a) = \begin{cases}
+  0, &\quad t<a \\
+  1 &\quad t\ge a
+\end{cases} \]
+Suppose we have the function:
+\[ f(t) = \begin{cases}
+  -1, &\quad 0\le t<3 \\
+  1, &\quad 3<t<5 \\
+  0, &\quad t\ge 5
+\end{cases} \]
+We can represent this function using the unit step function. The first jump
+discontinuity occurs at \( t = 3 \), which can be associated with the following
+unit step function:
+\[ u(t-3) = \begin{cases}
+  0, &\quad t<3 \\
+  1, &\quad t\ge3
+\end{cases} \]
+The jump discontinuity at \( t = 5 \) can be associated with the following:
+\[ u(t-5) = \begin{cases}
+  0, &\quad t<5 \\
+  1, &\quad t\ge5
+\end{cases} \]
+Using this, we can rewrite our discontinuous function as the following:
+\[ f(t) = -1+2u(t-3)-u(t-5) \]
+At the boundary on \( t = 3 \), the function increases by a value of 2, which
+becomes the coefficient for \( u(t-3) \). At the boundary on \( t = 5 \), the
+function decreases by a value of 1, which becomes the coefficient for \( u(t-5)
+\).
+
+\subsubsection*{Example}
+Let's consider another example. Suppose now we have the function:
+\[ f(t) = \begin{cases}
+  1, &\quad 0<t<2 \\
+  t, &\quad 2<t<3 \\
+  -1, &\quad t\ge3
+\end{cases} \]
+We can represent this function using the unit step function as follows:
+\[ f(t) = 1+(t-1)u(t-2)-(t+1)u(t-3) \]
+
+\subsubsection*{Laplace Transforms of the Unit Step}
+By definition:
+\[ \laplace{u(t-a)} = \int_{0}^{\infty}\e^{-st}u(t-a)\diff{t} \]
+Since this is 0 for \( t<a \) by the definition of the unit step function, we
+can rewrite this as follows:
+\begin{align*}
+  \int_{0}^{\infty}\e^{-st}u(t-a)\diff{t} &=
+    \int_{a}^{\infty}\e^{-st}\diff{t} \\
+  &= \lim_{N\to\infty}\int_{a}^{N}\e^{-st}\diff{t} \\
+  &= \lim_{N\to\infty}\bigg[-\frac{1}{s}\e^{-st}\bigg]_{a}^{N} \\
+  &= \lim_{N\to\infty}\bigg[-\frac{1}{s}\e^{-sN}-(-\frac{1}{s}\e^{-sa})\bigg] \\
+  &= \frac{\e^{-as}}{s}
+\end{align*}
+For a function \( y = f(t-a)u(t-a) \) translated in the \( t \) domain:
+\[ \laplace{f(t-a)u(t-a)} = \e^{-as}F(s) = \e^{-as}\laplace{f(t)} \]
+
+\subsubsection*{Example}
+\begin{align*}
+  \laplace{4u(t-2)} &= \e^{-2s}\laplace{4} \\
+  &= \e^{-2s}\frac{4}{s} \\
+  \laplace{\sin(t-\pi)u(t-\pi)} &= \e^{-\pi s}\laplace{\sin(t)} \\
+  &= \e^{-\pi s}\frac{1}{s^2+1}
+\end{align*}
+The same logic can be applied for inverse transforms:
+\begin{align*}
+  \ilaplace{\e^{-\pi s}\frac{1}{(s-1)^2+1}+\e^{-2\pi s}\frac{1}{s^2}} &=
+    \ilaplace{\e^{-\pi s}\frac{1}{(s-1)^2+1}}+
+    \ilaplace{\e^{-2\pi s}\frac{1}{s^2}} \\
+  &= \e^{t-\pi}\sin(t-\pi)u(t-\pi)+(t-2\pi)u(t-2\pi)
+\end{align*}
+
+\subsubsection*{Example}
+We can use these techniques to solve differential equations as well. Suppose
+we have:
+\begin{align*}
+  y''+y &= f(t) \\
+  f(t) &= \begin{cases}
+    0, &\quad 0<t<2 \\
+    1, &\quad 2<t<4 \\
+    0, &\quad 4<t
+  \end{cases} \\
+  y(0) &= 1 \\
+  y'(0) = 0
+\end{align*}
+We can rewrite \( f(t) \) using the unit step function.
+\[ f(t) = u(t-2)-u(t-4) \]
+Now we can use the method of Laplace transforms to solve the differential
+equation.
+\begin{align*}
+  y''+y &= u(t-2)-u(t-4) \\
+  \laplace{y''+y} &= \laplace{u(t-2)}-\laplace{u(t-4)} \\
+  \laplace{y''}+\laplace{y} &= \laplace{u(t-2)}-\laplace{u(t-4)} \\
+  \bigg[s^2Y(s)-sy(0)-y'(0)\bigg]+Y(s) &=
+    \frac{\e^{-2s}}{s}-\frac{\e^{-4s}}{s} \\
+  Y(s)(s^2+1)-s &= \frac{\e^{-2s}}{s}-\frac{\e^{-4s}}{s} \\
+  Y(s) &= \frac{s}{s^2+1}+\frac{\e^{-2s}}{s(s^2+1)}-\frac{\e^{-4s}}{s(s^2+1)} \\
+  y(t) &= \ilaplace{Y(s)} \\
+  &= \ilaplace{\frac{s}{s^2+1}}+\ilaplace{\e^{-2s}\frac{1}{s(s^2+1)}}-
+    \ilaplace{\e^{-4s}\frac{1}{s(s^2+1)}}
+\end{align*}
+We will need to use partial fraction decomposition to solve these inverse
+transforms.
+\begin{align*}
+  \frac{1}{s(s^2+1)} &= \frac{A}{s}+\frac{Bs+C}{s^2+1} \\
+  &= \frac{A(s^2+1)+(Bs+C)s}{s(s^2+1)} \\
+  Let: s = 0 \quad A &= 1 \\
+  B &= -1 \\
+  C &= 0 \\
+  y(t) &= \ilaplace{\frac{s}{s^2+1}}+
+    \ilaplace{\e^{-2s}(\frac{1}{s}-\frac{s}{(s^2+1)})}
+    -\ilaplace{\e^{-4s}(\frac{1}{s}-\frac{s}{(s^2+1)})} \\
+  &= \cos(t)+u(t-2)-\cos(t-2)u(t-2)-u(t-4)+\cos(t-4)u(t-4)
+\end{align*}
+
+\subsubsection*{Example}
+\begin{align*}
+  y'-4y &= \sin(t)u(t-2\pi) \quad y(0) = 1 \\
+  y'-4y &= \sin(t-2\pi)u(t-2\pi) \\
+  \laplace{y'-4y} &= \laplace{\sin(t-2\pi)u(t-2\pi)} \\
+  \laplace{y'}-4\laplace{y} &= \laplace{\sin(t-2\pi)u(t-2\pi)} \\
+  sY(s)-1-4Y(s) &= \e^{-2\pi s}\frac{1}{s^2+1} \\
+  (s-4)Y(s) &= 1+\e^{-2\pi s}\frac{1}{s^2+1} \\
+  Y(s) &= \frac{1}{s-4}+\e^{-2\pi s}\frac{1}{(s-4)(s^2+1)} \\
+  \frac{1}{(s-4)(s^2+1)} &= \frac{A}{s-4}+\frac{Bs+C}{s^2+1} \\
+  1 &= A(s^2+1)+(Bs+C)(s-4) \\
+  A &= -\frac{1}{17} \quad B = -\frac{4}{17} \quad C = \frac{1}{17}
+\end{align*}
+\begin{align*}
+  Y(s) &= \frac{1}{s-4}+\e^{-2\pi s}\bigg[
+    -\frac{1}{17}\frac{1}{s-4}-\frac{4}{17}\frac{s}{s^2+1}+
+    \frac{1}{17}\frac{1}{s^2+1}\bigg] \\
+  y(t) &= \ilaplace{Y(s)} \\
+  &= \e^{4t}-\frac{1}{17}\e^{4(t-2\pi)}u(t-2\pi)-
+    \frac{4}{17}\cos(t-2\pi)u(t-2\pi)+\frac{1}{17}\sin(t-2\pi)u(t-2\pi) \\
+\end{align*}
+In general, for transformations in the \( t \) domain, the following Laplace
+transform rules apply:
+\begin{align*}
+  \laplace{u(t-a)} &= \frac{\e^{-as}}{s}, \quad a\ge0 \\
+  \laplace{f(t-a)u(t-a)} &= \e^{-as}F(s), \quad a>0 \\
+  \laplace{g(t)u(t-a)} &= \e^{-as}\laplace{g(t+a)}, \quad a>0
+\end{align*}
+
+\subsection*{Impulses and the Dirac Delta Function}
+The Dirac Delta function is defined as:
+\[ \delta(t-a) = \begin{cases}
+  \infty, &\quad t=a \\
+  0, &\quad \text{otherwise}
+\end{cases} \]
+Property of \( \delta(t-a) \):
+\[ \int_{0}^{\infty}f(t)\delta(t-a)\diff{t} = f(a) \]
+It ``shifts'' out one value of \( f \), out of all possible values of \( f \),
+which is \( f(a) \).
+\[ \laplace{\delta(t-a)} = \int_{0}^{\infty}\e^{-st}\delta(t-a)\diff{t} =
+  \e^{-as} \]
+Additionally:
+\[ \int_{0}^{\infty}\delta(t-a) = 1 \]
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
