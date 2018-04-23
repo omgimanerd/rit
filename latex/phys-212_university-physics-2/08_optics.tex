@@ -99,6 +99,36 @@ You always see objects as if your line of sight never deviated.
 Snell's Law:
 \[ n_1\sin(\theta_1) = n_2\sin(\theta_2) \]
 
+\subsection*{Interference}
+Interference is the interaction of multiple waves.
+\begin{center}
+  \begin{tikzpicture}[scale=0.4]
+    \draw[<->] (0,-2) -- (0,2);
+    \draw[->] (0,0) -- (7,0) node[right] {\( x \)};
+    \draw (0,0) sin (1,1) cos (2,0) sin (3,-1) cos (4,0) sin (5,1) cos (6,0);
+    \node at (9,0) {\( + \)};
+  \end{tikzpicture}
+  \begin{tikzpicture}[scale=0.4]
+    \draw[<->] (0,-2) -- (0,2);
+    \draw[->] (0,0) -- (7,0) node[right] {\( x \)};
+    \draw (0,0) sin (1,1) cos (2,0) sin (3,-1) cos (4,0) sin (5,1) cos (6,0);
+    \node at (9,0) {\( = \)};
+  \end{tikzpicture}
+  \begin{tikzpicture}[scale=0.4]
+    \draw[<->] (0,-2) -- (0,2);
+    \draw[->] (0,0) -- (7,0) node[right] {\( x \)};
+    \draw (0,0) sin (1,2) cos (2,0) sin (3,-2) cos (4,0) sin (5,2) cos (6,0);
+  \end{tikzpicture}
+\end{center}
+Interference works if the two waves have the same \( \lambda \) and have a
+constant phase relationship. For constructive interference:
+\[ \Delta r = r_A-r_B = m\lambda \]
+For destructive interference:
+\[ \Delta r = r_A-r_B = (m+\frac{1}{2})\lambda \]
+With light, it is hard to get two coherent sources. Instead, we use a single
+light source and split it up using a thin film or partially reflective mirror.
+
+
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
   any questions, comments, or concerns, please contact me at
