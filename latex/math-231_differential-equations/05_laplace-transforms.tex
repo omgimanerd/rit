@@ -539,6 +539,106 @@ which is \( f(a) \).
 Additionally:
 \[ \int_{0}^{\infty}\delta(t-a) = 1 \]
 
+\subsubsection*{Example}
+Consider the governing equation of the motion of a mass on a spring moving where
+damping is negligible. At \( t = 2\pi \), the mass is given a sharp blow given
+by \( 4\delta(t-2\pi) \). The mass is released from rest 1 unit below the
+equilibrium position (positive direction) with no initial velocity. Find the
+equation of motion given that the mass is 1kg and the spring constant is 1
+Newton per meter.
+\begin{align*}
+  y''+y &= 4\delta(t-2\pi) \\
+  \laplace{y''+y} &= \laplace{4\delta(t-2\pi)} \\
+  \laplace{y''}+\laplace{y} &= 4\laplace{\delta(t-2\pi)} \\
+  s^2Y(s)-sy(0)-y'(0)+Y(s) &= 4\e^{-2\pi s} \\
+  s^2Y(s)-s-0+Y(s) &= 4\e^{-2\pi s} \\
+  Y(s)(s^2+1) &= s+4\e^{-2\pi s} \\
+  Y(s) &= \frac{s}{s^2+1}+\frac{4\e^{-2\pi s}}{s^2+1} \\
+  y(t) &= \ilaplace{Y(s)} \\
+  \ilaplace{\frac{s}{s^2+1}} &= \cos(t) \\
+  4\ilaplace{\frac{\e^{-2\pi s}}{s^2+1}} &= 4\ilaplace{\e^{-as}F(s)} \\
+  &= 4f(t-a)u(t-a) \\
+  a &= 2\pi \\
+  F(s) &= \frac{1}{s^2+1} \\
+  f(t) &= \sin(t) \\
+  4f(t-a)u(t-a) &= 4\sin(t-2\pi)u(t-2\pi) \\
+  &= 4\sin(t)u(t-2\pi) \\
+  y(t) &= \cos(t)+4\sin(t)u(t-2\pi) \\
+  &= \begin{cases}
+    \cos(t), &\quad 0\le t\le 2\pi \\
+    \cos(t)+4\sin(t), &\quad t>2\pi
+  \end{cases}
+\end{align*}
+
+\subsection*{Convolution}
+Let \( f \) and \( g \) be piecewise continuous functions over \( [0,\infty) \).
+The convolution of \( f \) and \( g \) is defined as:
+\[ f*g = \int_{0}^{t}f(t-v)g(v)\diff{v} \]
+We call this the convolution intelgral. This operation is commutative, in other
+words:
+\[ g*f = f*g \]
+\begin{center}
+  \begin{tikzpicture}
+    \draw[->] (0,0) -- (3,0) node[pos=0.5,above] {input signal \( f(t) \)};
+    \draw (3.5,-1) -- (8.5,-1) -- (8.5,1) -- (3.5,1) -- cycle;
+    \node at (6,0) {response function \( g(t) \)};
+    \draw[->] (9,0) -- (12,0) node[pos=0.5,above] {\( f*g \)};
+  \end{tikzpicture}
+\end{center}
+This effect is known as smearing.
+
+\subsubsection*{Example}
+Find:
+\begin{align*}
+  \e^{3t}*\e^{7t} &= \int_{0}^{t}\e^{3(t-v)}\e^{7v}\diff{t} \\
+  &= \int_{0}^{t}\e^{3t}\e^{-3v}\e^{7v}\diff{v} \\
+  &= \e^{3t}\int_{0}^{t}\e^{4v}\diff{v} \\
+  &= \e^{3t}\bigg[\frac{1}{4}\e^{4v}\bigg]_{0}^{t} \\
+  &= \e^{3t}\bigg[\frac{1}{4}(\e^{4t}-\e^0)\bigg] \\
+  &= \frac{\e^{7t}-\e^{3t}}{4}
+\end{align*}
+
+\subsubsection*{Example}
+Find:
+\begin{align*}
+  f(t) &= \e^t \quad g(t) = \e^{-2t} \\
+  f*g &= \int_{0}^{t}\e^{t-v}\e^{-2v}\diff{v} \\
+  &= \int_{0}^{t}\e^{t}\e^{-v}\e^{-2v}\diff{v} \\
+  &= \e^{t}\int_{0}^{t}\e^{-3v}\diff{v} \\
+  &= \e^{t}\bigg[-\frac{1}{3}\e^{-3v}\bigg]_{0}^{t} \\
+  &= \frac{\e^t-\e^{-2t}}{3}
+\end{align*}
+
+\subsubsection*{The Convolution Theorem}
+\[ \laplace{f*g} = F(s)G(s) \]
+Examples:
+\[ \laplace{\e^{2t}*\sin(t)} = \frac{1}{s-2}\frac{1}{s^2+1} \]
+\begin{align*}
+  \ilaplace{\frac{1}{s+1}\frac{1}{s+2}} &= \e^{-t}*\e^{-2t} \\
+  &= \int_{0}^{t}\e^{-(t-v)}\e^{-2v}\diff{v} \\
+  &= \int_{0}^{t}\e^{-t}\e^{v}\e^{-2v}\diff{v} \\
+  &= \e^{-t}\int_{0}^{t}\e^{-v}\diff{v} \\
+  &= \e^{-t}\bigg[-\e^{-v}\bigg]_{0}^{t} \\
+  &= \e^{-t}-\e^{-2t}
+\end{align*}
+
+\subsubsection*{Example}
+Solve the following integral-differential equation using the method of Laplace
+transforms:
+\begin{align*}
+  y'+6y+9\int_{0}^{t}y(v)\diff{v} &= 1 \quad y(0) = 0 \\
+  \int_{0}^{t}y(v)\diff{v} &= \int_{0}^{t}1y(v)\diff{v} \\
+  &= 1*y(t) \\
+  y'+6y+9(1*y(t)) &= 1 \\
+  \laplace{y'+6y+9(1*y(t))} &= \laplace{1} \\
+  sY(s)+6Y(s)+9\bigg[\frac{1}{s}Y(s)\bigg] &= \frac{1}{s} \\
+  Y(s)(s+6+\frac{9}{s}) &= \frac{1}{s} \\
+  Y(s)(\frac{s^2+6s+9}{s}) &= \frac{1}{s} \\
+  Y(s) &= \frac{1}{(s+3)^2} \\
+  y(t) &= \ilaplace{\frac{1}{(s+3)^2}} \\
+  &= \e^{-3t}t
+\end{align*}
+
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
   any questions, comments, or concerns, please contact me at
