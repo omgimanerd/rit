@@ -1,6 +1,6 @@
 \documentclass{math}
 
-\usepackage{tikz}
+\usepackage{circuitikz}
 \usetikzlibrary{arrows.meta}
 
 \title{Differential Equations}
@@ -637,6 +637,82 @@ transforms:
   Y(s) &= \frac{1}{(s+3)^2} \\
   y(t) &= \ilaplace{\frac{1}{(s+3)^2}} \\
   &= \e^{-3t}t
+\end{align*}
+
+\subsubsection*{Example}
+Solve the following integral equation.
+\begin{align*}
+  y(t) &= \cos(t)+\int_{0}^{t}\e^{-v}y(t-v)\diff{v} \\
+  \int_{0}^{t}\e^{-v}y(t-v)\diff{v} &= \e^{-t}*y(t) \\
+  y(t) &= \cos(t)+\e^{t}*y(t) \\
+  \laplace{y(t)} &= \laplace{\cos(t)+\e^{t}*y(t)} \\
+  Y(s) &= \frac{s}{s^2+1}+\frac{1}{s+1}Y(s) \\
+  Y(s)-\frac{1}{s+1}Y(s) &= \frac{s}{s^2+1} \\
+  (1-\frac{1}{s+1})Y(s) &= \frac{s}{s^2+1} \\
+  (\frac{s+1-1}{s+1})Y(s) &= \frac{s}{s^2+1} \\
+  \frac{s}{s+1}Y(s) &= \frac{s}{s^2+1} \\
+  Y(s) &= \frac{s}{s^2+1}\frac{s+1}{s} \\
+  &= \frac{s+1}{s^2+1} \\
+  &= \frac{s}{s^2+1}+\frac{1}{s^2+1} \\
+  y(t) &= \ilaplace{Y(s)} \\
+  &= \cos(t)+\sin(t)
+\end{align*}
+
+\subsubsection*{Example}
+Solve the following integral equation.
+\begin{align*}
+  y(t)+\int_{0}^{t}(t-v)y(v)\diff{v} &= t^2 \\
+  y(t)+t*y(t) &= t^2 \\
+  \laplace{y(t)+t*y(t)} &= \laplace{t^2} \\
+  Y(s)+\frac{1}{s^2}Y(s) &= \frac{2}{s^3} \\
+  (1+\frac{1}{s^2})Y(s) &= \frac{2}{s^3} \\
+  \frac{s^2+1}{s}Y(s) &= \frac{2}{s^3} \\
+  Y(s) &= \frac{2}{s^3}\frac{s^2}{s^2+1} \\
+  &= \frac{2}{s(s^2+1)} \\
+  & \text{partial fraction decomposition omitted for brevity} \\
+  &= \frac{2}{s}-\frac{2}{s^2+1} \\
+  y(t) &= \ilaplace{Y(s)} \\
+  &= \ilaplace{\frac{2}{s}}-\ilaplace{\frac{2}{s^2+1}} \\
+  &= 2\ilaplace{\frac{1}{s}}-2\ilaplace{\frac{1}{s^2+1}} \\
+  &= 2-2\cos(t)
+\end{align*}
+
+\subsubsection*{Example}
+Consider an LRC Series Circuit.
+\begin{center}
+  \begin{circuitikz}
+    \draw (0,0) to[battery, label=voltage source (volts)] (0,4)
+      to[resistor, label=resistance (ohms \( \Omega \))] (4,4)
+      to[inductor, label=inductor (henrys)] (4,0)
+      to[capacitor, label=capacitor (farads)] (0,0);
+  \end{circuitikz}
+\end{center}
+Suppose that the current at time \( t \) in the circuit above is governed by
+the following equation:
+\[ L\ddiff{i}{t}+Ri+\frac{1}{c}+\int_{0}^{t}i(v)\diff{v} = \e^t \]
+Find the current \( i(t) )\) when \( L = \frac{1}{10} \), \( R = 2 \),
+\( C = 10 \), and
+\[ E(t) = \begin{cases}
+  10, &\quad 0\le t<1 \\
+  0, &\quad t>1
+\end{cases} \]
+with \( i(0) = 0 \).
+\begin{align*}
+  \frac{1}{10}\ddiff{i}{t}+2i(t)+10\int_{0}^{t}i(v)\diff{v} &= E(t) \\
+  \frac{1}{10}\ddiff{i}{t}+2i(t)+10\int_{0}^{t}i(v)\diff{v} &= 10-10u(t-1) \\
+  \laplace{\frac{1}{10}\ddiff{i}{t}+2i(t)+10\int_{0}^{t}i(v)\diff{v}} &=
+    \laplace{10-10u(t-1)} \\
+  \frac{1}{10}sI(s)+2I(s)+\frac{10}{s}I(s) &=
+    \frac{10}{s}-\frac{10\e^{-s}}{s} \\
+  I(s)\bigg[\frac{s}{10}+2+\frac{10}{s}\bigg] &=
+    \frac{10}{s}-10\frac{\e^{-2}}{s} \\
+  I(s)\bigg[\frac{(s+10)^2}{10s}\bigg] &= \frac{10}{s}-10\frac{\e^{-s}}{s} \\
+  I(s) &= \frac{10}{s}\frac{10s}{(s+10)^2}-
+    \e^{-s}\bigg[\frac{10}{s}\frac{10s}{(s+10)^2}\bigg] \\
+  &= \frac{100}{(s+10)^2}-\e^{-s}\frac{100}{(s+10)^2} \\
+  i(t) &= \ilaplace{I(s)} \\
+  &= \ilaplace{\frac{100}{(s+10)^2}}-\ilaplace{\e^{-s}\frac{100}{(s+10)^2}} \\
+  &= 100t\e^{-10t}-100(t-1)\e^{-10(t-1)}u(t-1)
 \end{align*}
 
 \begin{center}
