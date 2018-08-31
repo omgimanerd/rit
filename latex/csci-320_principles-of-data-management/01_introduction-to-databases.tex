@@ -74,13 +74,67 @@ SQL is the most common query language. It is not a turing complete language, but
 there exist extensions to make it so. Generally, a higher level language is used
 for complex operations.
 
-\subsubsection*{Designing a database}
+\subsection*{Designing a database}
 \begin{itemize}
   \item Logical - what is a good collection of data and how does it relate?
   \item Business Decisions - what do we need to record?
   \item Technical - where does that data go and how do we represent it?
   \item Physical Design - database engineers decide how stored data will be
     written to the disk.
+\end{itemize}
+
+\subsection*{Database Engine}
+\begin{enumerate}
+  \item \textbf{Storage Manager}: handles file organization, indexing/hashing,
+    and manages where the data is physically stored.
+  \item \textbf{Query Processor}: takes your query and sends it to a parser and
+    translator, which is then converted to relational algebra. This is
+    sent to an optimizer, which pulls metadata from the data and uses it to
+    optimize the query. After the query it optimized, it is sent to an
+    execution plan and then executed by pulling data from the appropriate
+    databases. From there, we get output (most often in the form of a table).
+  \item \textbf{Transaction Manager}: deals with worst case scenarios if the
+    system fails. A transaction is defined by multiple physical operations
+    treated as a one logical operation. This part handles transaction and
+    concurrency management.
+\end{enumerate}
+
+\subsection*{Users}
+\begin{itemize}
+  \item Naive users: uses an application that uses a database, without
+    knowledge of it.
+  \item Application programmers: know about the database and the tables that
+    exist to some degree. They may not have access to all data or understand
+    the underlying infrastructure.
+  \item Sophisticated user: uses tools to manipulate the database.
+  \item Administrator: creates and manages the structure and indices of the
+    database.
+\end{itemize}
+
+\subsection*{Database Architecture}
+\begin{itemize}
+  \item Centralized: all data is localized in one central database.
+  \item Client-Server: a single point of entry into the database, with multiple
+    backends to manage queries.
+  \item Parallel: can be either centralized or client-server, running on
+    multiple processors.
+  \item Distributed: data is distributed among multiple servers.
+\end{itemize}
+Timeline of database usage:
+\begin{itemize}
+  \item 1950s: data processing done with tapes, input on punch cards, access was
+    sequential.
+  \item 1960-70s: hard disks allowed for random access, network models and the
+    relational data model were invented, as well as transaction processing.
+  \item 1980s: SQL was invented, parallel and distributed systems and object
+    oriented databases were conceptualized.
+  \item 1990s: data mining systems and decision support systems became
+    popularized, web commerce grew, and databases approached the scale of
+    terabytes.
+  \item 2000s: XML and XQuery were heavily used for data, document storage, and
+    document sending.
+  \item Recently: Big Data, BigTable, large scale data analytics into the scale
+    of petabytes and exabytes.
 \end{itemize}
 
 \begin{center}
