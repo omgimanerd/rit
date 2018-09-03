@@ -1,0 +1,146 @@
+\documentclass{math}
+
+\title{Principles of Data Management}
+\author{Alvin Lin}
+\date{August 2018 - December 2018}
+
+\begin{document}
+
+\maketitle
+
+\section*{Databases}
+A \textbf{database management system (DBMS)} consists of:
+\begin{itemize}
+  \item a collection of interrelated data
+  \item programs to access that data
+  \item and an environment that makes it easy to use
+\end{itemize}
+Things that use databases:
+\begin{itemize}
+  \item social networks
+  \item retail
+  \item university systems
+  \item banks
+  \item manufacturing
+\end{itemize}
+Before databases, things were stored in flat files. This had a few issues:
+\begin{itemize}
+  \item data redundancy
+  \item data access was difficult
+  \item data isolation, data is in different formats
+  \item integrity problems
+  \item lack of atomicity
+  \item problems with concurrency
+  \item no built-in security
+\end{itemize}
+Database levels of extraction:
+\begin{itemize}
+  \item Physical - how it's stored
+  \item Logical - relationships of data
+  \item View - limit of the data
+\end{itemize}
+Instances and schemas:
+\begin{itemize}
+  \item Physical schema - how the data is physically stored
+  \item Logical schema - restrictions applied to the data
+  \item Instance - value of the data at a point in time
+  \item Physical data dependence - we do not care how we store the data,
+    changing the physical schema should not affect the logical schema.
+\end{itemize}
+
+\subsection*{Data Model}
+A data model is a collection of tools to describe data, the relationships in the
+data, the semantics of the data, and the constraints applied to the data. There
+are a few key models:
+\begin{itemize}
+  \item Relational Model - data represents objects from the program
+  \item Entity Relationship Model
+  \item Semi-Structured Model - includes things like XML, there is an overall
+    structure to the document, but it is not concrete
+  \item Object Based Model
+\end{itemize}
+Spreadsheets are similar to relational models, the columns represent the type
+of the data stored and the rows hold related data. \par
+A \textbf{data definition language (DDL)} is used to define the database
+structure, and is stored in the data dictionary. A data manipulation language
+(DML) is used to access and modify data in the database, often called the query
+language. Data manipulation languages come in two classes:
+\begin{itemize}
+  \item Pure (relational algebra, domain relational calculus, tuple relational
+    calculus)
+  \item Commercial (SQL)
+\end{itemize}
+SQL is the most common query language. It is not a turing complete language, but
+there exist extensions to make it so. Generally, a higher level language is used
+for complex operations.
+
+\subsection*{Designing a database}
+\begin{itemize}
+  \item Logical - what is a good collection of data and how does it relate?
+  \item Business Decisions - what do we need to record?
+  \item Technical - where does that data go and how do we represent it?
+  \item Physical Design - database engineers decide how stored data will be
+    written to the disk.
+\end{itemize}
+
+\subsection*{Database Engine}
+\begin{enumerate}
+  \item \textbf{Storage Manager}: handles file organization, indexing/hashing,
+    and manages where the data is physically stored.
+  \item \textbf{Query Processor}: takes your query and sends it to a parser and
+    translator, which is then converted to relational algebra. This is
+    sent to an optimizer, which pulls metadata from the data and uses it to
+    optimize the query. After the query it optimized, it is sent to an
+    execution plan and then executed by pulling data from the appropriate
+    databases. From there, we get output (most often in the form of a table).
+  \item \textbf{Transaction Manager}: deals with worst case scenarios if the
+    system fails. A transaction is defined by multiple physical operations
+    treated as a one logical operation. This part handles transaction and
+    concurrency management.
+\end{enumerate}
+
+\subsection*{Users}
+\begin{itemize}
+  \item Naive users: uses an application that uses a database, without
+    knowledge of it.
+  \item Application programmers: know about the database and the tables that
+    exist to some degree. They may not have access to all data or understand
+    the underlying infrastructure.
+  \item Sophisticated user: uses tools to manipulate the database.
+  \item Administrator: creates and manages the structure and indices of the
+    database.
+\end{itemize}
+
+\subsection*{Database Architecture}
+\begin{itemize}
+  \item Centralized: all data is localized in one central database.
+  \item Client-Server: a single point of entry into the database, with multiple
+    backends to manage queries.
+  \item Parallel: can be either centralized or client-server, running on
+    multiple processors.
+  \item Distributed: data is distributed among multiple servers.
+\end{itemize}
+Timeline of database usage:
+\begin{itemize}
+  \item 1950s: data processing done with tapes, input on punch cards, access was
+    sequential.
+  \item 1960-70s: hard disks allowed for random access, network models and the
+    relational data model were invented, as well as transaction processing.
+  \item 1980s: SQL was invented, parallel and distributed systems and object
+    oriented databases were conceptualized.
+  \item 1990s: data mining systems and decision support systems became
+    popularized, web commerce grew, and databases approached the scale of
+    terabytes.
+  \item 2000s: XML and XQuery were heavily used for data, document storage, and
+    document sending.
+  \item Recently: Big Data, BigTable, large scale data analytics into the scale
+    of petabytes and exabytes.
+\end{itemize}
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}

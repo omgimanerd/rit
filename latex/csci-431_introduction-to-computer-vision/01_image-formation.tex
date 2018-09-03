@@ -1,0 +1,55 @@
+\documentclass{math}
+
+\title{Introduction to Computer Vision}
+\author{Alvin Lin}
+\date{August 2018 - December 2018}
+
+\begin{document}
+
+\maketitle
+
+\section*{Image Formation}
+Physical parameters of image formation:
+\begin{itemize}
+  \item Optical: focal length, field of view, aperture
+  \item Geometric: types of Oprojection
+  \item Photometric: type, direction, intensity of light reaching the sensor
+\end{itemize}
+
+\subsection*{What is an image?}
+Until now, an image was defined as a 2D pattern of intensity values. Now, we
+interpret it as a 2D projection of 3D points. A camera is a device that allows
+for the projection of points from 3D to 2D. In the process of taking a picture,
+we preserve things like straight lines and points of incidence, but lose
+information such as angles and length. \par
+The brightness of an image pixel is determined by the light source, the surface
+shape, orientation, and reflectance properties, the optics, exposure, and nature
+of the sensor lens.
+
+\subsection*{Types of 3D Projections}
+A 3D projection is any method of mapping three-dimensional points to a
+two-dimensional plane.
+\begin{itemize}
+  \item Perspective projections: objects in the distance appear smaller than
+    those close by, and parallel lines converge at a image point in infinity, on
+    the horizon.
+  \item Weak perspective projections: perspective effects, but not over the
+    scale of individual objects.
+  \item Orthographic projections: objects in the distance appear the same as
+    those close by, parallel lengths at all points are of the same scale
+    regardless of the distance of the camera.
+\end{itemize}
+
+\subsection*{Vanishing Points}
+Each set of parallel lines meets at a different point. Sets of parallel lines on
+the same plane lead to collinear vanishing points. This is a good way to spot
+faked images since scale and perspective don't work and vanishing points behave
+badly.
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}

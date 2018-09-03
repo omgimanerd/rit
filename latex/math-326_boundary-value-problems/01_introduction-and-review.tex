@@ -1,0 +1,87 @@
+\documentclass{math}
+
+\title{Boundary Value Problems}
+\author{Alvin Lin}
+\date{August 2018 - December 2018}
+
+\begin{document}
+
+\maketitle
+
+\section*{Introduction and Review}
+Recall that ordinary differential equations (ODEs) were often focused on
+initial value problems. For example:
+\[ y''+3y'+2y = 0 \quad y(x_0) = 3 \quad y'(x_0) = -1 \]
+Boundary value problems consist of a differential equation and boundary
+conditions given at two or more values of the independent variable. For example:
+\[ y''+16y = 0 \quad y(x_0) = y_0 \quad y(x_1) = y_1 \]
+It is implied here that \( x_0 \ne x_1 \). Boundary conditions can vary greatly:
+\begin{align*}
+  y'(x_0) &= y_0 \quad y(x_1) = y_1 \\
+  y(x_0) &= y_0 \quad y'(x_1) = y_1 \\
+  y'(x_0) &= y_0 \quad y'(x_1) = y_1
+\end{align*}
+Notationally, we may write \( \ddiff{y}{x} \) as \( D_y \) where \( D \) is an
+operator applied to the variable \( y \). Similarly, we may also abbreviate
+\( \ddiff{^2y}{x^2} \) as \( DDy \) or \( D^2y \). For example, the following
+two differential equations are equivalent:
+\begin{align*}
+  y''+3y'+2y &= 0 \\
+  D^2y+3Dy+2y &= 0
+\end{align*}
+Suppose we define the operator \( L = D^2+3D+2 \) (short for ``linear''
+operator), then \( Ly = 0 \). Linear operations on \( y \) include
+\( y, y', y'', 3y, 3y', 3xy, 5xy' \), etc. Non-linear operations on \( y \)
+include \( y^2, \sin(y), yy' \), etc. Note that \( L \) is a linear operator
+if and only if \( L(c_1y_1+c_2y_2) = c_1Ly_1+c_2Ly_2 \). For example:
+\begin{itemize}
+  \item \( y'+2xy = 0 \) is a linear differential equation.
+  \item \( y'+3x\sin(y) = 0 \) is a non-linear differential equation.
+\end{itemize}
+For an ordinary differential equation, the order of the equation is the highest
+order of derivative that appears in the equation. Partial differential equations
+may contain partial derivatives, and their order is also defined by the highest
+partial derivative it contains. \par
+The generic form of a linear differential operator is as follows:
+\[ L = \alpha_n(x)D^n+\alpha_{n-1}D^{n-1}+\dots+\alpha_1(x)D+\alpha_0(x) \]
+where \( \alpha \) can either be a constant or coefficient in terms of \( x \).
+If \( \alpha_0,\alpha_1,\dots,\alpha_n \) are all constants, then the
+differential equation is a constant coefficient equation. If any \( \alpha \)
+depends explicitly on \( x \), then the differential equation is a variable
+coefficient equation. \par
+If an equation has the form \( Ly = 0 \), then the differential equation is
+linear and homogeneous. If an equation has the form \( L(y) = f(x) \ne 0 \),
+then we call the equation non-homogeneous. These properties all influence the
+type of solution we will use as well as the ease of solving the differential
+equation.
+\begin{center}
+  \begin{tabular}{|c|c|c|c|c|}
+    \hline
+    linear & low order & homogeneous & const coefficient & ODE \\
+    \hline
+    non-linear & high order & non-homogeneous & variable coefficient & PDE \\
+    \hline
+  \end{tabular}
+\end{center}
+\begin{itemize}
+  \item \( 2\sin(x)y''+y+6 = 0 \) \\
+    ODE \\
+    linear \\
+    second order \\
+    variable coefficient \\
+    non-homogeneous
+  \item \( uu_{xxx}+xu_t = 0 \) \\
+    PDE \\
+    non-linear \\
+    third order \\
+    variable coefficient \\
+    homogeneous
+\end{itemize}
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
