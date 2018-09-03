@@ -1,0 +1,93 @@
+\documentclass{math}
+
+\usepackage{enumerate}
+
+\geometry{letterpaper, margin=0.5in}
+
+\title{Boundary Value Problems: Homework 1}
+\author{Alvin Lin}
+\date{August 2018 - December 2018}
+
+\begin{document}
+
+\maketitle
+
+\subsubsection*{Problem 1}
+Use the definition of a linear operator (given in Equation 1.1 in your textbook)
+to show that the operator \( L \) as defined \( Ly = 3Dy-2y \) is a linear
+operator. Here \( D \) is the first-derivative operator.
+\begin{align*}
+  L(c_1y_1+c_2y_2) &= c_1Ly_1+c_2Ly_2 \\
+  3D(c_1y_1+c_2y_2)-2(c_1y_1+c_2y_2) &= c_1(3Dy_1-2y_1)+c_2(3Dy_2-2y_2) \\
+  3c_1Dy_1+3c_2Dy_2-2c_1y_1-2c_2y_2 &= 3c_1Dy_1-2c_1y_1+3c_2Dy_2-2c_2y_2 \\
+\end{align*}
+
+\subsubsection*{Problem 2}
+Use the definition of a lienar operator (given in Equation 1.1 of your textbook)
+to show that the squaring operator, \( Q \), defined as \( Qy = y^2 \) is not
+linear.
+\begin{align*}
+  L(y_1+y_2) &= Ly_1+Ly_2 \\
+  Q(y_1+y_2) &= Qy_1+Qy_2 \\
+  (y_1)^2+2y_1y_2+(y_2)^2 &\ne (y_1)^2+(y_2)^2 \\
+\end{align*}
+
+\subsubsection*{Problem 3}
+For each of the following equations in parts (a)-(e),
+\begin{itemize}
+  \item classify the equation as an ODE or a PDE
+  \item state the order of the equation
+  \item list the dependent and independent variables
+  \item state whether the equation is linear or nonlinear
+  \item if the equation is linear, state whether the equation has variable or
+    constant coefficients and whether the equation is homogeneous or
+    non-homogeneous
+\end{itemize}
+\begin{enumerate}[(a)]
+  \item \[ 5\pdiff{^2u}{x^2}-\pdiff{u}{t}+u = 0 \]
+    PDE, second order, dependent variables (\( u \)), independent variables
+    (\( x, t \)), linear, constant coefficients, homogeneous
+  \item \[ \left(\left(\ddiff{x}{t}\right)^2+1\right)x = 10 \]
+    ODE, first order, dependent variables (\( x \)), independent variables
+    (\( t \)), non-linear
+  \item \[ \sin(x)\ddiff{^3y}{x^3}+\ddiff{y}{x} = -y \]
+    ODE, third order, dependent variables (\( y \)), independent variables
+    (\( x \)), linear, variable coefficients, homogeneous
+  \item \[ 10y = (2-y^3)\ddiff{y}{t}-\ddiff{^2y}{t^2} \]
+    ODE, second order, dependent variables (\( y \)), independent variables
+    (\( t \)), non-linear
+  \item \[ 2\theta+t^2-\theta''' = 0 \]
+    ODE, third order, dependent variables (\( \theta \)), independent variables
+    (\( t \)), linear, constant coefficients, non-homogeneous
+\end{enumerate}
+
+\subsubsection*{Problem 4}
+Classify the following PDEs as linear or nonlinear, and as homogeneous or
+non-homogeneous.
+\begin{enumerate}[(a)]
+  \item \[ u_{rr}-(\frac{\theta}{r})u_r = -\frac{u_{\theta}}{r^2} \]
+  linear and homogeneous
+  \item \[ 10+5\pdiff{^2u}{x^2}+25\frac{\partial^2u}{\partial x\partial y}+
+    5\pdiff{^2u}{y^2} = 0 \]
+    linear and non-homogeneous
+  \item \[ u_t = 4u_xx+3uu_x \]
+    non-linear and non-homogeneous
+\end{enumerate}
+
+\subsubsection*{Problem 5}
+Classify each of the following problems as an IVP, a BVP, or neither.
+\begin{enumerate}[(a)]
+  \item \[ x^2y''+7xy'+3y = 5, \quad y(0) = 2, \quad y'(-1) = 0 \]
+    boundary value problem
+  \item \[ x^2y''+7xy'+3y = 5, \quad y(-1) = 2, \quad y'(-1) = 0 \]
+    initial value problem
+  \item \[ x^2y''+7xy'+3y = 5, \quad y(0) = 2, \quad y(-1) = 0 \]
+    boundary value problem
+\end{enumerate}
+
+\begin{center}
+  If you have any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
