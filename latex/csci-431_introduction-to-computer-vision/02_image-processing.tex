@@ -1,0 +1,44 @@
+\documentclass{math}
+
+\title{Introduction to Computer Vision}
+\author{Alvin Lin}
+\date{August 2018 - December 2018}
+
+\begin{document}
+
+\maketitle
+
+\section*{Image Processing}
+Pixels are derived from the phrase ``picture element'' and are indexed as
+(x,y) or (col,row). Color images are 3D tensors and videos are n-dimensional.
+Arithmetic operations on image pixels light addition and subtraction translate
+to generic brightness adjustments and image blending, while multiplying and
+dividing corresponds to contrast adjustment though it is not very common in
+image processing.
+
+\subsection*{Image Transforms}
+\begin{itemize}
+  \item Logarithmic transforms increase the dynamic range of the dark region but
+    decreases the range of the bright regions.
+  \item Exponential transforms are the inverse of the log transform.
+  \item Power-law (gamma) transforms can either enhance contrast in high value
+    regions at the expense of low value ones when \( \gamma > 1 \) or do the
+    reverse when \( \gamma < 1 \).
+\end{itemize}
+
+\subsection*{Histograms}
+If we count all pixels with similar intensity values, we get the histogram
+image. This gives us a good visual representation of the image distribution.
+
+\subsection*{Adaptive Thresholding}
+Adaptive thresholding was designed to overcome the limitations of global
+thresholding by using a different threshold value at each pixel. The threshold
+is determined by values in the neighborhood.
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
