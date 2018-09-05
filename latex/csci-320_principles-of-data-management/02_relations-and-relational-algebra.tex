@@ -1,0 +1,150 @@
+\documentclass{math}
+
+\title{Principles of Data Management}
+\author{Alvin Lin}
+\date{August 2018 - December 2018}
+
+\begin{document}
+
+\maketitle
+
+\section*{Relations and Relational Algebra}
+\begin{center}
+  \begin{tabular}{|c|c|c|c|}
+    \hline
+    id & name & DOB & height \\
+    \hline
+    1 & Jane & 12/1 & 5'8" \\
+    \hline
+    2 & Joe & 7/13 & null \\
+    \hline
+    &&& \\
+    \hline
+  \end{tabular}
+\end{center}
+In this table, the rows (tuples) and columns (attributes) contain data and
+type information about the data. A database domain defines the attributes of the
+database. It is atomic and every domain can have a null value. \par
+Suppose \( A_1,A_2,\dots,A_n \) are attributes. A relation R is a subset of
+domains. For example:
+\[ Dog = (breed, color, good boy?, name, gender, weight, DOB, owner, address) \]
+Relation items are unordered. An instance of a relation is defined by a table
+and an element of the instance is a row.
+
+\subsubsection*{Keys}
+Keys are defined as a subset of attributes from a relation. The following keys
+are all single relation keys.
+\begin{itemize}
+  \item super key: any combination of attributes that uniquely identify a row.
+  \item candidate key: minimal super key
+  \item primary key: one of the candidate keys
+\end{itemize}
+Foreign keys allow for referencing relations. A value for a given foreign key
+attribute must appear in another table.
+
+\subsection*{Relational Algebra}
+\begin{itemize}
+  \item Select Operation (\( \sigma \)): if we have a table R with the
+    following attributes:
+    \begin{center}
+      \begin{tabular}{|c|c|c|c|}
+        \hline
+        A & B & C & D \\
+        \hline
+        x & x & 1 & 7 \\
+        x & y & 5 & 7 \\
+        y & y & 13 & 5 \\
+        y & y & 30 & 4 \\
+        \hline
+      \end{tabular}
+    \end{center}
+    If we select on this relation using the condition A = B (denoted
+    \( \sigma_{A=B}(R) \)), we get the last two rows.
+    \[ \sigma_{A=B}(R) \Rightarrow
+      \begin{tabular}{|c|c|c|c|}
+        \hline
+        A & B & C & D \\
+        \hline
+        x & x & 1 & 7 \\
+        y & y & 13 & 5 \\
+        y & y & 30 & 4 \\
+        \hline
+      \end{tabular}
+    \]
+    Any number of conditions
+    can be used in a select operation.
+  \item Projection (\( \Pi \)): limits the number of columns selected
+    \begin{center}
+      \begin{tabular}{|c|c|c|c|}
+        \hline
+        A & B & C \\
+        \hline
+        x & 1 & 0 \\
+        y & 2 & 1 \\
+        x & 3 & 0 \\
+        y & 4 & 2 \\
+        \hline
+      \end{tabular}
+    \end{center}
+    \[ \Pi_{A,C}(R) \Rightarrow
+      \begin{tabular}{|c|c|c|c|}
+        \hline
+        A & C \\
+        \hline
+        x & 0 \\
+        y & 1 \\
+        x & 0 \\
+        y & 2 \\
+        \hline
+      \end{tabular}
+    \]
+    Because this has duplicates, this would reduce to:
+    \begin{center}
+      \begin{tabular}{|c|c|c|c|}
+        \hline
+        A & C \\
+        \hline
+        x & 0 \\
+        y & 1 \\
+        y & 2 \\
+        \hline
+      \end{tabular}
+    \end{center}
+  \item Union: merging two relations that have the same attributes
+    \[ R = \begin{tabular}{|c|c|}
+      \hline
+      A & B \\
+      \hline
+      x & 1 \\
+      y & 2 \\
+      z & 3 \\
+      \hline
+    \end{tabular} \]
+    \[ S = \begin{tabular}{|c|c|}
+      \hline
+      A & B \\
+      \hline
+      m & 5 \\
+      n & 6 \\
+      \hline
+    \end{tabular} \]
+    \[ T = \sigma_{B>5}(R\cup S) = \begin{tabular}{|c|c|}
+      \hline
+      A & B \\
+      \hline
+      x & 1 \\
+      y & 2 \\
+      z & 3 \\
+      m & 5 \\
+      n & 6 \\
+      \hline
+    \end{tabular} \]
+\end{itemize}
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
