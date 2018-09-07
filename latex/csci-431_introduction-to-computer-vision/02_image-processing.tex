@@ -35,6 +35,58 @@ Adaptive thresholding was designed to overcome the limitations of global
 thresholding by using a different threshold value at each pixel. The threshold
 is determined by values in the neighborhood.
 
+\subsection*{Color}
+Color is a psychological property of a visual experience when we look at
+objects and lights. It is the result of an interaction between the physical
+light in an environment with our physical system. Color is the property
+possesed by an object to produce different sensations on the eye as a result
+of the way the object reflects and emits light.
+
+\subsubsection*{The Human Eye}
+The human eye is a camera with many parts:
+\begin{itemize}
+  \item Lens: changes shape using ciliary muscles to focus on objects at
+    different distances.
+  \item Pupil: the hole (aperture) in your eye whose size is controlled by the
+    iris.
+  \item Iris: the colored annulus with radial muscles
+  \item Retina: photoreceptor cells (cones and rods) in the back of your eye
+\end{itemize}
+The cones in your retina are responsible for color vision and are less
+sensitive. They operate in high light conditions, unlike the rods, which operate
+in low light conditions and are highly sensitive in order to provide gray-scale
+vision. Rods and cones are non-uniformly distributed on the retina.
+
+\subsubsection*{Computing Color Matches}
+Computing color matches for any given color are useful because we want the
+colors in the world, on a monitor, and in print format to all look the same.
+We want to match the skin color of a person in a photograph printed on an ink
+jet printer to their true skin color. \par
+Since it is hard to reproduce color exactly, it is important to know whether a
+color difference would be noticeable to a human viewer.
+
+\subsubsection*{Linear Color Spaces}
+LAB color space expresses color as three numerical values:
+\begin{itemize}
+  \item L stands for lightness
+  \item A represents green-red color components
+  \item B represents blue-yellow color components
+\end{itemize}
+
+\subsubsection*{Nonlinear Color Spaces}
+HSV has perceptually meaningful dimensions:
+\begin{itemize}
+  \item H stands for hue
+  \item S stands for saturation
+  \item V stands for value (intensity)
+\end{itemize}
+
+\subsubsection*{Color Based Image Retrieval}
+Given a collection of images, we can extract and store a color histogram per
+image. We can then compare these to a histogram for a new query image and
+compute the intersection to determine the most similar image. Color can also
+be used for simpler and faster model tracking.
+
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
   any questions, comments, or concerns, please contact me at
