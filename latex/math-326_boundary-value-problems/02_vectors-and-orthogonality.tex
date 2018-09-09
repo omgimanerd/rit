@@ -1,0 +1,75 @@
+\documentclass{math}
+
+\title{Boundary Value Problems}
+\author{Alvin Lin}
+\date{August 2018 - December 2018}
+
+\begin{document}
+
+\maketitle
+
+\section*{Vectors and Orthogonality}
+\[ \vec{v} = \begin{bmatrix}2 \\ 4\end{bmatrix} \]
+or
+\[ \vec{v} = \begin{bmatrix}2 & 4\end{bmatrix} \]
+Individual components of a vector are known as scalars, and are members of a
+field such as \( \R \) or \( \mathbb{C} \).
+
+\subsection*{Adding vectors}
+\begin{align*}
+  \vec{a} &= \langle1,4\rangle \\
+  \vec{b} &= \langle3,2\rangle \\
+  \vec{a}+\vec{b} &= \langle4,6\rangle
+\end{align*}
+
+\subsection*{Scalar Multiplication}
+\begin{align*}
+  3\vec{a} &= 3\langle1,4\rangle \\
+  &= \langle3,12\rangle
+\end{align*}
+
+\subsection*{Magnitude}
+Given \( \vec{a} = \langle a_1,a_2\rangle \):
+\[ \|\vec{a}\| = \sqrt{(a_1)^2+(a_2)^2} \]
+This is also known as the length or norm of a vector. If \( \vec{b}\in\R^n \):
+\[ \|\vec{b}\| = \sqrt{\sum_1^n{(b_i)^2}} \]
+A \textbf{unit vector} is a vector of magnitude 1.
+
+\subsection*{Linear Combinations}
+A \textbf{linear combination} of vectors \( \vec{a} \) and \( \vec{b} \) is
+\[ \vec{v} = c_1\vec{a}+c_2\vec{b} \]
+where each vector is multiplied by a constant \( c_i \) and added together.
+
+\subsection*{Dot Product}
+The dot product is a special case of an inner product where:
+\begin{align*}
+  \vec{a} &= \langle a_1,a_2,\dots,a_n \rangle \\
+  \vec{b} &= \langle b_1,b_2,\dots,b_n \rangle \\
+  \vec{a},\vec{b} &\in \R \\
+  \vec{a}\cdot\vec{b} &= (\vec{a},\vec{b}) \\
+  &= a_1b_1+a_2b_2+\dots+a_nb_n \\
+  &= \sum_1^n{a_ib_i}
+\end{align*}
+The dot product is used to test for orthogonality. The dot product can also
+be calculated using the following property:
+\[ \vec{a}\cdot\vec{b} = \|\vec{a}\|\|\vec{b}\|\cos\theta \]
+where \( \theta \) is the smaller of the two angles between \( \vec{a} \) and
+\( \vec{b} \).
+
+\subsection*{Orthogonality}
+Any two vectors \( \vec{a} \) and \( \vec{b} \) are orthogonal if and only if
+their dot product is zero. If a set of nonzero vectors
+\( \{\vec{x_1},\dots,\vec{x_n}\} \) are all mutually orthogonal, that is
+\[ \vec{x_i}\cdot\vec{x_j} = 0 \text{ for all } i\ne j \]
+then the set of vectors is an \textbf{orthogonal set}. An \textbf{orthonormal
+set} is an orthogonal set where all \( \vec{x_i} \) are unit vectors.
+\[ \{\i,\j,\j\} \text{ is an orthonormal set} \]
+\[ \{3\i,\j\k\} \text{ is an orthogonal set but not orthonormal} \]
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}

@@ -8,7 +8,7 @@
 
 \maketitle
 
-\section*{Introduction and Review}
+\section*{Introduction and Classifications}
 Recall that ordinary differential equations (ODEs) were often focused on
 initial value problems. For example:
 \[ y''+3y'+2y = 0 \quad y(x_0) = 3 \quad y'(x_0) = -1 \]
@@ -75,6 +75,75 @@ equation.
     non-linear \\
     third order
 \end{itemize}
+
+\subsection*{Standard Form of a Second Order Linear PDE}
+A PDE is linear and second order if it can be written in the form:
+\[ A\pdiff{^2u}{x^2}+B\pdiff{^2u}{x\partial y}+C\pdiff{^2u}{y^2}+
+  D\pdiff{u}{x}+E\pdiff{u}{y}+Fu = G \]
+with addition and subtraction of terms on both sides where \( u \) is the
+dependent variable, \( x,y \) are the independent variables, and
+\( A,B,C,D,E,F,G \) are constants or explicit functions of \( x \) or \( y \).
+\par
+If \( G(x,y) \equiv 0 \)), then the PDE is homogeneous, otherwise it is
+non-homogeneous. The PDE is:
+\begin{itemize}
+  \item hyperbolic if \( B^2-4AC > 0 \)
+  \item parabolic if \( B^2-4AC = 0 \)
+  \item elliptic if \( B^2-4AC < 0 \)
+\end{itemize}
+
+\subsubsection*{Example: Heat Equation}
+\( u(x,t) \) represents the temperature along a rod at time \( t \) and
+position \( x \).
+\[ u_t = \beta u_{xx} \]
+where \( \beta \) is real, constant, and greater than 0. If we rewrite this
+according to our standard form:
+\begin{align*}
+  \beta u_{xx}+0u_{xt}+0u_{tt}+0u_x-u_t+0 &= 0 \\
+  \beta u_{xx}-u_t &= 0 \\
+  A &= \beta \quad B = 0 \quad C = 0 \\
+  B^2-4AC &= 0
+\end{align*}
+Therefore, this equation is parabolic.
+
+\subsection*{Solving PDEs}
+Throughout this course, we will build a procedure for solving PDEs:
+\begin{itemize}
+  \item Use separation of variables if possible to break a PDE into two more
+    ODEs.
+  \item Solve each ODE subproblem.
+  \item Assemble a general solution out of the ODE solutions.
+  \item Solve for coefficients in the general solution using the boundary
+    conditions or initial conditions if available.
+\end{itemize}
+
+\subsubsection*{Example}
+\begin{align*}
+  y''+16y &= 0 \quad y(0) = 0 \quad y(\frac{\pi}{2}) = 0 \\
+  y &= \e^{rt} \\
+  r^2+16 &= 0 \\
+  r &= 0\pm4i \quad \alpha = 0 \quad \beta = 4 \\
+  y &= \e^{\alpha t}(c_1\cos(\beta t)+c_2\sin(\beta t)) \\
+  &= c_1\cos(4x)+c_2\sin(4x)
+\end{align*}
+This is a general solution to the ODE. We can apply the boundary conditions to
+try and solve for the unknown coefficients.
+\begin{align*}
+  y(0) &= 0 \\
+  &= c_1\cos(0)+c_2\sin(0) \\
+  c_1 &= 0 \\
+  y(\frac{\pi}{2}) &= 0 \\
+  &= c_1\cos\left(\frac{4\pi}{2}\right)+c_2\sin\left(\frac{4\pi}{2}\right) \\
+  &= c_2\sin\left(\frac{4\pi}{2}\right) \\
+  &= 0
+\end{align*}
+We can determine a specific answer for \( c_1 \), but \( c_2 \) can be any real
+number.
+\[ y = c_2\sin(4x) \quad c_2\in\R \]
+If we were to change the boundary conditions to \( y(0) = 0 \) and
+\( y(\frac{\pi}{2}) = 1 \), then the boundary value problem would have no
+solution. Boundary value problems can have no solution, exactly one solution,
+or an infinite number of solutions.
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have

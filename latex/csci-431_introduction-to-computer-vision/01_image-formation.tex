@@ -39,12 +39,64 @@ two-dimensional plane.
     those close by, parallel lengths at all points are of the same scale
     regardless of the distance of the camera.
 \end{itemize}
+In order to perform transformations, we convert to homogeneous coordinates:
+\[ (x,y) \Rightarrow \begin{bmatrix}x \\ y \\ 1\end{bmatrix} \]
+\[ (x,y,z) \Rightarrow \begin{bmatrix}x \\ y \\ z \\ 1\end{bmatrix} \]
+Projection is a matrix multiplication using these coordinates:
+\[ \begin{bmatrix}
+  f & 0 & 0 & 0 \\
+  0 & f & 0 & 0 \\
+  0 & 0 & 1 & 0 \\
+\end{bmatrix}\begin{bmatrix}
+  x \\ y \\ z \\ 1
+\end{bmatrix} = \begin{bmatrix}
+  fx \\ fy \\ z
+\end{bmatrix} \Rightarrow (f\frac{x}{z}, f\frac{y}{z}) \]
 
 \subsection*{Vanishing Points}
 Each set of parallel lines meets at a different point. Sets of parallel lines on
 the same plane lead to collinear vanishing points. This is a good way to spot
 faked images since scale and perspective don't work and vanishing points behave
 badly.
+
+\subsection*{Photometry}
+The brightness of a pixel is a function of the brightness of the surface in the
+scene that projects to the pixel. It is dependent on how much light is incident
+on the surface and the fraction of incident light that gets reflected. \par
+When light hits a point on an object, some of the light gets absorbed, some is
+transmitted through the object, and some gets reflected. For simplicity, we will
+assume that surfaces don't fluoresce or emit light, and that all the light
+leaving a point is due to light arriving at that point.
+
+\subsubsection*{Reflection}
+Modes of reflection:
+\begin{enumerate}
+  \item Specular reflection: pure mirror, the incoming ray, outgoing ray, and
+    the normal are coplanar, and the angle of incidence is equal to the angle
+    of reflection.
+  \item Diffuse reflection: light leaves in equal amounts in each direction so
+    the surface looks equally bright from each viewing direction. Diffuse
+    reflection is described by a parameter called \textbf{albedo}, which
+    describes the percentage of light arriving that leaves.
+\end{enumerate}
+
+\subsubsection*{Lambert's Law}
+\[ B = \rho(N\cdot S) = \rho\|S\|\cos\theta \]
+where \( B \) is the radiosity (total power leaving the surface per unit area),
+\( \rho \) is the albedo (fraction of incident irradiance reflected by the
+surface), \( N \) is the unit normal, and \( S \) is the source vector where
+the magnitude is proportional to the intensity of the source.
+
+\subsubsection*{Shadows}
+Most shadows are dark because shadow points get light from other surfaces and
+not just the light source. Area sources are large bright areas such as the sky
+which yield smooth blurry shadows.
+\begin{itemize}
+  \item Points that can see the whole source are brighter.
+  \item Points that can only see part of the source are darker (penumbra).
+  \item Points that can see no part of the source are darkest (umbra).
+\end{itemize}
+Other surfaces can behave light area sources.
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
