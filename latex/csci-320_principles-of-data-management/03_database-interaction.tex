@@ -1,0 +1,37 @@
+\documentclass{math}
+
+\usepackage{listing}
+
+\title{Principles of Data Management}
+\author{Alvin Lin}
+\date{August 2018 - December 2018}
+
+\begin{document}
+
+\maketitle
+
+\section*{Database Interaction}
+SQL alone is not enough to interact with a database. It cannot display a GUI
+since it has no non-declarative actions. There are a few options:
+\begin{itemize}
+  \item Embedded SQL
+  \item Dynamic SQL: ORM/interface
+\end{itemize}
+We can connect to a database via a direct connection, Open Database Connection
+(ODBC), or Java Database Connection (JDBC). Both ODBC and JDBC add a level of
+abstraction by acting as a proxy between the application and the database.
+While it may slow things down by adding a layer of complexity, it allows you to
+switch between databases seamlessly. The application developer can interface
+with the ODBC/JDBC in a database agnostic manner. ODBC started out as a
+Windows-specific platform but it has grown to almost every platform. Because
+these interfaces cater to the lowest common denominator, they do not support
+database-specific functionality and are primarily used for simple databases.
+
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
