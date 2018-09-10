@@ -46,70 +46,60 @@ attribute must appear in another table.
 \begin{itemize}
   \item Select Operation (\( \sigma \)): if we have a table R with the
     following attributes:
-    \begin{center}
-      \begin{tabular}{|c|c|c|c|}
-        \hline
-        A & B & C & D \\
-        \hline
-        x & x & 1 & 7 \\
-        x & y & 5 & 7 \\
-        y & y & 13 & 5 \\
-        y & y & 30 & 4 \\
-        \hline
-      \end{tabular}
-    \end{center}
+    \[ \begin{tabular}{|c|c|c|c|}
+      \hline
+      A & B & C & D \\
+      \hline
+      x & x & 1 & 7 \\
+      x & y & 5 & 7 \\
+      y & y & 13 & 5 \\
+      y & y & 30 & 4 \\
+      \hline
+    \end{tabular} \]
     If we select on this relation using the condition A = B (denoted
     \( \sigma_{A=B}(R) \)), we get the last two rows.
-    \[ \sigma_{A=B}(R) \Rightarrow
-      \begin{tabular}{|c|c|c|c|}
-        \hline
-        A & B & C & D \\
-        \hline
-        x & x & 1 & 7 \\
-        y & y & 13 & 5 \\
-        y & y & 30 & 4 \\
-        \hline
-      \end{tabular}
-    \]
+    \[ \sigma_{A=B}(R) \Rightarrow \begin{tabular}{|c|c|c|c|}
+      \hline
+      A & B & C & D \\
+      \hline
+      x & x & 1 & 7 \\
+      y & y & 13 & 5 \\
+      y & y & 30 & 4 \\
+      \hline
+    \end{tabular} \]
     Any number of conditions
     can be used in a select operation.
   \item Projection (\( \Pi \)): limits the number of columns selected
-    \begin{center}
-      \begin{tabular}{|c|c|c|c|}
-        \hline
-        A & B & C \\
-        \hline
-        x & 1 & 0 \\
-        y & 2 & 1 \\
-        x & 3 & 0 \\
-        y & 4 & 2 \\
-        \hline
-      \end{tabular}
-    \end{center}
-    \[ \Pi_{A,C}(R) \Rightarrow
-      \begin{tabular}{|c|c|c|c|}
-        \hline
-        A & C \\
-        \hline
-        x & 0 \\
-        y & 1 \\
-        x & 0 \\
-        y & 2 \\
-        \hline
-      \end{tabular}
-    \]
+    \[ \begin{tabular}{|c|c|c|c|}
+      \hline
+      A & B & C \\
+      \hline
+      x & 1 & 0 \\
+      y & 2 & 1 \\
+      x & 3 & 0 \\
+      y & 4 & 2 \\
+      \hline
+    \end{tabular} \quad\Pi_{A,C}(R) \Rightarrow
+    \begin{tabular}{|c|c|c|c|}
+      \hline
+      A & C \\
+      \hline
+      x & 0 \\
+      y & 1 \\
+      x & 0 \\
+      y & 2 \\
+      \hline
+    \end{tabular} \]
     Because this has duplicates, this would reduce to:
-    \begin{center}
-      \begin{tabular}{|c|c|c|c|}
-        \hline
-        A & C \\
-        \hline
-        x & 0 \\
-        y & 1 \\
-        y & 2 \\
-        \hline
-      \end{tabular}
-    \end{center}
+    \[ \begin{tabular}{|c|c|c|c|}
+      \hline
+      A & C \\
+      \hline
+      x & 0 \\
+      y & 1 \\
+      y & 2 \\
+      \hline
+    \end{tabular} \]
   \item Union: merging two relations that have the same attributes
     \[ R = \begin{tabular}{|c|c|}
       \hline
@@ -119,16 +109,16 @@ attribute must appear in another table.
       y & 2 \\
       z & 3 \\
       \hline
-    \end{tabular} \]
-    \[ S = \begin{tabular}{|c|c|}
+    \end{tabular} \quad
+    S = \begin{tabular}{|c|c|}
       \hline
       A & B \\
       \hline
       m & 5 \\
       n & 6 \\
       \hline
-    \end{tabular} \]
-    \[ T = \sigma_{B>5}(R\cup S) = \begin{tabular}{|c|c|}
+    \end{tabular} \quad
+    T = \sigma_{B>5}(R\cup S) = \begin{tabular}{|c|c|}
       \hline
       A & B \\
       \hline
@@ -139,7 +129,136 @@ attribute must appear in another table.
       n & 6 \\
       \hline
     \end{tabular} \]
+  \item Set Difference: all tuples in \( R \) not in \( S \)
+    \[ R = \begin{tabular}{|c|c|}
+      \hline
+      A & B \\
+      \hline
+      a & 1 \\
+      a & 2 \\
+      b & 1 \\
+      \hline
+    \end{tabular} \quad
+    S = \begin{tabular}{|c|c|}
+      \hline
+      A & B \\
+      \hline
+      a & 2 \\
+      a & 3 \\
+      \hline
+    \end{tabular} \quad
+    R-S = \begin{tabular}{|c|c|}
+      \hline
+      A & B \\
+      \hline
+      a & 1 \\
+      b & 1 \\
+      \hline
+    \end{tabular} \]
+  \item Set Intersection: set of all tuples in both \( R \) and \( S \), can
+    also be rewritten using set difference.
+    \[ R\cup S = R-(R-S) \]
+  \item Cross/Cartesian Product: maps everything in \( R \) to everything in
+    \( S \).
+    \[ R = \begin{tabular}{|c|c|}
+      \hline
+      A & B \\
+      \hline
+      a & 1 \\
+      b & 1 \\
+      \hline
+    \end{tabular} \quad
+    S = \begin{tabular}{|c|c|c|}
+      \hline
+      C & D & E \\
+      \hline
+      x & a & 1 \\
+      y & c & 5 \\
+      z & f & 7 \\
+      \hline
+    \end{tabular} \quad
+    R\times S = \begin{tabular}{|c|c|c|c|c|}
+      \hline
+      A & B & C & D & E \\
+      \hline
+      a & 1 & x & a & 1 \\
+      a & 1 & y & x & 5 \\
+      a & 1 & z & f & 7 \\
+      b & z & x & a & 1 \\
+      b & z & y & c & 5 \\
+      b & z & z & f & 7 \\
+      \hline
+    \end{tabular} \]
+  \item Renaming: not really a real operation, but allows us to resolve
+    attribute name conflicts.
+    \[ R = \begin{tabular}{|c|c|}
+      \hline
+      A & B \\
+      \hline
+      1 & 2 \\
+      3 & 4 \\
+      \hline
+    \end{tabular} \quad
+    R\times P_S(R) = \begin{tabular}{|c|c|c|c|}
+      \hline
+      RA & RB & SA & SB \\
+      \hline
+      1 & 2 & 1 & 2 \\
+      1 & 2 & 3 & 4 \\
+      3 & 4 & 1 & 2 \\
+      3 & 4 & 3 & 4 \\
+      \hline
+    \end{tabular} \]
+  \item Natural Join: given two relations \( R \) and \( S \), where \( R \) and
+    \( S \) have attributes with the same name for every tuple, if the values
+    of those attributes have the same name, join them.
+    \[ R = \begin{tabular}{|c|c|c|c|}
+      \hline
+      A & B & C & D \\
+      \hline
+      a & 1 & a & a \\
+      b & 2 & c & a \\
+      c & 4 & b & b \\
+      a & 1 & c & a \\
+      d & 2 & b & b \\
+      \hline
+    \end{tabular} \quad
+    S = \begin{tabular}{|c|c|c|}
+      \hline
+      B & D & G \\
+      \hline
+      1 & a & a \\
+      3 & a & b \\
+      1 & a & c \\
+      2 & b & d \\
+      3 & b & e \\
+      \hline
+    \end{tabular} \quad
+    R \Join S = \begin{tabular}{|c|c|c|c|c|}
+      \hline
+      A & B & C & D & E \\
+      \hline
+      a & 1 & a & a & a \\
+      a & 1 & a & a & c \\
+      a & 1 & c & a & a \\
+      a & 1 & c & a & c \\
+      d & 2 & b & b & d \\
+      \hline
+    \end{tabular} \]
+    Note that this is logically equivalent to:
+    \[ \Pi_{A,R.B,C,R.D,E}(\sigma_{R.B=S.B\wedge R.D=S.D}(R\times S)) \]
+    but it cannot be generalized like set intersection because one needs to know
+    the common attributes of both tables.
 \end{itemize}
+Relational algebra is not Turing-complete because it has no persistent storage,
+and each statement always terminates with the output of a table.
+
+\subsubsection*{Example}
+Get the names and ages of all dogs who weight more than 15 pounds:
+\[ \Pi_{name,age}(\sigma_{weight>15}(Dog)) \]
+or
+\[ \{P\mid\exists D\in Dog(D.weight>15\wedge P.name=D.name\wedge
+  P.age=D.age)\} \]
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
