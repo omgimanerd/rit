@@ -66,6 +66,53 @@ set} is an orthogonal set where all \( \vec{x_i} \) are unit vectors.
 \[ \{\i,\j,\j\} \text{ is an orthonormal set} \]
 \[ \{3\i,\j\k\} \text{ is an orthogonal set but not orthonormal} \]
 
+\subsection*{Orthogonal Functions}
+We can treat functions like vectors. For \( f(x) = x^2 \), as
+\( x = 0,1,2,\dots \), \( f(x) = 0,1,4,\dots \). This is an uncountably
+infinite list of numbers which we cannot write down. We can take linear
+combinations of functions (analogous to vectors). For example:
+\[ g(x) = 3\sin(x)-2\cos(5x) \]
+The function \textbf{norm} of \( f:\R\to\R \) for \( f \) defined on
+\( x\in[a,b] \) is defined as:
+\[ \|f(x)\| = \sqrt{\int_a^b(f(x))^2\diff{x}} \]
+The \textbf{inner product} of two functions \( f \) and \( g \) is
+defined as:
+\[ (f,g) = (f(x),g(x)) = \int_a^bf(x)g(x)\diff{x} \]
+If \( (f,g) = 0 \), then \( f \) and \( g \) are orthogonal on the interval
+\( [a,b] \) and vice versa. Note that \( (f,f) = \|f\|^2 \). \par
+The set of functions \( \{f_0(x),f_1(x),f_2(x),\dots\} \) is an orthogonal set
+of functions if \( (f_m,f_n) = 0 \) whenever \( m\ne n \). If \( \{f_n\} \) is
+an orthogonal set where \( \|f_n(x)\| = 1 \) for \( n = 0,1,2,\dots \) then
+\( \{f_n\} \) is an orthonormal set.
+
+\subsubsection*{Example}
+Show that \( \{\cos(\frac{n\pi x}{L})\}_{n=0}^{\infty} = \{1,
+\cos\frac{\pi x}{L},\cos\frac{2\pi x}{L},\dots\} \) (where \( L \) is a given
+length greater than 0) is an orthogonal set on \( [-L,L] \). First we need to
+check if
+\[ (f_n,f_m) = \int_{-L}^{L}\cos\frac{m\pi x}{L}\cos\frac{n\pi x}{L}\diff{x} =
+  0 \text{ wherever } m\ne n \]
+We can exploit the even and odd properties of functions to solve this. The first
+thing we should do is rewrite this function into a more familiar form using a
+trigonometric identity.
+\[ \cos(A)\cos(B) = \frac{1}{2}\bigg[\cos(A-B)+\cos(A+B)\bigg] \]
+In the case where \( m\ne n \):
+\begin{align*}
+  (f_n,f_m) &= \int_{-L}^{L}\cos(\frac{m\pi x}{L})
+    \cos(\frac{n\pi x}{L})\diff{x} \\
+  &= \frac{1}{2}\left[\cos\left(\frac{(m-n)\pi x}{L}\right)+
+    \cos\left(\frac{(m+n)\pi x}{L}\right)\right]\diff{x} \\
+  &= \frac{1}{2}\bigg[\frac{L}{(m-n)\pi}
+    \sin\left(\frac{(m-n)\pi x}{L}\right)\bigg]_{-L}^{L}+
+    \frac{1}{2}\bigg[\frac{L}{(m+n)\pi}
+    \sin\left(\frac{(m+n)\pi x}{L}\right)\bigg]_{-L}^{L} \\
+  &= (\dots)(\sin((m-n)\pi)-\sin(-(m-n)\pi)) \\
+  &= (\dots)(\sin(n\pi)) \text{ where } n\in\Z \\
+  &= 0 \therefore \\
+  (f_n,f_m) &= 0 \text{ for } m\ne n
+\end{align*}
+Therefore, \( \{\cos(\frac{n\pi x}{L})\}_{n=0}^{\infty} \) is orthogonal.
+
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
   any questions, comments, or concerns, please contact me at
