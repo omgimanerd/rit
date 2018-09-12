@@ -1,0 +1,66 @@
+\documentclass{math}
+
+\usepackage{enumerate}
+
+\geometry{letterpaper, margin=0.5in}
+
+\title{Boundary Value Problems: Homework 2}
+\author{Alvin Lin}
+\date{August 2018 - December 2018}
+
+\begin{document}
+
+\maketitle
+
+\subsubsection*{Problem 1}
+Complete Exercises 1.2 problems 1, 2, 3, 5 \\
+\textbf{Problem 1} \\
+Determine a general solution for the equation \( y''+5y'+6y = 0 \).
+\begin{align*}
+  y''+5y'+6y &= 0 \\
+  y &= \e^{rt} \\
+  r^2+5r+6 &= (r+2)(r+3) = 0 \\
+  r_1 &= -2 \quad r_2 = -3 \\
+  y &= c_1\e^{-2t}+c_2\e^{-3t}
+\end{align*}
+\textbf{Problem 2} \\
+Find a general solution for the equation \( y''-4y'+4y = 0 \).
+\begin{align*}
+  y''-4y'+4y &= 0 \\
+  r^2-4r+4 &= 0 \\
+  r_{1,2} &= -2 \\
+  y &= \e^{-2t}+t\e^{-2t}
+\end{align*}
+\textbf{Problem 3} \\
+Solve the differential equation \( y''+2y'+2y = 0 \).
+\begin{align*}
+  y''+2y'+2y &= 0 \\
+  r^2+2r+2 &= 0 \\
+  r &= \frac{-2+\sqrt{4-(4)(1)(2)}}{2} \\
+  &= -1\pm i \quad \alpha = -1 \quad \beta = 1 \\
+  y &= \e^{-t}\left[c_1\cos(t)+c_2\sin(t)\right]
+\end{align*}
+\textbf{Problem 5} \\
+Solve the boundary value problem \( y''-y = 0, y(0) = 0, y'(\pi) = 1 \).
+\begin{align*}
+  y''-y &= 0 \\
+  r^2-1 &= (r+1)(r-1) = 0 \\
+  r_1 &= -1 \quad r_2 = 1 \\
+  y &= c_1\e^{-t}+c_2\e^t \\
+  y(0) &= 0 = c_1+c_2 \\
+  y &= c_1\e^{-t}-c_1\e^t \\
+  y' &= -c_1\e^{-t}-c_1\e^t \\
+  y'(\pi) &= 1 = -c_1\e^{-\pi}-c_1\e^{\pi} \\
+  &= c_1(-\e^{-\pi}-\e^{\pi}) \\
+  c_1 &= \frac{1}{-\e^{-\pi}-\e^{\pi}} \\
+  y &= \frac{\e^{-t}}{-\e^{-\pi}-\e^{\pi}}-\frac{\e^t}{-\e^{-\pi}-\e^{\pi}}
+\end{align*}
+
+\subsubsection*{Problem 2}
+
+\begin{center}
+  If you have any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
