@@ -14,7 +14,7 @@
 
 \subsubsection*{Problem 1}
 Complete Exercises 1.2 problems 1, 2, 3, 5 \\
-\textbf{Problem 1} \\
+\textbf{Exercise 1} \\
 Determine a general solution for the equation \( y''+5y'+6y = 0 \).
 \begin{align*}
   y''+5y'+6y &= 0 \\
@@ -23,7 +23,7 @@ Determine a general solution for the equation \( y''+5y'+6y = 0 \).
   r_1 &= -2 \quad r_2 = -3 \\
   y &= c_1\e^{-2t}+c_2\e^{-3t}
 \end{align*}
-\textbf{Problem 2} \\
+\textbf{Exercise 2} \\
 Find a general solution for the equation \( y''-4y'+4y = 0 \).
 \begin{align*}
   y''-4y'+4y &= 0 \\
@@ -31,7 +31,7 @@ Find a general solution for the equation \( y''-4y'+4y = 0 \).
   r_{1,2} &= -2 \\
   y &= \e^{-2t}+t\e^{-2t}
 \end{align*}
-\textbf{Problem 3} \\
+\textbf{Exercise 3} \\
 Solve the differential equation \( y''+2y'+2y = 0 \).
 \begin{align*}
   y''+2y'+2y &= 0 \\
@@ -40,7 +40,7 @@ Solve the differential equation \( y''+2y'+2y = 0 \).
   &= -1\pm i \quad \alpha = -1 \quad \beta = 1 \\
   y &= \e^{-t}\left[c_1\cos(t)+c_2\sin(t)\right]
 \end{align*}
-\textbf{Problem 5} \\
+\textbf{Exercise 5} \\
 Solve the boundary value problem \( y''-y = 0, y(0) = 0, y'(\pi) = 1 \).
 \begin{align*}
   y''-y &= 0 \\
@@ -57,6 +57,113 @@ Solve the boundary value problem \( y''-y = 0, y(0) = 0, y'(\pi) = 1 \).
 \end{align*}
 
 \subsubsection*{Problem 2}
+Determine all solutions to
+\[ y''+y = 0, y(0) = 0, y(2\pi) = 1 \]
+You may assume the domain is \( 0<x<2\pi \).
+\begin{align*}
+  y''+y &= 0 \\
+  r^2+1 &= 0 \\
+  r &= 0\pm i \quad \alpha = 0 \quad \beta = 1 \\
+  y &= \e^{0}(c_1\cos(t)+c_2\sin(t)) \\
+  &= c_1\cos(t)+c_2\sin(t) \\
+  y(0) &= 0 = c_1\cos(0)+c_2\sin(0) \\
+  c_1 &= 0 \\
+  y(2\pi) &= 1 = c_2\sin(2\pi) \\
+  1 &= 0
+\end{align*}
+No solution.
+
+\subsubsection*{Problem 3}
+Determine all solutions to
+\[ y''+4y = 0, y'(0) = 0, y'(\frac{\pi}{2}) = 0 \]
+You may assume the domain is \( 0<x<\frac{\pi}{2} \).
+\begin{align*}
+  y''+4y &= 0 \\
+  r^2+4 &= 0 \\
+  r &= 0\pm2i \quad \alpha = 0 \quad \beta = 2 \\
+  y &= \e^{0t}(c_1\cos(2t)+c_2\sin(2t)) \\
+  y' &= -2c_1\sin(2t)+2c_2\cos(2t) \\
+  y'(0) &= 0 = -2c_1\sin(0)+2c_2\cos(0) \\
+  c_2 &= 0 \\
+  y'(\frac{\pi}{2}) &= 0 = -2c_1\sin(\frac{\pi}{2}) \\
+  c_1 &= 0 \\
+  y &= 0
+\end{align*}
+
+\subsubsection*{Problem 4}
+Classify the following PDEs as hyperbolic, parabolic, or elliptic.
+\begin{enumerate}[(a)]
+  \item \[\pdiff{u}{t}+\pdiff{^2u}{t^2} =
+    -2\pdiff{^2u}{x^2}+0.5\pdiff{^u}{x\partial t} \]
+  \begin{align*}
+    B &= 2 \quad A = 1 \quad C = -0.5 \\
+    B^2-4AC &= 4-4(1)(-0.5) \\
+    &= 6
+  \end{align*}
+  hyperbolic
+  \item \[ 3u_{xx}+2u_{xy}+u_y = 7u_{yy} \]
+  \begin{align*}
+    B &= 2 \quad A = 3 \quad C = -7 \\
+    B^2-4AC &= 4-4(3)(-7) \\
+    &= 88
+  \end{align*}
+  hyperbolic
+  \item \[ u_{yy} = u_x+u \]
+  \begin{align*}
+    B &= 0 \quad A = 0 \quad C = 1 \\
+    B^2-4AC &= 0-4(0)(1) \\
+    &= 0
+  \end{align*}
+  parabolic
+  \item \[ -3u_{yy}+2u_{xy} = -u_{xx} \]
+  \begin{align*}
+    B &= 2 \quad A = -3 \quad C = 1 \\
+    B^2-4AC &= 4-4(-3)(1) \\
+    &= 16
+  \end{align*}
+  hyperbolic
+\end{enumerate}
+
+\subsubsection*{Problem 5}
+Find all values of \( c\in\R \) such that the vectors \( \vec{a} = \langle
+c,0.5,c\rangle \) and \( \vec{b} = \langle-3,4,c\rangle \) are orthogonal.
+\begin{align*}
+  \vec{a}\cdot\vec{b} &= 0 \\
+  -3c+2+c^2 &= 0 \\
+  (c-2)(c-1) &= 0 \\
+  c_1 &= 2 \quad c_2 = 1
+\end{align*}
+
+\subsubsection*{Problem 6}
+Use the dot product to find the angle (in radians) between the vectors
+\( \vec{a} = \langle2,4,0\rangle \) and \( \vec{b} = \langle-1,-1,4\rangle \).
+\begin{align*}
+  \vec{a}\cdot\vec{b} &= \|\vec{a}\|\|\vec{b}\|\cos\theta \\
+  -2+(-4)+0 &= \sqrt{4+16}\sqrt{18}\cos\theta \\
+  -6 &= (2\sqrt{5})(3\sqrt{2})\cos\theta \\
+  \cos\theta &= -\frac{1}{\sqrt{10}} \\
+  &= -\frac{\sqrt{10}}{10} \\
+  \theta &\approx 1.892
+\end{align*}
+
+\subsubsection*{Problem 7}
+Let \( S = \{\vec{x_1},\vec{x_2},\vec{x_3}\} \), where \( \vec{x_1} =
+\langle1,-1,0\rangle, \vec{x_2} = \langle1,1,0\rangle, \vec{x_3} = \langle
+0,0,1\rangle \).
+\begin{enumerate}[(a)]
+  \item Is \( S \) an orthogonal set? You will need to compute several dot
+    products to answer this question.
+    \begin{align*}
+      \vec{x_1}\cdot\vec{x_2} &= 1+(-1)+0 = 0 \\
+      \vec{x_1}\cdot\vec{x_3} &= 0+0+0 = 0 \\
+      \vec{x_2}\cdot\vec{x_3} &= 0+0+0 = 0
+    \end{align*}
+    All the vectors are mutually orthogonal so the set is an orthogonal set.
+  \item Is \( S \) an orthonormal set? Remember to show calculation(s) that
+    support your answer.
+    \[ \|\vec{x_1}\| = \sqrt{1+1} = \sqrt{2} \]
+    Since not all the vectors are unit vectors, \( S \) is not orthonormal.
+\end{enumerate}
 
 \begin{center}
   If you have any questions, comments, or concerns, please contact me at
