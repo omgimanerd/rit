@@ -131,7 +131,49 @@ Cross-correlation:
 Convolution:
 \[ G[i,j] = H\star F = \sum_{u=-k}^{k}\sum_{v=-k}^{k}H[u,v]F[i-u,j-v] \]
 Note that if the filter is symmetric, then there is no difference between
-correlation and convolution.
+correlation and convolution. Using a filter like:
+\[ \begin{bmatrix}
+  0 & 0 & 0 \\
+  0 & 0 & 1 \\
+  0 & 0 & 0
+\end{bmatrix} \]
+will shift the image to the right if using convolution, and to the left if using
+correlation.
+
+\subsection*{Shift Invariant Linear System}
+A shift invariant operator behaves the same everywhere. The value of the output
+depends on the pattern in the image neighborhood and not the position of the
+neighborhood.
+\begin{itemize}
+  \item Superposition: \( h\star(f_1+f_2) = h\star f_1+h\star f_2 \)
+  \item Scaling: \( h\star(kf) = k\star(hf) \)
+\end{itemize}
+Convolution is linear and shift invariant, commutative, associative, and has the
+property of identity when applied on a unit impulse \( e \),
+(\( f\star e = f \)). The property of differentiation also holds:
+\[ \ddiff{}{x}(f\star g) = \ddiff{f}{x}\star g \]
+
+\subsection*{Median Filter}
+A median filter replaces a pixel with the median of its neighboring values.
+Unlike a mean filter, it is edge preserving and does not add additional blur.
+No new pixel values are introduced because only existing values are used to
+replace outlier values.
+
+\subsection*{Template Matching}
+Filters look like the effects they are intended to find. We can use filters
+and normalized cross-correlation to find image features. Correlation mask:
+\[ C_{fg} = \sum_{[i,j]\in\R}f(i,j)g(i,j) \]
+The brightness of the underlying image can skew the correlation score, so we
+normalize by subtracting the mean value of the template. This works better, but
+still not well. The most popular matching score is using the sum of squared
+differences.
+\[ C_{fg} = \sum_{[i,j]\in\R}(f(i,j)-g(i,j))^2 \]
+When an image is take by different sensors, there may be intensity differences,
+which we can resolve by normalizing the images before doing correlation.
+\begin{align*}
+  f_{norm} &= \frac{f-\bar{f}}{\sqrt{\sum(f-\bar{f})^2}} \\
+  g_{norm} &= \frac{g-\bar{g}}{\sqrt{\sum(g-\bar{g})^2}}
+\end{align*}
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
