@@ -1,6 +1,8 @@
 \documentclass{math}
 
-\usepackage{listing}
+\usepackage{forest}
+\usepackage{listings}
+\usepackage{tikz}
 
 \title{Principles of Data Management}
 \author{Alvin Lin}
@@ -27,6 +29,105 @@ Windows-specific platform but it has grown to almost every platform. Because
 these interfaces cater to the lowest common denominator, they do not support
 database-specific functionality and are primarily used for simple databases.
 
+\subsection*{Interacting with Python (sample)}
+\begin{lstlisting}[language=Python]
+import psycopg2
+
+conn_string = "host='reddwarf.cs.rit.edu'" \
+              "dbname='db'" \
+              "user='user'" \
+              "password='pw'"
+conn = psycopg2.connect(conn_string)
+\end{lstlisting}
+When connecting to a server, instead of copying data over the network
+connection, it is usually always more efficient to use a server side cursor to
+query the data. The server will instead hold a small portion of the database
+in memory with the cursor pointing to the first element.
+\begin{lstlisting}[language=Python]
+cursor=conn.cursor()
+cursor.execute("select * from car")
+for data in cursor:
+  print(data)
+\end{lstlisting}
+
+\subsection*{Database Design}
+To reiterate, when planning the logical design of the database, we need to take
+into account the business need of the database and the computer scientists who
+need to build the application around the database.
+
+\subsubsection*{Entity-Relationship Model}
+\textbf{Entity}: anything that is distinguishable from other objects \\
+\textbf{Entity Sets}: entities that are related (share some attributes)
+\[ dog = (name,DOB,gooddog,breed,color,owner) \]
+\begin{center}
+  \begin{tabular}{|c|c|}
+    \hline
+    ID & Name \\
+    \hline
+    1 & Harry \\
+    2 & Abbey \\
+    3 & Potato \\
+    4 & Kali \\
+    5 & Sade \\
+    \hline
+  \end{tabular}
+  \begin{tabular}{|c|c|}
+    \hline
+    ID & Name \\
+    \hline
+    1 & Jeff \\
+    2 & Pat \\
+    3 & Alvin \\
+    4 & Andrew \\
+    \hline
+  \end{tabular}
+\end{center}
+\textbf{Relationship Sets}: links entity sets together
+\begin{itemize}
+  \item Harry - 2005 - Jeff
+  \item Abbey - 2005 - Pat
+  \item Potato - 2016 - Alvin
+  \item Kali - 2018 - Andrew
+  \item Sade - 2007 - Andrew
+\end{itemize}
+Binary relationships link two entities, but some relationships may have 3 or
+more entities. Cardinality is used in binary degree relationship sets to define
+how two entity sets are linked together.
+\begin{itemize}
+  \item One to One
+  \item One to Many
+  \item Many to One
+  \item Many to Many
+\end{itemize}
+
+\subsection*{Complex Attributes}
+Attributes can be simple or complex, single valued or multi-valued. Single
+valued attributes are things like names, which we only have one of, while
+emails are multi-valued since we can have multiple. Derived attributes are
+things like age, which are derived from a date of birth. The domain of an
+attribute is the set of available values for an attribute. Attributes like
+names and addresses can be complex attributes:
+\begin{center}
+  \begin{forest}
+    [name
+      [given]
+      [middle]
+      [surname]
+    ]
+  \end{forest} \\
+  \begin{forest}
+    [address
+      [street
+        [number]
+        [name]
+        [apartment]
+      ]
+      [city]
+      [state]
+      [zip]
+    ]
+  \end{forest}
+\end{center}
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
