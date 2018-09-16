@@ -64,7 +64,7 @@ their dot product is zero. If a set of nonzero vectors
 then the set of vectors is an \textbf{orthogonal set}. An \textbf{orthonormal
 set} is an orthogonal set where all \( \vec{x_i} \) are unit vectors.
 \[ \{\i,\j,\j\} \text{ is an orthonormal set} \]
-\[ \{3\i,\j\k\} \text{ is an orthogonal set but not orthonormal} \]
+\[ \{3\i,\j,\k\} \text{ is an orthogonal set but not orthonormal} \]
 
 \subsection*{Orthogonal Functions}
 We can treat functions like vectors. For \( f(x) = x^2 \), as
@@ -112,6 +112,42 @@ In the case where \( m\ne n \):
   (f_n,f_m) &= 0 \text{ for } m\ne n
 \end{align*}
 Therefore, \( \{\cos(\frac{n\pi x}{L})\}_{n=0}^{\infty} \) is orthogonal.
+\[ (f_n,f_m) = \begin{cases}
+  0, & m\ne n \\
+  L, & m = n\ne 0 \\
+  2L, & m = n = 0
+\end{cases} \]
+Since the inner product is 2L when \( m = n \), the set is not orthonormal
+because there exists no \( L \) where \( L = 2L = 1 \). We can normalize the set
+by choosing choefficients \( c_nf_n \) such that \( \|c_nf_n\| = 1 \). Since we
+have already found the function norm, we know the following:
+\[ \|f_n(x)\| = \sqrt{(f_n,f_n)} = \begin{cases}
+  \sqrt{L}, & n>0 \\
+  \sqrt{2L}, & n = 0
+\end{cases} \]
+Choosing \( c_n = \frac{1}{\|f_n(x)\|} \) yields us:
+\[ \left\{\frac{1}{\sqrt{2L}},\frac{1}{\sqrt{L}}\cos(\frac{\pi x}{L}),
+  \frac{1}{\sqrt{L}}\cos(\frac{2\pi x}{L}),\dots\right\} \]
+which is an orthonormal set on \( [-L,L] \).
+
+\subsubsection*{Shortcuts}
+Recall that:
+\begin{itemize}
+  \item odd function \( \times \) odd function = even function
+  \item even function \( \times \) even function = even function
+  \item even function \( \times \) odd function = odd function
+\end{itemize}
+We can use this to quickly determine if two functions are orthogonal.
+\[ (\sin(x),\cos(x)) = \int_{-L}^{L}\sin(x)\cos(x)\diff{x} \]
+Because \( \sin(x) \) is odd and \( \cos(x) \) is even, their product is an odd
+function. Thus their integral is 0 over any symmetric interval. We can use this
+to quickly determine that they are orthogonal over \( [-L,L] \).
+
+\subsection*{Fourier Series}
+We will use the inner product and orthogonality to find the Fourier series
+corresponding to \( f(x) \).
+\[ f(x) = \frac{a_0}{2}+\sum_{n=1}^{\infty}(a_n\cos(\frac{n\pi x}{L})+
+  b_n\sin(\frac{n\pi x}{L})) \]
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
