@@ -154,48 +154,150 @@ thus dependent on strong entity set. This provides a discriminating key or
 attribute that can be added to the weak entity set to make it unique.
 
 \subsection*{ER Diagrams}
+Entity Set (UML and ER diagram):
+\begin{center}
+  \begin{tikzpicture}
+    \begin{class}[text width=2cm]{Dog}{0,0}
+      \attribute{ID}
+      \attribute{Name}
+      \attribute{Breed}
+    \end{class}
+    \begin{class}[text width=2cm]{Person}{4,0}
+      \attribute{ID}
+      \attribute{Name}
+      \attribute{Address}
+    \end{class}
+    \begin{class}[text width=4cm]{Ownership}{2,-5}
+      \attribute{Acquisition Date}
+      \attribute{Termination Date}
+    \end{class}
+    \aggregation{Dog}{}{}{Person}
+    \unidirectionalAssociation{Dog}{}{}{Ownership}
+    \unidirectionalAssociation{Person}{}{}{Ownership}
+  \end{tikzpicture}
+  \begin{tikzpicture}[node distance=0.5cm, every edge/.style={link}]
+    \node[entity](dog){Dog};
+    \node[attribute](dogname)[above left=of dog]{Name} edge (dog);
+    \node[attribute](dogid)[above=of dog]{ID} edge (dog);
+    \node[attribute](dogbreed)[above right=of dog]{Breed} edge (dog);
+
+    \node[ident relationship](owns)[right=1.5cm of dog]{Owns} edge (dog);
+    \node[attribute](ownsacquisition)[below left=1cm of owns]
+      {Acquisition Date} edge (owns);
+    \node[attribute](ownstermination)[below right=1cm of owns]
+      {Termination Date} edge (owns);
+
+    \node[entity](person)[right=5cm of dog]{Person} edge (owns);
+    \node[attribute](personname)[above left=of person]{Name} edge (person);
+    \node[attribute](personid)[above=of person]{Name} edge (person);
+    \node[attribute](personaddress)[above right=of person]{Address} edge
+      (person);
+  \end{tikzpicture}
+\end{center}
+Dogs can also be related to other dogs, which can be represented as follows:
+\begin{center}
+  \begin{tikzpicture}[node distance=0.5cm, every edge/.style={link}]
+    \node[entity](dog){Dog};
+    \node[attribute](dogname)[above left=of dog]{Name} edge (dog);
+    \node[attribute](dogid)[above=of dog]{ID} edge (dog);
+    \node[attribute](dogbreed)[above right=of dog]{Breed} edge (dog);
+
+    \node[ident relationship](owns)[right=3cm of dog]{Owns} edge[thick,double]
+      node[above] {parent\_id} node[below] {pup\_id} (dog);
+  \end{tikzpicture}
+\end{center}
+
+\subsubsection*{Cardinality}
 \begin{itemize}
-  \item Entity Set (UML and chen diagram)
+  \item 1:1
   \begin{center}
-    \begin{tikzpicture}
-      \begin{class}[text width=2cm]{Dog}{0,0}
-        \attribute{ID}
-        \attribute{Name}
-        \attribute{Breed}
-      \end{class}
-      \begin{class}[text width=2cm]{Person}{4,0}
-        \attribute{ID}
-        \attribute{Name}
-        \attribute{Address}
-      \end{class}
-      \begin{class}[text width=4cm]{Ownership}{2,-5}
-        \attribute{Acquisition Date}
-        \attribute{Termination Date}
-      \end{class}
-      \aggregation{Dog}{}{}{Person}
-      \unidirectionalAssociation{Dog}{}{}{Ownership}
-      \unidirectionalAssociation{Person}{}{}{Ownership}
-    \end{tikzpicture}
     \begin{tikzpicture}[node distance=0.5cm, every edge/.style={link}]
       \node[entity](dog){Dog};
-      \node[attribute](dogname)[above left=of dog]{Name} edge (dog);
-      \node[attribute](dogid)[above=of dog]{ID} edge (dog);
-      \node[attribute](dogbreed)[above right=of dog]{Breed} edge (dog);
-
-      \node[ident relationship](owns)[right=1.5cm of dog]{Owns} edge (dog);
-      \node[attribute](ownsacquisition)[below left=1cm of owns]
-        {Acquisition Date} edge (owns);
-      \node[attribute](ownstermination)[below right=1cm of owns]
-        {Termination Date} edge (owns);
-
-      \node[entity](person)[right=5cm of dog]{Person} edge (owns);
-      \node[attribute](personname)[above left=of person]{Name} edge (person);
-      \node[attribute](personid)[above=of person]{Name} edge (person);
-      \node[attribute](personaddress)[above right=of person]{Address} edge
-        (person);
+      \node[entity](person)[right=6cm of dog]{Person};
+      \node[ident relationship](owns)[right=2cm of dog]{Owns} edge[->] (dog)
+        edge[->] (person);
+    \end{tikzpicture}
+  \end{center}
+  \item Many:1
+  \begin{center}
+    \begin{tikzpicture}[node distance=0.5cm, every edge/.style={link}]
+      \node[entity](dog){Dog};
+      \node[entity](person)[right=6cm of dog]{Person};
+      \node[ident relationship](owns)[right=2cm of dog]{Owns} edge[->] (dog)
+        edge (person);
+    \end{tikzpicture}
+  \end{center}
+  \item 1:Many
+  \begin{center}
+    \begin{tikzpicture}[node distance=0.5cm, every edge/.style={link}]
+      \node[entity](dog){Dog};
+      \node[entity](person)[right=6cm of dog]{Person};
+      \node[ident relationship](owns)[right=2cm of dog]{Owns} edge (dog)
+        edge[->] (person);
+      \path (person) edge[bend right,->] node[above] {many} (dog);
+      \path (dog) edge[bend right,->] node[below] {one} (person);
     \end{tikzpicture}
   \end{center}
 \end{itemize}
+A single line implies a 0..N relationship in that one thing can have 0 or more
+of another object, while a double line implies 1..N which implies a one or more
+relationship.
+
+\subsubsection*{Complex Attributes}
+UML:
+\begin{center}
+  \begin{tikzpicture}
+    \begin{class}[text width=5cm]{Person}{0,0}
+      \attribute{ID}
+      \attribute{Name: first, middle, last}
+      \attribute{Address: zip, city, state, street, etc}
+      \attribute{\{email\}}
+      \operation{age()}
+      \attribute{DOB}
+    \end{class}
+  \end{tikzpicture}
+\end{center}
+For the accompanying Chen ER diagram, multi-valued attributes like email are
+double circled, while derived attributes like age are dotted.
+\begin{center}
+  \begin{tikzpicture}[node distance=0.5cm, every edge/.style={link}]
+    \node[entity](person){Person};
+    \node[attribute](id)[above=of person]{ID} edge (person);
+
+    \node[attribute](name)[above right=of person]{Name} edge (person);
+    \node[attribute](first)[above left=1cm of name]{First} edge (name);
+    \node[attribute](middle)[above=of name]{Middle} edge (name);
+    \node[attribute](last)[above right=1cm of name]{Last} edge (name);
+
+    \node[attribute](address)[right=of person]{Address} edge (person);
+    \node[attribute](zip)[above right=of address]{ZIP} edge (address);
+    \node[attribute](street)[right=of address]{Street} edge (address);
+    \node[attribute](number)[above right=of street]{Number} edge (street);
+    \node[attribute](name)[right=of street]{Name} edge (street);
+    \node[attribute](apartment)[below right=of street]{Apartment} edge (street);
+    \node[attribute](etc)[below right=of address]{...} edge (address);
+
+    \node[attribute,dotted](age)[below=1cm of person]{Age} edge (person);
+    \node[attribute,double](email)[below left=of person]{Email} edge (person);
+  \end{tikzpicture}
+\end{center}
+Sometimes, weak entity sets must rely on another entity in order to be uniquely
+identified. For example:
+\begin{center}
+  \begin{tikzpicture}[node distance=0.5cm, every edge/.style={link}]
+    \node[entity](employee){Employee};
+    \node[attribute](id)[below=of employee]{ID} edge (employee);
+
+    \node[ident relationship](hasa)[right=of employee]{Has A} edge (employee);
+
+    \node[entity,double](child)[right=of hasa]{Child} edge[total] (hasa);
+    \node[attribute,dotted](name)[above right=of child]{Name} edge (child);
+    \node[attribute,dotted](dob)[below right=of child]{DOB} edge (child);
+  \end{tikzpicture}
+\end{center}
+If there are two children (of two employees) with the same name and date of
+birth, then they are reliant on their relationship with the employee and the
+employee's ID in order to be uniquely identified.
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
