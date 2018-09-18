@@ -1,0 +1,109 @@
+\documentclass{math}
+
+\title{Introduction to Intelligent Security Systems}
+\author{Alvin Lin}
+\date{August 2018 - December 2018}
+
+\begin{document}
+
+\maketitle
+
+\section*{Intrusion Detection and Prevention Systems}
+Phases of Intrusion:
+\begin{itemize}
+  \item Intelligence Gathering: attacker observes the system to determine
+    vulnerabilities
+  \item Planning: attacker decides what resource to attack (usually the
+    least defended component)
+  \item Attack: attacker carries out the plan
+  \item Hiding: attacker covers tracks of attack
+  \item Future Attacks: attack installs backdoors for future entry points
+\end{itemize}
+Intrusion detection and prevent has three major parts:
+\begin{itemize}
+  \item Intrusion Prevention: protect system resources
+  \item Intrusion Detection: (second line of defense) discriminates between
+    intrusion attempts and regular system usage
+  \item Intrusion Recovery: effective recovery models
+\end{itemize}
+Many layers of defense are required because there are often many security flaws
+in systems. Secure systems are often expensive and not user friendly, and there
+is still the an insider threat. They need to be continually improved because
+the skills and tools of hackers are also continually improving.
+
+\subsection*{Terminology}
+\begin{itemize}
+  \item \textbf{Audit}: activity of looking at user/system behavior, its
+    effects, or the collected data
+  \item \textbf{Profiling}: looking at users or systems to determine what they usually do
+  \item \textbf{Anomaly}: abnormal behavior
+  \item \textbf{Misuse}: activity that violates the security policy
+  \item \textbf{Outsider}: someone without access rights to the system
+  \item \textbf{Insider}: someone with access rights to the system
+  \item \textbf{Intrusion}: misuse by outsiders and insiders
+\end{itemize}
+
+\subsection*{IDS Operation}
+\begin{itemize}
+  \item \textbf{Host Based}: deployed on a specific host to monitor and gather
+    information from that host
+  \item \textbf{Network Based}: focuses on network attacks and attempts to
+    identify unauthorized, illicit, and/or anomalous behavior based on network
+    traffic patterns
+  \item \textbf{Network Behavior Analysis}: an extension of network based
+    intrusion detection systems that inspects the packets and network
+    information gathered from routers and other physical devices on the network
+  \item \textbf{Wireless}: examines the wireless network for suspcious activity
+    and analyzes the wireless networking protocols
+\end{itemize}
+\begin{center}
+  \begin{tabular}{|c|p{4.5cm}|p{4.5cm}|}
+    \hline
+    IDS & Main Components & Security Tasks \\
+    \hline
+    Host Based & DMZ Switch, Host IDPS Appliances, Agents & examines data flow
+      and system files related to host \\
+    \hline
+    Network Based & Sensors, Load Balancer, Switch, Router & logging data,
+      protocol analysis, inspects data in segments. Signature and anomaly-based
+      detection \\
+    \hline
+    Network Behavior Analysis & NBA Management switch, console, and management
+      server & examines packets from network segments \\
+    \hline
+    Wireless & sensors, management switches, and management server & sampling of
+      traffic, logging information, wireless protocol analysis \\
+    \hline
+  \end{tabular} \\[2cm]
+  \begin{tabular}{|c|p{4.5cm}|p{4.5cm}|}
+    \hline
+    IDS & Advantages & Limitations \\
+    \hline
+    Host Based & detects local attacks before they hit the network, bandwidth
+      independent, low false positive rate & delay in detection, agents use the
+      resources of hosts, installation of agents may conflict with existing
+      security software \\
+    \hline
+    Network Based & no overload, signature and anomaly-based detection &
+      inability to detect encrypted information, fails to analyze during high
+      load \\
+    \hline
+    Network Behavior Analysis & excellent detection capabilities, ability to log
+      information, can often determine attack origin & collects data from
+      network devices, detects attacks after damage occurs \\
+    \hline
+    Wireless & able to monitor different types of attacks, can detect physical
+      threat location, can perform prevention techniques & unable to detect
+      passive monitoring or DDoS attacks, cannot do evasion techniques using
+      channel scanning \\
+    \hline
+  \end{tabular}
+\end{center}
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
