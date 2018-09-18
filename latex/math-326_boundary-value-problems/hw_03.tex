@@ -1,0 +1,84 @@
+\documentclass{math}
+
+\usepackage{enumerate}
+
+\geometry{letterpaper, margin=0.5in}
+
+\title{Boundary Value Problems: Homework 3}
+\author{Alvin Lin}
+\date{August 2018 - December 2018}
+
+\begin{document}
+
+\maketitle
+
+\subsection*{Problem 1}
+Exercises 2.1: problems 4-7
+
+\subsubsection*{Exercise 4}
+Show that the set of functions \( \{\sin(n\pi x), -1<x<1, n\in\N \) is
+orthogonal.
+\begin{align*}
+  n&\in\N,m\in\N,n\ne m \\
+  (f_n,f_m) &= \int_{-1}^{1}\sin(m\pi x)\sin(n\pi x)\diff{x} \\
+  &= \int_{-1}^{1}\frac{1}{2}\left(\cos(m\pi x-n\pi x)-
+    \cos(m\pi x+n\pi x)\right)\diff{x} \\
+  &= \frac{1}{2}\left[\frac{1}{m\pi-n\pi}\sin(m\pi x-n\pi x)+
+    \frac{1}{m\pi+n\pi}\sin(m\pi x+n\pi x)\right]_{-1}^{1} \\
+  &= \frac{1}{2}\left[
+    \frac{\sin(m\pi-n\pi)}{m\pi-n\pi}+\frac{\sin(m\pi+n\pi)}{m\pi+n\pi}-
+    \frac{\sin(n\pi-m\pi)}{m\pi-n\pi}-\frac{\sin(-m\pi-n\pi)}{m\pi+n\pi}
+    \right] \\
+  &= \frac{1}{2}(0+0-0-0) \\
+  &= 0
+\end{align*}
+Because \( m\in\N \) and \( n\in\N \), all the sines evaluate to some
+\( \sin(c\pi) \) where \( c\in\N \). The sine of any multiple of \( \pi \) is
+0.
+\begin{align*}
+  n&\in\N,m\in\N,n=m \\
+  (f_n,f_m) &= \int_{-1}^{1}\frac{1}{2}\left(\cos(m\pi x-n\pi x)-
+    \cos(m\pi x+n\pi x)\right)\diff{x} \\
+  &= -\frac{1}{2}\int_{-1}^{1}\cos(2n\pi x)\diff{x} \\
+  &= -\frac{1}{2}\left[\frac{\cos(2n\pi x)}{2n\pi}\right]_{-1}^{1} \\
+  &\ne 1
+\end{align*}
+This set is not orthonormal.
+
+\subsubsection*{Exercise 5}
+Find \( \alpha \) so that \( \{1,x,1+\alpha x^2\} \) on \( (-1,1) \) is
+orthogonal.
+\begin{align*}
+  0 &= (1,1+\alpha x^2) \\
+  &= \int_{-1}^{1}1+\alpha x^2\diff{x} \\
+  &= 2+\alpha\left[\frac{x^3}{3}\right]_{-1}^{1} \\
+  &= 2+\alpha\frac{2}{3} \\
+  -2 &= \frac{2\alpha}{3} \\
+  \alpha &= -3
+\end{align*}
+Normalize the set.
+\begin{align*}
+  \|1\| &= \sqrt{\int_{-1}^{1}1^2\diff{x}} \\
+  &= \sqrt{2} \\
+  \|x\| &= \sqrt{\int_{-1}^{1}x^2\diff{x}} \\
+  &= \sqrt{\frac{2}{3}} \\
+  \|1-3x^2\| &= \sqrt{\int_{-1}^{1}(1-3x^2)^2} \\
+  &= \sqrt{\int_{-1}^{1}1-6x^2+9x^4\diff{x}} \\
+  &= \sqrt{\left[x-2x^3+\frac{9}{5}x^5\right]_{-1}^{1}} \\
+  &= \sqrt{1-2+\frac{9}{5}+1-2+\frac{9}{5}} \\
+  &= \sqrt{\frac{18}{5}-2} \\
+  &= \sqrt{\frac{8}{5}}
+\end{align*}
+The normalized set is \( \{\frac{1}{\sqrt{2}},\frac{x\sqrt{3}}{\sqrt{2}},
+\frac{(1-3x^2)\sqrt{5}}{2\sqrt{2}}\} \).
+
+\subsubsection*{Exercise 6}
+Show that the set \( \{1,\cos(\frac{n\pi x}{L}), \sin(\frac{m\pi x}{L})\},
+n,m\in\N, -L<x<L \) is orthogonal but not orthonormal.
+
+\begin{center}
+  If you have any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
