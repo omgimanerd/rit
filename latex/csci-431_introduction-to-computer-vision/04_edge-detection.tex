@@ -1,0 +1,132 @@
+\documentclass{math}
+
+\title{Introduction to Computer Vision}
+\author{Alvin Lin}
+\date{August 2018 - December 2018}
+
+\begin{document}
+
+\maketitle
+
+\section*{Edge Detection}
+Intuitions guiding edge detection:
+\begin{itemize}
+  \item Pixels tend strongly to be like their neighbors. As a consequence, we
+    can estimate a pixel value using its neighbors.
+  \item Smoothing with a Gaussian. This works because pixels look like their
+    neighbors. Positive and negative errors tend to cancel.
+  \item Pixels can differ from their neighbor because they have different
+    albedos, are on different objects, have different surface normals, or have
+    a big difference in shading.
+  \item Pixels that differ from their neighbors are interesting to us because
+    they occur when the gradient is large.
+\end{itemize}
+The key idea is that we will suppress image noise by smoothing, and then taking
+a gradient. An edge is a place of rapid change in the image intensity function,
+so we can use a derivative to detect this.
+
+\subsection*{Image Gradient}
+The gradient of an image is defined as:
+\[ \triangledown{f} = [\pdiff{f}{x},\pdiff{f}{y}] \]
+The gradient points in the direction of the most rapid increase in intensity.
+Its direction is given by:
+\[ \theta = \arctan\left(\frac{\pdiff{f}{y}}{\pdiff{f}{x}}\right) \]
+The edge strength is given by the gradient magnitude:
+\[ \|\triangledown{f}\| = \sqrt{\left(\pdiff{f}{x}\right)^2+
+  \left(\pdiff{f}{y}\right)^2} \]
+
+\subsection*{Differentiation and Convolution}
+For a 2D function, the partial derivative is defined as:
+\[ \pdiff{f(x,y)}{x} =
+  \lim_{\epsilon\to0}\frac{f(x+\epsilon,y)-f(x,y)}{\epsilon} \]
+For discrete data like images, we can approximate this using finite differences:
+\[ \pdiff{f(x,y)}{x} \approx \frac{f(x+1,y)-f(x,y)}{1} \]
+This is linear and shift invariant, and must be the reuslt of a convolution. The
+associated filter to produce this would be:
+\[ \begin{bmatrix} -1 & 1 \end{bmatrix} \]
+Other approximations of derivate filters exist:
+\begin{itemize}
+  \item Prewitt:
+  \[ M_z = \begin{bmatrix}
+    -1 & 0 & 1 \\
+    -1 & 0 & 1 \\
+    -1 & 0 & 1
+  \end{bmatrix} \quad
+  M_y = \begin{bmatrix}
+    1 & 1 & 1 \\
+    0 & 0 & 0 \\
+    -1 & -1 & -1
+  \end{bmatrix} \]
+  \item Sobel:
+  \[ M_x = \begin{bmatrix}
+    -1 & 0 & 1 \\
+    -2 & 0 & 2 \\
+    -1 & 0 & 1
+  \end{bmatrix} \quad
+  M_y = \begin{bmatrix}
+    1 & 2 & 1 \\
+    0 & 0 & 0 \\
+    -1 & -2 & -1
+  \end{bmatrix} \]
+  \item Roberts:
+  \[ M_x = \begin{bmatrix}
+    0 & 1 \\
+    -1 & 0
+  \end{bmatrix} \quad
+  M_y = \begin{bmatrix}
+    1 & 0 \\
+    0 & -1
+  \end{bmatrix} \]
+\end{itemize}
+
+\subsection*{Noise}
+Consider plotting a single row or column of the image, if we plot the intensity
+as a function of position, we get a signal. Derivatives respond strongly to
+pixels that differ from their neighbors, so noise is heavily amplified if we
+take the derivative. It is better to smooth first before taking the derivative.
+With the smoothing kernel \( h \), our convolution output is:
+\[ \pdiff{}{x}(h\star f) \]
+By the derivative theorem of convolution:
+\[ \pdiff{}{x}(h\star f) = (\pdiff{}{x}h)\star f \]
+Because of this, we can filter the image with the derivative of Gaussian filters
+to get the smoothed gradient.
+
+\subsection*{Laplacian of Gaussian}
+Consider \( \pdiff{^2}{x^2}(h\star f) \). By taking the second derivative of the
+signal, we can consider all the zero-crossings as edges since that is the
+greatest chnage in intensity. Again, we can use the derivative theorem:
+\[ \pdiff{^2}{x^2}(h\star f) = (\pdiff{^2}{x^2}h)\star f \]
+This is also known as the Laplacian filter.
+
+\subsection*{Designing and Edge Detector}
+An optimal edge detector has:
+\begin{itemize}
+  \item Good detection: the optimal detector must have a small number of false
+    positives and false negatives.
+  \item Good localization: the edges detected must be as close as possible to
+    the true edges.
+  \item Single response: the detector must return one point only for each true
+    edge point, minimizing the number of local maxima around the true edge.
+\end{itemize}
+
+\subsubsection*{Canny Edge Detector}
+The Canny edge detector is probably the most widely used edge detector in
+computer vision. Canny has shown that the first derivative of the Gaussian
+closely approximates the operator that optimizes the product of signal-to-noise
+ratio and localization. Steps:
+\begin{itemize}
+  \item Filter the image with the x and y derivatives of the Gaussian
+  \item Find the magnitude and orientation of the gradient
+  \item Non-maximum suppression: thin down multi-pixel wide ``ridges'' down to
+    a single pixel width
+  \item Thresholding and linking (hysteresis): use a high threshold to start
+    edge curves and a low threshold to continue them
+\end{itemize}
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
