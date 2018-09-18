@@ -1,0 +1,74 @@
+\documentclass{math}
+
+\title{Boundary Value Problems}
+\author{Alvin Lin}
+\date{August 2018 - December 2018}
+
+\begin{document}
+
+\maketitle
+
+\section*{Fourier Series}
+Terminology:
+\begin{itemize}
+  \item RH: right hand
+  \item LH: left hand
+  \item RH limit: \( \lim_{x\to x_0^+}f(x) = f(x_0^+) \)
+  \item LH limit: \( \lim_{x\to x_0^+}f(x) = f(x_0^-) \)
+  \item RH derivative: \( \lim_{x\to x_0^+}f'(x) = f_+'(x_0) \)
+  \item LH derivative: \( \lim_{x\to x_0^-}f'(x) = f_-'(x_0) \)
+  \item Continuous function: \( f(x_0^-) = f(x_0^+) = f(x_0) \)
+  \item \( f(x) \) is smooth at \( x_0 \) when \( f'(x) \) is continuous at
+    \( x_0 \)
+\end{itemize}
+Many types of piecewise functions we care about are piecewise continouous and
+piecewise smooth. A function \( f(x) \) is piecewise continuous if it has at
+most a finite number of jump or removable discontinuities. A function \( f \) is
+piecewise smooth if \( f'(x) \) is piecewise continuous.
+
+\subsubsection*{Example}
+\[ f(x) = \begin{cases}
+  x^2 &, x\ge0 \\
+  -1 &, x<0
+\end{cases} \]
+This is piecewise smooth because
+\[ f'(x) = \begin{cases}
+  2x &, x\ge0 \\
+  0 &, x<0
+\end{cases} \]
+and this is piecewise continuous. However, the function
+\[ f(x) = \begin{cases}
+  \frac{1}{x-1} &, x>\frac{1}{2} \\
+  2x &, x<\frac{1}{2}
+\end{cases} \]
+is neither piecewise smooth nor piecewise continuous.
+
+\subsection*{Fourier Series}
+A Fourier series of \( f(x) \) on \( -L<x<L \) is associated with:
+\[ f(x) ~ \frac{a_0}{2}+\sum_{n=1}^{\infty}(a_n\cos(\frac{n\pi x}{L}+
+b_n\sin(\frac{n\pi x}{L}))) \]
+Euler formulas for coefficients:
+\begin{align*}
+  a_n &= \frac{1}{L}\int_{-L}^{L}f(x)\cos(\frac{n\pi x}{L})\diff{x} \\
+  &= \frac{1}{L}(f,\cos(\frac{n\pi x}{L})) \quad n = 0,1,2,\dots \\
+  b_n &= \frac{1}{L}\int_{-L}^{L}f(x)\sin(\frac{n\pi x}{L})\diff{x} \\
+  &= \frac{1}{L}(f,\sin(\frac{n\pi x}{L})) \quad n = 1,2,3,\dots
+\end{align*}
+\( a_n,b_n \) are components of \( f(x) \) along \( \sin \) and \( \cos \).
+As long as \( f(x) \) is piecewise continuous, the Fourier series of \( f(x) \)
+will converge to \( f(x) \) as \( n\to\infty \). At each point \( x_0 \), the
+Fourier series will converge to \( \frac{f(x_0^-)+f(x_0^+)}{2} \), so for
+\[ f(x) = \begin{cases}
+  0 &, 0<x\le L \\
+  1 &, -L\le x<0
+\end{cases} \]
+the Fourier series of \( f \) converges to \( \frac{f(0^-)-f(0^+)}{2} =
+\frac{1+0}{2} = \frac{1}{2} \) at \( x = 0 \).
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
