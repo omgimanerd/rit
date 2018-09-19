@@ -1,0 +1,198 @@
+\documentclass{math}
+
+\usepackage{enumerate}
+
+\geometry{letterpaper, margin=0.5in}
+
+\title{Boundary Value Problems: Homework 3}
+\author{Alvin Lin}
+\date{August 2018 - December 2018}
+
+\begin{document}
+
+\maketitle
+
+\subsection*{Problem 1}
+Exercises 2.1: problems 4-7
+
+\subsubsection*{Exercise 4}
+Show that the set of functions \( \{\sin(n\pi x), -1<x<1, n\in\N \) is
+orthogonal.
+\begin{align*}
+  n&\in\N,m\in\N,n\ne m \\
+  (f_n,f_m) &= \int_{-1}^{1}\sin(m\pi x)\sin(n\pi x)\diff{x} \\
+  &= \int_{-1}^{1}\frac{1}{2}\left(\cos(m\pi x-n\pi x)-
+    \cos(m\pi x+n\pi x)\right)\diff{x} \\
+  &= \frac{1}{2}\left[\frac{1}{m\pi-n\pi}\sin(m\pi x-n\pi x)+
+    \frac{1}{m\pi+n\pi}\sin(m\pi x+n\pi x)\right]_{-1}^{1} \\
+  &= \frac{1}{2}\left[
+    \frac{\sin(m\pi-n\pi)}{m\pi-n\pi}+\frac{\sin(m\pi+n\pi)}{m\pi+n\pi}-
+    \frac{\sin(n\pi-m\pi)}{m\pi-n\pi}-\frac{\sin(-m\pi-n\pi)}{m\pi+n\pi}
+    \right] \\
+  &= \frac{1}{2}(0+0-0-0) \\
+  &= 0
+\end{align*}
+Because \( m\in\N \) and \( n\in\N \), all the sines evaluate to some
+\( \sin(c\pi) \) where \( c\in\N \). The sine of any multiple of \( \pi \) is
+0.
+\begin{align*}
+  n&\in\N,m\in\N,n=m \\
+  (f_n,f_m) &= \int_{-1}^{1}\frac{1}{2}\left(\cos(m\pi x-n\pi x)-
+    \cos(m\pi x+n\pi x)\right)\diff{x} \\
+  &= -\frac{1}{2}\int_{-1}^{1}\cos(2n\pi x)\diff{x} \\
+  &= -\frac{1}{2}\left[\frac{\cos(2n\pi x)}{2n\pi}\right]_{-1}^{1} \\
+  &\ne 1
+\end{align*}
+This set is not orthonormal.
+
+\subsubsection*{Exercise 5}
+Find \( \alpha \) so that \( \{1,x,1+\alpha x^2\} \) on \( (-1,1) \) is
+orthogonal.
+\begin{align*}
+  0 &= (1,1+\alpha x^2) \\
+  &= \int_{-1}^{1}1+\alpha x^2\diff{x} \\
+  &= 2+\alpha\left[\frac{x^3}{3}\right]_{-1}^{1} \\
+  &= 2+\alpha\frac{2}{3} \\
+  -2 &= \frac{2\alpha}{3} \\
+  \alpha &= -3
+\end{align*}
+Normalize the set.
+\begin{align*}
+  \|1\| &= \sqrt{\int_{-1}^{1}1^2\diff{x}} \\
+  &= \sqrt{2} \\
+  \|x\| &= \sqrt{\int_{-1}^{1}x^2\diff{x}} \\
+  &= \sqrt{\frac{2}{3}} \\
+  \|1-3x^2\| &= \sqrt{\int_{-1}^{1}(1-3x^2)^2} \\
+  &= \sqrt{\int_{-1}^{1}1-6x^2+9x^4\diff{x}} \\
+  &= \sqrt{\left[x-2x^3+\frac{9}{5}x^5\right]_{-1}^{1}} \\
+  &= \sqrt{1-2+\frac{9}{5}+1-2+\frac{9}{5}} \\
+  &= \sqrt{\frac{18}{5}-2} \\
+  &= \sqrt{\frac{8}{5}}
+\end{align*}
+The normalized set is \( \{\frac{1}{\sqrt{2}},\frac{x\sqrt{3}}{\sqrt{2}},
+\frac{(1-3x^2)\sqrt{5}}{2\sqrt{2}}\} \).
+
+\subsubsection*{Exercise 6}
+Show that the set \( \{1,\cos(\frac{n\pi x}{L}), \sin(\frac{m\pi x}{L})\},
+n,m\in\N, -L<x<L \) is orthogonal but not orthonormal.
+\begin{align*}
+  (\cos(\frac{n\pi x}{L}),\sin(\frac{m\pi x}{L})) &=
+    \int_{-L}^{L}\cos(\frac{n\pi x}{L})\sin(\frac{m\pi x}{L})\diff{x} \\
+  &= \int_{-L}^{L}\frac{1}{2}(\sin(\frac{n\pi x+m\pi x}{L})-
+    \sin(\frac{n\pi x-m\pi x}{L}))\diff{x} \\
+  &= 0 \\
+  (1,\sin(\frac{n\pi x}{L})) &= \int_{-L}^{L}\sin(\frac{n\pi x}{L})\diff{x} \\
+  &= 0
+\end{align*}
+Because \( \sin \) is an odd function over the symmetric integral \( [-L,L] \).
+\begin{align*}
+  (1,\cos(\frac{n\pi x}{L})) &= \int_{-L}^{L}\cos(\frac{n\pi x}{L})\diff{x} \\
+  &= \left[\frac{L}{n\pi}\sin(\frac{n\pi x}{L})\right]_{-L}^{L} \\
+  &= \frac{L}{n\pi}(\sin(n\pi)-\sin(-n\pi)) \\
+  &= 0
+\end{align*}
+\( (f_m,f_n) = 0, m\ne n \), therefore the set is orthogonal.
+\begin{align*}
+  (\cos(\frac{n\pi x}{L}),\cos(\frac{n\pi x}{L})) &=
+    \sqrt{\int_{-L}^{L}\cos^2(\frac{n\pi x}{L})\diff{x}} \\
+  &= \sqrt{\int_{-L}^{L}\frac{1+\cos(\frac{2n\pi x}{L})}{2}} \\
+  &= \sqrt{L+\frac{1}{2}
+    \left[\frac{L}{2n\pi}\sin(\frac{2n\pi x}{L})\right]_{-L}^{L}} \\
+  &\ne 1
+\end{align*}
+Therefore, the set is not orthonormal.
+
+\subsubsection*{Exercise 7}
+Is the set \( \{\cos(\frac{n\pi x}{2})\}, n\in\N_0\} \), \( 0<x<2 \),
+orthonormal? If it fails to be orthonormal, write the corresponding
+orthonormal set.
+\begin{align*}
+  n &\ne m \\
+  (\cos(\frac{n\pi x}{2}),\cos(\frac{m\pi x}{2})) &=
+    \int_0^2\cos(\frac{n\pi x}{2})\cos(\frac{m\pi x}{2})\diff{x} \\
+  &= \frac{1}{2}\int_0^2\cos(\frac{n\pi x-m\pi x}{2})+
+    \cos(\frac{n\pi x+m\pi x}{2}) \\
+  &= \bigg[\sin(n\pi x-m\pi x)+\sin(n\pi x+m\pi x)\bigg]_0^2 \\
+  &= \sin(2n\pi-2m\pi)+\sin(2n\pi+2m\pi)-\sin(0)-\sin(0) \\
+  &= 0
+\end{align*}
+The set is orthogonal.
+\begin{align*}
+  n &= m \\
+  (\cos(\frac{n\pi x}{2}),\cos(\frac{n\pi x}{2})) &=
+    \sqrt{\int_0^2\cos^2(\frac{n\pi x}{2})\diff{x}} \\
+  &= \sqrt{\frac{1}{2}\int_0^2 1+\cos(n\pi x)\diff{x}} \\
+  &= \sqrt{\frac{1}{2}\bigg[x+\frac{\sin(n\pi x)}{n\pi}\bigg]_0^2} \\
+  &= \sqrt{\frac{1}{2}\bigg[2+0-0-0\bigg]} \\
+  &= \sqrt{1} \\
+  &= 1
+\end{align*}
+The set is also orthonormal. \\
+
+\noindent Exercises 3.2: problems 6-8
+
+\subsubsection*{Exercise 6}
+Prove that the sum of two odd functions is odd.
+\begin{align*}
+  f(-x) &= -f(x) \\
+  \int_{-L}^{L}f(x)\diff{x} &= 0 \\
+  g(-x) &= -g(x) \\
+  \int_{-L}^{L}g(x)\diff{x} &= 0 \\
+  \int_{-L}^{L}f(x)+g(x)\diff{x} &= \int_{-L}^{L}f(x)\diff{x}+
+    \int_{-L}^{L}g(x)\diff{x} \\
+  &= 0+0 \\
+  &= 0
+\end{align*}
+
+\subsubsection*{Exercise 7}
+Show that if \( f \) is odd, then \( |f| \) and \( f^2 \) are even functions.
+\begin{align*}
+  f(-x) &= -f(x) \\
+  |f(-x)| &= |-f(x)| \\
+  f(-x) &= f(x)
+\end{align*}
+An odd function is symmetric about the origin. Taking the absolute value
+reflects the negative portion of the function across the x axis and because
+of the original symmetry, the function is now symmetric about the y axis.
+\begin{align*}
+  f(-x) &= -f(x) \\
+  f(-x)^2 &= (-f(x))^2 \\
+  f(-x)^2 &= f(x)^2
+\end{align*}
+Squaring an odd function takes the negative portion of the function and reflects
+it across the x axis due to the change in sign while increasing the whole
+function by a factor of itself. Because of the original symmetry, this function
+is now symmetric about the y axis.
+
+\subsection*{Problem 2}
+Classify the following functions as even, odd, or neither. Show steps to justify
+your answers.
+\begin{enumerate}[(a)]
+  \item \( f(x) = (1-x^2)^{-\frac{1}{2}} \)
+  \begin{align*}
+    f(a) &= f(-a) \\
+    (1-a^2)^{-\frac{1}{2}} &= (1-a^2)^{-\frac{1}{2}}
+  \end{align*}
+  Even.
+  \item \( f(x) = \e^{-x}\cos(3x) \)
+  \begin{align*}
+    f(a) &= f(-a) \\
+    \e^{-a}\cos(3a) &= \e^{a}\cos(-3a) \\
+    \e^{-a}\cos(3a) &\ne \e^{a}\cos(3a) \\
+  \end{align*}
+  Neither.
+  \item \( f(x) = \sinh(x) \)
+  \begin{align*}
+    f(a) &= f(-a) \\
+    \sinh(a) &= \sinh(-a) \\
+    \sinh(a) &\ne -\sinh(a)
+  \end{align*}
+  Odd.
+\end{enumerate}
+
+\begin{center}
+  If you have any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
