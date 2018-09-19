@@ -75,6 +75,120 @@ The normalized set is \( \{\frac{1}{\sqrt{2}},\frac{x\sqrt{3}}{\sqrt{2}},
 \subsubsection*{Exercise 6}
 Show that the set \( \{1,\cos(\frac{n\pi x}{L}), \sin(\frac{m\pi x}{L})\},
 n,m\in\N, -L<x<L \) is orthogonal but not orthonormal.
+\begin{align*}
+  (\cos(\frac{n\pi x}{L}),\sin(\frac{m\pi x}{L})) &=
+    \int_{-L}^{L}\cos(\frac{n\pi x}{L})\sin(\frac{m\pi x}{L})\diff{x} \\
+  &= \int_{-L}^{L}\frac{1}{2}(\sin(\frac{n\pi x+m\pi x}{L})-
+    \sin(\frac{n\pi x-m\pi x}{L}))\diff{x} \\
+  &= 0 \\
+  (1,\sin(\frac{n\pi x}{L})) &= \int_{-L}^{L}\sin(\frac{n\pi x}{L})\diff{x} \\
+  &= 0
+\end{align*}
+Because \( \sin \) is an odd function over the symmetric integral \( [-L,L] \).
+\begin{align*}
+  (1,\cos(\frac{n\pi x}{L})) &= \int_{-L}^{L}\cos(\frac{n\pi x}{L})\diff{x} \\
+  &= \left[\frac{L}{n\pi}\sin(\frac{n\pi x}{L})\right]_{-L}^{L} \\
+  &= \frac{L}{n\pi}(\sin(n\pi)-\sin(-n\pi)) \\
+  &= 0
+\end{align*}
+\( (f_m,f_n) = 0, m\ne n \), therefore the set is orthogonal.
+\begin{align*}
+  (\cos(\frac{n\pi x}{L}),\cos(\frac{n\pi x}{L})) &=
+    \sqrt{\int_{-L}^{L}\cos^2(\frac{n\pi x}{L})\diff{x}} \\
+  &= \sqrt{\int_{-L}^{L}\frac{1+\cos(\frac{2n\pi x}{L})}{2}} \\
+  &= \sqrt{L+\frac{1}{2}
+    \left[\frac{L}{2n\pi}\sin(\frac{2n\pi x}{L})\right]_{-L}^{L}} \\
+  &\ne 1
+\end{align*}
+Therefore, the set is not orthonormal.
+
+\subsubsection*{Exercise 7}
+Is the set \( \{\cos(\frac{n\pi x}{2})\}, n\in\N_0\} \), \( 0<x<2 \),
+orthonormal? If it fails to be orthonormal, write the corresponding
+orthonormal set.
+\begin{align*}
+  n &\ne m \\
+  (\cos(\frac{n\pi x}{2}),\cos(\frac{m\pi x}{2})) &=
+    \int_0^2\cos(\frac{n\pi x}{2})\cos(\frac{m\pi x}{2})\diff{x} \\
+  &= \frac{1}{2}\int_0^2\cos(\frac{n\pi x-m\pi x}{2})+
+    \cos(\frac{n\pi x+m\pi x}{2}) \\
+  &= \bigg[\sin(n\pi x-m\pi x)+\sin(n\pi x+m\pi x)\bigg]_0^2 \\
+  &= \sin(2n\pi-2m\pi)+\sin(2n\pi+2m\pi)-\sin(0)-\sin(0) \\
+  &= 0
+\end{align*}
+The set is orthogonal.
+\begin{align*}
+  n &= m \\
+  (\cos(\frac{n\pi x}{2}),\cos(\frac{n\pi x}{2})) &=
+    \sqrt{\int_0^2\cos^2(\frac{n\pi x}{2})\diff{x}} \\
+  &= \sqrt{\frac{1}{2}\int_0^2 1+\cos(n\pi x)\diff{x}} \\
+  &= \sqrt{\frac{1}{2}\bigg[x+\frac{\sin(n\pi x)}{n\pi}\bigg]_0^2} \\
+  &= \sqrt{\frac{1}{2}\bigg[2+0-0-0\bigg]} \\
+  &= \sqrt{1} \\
+  &= 1
+\end{align*}
+The set is also orthonormal. \\
+
+\noindent Exercises 3.2: problems 6-8
+
+\subsubsection*{Exercise 6}
+Prove that the sum of two odd functions is odd.
+\begin{align*}
+  f(-x) &= -f(x) \\
+  \int_{-L}^{L}f(x)\diff{x} &= 0 \\
+  g(-x) &= -g(x) \\
+  \int_{-L}^{L}g(x)\diff{x} &= 0 \\
+  \int_{-L}^{L}f(x)+g(x)\diff{x} &= \int_{-L}^{L}f(x)\diff{x}+
+    \int_{-L}^{L}g(x)\diff{x} \\
+  &= 0+0 \\
+  &= 0
+\end{align*}
+
+\subsubsection*{Exercise 7}
+Show that if \( f \) is odd, then \( |f| \) and \( f^2 \) are even functions.
+\begin{align*}
+  f(-x) &= -f(x) \\
+  |f(-x)| &= |-f(x)| \\
+  f(-x) &= f(x)
+\end{align*}
+An odd function is symmetric about the origin. Taking the absolute value
+reflects the negative portion of the function across the x axis and because
+of the original symmetry, the function is now symmetric about the y axis.
+\begin{align*}
+  f(-x) &= -f(x) \\
+  f(-x)^2 &= (-f(x))^2 \\
+  f(-x)^2 &= f(x)^2
+\end{align*}
+Squaring an odd function takes the negative portion of the function and reflects
+it across the x axis due to the change in sign while increasing the whole
+function by a factor of itself. Because of the original symmetry, this function
+is now symmetric about the y axis.
+
+\subsection*{Problem 2}
+Classify the following functions as even, odd, or neither. Show steps to justify
+your answers.
+\begin{enumerate}[(a)]
+  \item \( f(x) = (1-x^2)^{-\frac{1}{2}} \)
+  \begin{align*}
+    f(a) &= f(-a) \\
+    (1-a^2)^{-\frac{1}{2}} &= (1-a^2)^{-\frac{1}{2}}
+  \end{align*}
+  Even.
+  \item \( f(x) = \e^{-x}\cos(3x) \)
+  \begin{align*}
+    f(a) &= f(-a) \\
+    \e^{-a}\cos(3a) &= \e^{a}\cos(-3a) \\
+    \e^{-a}\cos(3a) &\ne \e^{a}\cos(3a) \\
+  \end{align*}
+  Neither.
+  \item \( f(x) = \sinh(x) \)
+  \begin{align*}
+    f(a) &= f(-a) \\
+    \sinh(a) &= \sinh(-a) \\
+    \sinh(a) &\ne -\sinh(a)
+  \end{align*}
+  Odd.
+\end{enumerate}
 
 \begin{center}
   If you have any questions, comments, or concerns, please contact me at
