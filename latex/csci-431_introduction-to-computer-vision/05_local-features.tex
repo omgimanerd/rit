@@ -1,0 +1,61 @@
+\documentclass{math}
+
+\title{Introduction to Computer Vision}
+\author{Alvin Lin}
+\date{August 2018 - December 2018}
+
+\begin{document}
+
+\maketitle
+
+\section*{Local Features}
+We want to find patches that are ``worth representing'' to match from image to
+image. These will represent either textures or objects. Ideally, they should be
+covariant to translation, rotation, and scale. If the image is translated,
+rotated, or scaled, the neighborhoods still preserve their unique properties.
+They should also be localizable in translation, rotate, and scale, meaning we
+can estimate the position, orientation and size of the patch.
+
+\subsection*{Good Features}
+\begin{itemize}
+  \item Repeatability: the same feature can be found in several images despite
+    geometric and photometric transformations.
+  \item Saliency: each feature has a distinctive description.
+  \item Compactness and efficiency: many fewer features than image pixels.
+  \item Locality: a feature occupies a relatively small area of the image and is
+    robust to clutter and occlusion.
+\end{itemize}
+Feature points are often used for image alignment, 3D reconstruction, motion
+tracking, robot navigation, indexing and database retrieval, and object
+recognition.
+
+\subsection*{Finding Corners}
+A key property of corners is that in the region around a corner, the image
+gradient has two or more dominant directions. A strategy to find corners is to
+find centers and estimate the scale from the center. Once we have that, we can
+estimate the orientation. In a small enough window, a corner has a large
+gradient change in all directions. Consider shifting a small window \( W \) by
+\( (u,v) \):
+\[ E(u,v) = \sum_{(x,y)\in W}[I(x+u,y+v)-I(x,y)]^2 \]
+This yields an error comparing each pixel before and after. If we assume a
+small amount of motion we can use a first order Taylor Series expansion of
+\( I \):
+\begin{align*}
+  I(x+u,y+v) &\approx I(x,y)+\pdiff{I}{x}u+\pdiff{I}{y}v \\
+  &\approx I(x,y)+[I_x\ I_y]\begin{bmatrix}u \\ b\end{bmatrix} \\
+  E(u,v) &\approx \sum_{(x,y)\in W}\left[I(x,y)+[I_x\ I_y]
+    \begin{bmatrix}u \\ b\end{bmatrix}-I(x,y)\right]^2 \\
+  &\approx \sum_{(x,y)\in W}\left[[I_x\ I_y]\begin{bmatrix}u \\ v\end{bmatrix}\right]^2 \\
+  &= \sum_{(x,y)\in W}[u\ v]\begin{bmatrix}
+    (I_x)^2 & I_xI_y \\
+  \end{bmatrix}\begin{bmatrix}u \\ v\end{bmatrix}
+    I_yI_x & (I_y)^2
+\end{align*}
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}

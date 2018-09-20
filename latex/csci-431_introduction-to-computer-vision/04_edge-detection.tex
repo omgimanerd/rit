@@ -94,9 +94,9 @@ to get the smoothed gradient.
 \subsection*{Laplacian of Gaussian}
 Consider \( \pdiff{^2}{x^2}(h\star f) \). By taking the second derivative of the
 signal, we can consider all the zero-crossings as edges since that is the
-greatest chnage in intensity. Again, we can use the derivative theorem:
+greatest change in intensity. Again, we can use the derivative theorem:
 \[ \pdiff{^2}{x^2}(h\star f) = (\pdiff{^2}{x^2}h)\star f \]
-This is also known as the Laplacian filter.
+This is also known as the Laplacian filter (\( \triangledown^2 \)).
 
 \subsection*{Designing and Edge Detector}
 An optimal edge detector has:
@@ -108,6 +108,14 @@ An optimal edge detector has:
   \item Single response: the detector must return one point only for each true
     edge point, minimizing the number of local maxima around the true edge.
 \end{itemize}
+
+\subsection*{2D Edge Detection Filters}
+Gaussian Filter (for smoothing):
+\[ h_{\sigma}(u,v) = \frac{1}{2\pi\sigma^2}\e^{-\frac{u^2+v^2}{2\sigma^2}} \]
+Derivative of Gaussian (for less noisy edge detection):
+\[ \pdiff{}{x}h_{\sigma}(u,v) \]
+Laplacian of Gaussian (to find zero-crossings):
+\[ \triangledown^2h_{\sigma}(u,v) \]
 
 \subsubsection*{Canny Edge Detector}
 The Canny edge detector is probably the most widely used edge detector in
@@ -122,6 +130,8 @@ ratio and localization. Steps:
   \item Thresholding and linking (hysteresis): use a high threshold to start
     edge curves and a low threshold to continue them
 \end{itemize}
+Using a small Gaussian kernel spread size detects fine features while a large
+spread size detects large scale edges.
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
