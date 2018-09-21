@@ -100,6 +100,57 @@ the skills and tools of hackers are also continually improving.
   \end{tabular}
 \end{center}
 
+\subsection*{Knowledge Classification Models}
+Explicitly Given Models:
+\begin{itemize}
+  \item Traditional Search Algorithms
+  \item Traditional Symbolic Logical Reasoning
+  \item Fuzzy Logic Reasoning
+\end{itemize}
+Implicitly Derived Models:
+\begin{itemize}
+  \item Neural Networks
+  \item Support Vector Machines
+  \item Other Techniques
+\end{itemize}
+The term \textbf{rule} in AI can be defined as an if-then structure that relates
+given information or facts in the \textit{if} part to some action in then
+\textit{then} part. A rule provides some description of how to solve a problem
+and a relatively easy to create and understand. They are the most commonly used
+type of knowledge representation. The \textit{if} part is commonly known as the
+antecedent, while the \textit{then} part is called the consequent.
+
+\subsection*{Entropy}
+Entropy of a set of examples \( S \) relative to a binary classification is:
+\[ E(S) = -p_1\log_2(p_1)-p_0\log_2(p_0) \]
+where \( p_1 \) is the fraction of positive examples in \( S \) and \( p_0 \)
+is the fraction of negatives. If all examples are in one category, entropy is
+zero. If examples are evenly mixed (\( p_0 = p_1 = 0.5 \)), then entropy is a
+maximum of 1. For multi-class problems with \( c \) categories, entropy
+generalizes to:
+\[ E(S) = \sum_{i=1}^{c}-p_i\log_2(p_i) \]
+The \textbf{information gain} of a feature \( F \) is the expected reduction in
+entropy resulting from splitting on this feature.
+\[ G(S,F) = E(S)-\sum_{v\in Values(F)}\frac{|S_v|}{|S|}E(S_v) \]
+where \( S_v \) is the subset of \( S \) having value \( v \) for feature
+\( F \). Entropy of each resulting subset is weighted by its relative size.
+
+\subsection*{Artificial Neural Networks}
+The artificial neuron is a mathematical construct that emulates the more
+salient function of biological neurons, namely signal integration and threshold
+firing behavior. \par
+Just as in the biological case, such neurons are bound together by various
+connection weights that determine how the outputs from one neuron are to be
+algebraically weighted before arriving at receiving neurons. The intelligence
+within these collective structures of artificial neurons is stored within these
+connection weights. \par
+All of the information stored within an artificial neural network takes the
+form of connection strengths between neurons. These are values by which the
+signals from one artificial neuron to another are multiplied before being summed
+up within the receiving neuron. Special programs mathematically change the
+weights in the net until it consistently yields the correct outputs for any
+given set of inputs.
+
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
   any questions, comments, or concerns, please contact me at
