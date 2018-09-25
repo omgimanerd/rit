@@ -55,15 +55,56 @@ Euler formulas for coefficients:
   &= \frac{1}{L}(f,\sin(\frac{n\pi x}{L})) \quad n = 1,2,3,\dots
 \end{align*}
 \( a_n,b_n \) are components of \( f(x) \) along \( \sin \) and \( \cos \).
-As long as \( f(x) \) is piecewise continuous, the Fourier series of \( f(x) \)
-will converge to \( f(x) \) as \( n\to\infty \). At each point \( x_0 \), the
-Fourier series will converge to \( \frac{f(x_0^-)+f(x_0^+)}{2} \), so for
+As long as \( f(x) \) is piecewise smooth on \( [-L,L] \), the Fourier series
+of \( f(x) \) will converge to \( \frac{1}{2}[f(x_0^++f(x_0^-))] \) at a point
+\( x_0\in[-L,L] \). At a point \( x_0 \), the Fourier series will converge to
+\( \frac{f(x_0^-)+f(x_0^+)}{2} \), so for
 \[ f(x) = \begin{cases}
   0 &, 0<x\le L \\
   1 &, -L\le x<0
 \end{cases} \]
 the Fourier series of \( f \) converges to \( \frac{f(0^-)-f(0^+)}{2} =
-\frac{1+0}{2} = \frac{1}{2} \) at \( x = 0 \).
+\frac{1+0}{2} = \frac{1}{2} \) at \( x = 0 \). In general, if \( f \) has a
+discontinuity (jump or removable) at \( x_0 \), the Fourier series converges to
+\[ \frac{1}{2}[f(x_0^+)+f(x_0^-)] \]
+If \( f \) is continuous at \( x_0 \), the Fourier series converges to
+\[ \frac{1}{2}[f(x_0^+)+f(x_0^-)] = f(x_0) \]
+
+\subsubsection*{Example}
+Find the convergence of the Fourier series of
+\[ f(x) = \begin{cases}
+  2 &, 0<x<1 \\
+  0 &, -1<x<0
+\end{cases} \]
+at the following points: \( x = 0, x = 0.5, x = -\frac{3}{4} \)
+\begin{align*}
+  \frac{f(0^-)+f(0^+)}{2} &= \frac{0+2}{2} = 1 \\
+  \frac{f(0.5^-)+f(0.5^+)}{2} &= \frac{2+2}{2} = 2 \\
+  \frac{f(\frac{-3}{4}^-)+f(\frac{-3}{4}^+)}{2} &= \frac{0+0}{2} = 0
+\end{align*}
+
+\subsection*{Deriving the Euler formulas}
+Euler formulas:
+\begin{enumerate}
+  \item \( a_0 = \frac{1}{L}\int_{-L}^{L}f(x)\diff{x} \)
+  \item \( a_n = \frac{1}{L}\int_{-L}^{L}f(x)\cos(\frac{n\pi x}{L})\diff{x} \)
+  \item \( b_n = \frac{1}{L}\int_{-L}^{L}f(x)\sin(\frac{n\pi x}{L})\diff{x} \)
+\end{enumerate}
+These formulas arise from orthogonality. Recall that \( \{1,
+\cos(\frac{n\pi x}{L}),\sin(\frac{n\pi x}{L}) \} \) is an orthogonal set on
+\( [-L,L] \). Suppose that
+\[ f(x) = \frac{a_0}{2}+\sum_{n=1}^{\infty}a_n\cos(\frac{n\pi x}{L})+
+  b_n\sin(\frac{n\pi x}{L}) \]
+If we integrate both sides:
+\begin{align*}
+  \int_{-L}^{L}f(x)\diff{x} &= \int_{-L}^{L}\frac{a_0}{2}\diff{x}+
+    \sum_{n=1}^{\infty}\{a_n\cos(\frac{n\pi x}{L})+
+    b_n\sin(\frac{n\pi x}{L})\} \\
+  &= \int_{-L}^{L}\frac{a_0}{2}\diff{x}+0 \\
+  &= a_0L
+\end{align*}
+If we then divide by \( L \):
+\[ \frac{1}{L}\int_{-L}^{L}f(x)\diff{x} = a_0 \]
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
