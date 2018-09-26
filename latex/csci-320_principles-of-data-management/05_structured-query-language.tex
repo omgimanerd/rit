@@ -1,0 +1,100 @@
+\documentclass{math}
+
+\usepackage{listings}
+
+\title{Principles of Data Management}
+\author{Alvin Lin}
+\date{August 2018 - December 2018}
+
+\begin{document}
+
+\lstset{basicstyle=\ttfamily\footnotesize,breaklines=true}
+\maketitle
+
+\section*{Structured Query Language}
+Structured Query Language (SQL) was created at IBM in the 80s:
+\begin{itemize}
+  \item SQL-86 (first standard)
+  \item SQL-89
+  \item SQL-92 (what all SQL compliant DBs use)
+  \item SQL-1999
+  \item SQL-2003
+\end{itemize}
+SQL is a commercial language that is intended to be a data manipulation
+language, but supports features of data definition languages. It supports the
+following features:
+\begin{itemize}
+  \item Schema
+  \item Domain
+  \item Integrity Constraints
+  \item Indicies
+  \item Security
+  \item Physical Storage
+\end{itemize}
+
+\subsection*{Domain Types}
+\begin{itemize}
+  \item \texttt{char(n)} - n number of characters
+  \item \texttt{int} - numbers
+  \item \texttt{smallint} - smaller value number
+  \item \texttt{numeric(p,d)} - precision decimal
+  \item \texttt{real,double,float} - ``infinite'' precision decimals
+  \item \texttt{varchar(n)} - variable length characters
+\end{itemize}
+
+\subsection*{Create Table}
+\begin{lstlisting}
+  create table r (A1 D1, A2 D2,\dots,An Dn) (integrity constraints)}
+\end{lstlisting}
+Example:
+\begin{lstlisting}
+  create table dog(
+    ID int,
+    Name varchar(20),
+    Salary numeric(8,2),
+    goodboy smallint
+  )
+\end{lstlisting}
+Integrity Constraints:
+\begin{itemize}
+  \item Not null
+  \item Primary key
+  \item Foreign key references
+\end{itemize}
+Example:
+\begin{lstlisting}
+  create table p(
+    ID int,
+    Name varchar(4) not null,
+    DOB varchar(10),
+    dog_id int,
+    primary key(ID, Name),
+    foreign key(dog_id) references dog(ID)
+  )
+\end{lstlisting}
+
+\subsection*{CRUD}
+\begin{lstlisting}
+  insert into r values (v1,v2,vn)
+  insert into dog values (1,"cat",10.00,0)
+  delete from dog
+  drop table r
+  alter table dog add iscat int not null default 0
+  alter table dog drop iscat
+\end{lstlisting}
+
+\subsection*{Select}
+\begin{lstlisting}
+  select a1,a2,a3,an from r1,r2,rn where predicate
+  select Name from dog
+  select distinct name from dog
+  select all name from dog
+\end{lstlisting}
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
