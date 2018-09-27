@@ -41,7 +41,8 @@ and this is piecewise continuous. However, the function
   \frac{1}{x-1} &, x>\frac{1}{2} \\
   2x &, x<\frac{1}{2}
 \end{cases} \]
-is neither piecewise smooth nor piecewise continuous.
+is neither piecewise smooth nor piecewise continuous due to the infinite
+discontinuity at \( x = 1 \).
 
 \subsection*{Fourier Series}
 A Fourier series of \( f(x) \) on \( -L<x<L \) is associated with:
@@ -105,6 +106,16 @@ If we integrate both sides:
 \end{align*}
 If we then divide by \( L \):
 \[ \frac{1}{L}\int_{-L}^{L}f(x)\diff{x} = a_0 \]
+This extends and generalizes for \( a_n \) and \( b_n \) as well.
+
+\subsubsection*{Note}
+Sometimes, one of the terms evaluates down to a cosine. For example:
+\[ a_n = \frac{2}{n^2\pi^2}(cos(n\pi)-1) \]
+This term is 0 when \( n \) is even and nonzero when \( n \) is odd since
+\( cos(n\pi) \) oscillates between -1 and 1. Because of this, we only care about
+\( a_{2n-1} \) and we can rewrite the Fourier series with this.
+\[ f(x) \sim \frac{a_0}{2}+\sum_{n=1}^{\infty}a_{2n-1}\cos(\frac{n\pi x}{L})+
+  b_n\sin(\frac{n\pi x}{L}) \]
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
