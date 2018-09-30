@@ -86,9 +86,23 @@ Example:
 \subsection*{Select}
 \begin{lstlisting}
   select a1,a2,a3,an from r1,r2,rn where predicate
-  select Name from dog
+  select name from dog
   select distinct name from dog
   select all name from dog
+  select "joe" as name
+  select name,"lab" as breed from dog
+  select * from dog
+\end{lstlisting}
+Explicitly specify what attributes to return, \texttt{SELECT *} should be
+avoided with the exception of manually viewing data.
+\begin{lstlisting}
+  select id,name,salary as pay from dog where salary > 80000
+\end{lstlisting}
+The \texttt{where} keyword allows for conditions by which we can filter the
+returned rows. We can specify modifications to the returned attribute and use
+boolean conditions to create compound conditionals.
+\begin{lstlisting}
+  select id,name,salary/26 as pay from dog where salary > 80000 and breed="lab"
 \end{lstlisting}
 
 \begin{center}
