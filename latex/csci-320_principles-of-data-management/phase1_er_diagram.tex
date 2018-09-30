@@ -34,6 +34,7 @@
 
     \node[entity](sale)[below right=1cm of dealer]{Sale};
     \node[attribute][right=of sale]{ID} edge (sale);
+    \node[attribute][below right=of sale]{Amount} edge (sale);
 
     \node[entity](customer)[below=6cm of dealer]{Customer};
     \node[attribute][left=of customer]{ID} edge (customer);
@@ -56,7 +57,7 @@
       edge node[above,yshift=0.2cm]{0..*} (customer);
     \node[ident relationship][below=1.25cm of dealer]{Has}
       edge node[above]{1..1} (vehicle)
-      edge node[above]{1..1} (sale);
+      edge node[above]{1..*} (sale);
   \end{tikzpicture}
 \end{center}
 
