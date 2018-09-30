@@ -48,9 +48,41 @@ small amount of motion we can use a first order Taylor Series expansion of
   &\approx \sum_{(x,y)\in W}\left[[I_x\ I_y]\begin{bmatrix}u \\ v\end{bmatrix}\right]^2 \\
   &= \sum_{(x,y)\in W}[u\ v]\begin{bmatrix}
     (I_x)^2 & I_xI_y \\
-  \end{bmatrix}\begin{bmatrix}u \\ v\end{bmatrix}
-    I_yI_x & (I_y)^2
+    I_yI_x & (I_y)^2 \\
+  \end{bmatrix}\begin{bmatrix}u \\ v\end{bmatrix} \\
+  H &= \begin{bmatrix}
+    (I_x)^2 & I_xI_y \\
+    I_yI_x & (I_y)^2 \\
+  \end{bmatrix}
 \end{align*}
+We can define shifts with the smallest and largest change in \( E(u,v) \),
+represented as eigenvalues and eigenvectors of \( H \).
+\begin{itemize}
+  \item \( x_+ \): direction of largest increase in \( E(u,v) \)
+  \item \( \lambda_+ \): amount of increase in direction \( x_+ \)
+  \item \( x_- \): direction of smallest increase in \( E(u,v) \)
+  \item \( \lambda_- \): amount of increase in direction \( x_- \)
+\end{itemize}
+\begin{align*}
+  Hx_+ &= \lambda_+x_+ \\
+  Hx_- &= \lambda_-x_-
+\end{align*}
+We want \( E(u,v) \) to be large for for small shifts in all directions. The
+minimum of \( E(u,v) \) should be large over all unit vectors \( [u\ v] \).
+In general, we can do feature detection by:
+\begin{enumerate}
+  \item Computing the gradient at each point in the image.
+  \item Create the \( H \) matrix from the entries in the gradient.
+  \item Compute the eigenvalues.
+  \item Find points with the largest response \( \lambda > threshold \).
+  \item Choose those points where \( \lambda \) is a local maximum as features.
+\end{enumerate}
+
+\subsection*{Invariance and Covariance}
+We want features to be invariant to photometric transformations and covariant
+to geometric transformations. An image is invariant if it is transformed and
+features do not change. It is covariant if features are detected in the same
+corresponding locations between two transformed versions of the same image.
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have

@@ -257,8 +257,8 @@ double circled, while derived attributes like age are dotted.
     \node[attribute](apartment)[below right=of street]{Apartment} edge (street);
     \node[attribute](etc)[below right=of address]{...} edge (address);
 
-    \node[attribute,dotted](age)[below=1cm of person]{Age} edge (person);
-    \node[attribute,double](email)[below left=of person]{Email} edge (person);
+    \node[derived attribute](age)[below=1cm of person]{Age} edge (person);
+    \node[multi attribute](email)[below left=of person]{Email} edge (person);
     \node[attribute](dob)[below right=of person]{DOB} edge (person);
   \end{tikzpicture}
 \end{center}
@@ -272,15 +272,15 @@ identified. For example:
     \node[ident relationship](hasa)[right=of employee]{Has A} edge (employee);
 
     \node[entity,double](child)[right=of hasa]{Child} edge[total] (hasa);
-    \node[attribute,dotted](name)[above right=of child]{Name} edge (child);
-    \node[attribute,dotted](dob)[below right=of child]{DOB} edge (child);
+    \node[derived attribute](name)[above right=of child]{Name} edge (child);
+    \node[derived attribute](dob)[below right=of child]{DOB} edge (child);
   \end{tikzpicture}
 \end{center}
 If there are two children (of two employees) with the same name and date of
 birth, then they are reliant on their relationship with the employee and the
 employee's ID in order to be uniquely identified.
 
-\subsection*{Reduction into Tables}
+\subsubsection*{Reduction into Tables}
 \begin{center}
   \begin{tikzpicture}[node distance=0.5cm, every edge/.style={link}]
     \node[entity](dog){Dog};
@@ -322,8 +322,8 @@ to prevent ambiguity.
     \node[attribute](apartment)[below right=of street]{Apartment} edge (street);
     \node[attribute](etc)[below right=of address]{...} edge (address);
 
-    \node[attribute,dotted](age)[below=1cm of person]{Age} edge (person);
-    \node[attribute,double](email)[below left=of person]{Email} edge (person);
+    \node[derived attribute](age)[below=1cm of person]{Age} edge (person);
+    \node[multi attribute](email)[below left=of person]{Email} edge (person);
     \node[attribute](dob)[below right=of person]{DOB} edge (person);
   \end{tikzpicture}
 \end{center}
@@ -378,6 +378,119 @@ If we decide that the relationship must be one to one, then a person may have
 zero or one dogs, and a dog may have zero or one owners. Without total
 participation, both the dog id and the person's id must be part of the primary
 key of the table.
+
+\subsubsection*{Ternary Relationships}
+Because this can be ambiguous, we only allow for one arrow indicating ownership.
+\begin{center}
+  \begin{tikzpicture}[node distance=0.5cm, every edge/.style={link}]
+    \node[entity](instructor){Instructor};
+    \node[ident relationship](have)[right=of instructor]{} edge (instructor);
+    \node[entity](student)[right=of have]{Student} edge[<-] (have);
+    \node[entity](project)[above=of have]{Project} edge (have);
+  \end{tikzpicture}
+\end{center}
+Often, it is better to reduce this to multiple binary relationships:
+\begin{center}
+  \begin{tikzpicture}[node distance=0.5cm, every edge/.style={link}]
+    \node[entity](project){Project};
+    \node[ident relationship](workedon)[below left=of project]{Worked On}
+      edge (project);
+    \node[ident relationship](advised)[below right=of project]{Advised}
+      edge (project);
+    \node[entity](student)[below left=of workedon]{Worked On} edge (workedon);
+    \node[entity](instructor)[below right=1cm of advised]{Advised} edge
+      (advised);
+    \node[ident relationship](workedwith)[right=2cm of student]{Worked With}
+      edge (student) edge (instructor);
+  \end{tikzpicture}
+\end{center}
+Sometimes, we may use a different notation for a use case like this:
+\begin{center}
+  \begin{tikzpicture}[node distance=0.5cm, every edge/.style={link}]
+    \node[entity](person){Person};
+    \node[attribute](id)[above left=1cm of person]{ID} edge (person);
+    \node[attribute](fname)[above=1cm of person]{First name} edge (person);
+    \node[attribute](lname)[above right=1cm of person]{Last name} edge (person);
+
+    \node[ident relationship](isa)[below=of person]{Is A} edge (person);
+
+    \node[entity](student)[below left=of isa]{Student} edge[->] (isa);
+    \node[attribute](debt)[above left=of student]{Debt} edge (student);
+
+    \node[entity](employee)[below right=of isa]{Employee} edge[->] (isa);
+    \node[attribute](salary)[above right=of employee]{Salary} edge (employee);
+    \node[entity](salaried)[below left=of employee]{Salaried} edge[->]
+      (employee);
+    \node[attribute](age)[below=of salaried]{Age} edge (salaried);
+    \node[entity](hourly)[below right=of employee]{Hourly} edge[->] (employee);
+    \node[attribute](hours)[below=of hourly]{Hours} edge (hourly);
+  \end{tikzpicture}
+\end{center}
+When reducing this to tables we have a few options:
+\begin{enumerate}
+  \item Take all the attributes from every level, and make entities with lower
+    levels have a higher level primary key.
+  \begin{align*}
+    Person &= (ID, fname, lname) \\
+    Student &= (ID, debt) \\
+    Employee &= (ID, salary) \\
+    Salaried &= (ID, age) \\
+    Hourly &= (ID, hours)
+  \end{align*}
+  \item Create entity ``leafs'', grabbing attributes from higher levels.
+  \begin{align*}
+    Student &= (ID, fname, lname, debt) \\
+    Hourly &= (ID, fname, lname, salary, hours) \\
+    Salaried &= (ID, fname, lname, salary, age) \\
+  \end{align*}
+  \item Throw everything into one table (which is usually a bad choice).
+  \begin{align*}
+    Person &= (ID, fname, lname, salary, hours, age, debt)
+  \end{align*}
+\end{enumerate}
+The concept of total and partial completeness still exists for these
+relationships. With total completeless, the higher level MUST belong to the
+lower level. This would be represented as:
+\begin{center}
+  \begin{tikzpicture}[node distance=0.5cm, every edge/.style={link}]
+    \node[entity](person){Person};
+    \node[ident relationship](isa)[below=1.5cm of person]{Is A} edge[double,->]
+      (person);
+  \end{tikzpicture}
+\end{center}
+With the salaried/hourly employee dichotomy, total completeness is implied
+because they are disjoint categories of employees.
+
+\subsubsection*{Entity vs Attribute}
+Sometimes, we may make a choice like so:
+\begin{center}
+  \begin{tikzpicture}[node distance=0.5cm, every edge/.style={link}]
+    \node[entity](person){Person};
+    \node[attribute](id)[left=of person]{ID} edge (person);
+    \node[multi attribute](email)[above=of person]{Email} edge (person);
+
+    \node[ident relationship](born)[right=of person]{Born} edge (person);
+
+    \node[entity](birthinfo)[right=of born]{Birth Info} edge[<-] (born);
+    \node[attribute](birthid)[above=of birthinfo]{ID} edge (birthinfo);
+    \node[attribute](dob)[right=of birthinfo]{DOB} edge (birthinfo);
+  \end{tikzpicture}
+\end{center}
+This has the advantage of reducing some redundancy as multiple people can share
+entries in the birth info table. For complex attributes, it may sometimes be
+prudent to separate out the attribute into its own entity. As another example:
+\begin{center}
+  \begin{tikzpicture}[node distance=0.5cm, every edge/.style={link}]
+    \node[entity](student){Student};
+    \node[ident relationship](workedon)[right=of student]{Worked On} edge
+      (student);
+    \node[attribute](startdate)[above left=of workedon]{Start Date} edge
+      (workedon);
+    \node[attribute](enddate)[above right=of workedon]{End Date} edge
+      (workedon);
+    \node[entity](project)[right=of workedon]{Project} edge (workedon);
+  \end{tikzpicture}
+\end{center}
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have

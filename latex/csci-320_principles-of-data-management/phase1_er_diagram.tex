@@ -1,0 +1,70 @@
+\documentclass{math}
+
+\usepackage{tikz}
+\usepackage{tikz-er2}
+\usetikzlibrary{positioning}
+
+\title{Principles of Data Management}
+\author{Insert Group Name Here}
+\date{August 2018 - December 2018}
+
+\begin{document}
+
+\maketitle
+
+\section*{Phase 1 ER Diagram}
+\begin{center}
+  \begin{tikzpicture}[node distance=0.5cm, every edge/.style={link}]
+    \node[entity](dealer){Dealer};
+    \node[attribute][above=of dealer]{ID} edge (dealer);
+    \node[multi attribute][above right=2cm of dealer]{Brands} edge (dealer);
+
+    \node[entity](vehicle)[below left=1cm of dealer]{Vehicle};
+    \node[attribute](vin)[above left=of vehicle]{VIN} edge (vehicle);
+    \node[attribute](vehicle_options)[left=of vehicle]{Options} edge (vehicle);
+    \node[attribute][left=of vehicle_options]{Color}
+      edge (vehicle_options);
+    \node[attribute][above left=of vehicle_options]{Engine}
+      edge (vehicle_options);
+    \node[attribute][below left=of vehicle_options]{Transmission}
+      edge (vehicle_options);
+    \node[attribute](vehicle_brand)[below left=of vehicle]{Brand}
+      edge (vehicle);
+    \node[attribute](model)[below=of vehicle_brand]{Model} edge (vehicle_brand);
+
+    \node[entity](sale)[below right=1cm of dealer]{Sale};
+    \node[attribute][right=of sale]{ID} edge (sale);
+    \node[attribute][below right=of sale]{Amount} edge (sale);
+
+    \node[entity](customer)[below=6cm of dealer]{Customer};
+    \node[attribute][left=of customer]{ID} edge (customer);
+    \node[attribute][below left=of customer]{Name} edge (customer);
+    \node[attribute][below=of customer]{Address} edge (customer);
+    \node[attribute][below right=of customer]{Phone} edge (customer);
+    \node[attribute][right=of customer]{Gender} edge (customer);
+
+    \node[ident relationship][above=1cm of vehicle]{Has}
+      edge node[above]{0..*} (dealer)
+      edge node[left]{1..1} (vehicle);
+    \node[ident relationship][below=1cm of vehicle]{Has}
+      edge node[left]{1..1} (vehicle)
+      edge node[above,yshift=0.2cm]{0..*} (customer);
+    \node[ident relationship][above=1cm of sale]{Has}
+      edge node[above]{0..*} (dealer)
+      edge node[right]{1..1} (sale);
+    \node[ident relationship][below=1cm of sale]{Has}
+      edge node[right]{1..1} (sale)
+      edge node[above,yshift=0.2cm]{0..*} (customer);
+    \node[ident relationship][below=1.25cm of dealer]{Has}
+      edge node[above]{1..1} (vehicle)
+      edge node[above]{1..*} (sale);
+  \end{tikzpicture}
+\end{center}
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
