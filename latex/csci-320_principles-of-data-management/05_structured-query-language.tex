@@ -104,6 +104,78 @@ boolean conditions to create compound conditionals.
 \begin{lstlisting}
   select id,name,salary/26 as pay from dog where salary > 80000 and breed="lab"
 \end{lstlisting}
+The \texttt{between} modifier allows us to select a range as a predicate.
+\begin{lstlisting}
+  select * from dog where age between 6 and 9
+\end{lstlisting}
+Selecting from multiple tables using \texttt{SELECT *} returns a Cartesian
+product.
+\begin{lstlisting}
+  select * from dog,cat
+\end{lstlisting}
+This is not particularly useful, it is much more useful to use a predicate to
+match the data.
+\begin{lstlisting}
+  select * from dog,cat where dog.name = cat.name and dog.age = 4
+  select * from dog as D, cat as C where D.age = C.age
+\end{lstlisting}
+
+\subsubsection*{Examples}
+\begin{center}
+  Table Dog: \\
+  \begin{tabular}{|c|c|}
+    \hline
+    name & owner \\
+    \hline
+    Charlie & Snoopy \\
+    Woodstock & Snoopy \\
+    Lucy & Ricky \\
+    Snoopy & Sam \\
+    \hline
+  \end{tabular}
+\end{center}
+Finding all the owners with dogs named Woodstock:
+\begin{lstlisting}
+  select d2.owner from dog where name = "woodstock"
+\end{lstlisting}
+Finding all the dogs owned by Snoopy:
+\begin{lstlisting}
+  select name from dog where owner = "snoopy"
+\end{lstlisting}
+Selecting the owner's owner of Charlie:
+\begin{lstlisting}
+  select owner from dog d1, dog d2 where d1.name = "charlie" and
+      d1.owner = d2.name
+\end{lstlisting}
+
+\subsection*{String Operations}
+The percent sign (\%) is used for partial substring matches while the
+underscore (\_) is used for single character matches.
+\begin{lstlisting}
+  select * from dog where name like "%py"
+  select * from dog where name like 'Sn\'' escape '\'
+\end{lstlisting}
+Concatenation is expressed with double pipes (\textbar\textbar).
+\begin{lstlisting}
+  select * from fname||lname like "%foo"
+\end{lstlisting}
+
+\subsection*{Ordering}
+The \texttt{order by} keyword allows for queries to be sorted. Specifying more
+than one sort option allows for sorting by multiple fields.
+\begin{lstlisting}
+  select name,lname from dog order by name asc
+  select name,lname from dog order by name,lname desc
+  select name,lname from dog order by name desc,lname
+\end{lstlisting}
+
+\subsection*{Set Operations}
+Set operation keywords are valid in SQL.
+\begin{lstlisting}
+  (select name from dog) union (select name from cat)
+  (select name from dog) intersect (select name from cat)
+  (select name from dog) except (select name from cat)
+\end{lstlisting}
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
