@@ -1,5 +1,7 @@
 \documentclass{math}
 
+\usepackage{tikz}
+
 \title{Boundary Value Problems}
 \author{Alvin Lin}
 \date{August 2018 - December 2018}
@@ -116,6 +118,79 @@ This term is 0 when \( n \) is even and nonzero when \( n \) is odd since
 \( a_{2n-1} \) and we can rewrite the Fourier series with this.
 \[ f(x) \sim \frac{a_0}{2}+\sum_{n=1}^{\infty}a_{2n-1}\cos(\frac{n\pi x}{L})+
   b_n\sin(\frac{n\pi x}{L}) \]
+
+\subsubsection*{Example}
+Find \( a_0 \) and \( a_n, n\in\N \) for \( f(x) \).
+\[ f(x) = \begin{cases}
+  1 &, -2<x<0 \\
+  x &, 0<x<2
+\end{cases} \]
+\begin{align*}
+  a_0 &= \frac{1}{L}\int_{-L}^{L}f(x)\diff{x} \\
+  &= \frac{1}{2}\left\{\int_{-2}^{0}1\diff{x}+\int_{0}^{2}x\diff{x}\right\} \\
+  &= \frac{1}{2}\left(\bigg[x\bigg]_{-2}^{0}+
+    \bigg[\frac{x^2}{2}\bigg]_0^2\right) \\
+  &= \frac{1}{2}(2+2) \\
+  &= 2 \\
+  a_n &= \frac{1}{L}\int_{-L}^{L}f(x)\cos(\frac{n\pi x}{L})\diff{x} \\
+  &= \frac{1}{2}\left\{\int_{-2}^{0}1\cos(\frac{n\pi x}{L})\diff{x}+
+    \int_{0}^{2}x\cos(\frac{n\pi x}{L})\diff{x}\right\} \\
+  &= \frac{1}{2}\left\{\bigg[\frac{2}{n\pi}\sin(\frac{n\pi x}{2})\bigg]_{-2}^0+
+    \bigg[x\frac{2}{n\pi}\sin(\frac{n\pi x}{2})\bigg]_0^2-
+    \int_0^2\frac{2}{n\pi}\sin(\frac{n\pi x}{2})\diff{x}\right\} \\
+  &= \frac{1}{2}\left\{0+0+\frac{4}{n^2\pi^2}(\cos(n\pi)-1)\right\} \\
+  &= \frac{2}{n^2\pi^2}(cos(n\pi)-1) \\
+  &= \frac{2}{n^2\pi^2}(-1^n-1)
+\end{align*}
+
+\subsection*{Fourier Sine and Cosine Functions}
+Suppose \( f(x) \) is piecewise smooth on \( 0<x<L \).
+\begin{center}
+  \begin{tikzpicture}
+    \draw[thick,->] (0,0) -- (4,0) node[below]{x};
+    \draw[thick,->] (0,0) -- (0,2) node[left]{y};
+    \draw[red] (0,0) -- (1,0.5) node[above]{\( f(x) \)};
+    \draw (1,-0.1) -- (1,0.1) node[below,yshift=-0.2cm]{\( L \)};
+  \end{tikzpicture}
+\end{center}
+Because the period of \( \cos(\frac{n\pi x}{L}) \) and
+\( \sin(\frac{n\pi x}{L}) \) is \( \frac{2L}{n} \), the Fourier series is 2L
+periodic. We can come up with special cases of the Fourier series by
+considering odd or even extensions of a function. We can define \( f_o(x) \) as
+an odd 2L periodic extension of \( f(x) \),
+\begin{center}
+  \begin{tikzpicture}
+    \draw[thick,<->] (-4,0) -- (4,0) node[below]{x};
+    \draw[thick,<->] (0,-2) -- (0,2) node[left]{y};
+    \draw[red] (-3,-0.5) -- (-1,0.5);
+    \draw[red] (-1,-0.5) -- (1,0.5);
+    \draw[red] (1,-0.5) -- (3,0.5);
+    \draw (1,-0.1) -- (1,0.1) node[below,yshift=-0.2cm]{\( L \)};
+    \draw (-1,-0.1) -- (-1,0.1) node[below,yshift=-0.2cm]{\( -L \)};
+  \end{tikzpicture}
+\end{center}
+and \( f_e(x) \) as an even 2L periodic extension of \( f(x) \).
+\begin{center}
+  \begin{tikzpicture}
+    \draw[thick,<->] (-4,0) -- (4,0) node[below]{x};
+    \draw[thick,<->] (0,-2) -- (0,2) node[left]{y};
+    \draw[red] (-3,0.5) -- (-2,0) -- (-1,0.5);
+    \draw[red] (-1,0.5) -- (0,0) -- (1,0.5);
+    \draw[red] (1,0.5) -- (2,0) -- (3,0.5);
+    \draw (1,-0.1) -- (1,0.1) node[below,yshift=-0.2cm]{\( L \)};
+    \draw (-1,-0.1) -- (-1,0.1) node[below,yshift=-0.2cm]{\( -L \)};
+  \end{tikzpicture}
+\end{center}
+We define the Fourier Cosine Series (FCS) of \( f(x) \) on \( 0<x<L \) as
+\begin{align*}
+  f(x) &\sim \frac{a_0}{2}+\sum_{n=1}^{\infty}a_n\cos(\frac{n\pi x}{L}) \\
+  a_0 &= \frac{2}{L}\int_{0}^{L}f(x)\diff{x} \\
+  a_n &= \frac{2}{L}\int_{0}^{L}f(x)\cos(\frac{n\pi x}{L})\diff{x}
+\end{align*}
+If \( f \) is piecewise smooth on \( (0,L) \), the Fourier Cosine Series
+converges to. The Fourier Sine Series (FSS) of \( f(x) \) on \( 0<x<L \) is
+defined as
+\[ f(x) \sim \sum_{n=1}^{\infty}b_n\sin(\frac{n\pi x}{L}) \]
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
