@@ -1,0 +1,205 @@
+\documentclass{math}
+
+\usepackage{enumerate}
+\usepackage{tikz}
+
+\geometry{letterpaper, margin=0.5in}
+
+\title{Boundary Value Problems: Homework 5}
+\author{Alvin Lin}
+\date{August 2018 - December 2018}
+
+\begin{document}
+
+\maketitle
+
+\subsection*{Problem 1}
+Exercises 3.2: problems 1, 2, 4, 5, 13
+
+\subsubsection*{Exercise 1}
+Sketch the graph of \( f \), determine the Fourier series corresponding to
+\( f \), and indicate the convergence at the given points. It is assumed that
+the functions are periodic and one period is given.
+\[ f(x) = \begin{cases}
+  -2 &, -2<x<0 \\
+  2 &, 0<x<2
+\end{cases} \]
+\begin{center}
+  \begin{tikzpicture}
+    \draw[thick,<->] (-3,0) -- (3,0) node[below] {\( x \)};
+    \draw[thick,<->] (0,-3) -- (0,3) node[left] {\( y \)};
+    \draw[very thick,red] (-2,-2) -- (0,-2);
+    \draw[very thick,red] (0,2) -- (2,2);
+  \end{tikzpicture}
+\end{center}
+\begin{align*}
+  a_0 &= \frac{1}{2}\int_{-2}^{2}f(x)\diff{x} \\
+  &= \frac{1}{2}\bigg[\int_{-2}^{0}-2\diff{x}+\int_{0}^{2}2\diff{x}\bigg] \\
+  &= 0 \\
+  a_n &= \frac{1}{2}\int_{-2}^{2}f(x)\cos(\frac{n\pi x}{2})\diff{x} \\
+  &= 0
+\end{align*}
+\( f(x) \) is characteristically odd, and since \( \cos \) is an even function,
+the resulting integral is odd.
+\begin{align*}
+  b_n &= \frac{1}{2}\int_{-2}^{2}f(x)\sin(\frac{n\pi x}{2})\diff{x} \\
+  &= \frac{1}{2}\bigg[\int_{-2}^{0}-2\sin(\frac{n\pi x}{2})\diff{x}+
+    \int_{0}^{2}2\sin(\frac{n\pi x}{2})\diff{x}\bigg] \\
+  &= \frac{1}{2}\left(
+    \bigg[\frac{2}{n\pi}2\cos(\frac{n\pi x}{2})\bigg]_{-2}^{0}-
+    \bigg[\frac{2}{n\pi}2\cos(\frac{n\pi x}{2})\bigg]_{0}^{2}\right) \\
+  &= \frac{2}{n\pi}\cos(-n\pi)-\frac{2}{n\pi}\cos(0)-
+    \frac{2}{n\pi}\cos(n\pi)+\frac{2}{n\pi}\cos(0) \\
+  &= 0 \\
+  f(x) &\sim 0
+\end{align*}
+At the point \( x = 0 \),
+\[ \frac{f(0^-)+f(0^+)}{2} = \frac{-2+2}{2} = 0 \]
+
+\subsubsection*{Exercise 2}
+Sketch the graph of \( f \), determine the Fourier series corresponding to
+\( f \), and indicate the convergence at the given points. It is assumed that
+the functions are periodic and one period is given.
+\[ f(x) = \begin{cases}
+  0 &, -2<x<-1 \\
+  2 &, -1<x<1 \\
+  0 &, 1<x<2
+\end{cases} \]
+\begin{center}
+  \begin{tikzpicture}
+    \draw[thick,<->] (-3,0) -- (3,0) node[below] {\( x \)};
+    \draw[thick,<->] (0,-3) -- (0,3) node[left] {\( y \)};
+    \draw[very thick,red] (-2,0) -- (-1,0);
+    \draw[very thick,red] (-1,2) -- (1,2);
+    \draw[very thick,red] (1,0) -- (2,0);
+  \end{tikzpicture}
+\end{center}
+\begin{align*}
+  a_0 &= \frac{1}{2}\int_{-2}^{2}f(x)\diff{x} \\
+  &= \frac{1}{2}\left(\int_{-2}^{-1}0\diff{x}+\int_{-1}^{1}2\diff{x}+
+    \int_{1}^{2}0\diff{x}\right) \\
+  &= \frac{1}{2}\int_{-1}^{1}2\diff{x} \\
+  &= \frac{4}{2} \\
+  &= 2 \\
+  a_n &= \frac{1}{2}\int_{-2}^{2}f(x)\cos(\frac{n\pi x}{2})\diff{x} \\
+  &= \frac{1}{2}\int_{-1}^{1}2\cos(\frac{n\pi x}{2})\diff{x} \\
+  &= \frac{1}{2}\bigg[\frac{2}{n\pi}(-2\sin(\frac{n\pi x}{2}))\bigg]_{-1}^{1} \\
+  &= \frac{1}{2}\bigg[\frac{-4}{n\pi}\sin(\frac{n\pi}{2})+
+    \frac{4}{n\pi}\sin(\frac{-n\pi}{2})\bigg] \\
+  &= \frac{1}{2}\bigg[\frac{-4}{n\pi}\sin(\frac{n\pi}{2})-
+    \frac{4}{n\pi}\sin(\frac{n\pi}{2})] \\
+  &= -\frac{4}{n\pi}\sin(\frac{n\pi}{2}) \\
+  b_n &= \frac{1}{2}\int_{-2}^{2}f(x)\sin(\frac{n\pi x}{2})\diff{x} \\
+  &= \frac{1}{2}\int_{-1}^{1}2\sin(\frac{n\pi x}{2})\diff{x} \\
+  &= 0 \\
+  f(x) &\sim \frac{2}{2}+\sum_{n=1}^{\infty}
+    -\frac{4}{n\pi}\sin(\frac{n\pi}{2})\cos(\frac{n\pi x}{2}) \\
+  &\sim 1+\sum_{n=1}^{\infty}
+    -\frac{4}{n\pi}\sin(\frac{n\pi}{2})\cos(\frac{n\pi x}{2})
+\end{align*}
+At the point \( x = -1 \),
+\[ \frac{f(-1^-)+f(-1^+)}{2} = \frac{0+2}{2} = 1 \]
+
+\subsubsection*{Exercise 3}
+Sketch the graph of \( f \), determine the Fourier series corresponding to
+\( f \), and indicate the convergence at the given points. It is assumed that
+the functions are periodic and one period is given.
+\[ f(x) = x, \quad -1<x<1 \]
+\begin{center}
+  \begin{tikzpicture}
+    \draw[thick,<->] (-3,0) -- (3,0) node[below] {\( x \)};
+    \draw[thick,<->] (0,-3) -- (0,3) node[left] {\( y \)};
+    \draw[very thick,red] (-1,-1) -- (1,1);
+  \end{tikzpicture}
+\end{center}
+\begin{align*}
+  a_0 &= \frac{1}{1}\int_{-1}^{1}x\diff{x} \\
+  &= 0 \\
+  a_n &= \int_{-1}^{1}x\cos(\frac{n\pi x}{1})\diff{x} \\
+  u = x \quad \diff{u} &= 1 \quad \diff{v} = \cos(n\pi x) \quad
+    v = \frac{1}{n\pi}\sin(n\pi x) \\
+  &= \bigg[\frac{1}{n\pi}x\sin(n\pi x)\bigg]_{-1}^{1}-
+    \int_{-1}^{1}\frac{1}{n\pi}\sin(n\pi x)\diff{x} \\
+  &= \bigg[\frac{1}{n\pi}\sin(n\pi)+\frac{1}{n\pi}\sin(-n\pi)\bigg]+
+    \frac{1}{n\pi}\bigg[\frac{1}{n\pi}\cos(n\pi x)\bigg]_{-1}^{1} \\
+  &= 0-\frac{1}{n^2\pi^2}\bigg[\cos(n\pi)-\cos(-n\pi)\bigg] \\
+  &= 0 \\
+  b_n &= \int_{-1}^{1}x\sin(\frac{n\pi x}{1})\diff{x} \\
+  u = x \quad \diff{u} &= 1 \quad \diff{v} = \sin(n\pi x) \quad
+    v = -\frac{1}{n\pi}\cos(n\pi x) \\
+  &= \bigg[-\frac{x}{n\pi}\cos(n\pi x)\bigg]_{-1}^{1}-
+    \int_{-1}^{1}\frac{1}{n\pi}\cos(n\pi x)\diff{x} \\
+  &= \bigg[-\frac{1}{n\pi}\cos(n\pi)-\frac{1}{n\pi}\cos(-n\pi)\bigg]-
+    \frac{1}{n\pi}\bigg[\frac{1}{n\pi}\sin(n\pi x)\bigg]_{-1}^{1} \\
+  &= -\frac{2\cos(n\pi)}{n\pi}-
+    \frac{1}{n^2\pi^2}\bigg[\sin(n\pi)-\sin(-n\pi)\bigg] \\
+  &= -\frac{2\cos(n\pi)}{n\pi}-\frac{2\sin(n\pi)}{n^2\pi^2} \\
+  f(x) &\sim 0+\sum_{n=1}^{\infty}(-\frac{2\cos(n\pi)}{n\pi}-
+    \frac{2\sin(n\pi)}{n^2\pi^2})\sin(n\pi x) \\
+  &\sim \sum_{n=1}^{\infty}-\frac{2\cos(n\pi)\sin(n\pi x)}{n\pi}-
+    \frac{2\sin(n\pi)\sin(n\pi x)}{n^2\pi^2}
+\end{align*}
+At the point \( x = 1 \),
+\[ \frac{f(1^-)+f(1^+)}{2} = \frac{1+(-1)}{2} = 0 \]
+
+\subsubsection*{Exercise 4}
+Sketch the graph of \( f \), determine the Fourier series corresponding to
+\( f \), and indicate the convergence at the given points. It is assumed that
+the functions are periodic and one period is given.
+\[ f(x) = \begin{cases}
+  0 &, -2<x<-1 \\
+  2+x &, -1<x<0 \\
+  2-x &, 0<x<1 \\
+  0 &, 1<x<2
+\end{cases} \]
+\begin{center}
+  \begin{tikzpicture}
+    \draw[thick,<->] (-3,0) -- (3,0) node[below] {\( x \)};
+    \draw[thick,<->] (0,-3) -- (0,3) node[left] {\( y \)};
+    \draw[very thick,red] (-2,0) -- (-1,0);
+    \draw[very thick,red] (-1,1) -- (0,2) -- (1,1);
+    \draw[very thick,red] (1,0) -- (2,0);
+  \end{tikzpicture}
+\end{center}
+\begin{align*}
+  a_0 &= \frac{1}{2}\int_{-2}^{2}f(x)\diff{x} \\
+  &= \frac{1}{2}\bigg[\int_{-2}^{1}0\diff{x}+\int_{-1}^{0}2+x\diff{x}+
+    \int_{0}^{1}2-x\diff{x}+\int_{1}^{2}0\diff{x}\bigg] \\
+  &= \frac{1}{2}\bigg[0+\frac{3}{2}+\frac{3}{2}+0\bigg] \\
+  &= \frac{3}{2} \\
+  a_n &= \frac{1}{2}\int_{-2}^{2}f(x)\cos(\frac{n\pi x}{2})\diff{x} \\
+  &= \frac{1}{2}\bigg[\int_{-1}^{0}(2+x)\cos(\frac{n\pi x}{2})+
+    \int_{0}^{1}(2-x)\cos(\frac{n\pi x}{2})\bigg] \\
+  &= \frac{1}{2}\bigg[
+    \frac{2(2+x)}{n\pi}\sin(\frac{n\pi x}{2})\bigg|_{-1}^0+
+    \int_{-1}^{0}\frac{2}{n\pi}\sin(\frac{n\pi x}{2})\diff{x}+ \\
+  & \quad \quad \frac{2(2-x)}{n\pi}\sin(\frac{n\pi x}{2})\bigg|_{0}^{1}-
+    \int_{0}^{1}\frac{2}{n\pi}\sin(\frac{n\pi x}{2})\diff{x}
+  \bigg] \\
+  &= \frac{1}{2}\bigg[\frac{-2}{n\pi}\sin(\frac{-n\pi}{2})+1+
+    \frac{2}{n\pi}\sin(\frac{n\pi}{2})-0\bigg] \\
+  &= \frac{2}{n\pi}\sin(\frac{n\pi}{2})+1
+\end{align*}
+\begin{align*}
+  b_n &= \frac{1}{2}\int_{-2}^{2}f(x)\sin(\frac{n\pi x}{2})\diff{x} \\
+  &= 0
+\end{align*}
+\( f(x) \) is characteristically even and \( \sin \) is odd, so over a
+symmetric interval, their product is 0.
+\[ f(x) \sim \frac{2}{3}+\sum_{n=1}^{\infty}
+  (\frac{2}{n\pi}\sin(\frac{n\pi}{2})+1)\cos(\frac{n\pi x}{2}) \]
+At the point \( x = 1 \),
+\[ \frac{f(1^-)+f(1^+)}{2} = \frac{0+1}{2} = \frac{1}{2} \]
+At the point \( x = 2 \),
+\[ \frac{f(2^-)+f(2^+)}{2} = \frac{0+0}{2} = 0 \]
+
+\subsubsection*{Exercise 5}
+
+\subsubsection*{Exercise 13}
+
+\begin{center}
+  If you have any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
