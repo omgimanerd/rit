@@ -187,10 +187,20 @@ We define the Fourier Cosine Series (FCS) of \( f(x) \) on \( 0<x<L \) as
   a_0 &= \frac{2}{L}\int_{0}^{L}f(x)\diff{x} \\
   a_n &= \frac{2}{L}\int_{0}^{L}f(x)\cos(\frac{n\pi x}{L})\diff{x}
 \end{align*}
-If \( f \) is piecewise smooth on \( (0,L) \), the Fourier Cosine Series
-converges to. The Fourier Sine Series (FSS) of \( f(x) \) on \( 0<x<L \) is
+If \( f(x) \) is piecewise smooth on \( (0,L) \), the Fourier Cosine Series
+converges to
+\[ \frac{f_e(x_0^-)+f_e(x_0^+)}{2} \]
+at \( x = x_0 \). The Fourier Sine Series (FSS) of \( f(x) \) on \( 0<x<L \) is
 defined as
-\[ f(x) \sim \sum_{n=1}^{\infty}b_n\sin(\frac{n\pi x}{L}) \]
+\begin{align*}
+  f(x) &\sim \sum_{n=1}^{\infty}b_n\sin(\frac{n\pi x}{L}) \\
+  b_n &= \frac{2}{L}\int_{0}^{L}f(x)\sin(\frac{n\pi x}{L})\diff{x}
+\end{align*}
+If \( f(x) \) is piecewise smooth on \( (0,L) \), the Fourier Sine Series
+converges to
+\[ \frac{f_o(x_1^-)+f_o(x_1^+)}{2} \]
+at \( x = x_1 \). The Fourier Sine and Cosine Series are sometimes called
+half-range series.
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
