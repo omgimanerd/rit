@@ -185,7 +185,7 @@ the functions are periodic and one period is given.
   &= 0
 \end{align*}
 \( f(x) \) is characteristically even and \( \sin \) is odd, so over a
-symmetric interval, their product is 0.
+symmetric interval, the integral of their product is 0.
 \[ f(x) \sim \frac{2}{3}+\sum_{n=1}^{\infty}
   (\frac{2}{n\pi}\sin(\frac{n\pi}{2})+1)\cos(\frac{n\pi x}{2}) \]
 At the point \( x = 1 \),
@@ -194,6 +194,43 @@ At the point \( x = 2 \),
 \[ \frac{f(2^-)+f(2^+)}{2} = \frac{0+0}{2} = 0 \]
 
 \subsubsection*{Exercise 5}
+Determine the Fourier series corresponding to \( f \), and indicate the
+convergence at the given points. It is assumed that the functions are periodic
+and one period is given.
+\[ f(x) = \e^{-x} \quad -1<x<1 \]
+\begin{align*}
+  a_0 &= \frac{1}{1}\int_{-1}^{1}f(x)\diff{x} \\
+  &= \int_{-1}^{1}\e^{-x}\diff{x} \\
+  &= \bigg[-\e^{-x}\bigg]_{-1}^{1} \\
+  &= -\e^{-1}+\e^{1} \\
+  &= \e-\frac{1}{\e} \\
+  a_n &= \int_{-1}^{1}\e^{-x}\cos(\frac{n\pi x}{1})\diff{x} \\
+  \bigg[\int\e^{bx}\cos(ax)\diff{x} &=
+    \frac{1}{a^2+b^2}\e^{bx}(a\sin(ax)+b\cos(ax))\bigg] \\
+  &= \bigg[\frac{1}{1+n^2\pi^2}\e^{-x}(n\pi\sin(n\pi x)-
+    \cos(n\pi x))\bigg]_{-1}^{1} \\
+  &= \frac{\e^{-1}(n\pi\sin(n\pi)-\cos(-n\pi))}{1+n^2\pi^2}-
+    \frac{\e^{1}(n\pi\sin(-n\pi)-\cos(-n\pi))}{1+n^2\pi^2} \\
+  &= \frac{-\e^{-1}\cos(-n\pi)+\e\cos(-n\pi)}{1+n^2\pi^2} \\
+  &= \frac{\cos(n\pi)(\e-\frac{1}{\e})}{1+n^2\pi^2}
+\end{align*}
+\begin{align*}
+  b_n &= \int_{-1}^{1}\e^{-x}\sin(\frac{n\pi x}{1})\diff{x} \\
+  \bigg[\int\e^{bx}\sin(ax)\diff{x} &=
+    \frac{1}{a^2+b^2}\e^{bx}(b\sin(ax)-a\cos(ax))\bigg] \\
+  &= \bigg[\frac{1}{1+n^2\pi^2}\e^{-x}(-\sin(n\pi x)-
+    n\pi\cos(n\pi x))\bigg]_{-1}^{1} \\
+  &= \frac{\e^{-1}(-\sin(n\pi)-n\pi\cos(n\pi))}{1+n^2\pi^2}-
+    \frac{\e(-\sin(-n\pi)-n\pi\cos(-n\pi))}{1+n^2\pi^2} \\
+  &= \frac{-e^{-1}n\pi\cos(n\pi)+\e n\pi\cos(n\pi)}{1+n^2\pi^2} \\
+  &= \frac{n\pi\cos(n\pi)(\e-\frac{1}{\e})}{1+n^2\pi^2} \\
+  f(x) &\sim \frac{1}{\e-\frac{1}{\e}}+\sum_{n=1}^{\infty}
+    \frac{(\e-\frac{1}{\e})\cos(n\pi)\cos(n\pi x)}{1+n^2\pi^2}+
+    \frac{(\e-\frac{1}{\e})n\pi\cos(n\pi)\sin(n\pi x)}{1+n^2\pi^2}
+\end{align*}
+Find the convergence at \( x = 1 \) and \( x = -1 \).
+\[ \frac{f(1^-)+f(1^+)}{2} = \frac{\e+\e^{-1}}{2} \]
+\[ \frac{f(-1^-)+f(-1^+)}{2} = \frac{\e+\e^{-1}}{2} \]
 
 \subsubsection*{Exercise 13}
 
