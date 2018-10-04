@@ -233,6 +233,33 @@ Find the convergence at \( x = 1 \) and \( x = -1 \).
 \[ \frac{f(-1^-)+f(-1^+)}{2} = \frac{\e+\e^{-1}}{2} \]
 
 \subsubsection*{Exercise 13}
+If \( f(x) = x \) for \( -\pi<x<\pi \), find the Fourier series for the
+function. If the series represents \( f(x) \) on the given interval show
+graphically the function represented by the series for all \( x \).
+\begin{align*}
+  a_0 &= \frac{1}{\pi}\int_{-\pi}^{\pi}x\diff{x} \\
+  &= 0 \\
+  a_n &= \frac{1}{\pi}\int_{-\pi}^{\pi}x\cos(\frac{n\pi x}{\pi})\diff{x} \\
+  &= 0 \\
+  b_n &= \frac{1}{\pi}\int_{-\pi}^{\pi}x\sin(\frac{n\pi x}{\pi})\diff{x} \\
+  u = x \quad \diff{u} &= \diff{x} \quad \diff{v} = \sin(nx) \quad
+    v = \frac{1}{n}(-\cos(nx)) \\
+  &= \bigg[\frac{-x\cos(nx)}{n}\bigg]_{-\pi}^{\pi}-
+    \int_{-\pi}^{\pi}\frac{-\cos(nx)}{n} \\
+  &= \bigg[-\frac{\pi\cos(n\pi)}{n}-\frac{\pi\cos(n\pi)}{n}\bigg]-
+    \bigg[\frac{-\sin(nx)}{n^2}\bigg]_{-\pi}^{\pi} \\
+  &= \frac{-2\pi\cos(n\pi)}{n}-\bigg[0-0\bigg] \\
+  &= \frac{-2\pi\cos(n\pi)}{n}
+\end{align*}
+\begin{center}
+  \begin{tikzpicture}
+    \draw[thick,<->] (-10,0) -- (10,0) node[below] {\( x \)};
+    \draw[thick,<->] (0,-3) -- (0,3) node[left] {\( y \)};
+    \draw[very thick,red] (-3.14,-3.14) -- (3.14,3.14);
+    \draw[very thick,red] (-9.42,-3.14) -- (-3.14,3.14);
+    \draw[very thick,red] (3.14,-3.14) -- (9.42,3.14);
+  \end{tikzpicture}
+\end{center}
 
 \begin{center}
   If you have any questions, comments, or concerns, please contact me at
