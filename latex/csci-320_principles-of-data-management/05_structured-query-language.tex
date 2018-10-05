@@ -177,6 +177,64 @@ Set operation keywords are valid in SQL.
   (select name from dog) except (select name from cat)
 \end{lstlisting}
 
+\subsection*{Null Values}
+\begin{lstlisting}
+  select field from table where age is null
+\end{lstlisting}
+Boolean evaluation:
+\begin{enumerate}
+  \item True or null evaluates to true
+  \item False or null evaluates to null
+  \item Null or null evaluates to null
+  \item True and null evaluates to null
+  \item False and null evaluates to false
+  \item Null and null evaluates to null
+\end{enumerate}
+
+\subsection*{Aggregate Functions}
+There are \( 4\frac{1}{2} \) aggregate functions: \texttt{avg, min, max, sum,
+count}. Count does not entirely count as an aggregate function. We can use
+this to count the number of non-null rows:
+\begin{lstlisting}
+  select count(*) from penguin
+\end{lstlisting}
+Because no rows can be non-null, this just returns the number of rows in your
+database. We can also select the number of non-null values for a field:
+\begin{lstlisting}
+  select count(age) from penguin
+\end{lstlisting}
+To count distinct values in a field:
+\begin{lstlisting}
+  select count(distinct name) from dog
+\end{lstlisting}
+The other aggregate functions can be used in a similar way:
+\begin{lstlisting}
+  select avg(salary) from dog where state="CA"
+\end{lstlisting}
+If there are no dogs, then 0 is returned. If some dogs have a null salary, then
+null is returned.
+\begin{lstlisting}
+  select avg(salary) as avgs,state from dog group by state
+  select avg(salary) as avgs,state,name from dog group by state,name
+\end{lstlisting}
+Results like this can be filtered with the \texttt{having} clause:
+\begin{lstlisting}
+  select avg(salary) as avgs,state from dog group by state having avgs > 5
+\end{lstlisting}
+
+\subsection*{Subqueries}
+Subquery expressions can be used for set membership, comparisons, and
+cardinality expressions.
+\begin{lstlisting}
+  select name,age from dog where age in (select age from cat where
+    state="sleeping")
+  select name,age from dog where (age,legs) in (select age,legs from cat where
+    state="sleeping")
+  select name from dog where age > some(select age from cat where state="CA")
+  select name from dog where age > all(select age from cat where state="CA")
+  select name from dog where age > (select min(age) from cat where state="CA")
+\end{lstlisting}
+
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
   any questions, comments, or concerns, please contact me at
