@@ -1,0 +1,47 @@
+\documentclass{math}
+
+\title{Introduction to Computer Vision}
+\author{Alvin Lin}
+\date{August 2018 - December 2018}
+
+\begin{document}
+
+\maketitle
+
+\section*{Segmentation}
+Image processing involves an image as input, with the output being another
+image. Image analysis outputs measurements from an input image, and image
+understanding outputs a high level description from an input image. Humans
+tend to identify regions of images in groups, so the goal of segmentation is to
+identify groups of pixels or regions that are related and go together
+perceptually. \par
+Segmentation is done to obtain primitives for other tasks, perceptual
+organization/recognition, or image manipulation for graphics related tasks.
+Segmentation can be used to group together similar pixels for efficiency of
+further processing (superpixels). It can also separate images into coherent
+objects. Oversegmentation and undersegmentation is always an issue here.
+
+\subsection*{High Level Approaches}
+Bottom-up segmentation involves grouping tokens with similar features, while
+top-down segmentation involves grouping tokens that likely belong to the same
+object. \par
+Segmentation can be performed through clustering, graph partitioning, and
+labeling. With clustering, similar points are grouped together and represented
+with a single token. The K-means clustering algorithm can be used to cluster
+together similar regions. This will usually find cluster centers that
+minimize conditional variance and is simple to implement, however it is prone
+to local minima and it is often difficult to choose \( k \).
+
+\subsection*{K-medoids}
+Instead of representing a cluster with the mean of its members, we select a
+member of the cluster to represent it and minimize cluster dissimilarity. This
+is most applicable when the mean is not meaningful. This is much less sensitive
+to outliers than k-means.
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
