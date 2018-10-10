@@ -44,7 +44,7 @@ following features:
 
 \subsection*{Create Table}
 \begin{lstlisting}
-  create table r (A1 D1, A2 D2,\dots,An Dn) (integrity constraints)}
+  create table r (A1 D1, A2 D2,\dots,An Dn) (integrity constraints)};
 \end{lstlisting}
 Example:
 \begin{lstlisting}
@@ -53,7 +53,7 @@ Example:
     Name varchar(20),
     Salary numeric(8,2),
     goodboy smallint
-  )
+  );
 \end{lstlisting}
 Integrity Constraints:
 \begin{itemize}
@@ -70,54 +70,54 @@ Example:
     dog_id int,
     primary key(ID, Name),
     foreign key(dog_id) references dog(ID)
-  )
+  );
 \end{lstlisting}
 
 \subsection*{CRUD}
 \begin{lstlisting}
-  insert into r values (v1,v2,vn)
-  insert into dog values (1,"cat",10.00,0)
-  delete from dog
-  drop table r
-  alter table dog add iscat int not null default 0
-  alter table dog drop iscat
+  insert into r values (v1,v2,vn);
+  insert into dog values (1,"cat",10.00,0);
+  delete from dog;
+  drop table r;
+  alter table dog add iscat int not null default 0;
+  alter table dog drop iscat;
 \end{lstlisting}
 
 \subsection*{Select}
 \begin{lstlisting}
-  select a1,a2,a3,an from r1,r2,rn where predicate
-  select name from dog
-  select distinct name from dog
-  select all name from dog
-  select "joe" as name
-  select name,"lab" as breed from dog
-  select * from dog
+  select a1,a2,a3,an from r1,r2,rn where predicate;
+  select name from dog;
+  select distinct name from dog;
+  select all name from dog;
+  select "joe" as name;
+  select name,"lab" as breed from dog;
+  select * from dog;
 \end{lstlisting}
 Explicitly specify what attributes to return, \texttt{SELECT *} should be
 avoided with the exception of manually viewing data.
 \begin{lstlisting}
-  select id,name,salary as pay from dog where salary > 80000
+  select id,name,salary as pay from dog where salary > 80000;
 \end{lstlisting}
 The \texttt{where} keyword allows for conditions by which we can filter the
 returned rows. We can specify modifications to the returned attribute and use
 boolean conditions to create compound conditionals.
 \begin{lstlisting}
-  select id,name,salary/26 as pay from dog where salary > 80000 and breed="lab"
+  select id,name,salary/26 as pay from dog where salary > 80000 and breed="lab";
 \end{lstlisting}
 The \texttt{between} modifier allows us to select a range as a predicate.
 \begin{lstlisting}
-  select * from dog where age between 6 and 9
+  select * from dog where age between 6 and 9;
 \end{lstlisting}
 Selecting from multiple tables using \texttt{SELECT *} returns a Cartesian
 product.
 \begin{lstlisting}
-  select * from dog,cat
+  select * from dog,cat;
 \end{lstlisting}
 This is not particularly useful, it is much more useful to use a predicate to
 match the data.
 \begin{lstlisting}
-  select * from dog,cat where dog.name = cat.name and dog.age = 4
-  select * from dog as D, cat as C where D.age = C.age
+  select * from dog,cat where dog.name = cat.name and dog.age = 4;
+  select * from dog as D, cat as C where D.age = C.age;
 \end{lstlisting}
 
 \subsubsection*{Examples}
@@ -136,45 +136,45 @@ match the data.
 \end{center}
 Finding all the owners with dogs named Woodstock:
 \begin{lstlisting}
-  select d2.owner from dog where name = "woodstock"
+  select d2.owner from dog where name = "woodstock";
 \end{lstlisting}
 Finding all the dogs owned by Snoopy:
 \begin{lstlisting}
-  select name from dog where owner = "snoopy"
+  select name from dog where owner = "snoopy";
 \end{lstlisting}
 Selecting the owner's owner of Charlie:
 \begin{lstlisting}
   select owner from dog d1, dog d2 where d1.name = "charlie" and
-      d1.owner = d2.name
+      d1.owner = d2.name;
 \end{lstlisting}
 
 \subsection*{String Operations}
 The percent sign (\%) is used for partial substring matches while the
 underscore (\_) is used for single character matches.
 \begin{lstlisting}
-  select * from dog where name like "%py"
-  select * from dog where name like 'Sn\'' escape '\'
+  select * from dog where name like "%py";
+  select * from dog where name like 'Sn\'' escape '\';
 \end{lstlisting}
 Concatenation is expressed with double pipes (\textbar\textbar).
 \begin{lstlisting}
-  select * from fname||lname like "%foo"
+  select * from fname||lname like "%foo";
 \end{lstlisting}
 
 \subsection*{Ordering}
 The \texttt{order by} keyword allows for queries to be sorted. Specifying more
 than one sort option allows for sorting by multiple fields.
 \begin{lstlisting}
-  select name,lname from dog order by name asc
-  select name,lname from dog order by name,lname desc
-  select name,lname from dog order by name desc,lname
+  select name,lname from dog order by name asc;
+  select name,lname from dog order by name,lname desc;
+  select name,lname from dog order by name desc,lname;
 \end{lstlisting}
 
 \subsection*{Set Operations}
 Set operation keywords are valid in SQL.
 \begin{lstlisting}
-  (select name from dog) union (select name from cat)
-  (select name from dog) intersect (select name from cat)
-  (select name from dog) except (select name from cat)
+  (select name from dog) union (select name from cat);
+  (select name from dog) intersect (select name from cat);
+  (select name from dog) except (select name from cat);
 \end{lstlisting}
 
 \subsection*{Null Values}
@@ -196,30 +196,30 @@ There are \( 4\frac{1}{2} \) aggregate functions: \texttt{avg, min, max, sum,
 count}. Count does not entirely count as an aggregate function. We can use
 this to count the number of non-null rows:
 \begin{lstlisting}
-  select count(*) from penguin
+  select count(*) from penguin;
 \end{lstlisting}
 Because no rows can be non-null, this just returns the number of rows in your
 database. We can also select the number of non-null values for a field:
 \begin{lstlisting}
-  select count(age) from penguin
+  select count(age) from penguin;
 \end{lstlisting}
 To count distinct values in a field:
 \begin{lstlisting}
-  select count(distinct name) from dog
+  select count(distinct name) from dog;
 \end{lstlisting}
 The other aggregate functions can be used in a similar way:
 \begin{lstlisting}
-  select avg(salary) from dog where state="CA"
+  select avg(salary) from dog where state="CA";
 \end{lstlisting}
 If there are no dogs, then 0 is returned. If some dogs have a null salary, then
 null is returned.
 \begin{lstlisting}
-  select avg(salary) as avgs,state from dog group by state
-  select avg(salary) as avgs,state,name from dog group by state,name
+  select avg(salary) as avgs,state from dog group by state;
+  select avg(salary) as avgs,state,name from dog group by state,name;
 \end{lstlisting}
 Results like this can be filtered with the \texttt{having} clause:
 \begin{lstlisting}
-  select avg(salary) as avgs,state from dog group by state having avgs > 5
+  select avg(salary) as avgs,state from dog group by state having avgs > 5;
 \end{lstlisting}
 
 \subsection*{Subqueries}
@@ -227,12 +227,73 @@ Subquery expressions can be used for set membership, comparisons, and
 cardinality expressions.
 \begin{lstlisting}
   select name,age from dog where age in (select age from cat where
-    state="sleeping")
+    state="sleeping");
   select name,age from dog where (age,legs) in (select age,legs from cat where
-    state="sleeping")
-  select name from dog where age > some(select age from cat where state="CA")
-  select name from dog where age > all(select age from cat where state="CA")
-  select name from dog where age > (select min(age) from cat where state="CA")
+    state="sleeping");
+  select name from dog where age > some(select age from cat where state="CA");
+  select name from dog where age > all(select age from cat where state="CA");
+  select name from dog where age > (select min(age) from cat where state="CA");
+\end{lstlisting}
+Because nested subqueries can get very messy, we use the \texttt{with} clause
+as a way of defining a temporary relation that only exists in the clause in
+which the \texttt{with} clause occurs.
+\begin{lstlisting}
+  with dept_total(dept_name, value) as
+    (select dept_name, sum(salary) from instructor group by dept_name),
+    dept_total_avg(value) as (select avg(value) from dept_total)
+  select dept_name from dept_total,dept_total_avg
+    where dept_total.value > dept_total_avg.value;
+\end{lstlisting}
+Scalar subqueries must be used where only a single value is expected.
+\begin{lstlisting}
+  select dept_name,
+    (select count(*) from instructor
+      where department.dept_name=instructor.dept_name) as num_instructors
+    from department;
+\end{lstlisting}
+
+\subsection*{Database Modification}
+Deleting records (also accepts a valid where clause):
+\begin{lstlisting}
+  delete from instructor;
+  delete from instructor where dept_name='Finance';
+  delete from instructor where dept_name in
+    (select dept_name from department where building='Watson');
+  delete from instructor where salary < (select avg(salary) from instructor);
+\end{lstlisting}
+Records can be inserted into databases:
+\begin{lstlisting}
+  insert into course(course_id, title, dept_name, credits)
+    values('CS-437', 'Database Systems', 'Comp Sci', 4);
+  insert into course values('CS-437', 'Database Systems', 'Comp Sci', 4);
+  insert into student select ID, name, dept_name, 0 from instructor;
+\end{lstlisting}
+Records can be updated in databases:
+\begin{lstlisting}
+  update instructor
+    set salary=salary * 1.03
+    where salary > 100000;
+  update instructor
+    set salary = salary * 1.05
+    where salary <= 100000;
+\end{lstlisting}
+As an aside, since we have no guarantee to the order of execution of the
+previous statements, some instructors might get more than one raise. We can
+use the \texttt{case} statement to solve this.
+\begin{lstlisting}
+  update instructor set salary = case
+    when salary <= 100000 then salary * 1.05
+    else salary * 1.03
+  end
+\end{lstlisting}
+Updates can also take scalar subqueries:
+\begin{lstlisting}
+  update student S
+    set total_credits = (select sum(credits) from takes,course
+      where takes.course_id = course.course_id and
+        S.ID = takes.ID and
+        takes.grade <> 'F' and
+        takes.grade is not null);
 \end{lstlisting}
 
 \begin{center}
