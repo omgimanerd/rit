@@ -1,0 +1,40 @@
+\documentclass{math}
+
+\usepackage{tikz}
+
+\title{Boundary Value Problems}
+\author{Alvin Lin}
+\date{August 2018 - December 2018}
+
+\begin{document}
+
+\maketitle
+
+\section*{Separation of Variables}
+We need to know when a partial differential equation is separable. Suppose we
+have the function \( u_t = 8u_{xx} \). To test for separability:
+\begin{enumerate}
+  \item Suppose \( u(x,t) = X(x)T(t) \).
+  \item We need to substitute this into the partial differential equation.
+  \item If you can isolate all instances of the \( x \) independent variable
+    on one side and the \( t \) independent variable on the other side of the
+    equation, then the partial differential equation is separable.
+\end{enumerate}
+\begin{align*}
+  u_(x,t) &= X(x)T(t) \\
+  \pdiff{}{t}(X(x)T(t)) &= 8\pdiff{^2}{x^2}(X(x)T(t)) \\
+  X(x)\pdiff{}{t}T(t) &= 8\pdiff{^2}{x^2}(X(x))T(t) \\
+  X(x)T'(t) &= 8X''(x)T(t) \\
+  \frac{X(x)}{X''(x)} &= \frac{8T'(t)}{T(t)}
+\end{align*}
+In their separated form, we can set both sides equal to some separation constant
+to solve two ordinary differential equations.
+\[ \frac{X(x)}{X''(x)} = \frac{8T'(t)}{T(t)} = -\lambda \]
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
