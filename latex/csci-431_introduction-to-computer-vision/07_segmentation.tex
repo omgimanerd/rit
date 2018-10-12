@@ -38,6 +38,12 @@ member of the cluster to represent it and minimize cluster dissimilarity. This
 is most applicable when the mean is not meaningful. This is much less sensitive
 to outliers than k-means.
 
+\subsection*{Kernel Density Estimation}
+Also known as the Parzen-Rosenblatt window method, this is a non-parametric way
+to estimate the probability density function of a random variable. Inferences
+about a population are made based only on a finite data sample.
+\[ \hat{f_h}(x) = \frac{1}{nh}\sum_{i=1}^{n}K\left(\frac{x-x_i}{h}\right) \]
+
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
   any questions, comments, or concerns, please contact me at
