@@ -296,6 +296,142 @@ Updates can also take scalar subqueries:
         takes.grade is not null);
 \end{lstlisting}
 
+\subsection*{Database Joins}
+Join types: inner, left outer, right outer, full outer \\
+Conditions: natural, on (predicate), using (attributes) \\
+Natural joins match on all attributes with the same name in both tables. Inner
+joins only select rows on the matching attribute (essentially enforcing that
+no row in the output has null values) while full outer joins preserve all
+information in both tables.
+\begin{center}
+  \begin{tabular}{|c|c|}
+    \hline
+    \multicolumn{2}{|c|}{Dog} \\
+    \hline
+    Name & Age \\
+    \hline
+    A & 5 \\
+    B & 10 \\
+    C & 7 \\
+    \hline
+  \end{tabular}
+  \begin{tabular}{|c|c|c|}
+    \hline
+    \multicolumn{3}{|c|}{Cat} \\
+    \hline
+    ID & Name & State \\
+    \hline
+    1 & C & UT \\
+    2 & D & IA \\
+    \hline
+  \end{tabular}
+\end{center}
+\begin{lstlisting}
+  select * from dog natural left outer join cat;
+\end{lstlisting}
+\begin{center}
+  \begin{tabular}{|c|c|c|c|}
+    \hline
+    Name & Age & ID & State \\
+    \hline
+    A & 5 & NULL & NULL \\
+    B & 10 & NULL & NULL \\
+    C & 7 & 1 & VT \\
+    \hline
+  \end{tabular}
+\end{center}
+\begin{lstlisting}
+  select * dog natural right outer join cat;
+\end{lstlisting}
+\begin{center}
+  \begin{tabular}{|c|c|c|c|}
+    \hline
+    Name & Age & ID & State \\
+    \hline
+    C & 7 & 1 & VT \\
+    D & NULL & 2 & IA \\
+    \hline
+  \end{tabular}
+\end{center}
+\begin{lstlisting}
+  select * from dog natural full outer join cat;
+\end{lstlisting}
+\begin{center}
+  \begin{tabular}{|c|c|c|c|}
+    \hline
+    Name & Age & ID & State \\
+    \hline
+    A & 5 & NULL & NULL \\
+    B & 10 & NULL & NULL \\
+    C & 7 & 1 & VT \\
+    D & NULL & 2 & IA \\
+    \hline
+  \end{tabular}
+\end{center}
+\begin{lstlisting}
+  select * from dog inner join cat on cat.name=dog.name;
+\end{lstlisting}
+\begin{center}
+  \begin{tabular}{|c|c|c|c|}
+    \hline
+    Name & Age & ID & State \\
+    \hline
+    C & 7 & 1 & VT \\
+    \hline
+  \end{tabular}
+\end{center}
+Suppose we have two cats with the same name:
+\begin{center}
+  \begin{tabular}{|c|c|}
+    \hline
+    \multicolumn{2}{|c|}{Dog} \\
+    \hline
+    Name & Age \\
+    \hline
+    A & 5 \\
+    B & 10 \\
+    C & 7 \\
+    \hline
+  \end{tabular}
+  \begin{tabular}{|c|c|c|}
+    \hline
+    \multicolumn{3}{|c|}{Cat} \\
+    \hline
+    ID & Name & State \\
+    \hline
+    1 & C & UT \\
+    2 & D & IA \\
+    3 & C & MI \\
+    \hline
+  \end{tabular}
+\end{center}
+\begin{lstlisting}
+  select * from dog natural full outer join cat;
+\end{lstlisting}
+\begin{center}
+  \begin{tabular}{|c|c|c|c|}
+    \hline
+    Name & Age & ID & State \\
+    \hline
+    A & 5 & NULL & NULL \\
+    B & 10 & NULL & NULL \\
+    C & 7 & 1 & VT \\
+    D & NULL & 2 & IA \\
+    C & 7 & 3 & MI \\
+    \hline
+  \end{tabular}
+\end{center}
+
+\subsection*{Views}
+Views are used to restrict access to attributes or rows. It represents a virtual
+table.
+\begin{lstlisting}
+  create view old_dogs as (select name,age from dog where age > 10);
+\end{lstlisting}
+Executing any query on old\_dogs is equivalent to using the view as a subquery.
+This is generally used to restrict access to the table, prevent users from
+querying all dogs or querying certain attributes of dogs.
+
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
   any questions, comments, or concerns, please contact me at
