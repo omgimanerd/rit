@@ -44,7 +44,7 @@ following features:
 
 \subsection*{Create Table}
 \begin{lstlisting}
-  create table r (A1 D1, A2 D2,\dots,An Dn) (integrity constraints)};
+  create table r (A1 D1, A2 D2, ... ,An Dn) (integrity constraints);
 \end{lstlisting}
 Example:
 \begin{lstlisting}
@@ -55,12 +55,6 @@ Example:
     goodboy smallint
   );
 \end{lstlisting}
-Integrity Constraints:
-\begin{itemize}
-  \item Not null
-  \item Primary key
-  \item Foreign key references
-\end{itemize}
 Example:
 \begin{lstlisting}
   create table p(
@@ -122,8 +116,9 @@ match the data.
 
 \subsubsection*{Examples}
 \begin{center}
-  Table Dog: \\
   \begin{tabular}{|c|c|}
+    \hline
+    \multicolumn{2}{|c|}{table dog} \\
     \hline
     name & owner \\
     \hline
@@ -297,8 +292,18 @@ Updates can also take scalar subqueries:
 \end{lstlisting}
 
 \subsection*{Database Joins}
-Join types: inner, left outer, right outer, full outer \\
-Conditions: natural, on (predicate), using (attributes) \\
+Join types:
+\begin{itemize}
+  \item \texttt{inner}
+  \item \texttt{left outer}
+  \item \texttt{right outer}
+  \item \texttt{full outer}
+\end{itemize}
+Conditions:
+\begin{itemize}
+  \item \texttt{natural}
+  \item \texttt{on \textless predicate\textgreater, using (attributes)}
+\end{itemize}
 Natural joins match on all attributes with the same name in both tables. Inner
 joins only select rows on the matching attribute (essentially enforcing that
 no row in the output has null values) while full outer joins preserve all
@@ -430,7 +435,91 @@ table.
 \end{lstlisting}
 Executing any query on old\_dogs is equivalent to using the view as a subquery.
 This is generally used to restrict access to the table, prevent users from
-querying all dogs or querying certain attributes of dogs.
+querying all dogs or querying certain attributes of dogs. We can also insert
+into views.
+\begin{lstlisting}
+  insert into old_dogs values("Jeff", 13) values("Cheese", 8);
+\end{lstlisting}
+While this might work, you will never see Cheese by querying the view because
+the view restricts access to dogs whose age is over 10.
+\begin{lstlisting}
+  create view dogs2 as (select name from dog,cat where dog.lives_in=cat.state);
+\end{lstlisting}
+Inserting into this view would lead to ambiguity, so in general, there are
+certain restrictions for inserting into views.
+\begin{enumerate}
+  \item Only a single table is present in the from clause.
+  \item No aggregations, distinct, etc.
+  \item No group by or having clauses.
+  \item Any attribute not in the selection can be set to null.
+\end{enumerate}
+There exist the concept of materialized views, which are physical tables that
+contain the results of a view. It is a cache of data used for long running
+queries that needs to be updated.
+
+\subsection*{Transactions}
+In most flavors of SQL, transactions begin with most statements and usually end
+with a commit or rollback. You can specify for a group of statements to be
+atomic however.
+\begin{lstlisting}
+  begin atomic;
+    select * from dog;
+    insert into cat ...
+    update turtle ...
+  commit;
+\end{lstlisting}
+
+\subsection*{Integrity Constraints}
+Integrity contraints for a single table include the following:
+\begin{itemize}
+  \item \texttt{not null}
+  \item \texttt{unique}
+  \item \texttt{primary key}: not null, unique, indexed
+  \item \texttt{check \textless predicate\textgreater}
+\end{itemize}
+\begin{lstlisting}
+  create table dog (
+    id int primary key,
+    name varchar(30) not null,
+    salary int,
+    check (salary > 5),
+    check (age < 10),
+    check (breed in ("Lab","Dalmatian","GSD"))
+  )
+\end{lstlisting}
+Integrity constraints can apply across multiple tables. Referential integrity
+uses foreign keys to ensure some condition.
+\begin{lstlisting}
+  create table dog (
+    id int primary key,
+    name varchar(20) not null,
+    foreign key(owner) references person(id)
+    on update cascade
+  )
+\end{lstlisting}
+If the referenced person is deleted or updated in database, we specify how the
+database handles the constraint. \texttt{on update cascade} makes any changes
+from the person table cascade into the dog table to update its value.
+Alternatively, we can specify \texttt{on delete set null} to set the value to
+null if the referenced person is deleted. Another option is to specify
+\texttt{set default 0} to specify a default value if the referenced person is
+deleted. Complex check statements can also be used like this, but it is not
+usually recommended since there are better options.
+\begin{lstlisting}
+  create table dog (
+    check owner_id in (select id from person)
+  )
+\end{lstlisting}
+
+\subsection*{Additional Data Types}
+\begin{itemize}
+  \item Date - yyyy-mm-dd
+  \item Time - HH:MM:SS
+  \item Timestamp - Date and time
+  \item Interval - the resulting of subtracting a date/time related data type
+  \item Blob - binary large object (cannot be indexed)
+  \item Clob - character large object (cannot be indexed)
+\end{itemize}
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
