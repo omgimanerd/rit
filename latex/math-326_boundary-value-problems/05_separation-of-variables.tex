@@ -28,8 +28,87 @@ have the function \( u_t = 8u_{xx} \). To test for separability:
   \frac{X(x)}{X''(x)} &= \frac{8T'(t)}{T(t)}
 \end{align*}
 In their separated form, we can set both sides equal to some separation constant
-to solve two ordinary differential equations.
+to solve two ordinary differential equations. This separation constant is
+usually denoted \( \lambda, -\lambda, \alpha^2, \text{ or } -\alpha^2 \).
 \[ \frac{X(x)}{X''(x)} = \frac{8T'(t)}{T(t)} = -\lambda \]
+Separation is useful because we can break a partial differential equation into
+multiple ordinary differential equations.
+
+\subsubsection*{Example}
+Generic form of the heat equation:
+\[ \pdiff{u}{t} = \beta\pdiff{^2u}{x^2} \]
+We want to find a solution that is nontrivial and bounded. It helps to narrow
+things down if we have boundary conditions and/or initial conditions.
+\[ u(0,t) = 0 \quad u(L,t) = 0 \quad u(x,0) = f(x) \]
+We want to find \( u(x,t) \) that satisfies the partial differential equation,
+its boundary conditions, and its initial condition. Since the equation is
+separable, we can substitute \( u(x,t) = X(x)T(t) \) into the equation and show
+that
+\[ \frac{X''(x)}{X(x)} = \frac{T'(t)}{\beta T(t)} \]
+If we choose the separation constant \( -\lambda \):
+\begin{align*}
+  \frac{X''(x)}{X(x)} &= -\lambda = \frac{T'(t)}{\beta T(t)} \\
+  X''(x) &= -\lambda X(x) \\
+  T'(t) &= -\lambda\beta T(t)
+\end{align*}
+With the boundary condition \( u(0,t) = 0 \), we know that \( X(0)T(t) = 0 \).
+With the boundary condition \( u(L,t) = 0 \), we know that \( X(L)T(t) = 0 \).
+\begin{align*}
+  u(x,0) &= X(x)T(0) = f(x) \\
+  X(x) &= \frac{f(x)}{T(0)}
+\end{align*}
+We can start with either ordinary differential equation:
+\begin{align*}
+  X''(x) &= -\lambda X(x) \quad X(0) = 0 \quad X(L) = 0 \\
+  X''(x)+\lambda X(x) &= 0 \\
+  r^2+\lambda &= 0
+\end{align*}
+Using this characteristic equation, we have three cases:
+\begin{enumerate}
+  \item \( \lambda < 0 \)
+  \begin{align*}
+    r^2 &= -\lambda \\
+    r_{1,2} &= \pm\sqrt{-\lambda} \\
+    X(x) &= c_1\e^{\sqrt{-\lambda}x}+c_2\e^{-\sqrt{\lambda}x} \\
+    X(0) &= 0 = c_1\e^{0}+c_2\e^{0} \\
+    c_1 &= -c_2 \\
+    X(L) &= 0 = c_1(\e^{\sqrt{-\lambda}L}-\e^{-\sqrt{\lambda}L}) \\
+    0 &= c_1(\e^{2\sqrt{-\lambda}L}-1) \\
+    c_1 &= 0 = c_2 \\
+    X(x) &= 0 \quad \text{(trivial solution)}
+  \end{align*}
+  \item \( \lambda = 0 \)
+  \begin{align*}
+    X''(x) &= 0 \\
+    r^2 &= 0 \\
+    r &= 0 \\
+    X(x) &= c_1\e^{0t}+c_2x\e^{0t} \\
+    &= c_1+xc_2 \\
+    X(0) &= 0 = c_1 \\
+    c_1 &= 0 \\
+    X(L) &= xc_2 \\
+    c_2 &= 0 \\
+    X(x) &= 0 \quad \text{(trivial solution)}
+  \end{align*}
+  \item \( \lambda > 0 \)
+  \begin{align*}
+    r^2+\lambda &= 0 \\
+    r_{1,2} &= \pm\sqrt{-\lambda} \\
+    \alpha^2 &= -\lambda \\
+    r_{1,2} &= \pm i\alpha = \pm i\sqrt{\lambda} \\
+    X(x) &= c_1\cos(\alpha x)+c_2\sin(\alpha x) \\
+    X(0) &= 0 = c_1\cos(0)+c_2\sin(0) \\
+    c_1 &= 0 \\
+    X(L) &= 0 = c_2\sin(\alpha L)
+  \end{align*}
+  If \( c_2 \) is 0, then the solution is again trivial. If it is not zero,
+  then the solution depends on the separation constant.
+  \begin{align*}
+    \sin(\alpha L) &= 0 \\
+    \alpha L &= n\pi, \quad n\in\Z \\
+    \alpha &= n\pi
+  \end{align*}
+\end{enumerate}
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
