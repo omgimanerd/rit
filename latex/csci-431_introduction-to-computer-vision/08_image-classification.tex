@@ -1,0 +1,86 @@
+\documentclass{math}
+
+\title{Introduction to Computer Vision}
+\author{Alvin Lin}
+\date{August 2018 - December 2018}
+
+\begin{document}
+
+\maketitle
+
+\section*{Image Classification}
+Given a feature representation for images, how do we learn a model for
+distinguishing features from different classes? If we have a picture of a
+parrot, image classification would tell us that the image contains a parrot,
+while object detection would try to locate the bounding box of the parrot.
+This is generally quite complex.
+
+\subsection*{Nearest Neighbor Classifier}
+Near neighbor classifiers try to assign the label of the nearest training data
+point to each test data point. It is one of the easiest classification
+algorithms. K-nearest neighbors is a variant that finds the \( k \) closest
+neighbors from the training data. The labels of the \( k \) points can vote
+to classify the point in consideration.
+
+\subsection*{Distance Functions for Features}
+\begin{itemize}
+  \item Euclidean distance:
+  \[ D(h_1,h_2) = \sqrt{\sum_{i=1}^{N}(h_1(i)-h_2(i))^2} \]
+  \item L1 distance:
+  \[ D(h_1,h_2) = \sum_{i=1}^{N}\bigg|h_1(i)-h_2(i)\bigg| \]
+  \item \( \chi^2 \) distance:
+  \[ D(h_1,h_2) = \sum_{i=1}^{N}\frac{(h_1(i)-h_2(i))^2}{h_1(i)+h_2(i)} \]
+  \item Histogram intersection (similarity):
+  \[ I(h_1,h_2) = \sum_{i=1}^{N}min(h_1(i),h_2(i)) \]
+  \item Hellinger kernel (similarity):
+  \[ K(h_1,h_2) = \sum_{i=1}^{N}\sqrt{h_1(i)h_2(i)} \]
+\end{itemize}
+
+\subsection*{Curse of Dimensionality}
+It is hard to build a histogram based classifier when the feature space is
+high dimensional. It fails when there are too many histogram buckets.
+
+\subsection*{Linear Classifiers and Support Vector Machines}
+Linear classifiers try to find the linear function (hyperplane) between a set
+of positive and negative examples. Support vector machines find the hyperplane
+that maximizes the margin between the positive and negative examples. Datasets
+that are linearly separable work well for support vector machines, but if the
+dataset is too difficult, we can map it to a higher dimensional space.
+
+\subsection*{Nonlinear Support Vector Machines}
+The general idea is that the original input space can always be mapped to some
+higher dimensional feature space where the training set is separable. Instead of
+explicitly computing the lifting transformation \( \phi(x) \), we define a
+kernel function \( K \) such that
+\[ K(x,y) = \phi(x)\cdot\phi(y) \]
+This gives a nonlinear decision boundary in the original feature space. We
+treat the distance metric as if it were in the higher feature space without
+transforming the features to that space.
+\[ \sum_{i}\alpha_iy_i\phi(x_i)\cdot\phi(x)+b = \sum_{i}\alpha_iy_iK(x_i,x)+b \]
+Polynomial Kernel:
+\[ K(x,y) = (c+x\cdot y)^d \]
+Gaussian Kernel:
+\[ K(x,y) = exp\left(-\frac{1}{\sigma^2}\|x-y\|^2\right) \]
+These are used so that classifiers can be learnt for high dimensional feature
+spaces. The data may be linearly separable in the high dimensional space, but
+not necessarily the original feature space.
+
+\subsection*{Support Vector Machines for Classification}
+\begin{enumerate}
+  \item Pick an image representation.
+  \item Pick a kernel function for that representation.
+  \item Compute the matrix of kernel values between every pair of training
+    examples.
+  \item Feed the kernel matrix into your favorite SVM solver to obtain support
+    vectors and weights.
+  \item At test time, compute the kernel values for your test example and each
+    support vector, and combine them with the learned weights to vet the value of the decision function.
+\end{enumerate}
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
