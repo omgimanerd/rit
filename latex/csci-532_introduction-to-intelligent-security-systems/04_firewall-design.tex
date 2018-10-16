@@ -1,0 +1,61 @@
+\documentclass{math}
+
+\usepackage[utf8]{inputenc}
+
+\title{Introduction to Intelligent Security Systems}
+\author{Alvin Lin}
+\date{August 2018 - December 2018}
+
+\begin{document}
+
+\maketitle
+
+\section*{Firewall Design}
+A firewall is a device or program that controls the flow of network traffic
+between networks or hosts that employ differing security postures. They isolate
+an organization's internal network from the larger Internet, only allowing some
+traffic to pass while blocking others. It is a junction point between two
+networks and sets a border line for network administration responsibility. The
+term originates from firewalls and fire doors in buildings.
+
+\subsection*{History}
+\begin{itemize}
+  \item 1764 - The term ``firewall'' was used to describe walls which
+    separated the parts of a building most likely to have a fire from the rest
+    of the structure.
+  \item Late 1980s - The predecessors to firewalls for network security were the
+    routers used to separate networks from one another.
+  \item 1988 - The Morris Worm infected about 6000 systems.
+  \item 1994 - Alice Muffett wrote a paper which provided an excellent review
+    of the firewall policies and architectures of the time.
+  \item 2004 - IDC coins the term UTM (unified threat management) and several
+    security vendors following suit, beginning to market their firewalls that
+    run multiple security functions.
+  \item 2009 - Gartner defines the next generation firewall as a ``a wire-speed
+    integrated network platform that performs deep inspection of traffic and
+    blocking of attacks''. Results of the first widespread analysis of firewall
+    management practices are published, including statistics like ``93\% felt
+    their firewalls contained at least one category of error and 70\% felt
+    that it was likely their rulebases contained undetected errors''.
+  \item 2012 - Gartner releases a forecast that says more than 95\% of firewall
+    breachers will be caused by misconfiguration and not firewall flaws.
+\end{itemize}
+Software firewalls operate locally on the machine they are intended to protect
+while hardware firewalls are usually part of a TCP/IP router.
+
+\subsection*{Functions}
+Firewalls can filter traffic based on their source and destination addresses,
+port numbers, protocols used, and packet state. They cannot prevent individual
+users with modems from dialing in and out of the network. They cannot protect
+against social engineering and dumpster diving. \par
+Generally anyone who is responsible for a private network connected to a public
+network should use a firewall. Any computer connected to a public network should
+have a firewall.
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
