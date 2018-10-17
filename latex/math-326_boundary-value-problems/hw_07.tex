@@ -1,0 +1,69 @@
+\documentclass{math}
+
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage{tikz}
+
+\geometry{letterpaper, margin=0.5in}
+
+\title{Boundary Value Problems: Homework 7}
+\author{Alvin Lin}
+\date{August 2018 - December 2018}
+
+\begin{document}
+
+\maketitle
+
+\subsection*{Problem 1}
+Determine whether the following PDE is separable or not.
+\begin{align*}
+  u_{xx}+u_{xt}+u_t &= 0 \\
+  \pdiff{}{x^2}(X(x)T(t))+\frac{}{\partial{x}\partial{t}}(X(x)T(t))+
+    \pdiff{}{t}(X(x)T(t)) &= 0 \\
+  X''(x)T(t)+X'(x)T'(t)+X(x)T'(t) &= 0 \\
+  T'(t)(X'(x)+X(x)) &= -X''(x)T(t) \\
+  \frac{T'(t)}{T(t)} &= -\frac{X''(x)}{X'(x)+X(x)}
+\end{align*}
+
+\subsection*{Problem 2}
+Determine whether the following PDE is separable or not.
+\begin{align*}
+  u_{xx}+(x+y)u_{yy} &= 0 \\
+  \pdiff{}{x^2}(X(x)Y(y))+(x+y)\pdiff{}{y^2}(X(x)Y(y)) &= 0 \\
+  X''(x)Y(y)+(x+y)X(x)Y''(y) &= 0
+\end{align*}
+Not separable.
+
+\subsection*{Problem 3}
+Determine whether the following PDE is separable or not.
+\begin{align*}
+  u_{xy}-u &= 0 \\
+  \pdiff{}{x\partial{y}}(X(x)Y(y))-X(x)Y(y) &= 0 \\
+  X'(x)Y'(y) &= X(x)Y(y) \\
+  \frac{X'(x)}{X(x)} &= \frac{Y(y)}{Y'(y)}
+\end{align*}
+
+\subsection*{Problem 4}
+Determine whether the following PDE is separable or not.
+\begin{align*}
+  u_{tt}-u_{xx} &= 0 \\
+  \pdiff{}{t^2}(T(t)X(x))-\pdiff{}{x^2}(T(t)X(x)) &= 0 \\
+  T''(t)X(x) &= T(t)X''(x) \\
+  \frac{T''(t)}{T(t)} &= \frac{X''(x)}{X(x)}
+\end{align*}
+
+\subsection*{Problem 5}
+Determine whether the following PDE is separable or not.
+\begin{align*}
+  t^2u_{tt}-x^2u_{xx} &= 0 \\
+  t^2\pdiff{}{t^2}(X(x)T(t))-x^2\pdiff{}{x^2}(X(x)T(t)) &= 0 \\
+  t^2X(x)T''(t) &= x^2X''(x)T(t) \\
+  \frac{t^2T''(t)}{T(t)} &= \frac{x^2X''(x)}{X(x)}
+\end{align*}
+
+\begin{center}
+  If you have any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
