@@ -266,7 +266,7 @@ Records can be inserted into databases:
 Records can be updated in databases:
 \begin{lstlisting}
   update instructor
-    set salary=salary * 1.03
+    set salary = salary * 1.03
     where salary > 100000;
   update instructor
     set salary = salary * 1.05
@@ -484,7 +484,7 @@ Integrity contraints for a single table include the following:
     salary int,
     check (salary > 5),
     check (age < 10),
-    check (breed in ("Lab","Dalmatian","GSD"))
+    check (breed in ("Lab", "Dalmatian", "GSD"))
   )
 \end{lstlisting}
 Integrity constraints can apply across multiple tables. Referential integrity
@@ -520,6 +520,22 @@ usually recommended since there are better options.
   \item Blob - binary large object (cannot be indexed)
   \item Clob - character large object (cannot be indexed)
 \end{itemize}
+Blobs and clobs are referenced by a pointer stored in the database. Because
+they are not indexed, relevant metadata needs to be stored as well.
+
+\subsection*{Indices}
+Suppose have a dog table with the attributes id, name, age, and state:
+\begin{lstlisting}
+  create index dog_index on dog(state, age);
+\end{lstlisting}
+Creating an index affects the structure of how the data is stored on disk to
+allow efficient access. Queries that use an index must use all the
+attributes that the index applies to. An index creates a table of all the
+distinct values for an attribute currently in the table. Each entry in the
+index holds a list of pointers to all matching entries in the table. The index
+does not have to be specified in order for it to be used to optimize a query.
+After it is created, the database will use automatically for any matching
+predicates.
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
