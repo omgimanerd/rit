@@ -52,6 +52,63 @@ Generally anyone who is responsible for a private network connected to a public
 network should use a firewall. Any computer connected to a public network should
 have a firewall.
 
+\subsection*{TCP/TP Layers}
+\begin{itemize}
+  \item Application Layer: This layer sends and receives data for particular
+    applications, such as DNS, HTTP, and SMTP. The application layer itself has
+    layers of protocols within in. For example, SMTP encapsulates the request
+    RFC 2822 message syntax, which encapsulates MIME, which can encapsulate
+    other standards such as HTML.
+  \item Transport Layer: This layer provides connection-oriented or
+    connectionless services for transporting application layer services between
+    networks, and can optionally ensure communication reliability. TCP and UDP
+    are commonly used transport layer protocols.
+  \item IP Layer: This layer routes packets across networks. IPv4 is the
+    fundamental network layer protocol for TCP/IP. Other common used protocols
+    at the network layer are IPv6, ICMP, and IGMP.
+  \item Hardware Layer: Also known as the data link layer, this layer handles
+    communications on the physical network components, such as Ethernet.
+\end{itemize}
+
+\subsection*{Configurations}
+\begin{itemize}
+  \item Packet Filtering Firewall: This is the most basic feature of a firewall.
+    Also known as a stateless inspection firewall, this is typically done using
+    access control lists on a network router. Filtering inbound traffic is known
+    as ingress filtering, while filtering outbound traffic is known as egress
+    filtering. Stateless packet filters are generally vulnerable to attacks and
+    exploits that take advantage of problems in the TCP/IP stack and protocol
+    stack. They are unable to detect if a packet's network layer addressing
+    information has been spoofed or altered. Some firewalls can reassemble
+    fragmented packets before passing them to the internal network.
+  \item Stateful Inspection: Stateful inspection improves on the functions of
+    packet filters by tracking the state of connections and blocking packets
+    that deviate from the expected state. This is accomplished by examining
+    certain values in the TCP headers to monitor the state of each connection.
+    Each new packet is compared by the firewall to the firewall's state table
+    to determine if the packet's state contradicts its expected state. This is
+    generally used to monitor a sequence of packets.
+  \item Application Firewalls: This improves upon standard stateful inspection
+    by adding data analytics abilities through an inspection engine that
+    analyzes protocols at the applicaton layer. Application firewalls can allow
+    or deny access based on how an application is running over the network.
+    They can also enable the identification of unexpected sequences of commands.
+  \item Application-Proxy Gateways: An application-proxy gateway is a feature
+    of advanced firewalls that combines lower-layer access control with
+    upper-layer functionality. It uses a proxy agent that acts as an
+    intermediary between two hosts that wish to communicate with each other,
+    without allowing a direct connection between them. The proxy is meant to be
+    transparent to the two hosts and interfaces directly with the firewall
+    ruleset to determine whether a given instance of network traffic should be
+    allowed through the firewall. Typically, this offers a higher level of
+    security that application firewalls.
+  \item Host Based Firewalls and Personal Firewalls: Host based and personal
+    firewalls provide an additional layer of security against network-based
+    attacks. They monitor and control the incoming and outgoing network traffic
+    for a single host. Host based firewalls are typically available as part of
+    server operating systems and can also advance to intrusion prevent systems.
+\end{itemize}
+
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
   any questions, comments, or concerns, please contact me at
