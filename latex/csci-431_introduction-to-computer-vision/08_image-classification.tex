@@ -74,8 +74,17 @@ not necessarily the original feature space.
   \item Feed the kernel matrix into your favorite SVM solver to obtain support
     vectors and weights.
   \item At test time, compute the kernel values for your test example and each
-    support vector, and combine them with the learned weights to vet the value of the decision function.
+    support vector, and combine them with the learned weights to vet the value
+    of the decision function.
 \end{enumerate}
+
+\subsection*{Evaluating Classifiers}
+Always train on a training set, evaluate on a validation dataset, and test on
+a testing set. The test set performance is generally worse than the training
+set. This prevents overfitting. The total error rate should always be less
+than 50\% for a two class problem. We can also use a confusion matrix or a
+receiver-operator characteristic curve with different thresholds to evaluate
+the performance of our classifier.
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
