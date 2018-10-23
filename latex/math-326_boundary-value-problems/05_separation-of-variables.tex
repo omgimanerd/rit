@@ -106,9 +106,45 @@ Using this characteristic equation, we have three cases:
   \begin{align*}
     \sin(\alpha L) &= 0 \\
     \alpha L &= n\pi, \quad n\in\Z \\
-    \alpha &= n\pi
+    \alpha &= \frac{n\pi}{L} \\
+    X(x) &= c_2\sin(\frac{n\pi}{L}x)
   \end{align*}
 \end{enumerate}
+To produce a non-trivial solution for \( X(x) \), we needed to use
+\( \sqrt{\lambda} = \frac{n\pi}{L} \). We can use this to solve the second
+ordinary differential equation.
+\begin{align*}
+  T'(t) &= -\lambda\beta T(t) \\
+  T'(t) &= -\frac{n^2\pi^2}{L^2}\beta T(t) \\
+  T(t) &= c_2\e^{ct} \\
+  T'(t) &= \ddiff{}{t}(T(t)) \\
+  &= c_2c\e^{ct} \\
+  &= cT(t) \\
+  T(t) &= c_3\e^{-\frac{n^2\pi^2}{L^2}\beta t}
+\end{align*}
+We can substitute this back into \( u(x,t) = X(x)T(t) \) to find our solution.
+\begin{align*}
+  u(x,t) &= X(x)T(t) \\
+  &= c_2\sin(\frac{n\pi x}{L})c_2\e^{-\frac{n^2\pi^2}{L^2}\beta t} \\
+  u_n(x,t) &= c_n\sin(\frac{n\pi x}{L})\e^{-(\frac{n\pi x}{L})^2\beta t}
+\end{align*}
+This has infinitely many solutions because haven't applied our initial condition
+yet.
+
+\subsection*{Eigenvalues and eigenfunctions}
+We found special \( X(x) \) and \( \lambda \) values that made the boundary
+value problem solutions non-trivial. These are known as eigenfunctions:
+\[ X_n(x) = c_n\sin(\frac{n\pi x}{L}) \]
+\[ \lambda_n = (\frac{n\pi}{L})^2 = \text{eigenvalues of the BVP} \]
+We can associate eigenvalues and eigenfunctions with operators.
+\begin{align*}
+  X''+\lambda X &= 0 \\
+  X'' &= -\lambda X \\
+  LX &= -\lambda X
+\end{align*}
+Problems that require you to find the eigenvalues and eigenfunctions of
+boundary value problems require you to find all non-trivial \( y_n \)
+solutions.
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
