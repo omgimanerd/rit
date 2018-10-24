@@ -537,6 +537,81 @@ does not have to be specified in order for it to be used to optimize a query.
 After it is created, the database will use automatically for any matching
 predicates.
 
+\subsection*{Functions/Procedures}
+We can define functions and procedures according to the SQL-1999 standard.
+The syntax for this will often be vendor-specific.
+\begin{lstlisting}
+  create function dog_count(state varchar(2)) returns integer begin
+    declare dc integer;
+    select count(*) into dc from dog where dog.state=state;
+    return dc;
+  end
+\end{lstlisting}
+After defining this function, we can use it in future queries:
+\begin{lstlisting}
+  select name,age from cat where dog_count("OR") > 5;
+\end{lstlisting}
+Subqueries can be also generally be used as arguments in functions. All
+functions must have a \texttt{begin} and \texttt{end} clause, a return type
+specified, and the actual value returned. Tables can also be returned as of
+SQL-2003:
+\begin{lstlisting}
+  create function dogs(st varchar(2)) returns table(
+      id int, name varchar(10), breed varchar(5)) begin
+    return table(
+      select id,name,breed from dog where dog.state=state
+    )
+  end
+\end{lstlisting}
+Procedures can also be used as function like constructs:
+\begin{lstlisting}
+  create procedure dog_count(state varchar(2), out dcount integer) begin
+    select count(*) into dcount from dog where dog.state=state;
+  end
+\end{lstlisting}
+This could be used in subsequent SQL statements:
+\begin{lstlisting}
+  declare dc int;
+  call dog_count("OR", dc);
+\end{lstlisting}
+
+\subsection*{Iteration}
+SQL-1999 also supports iteration using \texttt{while}:
+\begin{lstlisting}
+  while boolean_exp do
+    ...
+  end while
+\end{lstlisting}
+and also \texttt{repeat}:
+\begin{lstlisting}
+  repeat
+    ...
+  until expression
+  end repeat
+\end{lstlisting}
+Another option available is \texttt{for} loops:
+\begin{lstlisting}
+  declare r integer default 0;
+  for r as select age from dog; do
+    set n = n + r.age
+  end for
+\end{lstlisting}
+
+\subsection*{Triggers}
+Triggers are statements that happen automatically upon an event. A condition to
+trigger upon and a subsequent action must be specified. Like functions and
+procedures, the syntax here will likely be vendor-specific. Triggers can be set
+on insert, update, and delete events.
+\begin{lstlisting}
+  create trigger setnull before update of dog
+    referencing new row as nrow
+    for each row
+    when (nrow.age > 15)
+    begin atomic
+      set nrow.age=null;
+    end;
+\end{lstlisting}
+
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
   any questions, comments, or concerns, please contact me at
