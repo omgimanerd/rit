@@ -1,0 +1,82 @@
+\documentclass{math}
+
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage{tikz}
+
+\geometry{letterpaper, margin=0.5in}
+
+\title{Boundary Value Problems: Homework 8}
+\author{Alvin Lin}
+\date{August 2018 - December 2018}
+
+\begin{document}
+
+\maketitle
+
+\subsection*{Problem 1}
+Use separation of variables to find, if possible, a family of nontrivial
+solutions, \( u(x,y) \) for the PDE.
+\begin{align*}
+  x\pdiff{u}{x} &= y\pdiff{u}{y} \\
+  xX'(x)Y(y) &= yX(x)Y'(y) \\
+  \frac{xX'(x)}{X(x)} &= \frac{yY'(y)}{Y(y)} = \lambda \\
+  xX'(x) &= \lambda X(x) \\
+  x\ddiff{X}{x} &= \lambda X \\
+  \frac{\diff{X}}{X} &= \frac{\lambda}{x}\diff{x} \\
+  \ln|X| &= \lambda\ln|x|+c_1 \\
+  X &= \e^{\lambda\ln|x|+c_1} \\
+  &= x^{\lambda}\e^{c_1} \\
+  Y &= y^{\lambda}\e^{c_2} \\
+  u(x,y) &= x^{\lambda}y^{\lambda}\e^{c_3}
+\end{align*}
+
+\subsection*{Exercise 1a}
+Test the following PDEs for the method of separation of variables. If the
+method is successful, solve the PDE.
+\begin{align*}
+  u_{xy}-u &= 0 \\
+  X'(x)Y'(y)-X(x)Y(y) &= 0 \\
+  X'(x)Y'(y) &= X(x)Y(y) \\
+  \frac{X'(x)}{X(x)} &= \frac{Y(y)}{Y'(y)} = \alpha^2 \\
+  X'(x)-\alpha^2X(x) &= 0 \\
+  X(x) &= A\e^{\alpha^2x} \\
+  \alpha^2Y'(y)-Y(y) &= 0 \\
+  Y(y) &= B\e^{\frac{1}{\alpha^2}y} \\
+  u(x,y) &= X(x)Y(y) = C\e^{xy}
+\end{align*}
+
+\subsection*{Exercise 1c}
+Test the following PDEs for the method of separation of variables. If the
+method is successful, solve the PDE.
+\begin{align*}
+  u_{xx}-u_{yy}-2u_y &= 0 \\
+  X''(x)Y(y)-X(x)Y''(y)-2X(x)Y'(y) &= 0 \\
+  X''Y &= X(Y''+2Y') \\
+  \frac{X''}{X} &= \frac{Y''+2Y'}{Y} = -\alpha^2 \\
+  X''+\alpha^2X &= 0 \\
+  X &= A\cos(\alpha x)+B\sin(\alpha x) \\
+  Y''+2Y'+\alpha^2Y &= 0 \\
+  ?
+\end{align*}
+
+\subsection*{Exercise 2a}
+Find a solution for the boundary (or initial) value problem.
+\begin{align*}
+  u_{tt}-u_{xx} &= 0 \quad u(x,0) = u(0,t) = 0 \\
+  X(x)T''(t)-X''(x)T(t) &= 0 \\
+  XT'' &= X''T \\
+  \frac{X}{X''} &= \frac{T}{T''} = -\alpha^2 \\
+  X''+\frac{1}{\alpha^2}X &= 0 \\
+  X &= A\cos(\frac{x}{\alpha^2})+B\sin(\frac{x}{\alpha^2}) \\
+  T &= C\cos(\frac{t}{\alpha^2})+D\sin(\frac{t}{\alpha^2}) \\
+  u(x,0) &= 0 = (A\cos(\frac{x}{\alpha^2})+B\sin(\frac{x}{\alpha^2}))C \\
+  u(0,t) &= 0 = (C\cos(\frac{t}{\alpha^2})+D\sin(\frac{t}{\alpha^2}))A
+\end{align*}
+
+\begin{center}
+  If you have any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
