@@ -57,21 +57,61 @@ method is successful, solve the PDE.
   X''+\alpha^2X &= 0 \\
   X &= A\cos(\alpha x)+B\sin(\alpha x) \\
   Y''+2Y'+\alpha^2Y &= 0 \\
-  ?
+  \alpha^2 &= 0 \\
+  Y(y) &= C\e^{-3y}+D\e^{y} \\
+  u(x,y) &= X(x)Y(y) = (A\cos(\alpha x)+B\sin(\alpha x))(C\e^{-3y}+D\e^{y})
 \end{align*}
 
 \subsection*{Exercise 2a}
 Find a solution for the boundary (or initial) value problem.
 \begin{align*}
-  u_{tt}-u_{xx} &= 0 \quad u(x,0) = u(0,t) = 0 \\
+  u_{tt}-u_{xx} &= 0 \quad u(L,0) = u(0,t) = 0 \\
   X(x)T''(t)-X''(x)T(t) &= 0 \\
   XT'' &= X''T \\
-  \frac{X}{X''} &= \frac{T}{T''} = -\alpha^2 \\
-  X''+\frac{1}{\alpha^2}X &= 0 \\
-  X &= A\cos(\frac{x}{\alpha^2})+B\sin(\frac{x}{\alpha^2}) \\
-  T &= C\cos(\frac{t}{\alpha^2})+D\sin(\frac{t}{\alpha^2}) \\
-  u(x,0) &= 0 = (A\cos(\frac{x}{\alpha^2})+B\sin(\frac{x}{\alpha^2}))C \\
-  u(0,t) &= 0 = (C\cos(\frac{t}{\alpha^2})+D\sin(\frac{t}{\alpha^2}))A
+  \frac{X}{X''} &= \frac{T}{T''} = \alpha^2 \\
+  \alpha^2 X''-X &= 0 \\
+  \alpha^2 &= 0 \quad X = 0 \\
+  \alpha^2 &> 0 \quad X = A\e^{\frac{x}{\alpha}}+B\e^{\frac{x}{-\alpha}} \\
+  \alpha^2 &< 0 \quad X = A\cos(\frac{x}{\alpha})+B\sin(\frac{x}{\alpha}) \\
+  X(0) &= 0 \quad X(L) = 0 = B\sin(\frac{L}{\alpha}) \\
+  \frac{L}{\alpha} &= n\pi \quad \alpha = \frac{L}{n\pi} \\
+  X &= C_1\sin(\frac{n\pi x}{L}) \\
+  Y &= C_2\sin(\frac{m\pi x}{L})
+\end{align*}
+
+\subsection*{Exercise 2b}
+Find a solution for the boundary (or initial) value problem.
+\begin{align*}
+  u_{xx}-u_{yy}-u_y &= 0 \quad u_x(0,t) = u(L,0) = 0 \\
+  X''Y-XY''-XY' &= 0 \\
+  X''Y &= XY''+XY' \\
+  \frac{X''}{X} &= \frac{Y''+Y'}{Y} = -\alpha^2 \\
+  X''+\alpha^2X &= 0 \\
+  X &= A\cos(\alpha x)+B\sin(\alpha x) \\
+  X' &= A\alpha\sin(\alpha x)-B\alpha\cos(\alpha x) \\
+  X(0) &= 0 = -B\alpha \quad B = 0 \\
+  X(L) &= 0 = A\cos(\alpha L) \\
+  X(x) &= A\cos\left(\frac{(\frac{1}{2}+n)\pi x}{L}\right) \\
+  Y''+Y'+\alpha^2Y &= 0 \\
+  Y &= C+D\e^t (?) \\
+\end{align*}
+
+\subsection*{Exercise 2c}
+Find a solution for the boundary (or initial) value problem.
+\begin{align*}
+  u_t &= u_{xx} \quad u_x(0,t) = 0 \\
+  XT' &= X''T \\
+  \frac{X}{X''} &= \frac{T}{T'} = -\alpha^2 \\
+  \alpha^2X''+X &= 0 \\
+  X &= A\cos(\frac{x}{\alpha})+B\sin(\frac{x}{\alpha}) \\
+  X' &= \frac{A}{\alpha}\sin(\frac{x}{\alpha})-
+    \frac{B}{\alpha}\cos(\frac{x}{\alpha}) \\
+  X'(0) &= 0 = -\frac{B}{\alpha} \quad B = 0 \\
+  X &= A\cos(\frac{x}{\alpha}) \\
+  \alpha^2T'+T &= 0 \\
+  \alpha^2\diff{T} &= -T\diff{t} \\
+  \alpha^2T &= -\frac{T^2}{2}+C \\
+  T &= -2\alpha^2+C
 \end{align*}
 
 \begin{center}
