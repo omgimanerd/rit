@@ -70,7 +70,7 @@ Example:
 \subsection*{CRUD}
 \begin{lstlisting}
   insert into r values (v1,v2,vn);
-  insert into dog values (1,"cat",10.00,0);
+  insert into dog values (1,'cat',10.00,0);
   delete from dog;
   drop table r;
   alter table dog add iscat int not null default 0;
@@ -83,8 +83,8 @@ Example:
   select name from dog;
   select distinct name from dog;
   select all name from dog;
-  select "joe" as name;
-  select name,"lab" as breed from dog;
+  select 'joe' as name;
+  select name,'lab' as breed from dog;
   select * from dog;
 \end{lstlisting}
 Explicitly specify what attributes to return, \texttt{SELECT *} should be
@@ -96,7 +96,8 @@ The \texttt{where} keyword allows for conditions by which we can filter the
 returned rows. We can specify modifications to the returned attribute and use
 boolean conditions to create compound conditionals.
 \begin{lstlisting}
-  select id,name,salary/26 as pay from dog where salary > 80000 and breed="lab";
+  select id,name,salary/26 as pay from dog where salary > 80000 and
+    breed = 'lab';
 \end{lstlisting}
 The \texttt{between} modifier allows us to select a range as a predicate.
 \begin{lstlisting}
@@ -131,28 +132,28 @@ match the data.
 \end{center}
 Finding all the owners with dogs named Woodstock:
 \begin{lstlisting}
-  select d2.owner from dog where name = "woodstock";
+  select d2.owner from dog where name = 'woodstock';
 \end{lstlisting}
 Finding all the dogs owned by Snoopy:
 \begin{lstlisting}
-  select name from dog where owner = "snoopy";
+  select name from dog where owner = 'snoopy';
 \end{lstlisting}
 Selecting the owner's owner of Charlie:
 \begin{lstlisting}
-  select owner from dog d1, dog d2 where d1.name = "charlie" and
-      d1.owner = d2.name;
+  select owner from dog d1, dog d2 where d1.name = 'charlie' and
+    d1.owner = d2.name;
 \end{lstlisting}
 
 \subsection*{String Operations}
 The percent sign (\%) is used for partial substring matches while the
 underscore (\_) is used for single character matches.
 \begin{lstlisting}
-  select * from dog where name like "%py";
+  select * from dog where name like '%py';
   select * from dog where name like 'Sn\'' escape '\';
 \end{lstlisting}
 Concatenation is expressed with double pipes (\textbar\textbar).
 \begin{lstlisting}
-  select * from fname||lname like "%foo";
+  select * from fname||lname like '%foo';
 \end{lstlisting}
 
 \subsection*{Ordering}
@@ -204,7 +205,7 @@ To count distinct values in a field:
 \end{lstlisting}
 The other aggregate functions can be used in a similar way:
 \begin{lstlisting}
-  select avg(salary) from dog where state="CA";
+  select avg(salary) from dog where state = 'CA';
 \end{lstlisting}
 If there are no dogs, then 0 is returned. If some dogs have a null salary, then
 null is returned.
@@ -222,12 +223,13 @@ Subquery expressions can be used for set membership, comparisons, and
 cardinality expressions.
 \begin{lstlisting}
   select name,age from dog where age in (select age from cat where
-    state="sleeping");
+    state = 'sleeping');
   select name,age from dog where (age,legs) in (select age,legs from cat where
-    state="sleeping");
-  select name from dog where age > some(select age from cat where state="CA");
-  select name from dog where age > all(select age from cat where state="CA");
-  select name from dog where age > (select min(age) from cat where state="CA");
+    state = 'sleeping');
+  select name from dog where age > some(select age from cat where state = 'CA');
+  select name from dog where age > all(select age from cat where state = 'CA');
+  select name from dog where age > (select min(age) from cat where
+    state = 'CA');
 \end{lstlisting}
 Because nested subqueries can get very messy, we use the \texttt{with} clause
 as a way of defining a temporary relation that only exists in the clause in
@@ -243,7 +245,7 @@ Scalar subqueries must be used where only a single value is expected.
 \begin{lstlisting}
   select dept_name,
     (select count(*) from instructor
-      where department.dept_name=instructor.dept_name) as num_instructors
+      where department.dept_name = instructor.dept_name) as num_instructors
     from department;
 \end{lstlisting}
 
@@ -251,9 +253,9 @@ Scalar subqueries must be used where only a single value is expected.
 Deleting records (also accepts a valid where clause):
 \begin{lstlisting}
   delete from instructor;
-  delete from instructor where dept_name='Finance';
+  delete from instructor where dept_name = 'Finance';
   delete from instructor where dept_name in
-    (select dept_name from department where building='Watson');
+    (select dept_name from department where building = 'Watson');
   delete from instructor where salary < (select avg(salary) from instructor);
 \end{lstlisting}
 Records can be inserted into databases:
@@ -374,7 +376,7 @@ information in both tables.
   \end{tabular}
 \end{center}
 \begin{lstlisting}
-  select * from dog inner join cat on cat.name=dog.name;
+  select * from dog inner join cat on cat.name = dog.name;
 \end{lstlisting}
 \begin{center}
   \begin{tabular}{|c|c|c|c|}
@@ -438,12 +440,13 @@ This is generally used to restrict access to the table, prevent users from
 querying all dogs or querying certain attributes of dogs. We can also insert
 into views.
 \begin{lstlisting}
-  insert into old_dogs values("Jeff", 13) values("Cheese", 8);
+  insert into old_dogs values('Jeff', 13) values('Cheese', 8);
 \end{lstlisting}
 While this might work, you will never see Cheese by querying the view because
 the view restricts access to dogs whose age is over 10.
 \begin{lstlisting}
-  create view dogs2 as (select name from dog,cat where dog.lives_in=cat.state);
+  create view dogs2 as (select name from dog,cat where
+    dog.lives_in = cat.state);
 \end{lstlisting}
 Inserting into this view would lead to ambiguity, so in general, there are
 certain restrictions for inserting into views.
@@ -484,7 +487,7 @@ Integrity contraints for a single table include the following:
     salary int,
     check (salary > 5),
     check (age < 10),
-    check (breed in ("Lab", "Dalmatian", "GSD"))
+    check (breed in ('Lab', 'Dalmatian', 'GSD'))
   )
 \end{lstlisting}
 Integrity constraints can apply across multiple tables. Referential integrity
@@ -543,13 +546,13 @@ The syntax for this will often be vendor-specific.
 \begin{lstlisting}
   create function dog_count(state varchar(2)) returns integer begin
     declare dc integer;
-    select count(*) into dc from dog where dog.state=state;
+    select count(*) into dc from dog where dog.state = state;
     return dc;
   end
 \end{lstlisting}
 After defining this function, we can use it in future queries:
 \begin{lstlisting}
-  select name,age from cat where dog_count("OR") > 5;
+  select name,age from cat where dog_count('OR') > 5;
 \end{lstlisting}
 Subqueries can be also generally be used as arguments in functions. All
 functions must have a \texttt{begin} and \texttt{end} clause, a return type
@@ -559,20 +562,20 @@ SQL-2003:
   create function dogs(st varchar(2)) returns table(
       id int, name varchar(10), breed varchar(5)) begin
     return table(
-      select id,name,breed from dog where dog.state=state
+      select id,name,breed from dog where dog.state = state
     )
   end
 \end{lstlisting}
 Procedures can also be used as function like constructs:
 \begin{lstlisting}
   create procedure dog_count(state varchar(2), out dcount integer) begin
-    select count(*) into dcount from dog where dog.state=state;
+    select count(*) into dcount from dog where dog.state = state;
   end
 \end{lstlisting}
 This could be used in subsequent SQL statements:
 \begin{lstlisting}
   declare dc int;
-  call dog_count("OR", dc);
+  call dog_count('OR', dc);
 \end{lstlisting}
 
 \subsection*{Iteration}
@@ -603,14 +606,33 @@ trigger upon and a subsequent action must be specified. Like functions and
 procedures, the syntax here will likely be vendor-specific. Triggers can be set
 on insert, update, and delete events.
 \begin{lstlisting}
-  create trigger setnull before update of dog
+  create trigger trigger1 setnull before update of dog
     referencing new row as nrow
-    for each row
-    when (nrow.age > 15)
+    for each row when (nrow.age > 15)
     begin atomic
-      set nrow.age=null;
+      set nrow.age = null;
+    end;
+  create trigger myT after update of dog
+    referencing new row as nrow
+    for each row when (nrow.age > 30)
+    begin atomic
+      set nrow.age = null
+    end;
+  create trigger doginfo_trigger after update of dog on (age)
+    referencing new row as nrow
+    referencing old row as orow
+    for each row when (nrow.breed <> 'GSD' and nrow.breed is not null) and
+      (orow.breed = 'GSD' or orow.breed is null)
+    begin atomic
+      update cat set cat.age = cat.age +
+        (select age from dog where cat.id = nrow.id)
+        where cat.breed = orow.breed
     end;
 \end{lstlisting}
+Triggers are generally used to accumulate summary data, perform data
+replication, and set default values (although these are all really bad reasons
+to use them). They have issues with cascading runs and their best use is
+probably with audit data to record when changes are made in a database.
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
