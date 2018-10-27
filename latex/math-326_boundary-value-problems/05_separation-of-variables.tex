@@ -1,0 +1,222 @@
+\documentclass{math}
+
+\usepackage{tikz}
+
+\title{Boundary Value Problems}
+\author{Alvin Lin}
+\date{August 2018 - December 2018}
+
+\begin{document}
+
+\maketitle
+
+\section*{Separation of Variables}
+Knowing if a partial differential equation is separable can help us solve it.
+Suppose we have the function \( u_t = 8u_{xx} \). To test for separability:
+\begin{enumerate}
+  \item Suppose \( u(x,t) = X(x)T(t) \).
+  \item We need to substitute this into the partial differential equation.
+  \item If you can isolate all instances of the \( x \) independent variable
+    on one side and the \( t \) independent variable on the other side of the
+    equation, then the partial differential equation is separable.
+\end{enumerate}
+\begin{align*}
+  u(x,t) &= X(x)T(t) \\
+  \pdiff{}{t}(X(x)T(t)) &= 8\pdiff{^2}{x^2}(X(x)T(t)) \\
+  X(x)\pdiff{}{t}T(t) &= 8\pdiff{^2}{x^2}(X(x))T(t) \\
+  X(x)T'(t) &= 8X''(x)T(t) \\
+  \frac{X(x)}{X''(x)} &= \frac{8T'(t)}{T(t)}
+\end{align*}
+In their separated form, we can set both sides equal to some separation constant
+to solve two ordinary differential equations. This separation constant is
+usually denoted \( \lambda, -\lambda, \alpha^2, \text{ or } -\alpha^2 \).
+\[ \frac{X(x)}{X''(x)} = \frac{8T'(t)}{T(t)} = -\lambda \]
+Separation is useful because we can break a partial differential equation into
+multiple ordinary differential equations.
+
+\subsubsection*{Example}
+Generic form of the heat equation:
+\[ \pdiff{u}{t} = \beta\pdiff{^2u}{x^2} \]
+We want to find a solution that is nontrivial and bounded. It helps to narrow
+things down if we have boundary conditions and/or initial conditions.
+\[ u(0,t) = 0 \quad u(L,t) = 0 \quad u(x,0) = f(x) \]
+We want to find \( u(x,t) \) that satisfies the partial differential equation,
+its boundary conditions, and its initial condition. Since the equation is
+separable, we can substitute \( u(x,t) = X(x)T(t) \) into the equation and show
+that
+\[ \frac{X''(x)}{X(x)} = \frac{T'(t)}{\beta T(t)} \]
+If we choose the separation constant \( -\lambda \):
+\begin{align*}
+  \frac{X''(x)}{X(x)} &= -\lambda = \frac{T'(t)}{\beta T(t)} \\
+  X''(x) &= -\lambda X(x) \\
+  T'(t) &= -\lambda\beta T(t)
+\end{align*}
+With the boundary condition \( u(0,t) = 0 \), we know that \( X(0)T(t) = 0 \).
+With the boundary condition \( u(L,t) = 0 \), we know that \( X(L)T(t) = 0 \).
+\begin{align*}
+  u(x,0) &= X(x)T(0) = f(x) \\
+  X(x) &= \frac{f(x)}{T(0)}
+\end{align*}
+We can start with either ordinary differential equation:
+\begin{align*}
+  X''(x) &= -\lambda X(x) \quad X(0) = 0 \quad X(L) = 0 \\
+  X''(x)+\lambda X(x) &= 0 \\
+  r^2+\lambda &= 0
+\end{align*}
+Using this characteristic equation, we have three cases:
+\begin{enumerate}
+  \item \( \lambda < 0 \)
+  \begin{align*}
+    r^2 &= -\lambda \\
+    r_{1,2} &= \pm\sqrt{-\lambda} \\
+    X(x) &= c_1\e^{\sqrt{-\lambda}x}+c_2\e^{-\sqrt{\lambda}x} \\
+    X(0) &= 0 = c_1\e^{0}+c_2\e^{0} \\
+    c_1 &= -c_2 \\
+    X(L) &= 0 = c_1(\e^{\sqrt{-\lambda}L}-\e^{-\sqrt{\lambda}L}) \\
+    0 &= c_1(\e^{2\sqrt{-\lambda}L}-1) \\
+    c_1 &= 0 = c_2 \\
+    X(x) &= 0 \quad \text{(trivial solution)}
+  \end{align*}
+  \item \( \lambda = 0 \)
+  \begin{align*}
+    X''(x) &= 0 \\
+    r^2 &= 0 \\
+    r &= 0 \\
+    X(x) &= c_1\e^{0t}+c_2x\e^{0t} \\
+    &= c_1+xc_2 \\
+    X(0) &= 0 = c_1 \\
+    c_1 &= 0 \\
+    X(L) &= xc_2 \\
+    c_2 &= 0 \\
+    X(x) &= 0 \quad \text{(trivial solution)}
+  \end{align*}
+  \item \( \lambda > 0 \)
+  \begin{align*}
+    r^2+\lambda &= 0 \\
+    r_{1,2} &= \pm\sqrt{-\lambda} \\
+    \alpha^2 &= -\lambda \\
+    r_{1,2} &= \pm i\alpha = \pm i\sqrt{\lambda} \\
+    X(x) &= c_1\cos(\alpha x)+c_2\sin(\alpha x) \\
+    X(0) &= 0 = c_1\cos(0)+c_2\sin(0) \\
+    c_1 &= 0 \\
+    X(L) &= 0 = c_2\sin(\alpha L)
+  \end{align*}
+  If \( c_2 \) is 0, then the solution is again trivial. If it is not zero,
+  then the solution depends on the separation constant.
+  \begin{align*}
+    \sin(\alpha L) &= 0 \\
+    \alpha L &= n\pi, \quad n\in\Z \\
+    \alpha &= \frac{n\pi}{L} \\
+    X(x) &= c_2\sin\left(\frac{n\pi}{L}x\right)
+  \end{align*}
+\end{enumerate}
+To produce a non-trivial solution for \( X(x) \), we needed to use
+\( \sqrt{\lambda} = \frac{n\pi}{L} \). We can use this to solve the second
+ordinary differential equation.
+\begin{align*}
+  T'(t) &= -\lambda\beta T(t) \\
+  T'(t) &= -\frac{n^2\pi^2}{L^2}\beta T(t) \\
+  T(t) &= c_2\e^{ct} \\
+  T'(t) &= \ddiff{}{t}(T(t)) \\
+  &= c_2c\e^{ct} \\
+  &= cT(t) \\
+  T(t) &= c_3\e^{-\frac{n^2\pi^2}{L^2}\beta t}
+\end{align*}
+We can substitute this back into \( u(x,t) = X(x)T(t) \) to find our solution.
+\begin{align*}
+  u(x,t) &= X(x)T(t) \\
+  &= c_2\sin(\frac{n\pi x}{L})c_2\e^{-\frac{n^2\pi^2}{L^2}\beta t} \\
+  u_n(x,t) &= c_n\sin(\frac{n\pi x}{L})\e^{-(\frac{n\pi}{L})^2\beta t}
+\end{align*}
+This has infinitely many solutions because haven't applied our initial condition
+yet.
+
+\subsection*{Eigenvalues and Eigenfunctions}
+Thus far, we have found special \( X(x) \) and \( \lambda \) values that made
+the boundary value problem solutions non-trivial. These are known as
+eigenfunctions:
+\begin{align*}
+  X_n(x) &= c_n\sin(\frac{n\pi x}{L}) = \text{eigenfunctions of the BVP} \\
+  \lambda_n &= (\frac{n\pi}{L})^2 = \text{eigenvalues of the BVP}
+\end{align*}
+We can associate eigenvalues and eigenfunctions with operators.
+\begin{align*}
+  X''+\lambda X &= 0 \\
+  X'' &= -\lambda X \\
+  LX &= -\lambda X \\
+  Ly &= D^2y = y'' \\
+  LX &= D^2X = X''
+\end{align*}
+Eigenvalues of a linear operator \( L \) are values for which \( Ly =
+\lambda y \) has non-trivial solutions for the given boundary conditions.
+Eigenfunctions are functions \( y_n(x) \) corresponding to eigenvalues
+\( \lambda_n \). Problems that require you to find the eigenvalues and
+eigenfunctions of boundary value problems require you to find all non-trivial
+\( y_n \) solutions.
+
+\subsubsection*{Superposition Principle}
+If \( u_1,u_2,\dots,u_n \) are solutions to a linear homogeneous differential
+equation, then \( u(x,t) = \sum_{i=1}^{\infty}c_iu_i(x,t) \) is also a solution
+where \( c_i \) are arbitrary constants. If we look at the solution we acquired
+before:
+\[ u_n(x,t) = c_n\sin(\frac{n\pi x}{L})\e^{-(\frac{n\pi}{L})^2\beta t} \]
+We can rewrite this as:
+\[ u(x,t) = \sum_{n=1}^{\infty}c_n\sin(\frac{n\pi x}{L})
+  \e^{-(\frac{n\pi}{L})^2\beta t} \]
+
+\subsection*{Summary}
+To recap, these are the steps to solve this type of boundary value problem:
+\begin{enumerate}
+  \item Separate the variables.
+  \[ u(x,t) = X(x)T(t) \]
+  Plug these back into the partial differential equation to get two ordinary
+  differential equations related by a separation constant \( \lambda \) or
+  \( \alpha^2 \).
+  \item Use the boundary conditions to solve for \( X(x) \). After separation,
+    we have a second order differential equation \( X \), which yields an
+    auxiliary equation whose roots depend on the sign of \( \lambda \). This
+    yields a family of solutions \( X_1(x),X_2(x),\dots \) (eigenfunctions)
+    corresponding to the \( \lambda \) values \( \lambda_1,\lambda_2,\dots \)
+    (eigenvalues).
+  \item Find \( T_n(t) \) for each \( \lambda_n \).
+  \item Solutions should look like \( u_n(x,t) = X_n(x)T_n(t) \).
+  \item Use superposition and Fourier series (if needed) to find the rest of
+    the arbitrary constants \( c_n \) that fit the initial conditions.
+\end{enumerate}
+
+\subsubsection*{Continuing the Previous Example}
+\begin{align*}
+  u_t &= \beta u_{xx} \\
+  u(0,t) &= u(L,t) = 0 \\
+  u(x,0) &= f(x) = 1
+\end{align*}
+We can apply the initial condition starting from the solution we acquired
+earlier.
+\begin{align*}
+  u(x,t) &= \sum_{n=1}^{\infty}c_n\sin(\frac{n\pi x}{L})
+    \e^{-(\frac{n\pi}{L})^2\beta t} \\
+  u(x,0) &= \sum_{n=1}^{\infty}c_n\sin(\frac{n\pi x}{L}) = 1 = f(x)
+\end{align*}
+This becomes a Fourier Sine Series problem with \( L = 1 \) and \( b_n = c_n \).
+\begin{align*}
+  c_n &= \frac{2}{L}\int_{0}^{L}f(x)\sin(\frac{n\pi x}{L})\diff{x} \\
+  &= 2\int_{0}^{1}1\sin(n\pi x)\diff{x} \\
+  &= \frac{2}{n\pi}(1-\cos(n\pi))
+\end{align*}
+We can substitute this back into the formal solution.
+\begin{align*}
+  u(x,t) &= \sum_{n=1}^{\infty}c_n\sin(\frac{n\pi x}{L})
+    \e^{-(\frac{n\pi}{L})^2\beta t} \\
+  &= \frac{2}{\pi}\sum_{n=1}^{\infty}\frac{1}{n}(1-\cos(n\pi))
+    \sin(n\pi x)\e^{-\beta(n\pi)^2t}
+\end{align*}
+This is a solution to the boundary value problem when \( f(x) = 1 \) and
+\( L = 1 \).
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}

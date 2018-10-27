@@ -1,0 +1,66 @@
+\documentclass{math}
+
+\title{Introduction to Computer Vision}
+\author{Alvin Lin}
+\date{August 2018 - December 2018}
+
+\begin{document}
+
+\maketitle
+
+\section*{Texture}
+Texture is defined by patterns of structure from changes in surface albedo,
+surface shape, or many small surface patches. It is hard to concretely define,
+but texture tells us what a surface is, and may sometimes tell us what the
+object is or what shape the surface is. Often they are very complex to
+recognize. Synthesizing textures from examples is also a complex problem in
+computer graphics. \par
+The core idea is that textures consist of a set of elements repeated in some
+way. Ideally, we should be able to identify the elements and summarize the
+repetition.
+
+\subsection*{Filter Based Texture Representations}
+\begin{enumerate}
+  \item Choose a set of filters, each representing a pattern element.
+  \item Apply all the filters to an image at a variety of scales.
+  \item Rectify the filtered images. We should avoid averaging contrast
+    reversals.
+  \item Compute summaries of rectified filtered images.
+  \item Describe each pixel by a vector of summaries.
+\end{enumerate}
+Alternatively, we can compute the responses of blobs and edges at various
+orientations and scales. Since textures are made of repeated local patterns,
+we need to find the patterns and describe their statistics within each local
+window.
+
+\subsection*{Choosing the Filters}
+When choosing the filters, we can measure responses to over-complete filter
+banks and describe textures using clusters of responses. Alternatively, we can
+build a vocabulary of pattern elements from pictures and describe textures using
+this vocabulary. There are two steps to building a pooled texture representation
+for texture in an image domain.
+\begin{enumerate}
+  \item Build a dictionary representing the range of possible pattern elements,
+    using a large number of texture patches.
+  \item Vectorize the patches in images using the clusters learned.
+\end{enumerate}
+To build the dictionary:
+\begin{enumerate}
+  \item Collect many training example textures.
+  \item Construct the vectors \( \vec{x} \) for the relevant pixels. Either
+    reshape a patch around a pixel or compute a vector of filter outputs
+    at the pixel.
+  \item Obtain \( k \) cluster centers \( c \) for these examples.
+  \item For each relevant pixel \( i \) in the image, compute the vector
+    representation \( \vec{x_i} \) for that pixel. Obtain \( j \), the index
+    of the cluster center \( c_j \) closest to that pixel and insert \( j \)
+    into a histogram for that domain.
+\end{enumerate}
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}

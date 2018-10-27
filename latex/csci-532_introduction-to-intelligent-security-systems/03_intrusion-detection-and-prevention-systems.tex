@@ -1,5 +1,7 @@
 \documentclass{math}
 
+\usepackage[utf8]{inputenc}
+
 \title{Introduction to Intelligent Security Systems}
 \author{Alvin Lin}
 \date{August 2018 - December 2018}
@@ -149,7 +151,44 @@ form of connection strengths between neurons. These are values by which the
 signals from one artificial neuron to another are multiplied before being summed
 up within the receiving neuron. Special programs mathematically change the
 weights in the net until it consistently yields the correct outputs for any
-given set of inputs.
+given set of inputs. \par
+Artificial neural networks successively apply all known inputs to the net,
+propagating signals in the forward direction. They observe network output
+and backwardly propagate corrections to the respective connections in the net.
+This process continues until the net yields the correct output for all known
+test cases. The most important aspect of this process is that the network
+discovers on its own what the underlying rules of the conceptual space are.
+
+\subsubsection*{Backpropagation}
+\begin{enumerate}
+  \item Assign random weights to all the linkages to start the algorithm.
+  \item Find the activation rate of the hidden nodes using the inputs and the
+    linkages.
+  \item Find the activation rate of the output nodes using the activation rate
+    of the hidden nodes and linkages.
+  \item Find the error rate at the output node and recalibrate all the linkages
+    between the hidden nodes and output nodes.
+  \item Cascade the error down to the hidden nodes using the weights and error
+    found at the output nodes.
+  \item Repeat the process until the convergence criteria is met.
+  \item Score the activation rate of the output nodes using the final linkage
+    weights.
+\end{enumerate}
+
+\subsection*{Support Vector Machine}
+A support vector machine tries to build a hyperplane that separates classes in
+the training dataset. A good hyperplane has the biggest margin.
+
+\subsection*{K-nearest Neighbor}
+K-nearest neighbor is a classification algorithm that computes the distance to
+every training example \( x_i \), selecting the \( k \) closest instances to the
+current node and using the majority label to label the current node.
+
+\subsection*{Naive Bayes}
+Based on the Bayes rule of conditional probability, consider all the attribute
+values but independently for each other. We can then estimate the probabilities
+of events based on their frequencies over the training data. The learned
+hypothesis consists of the set of estimates.
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have

@@ -1,0 +1,79 @@
+\documentclass{math}
+
+\usepackage{tikz}
+
+\title{Boundary Value Problems}
+\author{Alvin Lin}
+\date{August 2018 - December 2018}
+
+\begin{document}
+
+\maketitle
+
+\section*{Double Fourier Series}
+We will use Double Fourier Series to solve partial differential equations with
+multiple independent variables, such as heat transfer through a plate.
+\begin{align*}
+  f(x,y) = \frac{a_{00}}{4}&+\frac{1}{2}\sum_{n=1}^{\infty}
+    \bigg[a_{0n}\cos(\frac{n\pi y}{L})+b_{0n}\sin(\frac{n\pi y}{L})\bigg] \\
+  &+\frac{1}{2}\sum_{m=1}^{\infty}
+    \bigg[a_{m0}\cos(\frac{m\pi x}{K})+c_{m0}\sin(\frac{n\pi x}{K})\bigg] \\
+  &+\sum_{m=1}^{\infty}\sum_{n=1}^{\infty}
+    \bigg[a_{mn}\cos(\frac{n\pi y}{L})+b_{mn}\sin(\frac{n\pi y}{L})\bigg]
+      \cos(\frac{m\pi x}{K}) \\
+  &+\sum_{m=1}^{\infty}\sum_{n=1}^{\infty}
+    \bigg[c_{mn}\cos(\frac{n\pi y}{L})+d_{mn}\sin(\frac{n\pi y}{L})\bigg]
+      \sin(\frac{m\pi x}{K}) \\
+\end{align*}
+The coefficients are:
+\begin{align*}
+  a_{mn} &= \frac{1}{KL}\int_{-L}^{L}\int_{-K}^{K}f(x,y)\cos(\frac{m\pi x}{K})
+    \cos(\frac{n\pi y}{L})\diff{x}\diff{y} \\
+  b_{mn} &= \frac{1}{KL}\int_{-L}^{L}\int_{-K}^{K}f(x,y)\cos(\frac{m\pi x}{K})
+    \sin(\frac{n\pi y}{L})\diff{x}\diff{y} \\
+  c_{mn} &= \frac{1}{KL}\int_{-L}^{L}\int_{-K}^{K}f(x,y)\sin(\frac{m\pi x}{K})
+    \cos(\frac{n\pi y}{L})\diff{x}\diff{y} \\
+  d_{mn} &= \frac{1}{KL}\int_{-L}^{L}\int_{-K}^{K}f(x,y)\sin(\frac{m\pi x}{K})
+    \sin(\frac{n\pi y}{L})\diff{x}\diff{y} \\
+\end{align*}
+A subproblem of this is finding a Fourier series for \( f(x,y) \) over a domain.
+To reduce the amount of work, look for signs of symmetry:
+\begin{enumerate}
+  \item \( f(x,y) = f(-x,y) \), even in \( x \)
+  \item \( -f(x,y) = (f(-x,y) \), odd in \( x \)
+  \item \( f(x,y) = f(x,-y) \), even in \( y \)
+  \item \( -f(x,y) = f(x,-y) \), odd in \( y \)
+\end{enumerate}
+If \( f(x) \) has some symmetry, then some coefficients in the Double Fourier
+Series will be zero.
+
+\subsubsection*{Example}
+Given the function \( f(x,y) = xy \), evaluate the coefficients for the Double
+Fourier Series.
+\[ a_{mn} = \frac{1}{KL}\int_{-L}^{L}\int_{-K}^{K}f(x,y)\cos(\frac{m\pi x}{K})
+  \cos(\frac{n\pi y}{L})\diff{x}\diff{y} \]
+Since \( f(x,y) \) is odd in \( x \) and \( \cos(\frac{m\pi x}{K}) \) is even in
+\( x \), the product is odd. Evaluating the integral over the symmetric
+interval for \( x \) results in 0.
+\[ b_{mn} = \frac{1}{KL}\int_{-L}^{L}\int_{-K}^{K}f(x,y)\cos(\frac{m\pi x}{K})
+  \sin(\frac{n\pi y}{L})\diff{x}\diff{y} \]
+For the same reason as \( a_{mn} \), the product of the functions integrated
+for \( x \) over the symmetric interval is 0.
+\[ c_{mn} = \frac{1}{KL}\int_{-L}^{L}\int_{-K}^{K}f(x,y)\sin(\frac{m\pi x}{K})
+  \cos(\frac{n\pi y}{L})\diff{x}\diff{y} \]
+\( f(x,y) \) is odd in \( y \) and \( \cos(\frac{n\pi y}{L}) \) is even in
+\( y \). Their product is odd so the integral in \( y \) over the symmetric
+interval is 0.
+\[ d_{mn} = \frac{1}{KL}\int_{-L}^{L}\int_{-K}^{K}f(x,y)\sin(\frac{m\pi x}{K})
+  \sin(\frac{n\pi y}{L})\diff{x}\diff{y} \]
+We cannot conclude this for \( d_{mn} \) because the function products are even
+in both \( x \) and \( y \), so we would have to evaluate the integral here.
+All the other terms would drop out in the Double Fourier Series.
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}

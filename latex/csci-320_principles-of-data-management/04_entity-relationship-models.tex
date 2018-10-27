@@ -194,7 +194,7 @@ Dogs can also be related to other dogs, which can be represented as follows:
       \node[entity](person)[right=6cm of dog]{Person};
       \node[ident relationship](owns)[right=2cm of dog]{Owns}
         edge node[above]{0..*} (dog)
-        edge[double] node[above]{1..1} (person);
+        edge node[above]{1..1} (person);
     \end{tikzpicture}
   \end{center}
   A person has exactly one dog and every dog has zero or more owners.

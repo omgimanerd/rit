@@ -44,7 +44,7 @@ following features:
 
 \subsection*{Create Table}
 \begin{lstlisting}
-  create table r (A1 D1, A2 D2,\dots,An Dn) (integrity constraints)}
+  create table r (A1 D1, A2 D2, ... ,An Dn) (integrity constraints);
 \end{lstlisting}
 Example:
 \begin{lstlisting}
@@ -53,14 +53,8 @@ Example:
     Name varchar(20),
     Salary numeric(8,2),
     goodboy smallint
-  )
+  );
 \end{lstlisting}
-Integrity Constraints:
-\begin{itemize}
-  \item Not null
-  \item Primary key
-  \item Foreign key references
-\end{itemize}
 Example:
 \begin{lstlisting}
   create table p(
@@ -70,40 +64,575 @@ Example:
     dog_id int,
     primary key(ID, Name),
     foreign key(dog_id) references dog(ID)
-  )
+  );
 \end{lstlisting}
 
 \subsection*{CRUD}
 \begin{lstlisting}
-  insert into r values (v1,v2,vn)
-  insert into dog values (1,"cat",10.00,0)
-  delete from dog
-  drop table r
-  alter table dog add iscat int not null default 0
-  alter table dog drop iscat
+  insert into r values (v1,v2,vn);
+  insert into dog values (1,'cat',10.00,0);
+  delete from dog;
+  drop table r;
+  alter table dog add iscat int not null default 0;
+  alter table dog drop iscat;
 \end{lstlisting}
 
 \subsection*{Select}
 \begin{lstlisting}
-  select a1,a2,a3,an from r1,r2,rn where predicate
-  select name from dog
-  select distinct name from dog
-  select all name from dog
-  select "joe" as name
-  select name,"lab" as breed from dog
-  select * from dog
+  select a1,a2,a3,an from r1,r2,rn where predicate;
+  select name from dog;
+  select distinct name from dog;
+  select all name from dog;
+  select 'joe' as name;
+  select name,'lab' as breed from dog;
+  select * from dog;
 \end{lstlisting}
 Explicitly specify what attributes to return, \texttt{SELECT *} should be
 avoided with the exception of manually viewing data.
 \begin{lstlisting}
-  select id,name,salary as pay from dog where salary > 80000
+  select id,name,salary as pay from dog where salary > 80000;
 \end{lstlisting}
 The \texttt{where} keyword allows for conditions by which we can filter the
 returned rows. We can specify modifications to the returned attribute and use
 boolean conditions to create compound conditionals.
 \begin{lstlisting}
-  select id,name,salary/26 as pay from dog where salary > 80000 and breed="lab"
+  select id,name,salary/26 as pay from dog where salary > 80000 and
+    breed = 'lab';
 \end{lstlisting}
+The \texttt{between} modifier allows us to select a range as a predicate.
+\begin{lstlisting}
+  select * from dog where age between 6 and 9;
+\end{lstlisting}
+Selecting from multiple tables using \texttt{SELECT *} returns a Cartesian
+product.
+\begin{lstlisting}
+  select * from dog,cat;
+\end{lstlisting}
+This is not particularly useful, it is much more useful to use a predicate to
+match the data.
+\begin{lstlisting}
+  select * from dog,cat where dog.name = cat.name and dog.age = 4;
+  select * from dog as D, cat as C where D.age = C.age;
+\end{lstlisting}
+
+\subsubsection*{Examples}
+\begin{center}
+  \begin{tabular}{|c|c|}
+    \hline
+    \multicolumn{2}{|c|}{table dog} \\
+    \hline
+    name & owner \\
+    \hline
+    Charlie & Snoopy \\
+    Woodstock & Snoopy \\
+    Lucy & Ricky \\
+    Snoopy & Sam \\
+    \hline
+  \end{tabular}
+\end{center}
+Finding all the owners with dogs named Woodstock:
+\begin{lstlisting}
+  select d2.owner from dog where name = 'woodstock';
+\end{lstlisting}
+Finding all the dogs owned by Snoopy:
+\begin{lstlisting}
+  select name from dog where owner = 'snoopy';
+\end{lstlisting}
+Selecting the owner's owner of Charlie:
+\begin{lstlisting}
+  select owner from dog d1, dog d2 where d1.name = 'charlie' and
+    d1.owner = d2.name;
+\end{lstlisting}
+
+\subsection*{String Operations}
+The percent sign (\%) is used for partial substring matches while the
+underscore (\_) is used for single character matches.
+\begin{lstlisting}
+  select * from dog where name like '%py';
+  select * from dog where name like 'Sn\'' escape '\';
+\end{lstlisting}
+Concatenation is expressed with double pipes (\textbar\textbar).
+\begin{lstlisting}
+  select * from fname||lname like '%foo';
+\end{lstlisting}
+
+\subsection*{Ordering}
+The \texttt{order by} keyword allows for queries to be sorted. Specifying more
+than one sort option allows for sorting by multiple fields.
+\begin{lstlisting}
+  select name,lname from dog order by name asc;
+  select name,lname from dog order by name,lname desc;
+  select name,lname from dog order by name desc,lname;
+\end{lstlisting}
+
+\subsection*{Set Operations}
+Set operation keywords are valid in SQL.
+\begin{lstlisting}
+  (select name from dog) union (select name from cat);
+  (select name from dog) intersect (select name from cat);
+  (select name from dog) except (select name from cat);
+\end{lstlisting}
+
+\subsection*{Null Values}
+\begin{lstlisting}
+  select field from table where age is null
+\end{lstlisting}
+Boolean evaluation:
+\begin{enumerate}
+  \item True or null evaluates to true
+  \item False or null evaluates to null
+  \item Null or null evaluates to null
+  \item True and null evaluates to null
+  \item False and null evaluates to false
+  \item Null and null evaluates to null
+\end{enumerate}
+
+\subsection*{Aggregate Functions}
+There are \( 4\frac{1}{2} \) aggregate functions: \texttt{avg, min, max, sum,
+count}. Count does not entirely count as an aggregate function. We can use
+this to count the number of non-null rows:
+\begin{lstlisting}
+  select count(*) from penguin;
+\end{lstlisting}
+Because no rows can be non-null, this just returns the number of rows in your
+database. We can also select the number of non-null values for a field:
+\begin{lstlisting}
+  select count(age) from penguin;
+\end{lstlisting}
+To count distinct values in a field:
+\begin{lstlisting}
+  select count(distinct name) from dog;
+\end{lstlisting}
+The other aggregate functions can be used in a similar way:
+\begin{lstlisting}
+  select avg(salary) from dog where state = 'CA';
+\end{lstlisting}
+If there are no dogs, then 0 is returned. If some dogs have a null salary, then
+null is returned.
+\begin{lstlisting}
+  select avg(salary) as avgs,state from dog group by state;
+  select avg(salary) as avgs,state,name from dog group by state,name;
+\end{lstlisting}
+Results like this can be filtered with the \texttt{having} clause:
+\begin{lstlisting}
+  select avg(salary) as avgs,state from dog group by state having avgs > 5;
+\end{lstlisting}
+
+\subsection*{Subqueries}
+Subquery expressions can be used for set membership, comparisons, and
+cardinality expressions.
+\begin{lstlisting}
+  select name,age from dog where age in (select age from cat where
+    state = 'sleeping');
+  select name,age from dog where (age,legs) in (select age,legs from cat where
+    state = 'sleeping');
+  select name from dog where age > some(select age from cat where state = 'CA');
+  select name from dog where age > all(select age from cat where state = 'CA');
+  select name from dog where age > (select min(age) from cat where
+    state = 'CA');
+\end{lstlisting}
+Because nested subqueries can get very messy, we use the \texttt{with} clause
+as a way of defining a temporary relation that only exists in the clause in
+which the \texttt{with} clause occurs.
+\begin{lstlisting}
+  with dept_total(dept_name, value) as
+    (select dept_name, sum(salary) from instructor group by dept_name),
+    dept_total_avg(value) as (select avg(value) from dept_total)
+  select dept_name from dept_total,dept_total_avg
+    where dept_total.value > dept_total_avg.value;
+\end{lstlisting}
+Scalar subqueries must be used where only a single value is expected.
+\begin{lstlisting}
+  select dept_name,
+    (select count(*) from instructor
+      where department.dept_name = instructor.dept_name) as num_instructors
+    from department;
+\end{lstlisting}
+
+\subsection*{Database Modification}
+Deleting records (also accepts a valid where clause):
+\begin{lstlisting}
+  delete from instructor;
+  delete from instructor where dept_name = 'Finance';
+  delete from instructor where dept_name in
+    (select dept_name from department where building = 'Watson');
+  delete from instructor where salary < (select avg(salary) from instructor);
+\end{lstlisting}
+Records can be inserted into databases:
+\begin{lstlisting}
+  insert into course(course_id, title, dept_name, credits)
+    values('CS-437', 'Database Systems', 'Comp Sci', 4);
+  insert into course values('CS-437', 'Database Systems', 'Comp Sci', 4);
+  insert into student select ID, name, dept_name, 0 from instructor;
+\end{lstlisting}
+Records can be updated in databases:
+\begin{lstlisting}
+  update instructor
+    set salary = salary * 1.03
+    where salary > 100000;
+  update instructor
+    set salary = salary * 1.05
+    where salary <= 100000;
+\end{lstlisting}
+As an aside, since we have no guarantee to the order of execution of the
+previous statements, some instructors might get more than one raise. We can
+use the \texttt{case} statement to solve this.
+\begin{lstlisting}
+  update instructor set salary = case
+    when salary <= 100000 then salary * 1.05
+    else salary * 1.03
+  end
+\end{lstlisting}
+Updates can also take scalar subqueries:
+\begin{lstlisting}
+  update student S
+    set total_credits = (select sum(credits) from takes,course
+      where takes.course_id = course.course_id and
+        S.ID = takes.ID and
+        takes.grade <> 'F' and
+        takes.grade is not null);
+\end{lstlisting}
+
+\subsection*{Database Joins}
+Join types:
+\begin{itemize}
+  \item \texttt{inner}
+  \item \texttt{left outer}
+  \item \texttt{right outer}
+  \item \texttt{full outer}
+\end{itemize}
+Conditions:
+\begin{itemize}
+  \item \texttt{natural}
+  \item \texttt{on \textless predicate\textgreater, using (attributes)}
+\end{itemize}
+Natural joins match on all attributes with the same name in both tables. Inner
+joins only select rows on the matching attribute (essentially enforcing that
+no row in the output has null values) while full outer joins preserve all
+information in both tables.
+\begin{center}
+  \begin{tabular}{|c|c|}
+    \hline
+    \multicolumn{2}{|c|}{Dog} \\
+    \hline
+    Name & Age \\
+    \hline
+    A & 5 \\
+    B & 10 \\
+    C & 7 \\
+    \hline
+  \end{tabular}
+  \begin{tabular}{|c|c|c|}
+    \hline
+    \multicolumn{3}{|c|}{Cat} \\
+    \hline
+    ID & Name & State \\
+    \hline
+    1 & C & VT \\
+    2 & D & IA \\
+    \hline
+  \end{tabular}
+\end{center}
+\begin{lstlisting}
+  select * from dog natural left outer join cat;
+\end{lstlisting}
+\begin{center}
+  \begin{tabular}{|c|c|c|c|}
+    \hline
+    Name & Age & ID & State \\
+    \hline
+    A & 5 & NULL & NULL \\
+    B & 10 & NULL & NULL \\
+    C & 7 & 1 & VT \\
+    \hline
+  \end{tabular}
+\end{center}
+\begin{lstlisting}
+  select * dog natural right outer join cat;
+\end{lstlisting}
+\begin{center}
+  \begin{tabular}{|c|c|c|c|}
+    \hline
+    Name & Age & ID & State \\
+    \hline
+    C & 7 & 1 & VT \\
+    D & NULL & 2 & IA \\
+    \hline
+  \end{tabular}
+\end{center}
+\begin{lstlisting}
+  select * from dog natural full outer join cat;
+\end{lstlisting}
+\begin{center}
+  \begin{tabular}{|c|c|c|c|}
+    \hline
+    Name & Age & ID & State \\
+    \hline
+    A & 5 & NULL & NULL \\
+    B & 10 & NULL & NULL \\
+    C & 7 & 1 & VT \\
+    D & NULL & 2 & IA \\
+    \hline
+  \end{tabular}
+\end{center}
+\begin{lstlisting}
+  select * from dog inner join cat on cat.name = dog.name;
+\end{lstlisting}
+\begin{center}
+  \begin{tabular}{|c|c|c|c|}
+    \hline
+    Name & Age & ID & State \\
+    \hline
+    C & 7 & 1 & VT \\
+    \hline
+  \end{tabular}
+\end{center}
+Suppose we have two cats with the same name:
+\begin{center}
+  \begin{tabular}{|c|c|}
+    \hline
+    \multicolumn{2}{|c|}{Dog} \\
+    \hline
+    Name & Age \\
+    \hline
+    A & 5 \\
+    B & 10 \\
+    C & 7 \\
+    \hline
+  \end{tabular}
+  \begin{tabular}{|c|c|c|}
+    \hline
+    \multicolumn{3}{|c|}{Cat} \\
+    \hline
+    ID & Name & State \\
+    \hline
+    1 & C & VT \\
+    2 & D & IA \\
+    3 & C & MI \\
+    \hline
+  \end{tabular}
+\end{center}
+\begin{lstlisting}
+  select * from dog natural full outer join cat;
+\end{lstlisting}
+\begin{center}
+  \begin{tabular}{|c|c|c|c|}
+    \hline
+    Name & Age & ID & State \\
+    \hline
+    A & 5 & NULL & NULL \\
+    B & 10 & NULL & NULL \\
+    C & 7 & 1 & VT \\
+    D & NULL & 2 & IA \\
+    C & 7 & 3 & MI \\
+    \hline
+  \end{tabular}
+\end{center}
+
+\subsection*{Views}
+Views are used to restrict access to attributes or rows. It represents a virtual
+table.
+\begin{lstlisting}
+  create view old_dogs as (select name,age from dog where age > 10);
+\end{lstlisting}
+Executing any query on old\_dogs is equivalent to using the view as a subquery.
+This is generally used to restrict access to the table, prevent users from
+querying all dogs or querying certain attributes of dogs. We can also insert
+into views.
+\begin{lstlisting}
+  insert into old_dogs values('Jeff', 13) values('Cheese', 8);
+\end{lstlisting}
+While this might work, you will never see Cheese by querying the view because
+the view restricts access to dogs whose age is over 10.
+\begin{lstlisting}
+  create view dogs2 as (select name from dog,cat where
+    dog.lives_in = cat.state);
+\end{lstlisting}
+Inserting into this view would lead to ambiguity, so in general, there are
+certain restrictions for inserting into views.
+\begin{enumerate}
+  \item Only a single table is present in the from clause.
+  \item No aggregations, distinct, etc.
+  \item No group by or having clauses.
+  \item Any attribute not in the selection can be set to null.
+\end{enumerate}
+There exist the concept of materialized views, which are physical tables that
+contain the results of a view. It is a cache of data used for long running
+queries that needs to be updated.
+
+\subsection*{Transactions}
+In most flavors of SQL, transactions begin with most statements and usually end
+with a commit or rollback. You can specify for a group of statements to be
+atomic however.
+\begin{lstlisting}
+  begin atomic;
+    select * from dog;
+    insert into cat ...
+    update turtle ...
+  commit;
+\end{lstlisting}
+
+\subsection*{Integrity Constraints}
+Integrity contraints for a single table include the following:
+\begin{itemize}
+  \item \texttt{not null}
+  \item \texttt{unique}
+  \item \texttt{primary key}: not null, unique, indexed
+  \item \texttt{check \textless predicate\textgreater}
+\end{itemize}
+\begin{lstlisting}
+  create table dog (
+    id int primary key,
+    name varchar(30) not null,
+    salary int,
+    check (salary > 5),
+    check (age < 10),
+    check (breed in ('Lab', 'Dalmatian', 'GSD'))
+  )
+\end{lstlisting}
+Integrity constraints can apply across multiple tables. Referential integrity
+uses foreign keys to ensure some condition.
+\begin{lstlisting}
+  create table dog (
+    id int primary key,
+    name varchar(20) not null,
+    foreign key(owner) references person(id)
+    on update cascade
+  )
+\end{lstlisting}
+If the referenced person is deleted or updated in database, we specify how the
+database handles the constraint. \texttt{on update cascade} makes any changes
+from the person table cascade into the dog table to update its value.
+Alternatively, we can specify \texttt{on delete set null} to set the value to
+null if the referenced person is deleted. Another option is to specify
+\texttt{set default 0} to specify a default value if the referenced person is
+deleted. Complex check statements can also be used like this, but it is not
+usually recommended since there are better options.
+\begin{lstlisting}
+  create table dog (
+    check owner_id in (select id from person)
+  )
+\end{lstlisting}
+
+\subsection*{Additional Data Types}
+\begin{itemize}
+  \item Date - yyyy-mm-dd
+  \item Time - HH:MM:SS
+  \item Timestamp - Date and time
+  \item Interval - the resulting of subtracting a date/time related data type
+  \item Blob - binary large object (cannot be indexed)
+  \item Clob - character large object (cannot be indexed)
+\end{itemize}
+Blobs and clobs are referenced by a pointer stored in the database. Because
+they are not indexed, relevant metadata needs to be stored as well.
+
+\subsection*{Indices}
+Suppose have a dog table with the attributes id, name, age, and state:
+\begin{lstlisting}
+  create index dog_index on dog(state, age);
+\end{lstlisting}
+Creating an index affects the structure of how the data is stored on disk to
+allow efficient access. Queries that use an index must use all the
+attributes that the index applies to. An index creates a table of all the
+distinct values for an attribute currently in the table. Each entry in the
+index holds a list of pointers to all matching entries in the table. The index
+does not have to be specified in order for it to be used to optimize a query.
+After it is created, the database will use automatically for any matching
+predicates.
+
+\subsection*{Functions/Procedures}
+We can define functions and procedures according to the SQL-1999 standard.
+The syntax for this will often be vendor-specific.
+\begin{lstlisting}
+  create function dog_count(state varchar(2)) returns integer begin
+    declare dc integer;
+    select count(*) into dc from dog where dog.state = state;
+    return dc;
+  end
+\end{lstlisting}
+After defining this function, we can use it in future queries:
+\begin{lstlisting}
+  select name,age from cat where dog_count('OR') > 5;
+\end{lstlisting}
+Subqueries can be also generally be used as arguments in functions. All
+functions must have a \texttt{begin} and \texttt{end} clause, a return type
+specified, and the actual value returned. Tables can also be returned as of
+SQL-2003:
+\begin{lstlisting}
+  create function dogs(st varchar(2)) returns table(
+      id int, name varchar(10), breed varchar(5)) begin
+    return table(
+      select id,name,breed from dog where dog.state = state
+    )
+  end
+\end{lstlisting}
+Procedures can also be used as function like constructs:
+\begin{lstlisting}
+  create procedure dog_count(state varchar(2), out dcount integer) begin
+    select count(*) into dcount from dog where dog.state = state;
+  end
+\end{lstlisting}
+This could be used in subsequent SQL statements:
+\begin{lstlisting}
+  declare dc int;
+  call dog_count('OR', dc);
+\end{lstlisting}
+
+\subsection*{Iteration}
+SQL-1999 also supports iteration using \texttt{while}:
+\begin{lstlisting}
+  while boolean_exp do
+    ...
+  end while
+\end{lstlisting}
+and also \texttt{repeat}:
+\begin{lstlisting}
+  repeat
+    ...
+  until expression
+  end repeat
+\end{lstlisting}
+Another option available is \texttt{for} loops:
+\begin{lstlisting}
+  declare r integer default 0;
+  for r as select age from dog; do
+    set n = n + r.age
+  end for
+\end{lstlisting}
+
+\subsection*{Triggers}
+Triggers are statements that happen automatically upon an event. A condition to
+trigger upon and a subsequent action must be specified. Like functions and
+procedures, the syntax here will likely be vendor-specific. Triggers can be set
+on insert, update, and delete events.
+\begin{lstlisting}
+  create trigger trigger1 setnull before update of dog
+    referencing new row as nrow
+    for each row when (nrow.age > 15)
+    begin atomic
+      set nrow.age = null;
+    end;
+  create trigger myT after update of dog
+    referencing new row as nrow
+    for each row when (nrow.age > 30)
+    begin atomic
+      set nrow.age = null
+    end;
+  create trigger doginfo_trigger after update of dog on (age)
+    referencing new row as nrow
+    referencing old row as orow
+    for each row when (nrow.breed <> 'GSD' and nrow.breed is not null) and
+      (orow.breed = 'GSD' or orow.breed is null)
+    begin atomic
+      update cat set cat.age = cat.age +
+        (select age from dog where cat.id = nrow.id)
+        where cat.breed = orow.breed
+    end;
+\end{lstlisting}
+Triggers are generally used to accumulate summary data, perform data
+replication, and set default values (although these are all really bad reasons
+to use them). They have issues with cascading runs and their best use is
+probably with audit data to record when changes are made in a database.
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
