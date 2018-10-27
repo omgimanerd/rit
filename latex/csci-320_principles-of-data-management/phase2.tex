@@ -26,6 +26,26 @@ as an abstraction of the database to developers who need access to a higher
 level API that can provide information about the relationships between
 customers, dealers, and vehicles.
 
+\subsection*{Progress Report}
+Progress of the project during this phase went very smooth overall getting
+all needed attributes of the phase completed and looked over in a timely
+manner. Starting first with an agreement on how to do the UI in our case
+we agree on a terminal based UI, afterwards doing the description of the
+application and modifying the design. These modifications include splitting
+brand into its own entity with Country, Reliability and Name attributes that
+has two has relations with Dealer and Vehicle both being many to many
+relations.  Dealer got more attributes replacing Brands with Name and Phone
+attributes, Sale got its Amount attribute, removed.  Vehicle got its Brand
+attribute removed and replaced with Model and got a new attribute Mileage.
+Finally, Customer got its Address attribute expanded upon with Street
+containing Street Number and Street Name and, the inclusion of State and
+Zipcode under Address. These changes cause a little bit of trouble for the
+group on the exact specifics of how everything all works together although
+nothing major. After the design changes work was started on the actual SQL code
+and getting the database started. The database will use additional data that
+expands upon the data found in phase 1, in a large quantity of data and
+updated with the newly add and updated attributes.
+
 \subsection*{ER and UML Diagrams}
 \begin{figure}[H]
   \centering
