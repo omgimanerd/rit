@@ -1,0 +1,59 @@
+\documentclass{math}
+
+\usepackage{listings}
+
+\title{Principles of Data Management}
+\author{Alvin Lin}
+\date{August 2018 - December 2018}
+
+\begin{document}
+
+\lstset{basicstyle=\ttfamily\footnotesize,breaklines=true}
+\maketitle
+
+\section*{Normalization}
+Normalization is a way to make bad data good by dealing with anomalies.
+Anomalies occur when data is inserted, deleted, or updated in an inconsistent
+way, causing rows to contain different data formats. This is usually solved
+by decomposition. If many rows of a table are going to the same data, we can
+decompose the table into two tables. For example, instead of:
+\begin{lstlisting}
+  Game(1, RDR2, M, \$59.99, RPG)
+  Game(18, RDR2, M \$59.99, RPG)
+\end{lstlisting}
+We can decompose this into two tables and store RDR2 in its own Game table as
+a template which we can update to reflect the change across all instances.
+\begin{lstlisting}
+  Game(RDR2, M \$59.99, RPG)
+  GameInstance(18, RDR2)
+  GameInstance(1, RDR2)
+\end{lstlisting}
+Decomposition can be either lossy or lossless, depending on whether or not the
+original structure of the data can be recovered. In this case, the decomposition
+is lossless since we can obtain the original records by joining the tables on
+the game title.
+
+\subsection*{Function Dependencies}
+Certain fields can map to other fields. For example, ZIP codes can map to cities
+and states. We can make certain attributes in a table dependent on other
+attributes. Armstrong's Axioms:
+\begin{itemize}
+  \item if \( X\supseteq Y \) then \( X\to Y \) is reflexivity
+  \item if \( X\to Y \) then \( XZ\to YZ \) is augmentation
+  \item if \( X\to Y \) and \( Y\to Z \), then \( X\to Z \) is transitivity
+\end{itemize}
+We use Armstrong's Axioms to infer all functional dependencies and get the
+minimal set of functional dependencies that include all possible attributes.
+\begin{itemize}
+  \item First normal form: all attributes are atomic.
+  \item Second normal form: must be in first normal form, no partial key
+    dependencies.
+\end{itemize}
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
