@@ -16,8 +16,8 @@ while object detection would try to locate the bounding box of the parrot.
 This is generally quite complex.
 
 \subsection*{Nearest Neighbor Classifier}
-Near neighbor classifiers try to assign the label of the nearest training data
-point to each test data point. It is one of the easiest classification
+Nearest neighbor classifiers try to assign the label of the nearest training
+data point to each test data point. It is one of the easiest classification
 algorithms. K-nearest neighbors is a variant that finds the \( k \) closest
 neighbors from the training data. The labels of the \( k \) points can vote
 to classify the point in consideration.
@@ -36,7 +36,10 @@ to classify the point in consideration.
   \[ K(h_1,h_2) = \sum_{i=1}^{N}\sqrt{h_1(i)h_2(i)} \]
 \end{itemize}
 
-\subsection*{Curse of Dimensionality}
+\subsection*{Histogram Classifiers and the Curse of Dimensionality}
+We can also represent class-conditional densities with a histogram. With enough
+data, estimates become quite good but the histogram can become very large with
+high-dimensional data. \par
 It is hard to build a histogram based classifier when the feature space is
 high dimensional. It fails when there are too many histogram buckets.
 
