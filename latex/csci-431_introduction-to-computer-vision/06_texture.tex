@@ -21,17 +21,21 @@ repetition.
 
 \subsection*{Filter Based Texture Representations}
 \begin{enumerate}
-  \item Choose a set of filters, each representing a pattern element.
+  \item Choose a set of filters, each representing a pattern element, such
+    as spots and bars.
   \item Apply all the filters to an image at a variety of scales.
   \item Rectify the filtered images. We should avoid averaging contrast
-    reversals.
+    reversals. We do not want to average dark spots on light backgrounds
+    and vice versa.
   \item Compute summaries of rectified filtered images.
   \item Describe each pixel by a vector of summaries.
 \end{enumerate}
 Alternatively, we can compute the responses of blobs and edges at various
 orientations and scales. Since textures are made of repeated local patterns,
 we need to find the patterns and describe their statistics within each local
-window.
+window. Generally this involves using filters that look like the patterns
+as described in the steps above and plotting a histogram of ``prototypical''
+feature occurrences.
 
 \subsection*{Choosing the Filters}
 When choosing the filters, we can measure responses to over-complete filter
@@ -56,6 +60,10 @@ To build the dictionary:
     of the cluster center \( c_j \) closest to that pixel and insert \( j \)
     into a histogram for that domain.
 \end{enumerate}
+Clustering can be performed with k-means, representing each patch with either
+an intensity vector of a vector of filter responses over the pixel/patch.
+To summarize the high dimensional clusters, we can find the nearest cluster
+center in the dictionary and use that to represent the entire cluster.
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
