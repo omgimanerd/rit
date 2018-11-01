@@ -64,7 +64,7 @@ Polynomial Kernel:
 \[ K(x,y) = (c+x\cdot y)^d \]
 Gaussian Kernel:
 \[ K(x,y) = exp\left(-\frac{1}{\sigma^2}\|x-y\|^2\right) \]
-These are used so that classifiers can be learnt for high dimensional feature
+These are used so that classifiers can be trained for high dimensional feature
 spaces. The data may be linearly separable in the high dimensional space, but
 not necessarily the original feature space.
 
@@ -80,6 +80,12 @@ not necessarily the original feature space.
     support vector, and combine them with the learned weights to vet the value
     of the decision function.
 \end{enumerate}
+In general, there are many publicly available packages for perform SVM
+classification and the kernel-based framework is very powerful and flexible.
+While it works very well even with small training sample sizes, there is no
+easy way to do multi-class SVMs and we must combine two-class SVMs. For
+large scale problems, SVMs can consume a lot of resources since a matrix of
+kernel values must be computed for each pair of examples.
 
 \subsection*{Evaluating Classifiers}
 Always train on a training set, evaluate on a validation dataset, and test on
