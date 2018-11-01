@@ -32,7 +32,7 @@
       u_x(b,t) = c_2
     \end{align*} \\
     \hline
-    Separated/Robin/Churchill & \begin{align*}
+    Separated & \begin{align*}
       a_1X(a)+a_2X'(a) = c_1 \\
       b_1X(b)+b_2X'(b) = c_2
     \end{align*} & \begin{align*}
@@ -59,7 +59,7 @@ A combination of these can result however, for example:
 \end{align*}
 Boundary conditions are usually considered separately for homogeneity.
 
-\subsection*{?}
+\subsubsection*{Example}
 In a previous section, we solved
 \begin{align*}
   u_t &= \beta u_xx \\
@@ -67,14 +67,19 @@ In a previous section, we solved
   u(x,0) &= f(x)
 \end{align*}
 We arrived at the solution:
-\[ u_n(x,t) = \sin(\frac{n\pi x}{L})\e^{-\beta\frac{n\pi}{L}t} \]
-These are referred to as modes:
 \begin{align*}
-  u_1 &= \sin(\frac{\pi x}{L})\e^{-\beta\frac{\pi}{L}t} \\
-  u_2 &= \sin(\frac{2\pi x}{L})\e^{-\beta\frac{2\pi}{L}t}
+  u(x,t) &= \sum_{n=1}^{\infty}b_n
+    \sin(\frac{n\pi x}{L})\e^{-\beta(\frac{n\pi}{L})^2t} \\
+  b_n &= \frac{2}{L}\int_{0}^{L}f(x)\sin(\frac{n\pi x}{L})\diff{x}
 \end{align*}
-As \( n\to\infty \), \( u_n \to 0 \).
-
+The individual terms when \( n \) is chosen are referred to as modes:
+\begin{align*}
+  u_n(x,t) &= \sin(\frac{n\pi x}{L})\e^{-\beta(\frac{n\pi}{L}^2t)} \\
+  u_1(x,t) &= \sin(\frac{\pi x}{L})\e^{-\beta\frac{\pi}{L}t} \\
+  u_2(x,t) &= \sin(\frac{2\pi x}{L})\e^{-\beta\frac{2\pi}{L}t}
+\end{align*}
+Due to the exponential term, the modes \( u_n \) approach 0 as \( t \)
+approaches infinity.
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
