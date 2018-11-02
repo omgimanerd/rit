@@ -48,7 +48,49 @@ minimal set of functional dependencies that include all possible attributes.
   \item First normal form: all attributes are atomic.
   \item Second normal form: must be in first normal form, no partial key
     dependencies.
+  \item Third normal form: must be in second normal form, no transitive
+    dependencies.
+  \item Boyce-Codd normal form (BCNF): stronger form of third normal form, no
+    non-candidate key dependencies.
 \end{itemize}
+
+\subsection*{Denormalization}
+In order to denormalize, you must have normalized data to start with. This is
+usually performed as a method of combining tables. This reduces the number of
+tables and reduces the number of necessary join operations, which are often
+expensive. As a result, create, update, and delete operations are slowed down
+but read operations are sped up. Redundant data will occur and there will be
+less foreign keys.
+
+\subsection*{Partitioning}
+Horizontal and vertical partitioning is a form of potentially lossy
+decomposition. Suppose we have a table with attributes:
+\begin{center}
+  \begin{tabular}{|c|c|c|c|c|}
+    \hline
+    ID & name & age & street & city \\
+    \hline
+  \end{tabular}
+\end{center}
+Vertical partitioning:
+\begin{center}
+  \begin{tabular}{|c|c|}
+    \hline
+    ID & name \\
+    \hline
+  \end{tabular} \quad
+  \begin{tabular}{|c|c|c|c|}
+    \hline
+    ID & age & street & city \\
+    \hline
+  \end{tabular}
+\end{center}
+Horizontal partitioning involves putting the rows of a large database into
+multiple databases. For example, users with \( age > 30 \) will be put into one
+database and users with \( age \le 30 \) will be put into another database with
+a view containing the union of both for access to all users. This is done for
+faster access, especially since loading large tables into memory is expensive
+and slow.
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
