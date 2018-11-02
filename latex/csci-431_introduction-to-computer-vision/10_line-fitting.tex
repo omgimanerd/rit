@@ -1,0 +1,122 @@
+\documentclass{math}
+
+\usepackage{tikz}
+
+\title{Introduction to Computer Vision}
+\author{Alvin Lin}
+\date{August 2018 - December 2018}
+
+\begin{document}
+
+\maketitle
+
+\section*{Line Fitting}
+Line fitting is an operation used for fitting curves and learning data
+manifolds. The goal is to find a line that best explains some observed data.
+Given a data point \( x_i \), a target point \( y_i \), and line parameters
+\( w,b \), a line model would be in the form of \( y_i = wx_i+b \). In general,
+we want to minimize the error between our line model and the actual data. We
+can calculate the sum of squared error to obtain this metric.
+\[ \sum_{i=1}^{n}(y_i-wx_i+b)^2 \]
+
+\subsection*{Samples vs Model Parameters}
+With \( m \) samples and \( n \) model parameters, we have three cases that
+can result:
+\begin{itemize}
+  \item \( m = n \): a unique solution to model this data.
+  \item \( m > n \): over-determined system of equations. No solution exists, so
+    we minimize error through line fitting.
+  \item \( m < n \): under-determined system of equations. Infinite solutions
+    exists.
+\end{itemize}
+
+\subsection*{Robustness}
+Squared error can be a source of bias in the presence of noise points in the
+data. One fix for this is expectation maximization (not discussed in this
+course). Alternatively, we can use M-estimators or the RANSAC algorithm.
+
+\subsection*{RANSAC}
+Random Sample Consensus (RANSAC) is used for parametric matching and model
+fitting. Given a dataset of \( n \) fitting the best possible line through
+brute force would require searching through \( 2^n \), which is often not
+feasible. RANSAC assumes the data contains both inliers and outliers and goes
+through the following process.
+\begin{itemize}
+  \item Select a random subset of the original data to be hypothetical inliers.
+  \item A model is fitted to the set of hypothetical inliers.
+  \item All other data points are then tested against the fitted model using
+    some model-specific loss function.
+  \item The estimated model is reasonably good if sufficiently many points have
+    been classified as part of the consensus set.
+  \item Afterwards, the model may be improved by re-estimating it using all
+    members of the consensus set.
+\end{itemize}
+In general this works because the probability that an inlier is selected \( p \)
+is defined as:
+\[ p = 1-(1-w^n)^k \]
+where \( w \) is the ratio of inliers to total points, \( n \) is the minimum
+number of points required, and \( k \) is the number of iterations. RANSAC
+is robust even when there are significant number of outliers and is useful in
+many advanced computer vision applications, but it is not always able to find
+the optimal set. It usually performs badly when the number inliers is less than
+50\%. There is no upper bound on the time it takes to compute these parameters
+and RANSAC requires setting many problem-specific thresholds. Additionally, it
+can only estimate one model for a particular dataset.
+
+\subsection*{Photometric Stereo}
+It is possible to reconstruct a surface from a series of pictures of that
+surface taken under different illuminations. We only need to obtain measures
+of the depth of the surface in order to reconstruct its shape. A Monge
+patch is a representation of a piece of surface as a height function. An
+orthographic camera that maps \( (x,y,z) \) to \( (x,y) \) in the camera is
+viewing a Monge patch. Photometric stereo is a method for recovering a
+representation of the Monge patch from image data.
+
+\subsubsection*{Lambert's Law}
+Recall that
+\[ B = \rho(\vec{N}\cdot\vec{S}) = \rho\|\vec{S}\|\cos\theta \]
+where \( B \) is the radiosity (total power leaving the surface per unit area),
+\( \rho \) is the albedo (fraction of incident irradiance reflected by the
+surface), \( \vec{N} \) is the unit normal, and \( \vec{S} \) is the source
+vector whose magnitude is proportional to the intensity of the source. \par
+If we fix the position of the camera and surface and illuminate it using some
+faraway source, then we can calculate the radiosity as:
+\[ B(x) = \rho(x)N(x)S(x) \]
+The intensity value of a pixel at \( (x,y) \) is now:
+\[ I(x,y) = kB(x) \]
+We know the source vectors \( S_j \) and the pixel values \( I_j(x,y) \) where
+\( j \) is the index of the illumination source. What we need to find is the
+surface normal \( N(x,y) \) and the albedo \( \rho(x,y) \). If we assume that
+the repsonse function of the camera is a linear scaling by a factor of \( k \),
+then by Lambert's law:
+\begin{align*}
+  I_j(x,y) &= kB(x) \\
+  &= kB(x,y) \\
+  &= k\rho(x,y)(N(x,y)\cdot S_j) \\
+  &= (\rho(x,y)N(x,y))\cdot(kS_j) \\
+  &= g(x,y)\cdot V_j
+\end{align*}
+where \( g(x,y) \) describes the surface, \( V_j \) is a property of the
+illumination and camera. By taking the dot product between the vector field
+\( g(x,y) \) and \( V_j \) for \( n \) sources, we can stack up the known
+\( V_j \) vectors into a matrix \( V \). We can set up the following linear
+system for each pixel.
+\[ \begin{bmatrix}
+  I_1(x,y) \\
+  I_2(x,y) \\
+  \vdots \\
+  I_n(x,y)
+\end{bmatrix} = \begin{bmatrix}
+  V_1^T \\
+  V_2^T \\
+  \vdots
+  V_n^T
+\end{bmatrix}g(x,y) \]
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
