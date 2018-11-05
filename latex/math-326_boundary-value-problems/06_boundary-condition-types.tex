@@ -1,0 +1,90 @@
+\documentclass{math}
+
+\usepackage{tikz}
+
+\title{Boundary Value Problems}
+\author{Alvin Lin}
+\date{August 2018 - December 2018}
+
+\begin{document}
+
+\maketitle
+
+\section*{Boundary Condition Types}
+\begin{center}
+  \begin{tabular}{|c|p{4cm}|p{4cm}|}
+    \hline
+    & In terms of \( X(x) \) & In terms of \( u(x,t) \) \\
+    \hline
+    Dirichlet & \begin{align*}
+      X(a) = c_1 \\
+      X(b) = c_2
+    \end{align*} & \begin{align*}
+      u(a,t) = c_1 \\
+      u(b,t) = c_2
+    \end{align*} \\
+    \hline
+    Neumann & \begin{align*}
+      X'(a) = c_1 \\
+      X'(b) = c_2
+    \end{align*} & \begin{align*}
+      u_x(a,t) = c_1 \\
+      u_x(b,t) = c_2
+    \end{align*} \\
+    \hline
+    Separated & \begin{align*}
+      a_1X(a)+a_2X'(a) = c_1 \\
+      b_1X(b)+b_2X'(b) = c_2
+    \end{align*} & \begin{align*}
+      a_1u(a,t)+a_2u_x(a,t) = c_1 \\
+      b_1u(b,t)+b_2u_x(b,t) = c_2
+    \end{align*} \\
+    \hline
+    Periodic & \begin{align*}
+      X(a) = X(b) \\
+      X'(a) = X'(b)
+    \end{align*} & \begin{align*}
+      u(a,t) = u(b,t) \\
+      u_x(a,t) = u_x(b,t)
+    \end{align*} \\
+    \hline
+  \end{tabular}
+\end{center}
+Dirichlet, Neumann, and Robin boundary conditions are homogeneous if
+\( c_1 = c_2 = 0 \) and nonhomogeneous if \( c_1 \ne 0 \) or \( c_2 \ne 0 \).
+A combination of these can result however, for example:
+\begin{align*}
+  u(0,t) &= 0 \quad \text{homogeneous Dirichlet} \\
+  u_x(L,t) &= 0 \quad \text{nonhomogeneous Neumann}
+\end{align*}
+Boundary conditions are usually considered separately for homogeneity.
+
+\subsubsection*{Example}
+In a previous section, we solved
+\begin{align*}
+  u_t &= \beta u_xx \\
+  u(0,t) &= u(L,t) = 0 \\
+  u(x,0) &= f(x)
+\end{align*}
+We arrived at the solution:
+\begin{align*}
+  u(x,t) &= \sum_{n=1}^{\infty}b_n
+    \sin(\frac{n\pi x}{L})\e^{-\beta(\frac{n\pi}{L})^2t} \\
+  b_n &= \frac{2}{L}\int_{0}^{L}f(x)\sin(\frac{n\pi x}{L})\diff{x}
+\end{align*}
+The individual terms when \( n \) is chosen are referred to as modes:
+\begin{align*}
+  u_n(x,t) &= \sin(\frac{n\pi x}{L})\e^{-\beta(\frac{n\pi}{L}^2t)} \\
+  u_1(x,t) &= \sin(\frac{\pi x}{L})\e^{-\beta\frac{\pi}{L}t} \\
+  u_2(x,t) &= \sin(\frac{2\pi x}{L})\e^{-\beta\frac{2\pi}{L}t}
+\end{align*}
+Due to the exponential term, the modes \( u_n \) approach 0 as \( t \)
+approaches infinity.
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}

@@ -1,0 +1,268 @@
+\documentclass{math}
+
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage{tikz}
+
+\geometry{letterpaper, margin=0.5in}
+
+\title{Boundary Value Problems: Homework 9}
+\author{Alvin Lin}
+\date{August 2018 - December 2018}
+
+\begin{document}
+
+\maketitle
+
+\subsection*{Problem 1}
+Find all eigenvalues and eigenfunctions of the following boundary value problem:
+\[ y''+\lambda y = 0, \quad y(0) = y'(2) = 0 \]
+\begin{align*}
+  \text{Case }\lambda &> 0 \\
+  r^2+\lambda &= 0 \\
+  r &= 0\pm\sqrt{\lambda}i \\
+  y &= c_1\cos(\sqrt{\lambda}x)+c_2\sin(\sqrt{\lambda}x) \\
+  y(0) &= 0 = c_1 \\
+  y' &= \sqrt{\lambda}c_2\cos(\sqrt{\lambda}x) \\
+  y'(2) &= 0 = \sqrt{\lambda}c_2\cos(2\sqrt{\lambda}) \\
+  0 &= \cos(2\sqrt{\lambda}) \\
+  2\sqrt{\lambda} &= (2n-1)\frac{\pi}{2} \\
+  \lambda_n &= \left(\frac{\pi(2n-1)}{4}\right)^2 \\
+  y_n &= c_2\sin\left(\frac{\pi(2n-1)x}{4}\right)
+\end{align*}
+\begin{align*}
+  \text{Case }\lambda &= 0 \\
+  r^2 &= 0 \\
+  r &= 0 \\
+  y &= c_1\e^{0}+c_2x\e^{0} \\
+  &= c_1+xc_2 \\
+  y(0) &= 0 = c_1 \\
+  y' &= c_1 \\
+  y'(2) &= 0 = c_2 \\
+  y &= 0
+\end{align*}
+\begin{align*}
+  \text{Case }\lambda &< 0 \\
+  r^2-\lambda &= 0 \\
+  r &= \pm\sqrt{\lambda} \\
+  y &= c_1\e^{\sqrt{\lambda}x}+c_2\e^{-\sqrt{\lambda}x} \\
+  y(0) &= 0 = c_1+c_2 \\
+  y' &= \sqrt{\lambda}c_1\e^{\sqrt{\lambda}x}-
+    \sqrt{\lambda}c_2\e^{-\sqrt{\lambda}x} \\
+  y'(2) &= 0 = \sqrt{\lambda}c_1\e^{2\sqrt{\lambda}x}+
+    \sqrt{\lambda}c_1\e^{-2\sqrt{\lambda}x} \\
+  &= \e^{2\sqrt{\lambda}x}+\e^{-2\sqrt{\lambda}x} \\
+  c_1 &= c_2 = 0
+\end{align*}
+
+\subsection*{Problem 2}
+Show that \( y = c_1\e^{\sqrt{-\lambda}x}+c_2\e^{-\sqrt{-\lambda x}} \) can be
+rewritten as \( y = d_1\cosh(\sqrt{-\lambda}x)+d_2\sinh(\sqrt{-\lambda}x) \) by
+choosing the values of constants \( d_1 \) and \( d_2 \) appropriately. Assume
+\( c_1 \) and \( c_2 \) are constants and that \( \lambda < 0 \).
+\begin{align*}
+  y &= c_1\e^{\sqrt{-\lambda}x}+c_2\e^{-\sqrt{-\lambda}x} \\
+  Let: c_1 &= \frac{d_1+d_2}{2} \quad c_2 = \frac{d_1-d_2}{2} \\
+  &= (\frac{d_1+d_2}{2})\e^{\sqrt{-\lambda}x}+
+    (\frac{d_1-d_2}{2})\e^{-\sqrt{-\lambda}x} \\
+  &= \frac{d_1}{2}\e^{\sqrt{-\lambda}x}+\frac{d_2}{2}\e^{\sqrt{-\lambda}x}+
+    \frac{d_1}{2}\e^{-\sqrt{-\lambda}x}-\frac{d_2}{2}\e^{-\sqrt{-\lambda}x} \\
+  &= \frac{d_1}{2}\e^{\sqrt{-\lambda}x}+ \frac{d_1}{2}\e^{-\sqrt{-\lambda}x}+
+    \frac{d_2}{2}\e^{\sqrt{-\lambda}x}-\frac{d_2}{2}\e^{-\sqrt{-\lambda}x} \\
+  &= d_1\left(\frac{\e^{\sqrt{-\lambda}x}+\e^{-\sqrt{-\lambda}x}}{2}\right)+
+    d_2\left(\frac{\e^{\sqrt{-\lambda}x}+\e^{-\sqrt{-\lambda}x}}{2}\right) \\
+  &= d_1\cosh(\sqrt{-\lambda}x)+d_2\sinh(\sqrt{-\lambda}x)
+\end{align*}
+
+\subsection*{Problem 3}
+Find all eigenvalues and eigenfunctions of the following boundary value problem:
+\[ y''+\lambda y = 0 \quad y(0) = y(1) \quad y'(0) = y'(1) \]
+\begin{align*}
+  \text{Case }\lambda &> 0 \\
+  r^2+\lambda &= 0 \\
+  r &= 0\pm\sqrt{\lambda}i \\
+  y &= c_1\cos(\sqrt{\lambda}x)+c_2\sin(\sqrt{\lambda}x) \\\
+  c_1\cos(0)+c_2\sin(0) &= c_1\cos(\sqrt{\lambda})+c_2\sin(\sqrt{\lambda}) \\
+  c_1 &= c_1\cos(\sqrt{\lambda})+c_2\sin(\sqrt{\lambda}) \\
+  c_1-c_1\cos(\sqrt{\lambda}) &= c_2\sin(\sqrt{\lambda}) \\
+  y' &= -\sqrt{\lambda}c_1\sin(\sqrt{\lambda}x)+
+    \sqrt{\lambda}c_2\sin(\sqrt{\lambda}) \\
+  -\sqrt{\lambda}c_1\cos(0)+\sqrt{\lambda}c_2\sin(0) &=
+    -\sqrt{\lambda}c_1\cos(\sqrt{\lambda})+
+    \sqrt{\lambda}c_2\sin(\sqrt{\lambda}) \\
+  -\sqrt{\lambda}c_1 &= -\sqrt{\lambda}c_1\cos(\sqrt{\lambda})+
+    \sqrt{\lambda}c_2\sin(\sqrt{\lambda}) \\
+  -c_1 &= -c_1\cos(\sqrt{\lambda})+c_2\sin(\sqrt{\lambda}) \\
+  c_1 &= c_1\cos(\sqrt{\lambda})-c_2\sin(\sqrt{\lambda}) \\
+  c_1-c_1\cos(\sqrt{\lambda}) &= -c_2\sin(\sqrt{\lambda}) \\
+  c_2\sin(\sqrt{\lambda}) &= -c_2\sin(\sqrt{\lambda}) \\
+  c_2 &= 0 \\
+  c_1 &= c_1\cos(\sqrt{\lambda}) \\
+  1 &= \cos(\sqrt{\lambda}) \\
+  \lambda_n &= (2n\pi)^2 \\
+  y_n &= c_1\cos(2n\pi x)+c_2\sin(2n\pi x)
+\end{align*}
+\begin{align*}
+  \text{Case }\lambda &= 0 \\
+  r^2 &= 0 \\
+  r &= 0 \\
+  y &= c_1\e^{0}+c_2x\e^{0} \\
+  &= c_1+c_2x \\
+  c_1+0 &= c_1+c_2 \\
+  c_2 &= 0 \\
+  y' &= c_2 \\
+  y' &= 0
+\end{align*}
+\begin{align*}
+  \text{Case }\lambda &< 0 \\
+  r^2-\lambda &= 0 \\
+  r &= \pm\sqrt{\lambda} \\
+  y &= c_1\e^{\sqrt{\lambda}x}+c_2\e^{-\sqrt{\lambda}x} \\
+  c_1\e^0+c_2\e^0 &= c_1\e^{\sqrt{\lambda}}+c_2\e^{-\sqrt{\lambda}} \\
+  c_1+c_2 &= c_1\e^{\sqrt{\lambda}}+c_2\e^{-\sqrt{\lambda}} \\
+  c_1 &= c_1\e^{\sqrt{\lambda}}+c_2\e^{-\sqrt{\lambda}}-c_2 \\
+  y' &= \sqrt{\lambda}c_1\e^{\sqrt{\lambda}x}-
+    \sqrt{\lambda}c_2\e^{-\sqrt{\lambda}x} \\
+  \sqrt{\lambda}c_1\e^0-\sqrt{\lambda}c_2\e^0 &=
+    \sqrt{\lambda}c_1\e^{\sqrt{\lambda}}-
+    \sqrt{\lambda}c_2\e^{-\sqrt{\lambda}} \\
+  c_1-c_2 &= c_1\e^{\sqrt{\lambda}}-c_2\e^{-\sqrt{\lambda}} \\
+  c_1 &= c_1\e^{\sqrt{\lambda}}-c_2\e^{-\sqrt{\lambda}}+c_2 \\
+  c_1\e^{\sqrt{\lambda}}+c_2\e^{-\sqrt{\lambda}}-c_2 &=
+    c_1\e^{\sqrt{\lambda}}-c_2\e^{-\sqrt{\lambda}}+c_2 \\
+  \e^{-\sqrt{\lambda}}-1 &= -\e^{-\sqrt{\lambda}}+1 \\
+  2\e^{-\sqrt{\lambda}} &= 2 \\
+  \e^{-\sqrt{\lambda}} &= 1 \\
+  \lambda &= 0
+\end{align*}
+
+\subsection*{Problem 4}
+Please complete Exercise 8.2.5 in the textbook. Begin your answer with the
+solution we that we derived in class:
+\[ u(x,t) = \sum_{n=1}^{\infty}
+  c_n\sin(\frac{n\pi x}{L})\e^{-\beta(\frac{n\pi}{L})^2t} \]
+Solve the BVP
+\begin{align*}
+  u_t &= u_{xx} \quad 0<x<2 \quad t>0 \\
+  u_x(0,t) &= u(2,t) = 0 \quad t\ge0 \\
+  u(x,0) &= \begin{cases}
+    1 &, 0<x<1 \\
+    2-x &, 1<x<2
+  \end{cases} \\
+  &= \sum_{n=1}^{\infty}c_n\sin(\frac{n\pi x}{L}) \\
+  c_n &= \frac{2}{L}\int_{0}^{L}f(x)\sin(\frac{n\pi x}{L})\diff{x} \\
+  &= \int_{0}^{1}\sin(\frac{n\pi x}{2})\diff{x}+
+    \int_{1}^{2}(2-x)\sin(\frac{n\pi x}{2})\diff{x} \\
+  &= \int_{0}^{1}\sin(\frac{n\pi x}{2})\diff{x}+
+    \int_{1}^{2}2\sin(\frac{n\pi x}{2})\diff{x}-
+    \int_{1}^{2}x\sin(\frac{n\pi x}{2})\diff{x} \\
+  &= \bigg[\frac{-2}{n\pi}\cos(\frac{n\pi x}{2})\bigg]_{0}^{1}+
+    2\bigg[\frac{-2}{n\pi}\cos(\frac{n\pi x}{2})\bigg]_{1}^{2}-
+    \frac{4\cos(n\pi)}{n\pi}+
+    \bigg[\frac{-4}{n^2\pi^2}\sin(\frac{n\pi x}{2})\bigg]_{1}^{2} \\
+  &= \frac{2}{n\pi}(1-\cos(\frac{n\pi}{2}))+
+    \frac{4}{n\pi}(\cos(\frac{n\pi}{2})-\cos(n\pi))-
+    \frac{4}{n\pi}\cos(n\pi)+
+    \frac{4}{n\pi}\sin(\frac{n\pi}{2}) \\
+  &= \frac{2}{n\pi}(1-\cos(\frac{n\pi}{2}))+
+    \frac{4}{n\pi}(\cos(\frac{n\pi}{2})-\cos(n\pi)-\cos(n\pi)+
+    \sin(\frac{n\pi}{2})) \\
+  &= \frac{2}{n\pi}(1-\cos(\frac{n\pi}{2}))+
+    \frac{4}{n\pi}(\cos(\frac{n\pi}{2})-2\cos(n\pi)+\sin(\frac{n\pi}{2})) \\
+  u(x,t) &= \sum_{n=1}^{\infty}(\frac{2}{n\pi}(1-\cos(\frac{n\pi}{2}))+
+    \frac{4}{n\pi}(\cos(\frac{n\pi}{2})-2\cos(n\pi)+\sin(\frac{n\pi}{2})))
+    \sin(\frac{n\pi x}{L})\e^{-\beta(\frac{n\pi}{L})^2t}
+\end{align*}
+
+\subsection*{Problem 5}
+Starting with separation of variables, find a formal solution to
+\begin{align*}
+  u_t &= a^2u_{xx} \quad 0<x<L \quad t>0 \\
+  \pdiff{u}{x}(0,t) &= \pdiff{u}{x}(L,t) = 0 \quad t\ge0 \\
+  u(x,0) &= f(x) \quad 0<x<L \\
+  u(x,t) &= X(x)T(t) \\
+  XT' &= a^2X''T \\
+  \frac{X''}{X} &= \frac{T'}{a^2T} = -\lambda \\
+\end{align*}
+\begin{align*}
+  X''+\lambda X &= 0 \\
+  \lambda &> 0 \\
+  r^2+\lambda &= 0 \\
+  r &= 0\pm\sqrt{\lambda}i \\
+  u &= c_1\cos(\sqrt{\lambda}x)+c_2\sin(\sqrt{\lambda}x) \\
+  u_x &= -\sqrt{\lambda}c_1\sin(\sqrt{\lambda}x)+
+    \sqrt{\lambda}c_2\cos(\sqrt{\lambda}x) \\
+  u_x(0,t) &= 0 = 0+\sqrt{\lambda}c_2\cos(0) \\
+  c_2 &= 0 \\
+  u_x(L,t) &= -\sqrt{\lambda}c_1\sin(\sqrt{\lambda}L) = 0 \\
+  \sqrt{\lambda}L &= n\pi \\
+  \lambda &= \left(\frac{n\pi}{L}\right)^2 \\
+  u_n &= -\frac{n\pi}{L}c_1\sin(\frac{n\pi x}{L}) \\
+  &= c\sin(\frac{n\pi x}{L})
+\end{align*}
+\begin{align*}
+  \lambda &= 0 \\
+  r^2 &= 0 \quad r = 0 \\
+  u &= c_1\e^0+c_2x\e^0 \\
+  u_x &= c_2 = 0
+\end{align*}
+\begin{align*}
+  \lambda &> 0 \\
+  r^2-\lambda &= 0 \\
+  r &= \pm\sqrt{\lambda} \\
+  u &= c_1\e^{\sqrt{\lambda}x}+c_2\e^{-\sqrt{\lambda}x} \\
+  u_x &= \sqrt{\lambda}c_1\e^{\sqrt{\lambda}x}-
+    \sqrt{\lambda}c_2\e^{-\sqrt{\lambda}x} \\
+  u_x(0,t) &= 0 = \sqrt{\lambda}c_1-\sqrt{\lambda}c_2 \\
+  c_1 &= c_2 \\
+  u_x(L,t) &= 0 = \e^{\sqrt{\lambda}L}-\e^{-\sqrt{\lambda}L} \\
+  \lambda &= 0
+\end{align*}
+\begin{align*}
+  T'+a^2\lambda T &= 0 \\
+  \ddiff{T}{t} &= -(\frac{an\pi}{L})^2T \\
+  \int\frac{\diff{T}}{T} &= -(\frac{an\pi}{L})^2\int\diff{t} \\
+  \ln|T| &= -(\frac{an\pi}{L})^2t \\
+  T &= \e^{-(\frac{an\pi}{L})^2t} \\
+  u_n(x,t) &= c_n\sin(\frac{n\pi x}{L})
+    exp\left(-(\frac{an\pi}{L})^2t\right)
+\end{align*}
+\begin{align*}
+  u(x,t) &= \sum_{n=1}^{\infty}c_n\sin(\frac{n\pi x}{L})
+    exp\left(-(\frac{an\pi}{L})^2t\right) \\
+  c_n &= \frac{2}{L}\int_{0}^{L}f(x)\sin(\frac{n\pi x}{L})\diff{x}
+\end{align*}
+
+\subsection*{Problem 6}
+Starting with the formal solution you found to the previous problem, complete
+Exercise 8.2.1 in the textbook. \par
+Both faces of a bar of length \( L \) are insulated. The lateral surface of the
+bar is also insulated. The initial temperature in the bar is
+\( \cos(\frac{3\pi x}{L}) \). Find the lateral temperature at any point \( x \)
+and time \( t \) for the bar. The BVP is
+\begin{align*}
+  u_t(x,t) &= a^2u_{xx}(x,t) \quad 0<x<L \quad t > 0 \\
+  u_x(0,t) &= u_x(L,t) = 0 \quad t\ge 0 \\
+  u(x,0) &= \cos(\frac{3\pi x}{L}) \quad 0<x<L \\
+  &= \sum_{n=1}^{\infty}c_n\sin(\frac{n\pi x}{L}) \\
+  c_n &= \frac{2}{L}\int_{0}^{L}\cos(\frac{3\pi x}{L})
+    \sin(\frac{n\pi x}{L})\diff{x} \\
+  &= \frac{2}{L}\int_{0}^{L}\frac{1}{2}\bigg[
+    \sin(\frac{3\pi x}{L}+\frac{n\pi x}{L})-
+    \sin(\frac{3\pi x}{L}-\frac{n\pi x}{L})\bigg]\diff{x} \\
+  &= \frac{1}{2}\left(\int_{0}^{L}\sin(\frac{(3+n)\pi x}{L})\diff{x}-
+    \int_{0}^{L}\sin(\frac{(3-n)\pi x}{L})\diff{x}\right) \\
+  &= \frac{1}{2}\left(\frac{L}{(3+n)\pi}(1-\cos((3+n)\pi))-
+    \frac{L}{(3-n)\pi}(1-\cos((3-n)\pi))\right) \\
+  u(x,t) &= \frac{1}{2}\sum_{n=1}^{\infty}
+    \left(\frac{L}{(3+n)\pi}\left(1-\cos((3+n)\pi)\right)-
+    \frac{L}{(3-n)\pi}\left(1-\cos((3-n)\pi)\right)\right)
+    \sin(\frac{n\pi x}{L})exp\left(-(\frac{an\pi}{L})^2t\right) \\
+\end{align*}
+
+\begin{center}
+  If you have any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}

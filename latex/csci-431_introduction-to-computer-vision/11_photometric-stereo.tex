@@ -1,0 +1,75 @@
+\documentclass{math}
+
+\usepackage{tikz}
+
+\title{Introduction to Computer Vision}
+\author{Alvin Lin}
+\date{August 2018 - December 2018}
+
+\begin{document}
+
+\maketitle
+
+\section*{Photometric Stereo}
+It is possible to reconstruct a surface from a series of pictures of that
+surface taken under different illuminations. We only need to obtain measures
+of the depth of the surface in order to reconstruct its shape. A Monge
+patch is a representation of a piece of surface as a height function. An
+orthographic camera that maps \( (x,y,z) \) to \( (x,y) \) in the camera is
+viewing a Monge patch. Photometric stereo is a method for recovering a
+representation of the Monge patch from image data.
+
+\subsection*{Lambert's Law}
+Recall that
+\[ B = \rho(\vec{N}\cdot\vec{S}) = \rho\|\vec{S}\|\cos\theta \]
+where \( B \) is the radiosity (total power leaving the surface per unit area),
+\( \rho \) is the albedo (fraction of incident irradiance reflected by the
+surface), \( \vec{N} \) is the unit normal, and \( \vec{S} \) is the source
+vector whose magnitude is proportional to the intensity of the source. \par
+If we fix the position of the camera and surface and illuminate it using some
+faraway source, then we can calculate the radiosity as:
+\[ B(x) = \rho(x)N(x)S(x) \]
+The intensity value of a pixel at \( (x,y) \) is now:
+\[ I(x,y) = kB(x) \]
+We know the source vectors \( S_j \) and the pixel values \( I_j(x,y) \) where
+\( j \) is the index of the illumination source. What we need to find is the
+surface normal \( N(x,y) \) and the albedo \( \rho(x,y) \). If we assume that
+the repsonse function of the camera is a linear scaling by a factor of \( k \),
+then by Lambert's law:
+\begin{align*}
+  I_j(x,y) &= kB(x) \\
+  &= kB(x,y) \\
+  &= k\rho(x,y)(N(x,y)\cdot S_j) \\
+  &= (\rho(x,y)N(x,y))\cdot(kS_j) \\
+  &= g(x,y)\cdot V_j
+\end{align*}
+where \( g(x,y) \) describes the surface, \( V_j \) is a property of the
+illumination and camera. By taking the dot product between the vector field
+\( g(x,y) \) and \( V_j \) for \( n \) sources, we can stack up the known
+\( V_j \) vectors into a matrix \( V \). We can set up the following linear
+system for each pixel.
+\[ \begin{bmatrix}
+  I_1(x,y) \\
+  I_2(x,y) \\
+  \vdots \\
+  I_n(x,y)
+\end{bmatrix} = \begin{bmatrix}
+  V_1^T \\
+  V_2^T \\
+  \vdots
+  V_n^T
+\end{bmatrix}g(x,y) \]
+We want to obtain the least-squares solution for \( g(x,y) \), which we have
+defined as \( N(x,y)\rho(x,y) \). Since \( N(x,y) \) is the unit normal,
+\( \rho(x,y) \) is given by the magnitude of \( g(x,y) \). Thus, we can
+also calculate \( N(x,y) = \frac{g(x,y)}{\rho(x,y)} \). These methods assume
+an orthographic camera model, simplistic reflectance and lighting, and
+cannot support shadows or inter-reflections.
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
