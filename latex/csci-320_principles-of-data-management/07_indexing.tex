@@ -1,5 +1,6 @@
 \documentclass{math}
 
+\usepackage{forest}
 \usepackage{listings}
 
 \title{Principles of Data Management}
@@ -49,6 +50,101 @@ Indices managed on linear files generally degrade in performance as the index
 grows due to the constant reordering needed as data is inserted. B+ trees
 support local reorganization and have a fixed height and are much better for
 index organization.
+
+\subsection*{B+ Trees}
+B+ trees have extra delection time, insertion time, and space overhead.
+Generally for databases though, the advantages of a B+ tree far outweigh the
+disadvantages.
+\begin{center}
+  \scalebox{0.8}{
+  \begin{forest}
+    [Mozart
+      [Einstein|Gold
+        [Brandt|Cali|Crick]
+        [Einstein|ElSaid]
+        [Gold|Katz|Kim]
+      ]
+      [Snu
+        [Mozart|Singh]
+        [Snu|Wu]
+      ]
+    ]
+  \end{forest}}
+\end{center}
+Each of the elements in the leaf nodes point to sections of the data. They also
+contain linear pointers to the next leaf node on the same level. The height of
+the B+ tree is fixed. All paths from root to leaf are the same length.
+\begin{itemize}
+  \item Each node internal node has \( \lceil\frac{n}{2}\rceil \) to \( n \)
+    children.
+  \item Each leaf node has \( \lceil\frac{n-1}{2}\rceil \) to \( n-1 \) values.
+  \item The root, if it is not a leaf, has at least 2 children.
+  \item The root, if it is a leaf, has 0 to \( n-1 \) values.
+\end{itemize}
+Given \( k \) search keys, the tree height is
+\( \lceil\log_{\lceil\frac{n}{2}\rceil}(k)\rceil \).
+
+\subsubsection*{Node Insertion}
+An insertion of the value \texttt{Adams} adds a new leaf node and propagates up
+the tree.
+\begin{center}
+  \scalebox{0.8}{
+  \begin{forest}
+    [Mozart
+      [Cali|Einstein|Gold
+        [Adams|Brandt]
+        [Cali|Crick]
+        [Einstein|ElSaid]
+        [Gold|Katz|Kim]
+      ]
+      [Snu
+        [Mozart|Singh]
+        [Snu|Wu]
+      ]
+    ]
+  \end{forest}}
+\end{center}
+An insertion of the value \texttt{Lamport} adds a new leaf node, which adds a
+new internal node.
+\begin{center}
+  \scalebox{0.8}{
+  \begin{forest}
+    [Mozart
+      [Cali|Einstein
+        [Adams|Brandt]
+        [Cali|Crick]
+        [Einstein|ElSaid]
+      ]
+      [Kim
+        [Gold|Katz]
+        [Kim|Lamport]
+      ]
+      [Snu
+        [Mozart|Singh]
+        [Snu|Wu]
+      ]
+    ]
+  \end{forest}}
+\end{center}
+Deleting \texttt{Snu} from the rightmost leaf causes the leaf node to be merged
+left. This makes the right internal node invalid, so it will merge left as well.
+\begin{center}
+  \scalebox{0.8}{
+  \begin{forest}
+    [Mozart
+      [Cali|Einstein
+        [Adams|Brandt]
+        [Cali|Crick]
+        [Einstein|ElSaid]
+      ]
+      [Kim|Mozart
+        [Gold|Katz]
+        [Kim|Lamport]
+        [Mozart|Singh|Wu]
+      ]
+    ]
+  \end{forest}}
+\end{center}
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
