@@ -1,0 +1,77 @@
+\documentclass{math}
+
+\usepackage{tikz}
+
+\title{Boundary Value Problems}
+\author{Alvin Lin}
+\date{August 2018 - December 2018}
+
+\begin{document}
+
+\maketitle
+
+\section*{Wave Equation in 1D}
+Suppose have a string stretched between two endpoints \( x = 0 \) and
+\( x = L \). \( y(x,t) \) is the transverse displacement from \( y = 0 \),
+the resting or equilibrium position. At rest, \( y = 0 \) and \( y_t \), the
+velocity of the string, is also 0. If we take the following assumptions:
+\begin{itemize}
+  \item no gravity
+  \item string is perfectly flexible
+  \item string has uniform properties (e.g. density)
+  \item \( |y| << L \) and derivatives of \( y \) remain relatively small
+  \item a uniform tension \( T \) is exerted on the string
+  \item no other external forces
+\end{itemize}
+We can develop a partial differential equation using force balance for a
+segment of the string. If we apply Newton's second law, letting \( \delta x\to0
+\), we obtain the following equation.
+\[ y_{tt} = a^2y_{xx} \]
+where \( a^2 = \frac{|T|}{\rho} > 0 \) and \( \rho \) is the string density.
+\( a \) is analogous to acceleration in the formula \( a = \frac{F}{m} \).
+This is the wave equation in 1 dimension, but we will need two boundary
+conditions and two initial conditions (unlike the heat equation which needed
+one). Once we have those, it can be used to model longitudinal waves and water
+waves in two dimensions or higher.
+
+\subsection*{Boundary Conditions}
+Suppose at one end of the string \( x = 0 \), the string is fixed to a pole.
+This gives us the boundary condition \( y(0,t) = 0 \), a homogeneous Dirichlet
+boundary condition. \par
+Suppose instead that the string is attached to a ring that freely slides up and
+down the pole, this would instead give us the boundary condition
+\( \pdiff{y}{x}(0,t) = 0 \) or \( y_x(0,t) = 0 \), which is a homogeneous
+Neumann boundary condition. Thus we have the partial differential equation:
+\begin{align*}
+  y_{tt} &= a^2y_{xx} \\
+  y(0,t) &= y(L,t) = 0 \\
+  y(x,0) &= f(x) \quad \text{(some initial displacement)} \\
+  y_t(x,0) &= g(x) \quad \text{(some initial velocity)}
+\end{align*}
+
+\subsection*{Process}
+Solving this follows the same process:
+\begin{enumerate}
+  \item Use separation of variables by substituting \( y = X(x)T(t) \).
+  \item Solve the \( X \) based eigenvalue/eigenfunction problem to get
+    some eigenvalue \( \lambda_n \) and its corresponding eigenfunction
+    \( X_n(x) \).
+  \item Solve the \( T \) based ordinary differential equation using
+    \( \lambda_n \).
+  \item Substitute back to get an equation for the modes.
+  \[ y_n(x,t) = X_n(x)T_n(t) \]
+  Use superposition to produce a formal solution.
+  \[ y(x,t) = \sum_{n}y_n(x,t) \]
+  where \( y_n \) contains some arbitrary constants dependent on \( n \).
+  \item Apply the initial conditions. Use Fourier series methods to solve for
+    the arbitrary constants and plug it back into \( y(x,t) \).
+\end{enumerate}
+
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
