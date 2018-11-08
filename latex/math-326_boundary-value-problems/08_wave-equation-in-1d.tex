@@ -49,7 +49,7 @@ Neumann boundary condition. Thus we have the partial differential equation:
   y_t(x,0) &= g(x) \quad \text{(some initial velocity)}
 \end{align*}
 
-\subsection*{Process}
+\subsubsection*{Process}
 Solving this follows the same process:
 \begin{enumerate}
   \item Use separation of variables by substituting \( y = X(x)T(t) \).
@@ -67,6 +67,41 @@ Solving this follows the same process:
     the arbitrary constants and plug it back into \( y(x,t) \).
 \end{enumerate}
 
+\subsubsection*{Example}
+\begin{align*}
+  y &= X(x)T(t) \\
+  XT_{tt} &= a^2X_{xx}T \\
+  \frac{T_{tt}}{a^2T} &= \frac{X_{xx}}{X} = \lambda \\
+  X_n(x) &= c_n\sin(\frac{n\pi x}{L}) \\
+  \lambda_n &= \left(\frac{n\pi}{L}\right)^2 \\
+  T''+\lambda a^2T &= 0 \\
+  r^2+\lambda a^2 &= 0 \\
+  r &= -\sqrt{\lambda}a \\
+  T(t) &= c_1\cos(a\sqrt{\lambda}t)+c_2\sin(a\sqrt{\lambda}t) \\
+  &= A_n\cos(a\frac{n\pi}{L}t)+B_n\sin(a\frac{n\pi}{L}t) \\
+  y_n &= X_n(x)T_n(t) \\
+  y(x,t) &= \sum_{n=1}^{\infty}c_n\sin(\frac{n\pi x}{L})
+    (A_n\cos(a\frac{n\pi}{L}t)+B_n\sin(a\frac{n\pi}{L}t)) \\
+  a_n &:= c_nA_n \quad b_n := c_nB_n \\
+  y(x,t) &= \sum_{n=1}^{\infty}
+  sin(\frac{n\pi x}{L})(a_n\cos(\frac{an\pi}{L}t)+b_n\sin(\frac{an\pi}{L}t))
+\end{align*}
+At this point, we can apply the initial conditions:
+\begin{align*}
+  y(x,0) &= f(x) \\
+  &= \sum_{n=1}^{\infty}\sin(\frac{n\pi x}{L})(a_n\cos(0)+b_n\sin(0)) \\
+  &= \sum_{n=1}^{\infty}a_n\sin(\frac{n\pi x}{L}) \\
+  a_n &= \frac{2}{L}\int_{0}^{L}f(x)\sin(\frac{n\pi x}{L})\diff{x} \\
+  y_t(x,0) &= g(x) \\
+  \pdiff{y}{t} &= \sum_{n=1}^{\infty}\sin(\frac{n\pi x}{L})\frac{an\pi}{L}
+    \left(-a_n\sin(\frac{an\pi}{L}t)+b_n\cos(\frac{an\pi}{L}t)\right) \\
+  \pdiff{y}{t}(0) &= \sum_{n=1}^{\infty}\frac{an\pi}{L}\sin(\frac{n\pi x}{L})
+    (-a_n\sin(0)+b_n\cos(0)) \\
+  &= \sum_{n=1}^{\infty}b_n(\frac{an\pi}{L})\sin(\frac{n\pi x}{L}) = g(x) \\
+  b_n\frac{an\pi}{L} &=
+    \frac{2}{L}\int_{0}^{L}g(x)\sin(\frac{n\pi x}{L})\diff{x} \\
+  b_n &= \frac{2}{an\pi}\int_{0}^{L}g(x)\sin(\frac{n\pi x}{L})\diff{x}
+\end{align*}
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
