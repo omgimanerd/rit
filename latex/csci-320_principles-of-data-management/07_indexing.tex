@@ -75,7 +75,7 @@ Each of the elements in the leaf nodes point to sections of the data. They also
 contain linear pointers to the next leaf node on the same level. The height of
 the B+ tree is fixed. All paths from root to leaf are the same length.
 \begin{itemize}
-  \item Each node internal node has \( \lceil\frac{n}{2}\rceil \) to \( n \)
+  \item Each internal node has \( \lceil\frac{n}{2}\rceil \) to \( n \)
     children.
   \item Each leaf node has \( \lceil\frac{n-1}{2}\rceil \) to \( n-1 \) values.
   \item The root, if it is not a leaf, has at least 2 children.
