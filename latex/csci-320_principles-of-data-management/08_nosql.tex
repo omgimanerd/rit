@@ -31,6 +31,22 @@ The term NoSQL refers to any non-relational non-row oriented database.
     attribute limitations. The most popular one is MongoDB.
 \end{itemize}
 
+\subsection*{MongoDB}
+MongoDB is a document based database whose objects are stored in BSON format,
+or Binary JavaScript Object Notation. It's object hierarchy involves databases
+which include collections of documents, which may have differing attributes
+and values between them. In terms of security, MongoDB has no username or
+password by default. Security is intended to be performed by extrinsic firewalls
+so that databases on a local area network can be easily used to replicate data
+for distributed systems. \par
+MongoDB has built in fault tolerance and horizontal scalability. In a
+distributed MongoDB environment, a MongoDB client connects to multiple MongoDB
+instances to handle data replication and distribution (sharding). In the event
+that any client goes down, an arbitrary connected server can be elected to take
+over as the client to handle data replication and distribution. \par
+Collections in MongoDB by default have a requied \texttt{\_id} field which acts
+as a primary key. It can be changed and determines how documents are organized.
+
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
   any questions, comments, or concerns, please contact me at
