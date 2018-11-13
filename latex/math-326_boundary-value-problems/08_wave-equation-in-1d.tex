@@ -103,6 +103,55 @@ At this point, we can apply the initial conditions:
   b_n &= \frac{2}{an\pi}\int_{0}^{L}g(x)\sin(\frac{n\pi x}{L})\diff{x}
 \end{align*}
 
+\subsection*{D'Alembert Method}
+Assume an infinitely long string:
+\begin{align*}
+  y_{tt} &= a^2y_{xx} \quad -\infty<x<\infty \quad t>0 \\
+  y(x,0) &= f(x) \quad -\infty<x<\infty \\
+  y_t(x,0) &= g(x) \quad -\infty<x<\infty \\
+\end{align*}
+D'Alembert's solution gives an equation of the form:
+\[ y(x,t) = f_1(x+at)+f_2(x-at) \]
+We can verify that it's a solution by substituting it into the partial
+differential equation. First find \( y_{tt} \) in terms of \( f_1 \) and
+\( f_2 \).
+\begin{align*}
+  y_t &= \pdiff{}{t}(f_1(x+at)+f_2(x-at)) \\
+  &= f_1'(x+at)\pdiff{}{t}(x+at)+f_2'(x-at)\pdiff{}{t}(x-at) \\
+  &= af_1'(x+at)-af_2'(x-at) \\
+  y_{tt} &= a^2f_1''(x+at)+a^2f_2''(x-at)
+\end{align*}
+Next, find \( y_{xx} \) in terms of \( f_1 \) and \( f_2 \).
+\begin{align*}
+  y_{xx} &= \pdiff{^2}{x^2}(f_1(x+at)+f_2(x-at)) \\
+  &= f_1''(x+at)+f_2''(x-at) \\
+  y_{tt} &= a^2y_{xx}
+\end{align*}
+
+\subsubsection*{Example}
+Find a solution to
+\begin{align*}
+  y_{tt} &= 100y_{xx} \quad -\infty<x<\infty \\
+  y(x,0) &= \cos^2(x) \\
+  y_t(x,0) &= 2x \\
+  a &= \sqrt{100} = 10 \quad f(x) = \cos^2(x) \quad g(x) = 2x \\
+  y(x,t) &= f_1(x+10t)+f_2(x-10t) \\
+  y(x,0) &= f_1(x)+f_2(x) = \cos^2(x) \\
+  y_t(x,0) &= g(x) = 2x \\
+  &= 10f_1'(x+10t)-10f_2'(x-10t) \\
+  y_t(x,0) &= 10f_1'(x)-10f_2'(x) = 2x \\
+  f_1'(x)-f_2'(x) &= \frac{x}{5} \\
+  \int(f_1'(x)-f_2'(x))\diff{x} &= \int\frac{x}{5}\diff{x}+c \\
+  f_1(x)+f_2(x) &= \frac{x^2}{10}+c
+\end{align*}
+We can solve the system of equations for \( f_1 \) and \( f_2 \):
+\begin{align*}
+  f_1(x) &= \frac{\cos^2(x)}{2}+\frac{x^2}{20}+\frac{c}{2} \\
+  f_2(x) &= \frac{\cos^2(x)}{2}-\frac{x^2}{20}-\frac{c}{2} \\
+  y(x,t) &= \frac{\cos^2(x+10t)}{2}+\frac{(x+10t)^2}{20}+
+    \frac{\cos^2(x-10t)}{2}+\frac{(x-10t)^2}{20}
+\end{align*}
+
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
   any questions, comments, or concerns, please contact me at
