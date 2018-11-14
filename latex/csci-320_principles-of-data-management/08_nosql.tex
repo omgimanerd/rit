@@ -44,8 +44,35 @@ distributed MongoDB environment, a MongoDB client connects to multiple MongoDB
 instances to handle data replication and distribution (sharding). In the event
 that any client goes down, an arbitrary connected server can be elected to take
 over as the client to handle data replication and distribution. \par
-Collections in MongoDB by default have a requied \texttt{\_id} field which acts
+Collections in MongoDB by default have a required \texttt{\_id} field which acts
 as a primary key. It can be changed and determines how documents are organized.
+The seven most common aggregation specifiers are: \texttt{\$project},
+\texttt{\$skip}, \texttt{\$sort}, \texttt{\$match}, \texttt{\$group},
+\texttt{\$count}, and \texttt{\$limit}.
+
+\subsubsection*{Example Usage}
+\begin{lstlisting}
+db.dog.find()
+db.dog.insert({ name: "spot", age: 7 })
+db.dog.insertMany([
+  { name: "blue", age: 20 },
+  { name: "green", age: 30 }
+])
+db.dog.replaceOne({ name: "spot" }, { name: "greg", age: 10 })
+db.dog.deleteOne({ name: "spot" })
+db.dog.updateOne({ name: "blue" }, { age: 31, size: "large" })
+db.dog.updateMany({ age: { $gt : 19 }}, { status: "old" })
+db.dog.aggregate([
+  $match: {
+    age: {
+      $lt: 20
+    }
+  },
+  $sort: {
+    name: 1
+  }
+])
+\end{lstlisting}
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
