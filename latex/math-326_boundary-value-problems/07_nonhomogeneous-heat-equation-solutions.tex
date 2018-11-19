@@ -1,0 +1,126 @@
+\documentclass{math}
+
+\usepackage{tikz}
+
+\title{Boundary Value Problems}
+\author{Alvin Lin}
+\date{August 2018 - December 2018}
+
+\begin{document}
+
+\maketitle
+
+\section*{Nonhomogeneous Heat Equation Solutions}
+An example of a homogeneous heat equation is
+\begin{align*}
+  u_t &= a^2u_{xx} \\
+  u(0,t) &= u(L,t) = 0 \\
+  u(x,0) &= f(x)
+\end{align*}
+To make the equation nonhomogeneous:
+\begin{align*}
+  u_t &= a^2u_{xx}+P(x) \\
+  u(0,t) &= u_1 \\
+  u(L,t) &= u_2 \\
+  u(x,0) &= f(x)
+\end{align*}
+where \( P(x) \) is a heat source or sink. If \( u_1 \ne 0 \) or
+\( u_2 \ne 0 \) or \( P(x)\ne0 \) then the boundary value problem is
+nonhomogeneous. The simpler case of this involves \( u_1 = u_2 \ne 0 \),
+in which case we will define \( v(x,t) = u(x,t)-u_1 \), which can substitute
+back into the boundary value problem. The harder case involves \( u_1 \ne u_2 \)
+or \( P(x) \ne 0 \).
+
+\subsection*{Methods for Solving}
+\begin{itemize}
+  \item Substitute \( u(x,t) = \psi(x)+v(x,t) \) into the partial differential
+    equation, boundary conditions, and initial condition.
+  \item Solve the ordinary differential equation for \( \psi(x) \).
+  \item Solve the homogeneous partial differential equation for \( v(x,t) \).
+  \item Substitute back into \( u(x,t) = \psi(x)+v(x,t) \).
+\end{itemize}
+
+\subsubsection*{Interpretation}
+\[ u(x,t) = \psi(x)+v(x,t) \]
+\( \psi(x) \) represents a steady-state solution that satisfies nonhomogeneous
+terms while \( v(x,t) \) is a transient solution that dies off as \( t \)
+approaches infinity.
+
+\subsubsection*{Example}
+\begin{align*}
+  u_t &= u_{xx} \quad 0<x<\pi \\
+  u(0,t) &= 0 \\
+  u(\pi,t) &= 3\pi \\
+  u(x,0) &= f(x) = 0
+\end{align*}
+We want to find a solution of the form \( u(x,t) = \psi(x)+v(x,t) \) so we will
+substitute this into the partial differential equation.
+\begin{align*}
+  \pdiff{}{t}(u) &= \pdiff{}{t}(\psi(x)+v(x,t)) =
+    a^2\pdiff{^2}{x^2}(\psi(x)+v(x,t)) \\
+  \pdiff{\psi(x)}{t}+v_t(x,t) &= a^2(\psi''(x)+v_{xx}(x,t)) \\
+  v_t(x,t) &= a^2(\psi''(x)+v_{xx}(x,t)) \\
+  u(0,t) &= \psi(0)+v(0,t) = u_1 \\
+  u(L,t) &= \psi(L)+v(L,t) = u_2 \\
+  u(x,0) &= \psi(x)+v(x,0) = f(x)
+\end{align*}
+Let \( t\to\infty \) to obtain the steady state boundary value problem:
+\begin{align*}
+  v_t &= a^2(\psi''+v_xx) \\
+  0 &= a^2\psi'' \\
+  \psi(0)+v(0,t) &= u_1 \\
+  \psi(0) &= u_1 \\
+  \psi(L)+v(L,t) &= u_2 \\
+  \psi(L) &= u_2
+\end{align*}
+We now have a steady state boundary value problem which we can solve:
+\begin{align*}
+  a^2\psi''(x) &= 0 \quad (a^2>0) \\
+  \psi(0) &= u_1 \\
+  \psi(L) &= u_2 \\
+  \psi(x) &= Ax+B \\
+  \psi(0) &= u_1 = A(0)+B = B \\
+  u_1 &= B \\
+  \psi(L) &= u_2 = AL+B = AL+u_1 \\
+  AL &= u_2-u_1 \\
+  A &= \frac{u_2-u_1}{L} \\
+  \psi(x) &= (\frac{u_2-u_1}{L})x+u_1
+\end{align*}
+We can plug \( \psi(x) \) back into the boundary value problem to solve for
+\( v(x,t) \) for arbitrary \( t>0 \).
+\begin{align*}
+  v_t &= a^2(\psi''+v_{xx}) \\
+  \psi(0)+v(0,t) &= u_1 \\
+  u_1+v(0,t) &= u_1 \\
+  v(0,t) &= 0 \\
+  \psi(L)+v(L,t) &= u_2 \\
+  u_2+v(L,t) &= u_2 \\
+  v(L,t) &= 0 \\
+  u(x,0) &= v(x,0)+\psi(x) = f(x) \\
+  v(x,0) &= f(x)-\psi(x)
+\end{align*}
+We can now solve the homogeneous boundary value problem for \( v(x,t) \).
+\begin{align*}
+  v_t &= a^2v_{xx} \\
+  v(0,t) &= v(L,t) = 0 \\
+  v(x,0) &= f(x)-\psi(x) \\
+  &= f(x)-(\frac{u_2-u_1}{L})x+u_1
+\end{align*}
+Note that this homogeneous boundary value problem is in the same form as the
+Dirichlet boundary value problem we have already solved.
+\begin{align*}
+  v(x,t) &= \sum_{n=1}^{\infty}
+    b_n\sin(\frac{n\pi x}{L})\e^{-a^2(\frac{n\pi}{L})^2t} \\
+  b_n &= \frac{2}{L}
+    \int_{0}^{L}(f(x)-(\frac{u_2-u_1}{L})-u_1)\sin(\frac{n\pi x}{L})\diff{x} \\
+  u(x,t) &= \psi(x)+v(x,t) \\
+  &= (\frac{u_2-u_1}{L})x+u_1+v(x,t)
+\end{align*}
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}

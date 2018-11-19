@@ -1,0 +1,206 @@
+\documentclass{math}
+
+\usepackage{enumerate}
+
+\geometry{letterpaper, margin=0.5in}
+
+\title{Boundary Value Problems: Homework 11}
+\author{Alvin Lin}
+\date{August 2018 - December 2018}
+
+\begin{document}
+
+\maketitle
+
+\subsection*{Problem 1}
+A string is stretched between the points \( (0,0) \) and \( (L,0) \). The
+initial contour of the string is
+\[ y(x,0) = \begin{cases}
+  0.02x &, 0\le x\le\frac{L}{2} \\
+  0.02(L-x) &, \frac{L}{2}\le x\le L
+\end{cases} \]
+The string is released from rest. Write an appropriate BVP for the string
+and solve it. This may be referred to as the \textit{plucked string problem}.
+\begin{align*}
+  y_{tt} &= a^2y_{xx} \\
+  y(0,t) &= y(L,t) = 0 \\
+  y(x,0) &= \begin{cases}
+    0.02x &, 0\le x\le\frac{L}{2} \\
+    0.02(L-x) &, \frac{L}{2}\le x\le L
+  \end{cases} \\
+  y_t(x,0) &= 0 \\
+  y(x,t) &= \sum_{n=1}^{\infty}\left(a_n\cos(\frac{n\pi at}{L})+
+    b_n\sin(\frac{n\pi at}{L})\right)\sin(\frac{n\pi x}{L}) \\
+  y(x,0) &= \sum_{n=1}^{\infty}(a_n\cos(0)+b_n\sin(0))
+    \sin(\frac{n\pi x}{L}) \\
+  &= \sum_{n=1}^{\infty}a_n\sin(\frac{n\pi x}{L}) \\
+  &= \begin{cases}
+    0.02x &, 0\le x\le\frac{L}{2} \\
+    0.02(L-x) &, \frac{L}{2}\le x\le L
+  \end{cases} \\
+  a_n &= \frac{2}{L}\left(
+    \int_{0}^{\frac{L}{2}}0.02x\sin(\frac{n\pi x}{L})\diff{x}+
+    \int_{\frac{L}{2}}^{L}0.02(L-x)\sin(\frac{n\pi x}{L})\diff{x}\right) \\
+  &= \frac{0.04}{L}\left(
+    \int_{0}^{\frac{L}{2}}x\sin(\frac{n\pi x}{L})\diff{x}+
+    \int_{\frac{L}{2}}^{L}L\sin(\frac{n\pi x}{L})\diff{x}-
+    \int_{\frac{L}{2}}^{L}x\sin(\frac{n\pi x}{L})\diff{x}\right) \\
+  &= \frac{0.04}{L}\frac{L^2}{n\pi}\left(\sin(\frac{n\pi}{2})-1\right) \\
+  &= \frac{0.04L}{n\pi}\left(\sin(\frac{n\pi}{2})-1\right) \\
+  b_n &= 0 \\
+\end{align*}
+\begin{align*}
+  y(x,t) &= \frac{0.04L}{n\pi}\sum_{n=1}^{\infty}(\sin(\frac{n\pi}{2})-1)
+    \cos(\frac{n\pi at}{L})\sin(\frac{n\pi x}{L}) \\
+\end{align*}
+
+\subsection*{Problem 2}
+A string is stretched between \( (0,0) \) and \( (2,0) \) and given an initial
+velocity
+\[ y_t(x,0) = g(x) = \begin{cases}
+  0.05x &, 0<x<1 \\
+  0.05(2-x) & 1<x<2 \\
+\end{cases} \]
+Initially the string is in an equilibrium position along \( y = 0 \). Construct
+a BVP matching the given conditions and solve the problem. This may be called
+the \textit{struck string problem}.
+\begin{align*}
+  y_{tt} &= a^2y_{xx} \\
+  y(0,t) &= y(2,t) = 0 \\
+  y(x,0) &= 0 \\
+  y_t(x,0) &= \begin{cases}
+    0.05x &, 0<x<1 \\
+    0.05(2-x) & 1<x<2 \\
+  \end{cases} \\
+  y(x,t) &= \sum_{n=1}^{\infty}\left(a_n\cos(\frac{n\pi at}{2})+
+    b_n\sin(\frac{n\pi at}{2})\right)\sin(\frac{n\pi x}{2}) \\
+  y(x,0) &= \sum_{n=1}^{\infty}(a_n\cos(0)+b_n\sin(0))\sin(\frac{n\pi x}{2}) \\
+  &= \sum_{n=1}^{\infty}a_n\sin(\frac{n\pi x}{2}) = 0 \\
+  a_n &= 0 \\
+  y(x,t) &= \sum_{n=1}^{\infty}
+    b_n\sin(\frac{n\pi at}{2})\sin(\frac{n\pi x}{2}) \\
+  y_t(x,t) &= \sum_{n=1}^{\infty}b_n\sin(\frac{n\pi x}{2})
+    \ddiff{}{t}\left(\sin(\frac{n\pi at}{2})\right) \\
+  &= \sum_{n=1}^{\infty}\frac{b_nn\pi a}{2}\cos(\frac{n\pi at}{2})
+    \sin(\frac{n\pi x}{2}) \\
+  y_t(x,0) &= \sum_{n=1}^{\infty}\frac{b_nn\pi a}{2}\sin(\frac{n\pi x}{2}) \\
+  \frac{b_nn\pi a}{2} &= \frac{2}{2}\left(
+    \int_{0}^{1}0.05x\sin(\frac{n\pi x}{2})\diff{x}+
+    \int_{1}^{2}0.05(2-x)\sin(\frac{n\pi x}{2})\diff{x}\right) \\
+  \frac{b_nn\pi a}{0.05} &=
+    \int_{0}^{1}x\sin(\frac{n\pi x}{2})\diff{x}+
+    2\int_{1}^{2}\sin(\frac{n\pi x}{2})\diff{x}-
+    \int_{1}^{2}x\sin(\frac{n\pi x}{2})\diff{x} \\
+  &= \frac{4(cos(\frac{n\pi}{2})-2)}{n\pi} \\
+  b_n &= \frac{0.8(\cos(\frac{n\pi}{2})-2)}{a} \\
+\end{align*}
+\begin{align*}
+  y(x,t) &= \sum_{n=1}^{\infty}0.4n\pi (\cos(\frac{n\pi}{2})-2)
+    \cos(\frac{n\pi at}{2})\sin(\frac{n\pi x}{2}) \\
+\end{align*}
+
+\subsection*{Problem 3}
+Solve the BVP
+\begin{align*}
+  y_{tt} &= 4y_{xx} \quad 0<x<5 \quad t>0 \\
+  y(0,t) &= y(5,t) = 0 \quad t\ge0 \\
+  y(x,0) &= 0 \\
+  y_t(x,0) &= \sin(2\pi x) \quad 0<x<5 \\
+  y(x,t) &= \sum_{n=1}^{\infty}\left(a_n\cos(\frac{n\pi4t}{5})+
+    b_n\sin(\frac{n\pi4t}{5})\right)\sin(\frac{n\pi x}{5}) \\
+  y(x,0) &= \sum_{n=1}^{\infty}a_n\sin(\frac{n\pi x}{5}) = 0 \\
+  a_n &= 0 \\
+  y(x,t) &= \sum_{n=1}^{\infty}
+    b_n\sin(\frac{4n\pi t}{5})\sin(\frac{n\pi x}{5}) \\
+  y_t(x,t) &= \sum_{n=1}^{\infty}b_n\sin(\frac{n\pi x}{5})
+    \ddiff{}{t}\left(\sin(\frac{4n\pi t}{5})\right) \\
+  &= \sum_{n=1}^{\infty}\frac{4b_nn\pi}{5}\cos(\frac{4n\pi t}{5})
+    \sin(\frac{n\pi x}{5}) \\
+  y_t(x,0) &= \sum_{n=1}^{\infty}\frac{4b_nn\pi}{5}\sin(\frac{n\pi x}{5}) =
+    \sin(2\pi x) \\
+  \frac{4b_nn\pi}{5} &= \frac{2}{5}\int_{0}^{5}\sin(2\pi x)
+    \sin(\frac{n\pi x}{5})\diff{x} \\
+  2b_nn\pi &= \int_{0}^{5}\frac{1}{2}\left[\cos(2\pi x-
+    \frac{n\pi x}{5})-\cos(2\pi x+\frac{n\pi x}{5})\right]\diff{x} \\
+  4b_nn\pi &= \int_{0}^{5}
+    \cos(\frac{(10-n)\pi x}{5})-\cos(\frac{(10+n)\pi x}{5})\diff{x} \\
+  &= 0 \\
+  y(x,t) &= 0
+\end{align*}
+
+\subsection*{Problem 4}
+Starting with separation of variables, find a formal solution to
+\begin{align*}
+  y_{tt} &= a^2y_{xx} \quad 0<x<L \quad x>0 \\
+  y(0,t) &= y_x(L,t) = 0 \quad t>0 \\
+  y(x,0) &= f(x) \quad y_t(x,0) = 0 \quad 0<x<L \\
+  y(x,t) &= X(x)T(t) \\
+  XT'' &= a^2X''T \\
+  \frac{T''}{a^2T} &= \frac{X''}{X} = -\lambda \\
+  X''+\lambda X &= 0 \\
+  \text{Case } \lambda &= 0 \\
+  r^2 &= 0 \quad r = 0 \\
+  X(x) &= c_1\e^0+c_2x\e^0 = c_1+xc_2 \\
+  X(0) &= 0 = c_1 \\
+  X'(L) &= c_2 = 0 \\
+  X(x) &= 0 \\
+  \text{Case } \lambda &< 0 \\
+  r^2-\lambda &= 0 \quad r = \pm\sqrt{\lambda} \\
+  X(x) &= c_1\e^{\sqrt{\lambda}x}+c_2\e^{-\sqrt{\lambda}x} \\
+  X(0) &= 0 = c_1+c_2 \\
+  X'(x) &= \sqrt{\lambda}c_1\e^{\sqrt{\lambda}x}-
+    \sqrt{\lambda}c_2\e^{-\sqrt{\lambda}x} \\
+  X'(L) &= \sqrt{\lambda}c_1\e^{\sqrt{\lambda}L}-
+    \sqrt{\lambda}c_2\e^{-\sqrt{\lambda}L} = 0 \\
+  &= c_1-c_2\e^{-1} \\
+  c_1 &= c_2 = 0 \\
+  \text{Case } \lambda &> 0 \\
+  r^2-\lambda &= 0 \quad r = 0\pm\sqrt{\lambda}i \\
+  X(x) &= c_1\cos(\sqrt{\lambda}x)+c_2\sin(\sqrt{\lambda}x) \\
+  X(0) &= 0 = c_1 \\
+  X'(x) &= \sqrt{\lambda}c_2\cos(\sqrt{\lambda}x) \\
+  X'(L) &= 0 = \cos(\sqrt{\lambda}L) \\
+  \sqrt{\lambda}L &= n\pi \\
+  \lambda &= (\frac{n\pi}{L})^2 \\
+  X_n(x) &= c_2\sin(\frac{n\pi x}{L}) \\
+\end{align*}
+\begin{align*}
+  T''+a^2\lambda T &= 0 \\
+  T''+(\frac{an\pi}{L})^2T &= 0 \\
+  r^2 &= -(\frac{an\pi}{L})^2 \quad r = 0\pm\frac{an\pi}{L}i \\
+  T(t) &= c_1\cos(\frac{an\pi t}{L})+c_2\sin(\frac{an\pi t}{L}) \\
+  T'(t) &= -\frac{c_1an\pi}{L}\sin(\frac{an\pi t}{L})+
+    \frac{c_2an\pi}{L}\cos(\frac{an\pi t}{L}) \\
+  T'(0) &= 0 = \frac{c_2an\pi}{L} \\
+  c_2 &= 0 \\
+  T_n(t) &= c_1\cos(\frac{an\pi t}{L}) \\
+  y_n(x,t) &= c\sin(\frac{n\pi x}{L})\cos(\frac{an\pi t}{L}) \\
+  y(x,t) &= \sum_{n=1}^{\infty}
+    c_n\sin(\frac{n\pi x}{L})\cos(\frac{an\pi t}{L}) \\
+  y(x,0) &= f(x) = \sum_{n=1}^{\infty}c_n\sin(\frac{n\pi x}{L})\cos(0) \\
+  c_n &= \frac{2}{L}\int_{0}^{L}f(x)\sin(\frac{n\pi x}{L})\diff{x}
+\end{align*}
+This solution does not match the solution in the back of the textbook, but I
+could not find any errors in my reasoning.
+
+\subsection*{Problem 5}
+Starting with the formal solution you found to the previous problem, solve the
+following boundary value problem for \( y(x,t) \):
+\begin{align*}
+  y_{tt} &= a^2y_{xx} \quad 0<x<L \quad t>0 \\
+  y(0,t) &= y_x(L,t) = 0 \quad t>0 \\
+  y(x,0) &= kx \quad y_t(x,0) = 0 \quad 0<x<L \\
+  y(x,t) &= \sum_{n=1}^{\infty}
+    c_n\sin(\frac{n\pi x}{L})\cos(\frac{an\pi t}{L}) \\
+  c_n &= \frac{2}{L}\int_{0}^{L}kx\sin(\frac{n\pi x}{L})\diff{x} \\
+  &= \frac{2k}{L}(1-\frac{L^2}{n\pi}) \\
+  y(x,t) &= \frac{2k}{L}\sum_{n=1}^{\infty}(1-\frac{L^2}{n\pi})
+    \sin(\frac{n\pi x}{L})\cos(\frac{an\pi t}{L})
+\end{align*}
+
+\begin{center}
+  If you have any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}

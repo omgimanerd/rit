@@ -1,0 +1,161 @@
+\documentclass{math}
+
+\usepackage{tikz}
+
+\title{Boundary Value Problems}
+\author{Alvin Lin}
+\date{August 2018 - December 2018}
+
+\begin{document}
+
+\maketitle
+
+\section*{Wave Equation in 1D}
+Suppose have a string stretched between two endpoints \( x = 0 \) and
+\( x = L \). \( y(x,t) \) is the transverse displacement from \( y = 0 \),
+the resting or equilibrium position. At rest, \( y = 0 \) and \( y_t \), the
+velocity of the string, is also 0. If we take the following assumptions:
+\begin{itemize}
+  \item no gravity
+  \item string is perfectly flexible
+  \item string has uniform properties (e.g. density)
+  \item \( |y| << L \) and derivatives of \( y \) remain relatively small
+  \item a uniform tension \( T \) is exerted on the string
+  \item no other external forces
+\end{itemize}
+We can develop a partial differential equation using force balance for a
+segment of the string. If we apply Newton's second law, letting \( \delta x\to0
+\), we obtain the following equation.
+\[ y_{tt} = a^2y_{xx} \]
+where \( a^2 = \frac{|T|}{\rho} > 0 \) and \( \rho \) is the string density.
+\( a \) is analogous to acceleration in the formula \( a = \frac{F}{m} \).
+This is the wave equation in 1 dimension, but we will need two boundary
+conditions and two initial conditions (unlike the heat equation which needed
+one). Once we have those, it can be used to model longitudinal waves and water
+waves in two dimensions or higher.
+
+\subsection*{Boundary Conditions}
+Suppose at one end of the string \( x = 0 \), the string is fixed to a pole.
+This gives us the boundary condition \( y(0,t) = 0 \), a homogeneous Dirichlet
+boundary condition. \par
+Suppose instead that the string is attached to a ring that freely slides up and
+down the pole, this would instead give us the boundary condition
+\( \pdiff{y}{x}(0,t) = 0 \) or \( y_x(0,t) = 0 \), which is a homogeneous
+Neumann boundary condition. Thus we have the partial differential equation:
+\begin{align*}
+  y_{tt} &= a^2y_{xx} \\
+  y(0,t) &= y(L,t) = 0 \\
+  y(x,0) &= f(x) \quad \text{(some initial displacement)} \\
+  y_t(x,0) &= g(x) \quad \text{(some initial velocity)}
+\end{align*}
+
+\subsubsection*{Process}
+Solving this follows the same process:
+\begin{enumerate}
+  \item Use separation of variables by substituting \( y = X(x)T(t) \).
+  \item Solve the \( X \) based eigenvalue/eigenfunction problem to get
+    some eigenvalue \( \lambda_n \) and its corresponding eigenfunction
+    \( X_n(x) \).
+  \item Solve the \( T \) based ordinary differential equation using
+    \( \lambda_n \).
+  \item Substitute back to get an equation for the modes.
+  \[ y_n(x,t) = X_n(x)T_n(t) \]
+  Use superposition to produce a formal solution.
+  \[ y(x,t) = \sum_{n}y_n(x,t) \]
+  where \( y_n \) contains some arbitrary constants dependent on \( n \).
+  \item Apply the initial conditions. Use Fourier series methods to solve for
+    the arbitrary constants and plug it back into \( y(x,t) \).
+\end{enumerate}
+
+\subsubsection*{Example}
+\begin{align*}
+  y &= X(x)T(t) \\
+  XT_{tt} &= a^2X_{xx}T \\
+  \frac{T_{tt}}{a^2T} &= \frac{X_{xx}}{X} = \lambda \\
+  X_n(x) &= c_n\sin(\frac{n\pi x}{L}) \\
+  \lambda_n &= \left(\frac{n\pi}{L}\right)^2 \\
+  T''+\lambda a^2T &= 0 \\
+  r^2+\lambda a^2 &= 0 \\
+  r &= -\sqrt{\lambda}a \\
+  T(t) &= c_1\cos(a\sqrt{\lambda}t)+c_2\sin(a\sqrt{\lambda}t) \\
+  &= A_n\cos(a\frac{n\pi}{L}t)+B_n\sin(a\frac{n\pi}{L}t) \\
+  y_n &= X_n(x)T_n(t) \\
+  y(x,t) &= \sum_{n=1}^{\infty}c_n\sin(\frac{n\pi x}{L})
+    (A_n\cos(a\frac{n\pi}{L}t)+B_n\sin(a\frac{n\pi}{L}t)) \\
+  a_n &:= c_nA_n \quad b_n := c_nB_n \\
+  y(x,t) &= \sum_{n=1}^{\infty}
+  sin(\frac{n\pi x}{L})(a_n\cos(\frac{an\pi}{L}t)+b_n\sin(\frac{an\pi}{L}t))
+\end{align*}
+At this point, we can apply the initial conditions:
+\begin{align*}
+  y(x,0) &= f(x) \\
+  &= \sum_{n=1}^{\infty}\sin(\frac{n\pi x}{L})(a_n\cos(0)+b_n\sin(0)) \\
+  &= \sum_{n=1}^{\infty}a_n\sin(\frac{n\pi x}{L}) \\
+  a_n &= \frac{2}{L}\int_{0}^{L}f(x)\sin(\frac{n\pi x}{L})\diff{x} \\
+  y_t(x,0) &= g(x) \\
+  \pdiff{y}{t} &= \sum_{n=1}^{\infty}\sin(\frac{n\pi x}{L})\frac{an\pi}{L}
+    \left(-a_n\sin(\frac{an\pi}{L}t)+b_n\cos(\frac{an\pi}{L}t)\right) \\
+  \pdiff{y}{t}(0) &= \sum_{n=1}^{\infty}\frac{an\pi}{L}\sin(\frac{n\pi x}{L})
+    (-a_n\sin(0)+b_n\cos(0)) \\
+  &= \sum_{n=1}^{\infty}b_n(\frac{an\pi}{L})\sin(\frac{n\pi x}{L}) = g(x) \\
+  b_n\frac{an\pi}{L} &=
+    \frac{2}{L}\int_{0}^{L}g(x)\sin(\frac{n\pi x}{L})\diff{x} \\
+  b_n &= \frac{2}{an\pi}\int_{0}^{L}g(x)\sin(\frac{n\pi x}{L})\diff{x}
+\end{align*}
+
+\subsection*{D'Alembert Method}
+Assume an infinitely long string:
+\begin{align*}
+  y_{tt} &= a^2y_{xx} \quad -\infty<x<\infty \quad t>0 \\
+  y(x,0) &= f(x) \quad -\infty<x<\infty \\
+  y_t(x,0) &= g(x) \quad -\infty<x<\infty \\
+\end{align*}
+D'Alembert's solution gives an equation of the form:
+\[ y(x,t) = f_1(x+at)+f_2(x-at) \]
+We can verify that it's a solution by substituting it into the partial
+differential equation. First find \( y_{tt} \) in terms of \( f_1 \) and
+\( f_2 \).
+\begin{align*}
+  y_t &= \pdiff{}{t}(f_1(x+at)+f_2(x-at)) \\
+  &= f_1'(x+at)\pdiff{}{t}(x+at)+f_2'(x-at)\pdiff{}{t}(x-at) \\
+  &= af_1'(x+at)-af_2'(x-at) \\
+  y_{tt} &= a^2f_1''(x+at)+a^2f_2''(x-at)
+\end{align*}
+Next, find \( y_{xx} \) in terms of \( f_1 \) and \( f_2 \).
+\begin{align*}
+  y_{xx} &= \pdiff{^2}{x^2}(f_1(x+at)+f_2(x-at)) \\
+  &= f_1''(x+at)+f_2''(x-at) \\
+  y_{tt} &= a^2y_{xx}
+\end{align*}
+
+\subsubsection*{Example}
+Find a solution to
+\begin{align*}
+  y_{tt} &= 100y_{xx} \quad -\infty<x<\infty \\
+  y(x,0) &= \cos^2(x) \\
+  y_t(x,0) &= 2x \\
+  a &= \sqrt{100} = 10 \quad f(x) = \cos^2(x) \quad g(x) = 2x \\
+  y(x,t) &= f_1(x+10t)+f_2(x-10t) \\
+  y(x,0) &= f_1(x)+f_2(x) = \cos^2(x) \\
+  y_t(x,0) &= g(x) = 2x \\
+  &= 10f_1'(x+10t)-10f_2'(x-10t) \\
+  y_t(x,0) &= 10f_1'(x)-10f_2'(x) = 2x \\
+  f_1'(x)-f_2'(x) &= \frac{x}{5} \\
+  \int(f_1'(x)-f_2'(x))\diff{x} &= \int\frac{x}{5}\diff{x}+c \\
+  f_1(x)+f_2(x) &= \frac{x^2}{10}+c
+\end{align*}
+We can solve the system of equations for \( f_1 \) and \( f_2 \):
+\begin{align*}
+  f_1(x) &= \frac{\cos^2(x)}{2}+\frac{x^2}{20}+\frac{c}{2} \\
+  f_2(x) &= \frac{\cos^2(x)}{2}-\frac{x^2}{20}-\frac{c}{2} \\
+  y(x,t) &= \frac{\cos^2(x+10t)}{2}+\frac{(x+10t)^2}{20}+
+    \frac{\cos^2(x-10t)}{2}+\frac{(x-10t)^2}{20}
+\end{align*}
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}

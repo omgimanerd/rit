@@ -1,0 +1,154 @@
+\documentclass{math}
+
+\usepackage{enumerate}
+
+\geometry{letterpaper, margin=0.5in}
+
+\title{Boundary Value Problems: Homework 10}
+\author{Alvin Lin}
+\date{August 2018 - December 2018}
+
+\begin{document}
+
+\maketitle
+
+\subsection*{Problem 1}
+Classify the following boundary conditions as Dirichlet, Neumann, separated, or
+periodic. If the boundary conditions are Dirichlet, Neumann, or separated, also
+state whether the conditions are homogeneous or nonhomogeneous.
+\begin{enumerate}[(a)]
+  \item \( y'(1) = 0, y'(2) = 1 \) \\
+  Nonhomogeneous Neumann
+  \item \( u(0,t) = u(9,t), u_x(0,t) = u_x(9,t) \) \\
+  Periodic
+  \item \( u(\pi,y) = 0, u(\pi,y) = 0 \) \\
+  Homogeneous Dirichlet
+  \item \( 3y(0)-2y'(0) = 6, y(5)+4y'(5) = 8 \) \\
+  Nonhomogeneous separated
+\end{enumerate}
+
+\subsection*{Problem 2}
+The ends of a rod are at temperatures \( 10^{\circ} \)C and \( 50^{\circ} \)C.
+the rod is 4 units long and has an initial temperature distribution of
+\( 30^{\circ} \)C. The diffusivity constant \( a^2 \) is 4. The corresponding
+boundary value problem is then
+\begin{align*}
+  u_t &= 4u_{xx} \quad 0<x<4,t>0 \\
+  u(0,t) &= 10 \quad u(4,t) = 50, t\ge 0 \\
+  u(x,0) &= 30 \quad 0<x<4
+\end{align*}
+Find the temperature \( u(x,t) \).
+\begin{align*}
+  u(x,t) &= \psi(x)+u(x,t) \\
+  \psi_t(x)+v_t(x,t) &= 4(\psi_{xx}(x)+v_{xx}(x,t)) \\
+  v_t(x,t) &= 4(\psi_{xx}(x)+v_{xx}(x,t)) \\
+  u(0,t) &= \psi(0)+v(0,t) = 10 \\
+  u(4,t) &= \psi(4)+v(4,t) = 50 \\
+  t&\to\infty \\
+  0 &= 4\psi_{xx}(x) \\
+  \psi(0) &= 10 \\
+  \psi(4) &= 50 \\
+\end{align*}
+\begin{align*}
+  \psi(x) &= Ax+B \\
+  \psi(0) &= 10 = B \\
+  \psi(4) &= A(4)+10 = 50 \\
+  A &= 10 \\
+  \psi(x) &= 10x+10 \\
+  u(0,t) &= \psi(0)+v(0,t) = 10 \\
+  u(4,t) &= \psi(4)+v(4,t) = 50 \\
+  v(0,t) &= v(4,t) = 0 \\
+  u(x,0) &= \psi(x)+v(x,0) = 30 \\
+  v(x,0) &= 30-\psi(x) \\
+  &= 30-(10x+10) \\
+  &= 20-10x \\
+  v(x,t) &= \sum_{n=1}^{\infty}
+    b_n\sin(\frac{n\pi x}{4})\e^{-4(\frac{n\pi}{4})^2t} \\
+  b_n &= \frac{2}{4}\int_{0}^{4}(20-10x)\sin(\frac{n\pi x}{4})\diff{x} \\
+  &= \frac{40+40\cos(n\pi)}{n\pi} \\
+  u(x,t) &= \psi(x)+v(x,t) \\
+  &= 10x+10+\sum_{n=1}^{\infty}
+    \frac{40+40\cos(n\pi)}{n\pi}
+    \sin(\frac{n\pi x}{4})\e^{-4(\frac{n\pi}{4})^2t} \\
+\end{align*}
+
+\subsection*{Problem 3}
+Solve the boundary value problem
+\begin{align*}
+  u_t &= u_{xx} \quad 0<x<\pi,t>0 \\
+  u(0,t) &= 0 \quad u(\pi,t) = T_0 \quad t\ge 0 \\
+  u(x,0) &= 0 \quad 0<x<\pi
+\end{align*}
+\begin{align*}
+  u(x,t) &= \psi(x)+v(x,t) \\
+  \psi_t+v_t &= \psi_{xx}+v_{xx} \\
+  u(0,t) &= \psi(0)+v(0,t) = 0 \\
+  u(\pi,t) &= \psi(\pi)+v(\pi,t) = T_0 \\
+  t &\to \infty \\
+  0 &= \psi_{xx} \\
+  \psi(0) &= 0 \\
+  \psi(\pi) &= T_0 \\
+  \psi(x) &= Ax+B \\
+  \psi(0) &= B = 0 \\
+  \psi(\pi) &= A(\pi) = T_0 \\
+  \psi(x) &= \frac{T_0x}{\pi}
+\end{align*}
+\begin{align*}
+  v_t &= \psi_{xx}+v_{xx} \\
+  u(0,t) &= \psi(0)+v(0,t) = 0 \\
+  u(\pi,t) &= \psi(\pi)+v(\pi,t) = T_0 \\
+  v(0,t) &= v(\pi,t) = 0 \\
+  u(x,0) &= \psi(x)+v(x,0) = 0 \\
+  v(x,0) &= -\psi(x) = -\frac{T_0x}{\pi} \\
+  v(x,t) &= \sum_{n=1}^{\infty}
+    b_n\sin(\frac{n\pi x}{\pi})\e^{-(\frac{n\pi}{\pi})^2t} \\
+  b_n &= \frac{2}{\pi}\int_{0}^{\pi}(-\frac{T_0x}{\pi})
+    \sin(\frac{n\pi x}{\pi})\diff{x} \\
+  &= \frac{2T_0\cos(n\pi)}{n\pi} \\
+  u(x,t) &= \frac{T_0x}{\pi}+\sum_{n=1}^{\infty}
+    \frac{2T_0\cos(n\pi)}{n\pi}\sin(nx)\e^{-n^2t}
+\end{align*}
+
+\subsection*{Problem 4}
+Given the boundary value problem
+\begin{align*}
+  u_t &= u_{xx}+k\sin(x) \quad 0<x<\pi,t>0 \\
+  u(0,t) &= u(\pi,t) = 0 \quad t\ge0 \\
+  u(x,0) &= \sin(x) \quad 0\le x\le\pi
+\end{align*}
+Determine \( u(x,t) \).
+\begin{align*}
+  u(x,t) &= \psi(x)+v(x,t) \\
+  \psi_t+v_t &= \psi_{xx}+v_{xx}+k\sin(x) \\
+  v_t &= \psi_{xx}+v_{xx}+k\sin(x) \\
+  u(0,t) &= \psi(0)+v(0,t) = 0 \\
+  u(\pi,t) &= \psi(\pi)+v(\pi,t) = 0 \\
+  t &\to \infty \\
+  0 &= \psi_{xx}+k\sin(x) \\
+  \psi(0) &= \psi(\pi) = 0 \\
+  \psi_{xx}(x) &= -k\sin(x) \\
+  \psi_{x}(x) &= k\cos(x)+A \\
+  \psi(x) &= k\sin(x)+Ax+B \\
+  \psi(0) &= k\sin(0)+0+B = 0 \\
+  \psi(\pi) &= k\sin(\pi)+A\pi+0 = 0 \\
+  A &= 0 \quad B = 0 \\
+  \psi(x) &= k\sin(x) \\
+  u(0,t) &= \psi(0)+v(0,t) = 0 \\
+  u(\pi,t) &= \psi(\pi)+v(\pi,t) = 0 \\
+  v(0,t) &= v(\pi,t) = 0 \\
+  u(x,0) &= \psi(x)+v(x,0) = \sin(x) \\
+  v(x,0) &= \sin(x)-k\sin(x) = (1-k)\sin(x) \\
+  v(x,t) &= \sum_{n=1}^{\infty}
+    b_n\sin(\frac{n\pi x}{\pi})\e^{-(\frac{n\pi x}{\pi})^2t} \\
+  b_n &= \frac{2}{\pi}\int_{0}^{\pi}
+    (1-k)\sin(x)\sin(\frac{n\pi x}{\pi})\diff{x} = 0 \\
+  v(x,t) &= 0 \\
+  u(x,t) &= k\sin(x)
+\end{align*}
+
+\begin{center}
+  If you have any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
