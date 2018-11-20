@@ -152,6 +152,31 @@ We can solve the system of equations for \( f_1 \) and \( f_2 \):
     \frac{\cos^2(x-10t)}{2}+\frac{(x-10t)^2}{20}
 \end{align*}
 
+\subsection*{Standing vs Traveling Waves}
+Consider a mode of a Dirichlet solution:
+\[ y_n(x,t) = \sin(\frac{n\pi at}{L})\sin(\frac{n\pi x}{L}) \]
+Can we rewrite this in terms of traveling waves? By using a trigonmetric
+identity:
+\begin{align*}
+  &= \frac{1}{2}(\cos(A-B)-\cos(A+B)) \\
+  &= \frac{1}{2}(\cos(\frac{n\pi}{L}(at-x))-\cos(\frac{n\pi}{L}(at+x)))
+\end{align*}
+A standing wave is a superposition of traveling waves.
+
+\subsection*{Two Dimensions}
+We will see that the heat equation in two dimensions looks like:
+\begin{itemize}
+  \item 1D: \( u_t = a^2u_{xx} \)
+  \item 2D: \( u_t = a^2(u_{xx}+u_{yy}) \)
+\end{itemize}
+We can reach a steady state by letting \( t\to\infty \) and \( u_t\to0 \).
+The steady state temperature distribution is given by Laplace's equations:
+\[ u_{xx}+u_{xx} = 0 \]
+This is an elliptic partial differential equation, which can be written with
+the shorthand \( \triangle u = 0 \). In polar coordinates, this can be written
+as:
+\[ \triangle u = u_{rr}+\frac{1}{r}u_r+\frac{1}{r^2}u_{\theta\theta} \]
+
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
   any questions, comments, or concerns, please contact me at
