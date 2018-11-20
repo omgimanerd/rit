@@ -1,0 +1,133 @@
+\documentclass{math}
+
+\usepackage[utf8]{inputenc}
+
+\title{Introduction to Intelligent Security Systems}
+\author{Alvin Lin}
+\date{August 2018 - December 2018}
+
+\begin{document}
+
+\maketitle
+
+\section*{Hackers: Activity and Prevention}
+\begin{itemize}
+  \item Hacking: showing computer expertise
+  \item Cracking: breaching security on software or systems
+  \item Phreaking: cracking telecom networks
+  \item Spoofing: faking the originating IP address in a datagram
+  \item Denial of Service (DoS): flooding a host with sufficient network traffic
+    to overload it
+  \item Port Scanning: searching for vulnerabilities
+\end{itemize}
+
+\subsection*{Hacker Attack Examples}
+\begin{itemize}
+  \item In April 2007, Estonian government networks were harassed by a denial of
+    service attack by unknown foreign intruders, following the country's spat
+    with Russia over the removal of a war memorial. Some government online
+    services were temporarily disrupted and online banking was halted.
+  \item In June 2007, the US Secretary of Defense's unclassified email account
+    was hacked by unknown foreign intruders as part of a larger series of
+    attacks to access and exploit the Pentagon's networks.
+  \item In October 2007, China's Ministry of State Security said that foreign
+    hackers, which it claimed 42\% came from Taiwan and 25\% from the US, had
+    been stealing information from Chinese key areas. In 2006, when the China
+    Aerospace Science and Industry Corporation intranet network was surveyed,
+    spywares were found in the computers of classified departments and
+    corporate leaders.
+  \item In the summer of 2008, the databases of both Republican and Democratic
+    presidential campaigns were hacked and downloaded by unknown foreign
+    intruders.
+  \item In July 2011, the US Deputy Secretary of Defense mentioned that a
+    defense contractor was hacked and 24,000 files from the Department of
+    Defense were stolen.
+  \item Sony Hackers orchestrated multiple breaches of Sony's PlayStation
+    network, knocking it offline for 24 days and costing the company an
+    estimated \$171 million.
+  \item In February 2016, hackers angry about the US relations with Israel
+    tried to call attention to their cause by breaching the US Department of
+    Justice's database. CNN reported that the hackers released data on
+    10,000 Department of Homeland Security employees one day, and data on
+    20,000 FBI employees the next day. The information stolen included names,
+    titles, phone numbers, and email addresses, but no sensitive information
+    like SSNs were obtained.
+\end{itemize}
+Hacker threats include denial of service, defacing, graffiti, slander,
+reputation damage, loss of data, corporate espionage, or loss of financial
+assets.
+
+\subsection*{Types of Hackers}
+\begin{itemize}
+  \item Script kiddies: mostly kids and students that use tools created by
+    black hats.
+  \item Underemployed adult hackers: former script kiddies usually.
+  \item Ideological hackers: hack as a mechanism to promote some political
+    or ideological purpose.
+  \item Criminal hackers: real criminals who are in it for personal gain.
+  \item Corporate spies: relatively rare.
+  \item Disgruntled employees: usually the most dangerous to a company since
+    they have insider access.
+  \item Professional hackers: black hat hackers are malicious hackers to cause
+    harm. White hat hackers are usually professional security experts and
+    consultants who offer hacking/penetration testing as part of their services.
+    Grey hats do not engage in malicious activity but may use hacking methods
+    that are illegal or unethical.
+\end{itemize}
+
+\subsection*{Attack Purposes}
+\begin{itemize}
+  \item Reconnaisance attacks are an attempt to gather sensitive information
+    about network services and systems (packet sniffers, ping sweep, port scans,
+    queries regarding networking information).
+  \item Denial of service attacks are network attacks devised to slow down or
+    crash a system by flooding it with useless traffic (ping of death, teardrop
+    attack).
+  \item Access attacks are when attacks try to uncover exploits and
+    vulnerabilities in order to gain access to a system's network (password
+    attack, trust exploitation attack, man in the middle).
+\end{itemize}
+
+\subsubsection*{Gaining Access}
+\begin{itemize}
+  \item Front Door: password guessing, password stealing
+  \item Back Door: often left by developers as debugging or diagnostic tools
+  \item Trojan Horses: hidden inside of software downloaded from the internet,
+    which usually will install a backdoor
+  \item Software Vulnerability Explotation: allow for privilege escalation or
+    arbitrary code execution
+\end{itemize}
+Once insider, hackers can modify logs to cover their tracks, steal files, modify
+files, install back doors, and attack other systems.
+
+\subsection*{Spoofing}
+Attackers may use spoofing to alter their identity so that they appear as
+someone else.
+\begin{itemize}
+  \item IP Spoofing: attackers use the IP address of another computer to
+    acquire information or gain access. In a flying-blind attack, they
+    send messages while impersonating another machine, but cannot receive
+    messages addressed to that machine. In a source routing attack, an
+    attack spoofs the address of a machine and inserts itself between the
+    attacked machine and the spoofed machine to intercept replies.
+  \item Email Spoofing: attackers can create accounts with similar addresses,
+    modify mail clients, or telnet to port 25 of a mail server to send
+    messages masquerading as someone else.
+  \item Web Spoofing: attacks can register a web address matching another
+    entity. With man in the middle attacks, the attacker acts as a proxy
+    between the web server and the client. With URL rewriting attacks, the
+    attacker redirects web traffic to another site that they control. With
+    tracking state attacks, attackers can steal the authentication token of a
+    legitimate user after authentication.
+  \item Session Hijacking: after a legitimate user authenticates, the attacker
+    takes the user offline by a denial of service and then impersonates the
+    user.
+\end{itemize}
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
