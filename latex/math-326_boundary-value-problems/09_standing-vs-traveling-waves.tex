@@ -1,0 +1,147 @@
+\documentclass{math}
+
+\usepackage{tikz}
+
+\title{Boundary Value Problems}
+\author{Alvin Lin}
+\date{August 2018 - December 2018}
+
+\begin{document}
+
+\maketitle
+
+\section*{Standing vs Traveling Waves}
+The solution of a Dirichlet 1D homogeneous boundary value problem such as
+\[ y_{tt} = a^2y_{xx} \]
+is of the form:
+\[ y(x,t) = \sum_{n=1}^{\infty}
+  (a_n\cos(\frac{n\pi at}{L})+b_n\sin(\frac{n\pi at}{L}))
+  \sin(\frac{n\pi x}{L}) \]
+This solution represents a superposition of standing waves with the following
+properties:
+\begin{itemize}
+  \item Mode amplitude
+  \[ a_n\cos(\frac{n\pi at}{L})+b_n\sin(\frac{n\pi at}{L}) \]
+  \item Mode shape
+  \[ \sin(\frac{n\pi x}{L}) \]
+\end{itemize}
+Traveling waves showed up in D'Alembert's solution in where the solution
+\[ y = f_1(x+at)+f_2(x-at) \]
+represents translating \( f_1 \) and \( f_2 \) horizontally. Now consider a
+mode of a Dirichlet solution:
+\[ y_n(x,t) = \sin(\frac{n\pi at}{L})\sin(\frac{n\pi x}{L}) \]
+Can we rewrite this in terms of traveling waves? By using a trigonometric
+identity:
+\begin{align*}
+  \sin(\frac{n\pi at}{L})\sin(\frac{n\pi x}{L}) &= \sin(A)\sin(B) \\
+  &= \frac{1}{2}(\cos(A-B)-\cos(A+B)) \\
+  &= \frac{1}{2}(\cos(\frac{n\pi}{L}(at-x))-\cos(\frac{n\pi}{L}(at+x)))
+\end{align*}
+Thus, a standing wave is a superposition of traveling waves.
+
+\subsection*{Two Dimensions}
+In one dimension, the heat equation looks like:
+\[ u_t = a^2u_{xx} \]
+We will see that the heat equation in two dimensions looks like:
+\[ u_t = a^2(u_{xx}+u_{yy}) \]
+We can reach a steady state by letting \( t\to\infty \) and \( u_t\to0 \).
+The steady state temperature distribution is given by Laplace's equations:
+\[ u_{xx}+u_{xx} = 0 \]
+This is an elliptic partial differential equation, which can be written with
+the shorthand \( \triangle u = 0 \). In polar coordinates, this can be written
+as:
+\[ \triangle u = \triangledown^2 u =
+  u_{rr}+\frac{1}{r}u_r+\frac{1}{r^2}u_{\theta\theta} \]
+
+\subsection*{Boundary Conditions}
+Different boundary conditions are possible if \( u(x,y) \) is a steady state
+temperature distribution on a rectangular plate. We can have homogeneous
+Dirichlet boundary conditions on the vertical and horizontal edges.
+\begin{center}
+  \begin{tikzpicture}
+    \draw[thick,->] (-1,0) -- (6,0) node[above]{\( x \)};
+    \draw[thick,->] (0,-1) -- (0,6) node[above]{\( y \)};
+    \draw (4,0) --
+      node[right]{\( u(a,y) = 0 \)} (4,4) --
+      node[above]{\( u(x,b) = 0 \)} (0,4) --
+      node[left]{\( u(0,y) = 0 \)} (0,0) --
+      node[below]{\( u(x,0) = f(x) \)} (4,0);
+    \node[below] at (4,0) {\( a \)};
+    \node[left] at (0,4) {\( b \)};
+  \end{tikzpicture}
+\end{center}
+If we insulate the left and right edges of the plate, we can also have
+homogeneous Neumann boundary conditions.
+\begin{center}
+  \begin{tikzpicture}
+    \draw[thick,->] (-1,0) -- (6,0) node[above]{\( x \)};
+    \draw[thick,->] (0,-1) -- (0,6) node[above]{\( y \)};
+    \draw (4,0) --
+      node[right]{\( \pdiff{u}{x}(a,y) = 0 \)} (4,4) --
+      node[above]{\( u(x,b) = 0 \)} (0,4) --
+      node[left]{\( \pdiff{u}{x}(0,y) = 0 \)} (0,0) --
+      node[below]{\( u(x,0) = f(x) \)} (4,0);
+    \node[below] at (4,0) {\( a \)};
+    \node[left] at (0,4) {\( b \)};
+  \end{tikzpicture}
+\end{center}
+
+\subsection*{Solution}
+The approach to solving this is still generally the same. Suppose we have the
+boundary value problem:
+\begin{align*}
+  u_{xx}+u_{yy} &= 0 \\
+  u_x(0,y) &= u_x(a,y) = 0 \\
+  u(x,b) &= 0 \\
+  u(x,0) &= f(x)
+\end{align*}
+We start with the separation of variables by substituting \( u(x,y) =
+X(x)Y(y) \) to obtain two ordinary differential equations.
+\begin{align*}
+  u_{xx}+u_{yy} &= 0 \\
+  X''Y+XY'' &= 0 \\
+  \frac{X''}{X} &= \frac{-Y''}{Y} = -\lambda = -\alpha^2 \\
+  X''+\lambda X &= 0 \\
+  Y''-\lambda Y &= 0
+\end{align*}
+We can then solve the eigenvalue problem by going through all three cases of
+\( \lambda \). Since we have done this before, we know the following:
+\begin{align*}
+  \lambda_n &= \left(\frac{n\pi}{a}\right)^2 \quad n = 0,1,2,\dots \\
+  X_n(x) &= c_n\cos\left(\frac{n\pi x}{a}\right)
+\end{align*}
+With \( \lambda \), we can solve the other ordinary differential equation.
+\begin{align*}
+  Y''-\lambda Y &= 0 \\
+  \lambda_0 &= 0 \\
+  X_0 &= c_0 \\
+  Y_0(y) &= A_0+B_0y \\
+  \lambda_n &= \left(\frac{n\pi}{a}\right)^2 \\
+  Y_n(y) &= a_n\e^{\sqrt{\lambda}ny}+b_n\e^{-\sqrt{\lambda}ny} \\
+  &= a_n\cosh(\frac{n\pi y}{a})+b_n\sinh(\frac{n\pi y}{a}) \\
+  u(x,b) &= X(x)Y(b) = 0 \\
+  Y(b) &= 0 \\
+  a_n &= -b_n\tanh(\frac{n\pi b}{a}) \\
+  Y_n(y) &= -b_n\tanh(\frac{n\pi b}{a})\cosh(\frac{n\pi y}{a})+
+    b_n\sinh(\frac{n\pi y}{a}) \\
+  &= d_n\sinh(\frac{n\pi}{a}(y-b))
+\end{align*}
+Now we can substitute our solutions for both ordinary differential equations
+back to get \( u(x,y) \).
+\begin{align*}
+  u_n(x,y) &= e_n\cos(\frac{n\pi x}{a})\sinh(\frac{n\pi}{a}(y-b)) \\
+  u(x,y) &= X_0Y_0+\sum X_nY_n \\
+  &= e_0(y-b)+\sum_{n=1}^{\infty}e_n\cos(\frac{n\pi x}{a})
+    \sinh(\frac{n\pi}{a}(y-b)) \\
+  e_0 &= -\frac{1}{ab}\int_{0}^{a}f(x)\diff{x} \\
+  e_n &= \frac{2}{a\sinh(\frac{-n\pi b}{a})}
+    \int_{0}^{a}f(x)\cos(\frac{n\pi x}{a})\diff{x}
+\end{align*}
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
