@@ -138,6 +138,55 @@ back to get \( u(x,y) \).
     \int_{0}^{a}f(x)\cos(\frac{n\pi x}{a})\diff{x}
 \end{align*}
 
+\subsection*{Polar Coordinates}
+In polar coordinates, the Laplacian of \( u(r,\theta) \) is
+\[ \triangle u =
+  \pdiff{^2u}{r^2}+\frac{1}{2}\pdiff{u}{r}+\frac{1}{r^2}\pdiff{^2u}{\theta^2} \]
+Suppose we have the following Dirichlet boundary value problem on a 2D disk
+shaped domain.
+\begin{align*}
+  u_{rr}+\frac{u_r}{r}+\frac{u_{\theta\theta}}{r^2} &= 0 \quad 0\le r<a \quad
+    -\pi\le\theta\le\pi \\
+  u(r,-\pi) &= u(r,\pi) \quad 0\le r<a \\
+  u_{\theta}(r,-\pi) &= u_{\theta}(r,\pi) \quad 0\le r<a \\
+  u(a,\theta) &= f(\theta) \quad -\pi<\theta<\pi
+\end{align*}
+We have to impose the additional constraint that \( u(r,\theta) \) is bounded
+on the domain. Like before, we begin with separation of variables.
+\[ u(r,\theta) = R(r)T(\theta) \]
+This yields the following ordinary differential equations and boundary
+conditions.
+\begin{align*}
+  T''(\theta)+\lambda T'(\theta) &= 0 \\
+  T(\pi) &= T(\pi) \\
+  T'(-\pi) &= T'(\pi) \\
+  r^2R''(r)+rR'(r)-\lambda R(r) &= 0
+\end{align*}
+The solution to the eigenvalue problem presented here is
+\begin{align*}
+  \lambda_n &= n^2 \quad n = 0,1,2,\dots \\
+  T_0(\theta) &= B_0 \\
+  T_n(\theta) &= A_n\cos(n\theta)+B_n\sin(n\theta) \quad n = 1,2,\dots
+\end{align*}
+The other ordinary differential equation (\( r^2R''(r)+rR'(r)-\lambda R(r) =
+0 \)) is known as a Cauchy-Euler equation. We cannot use auxiliary equations to
+solve this because of the variable coefficients. Suppose we take the case of
+\( \lambda_0 \):
+\begin{align*}
+  \lambda_0 &= 0 \\
+  r^2R''+rR' &= 0 \\
+  Let y &= \ddiff{R}{r} = R' \\
+  r^2y'+ry &= 0 \\
+  ry'+y &= 0 \\
+  \ddiff{y}{r} &= -\frac{y}{r} \\
+  \frac{\diff{y}}{y} &= -\frac{\diff{r}}{r} \\
+  y &= R' = \e^{-\ln(r)+c} \\
+  &= C\e^{-\ln(r)} = \frac{C}{r} \\
+  \ddiff{R}{r} &= \frac{C}{r} \\
+  \int\diff{R} &= \int\frac{C}{r}\diff{r} \\
+  R(r) &= C\ln(r)+d
+\end{align*}
+
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
   any questions, comments, or concerns, please contact me at

@@ -1,0 +1,157 @@
+\documentclass{math}
+
+\usepackage[utf8]{inputenc}
+
+\title{Introduction to Intelligent Security Systems}
+\author{Alvin Lin}
+\date{August 2018 - December 2018}
+
+\begin{document}
+
+\maketitle
+
+\section*{Biometrics}
+Tradtionally means of automatic identification:
+\begin{itemize}
+  \item possession-based (credit card, smart card)
+  \item knowledge-based (password, PIN)
+  \item biometric-based (fingerprint, iris scan)
+\end{itemize}
+Possession and knowledge based authentication mechanisms are replaceable, but
+can be lost, stolen, forgotten, or guessed by imposters. Annually, it is
+estimated there is over \$1 billion in fraudulent credit card transcations and
+\$3 billion in fraudulent ATM withdrawals. These traditional approaches are
+unable to differentiate between an authorized person and an imposter since they
+check against something known or in possession by the person being
+authenticated.
+
+\subsection*{What is biometrics?}
+\textbf{Biometrics} is the science which deals with the automated recognition of
+individuals based on their biological and behavioral characteristics. It
+uses \textbf{biometry}, the mathematical and statistical aspects of biology,
+to recognize a person by determining the authenticity of a specific biological
+and/or behavioral characteristic possessed by that person. \par
+The scientific literature on quantitative measurement of humans for the purpose
+of identification dates back to the 1870s and the measurement system of Alphonse
+Bertillon. Bertillon used a system of body measurements such as skull diameter,
+arm length, foot length, etc to identify prisoners in the United States until
+the 1920s. In the 1880s, Henry Faulds, William Herchel, and Sir Francis Galton
+proposed quantitative identification through fingerprint and facial
+measurements. Biometrics was introduced into forensic identification by
+Edmond Locard in the 1920s.
+
+\subsection*{Authentication vs Identification}
+\textbf{Verification} is the process of recognizing a person by comparing the
+captured biometric characteristic with a biometric template stored in the
+system. It performs a one-to-one match and checks if the person is who they
+claim they are. \\
+\textbf{Identification} is the process of recognizing a person by searching a
+template database for a match. It performs one-to-many matches to assign an
+identity to the person.
+
+\subsection*{Uses of Biometrics}
+Biometric systems are used for physical access control in places like airports
+and other travel infrastructure. It can also be used for logical access in
+places like banks to regulate access to money. It is also commonly used to
+ensure uniqueness of individuals, such as for enrollment in a benefits program.
+\par
+The development of digital signal processing techniques in the 1960s led to
+work in automatic human identification. Speaker and fingerprint recognition
+systems were among the first to be explored. The potential application of
+this technology for high-security access control was recognized, leading to
+increased government usage. Retinal and signature verification systems came
+in the 1980s, followed by facial recognition and iris recognition systems in
+the 1990s.
+
+\subsection*{Misconceptions}
+Hollywood typically portrays facial recognition as instantaneous, tied to a
+database of all criminals, and working 100\% of the time. In reality, facial
+recognition algorithms are vastly affected by lighting, angle, face size, and
+image quality. They require a high end computer for processing and are still
+being evaluated as a tool for law enforcement. Match confidence varies depending
+on the application and data sharing between law enforcement organizations is
+difficult.
+
+\subsection*{Types of Biometrics}
+Biometric systems measure various physiological or behavioral characteristics
+such as fingerprints, voice pattern, iris/retinal pattern, hand shape, face
+shape, handwriting, keystroke usage, and finger shape. This is only a partial
+list as new features such as gait, ear shape, head resonance, optical skin
+reflectance, and vein structure are being developed all the time. Because of the
+broad range of characteristics, imaging requirements for biometric technologies
+vary greatly. Examples:
+\begin{itemize}
+  \item voice - one dimensional signal
+  \item hand writing - several simulataneous one dimensional signals
+  \item fingerprint - two dimensional image
+  \item hand geometry - multiple two dimensional measures
+  \item face and iris scan - time series of two dimensional images or a three
+    dimensional image
+\end{itemize}
+Ideally, biometric characteristics for identification have five qualities.
+\begin{itemize}
+  \item \textbf{Robust} - unchanging on an individual over time.
+  \item \textbf{Distinctive} - showing great variation over the population.
+  \item \textbf{Available} - the entire population should ideally have this
+    measure.
+  \item \textbf{Accessible} - easy to image using electronic sensors.
+  \item \textbf{Acceptable} - people do not object to having this measurement
+    taken.
+\end{itemize}
+Quantitative measures of these five qualities have been developed.
+\begin{itemize}
+  \item Robusness is measured by the false negative rate (Type I error), the
+    probability that a submitted sample will not match the enrollment image.
+  \item Distinctiveness is measured by the false positive rate (Type II error),
+    the probability that a submitted sample matches the enrollment image of
+    another user.
+  \item Availablility is measured by the rate of enrollment failure, the
+    probability that a user will not be able to supply a readable measure to the
+    system upon enrollment.
+  \item Accessibility is quantified by the throughput rate of the system, the
+    number of systems that can be processed in some unit time.
+  \item Acceptability is measured by polling the device users.
+\end{itemize}
+
+\subsection*{Biometric Systems}
+Biometric systems generally perform one of two tasks:
+\begin{itemize}
+  \item Positive identification - the submitted samples are from an individual
+    known to the system.
+  \item Negative identification - the submitted samples are from an individual
+    not known to the system.
+\end{itemize}
+They can also have other types of classifications:
+\begin{itemize}
+  \item \textbf{Overt vs Covert} - if the user is aware that a biometric
+    identifier is being measured, then the use is overt. Most access control
+    systems are overt. Generally only some forensic applications are covert.
+  \item \textbf{Habituated vs Non-habituated} - users presenting the biometric
+    trait on a daily basis can be considered habituated after a short period of
+    time. Users who have not presented the trait recented are considered
+    non-habituated.
+  \item \textbf{Attended vs Non-attended} - whether or not the use of the
+    biometric device will be observed and guided by system management during
+    operation.
+  \item \textbf{Open vs Closed} - an open system uses public data collection,
+    compression, and format standards while a closed system operates on
+    proprietary formats.
+\end{itemize}
+For open systems, compression and transmission protocols have to be
+standardized so that every user of the data can reconstruct the original signal.
+Current standards for data transmission include wavelet scalar quantization
+for fingerprint data, JPEG images for facial images, and code excited linear
+prediction for voice data.
+
+\subsection*{Feature Extraction}
+In general, feature extraction is a form of non-reversible compression,
+meaning that the original biometric image cannot be reconstructed from the
+extracted features.
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
