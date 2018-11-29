@@ -10,36 +10,7 @@
 
 \maketitle
 
-\section*{Standing vs Traveling Waves}
-The solution of a Dirichlet 1D homogeneous boundary value problem such as
-\[ y_{tt} = a^2y_{xx} \]
-is of the form:
-\[ y(x,t) = \sum_{n=1}^{\infty}
-  (a_n\cos(\frac{n\pi at}{L})+b_n\sin(\frac{n\pi at}{L}))
-  \sin(\frac{n\pi x}{L}) \]
-This solution represents a superposition of standing waves with the following
-properties:
-\begin{itemize}
-  \item Mode amplitude
-  \[ a_n\cos(\frac{n\pi at}{L})+b_n\sin(\frac{n\pi at}{L}) \]
-  \item Mode shape
-  \[ \sin(\frac{n\pi x}{L}) \]
-\end{itemize}
-Traveling waves showed up in D'Alembert's solution in where the solution
-\[ y = f_1(x+at)+f_2(x-at) \]
-represents translating \( f_1 \) and \( f_2 \) horizontally. Now consider a
-mode of a Dirichlet solution:
-\[ y_n(x,t) = \sin(\frac{n\pi at}{L})\sin(\frac{n\pi x}{L}) \]
-Can we rewrite this in terms of traveling waves? By using a trigonometric
-identity:
-\begin{align*}
-  \sin(\frac{n\pi at}{L})\sin(\frac{n\pi x}{L}) &= \sin(A)\sin(B) \\
-  &= \frac{1}{2}(\cos(A-B)-\cos(A+B)) \\
-  &= \frac{1}{2}(\cos(\frac{n\pi}{L}(at-x))-\cos(\frac{n\pi}{L}(at+x)))
-\end{align*}
-Thus, a standing wave is a superposition of traveling waves.
-
-\subsection*{Two Dimensions}
+\section*{Laplace's Equation}
 In one dimension, the heat equation looks like:
 \[ u_t = a^2u_{xx} \]
 We will see that the heat equation in two dimensions looks like:
@@ -170,12 +141,15 @@ The solution to the eigenvalue problem presented here is
 \end{align*}
 The other ordinary differential equation (\( r^2R''(r)+rR'(r)-\lambda R(r) =
 0 \)) is known as a Cauchy-Euler equation. We cannot use auxiliary equations to
-solve this because of the variable coefficients. Suppose we take the case of
+solve this because of the variable coefficients.
+
+\subsubsection*{Case \( n = 0 \):}
+Suppose we take the case of
 \( \lambda_0 \):
 \begin{align*}
   \lambda_0 &= 0 \\
   r^2R''+rR' &= 0 \\
-  Let y &= \ddiff{R}{r} = R' \\
+  Let: y &= \ddiff{R}{r} = R' \\
   r^2y'+ry &= 0 \\
   ry'+y &= 0 \\
   \ddiff{y}{r} &= -\frac{y}{r} \\
@@ -184,8 +158,46 @@ solve this because of the variable coefficients. Suppose we take the case of
   &= C\e^{-\ln(r)} = \frac{C}{r} \\
   \ddiff{R}{r} &= \frac{C}{r} \\
   \int\diff{R} &= \int\frac{C}{r}\diff{r} \\
-  R(r) &= C\ln(r)+d
+  R_0(r) &= C\ln(r)+d
 \end{align*}
+Since we want a reasonable bounded solution, we can apply the constraint
+\( |u(r,\theta)| < \infty \) for \( 0\le r\le a \) and \( -\pi\le\theta<\pi \).
+Since \( \ln(r) \) approaches \( -\infty \) at 0, we set \( D_0 \) to 0 since
+it doesn't make sense for our circular disk to have infinite temperature at
+its center.
+\[ R_0(r) = C_0 \]
+
+\subsubsection*{Case \( n > 0 \):}
+Suppose we take \( n = 1,2,3,\dots (n\in\N) \). We can use a test solution
+\( R(r) = r^m \) to try and obtain an \( m \) that satifies the differential
+equation.
+\begin{align*}
+  r^2R''+rR'-n^2R &= 0 \\
+  R(r) &= r^m \\
+  R'(r) &= mr^{m-1} \\
+  R''(R) &= m(m-1)r^{m-2} \\
+  r^2(m(m-1)r^{m-2})+r(mr^{m-1})-n^2r^m &= 0 \\
+  (m(m-1)+m-n^2)r^m &= 0 \\
+  m^2-m+m-n^2 &= 0 \\
+  m^2 &= n^2 \\
+  m &= \pm n
+\end{align*}
+The general solution can be put in the form:
+\[ R(r) = C_nr^n+D_nr^{-n} \]
+With this, we can construct our solution for \( u_n(r,\theta) \) for
+\( n\in\N \).
+\begin{align*}
+  u_n(r,\theta) &= R(r)T(\theta) \\
+  &= (C_nr^n+D_nr^{-n})(A_n\cos(n\theta)+B_n\sin(n\theta))
+\end{align*}
+Putting this in the form of a Fourier solution:
+\begin{align*}
+  u(r,\theta) &= \frac{a_0}{2}+\sum_{n=1}^{\infty}(\frac{r}{a})^n
+    (a_n\cos(n\theta)+b_n\sin(n\theta)) \\
+  u(a,\theta) &= f(\theta) \\
+  &= \frac{a_0}{2}+\sum_{n=1}^{\infty}a_n\cos(n\theta)+b_n\sin(n\theta)
+\end{align*}
+This matches the form of a standard Fourier series solution.
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have

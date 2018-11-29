@@ -101,7 +101,7 @@ At this point, we can apply the initial conditions:
   b_n &= \frac{2}{an\pi}\int_{0}^{L}g(x)\sin(\frac{n\pi x}{L})\diff{x}
 \end{align*}
 
-\subsection*{D'Alembert Method}
+\subsection*{D'Alembert's Method}
 Assume an infinitely long string:
 \begin{align*}
   y_{tt} &= a^2y_{xx} \quad -\infty<x<\infty \quad t>0 \\
@@ -150,6 +150,35 @@ We can solve the system of equations for \( f_1 \) and \( f_2 \):
   y(x,t) &= \frac{\cos^2(x+10t)}{2}+\frac{(x+10t)^2}{20}+
     \frac{\cos^2(x-10t)}{2}+\frac{(x-10t)^2}{20}
 \end{align*}
+
+\subsection*{Standing vs Traveling Waves}
+The solution of a Dirichlet 1D homogeneous boundary value problem such as
+\[ y_{tt} = a^2y_{xx} \]
+is of the form:
+\[ y(x,t) = \sum_{n=1}^{\infty}
+  (a_n\cos(\frac{n\pi at}{L})+b_n\sin(\frac{n\pi at}{L}))
+  \sin(\frac{n\pi x}{L}) \]
+This solution represents a superposition of standing waves with the following
+properties:
+\begin{itemize}
+  \item Mode amplitude
+  \[ a_n\cos(\frac{n\pi at}{L})+b_n\sin(\frac{n\pi at}{L}) \]
+  \item Mode shape
+  \[ \sin(\frac{n\pi x}{L}) \]
+\end{itemize}
+Traveling waves showed up in D'Alembert's solution in where the solution
+\[ y = f_1(x+at)+f_2(x-at) \]
+represents translating \( f_1 \) and \( f_2 \) horizontally. Now consider a
+mode of a Dirichlet solution:
+\[ y_n(x,t) = \sin(\frac{n\pi at}{L})\sin(\frac{n\pi x}{L}) \]
+Can we rewrite this in terms of traveling waves? By using a trigonometric
+identity:
+\begin{align*}
+  \sin(\frac{n\pi at}{L})\sin(\frac{n\pi x}{L}) &= \sin(A)\sin(B) \\
+  &= \frac{1}{2}(\cos(A-B)-\cos(A+B)) \\
+  &= \frac{1}{2}(\cos(\frac{n\pi}{L}(at-x))-\cos(\frac{n\pi}{L}(at+x)))
+\end{align*}
+Thus, a standing wave is a superposition of traveling waves.
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
