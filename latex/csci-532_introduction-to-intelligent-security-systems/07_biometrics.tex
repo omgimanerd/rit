@@ -147,6 +147,40 @@ prediction for voice data.
 In general, feature extraction is a form of non-reversible compression,
 meaning that the original biometric image cannot be reconstructed from the
 extracted features.
+\begin{itemize}
+  \item \textbf{Template} - stored features that samples are matched against
+  \item \textbf{Model} - the construction of a complex mathematical
+    expression capable of generating features characteristic of a particular
+    user.
+  \item \textbf{Enrollment} - placing a template or model into the database for
+    the very first time.
+\end{itemize}
+Pattern matching processes compare the sample to multiple templates or models
+from the database one at a time, sending on a quantitative ``distance'' measure
+for each comparision. In place of a ``distance'' metric, some system use
+``similarity'' measures, such as maximum likelihood values.
+
+\subsection*{Biometrics and Privacy}
+Biometric measures can be used in place of a name, social security number, or
+other form of identification to secure anonymouse transactions. The real fear is
+that biometric measures will link people to personal data or allow movements to
+be tracked. After all, credit card and phone record data can be used in court to
+establish a person's activities and movements. Phone books are public databases
+linking people to their phone number. These databases have a one to one mapping
+that allow for names to be determined from phone numbers. Unlike phone books,
+biometric databases cannot be reversed to determine names from measures because
+biometric measures, although distinctive, are not necessarily unique. \par
+Five US states have electronic fingerprint records of social service recipients.
+Six states maintain electronic fingerprints of all licensed drivers, and nearly
+all states maintain copies of driver's licenses and social service recipient
+photos. FBI and state governments maintain fingerprint databases on convicted
+felons and sex offenders, and the federal government maintains hand geometry
+records on those who have voluntarily requested border crossing cards. \par
+In general, biometric measures contain no personal information and are more
+difficult to forge or steal. They can be taken without a person's knowledge,
+but cannot be linked to an identity without a pre-existing invertible database.
+Since they are not always secret and publicly observable, they cannot be
+revoked or changed if compromised.
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
