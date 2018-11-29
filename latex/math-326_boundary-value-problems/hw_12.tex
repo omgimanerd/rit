@@ -1,0 +1,122 @@
+\documentclass{math}
+
+\usepackage{enumerate}
+
+\geometry{letterpaper, margin=0.5in}
+
+\title{Boundary Value Problems: Homework 12}
+\author{Alvin Lin}
+\date{August 2018 - December 2018}
+
+\begin{document}
+
+\maketitle
+
+\subsection*{Problem 1}
+Find the solution to
+\begin{align*}
+  y_{tt} &= a^2y_{xx} \quad -\infty<x<\infty \quad t>0 \\
+  y(x,0) &= 0 \quad -\infty<x<\infty \\
+  y_t(x,0) &= \cos(x) \quad -\infty<x<\infty \\
+  y(x,t) &= f_1(x+at)+f_2(x-at) \\
+  y(x,0) &= f_1(x)+f_2(x) = 0 \\
+  f_1(x) &= -f_2(x) \\
+  y_t &= af'_1(x+at)-af'_2(x-at) \\
+  y_t(x,0) &= af'_1(x)-af'_2(x) = \cos(x) \\
+  f'_1(x)-f'_2(x) &= \frac{\cos(x)}{a} \\
+  \int f'_1(x)-f'_2(x) &= \int\frac{\cos(x)}{a} \\
+  f_1(x)-f_2(x) &= \frac{\sin(x)}{a}+c \\
+  f_1(x)-(-f_1(x)) &= \frac{\sin(x)}{a}+c \\
+  f_1(x) &= \frac{\sin(x)+c}{2a} \\
+  f_2(x) &= -\frac{\sin(x)+c}{2a} \\
+  y(x,t) &= \frac{\sin(x+at)}{2a}+\frac{c}{2a}-
+    \frac{\sin(x-at)}{2a}-\frac{c}{2a} \\
+  &= \frac{\sin(x+at)-\sin(x-at)}{2a}
+\end{align*}
+
+\subsection*{Problem 2}
+Find the solution to
+\begin{align*}
+  y_{tt} &= a^2y_{xx} \quad -\infty<x<\infty \quad t>0 \\
+  y(x,0) &= x^2 \quad -\infty<x<\infty \\
+  y_t(x,0) &= 0 \quad -\infty<x<\infty \\
+  y(x,t) &= f_1(x+at)+f_2(x-at) \\
+  y(x,0) &= f_1(x)+f_2(x) = x^2 \\
+  y_t(x,t) &= af'_1(x+at)-af'_2(x-at) \\
+  y_t(x,0) &= af'_1(x)-af'_2(x) = 0 \\
+  \int f'_1(x)-f'_2(x) &= \int0 \\
+  f_1(x)-f_2(x) &= c \\
+  f_1(x)+(f_1(x)-c) &= x^2 \\
+  f_1(x) &= \frac{x^2+c}{2} \\
+  f_2(x) &= \frac{x^2-c}{2} \\
+  y(x,t) &= \frac{(x+at)^2}{2}+\frac{c}{2}+\frac{(x-at)^2}{2}-\frac{c}{2} \\
+  &= \frac{(x+at)^2+(x-at)^2}{2}
+\end{align*}
+
+\subsection*{Problem 3}
+Certain solutions of Laplace's equation involve the expressions
+\[ Y_n(y) = -B_n\tanh(\frac{n\pi b}{a})\cosh(\frac{n\pi y}{a})+
+  B_n\sinh(\frac{n\pi y}{a}) \]
+Here, \( a \) and \( b \) are positive constants, \( B_n \) is an arbitrary
+constant, and \( n\in\N \). Use the definitions of \( \sinh(z) \) and
+\( \cosh(z) \) to prove that
+\[ Y_n(y) = -B_n\tanh(\frac{n\pi b}{a})\cosh(\frac{n\pi y}{a})+
+  B_n\sinh(\frac{n\pi y}{a}) = d_n\sinh(\frac{n\pi}{a}(y-b)) \]
+where \( d_n \) is a constant.
+\begin{align*}
+  Let: k &= \frac{n\pi}{a} \\
+  Y_n(y) &= -B_n\tanh(kb)\cosh(ky)+B_n\sinh(ky) \\
+  &= -B_n\frac{\e^{kb}-\e^{-kb}}{\e^{kb}+\e^{-kb}}\frac{\e^{ky}+\e^{-ky}}{2}+
+    B_n\frac{\e^{ky}-\e^{-ky}}{2} \\
+  &= \frac{B_n}{2}\left(
+    \frac{(\e^{ky}-\e^{-ky})(\e^{kb}+\e^{-kb})}{\e^{kb}+\e^{-kb}}-
+    \frac{(\e^{kb}-\e^{-kb})(\e^{ky}+\e^{-ky})}{\e^{kb}+\e^{-kb}}
+    \right) \\
+  &= \frac{B_n}{2}\left(
+    \frac{\e^{k(y+b)}+\e^{k(y-b)}-\e^{k(b-y)}-\e^{-k(y+b)}}{\e^{kb}+\e^{-kb}}-
+    \frac{\e^{k(b+y)}+\e^{k(b-y)}-\e^{k(y-b)}-\e^{-k(y+b)}}{\e^{kb}+\e^{-kb}}
+  \right) \\
+  &= \frac{B_n}{2}\left(
+    \frac{2\e^{k(y-b)}-2\e^{k(b-y)}}{\e^{kb}+\e^{-kb}}
+  \right) \\
+  &= \frac{2B_n}{\e^{kb}+\e^{-kb}}\frac{\e^{k(y-b)}-\e^{-k(y-b)}}{2} \\
+  &= d_n\sinh\left(k(y-b)\right) \\
+  &= d_n\sinh\left(\frac{n\pi}{a}(y-b)\right)
+\end{align*}
+
+\subsection*{Problem 4}
+Starting with the solution we went over in class:
+\begin{align*}
+  u(x,y) &= E_0(y-b)+\sum_{n=1}^{\infty}
+    E_n\cos(\frac{n\pi x}{a})\sinh(\frac{n\pi(y-b)}{a}) \\
+  E_0 &= -\frac{1}{ab}\int_{0}^{a}f(x)\diff{x} \\
+  E_n &= \frac{2}{a\sinh(\frac{-n\pi b}{a})}
+    \int_{0}^{a}f(x)\cos(\frac{n\pi x}{a})\diff{x} \quad n = 1,2,3,\dots \\
+\end{align*}
+Solve the boundary value problem. Here \( u(x,y) \) represents the steady-state
+temperature distribution in a rectangular plate, where the edges of the plate
+at \( x = 0 \) and \( x = a = \pi \) are insulated, the edge at \( y = b = 1 \)
+is held fixed at zero temperature, and the temperature along the \( y = 0 \)
+edge is given by \( 4\cos(6x)+\cos(7x) \).
+\begin{align*}
+  \triangle u &= u_{xx}+u_{yy} = 0 \quad 0<x<\pi \quad 0<y<1 \\
+  u_x(0,y) &= u_x(\pi,y) = 0 \quad 0<y<1 \\
+  u(x,1) &= 0 \quad 0<x<\pi \\
+  u(x,0) &= 4\cos(6x)+\cos(7x) \quad 0<x<\pi \\
+  E_0 &= -\frac{1}{\pi}\int_{0}^{\pi}4\cos(6x)+\cos(7x)\diff{x} \\
+  &= -\frac{1}{\pi}
+    \bigg[\frac{4\sin(6x)}{6}-\frac{\sin(7x)}{7}\bigg]_{0}^{\pi} \\
+  &= 0 \\
+  E_n &= \frac{2}{\pi\sinh(-n)}
+    \int_{0}^{\pi}(4\cos(6x)+\cos(7x))\cos(nx)\diff{x} \\
+  &= \frac{2}{\pi\sinh(-n)}\int_{0}^{\pi}2(\cos(6x-nx)+\cos(6x+nx))+
+    \frac{1}{2}(\cos(7x-nx)+\cos(7x+nx))\diff{x} \\
+  &= 0?
+\end{align*}
+
+\begin{center}
+  If you have any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
