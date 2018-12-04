@@ -184,17 +184,34 @@ equation.
 \end{align*}
 The general solution can be put in the form:
 \[ R(r) = C_nr^n+D_nr^{-n} \]
-With this, we can construct our solution for \( u_n(r,\theta) \) for
-\( n\in\N \).
+If \( R(r) \) is bounded, then we must set \( D_n = 0 \), otherwise \( r^{-n} \)
+goes to infinity as \( r \) goes to 0, which also does not make sense in the
+context of the problem.
+\[ R(r) = C_nr^n \]
+With this, we can assemble the modes and construct our solution for
+\( u_n(r,\theta) \). For \( n = 0 \):
 \begin{align*}
-  u_n(r,\theta) &= R(r)T(\theta) \\
-  &= (C_nr^n+D_nr^{-n})(A_n\cos(n\theta)+B_n\sin(n\theta))
+  u_0(r,\theta) &= R_0(r)T_0(\theta) \\
+  &= C_0B_0 \\
+  &= \frac{a_0}{2} \quad \text{renamed for convenience}
 \end{align*}
-Putting this in the form of a Fourier solution:
+For all other \( n\in\N \):
 \begin{align*}
+  u_n(r,\theta) &= R_nT_n \\
+  &= C_nr^n(A_n\cos(n\theta)+B_n\sin(n\theta)
+\end{align*}
+We rename variables to put this in the form of a Fourier Series solution:
+\begin{align*}
+  C_nA_n &= \frac{a_n}{a^n} \\
+  C_nB_n &= \frac{b_n}{a^n} \\
   u(r,\theta) &= \frac{a_0}{2}+\sum_{n=1}^{\infty}(\frac{r}{a})^n
-    (a_n\cos(n\theta)+b_n\sin(n\theta)) \\
-  u(a,\theta) &= f(\theta) \\
+    (a_n\cos(n\theta)+b_n\sin(n\theta))
+\end{align*}
+If we apply the final boundary condition:
+\begin{align*}
+  u(a,\theta) &= f(\theta) =
+    \frac{a_0}{2}+\sum_{n=1}^{\infty}(\frac{a}{a})^n
+      a_n\cos(n\theta)+b_n\sin(n\theta) \\
   &= \frac{a_0}{2}+\sum_{n=1}^{\infty}a_n\cos(n\theta)+b_n\sin(n\theta)
 \end{align*}
 This matches the form of a standard Fourier series solution.
