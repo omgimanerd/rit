@@ -216,6 +216,73 @@ If we apply the final boundary condition:
 \end{align*}
 This matches the form of a standard Fourier series solution.
 
+\subsection*{Heat Equation in 2D}
+\begin{center}
+  \begin{tikzpicture}
+    \draw[thick,->] (-1,0) -- (6,0) node[above]{\( x \)};
+    \draw[thick,->] (0,-1) -- (0,6) node[above]{\( y \)};
+    \draw (4,0) --  (4,4) -- (0,4) -- (0,0) -- (4,0);
+    \node[below] at (4,0) {\( L \)};
+    \node[left] at (0,4) {\( W \)};
+    \node[below] at (2,2) {\( u(x,y,t) \)};
+  \end{tikzpicture}
+\end{center}
+If \( u(x,y,t) \) is 0 on all four boundaries and defined by the initial
+temperature \( u(x,y,0) = f(0) \), then we have the following boundary
+value problem.
+\begin{align*}
+  u_t &= \beta\triangle u = \beta(u_{xx}+u_{yy}) \\
+  u(0,y,t) &= 0 \\
+  u(L,y,t) &= 0 \\
+  u(x,0,t) &= 0 \\
+  u(x,W,t) &= 0 \\
+  u(x,y,0) &= f(x)
+\end{align*}
+Again, we begin with separation of variables obtain ordinary differential
+equations. We will have to employ it twice here to obtain three ordinary
+differential equations.
+\begin{align*}
+  u(x,y,t) &= X(x)Y(y)T(t) \\
+  u_t &= \beta(u_{xx}+u_{yy}) \\
+  XYT' &- \beta(X''YT+XY''T) \\
+  \frac{T'}{\beta T} &= \frac{X''}{X}+\frac{Y''}{Y} = -\lambda \\
+  T'+\beta\lambda T &= 0 \\
+  \frac{X''}{X}+\frac{Y''}{Y} &= -\lambda \\
+  \frac{X''}{X} &= -\mu \quad X''+\mu X = 0 \\
+  -\frac{Y''}{Y}-\lambda &= -\mu \quad Y''+(\lambda-\mu)Y = 0
+\end{align*}
+If we substitute and solve for the boundary conditions for our ordinary
+differential equations:
+\begin{align*}
+  X(0) &= X(L) = 0 \\
+  Y(0) &= Y(W) = 0
+\end{align*}
+We've solved these eigenproblems before:
+\begin{align*}
+  \mu_m &= (\frac{m\pi}{L})^2 \quad m\in\N \\
+  X_m(x) &= c_m\sin(\frac{m\pi x}{L}) \\
+  Let: \epsilon &= \lambda-\mu \\
+  \epsilon_n &= (\frac{n\pi}{W})^2 \quad n\in\N \\
+  Y_n(y) &= a_n\sin(\frac{n\pi y}{W}) \\
+  \lambda_{mn} &= (\frac{n\pi}{W})^2+(\frac{m\pi}{L})^2 \\
+  T' &= -\beta\lambda T \\
+  T(t) &= b\e^{-\beta\lambda t} \\
+  T_{mn}(t) &= b_{mn}\e^{-\beta(\frac{m^2}{L^2}+\frac{n^2}{W^2})\pi^2t}
+\end{align*}
+We can add the modes into a superposition as the solution and apply the
+initial condition.
+\begin{align*}
+  u_{mn}(x,y,t) &= X_m(x)Y_n(y)T_{mn}(t) \\
+  u(x,y,t) &= \sum_{m=1}^{\infty}\sum_{n=1}^{\infty}u_{mn}(x,y,t) \\
+  u(x,y,0) &= f(x,y) \\
+  &= \sum_{m=1}^{\infty}\sum_{n=1}^{\infty}a_{mn}
+    \sin(\frac{m\pi x}{L})\sin(\frac{n\pi y}{W})
+\end{align*}
+This takes the form of a Double Fourier Series solution. If we solve for
+\( a_{mn} \) using the Double Fourier Series formulas:
+\[ a_{mn} = \frac{4}{LW}\int_{0}^{L}\int_{0}^{W}f(x,y)\sin(\frac{m\pi x}{L})
+  \sin(\frac{n\pi y}{W})\diff{x}\diff{y} \]
+
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
   any questions, comments, or concerns, please contact me at
