@@ -132,6 +132,158 @@ a system of equations:
   (x,y,z) &= (3,-1,2)
 \end{align*}
 
+\subsubsection*{Example}
+Here is an example of a system of linear equations with 3 equations and 3
+unknowns that has no solution.
+\begin{align*}
+  x_1-x_2+2x_3 &= 3 \\
+  x_1+2x_2-x_3 &= -3 \\
+  2x_2-2x_3 &= 1
+\end{align*}
+First we form it into an augmented matrix.
+\[ \begin{bmatrix}
+  1 & -1 & 2 & 3 \\
+  1 & 2 & -1 & -3 \\
+  0 & 2 & -2 & 1
+\end{bmatrix} \]
+For our first row reduction, we will pivot off the first row by subtracting it
+from the second row.
+\[ \begin{bmatrix}
+  1 & -1 & 2 & 3 \\
+  0 & 3 & -3 & -6 \\
+  0 & 2 & -2 & 1
+\end{bmatrix} \]
+For simplicity, we will divide the second row by 3.
+\[ \begin{bmatrix}
+  1 & -1 & 2 & 3 \\
+  0 & 1 & -1 & -2 \\
+  0 & 2 & -2 & 1
+\end{bmatrix} \]
+Our goal is to obtain an upper triangular matrix, so we can try performing
+\( R_3-2R_1 \) and placing it back in \( R_3 \).
+\[ \begin{bmatrix}
+  1 & -1 & 2 & 3 \\
+  0 & 1 & -1 & -2 \\
+  0 & 0 & 0 & 5
+\end{bmatrix} \]
+With the matrix in row-echelon form, we can conclude that there is no solution,
+because our third row will translate to \( 0x_1+0x_2+0x_3 = 5 \). This system
+of linear equations is inconsistent. \par
+If we rewrite the system of linear equations as an equation with matrices, we
+can reintroduce some ideas.
+\begin{align*}
+  A\vec{x} &= \vec{b} \\
+  \begin{bmatrix}
+    1 & -1 & 2 \\
+    1 & 2 & -1 \\
+    0 & 2 & -2
+  \end{bmatrix}\begin{bmatrix}
+    x_1 \\ x_2 \\ x_3
+  \end{bmatrix} &= \begin{bmatrix}
+    3 \\ -3 \\ 1
+  \end{bmatrix} \\
+  x_1\begin{bmatrix}1 \\ 1 \\ 0\end{bmatrix}+
+    x_2\begin{bmatrix}-1 \\ 2 \\ 2\end{bmatrix}+
+    x_3\begin{bmatrix}2 \\ -1 \\ -2\end{bmatrix} &=
+  \begin{bmatrix}3 \\ -3 \\ 1\end{bmatrix}
+\end{align*}
+The right hand side of the equation cannot be expressed as a linear combination
+of the columns of \( A \). In general, \(
+span\{\vec{v_1},\vec{v_2},\dots,\vec{v_k} \) is the set of all linear
+combinations \( c_1\vec{v_1}+c_2\vec{v_2}+\dots+c_k\vec{v_k} \). In this
+example, the right hand side is not in the span of the column vectors.
+
+\subsubsection*{Example}
+Here is an example of 3 equations with 4 unknowns that have infinite solutions.
+\begin{align*}
+  w-x-y+2x &= 1 \\
+  2x-2x-y+3z &= 3 \\
+  -w+x-y &= -3
+\end{align*}
+Again, we form it into an augmented matrix.
+\[ \begin{bmatrix}
+  1 & -1 & -1 & 2 & 1 \\
+  2 & -2 & -1 & 3 & 3 \\
+  -1 & 1 & -1 & 0 & -3
+\end{bmatrix} \]
+Pivoting off the first row, we will perform \( R_2-2R_1 \) and replace \( R_2 \)
+with the result. We will then perform \( R_3+R_1 \) and replace \( R_3 \) with
+the result.
+\[ \begin{bmatrix}
+  1 & -1 & -1 & 2 & 1 \\
+  0 & 0 & 1 & -1 & 1 \\
+  0 & 0 & -2 & 2 & -2
+\end{bmatrix} \]
+We can now attempt to pivot off the second row and perform \( R_3+2R_2 \),
+replacing \( R_3 \) with the result.
+\[ \begin{bmatrix}
+  1 & -1 & -1 & 2 & 1 \\
+  0 & 0 & 1 & -1 & 1 \\
+  0 & 0 & 0 & 0 & 0
+\end{bmatrix} \]
+This matrix is now in row-echelon form. We can go one step further and put it
+into reduced row-echelon form. We can do this by performing \( R_1+R_2 \) and
+replacing \( R_1 \) with the result.
+\[ \begin{bmatrix}
+  1 & -1 & 0 & 1 & 2 \\
+  0 & 0 & 1 & -1 & 1 \\
+  0 & 0 & 0 & 0 & 0
+\end{bmatrix} \]
+In terms of equations, this matrix tells us the following:
+\begin{align*}
+  w-x+z &= 2 \\
+  y-z &= 1
+\end{align*}
+Two equations is only enough to constrain two variables, which means we have two
+unconstrained variables. If we arbitrarily pick \( w \) and \( y \) as our
+constrained variables, we can rewrite our equations in terms of our free
+variables.
+\begin{align*}
+  x &= s \quad z = t \\
+  \begin{bmatrix}w \\ x \\ y \\ z\end{bmatrix} &=
+    \begin{bmatrix}
+      2+s-t \\
+      s \\
+      1+t \\
+      t
+    \end{bmatrix} \quad -\infty<s,t<\infty \\
+\end{align*}
+Going further, we can rewrite our solution space into a parameterized matrix
+equation.
+\[ \begin{bmatrix}w \\ x \\ y \\ z\end{bmatrix} =
+  \begin{bmatrix}2 \\ 0 \\ 1 \\ 0\end{bmatrix}+
+  s\begin{bmatrix}1 \\ 1 \\ 0 \\ 0\end{bmatrix}+
+  t\begin{bmatrix}-1 \\ 0 \\ 1 \\ 1\end{bmatrix} \]
+We can see from this parameterization that our solution space is a two parameter
+infinite set spanned by two vectors in \( \R^4 \). Our coefficient matrix
+\( A \) was a \( 3\times4 \) matrix. We can compute the rank of \( A \) by
+counting the number of nonzero rows in its reduced row-echelon form, which is
+2. The rank is analogous to the number of constrained equations that we have,
+which is also equal to the number of constrained variables. \par
+
+\subsubsection*{Rank-Nullity Theorem}
+If \( n \) is the number of variables in the system (also the number of columns
+in \( A \)), it is equal to the sum of the rank of \( A \) (constrained
+variables) and the number of free variables. The number of free variables is
+also known as the nullity of \( A \).
+
+\subsubsection*{Null Space}
+The null space of \( A \) is the subspace of \( \R^n \) consisting of solutions
+to \( A\vec{x} = \vec{0} \) and is denoted by \( null(A) \). To compute the
+null space of the above problem, we can replace \( \vec{b} \) with \( \vec{0} \)
+and compute the reduced row-echelon form. This comes out to be
+\[ \begin{bmatrix}
+  1 & -1 & 0 & 1 & 0 \\
+  0 & 0 & 1 & -1 & 0 \\
+  0 & 0 & 0 & 0 & 0
+\end{bmatrix} \]
+We can rewrite this into a parameterized matrix equation.
+\[ \begin{bmatrix}w \\ x \\ y \\ z\end{bmatrix} =
+  s\begin{bmatrix}1 \\ 1 \\ 0 \\ 0\end{bmatrix}+
+  t\begin{bmatrix}-1 \\ 0 \\ 1 \\ 1\end{bmatrix} \]
+This comes out to the same form as our solution space. Our null space is just
+the span of the two vectors in \( \R^4 \).
+
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
   any questions, comments, or concerns, please contact me at
