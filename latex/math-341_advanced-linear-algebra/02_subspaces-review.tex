@@ -1,0 +1,140 @@
+\documentclass{math}
+
+\title{Advanced Linear Algebra}
+\author{Alvin Lin}
+\date{January 2019 - May 2019}
+
+\begin{document}
+
+\maketitle
+
+\section*{Subspaces Review}
+Suppose we have the following:
+\[ A\vec{x} = \vec{b} \]
+We can represent the following in matrix form as:
+\begin{align*}
+  \begin{bmatrix}
+    \vec{a_1} & \vec{a_2} & \dots & \vec{a_n}
+  \end{bmatrix}\begin{bmatrix}
+    x_1 \\ x_2 \\ \vdots x_n
+  \end{bmatrix} &= \begin{bmatrix}
+    b_1 \\ b_2 \\ \vdots b_n
+  \end{bmatrix} \\
+  x_1\vec{a_1}+x_2\vec{a_2}+\dots+x_n\vec{a_n} &= \vec{b}
+\end{align*}
+The span of the columns of \( A \) (all linear combinations of the columns)
+is known as the column space of \( A \), while the span of the rows of \( A \)
+(all linear combinations of the rows) is known as the row space. The system is
+consistent if \( \vec{b} \) is in the column space of \( A \).
+
+\subsubsection*{Example}
+Find the row space, column space, and null space of \( A \).
+\[ A = \begin{bmatrix}
+  1 & 1 & 3 & 1 & 6 \\
+  2 & -1 & 0 & 1 & -1 \\
+  -3 & 2 & 1 & -2 & 1 \\
+  4 & 1 & 6 & 1 & 3
+\end{bmatrix} \]
+The first step is to put the matrix into reduced row echelon form. For
+simplicity, we will skip the row operation steps.
+\begin{align*}
+  rref(A) &= \begin{bmatrix}
+    1 & 0 & 1 & 0 & -1 \\
+    0 & 1 & 2 & 0 & 3 \\
+    0 & 0 & 0 & 1 & 4 \\
+    0 & 0 & 0 & 0 & 0
+  \end{bmatrix} \\
+  row(A) &= span\left\{
+    \begin{bmatrix}1 \\ 0 \\ 1 \\ 0 \\ -1\end{bmatrix},
+    \begin{bmatrix}0 \\ 1 \\ 2 \\ 0 \\ 3\end{bmatrix},
+    \begin{bmatrix}0 \\ 0 \\ 0 \\ 1 \\ 4\end{bmatrix}
+  \right\} \\
+  col(A) &= span\left\{
+    \begin{bmatrix}1 \\ 2 \\ -3 \\ 4\end{bmatrix},
+    \begin{bmatrix}1 \\ -1 \\ 2 \\ 1\end{bmatrix},
+    \begin{bmatrix}1 \\ 1 \\ -2 \\ 1\end{bmatrix}
+  \right\}
+\end{align*}
+The row space of \( A \) is determined by the span of the nonzero rows. The
+column space of \( A \) is determined by the span of the original columns which
+correspond to columns with leading ones in reduced row echelon form. This
+involves the first, second, and fourth columns. We can justify this by showing
+that the third and fifth columns are linear combinations of the others. We need
+the null space of \( A \) in order to determine this.
+\begin{align*}
+  null(A) &: A\vec{x} = \vec{0} \\
+  &: x_1\vec{a_1}+x_2\vec{a_2}+\dots+x_n\vec{a_n} = \vec{0} \\
+\end{align*}
+We can compute the reduced row echelon form of the augmented matrix (taking
+\( \vec{b} = \vec{0} \)).
+\[ \begin{bmatrix}
+  1 & 1 & 3 & 1 & 6 & 0 \\
+  2 & -1 & 0 & 1 & -1 & 0 \\
+  -3 & 2 & 1 & -2 & 1 & 0 \\
+  4 & 1 & 6 & 1 & 3 & 0
+\end{bmatrix} \to \begin{bmatrix}
+  1 & 0 & 1 & 0 & -1 & 0 \\
+  0 & 1 & 2 & 0 & 3 & 0 \\
+  0 & 0 & 0 & 1 & 4 & 0 \\
+  0 & 0 & 0 & 0 & 0 & 0
+\end{bmatrix} \]
+We can rewrite our null space as a system of equations.
+\begin{align*}
+  x_1+x_3-x_5 &= 0 \\
+  x_2+2x_3+3x_5 &= 0 \\
+  x_4+4x_5 &= 0
+\end{align*}
+If we let \( x_3 = s, x_5 = t \), we can write our null space as a span of
+two vectors.
+\begin{align*}
+  \begin{bmatrix}x_1 \\ x_2 \\ x_3 \\ x_4 \\ x_5\end{bmatrix} &=
+    s\begin{bmatrix}-1 \\ -2 \\ 1 \\ 0 \\ 0\end{bmatrix}+
+    t\begin{bmatrix}1 \\ -3 \\ 0 \\ -4 \\ 1\end{bmatrix},
+      \quad \infty<s,t<\infty \\
+  null(A) &= span\left\{
+    \begin{bmatrix}-1 \\ -2 \\ 1 \\ 0 \\ 0\end{bmatrix},
+    \begin{bmatrix}1 \\ -3 \\ 0 \\ -4 \\ 1\end{bmatrix}
+  \right\}
+\end{align*}
+The entries in the null space represent the column dependencies of \( A \) and
+the reduced row echelon form of \( A \).
+\[ A\vec{x} = \vec{0} \quad\forall\quad \vec{x}\in null(A) \]
+The entries in the null space describe how we can represent the third and fifth
+column as linear combinations of the others.
+\begin{align*}
+  \begin{bmatrix}-1 \\ -2 \\ 1 \\ 0 \\ 0\end{bmatrix} &\to
+    -\vec{x_1}-2\vec{x_2}+\vec{x_3} = \vec{0} \\
+  & -\vec{x_1}-2\vec{x_1} = \vec{x_3} \\
+  \begin{bmatrix}1 \\ -3 \\ 0 \\ -4 \\ 1\end{bmatrix} &\to
+    \vec{x_1}-3\vec{x_2}-4\vec{x_4}+\vec{x_5} = \vec{0} \\
+  & \vec{x_1}-3\vec{x_2}-4\vec{x_4} = -\vec{x_5}
+\end{align*}
+The dimensionality of the null space is known as the nullity of \( A \). In this
+case, \( dim(null(A)) = 2 \). Another surprising fact is that the the row space
+is orthogonal to the null space.
+\begin{align*}
+  \begin{bmatrix}\vec{r_1} \\ \vec{r_2} \\ \vdots \\ \vec{r_m}\end{bmatrix}
+    \begin{bmatrix}x_1 \\ x_2 \\ \vdots \\ x_n\end{bmatrix} &=
+    \begin{bmatrix}0 \\ 0 \\ \vdots \\ 0\end{bmatrix} \\
+  \begin{bmatrix}
+    \vec{r_1}\cdot\vec{x} \\
+    \vec{r_2}\cdot\vec{x} \\
+    \vdots \\
+    \vec{r_m}\cdot\vec{x}
+  \end{bmatrix} &= \begin{bmatrix}0 \\ 0 \\ \vdots \\ 0\end{bmatrix}
+\end{align*}
+If \( \vec{x} \) is in the null space, then it must be perpendicular to the
+rows, and therefore it must be perpendicular to the row space of \( A \).
+\begin{align*}
+  row(A) &= span\left\{\vec{r_1},\vec{r_2},\dots,\vec{r_n}\right\} \\
+  null(A) &= \left\{\vec{x}\mid A\vec{x} = \vec{0}\right\} \\
+  row(A) &\bot null(A)
+\end{align*}
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
