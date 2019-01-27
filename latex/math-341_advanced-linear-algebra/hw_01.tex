@@ -1,0 +1,617 @@
+\documentclass{math}
+
+\geometry{letterpaper, margin=0.5in}
+
+\title{Advanced Linear Algebra: Homework 1}
+\author{Alvin Lin}
+\date{August 2016 - December 2016}
+
+\begin{document}
+
+\maketitle
+
+\subsubsection*{Question 1}
+Refer to the vectors below.
+\[ \vec{b} = [4,2,1] \quad \vec{c} = [1,-3,1] \quad \vec{d} = [-1,-1,-2] \]
+Compute the indicated vector.
+\begin{align*}
+  3\vec{b}-2\vec{c}+\vec{d} &= [12,6,3]-[2,-6,2]+[-1,-1,-2] \\
+  &= [9,11,-1]
+\end{align*}
+
+\subsubsection*{Question 2}
+\begin{align*}
+  \vec{u} &= \bigg[\cos(\frac{\pi}{3}),\sin(\frac{\pi}{3})\bigg] \\
+  \vec{v} &= \bigg[-\cos(\frac{\pi}{6}),-\sin(\frac{\pi}{6})\bigg] \\
+  \vec{u}+\vec{v} &= \bigg[\cos(\frac{\pi}{3})-\cos(\frac{\pi}{6}),
+    \sin(\frac{\pi}{3})-\sin(\frac{\pi}{6})\bigg] \\
+  \vec{u}-\vec{v} &= \bigg[\cos(\frac{\pi}{3})+\cos(\frac{\pi}{6}),
+    \sin(\frac{\pi}{3})+\sin(\frac{\pi}{6})\bigg]
+\end{align*}
+
+\subsubsection*{Question 3}
+Find the projection of \( \vec{v} \) onto \( \vec{u} \).
+\[ \vec{u} = \begin{bmatrix}\frac{1}{2} \\ -\frac{1}{4} \\
+  -\frac{1}{2}\end{bmatrix} \quad\
+  \vec{v} = \begin{bmatrix}4 \\ 4 \\ -4\end{bmatrix} \]
+\begin{align*}
+  proj_{\vec{u}}(\vec{v}) &=
+    \frac{\vec{u}\cdot\vec{v}}{\vec{u}\cdot\vec{u}}\vec{u} \\
+  &= \frac{2-1+2}{\frac{1}{4}+\frac{1}{16}+\frac{1}{4}}\begin{bmatrix}
+    \frac{1}{2} \\ -\frac{1}{4} \\ -\frac{1}{2}
+  \end{bmatrix} \\
+  &= \frac{3}{\frac{9}{16}}\begin{bmatrix}
+    \frac{1}{2} \\ -\frac{1}{4} \\ -\frac{1}{2}
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    \frac{8}{3} \\
+    -\frac{4}{3} \\
+    -\frac{8}{3} \\
+  \end{bmatrix}
+\end{align*}
+
+\subsubsection*{Question 4}
+Find \( \vec{u}\cdot\vec{v} \).
+\begin{align*}
+  \vec{u} &= \begin{bmatrix}3 \\ 1 \\ 2\end{bmatrix} \\
+  \vec{v} &= \begin{bmatrix}3 \\ 2 \\ 1\end{bmatrix} \\
+  \vec{u}\cdot\vec{v} &= (3)(3)+(1)(2)+(2)(1) = 13
+\end{align*}
+
+\subsubsection*{Question 5}
+Find \( \|\vec{u}\| \) for the given vector.
+\begin{align*}
+  \vec{u} &= \begin{bmatrix}3 \\ 4 \\ 1\end{bmatrix} \\
+  \|\vec{u}\| &= \sqrt{(3)(3)+(4)(4)+(1)(1)} = \sqrt{26}
+\end{align*}
+Give a unit vector in the direction of \( \vec{u} \).
+\[ \frac{\vec{u}}{\|\vec{u}\|} = \begin{bmatrix}
+  \frac{3}{\sqrt{26}} \\ \frac{4}{\sqrt{26}} \\
+  \frac{1}{\sqrt{26}}\end{bmatrix} \]
+
+\subsubsection*{Question 6}
+Find the angle between \( \vec{u} \) and \( \vec{v} \).
+\begin{align*}
+  \vec{u} &= [4,3,-1] \quad \vec{v} = [1,-1,1] \\
+  \cos\theta &= \frac{\vec{u}\cdot\vec{v}}{\|\vec{u}\|\|\vec{v}\|} \\
+  \theta &= \arccos(\frac{4-3-1}{(16+9+1)(1+1+1)}) \\
+  &= \arccos(0) = \frac{\pi}{2}
+\end{align*}
+
+\subsubsection*{Question 7}
+Find the angle between \( \vec{u} \) and \( \vec{v} \).
+\begin{align*}
+  \vec{u} &= [0.9,1.9,1.2] \quad \vec{v} = [-4.5,2.4,-0.8] \\
+  \cos\theta &= \frac{\vec{u}\cdot\vec{v}}{\|\vec{u}\|\|\vec{v}\|} \\
+  \theta &= \arccos(\frac{-4.05+4.56-0.96}
+    {\sqrt{0.81+3.61+1.44}\sqrt{20.25+5.76+0.64}}) \\
+  &= \arccos(\frac{-0.45}{(2.42)(5.16)}) \approx 92.06^{\circ}
+\end{align*}
+
+\subsubsection*{Question 8}
+Find all values of the scalar \( k \) for which the two vectors are orthogonal.
+\begin{align*}
+  \vec{u} &= \begin{bmatrix}1 \\ -1 \\ 3\end{bmatrix} \\
+  \vec{v} &= \begin{bmatrix}k^2 \\ k \\ -4\end{bmatrix} \\
+  \vec{u}\cdot\vec{v} &= 0 \\
+  k^2-k-12 &= 0 \\
+  (k-4)(k+3) &= 0 \\
+  k &= 4,-3
+\end{align*}
+
+\subsubsection*{Question 9}
+Write the equation of the line passing through \( P \) with direction vector
+\( \vec{d} \) in vector form and parametric form.
+\[ P = (5,0,-3) \quad \vec{d} = \begin{bmatrix}3 \\ 2 \\ 0\end{bmatrix} \]
+\[ \begin{bmatrix}x \\ y \\ z\end{bmatrix} =
+  \begin{bmatrix}5 \\ 0 \\ -3\end{bmatrix}+
+  t\begin{bmatrix}3 \\ 2 \\ 0\end{bmatrix} \]
+\begin{align*}
+  x &= 5+3t \\
+  y &= 2t \\
+  z &= -3
+\end{align*}
+
+\subsubsection*{Question 10}
+Write the equation of the plane passing through \( P \) with normal vector
+\( \vec{n} \) in normal form and general form.
+\[ P = (0,1,0) \quad \vec{n} = \begin{bmatrix}3 \\ 4 \\ 1\end{bmatrix} \]
+\[ \begin{bmatrix}3 \\ 4 \\ 1\end{bmatrix}\cdot\left(
+  \begin{bmatrix}x \\ y \\ z\end{bmatrix}-
+  \begin{bmatrix}0 \\ 1 \\ 0\end{bmatrix}
+\right) = 0 \]
+\begin{align*}
+  3x+4(y-1)+z &= 0 \\
+  3x+4y+z &= -4
+\end{align*}
+
+\subsubsection*{Question 11}
+Write the equation of the plane passing through \( P \) with direction vectors
+\( \vec{u} \) and \( \vec{v} \) in vector form and parametric form.
+\[ P = (0,0,0) \quad \vec{u} = \begin{bmatrix}3 \\ 1 \\ 3\end{bmatrix} \quad
+  \vec{v} = \begin{bmatrix}-4 \\ 3 \\ 1\end{bmatrix} \]
+\[ \begin{bmatrix}x \\ y \\ z\end{bmatrix} =
+  \begin{bmatrix}0 \\ 0 \\ 0\end{bmatrix}+
+  s\begin{bmatrix}3 \\ 1 \\ 3\end{bmatrix}+
+  t\begin{bmatrix}-4 \\ 3 \\ 1\end{bmatrix} \]
+\begin{align*}
+  x &= 3s-4t \\
+  y &= s+3t \\
+  z &= 3s+t
+\end{align*}
+
+\subsubsection*{Question 12}
+Given the vector equation of the line passing through \( P \) and \( Q \).
+\[ P = (0,1,-1) \quad (-4,1,6) \]
+\begin{align*}
+  P-Q &= \begin{bmatrix}4 \\ 0 \\ -7\end{bmatrix} \\
+  \vec{x} &= \begin{bmatrix}0 \\ 1 \\ -1\end{bmatrix}+
+    t\begin{bmatrix}4 \\ 0 \\ -7\end{bmatrix} \\
+\end{align*}
+
+\subsubsection*{Question 13}
+Find the normal form of the equation of the plane that passes through
+\( P = (0,-2,5) \) and is parallel to the plane with general equation
+\( 4x-y+5z = 3 \).
+\begin{align*}
+  \vec{n} &= \begin{bmatrix}4 \\ -1 \\ 5\end{bmatrix} \\
+  \vec{n}\cdot\begin{bmatrix}0 \\ -2 \\ 5\end{bmatrix} &= 27 \\
+  \begin{bmatrix}4 \\ -1 \\ 5\end{bmatrix}\cdot
+    \begin{bmatrix}x \\ y \\ z\end{bmatrix} &= 27
+\end{align*}
+
+\subsubsection*{Question 14}
+Solve the given system by back substitution.
+\begin{align*}
+  x-3y+z &= 5 \\
+  y-2z &= -1 \\
+  y &= -1+2z \\
+  x-3(-1+2z)+z &= 5 \\
+  x+3-6z+z &= 5 \\
+  x &= 2+5z \\
+  z &= s \\
+  x &= 2+5s \\
+  y &= -1+2s
+\end{align*}
+
+\subsubsection*{Question 15}
+Find a system of linear equations that has the given matrix as its augmented
+matrix.
+\[ \begin{bmatrix}
+  0 & 1 & 1 & 1 \\
+  1 & -1 & 0 & 1 \\
+  4 & -1 & 1 & 1
+\end{bmatrix} \]
+\begin{align*}
+  y+z &= 1 \\
+  x-y &= 1 \\
+  4x-y+z &= 1
+\end{align*}
+
+\subsubsection*{Question 16}
+Solve the linear system.
+\begin{align*}
+  -2x_1+3x_2-x_3 &= 1 \\
+  x_1+x_3 &= 0 \\
+  -x_1+2x_2-2x_3 &= 0
+\end{align*}
+\begin{align*}
+  \begin{bmatrix}
+    -2 & 3 & -1 & 1 \\
+    1 & 0 & 1 & 0 \\
+    -1 & 2 & -2 & 0
+  \end{bmatrix} &\to \begin{bmatrix}
+    -2 & 3 & -1 & 1 \\
+    1 & 0 & 1 & 0 \\
+    0 & 2 & -1 & 0
+  \end{bmatrix} \\
+  &\to \begin{bmatrix}
+    0 & 3 & 1 & 1 \\
+    1 & 0 & 1 & 0 \\
+    0 & 2 & -1 & 0
+  \end{bmatrix} \\
+  &\to \begin{bmatrix}
+    1 & 0 & 1 & 0 \\
+    0 & 3 & 1 & 1 \\
+    0 & 1 & -\frac{1}{2} & 0
+  \end{bmatrix} \\
+  &\to \begin{bmatrix}
+    1 & 0 & 1 & 0 \\
+    0 & 0 & \frac{5}{2} & 1 \\
+    0 & 1 & -\frac{1}{2} & 0
+  \end{bmatrix} \\
+  &\to \begin{bmatrix}
+    1 & 0 & 1 & 0 \\
+    0 & 1 & -\frac{1}{2} & 0 \\
+    0 & 0 & 1 & \frac{2}{5}
+  \end{bmatrix} \\
+  &\to \begin{bmatrix}
+    1 & 0 & 0 & -\frac{2}{5} \\
+    0 & 1 & 0 & \frac{1}{5} \\
+    0 & 0 & 1 & \frac{2}{5}
+  \end{bmatrix} \\
+  \begin{bmatrix}x \\ y \\ z\end{bmatrix} &= \begin{bmatrix}
+    -\frac{2}{5} \\ \frac{1}{5} \\ \frac{2}{5}\end{bmatrix}
+\end{align*}
+
+\subsubsection*{Question 17}
+Solve the linear system.
+\begin{align*}
+  a-2b+d &= 3 \\
+  -a+b-c-4d &= 1
+\end{align*}
+\begin{align*}
+  \begin{bmatrix}
+    1 & -2 & 0 & 1 & 3 \\
+    -1 & 1 & -1 & -4 & 1
+  \end{bmatrix} &\to \begin{bmatrix}
+    1 & -2 & 0 & 1 & 3 \\
+    0 & -1 & -1 & -3 & 4
+  \end{bmatrix} \\
+  &\to \begin{bmatrix}
+    1 & 0 & 2 & 7 & -5 \\
+    0 & -1 & -1 & -3 & 4
+  \end{bmatrix} \\
+  &\to \begin{bmatrix}
+    1 & 0 & 2 & 7 & -5 \\
+    0 & 1 & 1 & 3 & -4
+  \end{bmatrix} \\
+  c &= s \quad d = t \\
+  a+2c+7d &= -5 \\
+  a &= -5-2c-7d \\
+  b+c+3d &= -4 \\
+  b &= -4-c-3d
+\end{align*}
+
+\subsubsection*{Question 18}
+Determine whether the given matrix is in row echelon form.
+\[ \begin{bmatrix}
+  1 & 0 & 1 \\
+  0 & 0 & 4 \\
+  0 & 1 & 0
+\end{bmatrix} \]
+The matrix is not in row echelon form.
+
+\subsubsection*{Question 19}
+Determine whether the given matrix is in row echelon form.
+\[ \begin{bmatrix}
+  0 & 1 & 4 & 9 \\
+  0 & 0 & 0 & 1
+\end{bmatrix} \]
+The matrix is in row echelon form and reduced row echelon form.
+
+\subsubsection*{Question 20}
+Use elementary row operations to reduce the given matrix to row echelon form
+and reduced row echelon form.
+\[ \begin{bmatrix}
+  0 & 0 & 1 \\
+  0 & 1 & 1 \\
+  1 & 1 & 1
+\end{bmatrix} \]
+\[ REF = \begin{bmatrix}
+  1 & 1 & 1 \\
+  0 & 1 & 1 \\
+  0 & 0 & 1
+\end{bmatrix} \]
+\[ RREF = \begin{bmatrix}
+  1 & 0 & 0 \\
+  0 & 1 & 0 \\
+  0 & 0 & 1
+\end{bmatrix} \]
+
+\subsubsection*{Question 21}
+Use elementary row operations to reduce the given matrix to row echelon form
+and reduced row echelon form.
+\[ \begin{bmatrix}
+  -2 & -4 & 9 \\
+  -4 & -8 & 17 \\
+  1 & 2 & -4
+\end{bmatrix} \]
+\begin{align*}
+  \begin{bmatrix}
+    -2 & -4 & 9 \\
+    -4 & -8 & 17 \\
+    1 & 2 & -4
+  \end{bmatrix} &\to \begin{bmatrix}
+    0 & 0 & 1 \\
+    -4 & -8 & 17 \\
+    1 & 2 & -4
+  \end{bmatrix} \\
+  &\to \begin{bmatrix}
+    0 & 0 & 1 \\
+    0 & 0 & 1 \\
+    1 & 2 & -4
+  \end{bmatrix} \\
+  &\to \begin{bmatrix}
+    1 & 2 & -4 \\
+    0 & 0 & 1 \\
+    0 & 0 & 0
+  \end{bmatrix} (REF) \\
+  &\to \begin{bmatrix}
+    1 & 2 & 0 \\
+    0 & 0 & 1 \\
+    0 & 0 & 0
+  \end{bmatrix} (RREF) \\
+\end{align*}
+
+\subsubsection*{Question 22}
+What is the rank of each of the matrices below?
+\begin{align*}
+  \begin{bmatrix}
+    1 & 0 & 1 \\
+    0 & 0 & 4 \\
+    0 & 1 & 0
+  \end{bmatrix} & 3 \\
+  \begin{bmatrix}
+    8 & 0 & 1 & 0 \\
+    0 & 1 & -1 & 5 \\
+    0 & 0 & 0 & 0
+  \end{bmatrix} & 2 \\
+  \begin{bmatrix}
+    0 & 1 & 4 & 0 \\
+    0 & 0 & 0 & 1
+  \end{bmatrix} & 2 \\
+  \begin{bmatrix}
+    0 & 0 & 0 \\
+    0 & 0 & 0 \\
+    0 & 0 & 0
+  \end{bmatrix} & 0 \\
+  \begin{bmatrix}
+    1 & 0 & 4 & -5 & 0 \\
+    0 & 0 & 0 & 0 & 0 \\
+    0 & 1 & 6 & 0 & 1
+  \end{bmatrix} & 2 \\
+  \begin{bmatrix}
+    0 & 0 & 1 \\
+    0 & 1 & 0 \\
+    1 & 0 & 0
+  \end{bmatrix} & 3 \\
+  \begin{bmatrix}
+    1 & 2 & 4 \\
+    1 & 0 & 0 \\
+    0 & 1 & 1 \\
+    0 & 0 & 1
+  \end{bmatrix} & 3 \\
+  \begin{bmatrix}
+    2 & 1 & 4 & 6 \\
+    0 & 0 & 1 & -1 \\
+    0 & 0 & 0 & 4 \\
+    0 & 0 & 0 & 0
+  \end{bmatrix} & 3
+\end{align*}
+
+\subsubsection*{Question 23}
+Solve the given system of equations using either Gaussian or Gauss-Jordan
+elimination.
+\begin{align*}
+  x_1+2x_2-3x_3 &= 13 \\
+  3x_1-x_2+x_3 &= 0 \\
+  4x_1-x_2+x_3 &= 2
+\end{align*}
+\begin{align*}
+  \begin{bmatrix}
+    1 & 2 & -3 & 13 \\
+    3 & -1 & 1 & 0 \\
+    4 & -1 & 1 & 2
+  \end{bmatrix} &\to \begin{bmatrix}
+    1 & 2 & -3 & 13 \\
+    0 & -7 & 10 & -39 \\
+    4 & -1 & 1 & 2
+  \end{bmatrix} \\
+  &\to \begin{bmatrix}
+    1 & 2 & -3 & 13 \\
+    0 & -7 & 10 & -39 \\
+    0 & -9 & 13 & -50
+  \end{bmatrix} \\
+  &\to \begin{bmatrix}
+    1 & 2 & -3 & 13 \\
+    0 & 1 & \frac{-10}{7} & \frac{39}{7} \\
+    0 & -9 & 13 & -50
+  \end{bmatrix} \\
+  &\to \begin{bmatrix}
+    1 & 2 & -3 & 13 \\
+    0 & 1 & \frac{-10}{7} & \frac{39}{7} \\
+    0 & 0 & \frac{1}{7} & \frac{1}{7} \\
+  \end{bmatrix} \\
+  &\to \begin{bmatrix}
+    1 & 2 & -3 & 13 \\
+    0 & 1 & \frac{-10}{7} & \frac{39}{7} \\
+    0 & 0 & 1 & 1 \\
+  \end{bmatrix} \\
+  &\to \begin{bmatrix}
+    1 & 2 & -3 & 13 \\
+    0 & 1 & 0 & \frac{49}{7} \\
+    0 & 0 & 1 & 1 \\
+  \end{bmatrix} \\
+  &\to \begin{bmatrix}
+    1 & 2 & -3 & 13 \\
+    0 & 1 & 0 & 7 \\
+    0 & 0 & 1 & 1 \\
+  \end{bmatrix} \\
+  &\to \begin{bmatrix}
+    1 & 0 & -3 & -1 \\
+    0 & 1 & 0 & 7 \\
+    0 & 0 & 1 & 1 \\
+  \end{bmatrix} \\
+  &\to \begin{bmatrix}
+    1 & 0 & 0 & 2 \\
+    0 & 1 & 0 & 7 \\
+    0 & 0 & 1 & 1 \\
+  \end{bmatrix} \\
+\end{align*}
+
+\subsubsection*{Question 24}
+Solve the given system of equations using either Gaussian or Gauss-Jordan
+elimination.
+\begin{align*}
+  -x_1+4x_2-2x_3+4x_4 &= 0 \\
+  2x_1-8x_2+x_3-2x_4 &= -3 \\
+  x_1-4x_2+4x_3-8x_4 &= 2
+\end{align*}
+\[ \begin{bmatrix}
+  -1 & 4 & -2 & 4 & 0 \\
+  2 & -8 & 1 & -2 & -3 \\
+  1 & -4 & 4 & -8 & 2
+\end{bmatrix} \to \begin{bmatrix}
+  1 & -4 & 0 & 0 & -2 \\
+  0 & 0 & 1 & -2 & 1 \\
+  0 & 0 & 0 & 0 & 0
+\end{bmatrix} \]
+\begin{align*}
+  x_1-4x_2 &= -2 \\
+  x_3-2x_4 &= 1 \\
+  x_2 &= s \quad x_4 = t \\
+  x_1 &= -2+4s \\
+  x_3 &= 1+2t
+\end{align*}
+
+\subsubsection*{Question 25}
+Solve the given system of equations using either Gaussian or Gauss-Jordan
+elimination.
+\begin{align*}
+  \frac{1}{2}x_1+x_2-x_3-6x_4 &= 2 \\
+  \frac{1}{6}x_1+\frac{1}{2}x_2-3x_4+x_5 &= -1 \\
+  \frac{1}{3}x_1-2x_3-4x_5 &= 8
+\end{align*}
+\[ \begin{bmatrix}
+  \frac{1}{2} & 1 & -1 & -6 & 0 & 2 \\
+  \frac{1}{6} & \frac{1}{2} & 0 & -3 & 1 & -1 \\
+  \frac{1}{3} & 0 & -2 & 0 & -4 & 8
+\end{bmatrix} \to \begin{bmatrix}
+  1 & 0 & -6 & 0 & -12 & 24 \\
+  0 & 1 & 2 & -6 & 6 & -10 \\
+  0 & 0 & 0 & 0 & 0 & 0
+\end{bmatrix} \]
+\begin{align*}
+  x_1-6x_3-12x_5 &= 24 \\
+  x_2+2x_3-6x_4+6x_5 &= -10 \\
+  x_3 &= r \quad x_4 = s \quad x_5 = t \\
+  x_1 &= 24+6r+12t \\
+  x_2 &= -10-2r+6s-6t
+\end{align*}
+
+\subsubsection*{Question 26}
+Solve the given system of equations using either Gaussian or Gauss-Jordan
+elimination.
+\begin{align*}
+  w+x+2y+z &= 1 \\
+  w-x-y+z &= 0 \\
+  x+y &= -1 \\
+  w+x+z &= 4
+\end{align*}
+\[ \begin{bmatrix}
+  1 & 1 & 2 & 1 & 1 \\
+  1 & -1 & -1 & 1 & 0 \\
+  0 & 1 & 1 & 0 & -1 \\
+  1 & 1 & 0 & 1 & 4
+\end{bmatrix} \]
+No solution.
+
+\subsubsection*{Question 27}
+Use elementary row operations to reduce the given matrix to row echelon form
+and reduced row echelon form.
+\begin{align*}
+  \begin{bmatrix}
+    -2 & 6 & -7 \\
+    3 & -9 & 10 \\
+    -6 & 18 & -19
+  \end{bmatrix} &\to \begin{bmatrix}
+    -2 & 6 & -7 \\
+    3 & -9 & 10 \\
+    0 & 0 & 1
+  \end{bmatrix} \\
+  &\to \begin{bmatrix}
+    -1 & 3 & -\frac{7}{2} \\
+    3 & -9 & 10 \\
+    0 & 0 & 1
+  \end{bmatrix} \\
+  &\to \begin{bmatrix}
+    -1 & 3 & -\frac{7}{2} \\
+    0 & 0 & -\frac{1}{2} \\
+    0 & 0 & 1
+  \end{bmatrix} \\
+  &\to \begin{bmatrix}
+    1 & -3 & \frac{7}{2} \\
+    0 & 0 & 1 \\
+    0 & 0 & 0
+  \end{bmatrix} (REF) \\
+  &\to \begin{bmatrix}
+    1 & -3 & 0 \\
+    0 & 0 & 1 \\
+    0 & 0 & 0
+  \end{bmatrix} (RREF)
+\end{align*}
+
+\subsubsection*{Question 28}
+Determine if the vector \( \vec{v} \) is a linear combination of the
+remaining vectors.
+\[ \vec{v} = \begin{bmatrix}4 \\ 3 \\ 4\end{bmatrix} \quad
+  \vec{u_1} = \begin{bmatrix}1 \\ 1 \\ 1\end{bmatrix} \quad
+  \vec{u_2} = \begin{bmatrix}0 \\ 1 \\ 1\end{bmatrix} \quad
+  \vec{u_3} = \begin{bmatrix}1 \\ 0 \\ 1\end{bmatrix} \]
+\begin{align*}
+  x\vec{u_1}+y\vec{u_2}+z\vec{u_3} &= \vec{v} \\
+  x+z &= 4 \\
+  x+y &= 3 \\
+  x+y+z &= 4 \\
+  \begin{bmatrix}
+    1 & 0 & 1 & 4 \\
+    1 & 1 & 0 & 3 \\
+    1 & 1 & 1 & 4
+  \end{bmatrix} &\to \begin{bmatrix}
+    1 & 0 & 0 & 3 \\
+    0 & 1 & 0 & 0 \\
+    0 & 0 & 1 & 1
+  \end{bmatrix} \\
+  \therefore 3\vec{u_1}+\vec{u_3} &= \vec{v}
+\end{align*}
+
+\subsubsection*{Question 29}
+Determine if the vector \( \vec{b} \) is in the span of the columns of the
+matrix \( A \).
+\begin{align*}
+  A &= \begin{bmatrix}
+    1 & 2 & 3 \\
+    4 & 5 & 6 \\
+    6 & 7 & 8
+  \end{bmatrix} \quad \vec{b} = \begin{bmatrix}
+    4 \\ 7 \\ 9
+  \end{bmatrix} \\
+  x\begin{bmatrix}1 \\ 4 \\ 6\end{bmatrix}+
+    y\begin{bmatrix}2 \\ 5 \\ 7\end{bmatrix}+
+    z\begin{bmatrix}3 \\ 6 \\ 8\end{bmatrix} &=
+    \begin{bmatrix}4 \\ 7 \\ 9\end{bmatrix} \\
+  x+2y+3z &= 4 \\
+  4x+5y+6z &= 7 \\
+  6x+7y+8z &= 9 \\
+  \begin{bmatrix}
+    1 & 2 & 3 & 4 \\
+    4 & 5 & 6 & 7 \\
+    6 & 7 & 8 & 9
+  \end{bmatrix} &\to \begin{bmatrix}
+    1 & 0 & -1 & -2 \\
+    0 & 1 & 2 & 3 \\
+    0 & 0 & 0 & 0
+  \end{bmatrix}
+\end{align*}
+This system has a solution so \( \vec{b} \) can be represented as a linear
+combination of the columns of \( A \), therefore it is in the span.
+
+\subsubsection*{Question 30}
+Describe the span of the given vectors geometrically and algebraically.
+\[ \vec{u} = \begin{bmatrix}1 \\ 3 \\ 0\end{bmatrix} \quad
+  \vec{v} = \begin{bmatrix}5 \\ 3 \\ -1\end{bmatrix} \]
+The set of all linear combinations of \( \vec{u} \) and \( \vec{v} \) is a
+plane containing both \( \vec{u} \) and \( \vec{v} \) as direction vectors
+and contains all points described by \( s\vec{u}+t\vec{v} \) where \( s,t \)
+are arbitrary constants. The vector equation of this plane is
+\[ \begin{bmatrix}x \\ y \\ z\end{bmatrix} =
+  s\begin{bmatrix}1 \\ 3 \\ 0\end{bmatrix}+
+  t\begin{bmatrix}5 \\ 3 \\ -1\end{bmatrix} \]
+
+\begin{center}
+  If you have any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
