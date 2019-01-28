@@ -1,0 +1,142 @@
+\documentclass{math}
+
+\usepackage{enumerate}
+
+\title{University Astronomy: Homework 2}
+\author{Alvin Lin}
+\date{January 2019 - May 2019}
+
+\begin{document}
+
+\maketitle
+
+\subsubsection*{Question 2.1}
+Over the course of the year, which gets more hours of daylight, the Earth's
+north pole or south pole? \par
+The north pole gets more daylight over the course of the year because the south
+pole is closest to the Sun during perihelion, meaning it sweeps through that
+portion of the Earth's orbit around the Sun faster and spends less time in
+daylight.
+
+\subsubsection*{Question 2.2}
+On 2003 August 27, Mars was in opposition as seen from the Earth. On 2005 July
+14 (687 days later), Mars was seen in western quadrature as seen from the Earth.
+What was the distance of Mars from the Sun on these dates, measured in
+astronomical units (AU)? Is this greater than or less than the semimajor axis
+length of the Martian orbit? You may assume the Earth's orbit is a perfect
+circle. \par
+After the 687 days (1.882 years), Mars is in the same position it was in before.
+However, the Earth has completed 1.882 rotations, meaning it is
+\( (2-1.882)\times360^{\circ} \) behind Mars (the Mars-Sun-Earth angle). Since
+Mars is at quadrature, the Mars-Earth-Sun angle is \( 90^{\circ} \). This forms
+a triangle and the Mars-Sun distance \( d \) can be described with the following
+relation:
+\[ d = \frac{1~AU}{\cos((2-1.882)360^{\circ})} \approx 1.36~AU \]
+According to Kepler's third law, we can calculate the length of the semimajor
+axis length of the Martian orbit using \( P^2 = Ka^3 \).
+\begin{align*}
+  P^2 &= Ka^3 \\
+  (1.882~yr)^2 &= \frac{1~yr^2}{AU^{-3}}a^3 \\
+  3.54~yr^2 &= \frac{1~yr^2}{AU^{-3}}a^3 \\
+  a^3 &= 3.54\frac{yr^2AU^3}{yr^2} \\
+  a &= \sqrt[3]{3.54~AU^3} \\
+  &= 1.52~AU
+\end{align*}
+This is greater than the calculated Mars-Sun distance.
+
+\subsubsection*{Question 2.3}
+In the 1670s, the astronomer Ole R{\o}mer observed eclipses of the Galilean
+satellite Io as it plunged through Jupiter's shadow once per orbit. He noticed
+that the time between observed eclipses became shorter as Jupiter came closer to
+the Earth and longer as Jupiter moved away from the. R{\o}mer calculated that
+the eclipses were observed 17 minutes earlier when Jupiter was in opposition
+compared to when it was close to conjunction. This was attributed by R{\o}mer to
+the finite speed of light. From R{\o}mer's data, compute the speed of light,
+first in AU \( \text{min}^{-1} \), then in m \( \text{s}^{-1} \). \par
+Let \( b \) be the Jupiter-Earth distance at conjunction and \( a \) be the
+Jupiter-Earth distance at opposition and \( c \) be the speed of light.
+\begin{align*}
+  b &= a+2~AU \\
+  a+c(17~min) &= b \\
+  c &= \frac{b-a}{17~min} \\
+  &= \frac{2~AU}{17~min} \\
+  &= 0.118\frac{AU}{min} \\
+  &= 0.118\frac{AU}{min}\times\frac{1~min}{60~s}\times
+    \frac{149597780.7~km}{1~AU}\times
+    \frac{1000~m}{1~km} \\
+  &= 294209145.71\frac{m}{s}
+\end{align*}
+
+\subsubsection*{Question 2.4}
+In addition to aberration of starlight due to the Earth's orbital motion around
+the Sun, there should also be diurnal aberration due to the Earth's rotation.
+Where on the Earth is this effect the largest, and what is the amplitude? \par
+This effect would be largest at the Earth's equator, and would result in an
+angular correction of
+\[ \theta \approx \frac{v}{c} \approx
+  \frac{0.465~km~s^{-1}}{3\times10^5~km~s^{-1}} \approx 0.23'' \]
+
+\subsubsection*{Question 2.5}
+A light-year is defined as the distance traveled by light in a vacuum during one
+tropical year. How many light-years are in a parsec?
+\[ 1~parsec\times\frac{206,205~AU}{1~parsec}\times
+  \frac{1~light-year}{63241.1~AU} = 3.26~light-years \]
+
+\subsubsection*{Question 2.6}
+The planets of the solar system all orbit the Sun in the same sense;
+counterclockwise as seen from above the Earth's north pole. Imagine a
+``wrong-way'' planet orbiting the Sun in the opposite (clockwise) sense, on an
+orbit of semimajor axis length \( a = 1.3~AU \). What would the sidereal period
+of this planet be? What would its synodic period be as seen from the Earth?
+What would its synodic period be as seen from Mars?
+\begin{align*}
+  P^2 &= Ka^3 \\
+  &= 1\frac{yr^2}{AU^{-3}}(1.3~AU)^3 \\
+  P &= \sqrt{1.3^3~yr^2} \\
+  &= 1.3^{\frac{3}{2}}~yr \\
+  &= 1.482~yr
+\end{align*}
+The sidereal period of this planet would be 1.482 years. This planet would
+be considered a superior planet to Earth, reversing the angular velocity
+equation.
+\begin{align*}
+  \frac{1}{P_p} &= \frac{1}{P_E}+\frac{1}{P_{syn}} \\
+  P_{syn} &= \left[\frac{1}{P_p}+\frac{1}{P_E}\right]^{-1} \\
+  &= \left[\frac{1}{1.482~yr}+\frac{1}{1~yr}\right]^{-1} \\
+  &= 0.597~yr
+\end{align*}
+Relative to Earth, this planet would have a synodic period of 0.597 years.
+Relative to Mars, this would be an inferior planet.
+\begin{align*}
+  \frac{1}{P_p} &= \frac{1}{P_{Mars}}+\frac{1}{P_{syn}} \\
+  P_{syn} &= \left[\frac{1}{P_{Mars}}+\frac{1}{P_p}\right]^{-1} \\
+  &= \left[\frac{1}{1.882~yr}+\frac{1}{1.482~yr}\right]^{-1} \\
+  &= 0.829~yr
+\end{align*}
+As observed from Mars, this planet would have a synodic period of 0.829 years.
+
+\subsubsection*{Question 2.7}
+Consider a football thrown directly northward at a latitude \( 40^{\circ} \)N.
+The distance of the quarterback from the receiver is 20 yards (18.5m), and the
+speed of the thrown ball is 25m \( s^{-1} \). Does the Coriolis effect deflect
+the ball to the right or to the left? By what amount (in meters) is the ball
+deflected? Does the receiver need to worry about correcting for the deflection,
+or should he be more worried about being nailed by the free safety? \par
+The ball will be deflected to the right. It will have a flight time
+\[ \Delta t = \frac{18.5~m}{25~ms^{-1}} = 0.74~s \]
+Given this information:
+\begin{align*}
+  \Delta d &\approx \frac{1}{2}vw(\delta t)^2 \\
+  &\approx \frac{1}{2}\frac{25~m}{s}(\frac{1}{14000~s})(0.74~s)^2 \\
+  &\approx 0.000489~m \\
+  &\approx 4.89\times10^{-4}~m
+\end{align*}
+The amount of deflection is negligible to the receiver.
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
