@@ -1,0 +1,156 @@
+\documentclass{math}
+
+\usepackage{tikz}
+
+\title{Advanced Linear Algebra}
+\author{Alvin Lin}
+\date{January 2019 - May 2019}
+
+\begin{document}
+
+\maketitle
+
+\section*{Eigenvalues and Eigenvectors}
+Let \( A \) be an \( n\times n \) matrix. \( \lambda \) is an eigenvalue of
+\( A \) if and only if there is a nonzero vector \( \vec{x} \) such that
+\( A\vec{x} = \lambda\vec{x} \). Such a vector \( \vec{x} \) is called an
+eigenvector.
+
+\subsubsection*{Example}
+\begin{align*}
+  A &= \begin{bmatrix}
+    3 & 1 \\
+    1 & 3
+  \end{bmatrix} \quad \vec{v} = \begin{bmatrix}1 \\ 1\end{bmatrix} \\
+  A\vec{x} &= \begin{bmatrix}
+    3 & 1 \\
+    1 & 3
+  \end{bmatrix}\begin{bmatrix}
+    1 \\ 1
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    4 \\ 4
+  \end{bmatrix} \\
+  \lambda\vec{x} &= 4\begin{bmatrix}1 \\ 1\end{bmatrix}
+\end{align*}
+Thus, \( \lambda = 4 \) is an eigenvalue.
+
+\subsubsection*{Example}
+Show that \( \lambda = 5 \) is an eigenvalue of \( A = \begin{bmatrix}1 & 2 \\
+4 & 3\end{bmatrix} \).
+\begin{align*}
+  A\vec{x} = 5\vec{x} \\
+  A\vec{x}-5\vec{x} &= \vec{0} \\
+  A\vec{x}-5I\vec{x} &= \vec{0} \\
+  (A-5I)\vec{x} &= \vec{0} \\
+  \left(\begin{bmatrix}
+    1 & 2 \\
+    4 & 3
+  \end{bmatrix}-\begin{bmatrix}
+    5 & 0 \\
+    0 & 5
+  \end{bmatrix}\right)\vec{x} &= 0 \\
+  \begin{bmatrix}
+    -4 & 2 \\
+    4 & -2
+  \end{bmatrix}\begin{bmatrix}
+    x_1 \\ x_2
+  \end{bmatrix} &= \begin{bmatrix}
+    0 \\ 0
+  \end{bmatrix}
+\end{align*}
+If we solve this using an augmented matrix and Gauss-Jordan elimination, we
+get the following:
+\begin{align*}
+  \begin{bmatrix}
+    -4 & 2 & 0 \\
+    0 & 0 & 0
+  \end{bmatrix} &\to \begin{bmatrix}
+    1 & -\frac{1}{2} & 0 \\
+    0 & 0 & 0
+  \end{bmatrix} \\
+  x_1-\frac{1}{2}x_2 &= 0 \\
+  x_2 &= s \\
+  \begin{bmatrix}
+    x_1 \\ x_2
+  \end{bmatrix} &= \begin{bmatrix}
+    \frac{1}{2}s \\ s
+  \end{bmatrix} = s\begin{bmatrix}\frac{1}{2} \\ 1\end{bmatrix}
+\end{align*}
+For \( \lambda = 5 \), \( \vec{x} = \begin{bmatrix}\frac{1}{2} \\
+1\end{bmatrix} \), but an eigenvector can be found for any \( s \).
+
+\subsubsection*{Example}
+To find eigenvalues, \( A\vec{x} = \lambda\vec{x} \) needs to have nontrivial
+solutions.
+\begin{align*}
+  A\vec{x}-\lambda I\vec{x} &= \vec{0} \\
+  (A-\lambda I)\vec{x} &= \vec{0}
+\end{align*}
+In order for this to be true, the determinant of \( A-\lambda I \) must be 0.
+For example:
+\begin{align*}
+  A &= \begin{bmatrix}
+    3 & 1 \\
+    1 & 3
+  \end{bmatrix} \\
+  det(A-\lambda I) &= 0 \\
+  det\left(\begin{bmatrix}
+    3 & 1 \\
+    1 & 3
+  \end{bmatrix}-\begin{bmatrix}
+    \lambda & 0 \\
+    0 & \lambda
+  \end{bmatrix}\right) &= 0 \\
+  det\left(\begin{bmatrix}
+    3-\lambda & 1 \\
+    1 & 3-\lambda
+  \end{bmatrix}\right) &= 0 \\
+  (3-\lambda)(3-\lambda)-1 &= 0 \\
+  9-6\lambda+\lambda^2-1 &= 0 \\
+  \lambda^2-6\lambda+8 &= 0 \\
+  (\lambda-4)(\lambda-2) &= 0 \\
+  \lambda_1 &= 4 \quad \lambda_2 = 2
+\end{align*}
+To find eigenvectors for \( \lambda_1 = 4 \):
+\begin{align*}
+  A\vec{x} &= 4\vec{x} \\
+  (A-4I)\vec{x} &= 0 \\
+  \begin{bmatrix}
+    -1 & 1 & 0 \\
+    1 & -1 & 0
+  \end{bmatrix} &\to \begin{bmatrix}
+    -1 & 1 & 0 \\
+    0 & 0 & 0
+  \end{bmatrix} \\
+  x_1 &= x_2 = s \\
+  \vec{x} &= \begin{bmatrix}s \\ s\end{bmatrix} =
+    s\begin{bmatrix}1 \\ 1\end{bmatrix}
+\end{align*}
+\( \lambda_1 = 4 \) has an infinite number of eigenvectors along \( \vec{x} =
+\begin{bmatrix}1 \\ 1\end{bmatrix} \). To find eigenvectors for \( \lambda_2 =
+2 \):
+\begin{align*}
+  A\vec{x} &= 2\vec{x} \\
+  (A-2I)\vec{x} &= 0 \\
+  \begin{bmatrix}
+    1 & 1 & 0 \\
+    1 & 1 & 0
+  \end{bmatrix} &\to \begin{bmatrix}
+    1 & 1 & 0 \\
+    0 & 0 & 0
+  \end{bmatrix} \\
+  x_1 &= -x_2 = -s \\
+  \vec{x} &= \begin{bmatrix}-s \\ s\end{bmatrix} =
+    s\begin{bmatrix}-1 \\ 1\end{bmatrix}
+\end{align*}
+\( \lambda_2 = 2 \) has an infinite number of eigenvectors along \( \vec{x} =
+\begin{bmatrix}-1 \\ 1\end{bmatrix} \).
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
