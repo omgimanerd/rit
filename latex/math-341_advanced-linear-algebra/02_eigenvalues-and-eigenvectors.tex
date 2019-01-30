@@ -147,6 +147,176 @@ To find eigenvectors for \( \lambda_1 = 4 \):
 \( \lambda_2 = 2 \) has an infinite number of eigenvectors along \( \vec{x} =
 \begin{bmatrix}-1 \\ 1\end{bmatrix} \).
 
+\subsubsection*{Example}
+Find the eigenvalues and eigenvectors of the matrix.
+\begin{align*}
+  A &= \begin{bmatrix}
+    0 & 1 & 0 \\
+    0 & 0 & 1 \\
+    2 & -5 & 4
+  \end{bmatrix} \\
+  \det(A-\lambda I) &= 0 \\
+  \det\left(\begin{bmatrix}
+    -\lambda & 1 & 0 \\
+    0 & -\lambda & 1 \\
+    2 & -5 & 4-\lambda
+  \end{bmatrix}\right) &= 0 \\
+  -\lambda\begin{vmatrix}
+    -\lambda & 1 \\
+    -5 & 4-\lambda
+  \end{vmatrix}-1\begin{vmatrix}
+    0 & 1 & \\
+    2 & 4-\lambda
+  \end{vmatrix}+0 &= 0 \\
+  -\lambda\left[(-\lambda)(4-\lambda)-(-5)\right]-\left[0-2\right] &= 0 \\
+  \lambda^2(4-\lambda)-5\lambda+2 &= 0 \\
+  -\lambda^3+4\lambda^2-5\lambda+2 &= 0 \\
+  \lambda^3-4\lambda^2+5\lambda-2 &= 0 \\
+  (\lambda-1)^2(\lambda-2) &= 0 \\
+  \lambda_1 &= 1 \quad \lambda_2 = 2 \\
+\end{align*}
+Each eigenvalue will have a corresponding set of eigenvectors. For
+\( \lambda = 1 \):
+\begin{align*}
+  (A-1I)\vec{x} &= \vec{0} \\
+  \begin{bmatrix}
+    -1 & 1 & 0 & 0 \\
+    0 & -1 & 1 & 0 \\
+    2 & -5 & 3 & 0
+  \end{bmatrix} &\to \begin{bmatrix}
+    1 & 0 & -1 & 0 \\
+    0 & 1 & -1 & 0 \\
+    0 & 0 & 0 & 0
+  \end{bmatrix} \\
+  x_1-x_3 &= 0 \\
+  x_2-x_3 &= 0 \\
+  x_1 &= x_3 = x_2 = s \\
+  \vec{x} &= \begin{bmatrix}
+    x_1 \\ x_2 \\ x_3
+  \end{bmatrix} = \begin{bmatrix}
+    s \\ s \\ s
+  \end{bmatrix} = s\begin{bmatrix}
+    1 \\ 1 \\ 1
+  \end{bmatrix}
+\end{align*}
+For \( \lambda = 2 \):
+\begin{align*}
+  (A-2I)\vec{x} &= \vec{0} \\
+  \begin{bmatrix}
+    -2 & 1 & 0 & 0 \\
+    0 & -2 & 1 & 0 \\
+    2 & -5 & 2 & 0
+  \end{bmatrix} &\to \begin{bmatrix}
+    1 & 0 & -\frac{1}{4} & 0 \\
+    0 & 1 & -\frac{1}{2} & 0 \\
+    0 & 0 & 0 & 0
+  \end{bmatrix} \\
+  x_1-\frac{1}{4}x_3 &= 0 \\
+  x_2-\frac{1}{2}x_3 &= 0 \\
+  x_3 &= s \\
+  \vec{x} &= \begin{bmatrix}
+    x_1 \\ x_2 \\ x_3
+  \end{bmatrix} = \begin{bmatrix}
+    \frac{1}{4}s \\ \frac{1}{2}s \\ s
+  \end{bmatrix} = s\begin{bmatrix}
+    \frac{1}{4} \\ \frac{1}{2} \\ s
+  \end{bmatrix}s
+\end{align*}
+
+\subsubsection*{Example}
+Find the eigenvalues and eigenvectors of the matrix.
+\begin{align*}
+  A &= \begin{bmatrix}
+    -1 & 0 & 1 \\
+    3 & 0 & -3 \\
+    1 & 0 & -1
+  \end{bmatrix} \\
+  \det(A-\lambda I) &= 0 \\
+  \begin{vmatrix}
+    -1-\lambda & 0 & 1 \\
+    3 & -\lambda & -3 \\
+    1 & 0 & -1-\lambda
+  \end{vmatrix} &= 0 \\
+  \lambda^3+2\lambda^2 &= 0 \\
+  \lambda^2(\lambda+2) &= 0 \\
+  \lambda_1 &= \lambda_2 = 0 \\
+  \lambda_3 &= -2
+\end{align*}
+For \( \lambda = 0 \):
+\begin{align*}
+  (A-0I)\vec{x} &= \vec{0} \\
+  \begin{bmatrix}
+    -1 & 0 & 1 & 0 \\
+    3 & 0 & -3 & 0 \\
+    1 & 0 & -1 & 0
+  \end{bmatrix} &\to \begin{bmatrix}
+    1 & 0 & -1 & 0 \\
+    0 & 0 & 0 & 0 \\
+    0 & 0 & 0 & 0
+  \end{bmatrix} \\
+  x_1 &= x_3 \\
+  \vec{x} &= \begin{bmatrix}
+    x_1 \\ x_2 \\ x_3
+  \end{bmatrix} = \begin{bmatrix}
+    t \\ s \\ t
+  \end{bmatrix} = s\begin{bmatrix}
+    0 \\ 1 \\ 0
+  \end{bmatrix}+t\begin{bmatrix}
+    1 \\ 0 \\ 1
+  \end{bmatrix}
+\end{align*}
+This is a two dimensional eigenspace (the eigenvalue has a geometric
+multiplicity of 2) spanned by \( \begin{bmatrix}0 \\ 1 \\ 0\end{bmatrix},
+\begin{bmatrix}1 \\ 0 \\ 1\end{bmatrix} \). Since the eigenvalue
+\( \lambda = 0 \) also appears twice, the eigenvalue has a algebraic
+multiplcity of 2. For \( \lambda = -2 \):
+\begin{align*}
+  (A+2I)\vec{x} &= \vec{0} \\
+  \begin{bmatrix}
+    1 & 0 & 1 & 0 \\
+    3 & 2 & -3 & 0 \\
+    1 & 0 & 1 & 0
+  \end{bmatrix} &\to \begin{bmatrix}
+    1 & 0 & 1 & 0 \\
+    0 & 1 & -3 & 0 \\
+    0 & 0 & 0 & 0
+  \end{bmatrix} \\
+  x_1+x_3 &= 0 \\
+  x_2-3x_3 &= 0 \\
+  \vec{x} &= \begin{bmatrix}
+    x_1 \\ x_2 \\ x_3
+  \end{bmatrix} = \begin{bmatrix}
+    -s \\ 3s \\ s
+  \end{bmatrix} = s\begin{bmatrix}
+    -1 \\ 3 \\ 1
+  \end{bmatrix}
+\end{align*}
+In summary, the algebraic multiplicity of an eigenvalue is the number of times
+it appears as a solution to the characteristic polynomial, and the geometric
+multiplicity of the eigenvalue is the dimensionality of its corresponding
+eigenspace.
+
+
+\subsection*{Cayley-Hamilton Theorem}
+If \( \lambda^n+c_{n-1}\lambda^{n-1}+\dots+c_1\lambda+c_0 = 0 \) is the
+characteristic equation of \( A \), then \( A^n+c_{n-1}A^{n-1}+\dots+
+c_1A+c_0I = 0 \). Essentially, the matrix satisfies its own polynomial. This can
+be used to prove and verify the following facts.
+\begin{itemize}
+  \item \( \lambda_1+\lambda_2+\dots+\lambda_n = trace(A) \) \\
+    This quantity is also the sum of the diagonal elements.
+  \item \( \lambda_1\lambda_2\lambda_3\dots\lambda_n = \det(A) \)
+  \item \( \lambda^n \) is an eigenvalue of \( A^n \).
+  \item \( \frac{1}{\lambda} \) is an eigenvalue of \( A^{-1} \).
+\end{itemize}
+
+\subsection*{Theorem}
+Suppose an \( n\times n \) matrix \( A \) has eigenvectors \( \vec{v_1},\dots,
+\vec{v_m} \) with corresponding eigenvalues \( \lambda_1,\dots,\lambda_m \).
+If \( \vec{x} = c_1\vec{v_1}+\dots+c_m\vec{v_m} \) then \( A^k\vec{x} = A^k
+(c_1\vec{v_1}+\dots+c_m\vec{v_m}) = c_1\lambda_1^k\vec{v_1}+
+\dots+c_m\lambda_m^k\vec{v_m} \).
+
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
   any questions, comments, or concerns, please contact me at
