@@ -1,0 +1,161 @@
+\documentclass{math}
+
+\usepackage{enumerate}
+
+\title{University Astronomy: Homework 3}
+\author{Alvin Lin}
+\date{January 2019 - May 2019}
+
+\begin{document}
+
+\maketitle
+
+\subsubsection*{Question 6.1}
+Assume that your vision is diffraction limited at \( \lambda = 5000\angstrom \)
+and that the diameter of the pupil of your eye is \( D = 8 mm \). What angular
+resolution can you achieve with your unaided eye? How does this compare with the
+maximum angular size of Venus and Jupiter as seen from Earth?
+\[ \theta = 1.22\frac{5000\angstrom}{8 mm}\times\frac{1000mm}{1m}\times
+  \frac{1 m}{10^{10}\angstrom}\times\frac{360^{\circ}}{2\pi~rad}\times
+  \frac{3600''}{1^{\circ}} = 15.73'' \]
+The maximum angular size of Jupiter is 50.1'' and the maximum angular size of
+Venus is 1'6'', larger than our minimum achieved angular resolution. We would
+be able to perceive both Venus and Jupiter with just our eye.
+
+\subsubsection*{Question 6.2}
+\begin{enumerate}[(a)]
+  \item The Hiltner Telescope at the MDM Observatory (on Kitt Peak, Arizona)
+    has an aperture \( D = 2.4m \). Its Cassegrain focus has an f-number
+    \( f/7 \). What is the focal length \( F \) and plate scale \( s \).
+    \begin{align*}
+      \frac{F}{2.4} &= 7 \\
+      F &= 16.8m \\
+      s &= \frac{206.265}{16.8m} = 12.28\frac{arcsec}{mm}
+    \end{align*}
+  \item The Mayall Telescope at the Kitt Peak National Observatory (also on
+    Kitt Peak) has an aperture \( D = 4.0m \). Its prime focus has an f-number
+    \( f/2.7 \), its Cassegrain focus has \( f/8 \), and its Coud\'{e} focus
+    has \( f/160 \). What is the focal length and plate scale for each of these
+    three foci?
+    \begin{align*}
+      F_1 &= Df_1 = (4)(2.7) = 10.8m \\
+      s_1 &= \frac{206.265}{F} = \frac{206.265}{10.8} = 19.1\frac{arcsec}{mm} \\
+      F_2 &= Df_2 = (4)(8) = 32m \\
+      s_2 &= \frac{206.265}{F} = \frac{206.265}{32} = 6.4\frac{arcsec}{mm} \\
+      F_3 &= Df_3 = (4)(160) = 320m \\
+      s_3 &= \frac{206.265}{F} = \frac{206.265}{320} = 0.64\frac{arcsec}{mm}
+    \end{align*}
+  \item The Keck Telescope (on Mauna Kea, Hawaii) has an aperture
+    \( D = 10.0m \). Its Cassegrain focus has \( f/15 \). What is the focal
+    length and plate scale?
+    \begin{align*}
+      F &= Df = (10)(15) = 150m \\
+      s &= \frac{206.265}{F} = \frac{206.265}{150} = 1.38\frac{arcsec}{mm}
+    \end{align*}
+\end{enumerate}
+
+\subsubsection*{Question 6.3}
+With the \( D = 2.4m \) telescope at the MDM Observatory, I can obtain a
+spectrum of a particular star with signal-to-noise ratio \( S/N = 100 \) in
+\( t = 20 \) minutes when the atmospheric seeing is average \( \theta = 1'' \).
+How long would it take me to obtain the same data with the Keck Telescope
+(\( D = 10.0m \)) with excellent seeing (\( \theta = 0.4'' \))? \par
+Since the aperture size is \( 4.17 \) times larger and the seeing is \( 2.5 \)
+times better, the time would decrease proportionally so. It would take us
+\( \frac{20}{4.17\times2.5} = 1.92 \) minutes to obtain the same data.
+
+\subsubsection*{Question 6.4}
+A charge-coupled device (CCD) detector is mounted at the focus of an \( f/7 \)
+reflecting telescope with \( D = 50cm \) mirror. The CCD chip contains
+\( 1024\times1024 \) pixels, with each square pixel being \( 10\mu m \) on a
+side.
+\begin{enumerate}[(a)]
+  \item What is the area (in square arcseconds) of the sky that is imaged on
+    a single pixel?
+  \begin{align*}
+    s &= \frac{206.265}{7\times0.5} = 58.93\frac{arcsec}{mm} \\
+    w &= \frac{\sqrt{a}}{58.93} = 0.01mm \\
+    a &\approx (0.01\times58.93)^2 = 0.347\text{ square arcseconds}
+  \end{align*}
+  \item What is the area (in square arcminutes) of the sky that is imaged on
+    the entire chip? Would the image of the full Moon fit into the chip?
+  \begin{align*}
+    a &\approx 1024^2\times0.347\times\left(\frac{1'}{60''}\right)^2 \\
+    &= 101.15\text{ square arcminutes}
+  \end{align*}
+  The maximum size of the Moon is 34 arcminutes, so the entire image would
+  fit onto the chip.
+  \item How many separate exposures would be required to cover the entire
+    celestial sphere (\( 4\pi \) steradians)?
+  \[ \frac{4\pi}{101.15\text{ square arcminutes}}\times
+    (\frac{180^{\circ}}{\pi})^2\times(\frac{60'}{1^{\circ}})^2 \approx
+    1468966.8 \]
+\end{enumerate}
+
+\subsubsection*{Question 6.5}
+Suppose that you want to see stars that are as faint as possible in the
+background limited case. The Astronomy Fairy gives you a choice: \textit{either}
+she can increase the quantum efficiency of your retina from \( q = 0.1 \) to
+\( q = 1 \), \textit{or} she can double the maximum pupil size of your eye while
+guaranteeing diffraction-limited angular resolution. Which of these choices
+would produce a lower limited flux \( F_{\lambda} \)? Explain your choice.
+\begin{align*}
+  t &\propto \left(\frac{\theta}{F_{\lambda}D\phi_a}\right)^2
+    \frac{S_{\lambda}}{\Delta\lambda\phi_tq} \\
+  \sqrt{t} &\propto \frac{\theta}{F_{\lambda}D\phi_a}
+    \sqrt{\frac{S_{\lambda}}{\Delta\lambda\phi_tq}} \\
+  F_{\lambda} &\propto \frac{\theta}{D\phi_a}\sqrt{
+    \frac{S_{\lambda}}{\Delta\lambda\phi_tq}
+    \frac{1}{t}}
+\end{align*}
+Doubling the maximum pupil size \( D \) would result in a proportional halving
+in \( F_{\lambda} \) (a factor of 0.5). Increasing the quantum efficiency from
+0.1 to 1 would decrease \( F_{\lambda} \) by the square root of the change
+(\( \frac{1}{\sqrt{10}} = 0.316 \)). Increasing the quantum efficiency of your
+eye would produce a lower limited flux.
+
+\subsubsection*{Question 6.6}
+The Atacama Large Millimeter/Submillimeter Array (ALMA) is designed to operate
+over the wavelength range \( \lambda = 0.3\to9.6mm \). It will consist of 80
+independent 12m telescopes with a maximum baseline of 18km.
+\begin{enumerate}[(a)]
+  \item What is the highest angular resolution achievable with ALMA?
+  \begin{align*}
+    \theta &= 1.22\frac{\lambda}{D} \\
+    &= 1.22\frac{9.6mm}{18000m}\times\frac{1m}{1000mm}\times
+      \frac{180^{\circ}}{rad}\times\frac{3600''}{1^{\circ}} \\
+    &= 0.421''
+  \end{align*}
+  \item How large would a single-dish antenna have to be to have the same
+    collecting area as ALMA?
+  \begin{align*}
+    A_{total} &= 80\pi(\frac{12}{2})^2 = 9043.2m^2 \\
+    &= \pi(\frac{D}{2})^2 \\
+    D &= 2\sqrt{\frac{A_{total}}{\pi}} = 107.3m
+  \end{align*}
+\end{enumerate}
+
+\subsubsection*{Question 6.7}
+Prove that equation (6.18) is correct for a Poisson probability distribution.
+\begin{align*}
+  \langle x^2\rangle &= \sum_{x=0}^{\infty}x^2P(x,\mu) \\
+  &= \sum_{x=1}^{\infty}x^2\frac{\mu^x}{x!}\e^{-\mu} \\
+  &= \sum_{x=1}^{\infty}x\frac{\mu^x\e^{-\mu}}{(x-1)!} \\
+  z &= z-1 \quad x = z+1 \\
+  &= \sum_{z=0}^{\infty}(z+1)\frac{\mu^{z+1}\e^{-\mu}}{z!} \\
+  &= \sum_{z=0}z\mu\frac{\mu^z\e^{-\mu}}{z!}+
+    \sum_{z=0}^{\infty}\mu\frac{\mu^z\e^{-\mu}}{z!} \\
+  &= \mu\sum_{z=0}z\frac{\mu^z\e^{-\mu}}{z!}+\mu \quad
+    (\text{definition of } \langle x\rangle)\\
+  \sum_{z=0}z\frac{\mu^z\e^{-\mu}}{z!} &= \mu \quad (\text{by analogy}) \\
+  &= \mu(\mu)+\mu \\
+  &= \mu^2+\mu
+\end{align*}
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
