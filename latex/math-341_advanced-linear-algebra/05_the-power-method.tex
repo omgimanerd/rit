@@ -1,0 +1,108 @@
+\documentclass{math}
+
+\usepackage{tikz}
+
+\title{Advanced Linear Algebra}
+\author{Alvin Lin}
+\date{January 2019 - May 2019}
+
+\begin{document}
+
+\maketitle
+
+\section*{The Power Method}
+This method can find the dominant (largest absolute value) eigenvalue of an
+\( n\times n \) matrix. \par
+Let \( A \) be an \( n\times n \) diagonalizable matrix with dominant
+eigenvalue \( \lambda \). Then there exists a vector \( \vec{x_0} \) such that
+\begin{align*}
+  \vec{x_1} &= A\vec{x_0} \\
+  \vec{x_2} &= A\vec{x_1} = A^2\vec{x_0} \\
+  \vec{x_3} &= A\vec{x_2} = A^3\vec{x_0} \\
+  &\vdots \\
+  \vec{x_k} &= A\overrightarrow{x_{k-1}} = A^k\vec{x_0}
+\end{align*}
+This series approaches a dominant eigenvector. As a proof, suppose we label
+the eigenvalues in order.
+\[ |\lambda_1|>|\lambda_2|\ge|\lambda_3|\ge\dots\ge|\lambda_n| \]
+with \( \vec{v_1},\dots,\vec{v_n} \) as eigenvectors. Choose a vector
+\( \vec{x_0} = c_1\vec{v_1}+c_2\vec{v_2}+\dots+c_n\vec{v_n} \) (since we know
+the matrix \( A \) is diagonalizable, it must have \( n \) linearly
+independent eigenvectors).
+\begin{align*}
+  A^k\vec{x_0} &= A^k(c_1\vec{v_1}+\dots+c_n\vec{v_n}) \\
+  &= c_1A^k\vec{v_1}+\dots+c_nA^k\vec{v_n} \\
+  &= c_1\lambda_1^k\vec{v_1}+\dots+c_n\lambda_n^k\vec{v_n} \\
+  &= \lambda_1\left[
+    c_1\vec{v_1}+\dots+c_n(\frac{\lambda_n}{\lambda_1})^k\vec{v_n}\right] \\
+  \lim_{k\to\infty}A^k\vec{x_0} &= \lambda_1^kc_1\vec{v_1}
+\end{align*}
+
+\subsubsection*{Example}
+Approximate the dominant eigenvector of \( A = \begin{bmatrix}1 & 1 \\
+2 & 0\end{bmatrix} \).
+\begin{align*}
+  \vec{x_0} &= \begin{bmatrix}1 \\ 0\end{bmatrix} \\
+  \vec{x_1} &= A\vec{x_0} = \begin{bmatrix}
+    1 & 1 \\
+    2 & 0
+  \end{bmatrix}\begin{bmatrix}1 \\ 0\end{bmatrix} = \begin{bmatrix}
+    1 \\ 2
+  \end{bmatrix} \\
+  \vec{x_2} &= \begin{bmatrix}
+    1 & 1 \\
+    2 & 0
+  \end{bmatrix}\begin{bmatrix}1 \\ 2\end{bmatrix} = \begin{bmatrix}
+    3 \\ 2
+  \end{bmatrix} \\
+  \vec{x_3} &= A\vec{x_2} = \begin{bmatrix}5 \\ 6\end{bmatrix} \\
+  &\vdots \\
+  \vec{x_7} &= A\vec{x_6} = \begin{bmatrix}85 \\ 86\end{bmatrix} \\
+  \vec{x_8} &= A\vec{x_7} = \begin{bmatrix}171 \\ 170\end{bmatrix} \\
+  \overrightarrow{x_{k+1}} &= A\vec{x_k} \approx \lambda_1\vec{x_k} \\
+  \begin{bmatrix}
+    171 \\ 170
+  \end{bmatrix} &\approx \lambda_1\begin{bmatrix}85 \\ 86\end{bmatrix} \\
+  \lambda_1 &\approx 2.01
+\end{align*}
+
+\subsection*{The Rayleigh Quotient}
+The Rayleigh quotient allows us to compute the exact eigenvalue when using the
+Power method.
+\begin{align*}
+  A\vec{x} &= \lambda_1\vec{x} \\
+  (A\vec{x})\cdot\vec{x} &= \lambda_1(\vec{x}\cdot\vec{x}) \\
+  \lambda_1 &= \frac{(A\vec{x})\cdot\vec{x}}{(\vec{x}\cdot\vec{x})}
+\end{align*}
+We can check for the convergence of the Power method by computing
+\[ \lambda_1 \approx
+  \frac{(A\vec{x_k})\cdot\vec{x_k}}{\vec{x_k}\cdot\vec{x_k}} \]
+and determining its change as we iterate to convergence. For real world
+purposes, we can normalize the vector \( \vec{x_k} \) to avoid roundoff error
+in computers. We can either compute \( \hat{x_k} =
+\frac{\vec{x_k}}{\|\vec{x_k}\|} \) or divide each component of the vector by
+the largest entry.
+
+\subsection*{The Shifted Power Method}
+If \( \lambda \) is an eigenvalue of \( A \), then \( \lambda-\alpha \) is an
+eigenvalue of \( A-\alpha I \) for any \( \alpha \). So if \( \lambda_1 \) is
+the dominant eigenvalue of \( A \), then the eigenvalues of \( A-\lambda_1I \)
+are \( 0,\lambda_2-\lambda_1,\lambda_3-\lambda_1,\dots,\lambda_n-\lambda_1 \).
+We can apply the Power method to \( B = A-\lambda_1I \) to find
+\( \lambda_2-\lambda_1 \) and hence get \( \lambda_2 \).
+
+\subsection*{The Inverse Power Method}
+\begin{align*}
+  A\vec{v} &= \lambda\vec{v} \\
+  A^{-1}\vec{v} &= \frac{1}{\lambda}\vec{v}
+\end{align*}
+We can apply the Power method to \( A^{-1} \) to obtain the smallest eigenvalues
+of \( A \).
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
