@@ -1,0 +1,133 @@
+\documentclass{math}
+
+\usepackage{enumerate}
+
+\title{University Astronomy: Homework 3}
+\author{Alvin Lin}
+\date{January 2019 - May 2019}
+
+\begin{document}
+
+\maketitle
+
+\subsubsection*{Question 5.1}
+Verify that the Maxwell-Boltzmann distribution has its maximum at a speed
+\[ \nu_p = \left(\frac{2kT}{m}\right)^{\frac{1}{2}} \]
+\begin{align*}
+  F(v)\diff{v} &= 4\pi\left(\frac{m}{2\pi kT}\right)^{\frac{3}{2}}v^2
+    \e^{-\frac{mv^2}{2kT}}\diff{v} \\
+  \ddiff{}{v}F(v) &= 0 \\
+  \ddiff{}{v}4\pi\left(\frac{m}{2\pi kT}\right)^{\frac{3}{2}}v^2
+    \e^{-\frac{mv^2}{2kT}} &= 0 \\
+  Let: \alpha = -\frac{m}{2kT} \\
+  \ddiff{}{v}v^2\e^{\alpha v^2} &= 0 \\
+  v^2\e^{\alpha v^2}2\alpha v +2v\e^{\alpha v^2} &= 0 \\
+  \alpha v^2+1 &= 0 \\
+  v &= \pm\sqrt{-\frac{1}{\alpha}} \\
+  &= \pm\sqrt{-(-\frac{2kT}{m})} \\
+  v_{max} &= \sqrt{\frac{2kT}{m}} = \left(\frac{2kT}{m}\right)^{\frac{1}{2}}
+\end{align*}
+
+\subsubsection*{Question 5.5}
+\begin{enumerate}[(a)]
+  \item A neutral sodium atom has ionization potential of \( \chi = 5.1eV \).
+    What is the speed of a free electron that has just barely enough kinetic
+    energy to collisionally ionize a sodium atom in its ground state? What is
+    the speed of a free \textit{proton} with just enough kinetic energy to
+    collisionally ionize this atom?
+    \begin{align*}
+      \frac{1}{2}m_ev_e^2 &\ge \chi \\
+      v_e &\ge \sqrt{\frac{2\chi}{m_e}} \\
+      &\ge 1342278.88\frac{m}{s} \\
+      \frac{1}{2}m_pv_p^2 &\ge \chi \\
+      v_p &\ge \sqrt{\frac{2\chi}{m_p}} \\
+      &\ge 31329.96\frac{m}{s}
+    \end{align*}
+  \item What is the temperature \( T \) of a gas in which the average particle
+    kinetic energy is just barely sufficient to ionize a sodium atom in its
+    ground state?
+    \begin{align*}
+      \langle E\rangle &= \frac{3}{2}kT \\
+      T &= \frac{2\chi}{3k} \\
+      &= 39443.15 K
+    \end{align*}
+  \item At the temperature \( T \) computed in part (b), what is the expected
+    thermal Doppler broadening, \( \frac{\Delta\lambda}{\lambda} \), of a sodium
+    spectral line? (Hint: the only stable isotope of sodium has mass number
+    A = 23).
+    \begin{align*}
+      \frac{\Delta\lambda}{\lambda} &\approx
+        (3\times10^{-7})\left(\frac{T}{1K}\right)^{\frac{1}{2}}
+        \mu^{-\frac{1}{2}} \\
+      &\approx (3\times10^{-7})\sqrt{\frac{39433.15K}{1K}}(23)^{-\frac{1}{2}} \\
+      &\approx 1.242\times10^{-5}
+    \end{align*}
+\end{enumerate}
+
+\subsubsection*{Question 5.8}
+If an incandescent light bulb has a luminosity \( L = 60W \) and a filament
+temperature of \( T = 2900K \), what must be the surface area of its filament?
+If the filament consists of a cylindrical wire with diameter
+\( d = 4.6\times10^{-5}m \) (as in a standard incandescent 60 watt, 120 volt
+bulb), what is the length of the wire?
+\begin{align*}
+  L &= A\sigma_{SB}T^4 \\
+  A &= \frac{L}{\sigma_{SB}T^4} \\
+  &= \frac{60W}{5.67\times10^{-8}Wm^{-2}K^{-4}(2900K)^4} \\
+  &= 1.496\times10^{-5}m^2 \\
+  &= \pi(\frac{d}{2})^2l \\
+  l &= \frac{A}{\pi(\frac{d}{2})^2} \\
+  &= \frac{1.496\times10^{-5}}{\pi(\frac{4.6\times10^{-5}}{2})^2} \\
+  &= 9002.65m
+\end{align*}
+
+\subsubsection*{Slide Question 1}
+What is the signal to noise ratio for a source that generates 100 electrons in
+a detector if the observation is limited by shot noise from the source?
+\[ \frac{S}{N} = \frac{100}{\sqrt{100}} = \frac{100}{10} = 10 \]
+
+\subsubsection*{Slide Question 2}
+What is the equivalent width of the following absorption line?
+[diagram not shown]
+\begin{align*}
+  W_{\lambda} &= \int(1-\frac{F_{\lambda}}{F_0})\diff{\lambda} \\
+  &= \int_{1.5\mu m}^{1.6\mu m}(1-\frac{0.5}{1})\diff{\lambda} \\
+  &= \int_{1.5\mu m}^{1.6\mu m}0.5\diff{\lambda} \\
+  &= 0.25\mu m
+\end{align*}
+
+\subsubsection*{Slide Question 3}
+What is the wavelength of the Bracket-gamma (HI 7-4) line? \par
+1458.93 nanometers.
+
+\subsubsection*{Slide Question 4}
+In which waveband does the Bracket-gamma line appear? \par
+Infrared.
+
+\subsubsection*{Slide Question 5}
+At which wavelength, observed by the DIRBE instrument on COBE, does zodiacal
+emission appear most prominent? \par
+Around 10 \(\mu m \) (\( \sim9.66\mu m \)), or infrared wavelengths.
+
+\subsubsection*{Slide Question 6}
+At which wavelength is the maximum flux for a blackbody of temperature 1000K?
+\begin{align*}
+  \lambda_{max}T &= 2898\mu m K \\
+  \lambda_{max} &= \frac{2898\mu m}{1000} \\
+  &= 2.898\mu m = 2898nm
+\end{align*}
+(Infrared)
+
+\subsubsection*{Slide Question 7}
+What is the wavelength of a photon emitted by a hydrogen atom with the electron
+in the ground state when it flips from a spin that is aligned with the spin of
+the proton to a spin that is anti-aligned with the spin of the proton? \par
+The photon emitted has a 21 centimeter wavelength.
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
