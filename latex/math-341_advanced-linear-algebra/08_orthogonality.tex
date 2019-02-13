@@ -1,0 +1,132 @@
+\documentclass{math}
+
+\title{Advanced Linear Algebra}
+\author{Alvin Lin}
+\date{January 2019 - May 2019}
+
+\begin{document}
+
+\maketitle
+
+\section*{Orthogonality}
+Recall that the orthogonal projection of \( \vec{v} \) onto \( \hat{u} \) is
+defined as:
+\begin{align*}
+  \vec{v}\cdot\hat{u} &= \|\vec{v}\|\|\hat{u}\|\cos\theta \\
+  proj_{\hat{u}}\vec{v} &= (\|\vec{v}\|\cos\theta)\hat{u} \\
+  &= \|\vec{v}\|\frac{\vec{v}\cdot\hat{u}}{\|\vec{v}\|}\hat{u} \\
+  &= (\langle v_1,v_2\rangle\cdot\langle u_1,u_2\rangle)\begin{bmatrix}
+    u_1 \\ u_2
+  \end{bmatrix} \\
+  &= (v_1u_1+v_2u_2)\begin{bmatrix}
+    u_1 \\ u_2
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    v_1u_1^2+v_2u_1u_2 \\
+    v_1u_1u_2+v_2u_2^2
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    u_1^2 & u_1u_2 \\
+    u_1u_2 & u_2^2
+  \end{bmatrix}\begin{bmatrix}
+    v_1 \\ v_2
+  \end{bmatrix} \\
+  &= P\vec{v}
+\end{align*}
+If we look at the projection matrix, we observe the following:
+\begin{align*}
+  P &= \begin{bmatrix}
+    u_1^2 & u_1u_2 \\
+    u_1u_2 & u_2^2
+  \end{bmatrix} \\
+  &= \begin{bmatrix}u_1 \\ u_2\end{bmatrix}
+    \begin{bmatrix}u_1 & u_2\end{bmatrix} \\
+  &= \hat{u}\hat{u}^T
+\end{align*}
+Projection is a linear transformation that can be expressed as a matrix
+operation.
+
+\subsubsection*{Example}
+Given \( \hat{u} = \begin{bmatrix}\frac{1}{\sqrt{2}} \\
+-\frac{1}{\sqrt{2}}\end{bmatrix} \) and \( \vec{v} = \begin{bmatrix}3 \\
+4\end{bmatrix} \), find \( proj_{\hat{u}}\vec{v} \).
+\begin{align*}
+  P &= \hat{u}\hat{u}^T \\
+  &= \begin{bmatrix}
+    \frac{1}{\sqrt{2}} \\ -\frac{1}{\sqrt{2}}
+  \end{bmatrix}\begin{bmatrix}
+    \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}}
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    \frac{1}{2} & -\frac{1}{2} \\
+    -\frac{1}{2} & \frac{1}{2}
+  \end{bmatrix} \\
+  proj_{\hat{u}}\vec{v} &= \begin{bmatrix}
+    \frac{1}{2} & -\frac{1}{2} \\
+    -\frac{1}{2} & \frac{1}{2}
+  \end{bmatrix}\begin{bmatrix}
+    3 \\ -4
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    \frac{7}{2} \\ -\frac{7}{2}
+  \end{bmatrix}
+\end{align*}
+
+\subsubsection*{Example}
+Show that \( P = \hat{u}\hat{u}^T \) is symmetric.
+\begin{align*}
+  P^T &= (\hat{u}\hat{u}^T)^T \\
+  &= (\hat{u}^T)^T(\hat{u})^T \\
+  &= \hat{u}\hat{u}^T
+\end{align*}
+Show that \( P^2 = P \) (P is idempotent).
+\begin{align*}
+  P^2 &= (\hat{u}\hat{u}^T)(\hat{u}\hat{u}^T) \\
+  &= \hat{u}(\hat{u}^T\hat{u})\hat{u}^T \\
+  \hat{u}^T\hat{u} &= 1 \\
+  &= \hat{u}\hat{u}^T
+\end{align*}
+
+\subsection*{Orthogonal Projection of \( \vec{v} \) onto a Plane through Origin}
+Given a plane, its normal vector \( \vec{n} \), a vector \( \vec{v} \), the
+distance from the tip of \( \vec{v} \) to the plane is some length that can be
+represented by a vector \( -c\vec{n} \). We can represent the projection of
+\( \vec{v} \) onto the plane as \( \vec{p} = \vec{v}-c\vec{n} \).
+\begin{align*}
+  \vec{p} &= \vec{v}-c\vec{n} \\
+  \vec{n}\cdot\vec{p} &= \vec{n}\cdot(\vec{v}-c\vec{n}) \\
+  0 &= \vec{n}\cdot\vec{v}-c(\vec{n}\cdot\vec{n}) \\
+  c &= \frac{\vec{n}\cdot\vec{v}}{\vec{n}\cdot\vec{n}}
+\end{align*}
+Alternatively, if instead of being given a unit vector \( \vec{n} \), suppose we
+are given two orthogonal vectors \( \hat{u_1} \) and \( \hat{u_2} \) that span
+the plane. Let \( \vec{p_1} = proj_{\hat{u_1}}\vec{v} \) and \( \vec{p_2} =
+proj_{\hat{u_2}}\vec{v} \). The projection of \( \vec{v} \) onto the plane
+spanned by \( \hat{u_1} \) and \( \hat{u_2} \) is equal to \( \vec{p} =
+\vec{p_1}+\vec{p_2} \).
+\begin{align*}
+  \vec{p_1} &= proj_{\hat{u_1}}\vec{v} = \hat{u_1}\hat{u_1}^T\vec{v} \\
+  \vec{p_2} &= proj_{\hat{u_2}}\vec{v} = \hat{u_2}\hat{u_2}^T\vec{v} \\
+  \vec{p} &= \vec{p_1}+\vec{p_2} \\
+  &= (\hat{u_1}\hat{u_1}^T+\hat{u_2}\hat{u_2}^T)\vec{v} = P\vec{v}
+\end{align*}
+
+\subsubsection*{Example}
+Project \( \vec{v} = \langle1,0,-2\rangle \) onto the plane \( x+y+z = 0 \).
+\begin{align*}
+  \langle1,1,1\rangle\cdot\langle x,y,z\rangle &= 0 \\
+  \vec{n} &= \langle1,1,1\rangle \\
+  c &= \frac{\vec{n}\cdot\vec{v}}{\vec{n}\cdot\vec{n}} \\
+  &= \frac{1+0-2}{1+1+1} \\
+  &= -\frac{1}{2} \\
+  \vec{p} &= \vec{v}+\frac{1}{3}\vec{n} \\
+  &= \langle\frac{2}{3},-\frac{1}{3},-\frac{7}{3}\rangle
+\end{align*}
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
