@@ -123,6 +123,123 @@ Project \( \vec{v} = \langle1,0,-2\rangle \) onto the plane \( x+y+z = 0 \).
   &= \langle\frac{2}{3},-\frac{1}{3},-\frac{7}{3}\rangle
 \end{align*}
 
+\subsubsection*{Example}
+Project \( \vec{v} = \langle1,0,-2\rangle \) onto \( x+y+z = 0 \) with
+\( \hat{u_1} = \frac{1}{\sqrt{6}}\begin{bmatrix}-2 \\ 1 \\ 1\end{bmatrix} \)
+and
+\( \hat{u_2} = \frac{1}{\sqrt{2}}\begin{bmatrix}0 \\ 1 \\ -1\end{bmatrix} \).
+\begin{align*}
+  P &= \begin{bmatrix}
+    -\frac{2}{\sqrt{6}} \\ \frac{1}{\sqrt{6}} \\ \frac{1}{\sqrt{6}}
+  \end{bmatrix}\begin{bmatrix}
+    -\frac{2}{\sqrt{6}} & \frac{1}{\sqrt{6}} & \frac{1}{\sqrt{6}}
+  \end{bmatrix}+\begin{bmatrix}
+    0 \\ \frac{1}{\sqrt{2}} \\ -\frac{1}{\sqrt{2}}
+  \end{bmatrix}\begin{bmatrix}
+    0 & \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}}
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    \frac{4}{6} & -\frac{2}{6} & -\frac{2}{6} \\
+    -\frac{2}{6} & \frac{1}{6} & \frac{1}{6} \\
+    -\frac{2}{6} & \frac{1}{6} & \frac{1}{6}
+  \end{bmatrix}+\begin{bmatrix}
+    0 & 0 & 0 \\
+    0 & \frac{1}{2} & -\frac{1}{2} \\
+    0 & -\frac{1}{2} & \frac{1}{2}
+  \end{bmatrix} \\
+  &= \frac{1}{6}\begin{bmatrix}
+    4 & -2 & -2 \\
+    -2 & 4 & -2 \\
+    -2 & -2 & 4
+  \end{bmatrix} \\
+  P\vec{v} &= \frac{1}{6}\begin{bmatrix}
+    4 & -2 & -2 \\
+    -2 & 4 & -2 \\
+    -2 & -2 & 4
+  \end{bmatrix}\begin{bmatrix}1 \\ 0 \\ -2\end{bmatrix} \\
+  &= \begin{bmatrix}
+    \frac{8}{6} \\ \frac{2}{6} \\ -\frac{10}{6}
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    \frac{4}{3} \\ \frac{1}{3} \\ -\frac{5}{3}
+  \end{bmatrix}
+\end{align*}
+
+\subsubsection*{Concept}
+What is the rank of \( P = \hat{u_1}\hat{u_1}^T+\hat{u_2}\hat{u_2}^T \)? \par
+Every vector in \( \R^3 \) gets mapped by \( P\vec{v} \) onto a two dimensional
+plane, so that means that the column space of P must be two dimensional.
+
+\subsection*{Orthogonality in \( \R^n \)}
+A set of vectors is \textbf{orthogonal} if \( \vec{v_i}\cdot\vec{v_j} = 0,
+i\ne j \). For example:
+\[ \vec{v_1} = \begin{bmatrix}2 \\ 1 \\ -1\end{bmatrix} \quad
+  \vec{v_2} = \begin{bmatrix}0 \\ 1 \\ 1\end{bmatrix} \quad
+  \vec{v_3} = \begin{bmatrix}1 \\ -1 \\ 1\end{bmatrix} \]
+An \textbf{orthogonal basis} is a basis that is an orthogonal set.
+
+\subsubsection*{Example}
+Find an orthogonal basis for the subspace \( W \) of \( \R^3 \) given by
+\[ W = \left\{\begin{bmatrix}x \\ y \\ z\end{bmatrix}: x-y+2z = 0\right\} \]
+\begin{align*}
+  \begin{bmatrix}
+    y-2z \\ y \\ z
+  \end{bmatrix} &= y\begin{bmatrix}
+    1 \\ 1 \\ 0
+  \end{bmatrix}+z\begin{bmatrix}
+    -2 \\ 0 \\ 1
+  \end{bmatrix} \\
+  \vec{u} &= \begin{bmatrix}1 \\ 1 \\ 0\end{bmatrix} \\
+  \vec{v} &= \begin{bmatrix}-2 \\ 0 \\ 1\end{bmatrix}
+\end{align*}
+These two vectors form a basis for \( W \) but are not orthogonal. Let
+\( \vec{w} = \begin{bmatrix}x \\ y \\z\end{bmatrix} \) be orthogonal to
+\( \vec{u} \) in the plane.
+\begin{align*}
+  x-y+2z &= 0 \\
+  \vec{w}\cdot\vec{u} &= 0 \\
+  x+y &= 0 \quad y = -x \\
+  2x+2z &= 0 \\
+  \vec{w} &= \begin{bmatrix}-z \\ z \\ z\end{bmatrix} = z\begin{bmatrix}
+    -1 \\ 1 \\ 1
+  \end{bmatrix}
+\end{align*}
+This vector \( \vec{w} \) satisfies the equation and the orthogonality
+condition.
+\[ \vec{w} = \begin{bmatrix}-1 \\ 1 \\ 1\end{bmatrix} \quad
+  \vec{u} = \begin{bmatrix}1 \\ 1 \\ 0\end{bmatrix} \]
+
+\subsubsection*{Fact}
+Let \( [\vec{v_1},\vec{v_2},\dots,\vec{v_k}] \) be an orthogonal basis for a
+subspace \( W \). Let \( \vec{w} \) be any vector in \( W \).
+\begin{align*}
+  \vec{w} &= c_1\vec{v_1}+c_2\vec{v_2}+\dots+c_k\vec{v_k} \\
+  c_1 &= \frac{\vec{v_1}\cdot\vec{w}}{\vec{v_1}\cdot\vec{v_1}} \\
+  c_2 &= \frac{\vec{v_2}\cdot\vec{w}}{\vec{v_2}\cdot\vec{v_2}} \\
+  &\dots \\
+  c_i &= \frac{\vec{v_i}\cdot\vec{w}}{\vec{v_i}\cdot\vec{v_i}}
+\end{align*}
+
+\subsubsection*{Example}
+Let \( \vec{w} = \begin{bmatrix}1 \\ 2 \\ 3\end{bmatrix} \). Find the
+coordinates of \( \vec{w} \) with respect to
+\[ \vec{v_1} = \begin{bmatrix}2 \\ 1 \\ -1\end{bmatrix}\quad
+  \vec{v_2} = \begin{bmatrix}0 \\ 1 \\ 1\end{bmatrix}\quad
+  \vec{v_3} = \begin{bmatrix}1 \\ -1 \\ 1\end{bmatrix} \]
+\begin{align*}
+  \vec{w} &= c_1\vec{v_1}+c_2\vec{v_2}+c_3\vec{v_3} \\
+  c_1 &= \frac{2+2-3}{4+1+1} = \frac{1}{6} \\
+  c_2 &= \frac{0+2+3}{0+1+1} = \frac{5}{2} \\
+  c_3 &= \frac{1-2+3}{1+1+1} = \frac{2}{3}
+\end{align*}
+
+\subsection*{Orthonormality}
+A set of vectors is \textbf{orthonormal} if it is an orthogonal set of unit
+vectors. An orthonormal basis is a basis that is an orthonormal set. Let
+\( [\hat{q_1},\hat{q_2},\dots,\hat{q_k}] \) be an orthonormal basis for a
+subspace \( W \). Then \( \vec{w} = c_1\hat{q_1}+c_2\hat{q_2}+\dots+
+c_k\hat{q_k} \) where \( c_i = \hat{q_i}\cdot\vec{w} \).
+
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
   any questions, comments, or concerns, please contact me at
