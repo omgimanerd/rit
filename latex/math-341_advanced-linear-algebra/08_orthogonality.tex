@@ -240,6 +240,123 @@ vectors. An orthonormal basis is a basis that is an orthonormal set. Let
 subspace \( W \). Then \( \vec{w} = c_1\hat{q_1}+c_2\hat{q_2}+\dots+
 c_k\hat{q_k} \) where \( c_i = \hat{q_i}\cdot\vec{w} \).
 
+\subsection*{Orthogonal Matrices}
+The columns of an \( m\times n \) matrix \( Q \) for an orthonormal set if
+\( Q^TQ = I_n \).
+\[ \begin{bmatrix}\hat{q_1} \\ \hat{q_2} \\ \vdots \\ \hat{q_n}\end{bmatrix}
+  \begin{bmatrix}\hat{q_1} & \hat{q_2} & \dots & \hat{q_3}\end{bmatrix} =
+  \begin{bmatrix}
+    1 & 0 & \dots & 0 \\
+    0 & 1 & \dots & 0 \\
+    \vdots & \vdots & \vdots & \vdots \\
+    0 & 0 & \dots & 1
+  \end{bmatrix} \]
+\textbf{Theorem:} An \( n\times n \) matrix \( Q \) whose columns form an
+orthonormal set is called an ``orthogonal matrix''. A square matrix \( Q \) is
+orthogonal if and only if \( Q^{-1} = Q^T \). Example:
+\begin{align*}
+  A &= \begin{bmatrix}
+    0 & 1 & 0 \\
+    0 & 0 & 1 \\
+    1 & 0 & 0
+  \end{bmatrix} \\
+  A^T &= \begin{bmatrix}
+    0 & 0 & 1 \\
+    1 & 0 & 0 \\
+    0 & 1 & 0
+  \end{bmatrix} = A^{-1}
+\end{align*}
+Another example:
+\begin{align*}
+  B &= \begin{bmatrix}
+    \cos\theta & -\sin\theta \\
+    \sin\theta & \cos\theta
+  \end{bmatrix} \\
+  B^T &= \begin{bmatrix}
+    \cos\theta & \sin\theta \\
+    -\sin\theta & \cos\theta
+  \end{bmatrix} = B^{-1}
+\end{align*}
+The following statements are equivalent:
+\begin{enumerate}
+  \item \( Q \) is orthogonal.
+  \item \( \|Q\vec{x}\| = \|\vec{x}\| \) for every \( \vec{x} \) in \( \R^n \).
+  \item \( (Q\vec{x})\cdot(Q\vec{y}) = \vec{x}\cdot\vec{y} \).
+  \begin{align*}
+    (Q\vec{x})\cdot(Q\vec{y}) &= (Q\vec{x})^T(Q\vec{y}) \\
+    &= \vec{x}^TQ^TQ\vec{y} \\
+    &= \vec{x}^T\vec{y} \\
+    &= \vec{x}\cdot\vec{y}
+  \end{align*}
+\end{enumerate}
+If \( Q \) is an orthogonal matrix \( (Q^{-1} = Q^T) \), the following
+consequences result:
+\begin{enumerate}
+  \item \( Q^{-1} \) is orthogonal.
+  \begin{align*}
+    (Q^{-1})^{-1} &= (Q^{-1})^T \\
+    Q &= (Q^T)^T \\
+    Q &= Q
+  \end{align*}
+  \item \( \det(Q) = \pm1 \)
+  \item If \( \lambda \) is an eigenvalue of \( Q \), then \( |\lambda| = 1 \).
+  \begin{align*}
+    Q\vec{v} &= \lambda\vec{v} \\
+    \|Q\vec{v}\| &= \|\lambda\vec{v}\| \\
+    \|\vec{v}\| &= |\lambda|\|\vec{v}\| \\
+    1 &= \lambda
+  \end{align*}
+  \item If \( Q_1 \) and \( Q_2 \) are orthogonal then so is \( Q_1Q_2 \).
+\end{enumerate}
+\textbf{Theorem:} Let \( W \) be a subspace of \( \R^n \). The set of all
+vectors that are orthogonal to \( W \) is called the ``orthogonal complement''.
+\[ W^{\bot} = \{\vec{v}\in\R^n:\vec{v}\cdot\vec{w} = 0 \forall\vec{w}\in W\} \]
+\textbf{Theorem:} Let \( A \) be an \( n\times n \) matrix. Then the orthogonal
+complement of the row space is the null space.
+\[ (row(A))^T = null(A) \]
+\( \vec{x} \) is in the null space of \( A \) if \( \vec{a_i}\cdot\vec{x} = 0 \)
+therefore every vector in the row space is orthogonal to every vector in the
+null space. Also, note that \( (col(A))^{\bot} = null(A^T) \).
+
+\subsubsection*{Example}
+Let \( W \) be the subspace of \( \R^5 \) spanned by
+\[ \vec{w_1} = \begin{bmatrix}1 \\ -3 \\ 5 \\ 0 \\ 5\end{bmatrix}\quad
+  \vec{w_2} = \begin{bmatrix}-1 \\ 1 \\ 2 \\ -2 \\ 3\end{bmatrix}\quad
+  \vec{w_3} = \begin{bmatrix}0 \\ -1 \\ 4 \\ -1 \\ 5\end{bmatrix} \]
+Find a basis for \( W^{\bot} \).
+\begin{align*}
+  \begin{bmatrix}
+    1 & -3 & 5 & 0 & 5 \\
+    -1 & 1 & 2 & -2 & 3 \\
+    0 & -1 & 4 & -1 & 5
+  \end{bmatrix}\begin{bmatrix}
+    x_1 \\ x_2 \\ x_3 \\ x_4 \\ x_5
+  \end{bmatrix} &= \begin{bmatrix}0 \\ 0 \\ 0\end{bmatrix} \\
+  \begin{bmatrix}
+    1 & -3 & 5 & 0 & 5 & 0 \\
+    -1 & 1 & 2 & -2 & 3 & 0 \\
+    0 & -1 & 4 & -1 & 5 & 0
+  \end{bmatrix} &\to \begin{bmatrix}
+    1 & 0 & 0 & 3 & 4 & 0 \\
+    0 & 1 & 0 & 1 & 3 & 0 \\
+    0 & 0 & 1 & 0 & 2 & 0
+  \end{bmatrix} \\
+  \begin{bmatrix}
+    x_1 \\ x_2 \\ x_3 \\ x_4 \\ x_5
+  \end{bmatrix} &= \begin{bmatrix}
+    -3x_4-4x_5 \\ -x_4-3x_5 \\ -2x_5 \\ x_4 \\ x_5
+  \end{bmatrix} = x_4\begin{bmatrix}
+    -3 \\ -1 \\ 0 \\ 1 \\ 0
+  \end{bmatrix}+x_5\begin{bmatrix}
+    -4 \\ -3 \\ -2 \\ 0 \\ 1
+  \end{bmatrix} \\
+  W^{\bot} &= span\left(\begin{bmatrix}
+    -3 \\ -1 \\ 0 \\ 1 \\ 0
+  \end{bmatrix},\begin{bmatrix}
+    -4 \\ -3 \\ -2 \\ 0 \\ 1
+  \end{bmatrix}\right)
+\end{align*}
+
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
   any questions, comments, or concerns, please contact me at
