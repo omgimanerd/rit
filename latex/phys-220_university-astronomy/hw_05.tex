@@ -1,0 +1,122 @@
+\documentclass{math}
+
+\usepackage{enumerate}
+
+\title{University Astronomy: Homework 3}
+\author{Alvin Lin}
+\date{January 2019 - May 2019}
+
+\begin{document}
+
+\maketitle
+
+\subsubsection*{Question 3.2}
+The asteroid Eros is seen in opposition from the Earth once every 847 days. What
+is the sidereal orbital period of Eros? What is the length \( a \) of the
+semimajor axis of Eros' orbit? The eccentricity of the orbit of Eros is
+\( e = 0.223 \). Does Eros ever come within 1 AU of the Sun?
+\begin{align*}
+  \frac{1}{P} &= \frac{1}{P_E}-\frac{1}{P_{Eros}} \\
+  &= \frac{1}{365}-\frac{1}{847} \\
+  P &= 625~days = 1.71 yr \\
+  P^2 &= Ka^3 \\
+  a &= \sqrt[3]{\frac{P^2}{K}} \\
+  &= \sqrt[3]{\frac{1.71^2}{1yr^2AU^{-3}}} \\
+  &= 1.431~AU
+\end{align*}
+\begin{align*}
+  e &= (1-\frac{b^2}{a^2})^{\frac{1}{2}} \\
+  e^2 &= 1-\frac{b^2}{a^2} \\
+  \frac{b^2}{a^2} &= 1-e^2 \\
+  b &= \sqrt{a^2(1-e^2)} \\
+  &= \sqrt{(1.431^2)(1-0.223^2)} \\
+  &= 1.395~AU
+\end{align*}
+Eros does not come within 1 AU of the Sun.
+
+\subsubsection*{Question 8.1}
+What is the mean mass density \( \bar{\rho} \) of Saturn's largest satellite,
+Titan? What does this suggest about the composition of Titan?
+\begin{align*}
+  \rho &= \frac{3M}{3\pi R^3} \\
+  &= \frac{3(1346\times10^{20}~kg)}{4\pi(2575000~m)^3} \\
+  &\approx 1882.97\frac{kg}{m^3}
+\end{align*}
+This is typical of a Jovian planet, suggesting Titan is mostly gas and ice.
+
+\subsubsection*{Question 8.2}
+Radioactive decay of elements in the Earth's interior results in a mean heat
+flux through the Earth's surface of \( 5\times10^{-2}Wm^{-2} \). What is this
+flux expressed as a fraction of the energy flux due to thermal re-radiation of
+absorbed solar energy? If radioactive decay were the \textit{only} heat source
+for the Earth, what would the Earth's surface temperature be?
+\begin{align*}
+  F &= \frac{L_{Sun}}{4\pi r^2}(1-A) \\
+  &= \frac{3.839\times10^{26}~W}{4\pi(1.496\times10^8~km)^2}(1-0.4) \\
+  &= 8.19\times10^8Wm^{-2} \\
+  \frac{5\times10^{-2}Wm^{-2}}{8.19\times10^8Wm^{-2}} &=
+    6.10500611\times10^{-11} \\
+  L_p &= 4\pi R^2\sigma_{SB}T_p^4 \\
+  T_p &= \sqrt[4]{\frac{L_p}{4\pi R^2\sigma_{SB}}} \\
+  &= \sqrt[4]{\frac{5\times10^{-2}Wm^{-2}}
+    {4\pi(6378000m)^2(5.670\times10^{-8}Wm^{-2}K^{-4})}} \\
+  &= 0.0064K
+\end{align*}
+
+\subsubsection*{Question 8.4}
+Pure, solid water ice has an albedo of \( A \approx 0.35 \). What is the
+minimum distance from the Sun at which a rapidly rotating ice cube would
+remain frozen? Between which two planets does this distance lie?
+\begin{align*}
+  T_p &\approx 395K(1-A)^{\frac{1}{4}}(\frac{r}{1AU})^{-\frac{1}{2}} \\
+  273.15K &= 395K(0.65)^{\frac{1}{4}}(\frac{r}{1AU})^{-\frac{1}{2}} \\
+  \frac{273.15K}{395K(0.65)^{\frac{1}{4}}} &= \sqrt{\frac{1AU}{r}} \\
+  \frac{1}{0.77} &= \frac{1}{r}AU \\
+  r &= 0.77AU
+\end{align*}
+This distance lies between Venus and the Earth.
+
+\subsubsection*{Question 10.5}
+How often does an observer at the Sun's location see the rings of Saturn exactly
+edge-on? \par
+An observer at the Sun's location observes the rings of Saturn exactly edge-on
+twice per revolution of Saturn around the Sun (every 15 years).
+
+\subsubsection*{Slide Question 1}
+What is the approximate energy of the Gamow peak? \par
+300 keV
+
+\subsubsection*{Slide Question 2}
+What is the process that generates energy for a star that has a central
+temperature of 25 million Kelvin? \par
+The CNO cycle
+
+\subsubsection*{Slide Question 3}
+How much gravitational energy will be generated as kinetic energy when the Sun
+shrinks to a white dwarf (roughly the size of the Earth)?
+\begin{align*}
+  U &= \frac{3}{5}\frac{GM^2}{R} \\
+  &= \frac{3}{5}\frac{(6.673\times10^{-11}m^3kg^{-1}s^{-2})
+    (1.989\times10^{30}kg)^2}{6378km} \\
+  &= 2.48\times10^{46}J
+\end{align*}
+Approximately half of this is converted to kinetic energy, so
+\( \sim1.24\times10^{46}J \).
+
+\subsubsection*{Slide Question 4}
+What is the temperature in a shock induced by a relativistic jet of electrons
+accelerated to the speed of light?
+\begin{align*}
+  T &= \frac{3}{16}\frac{mc^2}{k} \\
+  &= \frac{3}{16}\frac{(9.109\times10^{-31}kg)(2.998\times10^8ms^{-1})^2}
+    {1.381\times10^{-23}m^2kgs^{-2}K^{-1}} \\
+  &= 1.11\times10^9 K
+\end{align*}
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
