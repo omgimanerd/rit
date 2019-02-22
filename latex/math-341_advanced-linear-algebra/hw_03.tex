@@ -1,0 +1,284 @@
+\documentclass{math}
+
+\usepackage{enumerate}
+
+\geometry{letterpaper, margin=0.5in}
+
+\title{Advanced Linear Algebra: Homework 3}
+\author{Alvin Lin}
+\date{August 2016 - December 2016}
+
+\begin{document}
+
+\maketitle
+
+\subsubsection*{Question 1}
+A matrix \( A \) is given along with an iterate \( x_5 \).
+\[ A = \begin{bmatrix}
+  7 & 2 \\
+  -6 & -1
+\end{bmatrix}, x_5 = \begin{bmatrix}6249 \\ -6247\end{bmatrix} \]
+\begin{enumerate}[(a)]
+  \item Use these data to approximate a dominant eigenvector whose first
+    component is 1 and a corresponding dominant eigenvalue.
+  \begin{align*}
+    \vec{x_6} &= A\vec{x_5} \\
+    &= \begin{bmatrix}7 & 2 \\ -6 & -1\end{bmatrix}\begin{bmatrix}
+      6249 \\ -6247
+    \end{bmatrix} \\
+    &= \begin{bmatrix}31249 \\ -31247\end{bmatrix} \\
+    \vec{x_6} &\approx \lambda_1\vec{x_5} \\
+    \begin{bmatrix}31249 \\ -31247\end{bmatrix} &\approx \lambda_1
+      \begin{bmatrix}6249 \\ -6247\end{bmatrix} \\
+    \lambda_1 &\approx 5.001
+  \end{align*}
+  \item Compare your approximate eigenvalue in part (a) with the actual
+    dominant eigenvalue, \( \lambda \).
+  \begin{align*}
+    \det(A-\lambda I) &= \begin{vmatrix}
+      7-\lambda & 2 \\ -6 & -1-\lambda
+    \end{vmatrix} \\
+    &= (7-\lambda)(-1-\lambda)-(-12) \\
+    &= -7-7\lambda+\lambda+\lambda^2+12 \\
+    &= \lambda^2-6\lambda+5 \\
+    &= (\lambda-5)(\lambda-1) \\
+    &= 0 \\
+    \lambda &= 5 \quad \lambda = 1
+  \end{align*}
+\end{enumerate}
+
+\subsubsection*{Question 2}
+Use the power method to approximate the dominant eigenvalue and eigenvector of
+\( A \). Use the given initial vector \( v_0 \), the specified number of
+iterations \( k \), and three-decimal-place accuracy.
+\begin{align*}
+  A &= \begin{bmatrix}17 & 12 \\ 6 & 3\end{bmatrix}, x_0 = \begin{bmatrix}
+    1 \\ 1\end{bmatrix}, k = 5 \\
+  \vec{x_1} &= \begin{bmatrix}17 & 12 \\ 6 & 3\end{bmatrix}\begin{bmatrix}
+    1 \\ 1\end{bmatrix} = \begin{bmatrix}29 \\ 9\end{bmatrix} \\
+  \vec{x_2} &= \begin{bmatrix}17 & 12 \\ 6 & 3\end{bmatrix}\begin{bmatrix}
+    29 \\ 9\end{bmatrix} = \begin{bmatrix}601 \\ 201\end{bmatrix} \\
+  \vec{x_3} &= \begin{bmatrix}17 & 12 \\ 6 & 3\end{bmatrix}\begin{bmatrix}
+    601 \\ 201\end{bmatrix} = \begin{bmatrix}12629 \\ 4209\end{bmatrix} \\
+  \vec{x_4} &= \begin{bmatrix}17 & 12 \\ 6 & 3\end{bmatrix}\begin{bmatrix}
+    12629 \\ 4209\end{bmatrix} = \begin{bmatrix}265201 \\ 88401\end{bmatrix} \\
+  \begin{bmatrix}265201 \\ 88401\end{bmatrix} &= \lambda_1
+    \begin{bmatrix}12629 \\ 4209\end{bmatrix} \\
+  \lambda_1 &\approx 21
+\end{align*}
+
+\subsubsection*{Question 3}
+Draw the Gerschgorin disks for the given matrix.
+\[ \begin{bmatrix}
+  1 & 1 & 0 \\
+  \frac{1}{2} & 5 & \frac{1}{2} \\
+  1 & 0 & 6
+\end{bmatrix} \]
+The solution is three circles on the imaginary-real plane centered at
+\( (1,0), (5,0), (6,0) \) with radius 1 by rows. By columns, the solution
+is three circles on the imaginary-real plane centered at
+\( (1,0), (5,0), (6,0) \) with radii \( 1.5, 1, 0.5 \) respectively.
+
+\subsubsection*{Question 4}
+Find the general solution to the given system of differential equations.
+\begin{align*}
+  x' &= x+4y \quad x(0) = 0 \\
+  y' &= 3x+2y \quad y(0) = 7 \\
+  \ddiff{}{t}\begin{bmatrix}x \\ y\end{bmatrix} &=
+    \begin{bmatrix}1 & 4 \\ 3 & 2\end{bmatrix}
+    \begin{bmatrix}x \\ y\end{bmatrix} \\
+  &= (PDP^{-1})\begin{bmatrix}x \\ y\end{bmatrix} \\
+  D &= \begin{bmatrix}-2 & 0 \\ 0 & 5\end{bmatrix} \\
+  P &= \begin{bmatrix}-\frac{4}{3} & 1 \\ 1 & 1\end{bmatrix} \\
+  \ddiff{P^{-1}\vec{x}}{t} &= D(P^{-1}\vec{x}) \quad \vec{z} = P^{-1}\vec{x} \\
+  \begin{bmatrix}z_1 \\ z_2\end{bmatrix} &=
+    \begin{bmatrix}-2 & 0 \\ 0 & 5\end{bmatrix}
+    \begin{bmatrix}z_1 \\ z_2\end{bmatrix} \\
+  \ddiff{z_1}{t} &= -2z_1 \quad z_1 = c_1\e^{-2t} \\
+  \ddiff{z_2}{t} &= 5z_2 \quad z_2 = c_2\e^{5t} \\
+  \vec{x} &= P\vec{z} \\
+  &= \begin{bmatrix}-\frac{4}{3} & 1 \\ 1 & 1\end{bmatrix}\vec{z} \\
+  &= \begin{bmatrix}
+    -\frac{4}{3}c_1\e^{-2t}+c_2\e^{5t} \\
+    c_1\e^{-2t}+c_2\e^{5t}
+  \end{bmatrix} \\
+  x(0) &= 0 = -\frac{4}{3}c_1+c_2 \\
+  y(0) &= 7 = c_1+c_2 \\
+  c_1 &= 3 \quad c_2 = 4
+\end{align*}
+
+\subsubsection*{Question 5}
+Find the general solution to the given system of differential equations.
+\begin{align*}
+  x' &= y-z \quad x(0) = 1 \\
+  y' &= x+z \quad y(0) = 0 \\
+  z' &= x+y \quad z(0) = -1 \\
+  \ddiff{}{t}\begin{bmatrix}x \\ y \\ z\end{bmatrix} &= \begin{bmatrix}
+    0 & 1 & -1 \\
+    1 & 0 & 1 \\
+    1 & 1 & 0
+  \end{bmatrix}\begin{bmatrix}x \\ y \\ z\end{bmatrix} \\
+  &= (PDP^{-1})\vec{x} \\
+  D &= \begin{bmatrix}
+    0 & 0 & 0 \\
+    0 & -1 & 0 \\
+    0 & 0 & 1
+  \end{bmatrix} \\
+  P &= \begin{bmatrix}
+    -1 & -1 & 0 \\
+    1 & 1 & 1 \\
+    1 & 0 & 1
+  \end{bmatrix} \\
+  \ddiff{P^{-1}\vec{x}}{t} &= D(P^{-1}\vec{x}) \quad P^{-1}\vec{x} = \vec{a} \\
+  \ddiff{\vec{a}}{t} &= D\vec{a} \\
+  \ddiff{}{t}\begin{bmatrix}a_1 \\ a_2 \\ a_3\end{bmatrix} &= \begin{bmatrix}
+    0 & 0 & 0 \\
+    0 & -1 & 0 \\
+    0 & 0 & 1
+  \end{bmatrix}\begin{bmatrix}a_1 \\ a_2 \\ a_3\end{bmatrix} \\
+  \ddiff{a_1}{t} &= 0 \quad a_1 = c_1\e^{0t} = c_1 \\
+  \ddiff{a_2}{t} &= -a_2 \quad a_2 = c_2\e^{-t} \\
+  \ddiff{a_3}{t} &= a_3 \quad a_3 = c_3\e^{t} \\
+  \vec{x} &= P\vec{a} \\
+  &= \begin{bmatrix}
+    -1 & -1 & 0 \\
+    1 & 1 & 1 \\
+    1 & 0 & 1
+  \end{bmatrix}\vec{a} \\
+  &= \begin{bmatrix}
+    -c_1-c_2\e^{-t} \\
+    c_1+c_2\e^{-t}+c_3\e^{t} \\
+    c_1+c_3\e^{t}
+  \end{bmatrix} \\
+  x(0) &= 1 = -c_1-c_2 \\
+  y(0) &= 0 = c_1+c_2+c_3 \\
+  z(0) &= -1 = c_1+c_3 \\
+  \left[\begin{array}{ccc|c}
+    -1 & -1 & 0 & 1 \\
+    1 & 1 & 1 & 0 \\
+    1 & 0 & 1 & -1
+  \end{array}\right] &\to \left[\begin{array}{ccc|c}
+    1 & 0 & 0 & -2 \\
+    0 & 1 & 0 & 1 \\
+    0 & 0 & 1 & 1
+  \end{array}\right] \\
+  \begin{bmatrix}x \\ y \\ z\end{bmatrix} &= \begin{bmatrix}
+    2-\e^{-t} \\
+    -2+\e^{-t}+\e^{t} \\
+    -2+\e^{t}
+  \end{bmatrix}
+\end{align*}
+
+\subsubsection*{Question 6}
+Determine if the vectors form an orthogonal set.
+\[ \begin{bmatrix}-9 \\ 3 \\ 6\end{bmatrix},
+  \begin{bmatrix}6 \\ 12 \\ 3\end{bmatrix},
+  \begin{bmatrix}3 \\ -3 \\ 6\end{bmatrix} \]
+\begin{align*}
+  \begin{bmatrix}-9 \\ 3 \\ 6\end{bmatrix}\cdot
+    \begin{bmatrix}6 \\ 12 \\ 3\end{bmatrix} &= 0 \\
+  \begin{bmatrix}-9 \\ 3 \\ 6\end{bmatrix}\cdot
+    \begin{bmatrix}3 \\ -3 \\ 6\end{bmatrix} &= 0 \\
+  \begin{bmatrix}6 \\ 12 \\ 3\end{bmatrix}\cdot
+    \begin{bmatrix}3 \\ -3 \\ 6\end{bmatrix} &= 0
+\end{align*}
+
+\subsubsection*{Question 7}
+Determine if the given vectors form an orthogonal set.
+\[ \begin{bmatrix}1 \\ 0 \\ -1 \\ 1\end{bmatrix},
+  \begin{bmatrix}-1 \\ 0 \\ 1 \\ 2\end{bmatrix},
+  \begin{bmatrix}1 \\ 1 \\ 1 \\ 0\end{bmatrix},
+  \begin{bmatrix}0 \\ -1 \\ 1 \\ 1\end{bmatrix} \]
+\begin{align*}
+  \begin{bmatrix}1 \\ 0 \\ -1 \\ 1\end{bmatrix}\cdot
+    \begin{bmatrix}-1 \\ 0 \\ 1 \\ 2\end{bmatrix} &= 0 \quad
+  \begin{bmatrix}1 \\ 0 \\ -1 \\ 1\end{bmatrix}\cdot
+    \begin{bmatrix}1 \\ 1 \\ 1 \\ 0\end{bmatrix} = 0 \quad
+  \begin{bmatrix}1 \\ 0 \\ -1 \\ 1\end{bmatrix}\cdot
+    \begin{bmatrix}0 \\ -1 \\ 1 \\ 1\end{bmatrix} = 0 \\
+  \begin{bmatrix}-1 \\ 0 \\ 1 \\ 2\end{bmatrix}\cdot
+    \begin{bmatrix}1 \\ 1 \\ 1 \\ 0\end{bmatrix} &= 0 \quad
+  \begin{bmatrix}-1 \\ 0 \\ 1 \\ 2\end{bmatrix}\cdot
+    \begin{bmatrix}0 \\ -1 \\ 1 \\ 1\end{bmatrix} = 2
+\end{align*}
+
+\subsubsection*{Question 8}
+Do the given vectors form an orthogonal basis for \( \R^2 \).
+\[ \vec{v_1} = \begin{bmatrix}6 \\ -2\end{bmatrix}
+  \vec{v_2} = \begin{bmatrix}1 \\ 3\end{bmatrix} \]
+\[ \vec{v_1}\cdot\vec{v_2} = 0 \]
+You are given the theorem below. \\
+Let \( \{\vec{v_1},\vec{v_2},\dots,\vec{v_k}\} \) be an orthogonal basis for a
+subspace \( W \) of \( \R^n \) and let \( \vec{w} \) be any vector in \( W \).
+Then the unique scalars \( c_1,\dots,c_k \), such that
+\begin{align*}
+  \vec{w} &= c_1\vec{v_1}+\dots+c_k\vec{v_k} \\
+  c_i &= \frac{\vec{w}\cdot\vec{w}}{\vec{v_i}\cdot\vec{v_i}} \quad
+    i = 1,\dots,k
+\end{align*}
+Use the theorem to express \( \vec{w} \) as a linear combination of the above
+basis vectors. Give the coordinate center \( [\vec{w}]_{\mathbb{B}} \) of
+\( \vec{w} \) with respect to the basis \( \vec{b} = \{\vec{v_1},\vec{v_2}\} \)
+of \( \R^2 \).
+\begin{align*}
+  \vec{w} &= \begin{bmatrix}1 \\ -2\end{bmatrix} \\
+  c_1 &= \frac{\vec{w}\cdot\vec{v_1}}{\vec{v_1}\cdot\vec{v_1}} \\
+  &= \frac{10}{40} = \frac{1}{4} \\
+  c_2 &= \frac{\vec{w}\cdot\vec{v_2}}{\vec{v_2}\cdot\vec{v_2}} \\
+  &= \frac{-5}{10} = -\frac{1}{2} \\
+  [\vec{w}]_{\mathbb{B}} &=
+    \begin{bmatrix}-\frac{1}{2} \\ \frac{1}{4}\end{bmatrix}
+\end{align*}
+
+\subsubsection*{Question 9}
+Do the given vectors form an orthogonal basis for \( \R^3 \)?
+\[ \vec{v_1} = \begin{bmatrix}1 \\ 0 \\ -1\end{bmatrix} \\
+  \vec{v_2} = \begin{bmatrix}3 \\ 6 \\ 3\end{bmatrix} \\
+  \vec{v_3} = \begin{bmatrix}3 \\ -3 \\ 3\end{bmatrix} \]
+\begin{align*}
+  \vec{v_1}\cdot\vec{v_2} &= 0 \\
+  \vec{v_1}\cdot\vec{v_3} &= 0 \\
+  \vec{v_2}\cdot\vec{v_3} &= 0
+\end{align*}
+Let \( \{\vec{v_1},\vec{v_2},\dots,\vec{v_k}\} \) be an orthogonal basis for a
+subspace \( W \) of \( \R^n \) and let \( \vec{w} \) be any vector in \( W \).
+Then the unique scalars \( c_1,\dots,c_k \), such that
+\begin{align*}
+  \vec{w} &= c_1\vec{v_1}+\dots+c_k\vec{v_k} \\
+  c_i &= \frac{\vec{w}\cdot\vec{w}}{\vec{v_i}\cdot\vec{v_i}} \quad
+    i = 1,\dots,k
+\end{align*}
+Use the theorem to express \( \vec{w} \) as a linear combination of the above
+basis vectors. Give the coordinate center \( [\vec{w}]_{\mathbb{B}} \) of
+\( \vec{w} \) with respect to the basis \( \vec{b} = \{\vec{v_1},\vec{v_2}\} \)
+of \( \R^3 \).
+\begin{align*}
+  \vec{w} = \begin{bmatrix}1 \\ 1 \\ 1\end{bmatrix} \\
+  c_1 &= \frac{\vec{w}\cdot\vec{v_1}}{\vec{v_1}\cdot\vec{v_1}} \\
+  &= \frac{0}{2} = 0 \\
+  c_2 &= \frac{\vec{w}\cdot\vec{v_2}}{\vec{v_2}\cdot\vec{v_2}} \\
+  &= \frac{12}{54} = \frac{2}{9} \\
+  c_3 &= \frac{\vec{w}\cdot\vec{v_3}}{\vec{v_3}\cdot\vec{v_3}} \\
+  &= \frac{3}{27} = \frac{1}{9} \\
+  [\vec{w}]_{\mathbb{B}} &= \begin{bmatrix}
+    0 \\ \frac{2}{9} \\ \frac{1}{9}
+  \end{bmatrix}
+\end{align*}
+
+\subsubsection*{Question 10}
+Determine whether the given orthogonal set of vectors is orthonormal.
+\[ \begin{bmatrix}\frac{3}{5} \\ \frac{4}{5}\end{bmatrix},
+  \begin{bmatrix}-\frac{4}{5} \\ \frac{3}{5}\end{bmatrix} \]
+\begin{align*}
+  \left\|\begin{bmatrix}\frac{3}{5} \\ \frac{4}{5}\end{bmatrix}\right\| &= 1 \\
+  \left\|\begin{bmatrix}-\frac{4}{5} \\ \frac{3}{5}\end{bmatrix}\right\| &= 1 \\
+  \begin{bmatrix}\frac{3}{5} \\ \frac{4}{5}\end{bmatrix}\cdot
+    \begin{bmatrix}-\frac{4}{5} \\ \frac{3}{5}\end{bmatrix} &= 0
+\end{align*}
+
+\begin{center}
+  If you have any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
