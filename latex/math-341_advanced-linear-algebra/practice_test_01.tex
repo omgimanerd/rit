@@ -40,9 +40,9 @@ Consider the plane \( x+y-z = 1 \).
   \end{align*}
   \item What is the distance from point \( B \) to the plane?
   \begin{align*}
-    \vec{p} &= \vec{v}-c\vec{n} \\
-    c &= \frac{\vec{n}\cdot\vec{v}}{\vec{n}\cdot\vec{n}} \\
-    &= -\frac{2}{3}
+    \|\langle-\frac{2}{3},-\frac{2}{3},\frac{2}{3}\rangle\| &=
+      \sqrt{\frac{12}{9}} \\
+    &= \frac{2\sqrt{3}}{3}
   \end{align*}
 \end{enumerate}
 
@@ -53,7 +53,7 @@ Consider the matrix
   2 & 4 & 1 & 4 \\
   3 & 6 & 3 & 9
 \end{bmatrix} \]
-\begin{enumerate}
+\begin{enumerate}[(a)]
   \item Find the reduced row echelon form \( R = rref(A) \). What is the rank
     of A?
   \begin{align*}
@@ -81,20 +81,21 @@ Consider the matrix
       1 & 2 & 0 & 1 & 0 \\
       0 & 0 & 1 & 2 & 0 \\
       0 & 0 & 0 & 0 & 0
-    \end{bmatrix} &\quad x_1+2x_2+x_4 = 0 \quad x_3+x_4 = 0 \\
+    \end{bmatrix} &\quad x_1+2x_2+x_4 = 0 \quad x_3+2x_4 = 0 \\
     x_2 &= s \quad x_4 = t \\
     x_1 &= -2s-t \\
-    x_3 &= -t \\
+    x_3 &= -2t \\
     \vec{x} &= s\begin{bmatrix}-2 \\ 1 \\ 0 \\ 0\end{bmatrix}+
-      t\begin{bmatrix}-1 \\ 0 \\ -1 \\ 1\end{bmatrix} \\
+      t\begin{bmatrix}-1 \\ 0 \\ -2 \\ 1\end{bmatrix} \\
     null(A) &= span\left(\begin{bmatrix}-2 \\ 1 \\ 0 \\ 0\end{bmatrix}+
-      t\begin{bmatrix}-1 \\ 0 \\ -1 \\ 1\end{bmatrix}\right)
+      t\begin{bmatrix}-1 \\ 0 \\ -2 \\ 1\end{bmatrix}\right)
   \end{align*}
   \item If the vector \( \vec{b} \) is the sum of the four columns of \( A \),
   write down the complete solution to \( A\vec{x} = \vec{b} \).
   \begin{align*}
-    A\vec{x} &= \begin{bmatrix}4 \\ 11 \\ 21\end{bmatrix} \\
-    \vec{x} &= \begin{bmatrix}1 \\ 1 \\ 1 \\ 1\end{bmatrix}
+    \vec{x} &= \begin{bmatrix}1 \\ 1 \\ 1 \\ 1\end{bmatrix}+
+      s\begin{bmatrix}-2 \\ 1 \\ 0 \\ 0\end{bmatrix}+
+      t\begin{bmatrix}-1 \\ 0 \\ -2 \\ 1\end{bmatrix}
   \end{align*}
 \end{enumerate}
 
@@ -132,18 +133,21 @@ Suppose \( A \) is the matrix
 Is the vector \( \vec{b} = \begin{bmatrix}8 \\ 28 \\ 14\end{bmatrix} \) in
 the column space of \( A \)?
 \begin{align*}
-  rref\left(\begin{bmatrix}
+  A\vec{x} &= \vec{b} \\
+  \left[\begin{array}{cc|c}
     2 & 1 & 8 \\
     6 & 5 & 28 \\
     2 & 4 & 14
-  \end{bmatrix}\right) &= \begin{bmatrix}
-    1 & 0 & 0 \\
-    0 & 1 & 0 \\
-    0 & 0 & 1
-  \end{bmatrix}
+  \end{array}\right] &\to \left[\begin{array}{cc|c}
+    1 & 0 & 3 \\
+    0 & 1 & 2 \\
+    0 & 0 & 0
+  \end{array}\right] \\
+  x_1 &= 3 \quad x_2 = 2 \\
+  \vec{b} &= 3\begin{bmatrix}2 \\ 6 \\ 2\end{bmatrix}+
+    2\begin{bmatrix}1 \\ 5 \\ 4\end{bmatrix}
 \end{align*}
-This system is inconsistent and would imply \( 0 = 1 \), so \( \vec{b} \) is
-not in the column space of \( A \).
+A solution exists so \( \vec{b} \) is in the column space of \( A \).
 
 \subsubsection*{Question 6}
 Use row operations to find the inverse of
@@ -192,7 +196,7 @@ Let \( A = \begin{bmatrix}
   1 & 1 & 1 & 0 \\
   1 & 1 & 0 & 0
 \end{bmatrix} \)
-\begin{enumerate}
+\begin{enumerate}[(a)]
   \item Find \( \det(AB) \).
   \begin{align*}
     \det(AB) &= \det(A)\det(B) \\
@@ -229,7 +233,7 @@ Let \( A = \begin{bmatrix}
 
 \subsubsection*{Question 8}
 Let \( A = \begin{bmatrix}0 & -1 \\ 4 & 0\end{bmatrix} \).
-\begin{enumerate}
+\begin{enumerate}[(a)]
   \item Find the eigenvalues of \( A \).
   \begin{align*}
     \det(A-\lambda I) &= \begin{vmatrix}
@@ -305,7 +309,7 @@ Solve the system of coupled ODEs.
     \begin{bmatrix}x \\ y\end{bmatrix} \\
   &= (PDP^{-1})\begin{bmatrix}x \\ y\end{bmatrix} \\
   A &= \begin{bmatrix}3 & -4 \\ 2 & -3\end{bmatrix} = PDP^{-1} \\
-  P &= \begin{bmatrix}-2 & 1 \\ 1 & 1\end{bmatrix} \\
+  P &= \begin{bmatrix}2 & 1 \\ 1 & 1\end{bmatrix} \\
   D &= \begin{bmatrix}1 & 0 \\ 0 & -1\end{bmatrix} \\
   \ddiff{(P^{-1}\vec{x})}{t} &= D(P^{-1}\vec{x}) \quad
     \vec{z} = P^{-1}\vec{x} \\
@@ -315,18 +319,18 @@ Solve the system of coupled ODEs.
   \ddiff{z_1}{t} &= z_1 \quad z_1 = c_1\e^{t} \\
   \ddiff{z_2}{t} &= -x_2 \quad x_2 = c_2\e^{-t} \\
   \vec{x} &= P\vec{z} \\
-  &= \begin{bmatrix}-2 & 1 \\ 1 & 1\end{bmatrix}\begin{bmatrix}
+  &= \begin{bmatrix}2 & 1 \\ 1 & 1\end{bmatrix}\begin{bmatrix}
     c_1\e^t \\ c_2\e^{-t}
   \end{bmatrix} \\
   &= \begin{bmatrix}
-    -2c_1\e^t+c_2\e^{-t} \\ c_1\e^t+c_2\e^{-t}
+    2c_1\e^t+c_2\e^{-t} \\ c_1\e^t+c_2\e^{-t}
   \end{bmatrix} \\
-  x(0) &= 1 = -2c_1+c_2 \\
+  x(0) &= 1 = 2c_1+c_2 \\
   y(0) &= 0 = c_1+c_2 \\
-  c_1 &= -\frac{1}{3} \quad c_2 = \frac{1}{3} \\
+  c_1 &= 1 \quad c_2 = -1 \\
   \vec{x} &= \begin{bmatrix}
-    \frac{2}{3}\e^t+\frac{1}{3}\e^{-t} \\
-    -\frac{1}{3}\e^t+\frac{1}{3}\e^{-t}
+    2\e^t-\e^{-t} \\
+    \e^t-\e^{-t}
   \end{bmatrix}
 \end{align*}
 
