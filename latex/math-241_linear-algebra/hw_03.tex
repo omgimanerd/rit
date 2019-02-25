@@ -254,11 +254,12 @@ scalars \( s \) and \( t \).
 \end{align*}
 
 \subsubsection*{Exercise 69}
-Prove that \( \vec{u} \) is orthogonal to \( \vec{v}-proj_{\vec{u}}\vec{v} \)
+Prove that \( \vec{u} \) is orthogonal to
+\( \vec{v}-\text{proj}_{\vec{u}}\vec{v} \)
 for all vectors \( \vec{u} \) and \( \vec{v} \) in \( \R^n \), where
 \( \vec{u}\ne\vec{0} \).
 \begin{align*}
-  \vec{u}\cdot(\vec{v}-proj_{\vec{u}}\vec{v}) &= \vec{u}\cdot(\vec{v}-
+  \vec{u}\cdot(\vec{v}-\text{proj}_{\vec{u}}\vec{v}) &= \vec{u}\cdot(\vec{v}-
     \frac{\vec{u}\cdot\vec{v}}{\vec{u}\cdot\vec{u}}\vec{u}) \\
   &= \vec{u}\cdot\vec{v}-
     \frac{\vec{u}\cdot\vec{v}}{\vec{u}\cdot\vec{u}}\vec{u}\cdot\vec{u} \\
@@ -267,29 +268,31 @@ for all vectors \( \vec{u} \) and \( \vec{v} \) in \( \R^n \), where
 \end{align*}
 
 \subsubsection*{Exercise 70a}
-Prove that \( proj_{\vec{u}}(proj_{\vec{u}}\vec{v}) = proj_{\vec{u}}\vec{v} \).
+Prove that \( \text{proj}_{\vec{u}}(\text{proj}_{\vec{u}}\vec{v}) =
+\text{proj}_{\vec{u}}\vec{v} \).
 \begin{align*}
-  \vec{w} &= proj_{\vec{u}}\vec{v} \\
+  \vec{w} &= \text{proj}_{\vec{u}}\vec{v} \\
   &= \frac{\vec{u}\cdot\vec{v}}{\vec{u}\cdot\vec{u}}\vec{u} \\
-  proj_{\vec{u}}(proj_{\vec{u}}\vec{v}) &= proj_{\vec{u}}
+  \text{proj}_{\vec{u}}(\text{proj}_{\vec{u}}\vec{v}) &= \text{proj}_{\vec{u}}
     \frac{\vec{u}\cdot\vec{v}}{\vec{u}\cdot\vec{u}}\vec{u} \\
-  &= proj_{\vec{u}}\vec{w} \\
+  &= \text{proj}_{\vec{u}}\vec{w} \\
   &= \frac{\vec{u}\cdot\vec{w}}{\vec{u}\cdot\vec{u}}\vec{u} \\
   &= \frac{\vec{u}\cdot\frac{\vec{u}\cdot\vec{v}}{\vec{u}\cdot\vec{u}}\vec{u}}
     {\vec{u}\cdot\vec{u}}\vec{u} \\
   &= \frac{\vec{u}\cdot\vec{v}}{\vec{u}\cdot\vec{u}}
     \frac{\vec{u}\cdot\vec{u}}{\vec{u}\cdot\vec{u}}\vec{u} \\
   &= \frac{\vec{u}\cdot\vec{v}}{\vec{u}\cdot\vec{u}}\vec{u} \\
-  &= proj_{\vec{u}}\vec{v}
+  &= \text{proj}_{\vec{u}}\vec{v}
 \end{align*}
 
 \subsubsection*{Exercise 70b}
-Prove that \( proj_{\vec{u}}(\vec{v}-proj_{\vec{u}}\vec{v}) = 0 \).
+Prove that \( \text{proj}_{\vec{u}}(\vec{v}-
+\text{proj}_{\vec{u}}\vec{v}) = 0 \).
 \begin{align*}
-  \vec{w} &= proj_{\vec{u}}\vec{v} \\
+  \vec{w} &= \text{proj}_{\vec{u}}\vec{v} \\
   &= \frac{\vec{u}\cdot\vec{v}}{\vec{u}\cdot\vec{u}}\vec{u} \\
-  proj_{\vec{u}}(\vec{v}-proj_{\vec{u}}\vec{v}) &=
-    proj_{\vec{u}}(\vec{v}-\vec{w}) \\
+  \text{proj}_{\vec{u}}(\vec{v}-\text{proj}_{\vec{u}}\vec{v}) &=
+    \text{proj}_{\vec{u}}(\vec{v}-\vec{w}) \\
   &= \frac{\vec{u}\cdot(\vec{v}-\vec{w})}{\vec{u}\cdot\vec{u}}\vec{u} \\
   &= \frac{\vec{u}\cdot\vec{v}-\vec{u}\cdot\vec{w}}
     {\vec{u}\cdot\vec{u}}\vec{u} \\
@@ -305,15 +308,15 @@ Prove that \( proj_{\vec{u}}(\vec{v}-proj_{\vec{u}}\vec{v}) = 0 \).
 \end{align*}
 
 \subsubsection*{Exercise 73}
-Use the fact that \( proj_{\vec{u}}\vec{v} = c\vec{u} \) for some scalar \( c \)
-together with Figure 1.41 to find \( c \) and derive the formula for
-\( proj_{\vec{u}}\vec{v} \).
+Use the fact that \( \text{proj}_{\vec{u}}\vec{v} = c\vec{u} \) for some scalar
+\( c \) together with Figure 1.41 to find \( c \) and derive the formula for
+\( \text{proj}_{\vec{u}}\vec{v} \).
 \begin{align*}
   c\vec{u}\cdot(\vec{v}-c\vec{u}) &= 0 \\
   (c\vec{u}\cdot\vec{v})-(c\vec{u}\cdot c\vec{u}) &= 0 \\
   c(\vec{u}\cdot\vec{v}) &= |c|^2(\vec{u}\cdot\vec{u}) \\
   \frac{\vec{u}\cdot\vec{v}}{\vec{u}\cdot\vec{u}} &= |c| \\
-  proj_{\vec{u}}\vec{v} &= c\vec{u} =
+  \text{proj}_{\vec{u}}\vec{v} &= c\vec{u} =
     \frac{\vec{u}\cdot\vec{v}}{\vec{u}\cdot\vec{u}}\vec{u}
 \end{align*}
 

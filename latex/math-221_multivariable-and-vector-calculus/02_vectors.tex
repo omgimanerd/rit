@@ -170,7 +170,7 @@ pounds, what is the amount of work done?
     \draw[->] (0,0)--(4,0) node[pos=0.5,below] {\( \vec{a} \)};
     \draw[->] (0,0)--(1,2) node[pos=0.5,left] {\( \vec{b} \)};
     \draw[->,red] (0,0)--(1,0) node[pos=0.5,below]
-      {\( proj_{\vec{a}}\vec{b} \)};
+      {\( \text{proj}_{\vec{a}}\vec{b} \)};
     \draw[dashed] (1,2)--(1,0);
   \end{tikzpicture}
 \end{center}
@@ -180,7 +180,8 @@ The scalar project of \( \vec{b} \) onto \( \vec{a} \) is
   comp_{\vec{a}}\vec{b} &= |\vec{b}|\cos\theta \\
   &= \frac{|\vec{b}|\cos\theta|\vec{a}|}{|\vec{a}|} \\
   &= \frac{\vec{a}\cdot\vec{b}}{|\vec{a}|} \\
-  proj_{\vec{a}}\vec{b} &= comp_{\vec{a}}\vec{b}\frac{\vec{a}}{|\vec{a}|} \\
+  \text{proj}_{\vec{a}}\vec{b} &=
+    comp_{\vec{a}}\vec{b}\frac{\vec{a}}{|\vec{a}|} \\
   &= \frac{\vec{a}\cdot\vec{b}}{|\vec{a}|}\frac{\vec{a}}{|\vec{a}|} \\
   &= \frac{\vec{a}\cdot\vec{b}}{|\vec{a}|^{2}}\vec{a}
 \end{align*}
@@ -195,7 +196,7 @@ The scalar project of \( \vec{b} \) onto \( \vec{a} \) is
     \draw[->] (0,0)--(0,5) node[above] {\( y \)};
     \draw (0,0)--(4,1)--(2,2)--(0,0);
     \node[right] (D) at (2.3,0.6)
-      {\( proj_{\overrightarrow{AC}}\overrightarrow{AB} \)};
+      {\( \text{proj}_{\overrightarrow{AC}}\overrightarrow{AB} \)};
     \draw[->,red,thick] (0,0)--(2.3,0.6);
     \draw[dashed] (2.3,0.6)--(2,2);
   \end{tikzpicture}

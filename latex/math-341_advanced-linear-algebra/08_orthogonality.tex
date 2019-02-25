@@ -13,7 +13,7 @@ Recall that the orthogonal projection of \( \vec{v} \) onto \( \hat{u} \) is
 defined as:
 \begin{align*}
   \vec{v}\cdot\hat{u} &= \|\vec{v}\|\|\hat{u}\|\cos\theta \\
-  proj_{\hat{u}}\vec{v} &= (\|\vec{v}\|\cos\theta)\hat{u} \\
+  \text{proj}_{\hat{u}}\vec{v} &= (\|\vec{v}\|\cos\theta)\hat{u} \\
   &= \|\vec{v}\|\frac{\vec{v}\cdot\hat{u}}{\|\vec{v}\|}\hat{u} \\
   &= (\langle v_1,v_2\rangle\cdot\langle u_1,u_2\rangle)\begin{bmatrix}
     u_1 \\ u_2
@@ -49,7 +49,7 @@ operation.
 \subsubsection*{Example}
 Given \( \hat{u} = \begin{bmatrix}\frac{1}{\sqrt{2}} \\
 -\frac{1}{\sqrt{2}}\end{bmatrix} \) and \( \vec{v} = \begin{bmatrix}3 \\
-4\end{bmatrix} \), find \( proj_{\hat{u}}\vec{v} \).
+4\end{bmatrix} \), find \( \text{proj}_{\hat{u}}\vec{v} \).
 \begin{align*}
   P &= \hat{u}\hat{u}^T \\
   &= \begin{bmatrix}
@@ -61,7 +61,7 @@ Given \( \hat{u} = \begin{bmatrix}\frac{1}{\sqrt{2}} \\
     \frac{1}{2} & -\frac{1}{2} \\
     -\frac{1}{2} & \frac{1}{2}
   \end{bmatrix} \\
-  proj_{\hat{u}}\vec{v} &= \begin{bmatrix}
+  \text{proj}_{\hat{u}}\vec{v} &= \begin{bmatrix}
     \frac{1}{2} & -\frac{1}{2} \\
     -\frac{1}{2} & \frac{1}{2}
   \end{bmatrix}\begin{bmatrix}
@@ -100,13 +100,13 @@ represented by a vector \( -c\vec{n} \). We can represent the projection of
 \end{align*}
 Alternatively, if instead of being given a unit vector \( \vec{n} \), suppose we
 are given two orthogonal vectors \( \hat{u_1} \) and \( \hat{u_2} \) that span
-the plane. Let \( \vec{p_1} = proj_{\hat{u_1}}\vec{v} \) and \( \vec{p_2} =
-proj_{\hat{u_2}}\vec{v} \). The projection of \( \vec{v} \) onto the plane
-spanned by \( \hat{u_1} \) and \( \hat{u_2} \) is equal to \( \vec{p} =
-\vec{p_1}+\vec{p_2} \).
+the plane. Let \( \vec{p_1} = \text{proj}_{\hat{u_1}}\vec{v} \) and
+\( \vec{p_2} = \text{proj}_{\hat{u_2}}\vec{v} \). The projection of
+\( \vec{v} \) onto the plane spanned by \( \hat{u_1} \) and \( \hat{u_2} \) is
+equal to \( \vec{p} = \vec{p_1}+\vec{p_2} \).
 \begin{align*}
-  \vec{p_1} &= proj_{\hat{u_1}}\vec{v} = \hat{u_1}\hat{u_1}^T\vec{v} \\
-  \vec{p_2} &= proj_{\hat{u_2}}\vec{v} = \hat{u_2}\hat{u_2}^T\vec{v} \\
+  \vec{p_1} &= \text{proj}_{\hat{u_1}}\vec{v} = \hat{u_1}\hat{u_1}^T\vec{v} \\
+  \vec{p_2} &= \text{proj}_{\hat{u_2}}\vec{v} = \hat{u_2}\hat{u_2}^T\vec{v} \\
   \vec{p} &= \vec{p_1}+\vec{p_2} \\
   &= (\hat{u_1}\hat{u_1}^T+\hat{u_2}\hat{u_2}^T)\vec{v} = P\vec{v}
 \end{align*}
@@ -355,6 +355,90 @@ Find a basis for \( W^{\bot} \).
   \end{bmatrix},\begin{bmatrix}
     -4 \\ -3 \\ -2 \\ 0 \\ 1
   \end{bmatrix}\right)
+\end{align*}
+
+\subsection*{Constructing an Orthogonal Basis for a Subspace}
+Recall:
+\[ \text{proj}_{\vec{u}}\vec{v} =
+  \left(\frac{\vec{u}\cdot\vec{v}}{\vec{u}\cdot\vec{u}}\right)\vec{u} \]
+Let \( W \) be a subspace of \( \R^n \) and let
+\( \{\vec{u_1},dots,\vec{u_k}\} \) be an orthogonal basis for \( W \). For any
+vector \( \vec{v} \) in \( \R^n \), the orthogonal projection of \( \vec{v} \)
+onto \( W \) is
+\[ \text{proj}_{W}\vec{v} =
+  \left(\frac{\vec{u_1}\cdot\vec{v}}{\vec{u_1}\cdot\vec{u_1}}\right)\vec{u_1}+
+  \dots+
+  \left(\frac{\vec{u_k}\cdot\vec{v}}{\vec{u_k}\cdot\vec{u_k}}\right)\vec{u_k} \]
+The component of \( \vec{v} \) orthogonal to \( W \) is
+\[ \text{perp}_{W}\vec{v} = \vec{v}-\text{proj}_{W}\vec{v} \]
+
+\subsubsection*{Example}
+Let \( W \) be the plane \( x-y+2z = 0 \) and \( \vec{v} = \langle3,-1,2\rangle
+\). Find \( \text{proj}_{W}\vec{v} \) and \( \text{perp}_{W}\vec{v} \) if the
+basis for W is
+\[ \vec{u_1} = \begin{bmatrix}1 \\ 1 \\ 0\end{bmatrix} \quad
+  \vec{u_2} = \begin{bmatrix}-1 \\ 1 \\ 1\end{bmatrix} \]
+\begin{align*}
+  \text{perp}_{W}\vec{v} &= \vec{v}-\text{proj}_{W}\vec{v} = \begin{bmatrix}
+    \frac{4}{3} \\ -\frac{4}{3} \\ \frac{8}{3}\end{bmatrix} \\
+  \text{proj}_{W}\vec{v} &=
+    \left(\frac{\vec{u_1}\cdot\vec{v}}{\vec{u_1}\cdot\vec{u_1}}\right)\vec{u_1}+
+    \left(\frac{\vec{u_2}\cdot\vec{v}}{\vec{u_2}\cdot\vec{u_2}}\right)\vec{u_2}
+    \\
+  &= \begin{bmatrix}
+    \frac{5}{3} \\ \frac{1}{3} \\ -\frac{2}{3}
+  \end{bmatrix}
+\end{align*}
+
+\subsection*{Orthogonal Decomposition Theorem}
+Let \( W \) be a subspace of \( \R^n \) and \( \vec{v} \) be a vector in
+\( \R^n \). Then there are unique vectors \( \vec{w} \) in \( W \) and
+\( \vec{w}^{\bot} \) in \( W^{\bot} \) such that \( \vec{v} =
+\vec{w}+\vec{w}^{\bot} \) and \( dim(W)+dim(W^T) = n \).
+
+\subsection*{The Gram-Schmidt Process}
+Given a basis \( \{\vec{x_1},\dots,\vec{x_k}\} \) for a subspace \( W \), can we
+construct from it an orthogonal basis? \par
+Let \( W = span(\vec{x_1},\vec{x_2}) \) where \( \vec{x_1} = \begin{bmatrix}
+1 \\ 1 \\ 0\end{bmatrix} \) and \( \vec{x_2} = \begin{bmatrix}-2 \\ 0 \\
+1\end{bmatrix} \). Construct an orthogonal basis for \( W \). \par
+We want to turn \( \{\vec{x_1},\vec{x_2}\} \) into \( \{\vec{v_1},\vec{v_2}\} \)
+where \( \{\vec{x_1},\vec{x_2}\} \) are not orthogonal and
+\( \{\vec{v_1},\vec{v_2}\} \) are orthogonal.
+\begin{align*}
+  \vec{v_1} &= \vec{x_2} \\
+  \vec{v_2} &= \text{perp}_{\vec{v_1}}\vec{x_2} \\
+  &= \vec{x_2}-\text{proj}_{\vec{v_2}}\vec{x_2} \\
+  &= \vec{x_2}-\left(\frac{\vec{v_1}\cdot\vec{x_2}}{\vec{v_1}\cdot\vec{v_1}}
+    \right)\vec{v_1} \\
+  &= \begin{bmatrix}-2 \\ 0 \\ 1\end{bmatrix}-\frac{(-2)}{2}\begin{bmatrix}
+    1 \\ 1 \\ 0\end{bmatrix} \\
+  &= \begin{bmatrix}-1 \\ 1 \\ 1\end{bmatrix}
+\end{align*}
+In general, let \( \{\vec{x_1},\dots,\vec{v_k} \) be a basis for a subspace
+\( W \) of \( \R^n \).
+\begin{align*}
+  \vec{v_1} &= \vec{x_1} \quad W_1 = span(\vec{x_1}) \\
+  \vec{v_2} &= \vec{x_2}-\text{proj}_{W_1}\vec{x_2} \quad
+    W_2 = span(\vec{x_1},\vec{x_2}) \\
+  &= \vec{x_2}-
+    \left(\frac{\vec{v_1}\cdot\vec{x_2}}{\vec{v_1}\cdot\vec{v_1}}\right)
+    \vec{v_1} \\
+  \vec{v_3} &= \vec{x_3}-\text{proj}_{W_2}\vec{x_3} \quad
+    W_3 = span(\vec{x_1},\vec{x_2},\vec{x_3}) \\
+  &= \vec{x_2}-
+    \left(\frac{\vec{v_1}\cdot\vec{x_3}}{\vec{v_1}\cdot\vec{v_1}}\right)
+    \vec{v_1}-
+    \left(\frac{\vec{v_2}\cdot\vec{x_3}}{\vec{v_2}\cdot\vec{v_2}}\right)
+    \vec{v_2} \\
+  &\vdots \\
+  \vec{v_k} &= \vec{x_k}-\text{proj}_{W_{k-1}}\vec{x_k} \quad
+    W_k = span(\vec{x_1},\dots,\vec{x_k}) \\
+  &= \vec{x_k}-
+    \left(\frac{\vec{v_1}\cdot\vec{x_k}}{\vec{v_1}\cdot\vec{v_1}}\right)
+    \vec{v_1}-\dots-
+    \left(\frac{\vec{v_{k-1}}\cdot\vec{x_k}}{\vec{v_{k-1}}\cdot\vec{v_{k-1}}}
+    \right)\vec{v_{k-1}} \\
 \end{align*}
 
 \begin{center}

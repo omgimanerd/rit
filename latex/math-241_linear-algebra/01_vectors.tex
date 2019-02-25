@@ -442,11 +442,11 @@ is:
     \draw[->] (0,0)--(4,0) node[pos=0.5,below] {\( \vec{u} \)};
     \draw[->] (0,0)--(1,2) node[pos=0.5,left] {\( \vec{v} \)};
     \draw[->,red,thick] (0,0)--(1,0) node[pos=0.5,below]
-      {\( \vec{p} = proj_{\vec{v}}\vec{u} \)};
+      {\( \vec{p} = \text{proj}_{\vec{u}}\vec{v} \)};
     \draw[dashed] (1,2)--(1,0);
   \end{tikzpicture}
 \end{center}
-\[ proj_{\vec{u}}\vec{v} =
+\[ \text{proj}_{\vec{u}}\vec{v} =
   (\frac{\vec{u}\cdot\vec{v}}{\vec{u}\cdot\vec{u}})\vec{u} =
   (\frac{\vec{u}\cdot\vec{v}}{\|\vec{u}\|^2})\vec{u} \]
 
