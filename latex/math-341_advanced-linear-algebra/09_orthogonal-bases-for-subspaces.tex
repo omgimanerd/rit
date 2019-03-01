@@ -1,0 +1,180 @@
+\documentclass{math}
+
+\title{Advanced Linear Algebra}
+\author{Alvin Lin}
+\date{January 2019 - May 2019}
+
+\begin{document}
+
+\maketitle
+
+\section*{Orthogonal Bases for Subspaces}
+Recall:
+\[ \text{proj}_{\vec{u}}\vec{v} =
+  \left(\frac{\vec{u}\cdot\vec{v}}{\vec{u}\cdot\vec{u}}\right)\vec{u} \]
+Let \( W \) be a subspace of \( \R^n \) and let
+\( \{\vec{u_1},dots,\vec{u_k}\} \) be an orthogonal basis for \( W \). For any
+vector \( \vec{v} \) in \( \R^n \), the orthogonal projection of \( \vec{v} \)
+onto \( W \) is
+\[ \text{proj}_{W}\vec{v} =
+  \left(\frac{\vec{u_1}\cdot\vec{v}}{\vec{u_1}\cdot\vec{u_1}}\right)\vec{u_1}+
+  \dots+
+  \left(\frac{\vec{u_k}\cdot\vec{v}}{\vec{u_k}\cdot\vec{u_k}}\right)\vec{u_k} \]
+The component of \( \vec{v} \) orthogonal to \( W \) is
+\[ \text{perp}_{W}\vec{v} = \vec{v}-\text{proj}_{W}\vec{v} \]
+
+\subsubsection*{Example}
+Let \( W \) be the plane \( x-y+2z = 0 \) and \( \vec{v} = \langle3,-1,2\rangle
+\). Find \( \text{proj}_{W}\vec{v} \) and \( \text{perp}_{W}\vec{v} \) if the
+basis for W is
+\[ \vec{u_1} = \begin{bmatrix}1 \\ 1 \\ 0\end{bmatrix} \quad
+  \vec{u_2} = \begin{bmatrix}-1 \\ 1 \\ 1\end{bmatrix} \]
+\begin{align*}
+  \text{perp}_{W}\vec{v} &= \vec{v}-\text{proj}_{W}\vec{v} = \begin{bmatrix}
+    \frac{4}{3} \\ -\frac{4}{3} \\ \frac{8}{3}\end{bmatrix} \\
+  \text{proj}_{W}\vec{v} &=
+    \left(\frac{\vec{u_1}\cdot\vec{v}}{\vec{u_1}\cdot\vec{u_1}}\right)\vec{u_1}+
+    \left(\frac{\vec{u_2}\cdot\vec{v}}{\vec{u_2}\cdot\vec{u_2}}\right)\vec{u_2}
+    \\
+  &= \begin{bmatrix}
+    \frac{5}{3} \\ \frac{1}{3} \\ -\frac{2}{3}
+  \end{bmatrix}
+\end{align*}
+
+\subsection*{Orthogonal Decomposition Theorem}
+Let \( W \) be a subspace of \( \R^n \) and \( \vec{v} \) be a vector in
+\( \R^n \). Then there are unique vectors \( \vec{w} \) in \( W \) and
+\( \vec{w}^{\bot} \) in \( W^{\bot} \) such that \( \vec{v} =
+\vec{w}+\vec{w}^{\bot} \) and \( dim(W)+dim(W^T) = n \).
+
+\subsection*{The Gram-Schmidt Process}
+Given a basis \( \{\vec{x_1},\dots,\vec{x_k}\} \) for a subspace \( W \), can we
+construct from it an orthogonal basis? \par
+Let \( W = span(\vec{x_1},\vec{x_2}) \) where \( \vec{x_1} = \begin{bmatrix}
+1 \\ 1 \\ 0\end{bmatrix} \) and \( \vec{x_2} = \begin{bmatrix}-2 \\ 0 \\
+1\end{bmatrix} \). Construct an orthogonal basis for \( W \). \par
+We want to turn \( \{\vec{x_1},\vec{x_2}\} \) into \( \{\vec{v_1},\vec{v_2}\} \)
+where \( \{\vec{x_1},\vec{x_2}\} \) are not orthogonal and
+\( \{\vec{v_1},\vec{v_2}\} \) are orthogonal.
+\begin{align*}
+  \vec{v_1} &= \vec{x_2} \\
+  \vec{v_2} &= \text{perp}_{\vec{v_1}}\vec{x_2} \\
+  &= \vec{x_2}-\text{proj}_{\vec{v_2}}\vec{x_2} \\
+  &= \vec{x_2}-\left(\frac{\vec{v_1}\cdot\vec{x_2}}{\vec{v_1}\cdot\vec{v_1}}
+    \right)\vec{v_1} \\
+  &= \begin{bmatrix}-2 \\ 0 \\ 1\end{bmatrix}-\frac{(-2)}{2}\begin{bmatrix}
+    1 \\ 1 \\ 0\end{bmatrix} \\
+  &= \begin{bmatrix}-1 \\ 1 \\ 1\end{bmatrix}
+\end{align*}
+In general, let \( \{\vec{x_1},\dots,\vec{v_k} \) be a basis for a subspace
+\( W \) of \( \R^n \).
+\begin{align*}
+  \vec{v_1} &= \vec{x_1} \quad W_1 = span(\vec{x_1}) \\
+  \vec{v_2} &= \vec{x_2}-\text{proj}_{W_1}\vec{x_2} \quad
+    W_2 = span(\vec{x_1},\vec{x_2}) \\
+  &= \vec{x_2}-
+    \left(\frac{\vec{v_1}\cdot\vec{x_2}}{\vec{v_1}\cdot\vec{v_1}}\right)
+    \vec{v_1} \\
+  \vec{v_3} &= \vec{x_3}-\text{proj}_{W_2}\vec{x_3} \quad
+    W_3 = span(\vec{x_1},\vec{x_2},\vec{x_3}) \\
+  &= \vec{x_2}-
+    \left(\frac{\vec{v_1}\cdot\vec{x_3}}{\vec{v_1}\cdot\vec{v_1}}\right)
+    \vec{v_1}-
+    \left(\frac{\vec{v_2}\cdot\vec{x_3}}{\vec{v_2}\cdot\vec{v_2}}\right)
+    \vec{v_2} \\
+  &\vdots \\
+  \vec{v_k} &= \vec{x_k}-\text{proj}_{W_{k-1}}\vec{x_k} \quad
+    W_k = span(\vec{x_1},\dots,\vec{x_k}) \\
+  &= \vec{x_k}-
+    \left(\frac{\vec{v_1}\cdot\vec{x_k}}{\vec{v_1}\cdot\vec{v_1}}\right)
+    \vec{v_1}-\dots-
+    \left(\frac{\vec{v_{k-1}}\cdot\vec{x_k}}{\vec{v_{k-1}}\cdot\vec{v_{k-1}}}
+    \right)\vec{v_{k-1}} \\
+\end{align*}
+
+\subsubsection*{Example}
+Apply the Gram-Schmidt process to construct an orthonormal basis for the
+subspace.
+\begin{align*}
+  W &= span(\vec{x_1},\vec{x_2},\vec{x_3}) \text{ of } \R^4 \text{ where } \\
+  \vec{x_1} &= \begin{bmatrix}1 \\ -1 \\ -1 \\ 1\end{bmatrix} \quad
+    \vec{x_2} = \begin{bmatrix}2 \\ 1 \\ 0 \\ 1\end{bmatrix} \quad
+    \vec{x_3} = \begin{bmatrix}2 \\ 2 \\ 1 \\ 2\end{bmatrix} \\
+  \text{Let: } \vec{v_1} &= \vec{x_1} \quad W_1 = span(\vec{v_1}) \\
+  \vec{v_2} &= \text{perp}_{W_1}\vec{x_2} \\
+  &= \vec{x_2}-\text{proj}_{W_1}\vec{x_2} \\
+  &= \vec{x_2}-\left(\frac{\vec{v_1}\cdot\vec{x_2}}
+    {\vec{v_1}\cdot\vec{v_1}}\right)\vec{v_1} \\
+  &= \begin{bmatrix}
+    \frac{3}{2} \\ \frac{3}{2} \\ \frac{1}{2} \\ \frac{1}{2}
+  \end{bmatrix} \\
+  &= \begin{bmatrix}3 \\ 3 \\ 1 \\ 1\end{bmatrix} \quad
+    W_2 = span(\vec{v_1},\vec{v_2}) \\
+  \vec{v_3} &= \text{perp}_{W_2}\vec{x_3} \\
+  &= \vec{x_3}-\text{proj}_{W_3}\vec{x_3} \\
+  &= \vec{x_3}-\left(\frac{\vec{v_1}\cdot\vec{x_3}}
+    {\vec{v_1}\cdot\vec{v_1}}\right)\vec{v_1}-
+    \left(\frac{\vec{v_2}\cdot\vec{x_3}}
+    {\vec{v_2}\cdot\vec{v_2}}\right)\vec{v_2} \\
+  &= \begin{bmatrix}-\frac{1}{2} \\ 0 \\ \frac{1}{2} \\ 1\end{bmatrix} \\
+  &= \begin{bmatrix}-1 \\ 0 \\ 1 \\ 2\end{bmatrix} \\
+  W &= span(\vec{v_1},\vec{v_2},\vec{v_3}) = span\left(
+    \begin{bmatrix}1 \\ -1 \\ -1 \\ 1\end{bmatrix},
+    \begin{bmatrix}3 \\ 3 \\ 1 \\ 1\end{bmatrix},
+    \begin{bmatrix}-1 \\ 0 \\ 1 \\ 2\end{bmatrix}
+  \right)
+\end{align*}
+
+\subsection*{QR Factorization: A = QR}
+Let \( A \) be an \( m\times n \) matrix with linearly independent columns.
+\[ A = \begin{bmatrix}\vec{a_1} & \vec{a_2} & \dots & \vec{a_n}\end{bmatrix} \]
+Apply Gram-Schmidt to the column vectors to find an orthonormal basis
+\( \hat{q_1},\dots,\hat{q_n} \).
+\begin{align*}
+  \vec{a_1} &= r_{11}\hat{q_1} \\
+  \vec{a_2} &= r_{12}\hat{q_1}+r_{22}\hat{q_2} \\
+  & \vdots \\
+  \vec{a_n} &= r_{1n}\hat{q_1}+r_{2n}\hat{q_2}+\dots+r_{nn}\hat{q_n} \\
+  \begin{bmatrix}\vec{a_1} & \vec{a_2} & \dots & \vec{a_n}\end{bmatrix} &=
+    \begin{bmatrix}\hat{q_1} & \hat{q_2} & \dots & \hat{q_3}\end{bmatrix}
+    \begin{bmatrix}
+      r_{11} & r_{12} & \dots & r_{1n} \\
+      0 & r_{22} & \dots & \dots \\
+      \vdots & \vdots & \vdots & \vdots \\
+      0 & 0 & \dots & r_{nn}
+    \end{bmatrix}
+\end{align*}
+
+\subsubsection*{Example}
+Find the QR factorization of
+\[ A = \begin{bmatrix}
+  1 & 2 & 2 \\
+  -1 & 1 & 2 \\
+  -1 & 0 & 1 \\
+  1 & 1 & 2
+\end{bmatrix} \]
+Apply Gram-Schmidt to the column vectors.
+\begin{align*}
+  Q &= \begin{bmatrix}
+    \frac{1}{2} & \frac{3}{2\sqrt{5}} & -\frac{1}{\sqrt{6}} \\
+    -\frac{1}{2} & \frac{3}{2\sqrt{5}} & 0 \\
+    -\frac{1}{2} & \frac{1}{2\sqrt{5}} & \frac{1}{\sqrt{6}} \\
+    \frac{1}{2} & \frac{1}{2\sqrt{5}} & \frac{2}{\sqrt{6}}
+  \end{bmatrix} \\
+  A &= QR \\
+  Q^TA &= Q^TQR \\
+  R &= Q^TA \\
+  &= \begin{bmatrix}
+    2 & 1 & \frac{1}{2} \\
+    0 & \sqrt{5} & \frac{3\sqrt{5}}{2} \\
+    0 & 0 & \frac{\sqrt{6}}{2}
+  \end{bmatrix}
+\end{align*}
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
