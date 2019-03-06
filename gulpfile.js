@@ -6,12 +6,11 @@
 const del = require('del')
 const fs = require('fs')
 const glob = require('glob')
-const gulp = require('gulp')
-const gutil = require('gulp-util')
-const gulpChanged = require('gulp-changed')
-const gulpPdflatex = require('gulp-pdflatex2')
-const gulpPlumber = require('gulp-plumber')
-const gulpRename = require('gulp-rename')
+const { src, dest, watch } = require('gulp')
+const changed = require('gulp-changed')
+const plumber = require('gulp-plumber')
+const pdflatex2 = require('gulp-pdflatex2')
+const rename = require('gulp-rename')
 const path = require('path')
 
 const getOutputFile = texFile => {
@@ -19,61 +18,68 @@ const getOutputFile = texFile => {
   return path.join(texFile.dir, 'output', texFile.name + '.pdf')
 }
 
-gulp.task('default', ['latex'])
-
-gulp.task('latex', () => {
-  return gulp.src('./latex/**/*.tex')
-    .pipe(gulpPlumber({
+const compileChanged = () => {
+  return src('./latex/**/*.tex')
+    .pipe(plumber({
       errorHandler: function() {
         this.emit('end')
       }
     }))
-    .pipe(gulpChanged('./latex', { transformPath: getOutputFile }))
-    .pipe(gulpPdflatex({
+    .pipe(changed('./latex', { transformPath: getOutputFile }))
+    .pipe(pdflatex2({
       cliOptions: ['-shell-escape'],
       texInputs: ['./cls']
     }))
-    .pipe(gulpRename(path => {
+    .pipe(rename(path => {
       path.dirname += '/output'
       path.extname = '.pdf'
     }))
-    .pipe(gulp.dest('./latex'))
-})
+    .pipe(dest('./latex'))
+}
 
-gulp.task('latex-all', () => {
-  return gulp.src('./latex/**/*.tex')
-    .pipe(gulpPdflatex({
+const compileAll = () => {
+  return src('./latex/**/*.tex')
+    .pipe(pdflatex2({
       cliOptions: ['-shell-escape'],
       texInputs: ['./cls']
     }))
-    .pipe(gulpRename(path => {
+    .pipe(rename(path => {
       path.dirname += '/output'
       path.extname = '.pdf'
     }))
-    .pipe(gulp.dest('./latex'))
-})
+    .pipe(dest('./latex'))
+}
 
-gulp.task('clean', done => {
-  glob('./latex/**/*.tex', function(error, texFiles) {
-    glob('./latex/**/output/*', function(error, outputFiles) {
+const clean = done => {
+  glob('./latex/**/*.tex', (error, texFiles) => {
+    glob('./latex/**/output/*', (error, outputFiles) => {
       const correctOutputFiles = texFiles.map(getOutputFile).map(path => {
         return `./${path}`
       })
       for (const file of outputFiles) {
         if (!correctOutputFiles.includes(file)) {
-          gutil.log(`Deleted ${file}`)
+          console.log(`Deleted ${file}`)
           del(file)
         }
       }
       done()
     })
   })
-})
+}
 
-gulp.task('clean-all', () => {
+const purge = () => {
   return del(['./latex/**/output'])
-})
+}
 
-gulp.task('watch', () => {
-  gulp.watch('latex/**/*.tex', { cwd: './'}, ['latex'])
-})
+const watchFiles = () => {
+  watch('./latex/**/*.tex', compileChanged)
+}
+
+module.exports = {
+  default: compileChanged,
+  latex: compileChanged,
+  'latex-all': compileAll,
+  clean: clean,
+  purge: purge,
+  watch: watchFiles
+}
