@@ -1,0 +1,148 @@
+\documentclass{math}
+
+\title{Advanced Linear Algebra}
+\author{Alvin Lin}
+\date{January 2019 - May 2019}
+
+\begin{document}
+
+\maketitle
+
+\section*{QR Factorization: A = QR}
+Let \( A \) be an \( m\times n \) matrix with linearly independent columns.
+\[ A = \begin{bmatrix}\vec{a_1} & \vec{a_2} & \dots & \vec{a_n}\end{bmatrix} \]
+Apply Gram-Schmidt to the column vectors to find an orthonormal basis
+\( \hat{q_1},\dots,\hat{q_n} \).
+\begin{align*}
+  \vec{a_1} &= r_{11}\hat{q_1} \\
+  \vec{a_2} &= r_{12}\hat{q_1}+r_{22}\hat{q_2} \\
+  & \vdots \\
+  \vec{a_n} &= r_{1n}\hat{q_1}+r_{2n}\hat{q_2}+\dots+r_{nn}\hat{q_n} \\
+  \begin{bmatrix}\vec{a_1} & \vec{a_2} & \dots & \vec{a_n}\end{bmatrix} &=
+    \begin{bmatrix}\hat{q_1} & \hat{q_2} & \dots & \hat{q_3}\end{bmatrix}
+    \begin{bmatrix}
+      r_{11} & r_{12} & \dots & r_{1n} \\
+      0 & r_{22} & \dots & \dots \\
+      \vdots & \vdots & \vdots & \vdots \\
+      0 & 0 & \dots & r_{nn}
+    \end{bmatrix}
+\end{align*}
+
+\subsubsection*{Example}
+Find the QR factorization of
+\[ A = \begin{bmatrix}
+  1 & 2 & 2 \\
+  -1 & 1 & 2 \\
+  -1 & 0 & 1 \\
+  1 & 1 & 2
+\end{bmatrix} \]
+Apply Gram-Schmidt to the column vectors.
+\begin{align*}
+  Q &= \begin{bmatrix}
+    \frac{1}{2} & \frac{3}{2\sqrt{5}} & -\frac{1}{\sqrt{6}} \\
+    -\frac{1}{2} & \frac{3}{2\sqrt{5}} & 0 \\
+    -\frac{1}{2} & \frac{1}{2\sqrt{5}} & \frac{1}{\sqrt{6}} \\
+    \frac{1}{2} & \frac{1}{2\sqrt{5}} & \frac{2}{\sqrt{6}}
+  \end{bmatrix} \\
+  A &= QR \\
+  Q^TA &= Q^TQR \\
+  R &= Q^TA \\
+  &= \begin{bmatrix}
+    2 & 1 & \frac{1}{2} \\
+    0 & \sqrt{5} & \frac{3\sqrt{5}}{2} \\
+    0 & 0 & \frac{\sqrt{6}}{2}
+  \end{bmatrix}
+\end{align*}
+
+\subsection*{QR Algorithm for Approximating Eigenvalues}
+\begin{align*}
+  \text{Let } A &= QR \\
+  A_1 &= RQ = Q_1R_1 \\
+  A_2 &= R_1Q_1 = Q_2R_2 \\
+  A_3 &= R_2Q_2 = Q_3R_3 \\
+  &\vdots \\
+  A_k &= R_{k-1}Q_{k-1}
+\end{align*}
+Notice that this iterative process yields similar matrices. Therefore, the
+eigenvalues remain the same. As \( k\to\infty \), \( A_k \) converges to an
+upper triangular matrix. Since \( A_k \) is similar to \( A \), the eigenvalues
+of \( A \) are the values on the diagonal of \( A_k \).
+
+\subsection*{Orthogonal Diagonalization of Symmetric Matrices}
+\begin{align*}
+  A &= \begin{bmatrix}1 & 2 \\ 2 & -2\end{bmatrix} \\
+  D &= P^{-1}AP \\
+  D &= \begin{bmatrix}-3 & 0 \\ 0 & 2\end{bmatrix} \\
+  \begin{bmatrix}-3 & 0 \\ 0 & 2\end{bmatrix} &=
+    \begin{bmatrix}1 & 2 \\ -2 & 1\end{bmatrix}^{-1}
+    \begin{bmatrix}1 & 2 \\ 2 & -2\end{bmatrix}
+    \begin{bmatrix}1 & 2 \\ -2 & 1\end{bmatrix} \\
+  \vec{v_1} &= \begin{bmatrix}1 \\ -2\end{bmatrix} \quad
+    \vec{v_2} = \begin{bmatrix}2 \\ 1\end{bmatrix} \quad
+    \vec{v_1}\bot\vec{v_2} \\
+  \hat{u_1} &=
+    \begin{bmatrix}\frac{1}{\sqrt{5}} \\ -\frac{2}{\sqrt{5}}\end{bmatrix} \quad
+    \hat{u_2} =
+    \begin{bmatrix}\frac{2}{\sqrt{5}} \\ \frac{1}{\sqrt{5}}\end{bmatrix} \\
+  Q &= \begin{bmatrix}
+    \frac{1}{\sqrt{5}} & \frac{2}{\sqrt{5}} \\
+    -\frac{2}{\sqrt{5}} & \frac{1}{\sqrt{5}}
+  \end{bmatrix} \\
+  D &= Q^{-1}AQ = Q^TAQ
+\end{align*}
+In general, a square matrix is orthogonally orthogonally diagonalizable if
+\( Q^TAQ = D \) where \( Q \) is an orthogonal matrix and \( D \) is a diagonal
+matrix.
+
+\subsubsection*{Theorem}
+If a matrix \( A \) is orthogonally diagonalizable, then \( A \) is symmetric.
+Proof:
+\begin{align*}
+  Q^TQA &= D \\
+  \therefore A &= QDQ^T \\
+  A^T &= (QDQ^T)^T = (Q^T)^TD^TQ^T = QDQ^T \\
+  &= A^T
+\end{align*}
+The converse is also true, if a matrix \( A \) is symmetric, it is also
+orthogonally diagonalizable.
+
+\subsubsection*{Theorem}
+Additionally, if \( A \) is a real symmetric matrix, then the eigenvalues of
+\( A \) are real. Proof:
+\begin{align*}
+  \overline{zw} &= \bar{z}\bar{w} \\
+  Av &= \lambda v \\
+  \overline{Av} &= \bar{\lambda v} \\
+  A\bar{v} &= \bar{A}\bar{v} = \overline{Av} = \overline{\lambda v} =
+    \bar{\lambda}\bar{v} \\
+  (A\bar{v})^T &= (\bar{\lambda}\bar{v})^T \\
+  \bar{v}^TA^T &= \bar{\lambda}\bar{v}^T \\
+  \bar{v}^TA &= \bar{\lambda}\bar{v}^T \\
+  \lambda\bar{v}^Tv &= \bar{v}^T(\lambda v) = \bar{v}^T(Av) = (\bar{v}^TA)v =
+    \bar{\lambda}\bar{v}^Tv \\
+  (\lambda-\bar{\lambda})\bar{v}^Tv &= 0 \\
+  \bar{v}^Tv &\ne 0 \\
+  \lambda &= \bar{\lambda}
+\end{align*}
+
+\subsubsection*{Theorem}
+If \( A \) is a symmetric matrix, then any two eigenvectors corresponding to
+distinct eigenvalues are orthogonal.
+\begin{align*}
+  A\vec{v_1} &= \lambda_1\vec{v_1} \quad A\vec{v_2} = \lambda_2\vec{v_2} \\
+  \lambda_1(\vec{v_1}\cdot\vec{v_2}) &= (\lambda_1\vec{v_1})\cdot\vec{v_2} =
+    (A\vec{v_1})\cdot\vec{v_1} = (A\vec{v_1})^T\vec{v_2} \\
+  &= \vec{v_1}^TA^T\vec{v_2} = \vec{v_1}^T(A\vec{v_2}) =
+    \vec{v_1}^T\lambda_2\vec{v_2} = \lambda_2(\vec{v_1}\cdot\vec{v_2}) \\
+  (\lambda_1-\lambda_2)(\vec{v_1}\cdot\vec{v_2}) &= 0 \\
+  (\lambda_1-\lambda_2) &\ne 0 \\
+  \vec{v_1}\cdot\vec{v_2} &= 0
+\end{align*}
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}

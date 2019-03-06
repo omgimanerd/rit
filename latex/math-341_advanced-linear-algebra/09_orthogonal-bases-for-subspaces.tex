@@ -125,52 +125,6 @@ subspace.
   \right)
 \end{align*}
 
-\subsection*{QR Factorization: A = QR}
-Let \( A \) be an \( m\times n \) matrix with linearly independent columns.
-\[ A = \begin{bmatrix}\vec{a_1} & \vec{a_2} & \dots & \vec{a_n}\end{bmatrix} \]
-Apply Gram-Schmidt to the column vectors to find an orthonormal basis
-\( \hat{q_1},\dots,\hat{q_n} \).
-\begin{align*}
-  \vec{a_1} &= r_{11}\hat{q_1} \\
-  \vec{a_2} &= r_{12}\hat{q_1}+r_{22}\hat{q_2} \\
-  & \vdots \\
-  \vec{a_n} &= r_{1n}\hat{q_1}+r_{2n}\hat{q_2}+\dots+r_{nn}\hat{q_n} \\
-  \begin{bmatrix}\vec{a_1} & \vec{a_2} & \dots & \vec{a_n}\end{bmatrix} &=
-    \begin{bmatrix}\hat{q_1} & \hat{q_2} & \dots & \hat{q_3}\end{bmatrix}
-    \begin{bmatrix}
-      r_{11} & r_{12} & \dots & r_{1n} \\
-      0 & r_{22} & \dots & \dots \\
-      \vdots & \vdots & \vdots & \vdots \\
-      0 & 0 & \dots & r_{nn}
-    \end{bmatrix}
-\end{align*}
-
-\subsubsection*{Example}
-Find the QR factorization of
-\[ A = \begin{bmatrix}
-  1 & 2 & 2 \\
-  -1 & 1 & 2 \\
-  -1 & 0 & 1 \\
-  1 & 1 & 2
-\end{bmatrix} \]
-Apply Gram-Schmidt to the column vectors.
-\begin{align*}
-  Q &= \begin{bmatrix}
-    \frac{1}{2} & \frac{3}{2\sqrt{5}} & -\frac{1}{\sqrt{6}} \\
-    -\frac{1}{2} & \frac{3}{2\sqrt{5}} & 0 \\
-    -\frac{1}{2} & \frac{1}{2\sqrt{5}} & \frac{1}{\sqrt{6}} \\
-    \frac{1}{2} & \frac{1}{2\sqrt{5}} & \frac{2}{\sqrt{6}}
-  \end{bmatrix} \\
-  A &= QR \\
-  Q^TA &= Q^TQR \\
-  R &= Q^TA \\
-  &= \begin{bmatrix}
-    2 & 1 & \frac{1}{2} \\
-    0 & \sqrt{5} & \frac{3\sqrt{5}}{2} \\
-    0 & 0 & \frac{\sqrt{6}}{2}
-  \end{bmatrix}
-\end{align*}
-
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
   any questions, comments, or concerns, please contact me at
