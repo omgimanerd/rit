@@ -3,6 +3,4 @@ node_js:
   - "8"
 cache: yarn
 before_install:
-  - sudo add-apt-repository ppa:jonathonf/texlive -y
-  - sudo apt-get update -q
-  - sudo apt-get install texlive texlive-latex-extra -y
+  - sudo apt-get install texlive texlive-pictures texlive-latex-extra -y
