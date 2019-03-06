@@ -27,7 +27,6 @@ const compileChanged = () => {
     }))
     .pipe(changed('./latex', { transformPath: getOutputFile }))
     .pipe(pdflatex2({
-      cliOptions: ['-shell-escape'],
       texInputs: ['./cls']
     }))
     .pipe(rename(path => {

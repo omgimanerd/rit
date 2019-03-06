@@ -139,6 +139,81 @@ distinct eigenvalues are orthogonal.
   \vec{v_1}\cdot\vec{v_2} &= 0
 \end{align*}
 
+\subsection*{The Spectral Theorem}
+Let \( A \) be an \( n\times n \) real matrix. Then \( A \) is symmetric if and
+only if it is orthogonally diagonalizable \( Q^TAQ = D \). Example: \\
+Orthogonally diagonalize \( A \):
+\begin{align*}
+  A &= \begin{bmatrix}
+    2 & 1 & 1 \\
+    1 & 2 & 1 \\
+    1 & 1 & 2
+  \end{bmatrix} \\
+  \lambda_1 &= 4 \quad \lambda_2 = \lambda_3 = 1 \\
+  E_4 &= span\left\{\begin{bmatrix}1 \\ 1 \\ 1\end{bmatrix}\right\}
+    (\vec{x_1}) \\
+  E_1 &= span\left\{
+    \begin{bmatrix}-1 \\ 0 \\ 1\end{bmatrix},
+    \begin{bmatrix}-1 \\ 1 \\ 0\end{bmatrix}
+  \right\} (\vec{x_2},\vec{x_3}) \\
+  \vec{x_1}\cdot\vec{x_2} &= 0 \quad \vec{x_1}\cdot\vec{x_3} = 0 \\
+  \vec{x_2}\cdot\vec{x_3} &= 1 \ne 0 \\
+  \text{Let } \vec{v_1} &= \vec{x_1} \\
+  \vec{v_2} &= \vec{x_2} \\
+  \vec{v_3} &= \text{perp}_{\vec{x_2}}\vec{x_3} =
+    x_3-\text{proj}_{\vec{x_2}}\vec{x_3} =
+    \vec{x_3}-\left(\frac{\vec{x_3}\cdot\vec{x_2}}
+      {\vec{x_2}\cdot\vec{x_2}}\right) =
+    \begin{bmatrix}-\frac{1}{2} \\ 1 \\ -\frac{1}{2}\end{bmatrix} \\
+  \|\vec{v_3}\| &= \frac{\sqrt{6}}{2} \\
+  \hat{q_1} &= \begin{bmatrix}
+    \frac{1}{\sqrt{3}} \\ \frac{1}{\sqrt{3}} \\ \frac{1}{\sqrt{3}}
+  \end{bmatrix}, \hat{q_2} = \begin{bmatrix}
+    -\frac{1}{\sqrt{2}} \\ 0 \\ \frac{1}{\sqrt{2}}
+  \end{bmatrix}, \hat{q_3} = \begin{bmatrix}
+    -\frac{1}{\sqrt{6}} \\ \frac{2}{\sqrt{6}} \\ -\frac{1}{\sqrt{6}}
+  \end{bmatrix} \\
+  Q &= \begin{bmatrix}\hat{q_1} & \hat{q_2} & \hat{q_3}\end{bmatrix} \\
+  D &= \begin{bmatrix}
+    4 & 0 & 0 \\
+    0 & 1 & 0 \\
+    0 & 0 & 1
+  \end{bmatrix}
+\end{align*}
+
+\subsection*{Spectral Decomposition of \( A = QDQ^T \)}
+\begin{align*}
+  A &= \begin{bmatrix}\hat{q_1} & \dots & \hat{q_n}\end{bmatrix}
+    \begin{bmatrix}\lambda_1 & \vdots \\ \vdots & \lambda_n\end{bmatrix}
+    \begin{bmatrix}\hat{q_1}^T \\ \vdots \\ \hat{q_n}^T\end{bmatrix} \\
+  &= \begin{bmatrix}\lambda_1\hat{q_1} & \dots & \lambda_n\hat{q_n}\end{bmatrix}
+    \begin{bmatrix}\hat{q_1}^T \\ \vdots \\ \hat{q_n}^T\end{bmatrix} \\
+  &= \lambda_1\hat{q_1}\hat{q_1}^T+\dot+\lambda_n\hat{q_n}\hat{q_n}^T
+\end{align*}
+\( \lambda_1\hat{q_1}\hat{q_1}^T \) is a projection onto the subspace spanned
+by \( \hat{q_1} \), and \( \lambda_n\hat{q_n}\hat{q_n}^T \) is a projection
+onto the subspace spanned by \( \hat{q_n} \). This form is known as the
+projection form of the Spectral Theorem.
+
+\subsubsection*{Example}
+Find a \( 2\times2 \) matrix with eigenvalues \( \lambda_1 = 3,\lambda_2 = -2 \)
+and eigenvectors
+\begin{align*}
+  \vec{v_1} &= \begin{bmatrix}3 \\ 4\end{bmatrix} \quad
+    \vec{v_2} = \begin{bmatrix}-4 \\ 3\end{bmatrix} \\
+  \hat{q_1} &= \begin{bmatrix}\frac{3}{5} \\ \frac{4}{5}\end{bmatrix} \quad
+    \hat{q_2} = \begin{bmatrix}-\frac{4}{5} \\ \frac{3}{5}\end{bmatrix} \\
+  A &= \lambda\hat{q_1}\hat{q_1}^T+\lambda_2\hat{q_2}\hat{q_2}^T \\
+  &= 3\begin{bmatrix}\frac{3}{5} \\ \frac{4}{5}\end{bmatrix}
+    \begin{bmatrix}\frac{3}{5} & \frac{4}{5}\end{bmatrix}+
+    (-2)\begin{bmatrix}-\frac{4}{5} \\ \frac{3}{5}\end{bmatrix}
+    \begin{bmatrix}-\frac{4}{5} & \frac{3}{5}\end{bmatrix} \\
+  &= \begin{bmatrix}
+    -\frac{1}{5} & \frac{12}{5} \\
+    \frac{12}{5} & \frac{6}{5}
+  \end{bmatrix}
+\end{align*}
+
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
   any questions, comments, or concerns, please contact me at
