@@ -13,7 +13,7 @@ Recall:
 \[ \text{proj}_{\vec{u}}\vec{v} =
   \left(\frac{\vec{u}\cdot\vec{v}}{\vec{u}\cdot\vec{u}}\right)\vec{u} \]
 Let \( W \) be a subspace of \( \R^n \) and let
-\( \{\vec{u_1},dots,\vec{u_k}\} \) be an orthogonal basis for \( W \). For any
+\( \{\vec{u_1},\dots,\vec{u_k}\} \) be an orthogonal basis for \( W \). For any
 vector \( \vec{v} \) in \( \R^n \), the orthogonal projection of \( \vec{v} \)
 onto \( W \) is
 \[ \text{proj}_{W}\vec{v} =
@@ -49,13 +49,12 @@ Let \( W \) be a subspace of \( \R^n \) and \( \vec{v} \) be a vector in
 
 \subsection*{The Gram-Schmidt Process}
 Given a basis \( \{\vec{x_1},\dots,\vec{x_k}\} \) for a subspace \( W \), can we
-construct from it an orthogonal basis? \par
-Let \( W = span(\vec{x_1},\vec{x_2}) \) where \( \vec{x_1} = \begin{bmatrix}
-1 \\ 1 \\ 0\end{bmatrix} \) and \( \vec{x_2} = \begin{bmatrix}-2 \\ 0 \\
-1\end{bmatrix} \). Construct an orthogonal basis for \( W \). \par
-We want to turn \( \{\vec{x_1},\vec{x_2}\} \) into \( \{\vec{v_1},\vec{v_2}\} \)
-where \( \{\vec{x_1},\vec{x_2}\} \) are not orthogonal and
-\( \{\vec{v_1},\vec{v_2}\} \) are orthogonal.
+construct from it an orthogonal basis? Let \( W = span(\vec{x_1},\vec{x_2}) \)
+where \( \vec{x_1} = \begin{bmatrix} 1 \\ 1 \\ 0\end{bmatrix} \) and
+\( \vec{x_2} = \begin{bmatrix}-2 \\ 0 \\ 1\end{bmatrix} \). Construct an
+orthogonal basis for \( W \). We want to turn \( \{\vec{x_1},\vec{x_2}\} \)
+into \( \{\vec{v_1},\vec{v_2}\} \) where \( \{\vec{x_1},\vec{x_2}\} \) are not
+orthogonal and \( \{\vec{v_1},\vec{v_2}\} \) are orthogonal.
 \begin{align*}
   \vec{v_1} &= \vec{x_2} \\
   \vec{v_2} &= \text{perp}_{\vec{v_1}}\vec{x_2} \\
@@ -66,17 +65,17 @@ where \( \{\vec{x_1},\vec{x_2}\} \) are not orthogonal and
     1 \\ 1 \\ 0\end{bmatrix} \\
   &= \begin{bmatrix}-1 \\ 1 \\ 1\end{bmatrix}
 \end{align*}
-In general, let \( \{\vec{x_1},\dots,\vec{v_k} \) be a basis for a subspace
+In general, let \( \{\vec{x_1},\dots,\vec{x_k}\} \) be a basis for a subspace
 \( W \) of \( \R^n \).
 \begin{align*}
-  \vec{v_1} &= \vec{x_1} \quad W_1 = span(\vec{x_1}) \\
+  \vec{v_1} &= \vec{x_1} \quad W_1 = span(\vec{v_1}) \\
   \vec{v_2} &= \vec{x_2}-\text{proj}_{W_1}\vec{x_2} \quad
-    W_2 = span(\vec{x_1},\vec{x_2}) \\
+    W_2 = span(\vec{v_1},\vec{v_2}) \\
   &= \vec{x_2}-
     \left(\frac{\vec{v_1}\cdot\vec{x_2}}{\vec{v_1}\cdot\vec{v_1}}\right)
     \vec{v_1} \\
   \vec{v_3} &= \vec{x_3}-\text{proj}_{W_2}\vec{x_3} \quad
-    W_3 = span(\vec{x_1},\vec{x_2},\vec{x_3}) \\
+    W_3 = span(\vec{v_1},\vec{v_2},\vec{v_3}) \\
   &= \vec{x_2}-
     \left(\frac{\vec{v_1}\cdot\vec{x_3}}{\vec{v_1}\cdot\vec{v_1}}\right)
     \vec{v_1}-
@@ -84,7 +83,7 @@ In general, let \( \{\vec{x_1},\dots,\vec{v_k} \) be a basis for a subspace
     \vec{v_2} \\
   &\vdots \\
   \vec{v_k} &= \vec{x_k}-\text{proj}_{W_{k-1}}\vec{x_k} \quad
-    W_k = span(\vec{x_1},\dots,\vec{x_k}) \\
+    W_k = span(\vec{v_1},\dots,\vec{v_k}) \\
   &= \vec{x_k}-
     \left(\frac{\vec{v_1}\cdot\vec{x_k}}{\vec{v_1}\cdot\vec{v_1}}\right)
     \vec{v_1}-\dots-
@@ -116,8 +115,8 @@ subspace.
     {\vec{v_1}\cdot\vec{v_1}}\right)\vec{v_1}-
     \left(\frac{\vec{v_2}\cdot\vec{x_3}}
     {\vec{v_2}\cdot\vec{v_2}}\right)\vec{v_2} \\
-  &= \begin{bmatrix}-\frac{1}{2} \\ 0 \\ \frac{1}{2} \\ 1\end{bmatrix} \\
-  &= \begin{bmatrix}-1 \\ 0 \\ 1 \\ 2\end{bmatrix} \\
+  &= \begin{bmatrix}-\frac{1}{2} \\ 0 \\ \frac{1}{2} \\ 1\end{bmatrix} =
+    \begin{bmatrix}-1 \\ 0 \\ 1 \\ 2\end{bmatrix} \\
   W &= span(\vec{v_1},\vec{v_2},\vec{v_3}) = span\left(
     \begin{bmatrix}1 \\ -1 \\ -1 \\ 1\end{bmatrix},
     \begin{bmatrix}3 \\ 3 \\ 1 \\ 1\end{bmatrix},

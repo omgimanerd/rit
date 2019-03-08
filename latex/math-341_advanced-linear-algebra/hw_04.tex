@@ -1,0 +1,634 @@
+\documentclass{math}
+
+\usepackage{enumerate}
+
+\geometry{letterpaper, margin=0.5in}
+
+\title{Advanced Linear Algebra: Homework 4}
+\author{Alvin Lin}
+\date{August 2016 - December 2016}
+
+\begin{document}
+
+\maketitle
+
+\subsubsection*{Question 1}
+Determine if the given vectors form an orthogonal set.
+\[ \begin{bmatrix}1 \\ 0 \\ -1 \\ 1\end{bmatrix},
+  \begin{bmatrix}-1 \\ 0 \\ 1 \\ 2\end{bmatrix},
+  \begin{bmatrix}1 \\ 1 \\ 1 \\ 0\end{bmatrix},
+  \begin{bmatrix}0 \\ -1 \\ 1 \\ 1\end{bmatrix} \]
+\begin{align*}
+  \begin{bmatrix}1 \\ 0 \\ -1 \\ 1\end{bmatrix}\cdot
+    \begin{bmatrix}-1 \\ 0 \\ 1 \\ 2\end{bmatrix} &= 0 \quad
+  \begin{bmatrix}1 \\ 0 \\ -1 \\ 1\end{bmatrix}\cdot
+    \begin{bmatrix}1 \\ 1 \\ 1 \\ 0\end{bmatrix} = 0 \quad
+  \begin{bmatrix}1 \\ 0 \\ -1 \\ 1\end{bmatrix}\cdot
+    \begin{bmatrix}0 \\ -1 \\ 1 \\ 1\end{bmatrix} = 0 \quad \\
+  \begin{bmatrix}-1 \\ 0 \\ 1 \\ 2\end{bmatrix}\cdot
+    \begin{bmatrix}1 \\ 1 \\ 1 \\ 0\end{bmatrix} &= 0 \quad
+  \begin{bmatrix}-1 \\ 0 \\ 1 \\ 2\end{bmatrix}\cdot
+    \begin{bmatrix}0 \\ -1 \\ 1 \\ 1\end{bmatrix} = 3
+\end{align*}
+
+\subsubsection*{Question 2}
+Do the given vectors form an orthogonal basis for \( \R^3 \)?
+\[ \vec{v_1} = \begin{bmatrix}1 \\ 0 \\ -1\end{bmatrix}, \quad
+  \vec{v_2} = \begin{bmatrix}2 \\ 4 \\ 2\end{bmatrix},\quad
+  \vec{v_3} = \begin{bmatrix}3 \\ -3 \\ 3\end{bmatrix} \]
+\begin{align*}
+  \vec{v_1}\cdot\vec{v_2} &= 0 \quad \vec{v_1}\cdot\vec{v_3} = 0 \\
+  \vec{v_2}\cdot\vec{v_3} &= 0
+\end{align*}
+Let \( \{\vec{v_1},\vec{v_2},\dots,\vec{v_k}\} \) be an orthogonal basis for a
+subspace \( W \) of \( \R^n \) and let \( \vec{w} \) be any vector in \( W \).
+Then the unique scalars \( c_1,\dots,c_k \), such that
+\begin{align*}
+  \vec{w} &= c_1\vec{v_1}+\dots+c_k\vec{v_k} \\
+  c_i &= \frac{\vec{w}\cdot\vec{v_i}}{\vec{v_i}\cdot\vec{v_i}} \quad
+    i = 1,\dots,k
+\end{align*}
+Use the theorem to express \( \vec{w} \) as a linear combination of the above
+basis vectors. Give the coordinate center \( [\vec{w}]_{\mathbb{B}} \) of
+\( \vec{w} \) with respect to the basis \( \vec{b} = \{\vec{v_1},\vec{v_2}\} \)
+of \( \R^3 \).
+\begin{align*}
+  \vec{w} &= \begin{bmatrix}1 \\ 1 \\ 1\end{bmatrix} \\
+  c_1 &= \frac{\vec{w}\cdot\vec{v_1}}{\vec{v_1}\cdot\vec{v_1}} =
+    \frac{1+0-1}{1+0+1} = 0 \\
+  c_2 &= \frac{\vec{w}\cdot\vec{v_2}}{\vec{v_2}\cdot\vec{v_2}} =
+    \frac{2+4+2}{4+16+4} = \frac{1}{3} \\
+  c_3 &= \frac{\vec{w}\cdot\vec{v_3}}{\vec{v_3}\cdot\vec{v_3}} =
+    \frac{3-3+3}{9+9+9} = \frac{1}{9} \\
+  [\vec{w}]_{\mathbb{B}} &=
+    \begin{bmatrix}0 \\ \frac{1}{3} \\ \frac{1}{9}\end{bmatrix}
+\end{align*}
+
+\subsubsection*{Question 3}
+Determine whether the given matrix is orthogonal.
+\begin{align*}
+  Q &= \begin{bmatrix}
+    \frac{1}{2} & \frac{1}{4} & \frac{1}{3} \\
+    \frac{1}{2} & -\frac{1}{4} & \frac{1}{3} \\
+    -\frac{1}{2} & 0 & \frac{2}{3}
+  \end{bmatrix} \\
+  Q^TQ &= \begin{bmatrix}
+    \frac{1}{2} & \frac{1}{2} & -\frac{1}{2} \\
+    \frac{1}{4} & -\frac{1}{4} & 0 \\
+    \frac{1}{3} & \frac{1}{3} & \frac{2}{3}
+  \end{bmatrix}\begin{bmatrix}
+    \frac{1}{2} & \frac{1}{4} & \frac{1}{3} \\
+    \frac{1}{2} & -\frac{1}{4} & \frac{1}{3} \\
+    -\frac{1}{2} & 0 & \frac{2}{3}
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    \frac{3}{4} & 0 & 0 \\
+    0 & \frac{1}{8} & 0 \\
+    0 & 0 & \frac{2}{3}
+  \end{bmatrix}
+\end{align*}
+The matrix is not orthogonal.
+
+\subsubsection*{Question 4}
+Determine whether the given matrix is orthogonal.
+\begin{align*}
+  Q &= \begin{bmatrix}
+    \frac{1}{2} & -\frac{1}{2} & \frac{1}{2} & \frac{1}{2} \\
+    \frac{1}{2} & \frac{1}{2} & \frac{1}{2} & -\frac{1}{2} \\
+    \frac{1}{2} & \frac{1}{2} & -\frac{1}{2} & \frac{1}{2} \\
+    -\frac{1}{2} & \frac{1}{2} & \frac{1}{2} & \frac{1}{2}
+  \end{bmatrix} \\
+  Q^TQ &= \begin{bmatrix}
+    \frac{1}{2} & \frac{1}{2} & \frac{1}{2} & -\frac{1}{2} \\
+    -\frac{1}{2} & \frac{1}{2} & \frac{1}{2} & \frac{1}{2} \\
+    \frac{1}{2} & \frac{1}{2} & -\frac{1}{2} & \frac{1}{2} \\
+    \frac{1}{2} & -\frac{1}{2} & \frac{1}{2} & \frac{1}{2}
+  \end{bmatrix}\begin{bmatrix}
+    \frac{1}{2} & -\frac{1}{2} & \frac{1}{2} & \frac{1}{2} \\
+    \frac{1}{2} & \frac{1}{2} & \frac{1}{2} & -\frac{1}{2} \\
+    \frac{1}{2} & \frac{1}{2} & -\frac{1}{2} & \frac{1}{2} \\
+    -\frac{1}{2} & \frac{1}{2} & \frac{1}{2} & \frac{1}{2}
+  \end{bmatrix} \\
+  &= I_4 \\
+  Q^{-1} &= Q^T
+\end{align*}
+This matrix is orthogonal.
+
+\subsubsection*{Question 5}
+The following facts can be proven.
+\begin{enumerate}[(i)]
+  \item An orthogonal \( 2\times2 \) matrix must have the form
+  \[ \begin{bmatrix}a & -b \\ b & a\end{bmatrix} \text{ or }
+    \begin{bmatrix}a & b \\ b & -a\end{bmatrix} \]
+  where \( \begin{bmatrix}a \\ b\end{bmatrix} \) is a unit vector.
+  \item Every orthogonal \( 2\times2 \) matrix is of the form
+  \[ \begin{bmatrix}
+    \cos\theta & -\sin\theta \\
+    \sin\theta & \cos\theta
+  \end{bmatrix} \text{ or } \begin{bmatrix}
+    \cos\theta & \sin\theta \\
+    \sin\theta & -\cos\theta
+  \end{bmatrix} \]
+  \item Every orthogonal \( 2\times2 \) matrix corresponds to either a
+    rotation or a reflection \( \R^2 \).
+  \item An orthogonal \( 2\times2 \) matrix corresponds to a rotation in
+    \( \R^2 \) if \( \det(Q) = 1 \) and a reflection in \( \R^2 \) if
+    \( \det(Q) = -1 \).
+\end{enumerate}
+Use the above facts to determine whether the given orthogonal matrix
+represents a rotation or a reflection.
+\begin{align*}
+  Q &= \begin{bmatrix}
+    \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} \\
+    \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}}
+  \end{bmatrix} \\
+  \det(Q) &= 1 \quad \theta = \frac{\pi}{4}
+\end{align*}
+
+\subsubsection*{Question 6}
+Find the orthogonal complement \( W^{\bot} \) of \( W \) and give a basis for
+\( W^{\bot} \).
+\begin{align*}
+  W &= \left\{\begin{bmatrix}x \\ y \\ z\end{bmatrix}: x+y-z = 0\right\} \\
+  x &= z-y \quad y = s \quad z = t \\
+  W &= s\begin{bmatrix}-1 \\ 1 \\ 0\end{bmatrix}+
+    t\begin{bmatrix}1 \\ 0 \\ 1\end{bmatrix} \\
+  \begin{bmatrix}
+    -1 & 1 & 0 \\
+    1 & 0 & 1
+  \end{bmatrix}\begin{bmatrix}x_1 \\ x_2 \\ x_3\end{bmatrix} &= \vec{0} \\
+  \left[\begin{array}{ccc|c}
+    -1 & 1 & 0 & 0 \\
+    1 & 0 & 1 & 0
+  \end{array}\right] &\to \left[\begin{array}{ccc|c}
+    1 & 0 & 1 & 0 \\
+    0 & 1 & 1 & 0
+  \end{array}\right] \\
+  \begin{bmatrix}x_1 \\ x_2 \\ x_3\end{bmatrix} &= \begin{bmatrix}
+    -x_3 \\ -x_3 \\ x_3
+  \end{bmatrix} = x_3\begin{bmatrix}-1 \\ -1 \\ 1\end{bmatrix} \\
+  W^{\bot} &= span\left(\begin{bmatrix}-1 \\ -1 \\ 1\end{bmatrix}\right)
+\end{align*}
+
+\subsubsection*{Question 7}
+Find the orthogonal complement \( W^{\bot} \) of \( W \) and give a basis for
+\( W^{\bot} \)
+\begin{align*}
+  W &= \left\{\begin{bmatrix}x \\ y \\ z\end{bmatrix}: x = \frac{1}{2}t,
+    y = -\frac{1}{2}t, z = 3t\right\} \\
+  &= t\begin{bmatrix}\frac{1}{2} \\ -\frac{1}{2} \\ 3\end{bmatrix} \\
+  \begin{bmatrix}\frac{1}{2} & -\frac{1}{2} & 3\end{bmatrix}
+    \begin{bmatrix}x_1 \\ x_2 \\ x_3\end{bmatrix} &= \vec{0} \\
+  x_1-x_2+6x_3 &= 0 \\
+  x_1 &= x_2-6x_3 \quad x_2 = s \quad x_3 = t \\
+  \begin{bmatrix}x_1 \\ x_2 \\ x_3\end{bmatrix} &=
+    s\begin{bmatrix}1 \\ 1 \\ 0\end{bmatrix}+
+    t\begin{bmatrix}-6 \\ 0 \\ 1\end{bmatrix} \\
+  W^{\bot} &= span\left(
+    \begin{bmatrix}1 \\ 1 \\ 0\end{bmatrix},
+    \begin{bmatrix}-6 \\ 0 \\ 1\end{bmatrix}
+  \right)
+\end{align*}
+
+\subsubsection*{Question 8}
+Find a basis for the row space of \( A \).
+\begin{align*}
+  A &= \begin{bmatrix}
+    1 & -1 & 3 \\
+    -3 & 1 & -5 \\
+    0 & 1 & -2 \\
+    5 & -3 & 11
+  \end{bmatrix} \\
+  rref(A) &= \begin{bmatrix}
+    1 & 0 & 1 \\
+    0 & 1 & -2 \\
+    0 & 0 & 0 \\
+    0 & 0 & 0
+  \end{bmatrix} \\
+  row(A) &= span\left(
+    \begin{bmatrix}1 \\ 0 \\ 1\end{bmatrix},
+    \begin{bmatrix}0 \\ 1 \\ -2\end{bmatrix}
+  \right) \\
+  A\vec{x} &= 0 \\
+  \vec{x_1} &= -x_3 \quad \vec{x_2} = 2\vec{x_3} \quad \vec{x_3} = s \\
+  \vec{x} &= s\begin{bmatrix}-1 \\ 2 \\ 1\end{bmatrix} \\
+  null(A) &= span\left(\begin{bmatrix}-1 \\ 2 \\ 1\end{bmatrix}\right)
+\end{align*}
+
+\subsubsection*{Question 9}
+Find a basis for the column space of \( A \).
+\begin{align*}
+  A &= \begin{bmatrix}
+    1 & -1 & 3 \\
+    5 & 2 & 1 \\
+    0 & 1 & -2 \\
+    -1 & -1 & 1
+  \end{bmatrix} \\
+  rref(A) &= \begin{bmatrix}
+    1 & 0 & 1 \\
+    0 & 1 & -2 \\
+    0 & 0 & 0 \\
+    0 & 0 & 0
+  \end{bmatrix} \\
+  col(A) &= span\left(
+    \begin{bmatrix}1 \\ 5 \\ 0 \\ -1\end{bmatrix},
+    \begin{bmatrix}-1 \\ 2 \\ 1 \\ -1\end{bmatrix}
+  \right)
+\end{align*}
+Find a basis for the null space of \( A^T \) for the given matrix. Verify that
+every vector in \( col(A) \) is orthogonal to every vector in \( null(A^T) \).
+\begin{align*}
+  A^T\vec{x} &= \vec{0} \\
+  \left[\begin{array}{cccc|c}
+    1 & 5 & 0 & -1 & 0 \\
+    -1 & 2 & 1 & -1 & 0 \\
+    3 & 1 & -2 & 1 & 0
+  \end{array}\right] &\to \left[\begin{array}{cccc|c}
+    1 & 0 & -\frac{5}{7} & \frac{3}{7} & 0 \\
+    0 & 1 & \frac{1}{7} & -\frac{2}{7} & 0 \\
+    0 & 0 & 0 & 0 & 0
+  \end{array}\right] \\
+  x_1 &= \frac{5}{7}x_3-\frac{3}{7}x_4 \quad
+    x_2 = -\frac{1}{7}x_3+\frac{2}{7}x_4 \quad x_3 = s \quad x_4 = t \\
+  \vec{x} &= s\begin{bmatrix}\frac{5}{7} \\ -\frac{1}{7} \\ 1 \\ 0\end{bmatrix}+
+    t\begin{bmatrix}-\frac{3}{7} \\ \frac{2}{7} \\ 0 \\ 1\end{bmatrix} \\
+  null(A^T) &= span\left(
+    \begin{bmatrix}\frac{5}{7} \\ -\frac{1}{7} \\ 1 \\ 0\end{bmatrix},
+    \begin{bmatrix}-\frac{3}{7} \\ \frac{2}{7} \\ 0 \\ 1\end{bmatrix}
+  \right)
+\end{align*}
+
+\subsubsection*{Question 10}
+Let \( W \) be the subspace spanned by the given vectors. Find a basis for
+\( W^{\bot} \).
+\begin{align*}
+  \vec{w_1} &= \begin{bmatrix}1 \\ -1 \\ 4 \\ -2\end{bmatrix} \quad
+    \vec{w_2} = \begin{bmatrix}0 \\ 1 \\ -3 \\ 1\end{bmatrix} \\
+  \begin{bmatrix}
+    1 & -1 & 4 & -2 \\
+    0 & 1 & -3 & 1
+  \end{bmatrix}\begin{bmatrix}x_1 \\ x_2 \\ x_3 \\ x_4\end{bmatrix} &=
+    \vec{0} \\
+  \left[\begin{array}{cccc|c}
+    1 & -1 & 4 & -2 & 0 \\
+    0 & 1 & -3 & 1 & 0
+  \end{array}\right] &\to \left[\begin{array}{cccc|c}
+    1 & 0 & 1 & -1 & 0 \\
+    0 & 1 & -3 & 1 & 0
+  \end{array}\right] \\
+  x_1 &= -x_3+x_4 \quad x_2 = 3x_3-x_4 \quad x_3 = s \quad x_4 = t \\
+  \vec{x} &= s\begin{bmatrix}-1 \\ 3 \\ 1 \\ 0\end{bmatrix}+
+    t\begin{bmatrix}1 \\ -1 \\ 0 \\ 1\end{bmatrix} \\
+  W^{\bot} &= span\left(
+    \begin{bmatrix}-1 \\ 3 \\ 1 \\ 0\end{bmatrix},
+    \begin{bmatrix}1 \\ -1 \\ 0 \\ 1\end{bmatrix}
+  \right)
+\end{align*}
+
+\subsubsection*{Question 11}
+Let \( W \) be the subspace spanned by the given vectors. Find a basis for
+\( W^{\bot} \).
+\begin{align*}
+  \vec{w_1} &= \begin{bmatrix}4 \\ -5 \\ 12 \\ 7\end{bmatrix} \quad
+  \vec{w_2} = \begin{bmatrix}2 \\ 2 \\ 6 \\ 2\end{bmatrix} \quad
+  \vec{w_3} = \begin{bmatrix}-2 \\ -8 \\ -6 \\ 0\end{bmatrix} \\
+  \begin{bmatrix}
+    4 & -5 & 12 & 7 & 0 \\
+    2 & 2 & 6 & 2 & 0 \\
+    -2 & -8 & -6 & 0 & 0
+  \end{bmatrix}\vec{x} &= \vec{0} \\
+  \left[\begin{array}{cccc|c}
+    4 & -5 & 12 & 7 & 0 \\
+    2 & 2 & 6 & 2 & 0 \\
+    -2 & -8 & -6 & 0 & 0
+  \end{array}\right] &= \left[\begin{array}{cccc|c}
+    1 & 0 & 3 & \frac{4}{3} & 0 \\
+    0 & 1 & 0 & -\frac{1}{3} & 0 \\
+    0 & 0 & 0 & 0 & 0
+  \end{array}\right] \\
+  x_1 &= -3x_3-\frac{4}{3}x_4 \quad x_2 = \frac{1}{3}x_4 \quad x_3 = s \quad
+    x_4 = t \\
+  \vec{x} &= s\begin{bmatrix}-3 \\ 0 \\ 1 \\ 0\end{bmatrix}+
+    t\begin{bmatrix}-\frac{4}{3} \\ \frac{1}{3} \\ 0 \\ 1\end{bmatrix} \\
+  W^{\bot} &= span\left(
+    \begin{bmatrix}-3 \\ 0 \\ 1 \\ 0\end{bmatrix},
+    \begin{bmatrix}-\frac{4}{3} \\ \frac{1}{3} \\ 0 \\ 1\end{bmatrix}
+  \right)
+\end{align*}
+
+\subsubsection*{Question 12}
+Find the orthogonal projection of \( \vec{v} \) onto the subspace \( W \)
+spanned by the vectors \( \vec{u_i} \). (You may assume that the vectors
+\( \vec{u_i} \) are orthogonal.)
+\begin{align*}
+  \vec{v} &= \begin{bmatrix}7 \\ -4\end{bmatrix} \quad
+    \vec{u_1} = \begin{bmatrix}1 \\ 1\end{bmatrix} \\
+  \text{proj}_{W}\vec{v} &=
+    \left(\frac{\vec{u_1}\cdot\vec{v}}{\vec{u_1}\cdot\vec{u_1}}\right)
+    \vec{u_1} \\
+  &= \frac{7-4}{1+1}\begin{bmatrix}1 \\ 1\end{bmatrix}
+    = \begin{bmatrix}\frac{3}{2} \\ \frac{3}{2}\end{bmatrix}
+\end{align*}
+
+\subsubsection*{Question 13}
+Find the orthogonal projection of \( \vec{v} \) onto the subspace \( W \)
+spanned by the vectors \( \vec{u_i} \).
+\begin{align*}
+  \vec{v} &= \begin{bmatrix}1 \\ 2 \\ 3\end{bmatrix} \quad
+    \vec{u_1} = \begin{bmatrix}2 \\ -2 \\ 1\end{bmatrix} \quad
+    \vec{u_2} = \begin{bmatrix}-1 \\ 1 \\ 4\end{bmatrix} \\
+  \text{proj}_{W}\vec{v} &= \sum_{i=1}^{2}
+    \left(\frac{\vec{u_i}\cdot\vec{v}}{\vec{u_i}\cdot\vec{u_i}}\right)
+    \vec{u_i} \\
+  &= \frac{2-4+3}{4+4+1}\vec{u_1}+\frac{-1+2+12}{1+1+16}\vec{u_2} \\
+  &= \frac{1}{9}\begin{bmatrix}2 \\ -2 \\ 1\end{bmatrix}+
+    \frac{13}{18}\begin{bmatrix}-1 \\ 1 \\ 4\end{bmatrix} \\
+  &= \begin{bmatrix}-\frac{9}{18} \\ \frac{9}{18} \\ \frac{54}{18}\end{bmatrix}
+\end{align*}
+
+\subsubsection*{Question 14}
+Find the orthogonal projection of \( \vec{v} \) onto the subspace \( W \)
+spanned by the vectors \( \vec{u_i} \).
+\begin{align*}
+  \vec{v} &= \begin{bmatrix}6 \\ -4 \\ 8 \\ -6\end{bmatrix} \quad
+    \vec{u_1} = \begin{bmatrix}1 \\ 1 \\ 0 \\ 0\end{bmatrix} \quad
+    \vec{u_2} = \begin{bmatrix}1 \\ -1 \\ -1 \\ 1\end{bmatrix} \quad
+    \vec{u_3} = \begin{bmatrix}0 \\ 0 \\ 1 \\ 1\end{bmatrix} \\
+  \text{proj}_{W}\vec{v} &= \sum_{i=1}^{2}
+    \left(\frac{\vec{u_i}\cdot\vec{v}}{\vec{u_i}\cdot\vec{u_i}}\right)
+    \vec{u_i} \\
+  &= \frac{6-4}{1+1}\vec{u_1}+\frac{6+4-8-6}{1+1+1+1}\vec{u_2}+
+    \frac{8-6}{1+1}\vec{u_3} \\
+  &= \begin{bmatrix}1 \\ 1 \\ 0 \\ 0\end{bmatrix}-
+    \begin{bmatrix}1 \\ -1 \\ -1 \\ 1\end{bmatrix}+
+    \begin{bmatrix}0 \\ 0 \\ 1 \\ 1\end{bmatrix} \\
+  &= \begin{bmatrix}0 \\ 2 \\ 2 \\ 0\end{bmatrix}
+\end{align*}
+
+\subsubsection*{Question 15}
+Find the orthogonal decomposition of \( \vec{v} \) with respect to \( W \).
+\begin{align*}
+  \vec{v} &= \begin{bmatrix}2 \\ -2\end{bmatrix} \quad
+    W = span\left(\begin{bmatrix}1 \\ 4\end{bmatrix}\right) \\
+  \text{proj}_{W}\vec{v} &= \sum_{i=1}^{1}
+    \left(\frac{\vec{u_i}\cdot\vec{v}}{\vec{u_i}\cdot\vec{u_i}}\right)
+    \vec{u_i} \\
+  &= \frac{2-8}{1+16}\begin{bmatrix}1 \\ 4\end{bmatrix} \\
+  &= \begin{bmatrix}-\frac{6}{17} \\ -\frac{24}{17}\end{bmatrix} \\
+  \text{perp}_{W}\vec{v} &= \vec{v}-\text{proj}_{W}\vec{v} \\
+    &= \begin{bmatrix}\frac{40}{17} \\ -\frac{10}{17}\end{bmatrix}
+\end{align*}
+
+\subsubsection*{Question 16}
+Find the orthogonal decomposition of \( \vec{v} \) with respect to \( W \).
+\begin{align*}
+  \vec{v} &= \begin{bmatrix}4 \\ -2 \\ 3\end{bmatrix} \quad
+    W = span\left(
+      \begin{bmatrix}1 \\ 2 \\ 1\end{bmatrix},
+      \begin{bmatrix}1 \\ -1 \\ 1\end{bmatrix}
+    \right) \\
+  \text{proj}_{W}\vec{v} &= \sum_{i=1}^{2}
+    \left(\frac{\vec{u_i}\cdot\vec{v}}{\vec{u_i}\cdot\vec{u_i}}\right)
+    \vec{u_i} \\
+  &= \frac{4-4+3}{1+4+1}\begin{bmatrix}1 \\ 2 \\ 1\end{bmatrix}+
+    \frac{4+2+3}{1+1+1}\begin{bmatrix}1 \\ -1 \\ 1\end{bmatrix} \\
+  &= \begin{bmatrix}\frac{7}{2} \\ -2 \\ \frac{7}{2}\end{bmatrix} \\
+  \text{perp}_{W}\vec{v} &= \vec{v}-\text{proj}_{W}\vec{v} \\
+  &= \begin{bmatrix}\frac{1}{2} \\ 0 \\ -\frac{1}{2}\end{bmatrix}
+\end{align*}
+
+\subsubsection*{Question 17}
+The given vectors form a basis for a subspace \( W \) of \( \R^3 \). Apply the
+Gram-Schmidt Process to obtain an orthogonal basis. Then normalize this basis
+to obtain an orthonormal basis.
+\begin{align*}
+  \vec{x_1} &= \begin{bmatrix}2 \\ -2 \\ -2\end{bmatrix} \quad
+    \vec{x_2} = \begin{bmatrix}0 \\ 3 \\ 3\end{bmatrix} \quad
+    \vec{x_3} = \begin{bmatrix}3 \\ 2 \\ 4\end{bmatrix} \\
+  \vec{v_1} &= \vec{x_1} \quad W_1 = span(\vec{v_1}) \\
+  \vec{v_2} &= \vec{x_2}-\text{proj}_{W_1}\vec{x_2} \\
+  &= \vec{x_2}-\sum_{i=1}^{1}
+    \left(\frac{\vec{u_i}\cdot\vec{x_2}}{\vec{u_i}\cdot\vec{u_i}}\right)
+    \vec{u_i} \\
+  &= \begin{bmatrix}2 \\ 1 \\ 1\end{bmatrix} \quad
+    W_2 = span(\vec{v_1},\vec{v_2}) \\
+  \vec{v_3} &= \vec{x_3}-\text{proj}_{W_2}\vec{x_3} \\
+  &= \vec{x_3}-\sum_{i=1}^{2}
+    \left(\frac{\vec{u_i}\cdot\vec{x_3}}{\vec{u_i}\cdot\vec{u_i}}\right)
+    \vec{u_i} \\
+  &= \begin{bmatrix}0 \\ -1 \\ 1\end{bmatrix} \\
+  \mathbb{B} &= span\left(
+    \begin{bmatrix}2 \\ -2 \\ -2\end{bmatrix},
+    \begin{bmatrix}2 \\ 1 \\ 1\end{bmatrix},
+    \begin{bmatrix}0 \\ -1 \\ 1\end{bmatrix}
+  \right)
+\end{align*}
+
+\subsubsection*{Question 18}
+The given vectors form a basis for a subspace \( W \) of \( \R^3 \). Apply the
+Gram-Schmidt Process to obtain an orthogonal basis. Then normalize this basis
+to obtain an orthonormal basis.
+\begin{align*}
+  \vec{x_1} &= \begin{bmatrix}-2 \\ -2 \\ 0\end{bmatrix} \quad
+    \vec{x_2} = \begin{bmatrix}3 \\ 4 \\ 2\end{bmatrix} \\
+  \vec{v_1} &= \vec{x_1} \quad W_1 = span(\vec{v_1}) \\
+  \vec{v_2} &= \vec{x_2}-\text{proj}_{W_1}\vec{x_2} \\
+  &= \vec{x_2}-\sum_{i=1}^{1}
+    \left(\frac{\vec{u_i}\cdot\vec{x_2}}{\vec{u_i}\cdot\vec{u_i}}\right)
+    \vec{u_i} \\
+  &= \begin{bmatrix}-\frac{1}{2} \\ \frac{1}{2} \\ 2\end{bmatrix} \\
+  \mathbb{B} &= span\left(
+    \begin{bmatrix}-2 \\ -2 \\ 0\end{bmatrix},
+    \begin{bmatrix}-\frac{1}{2} \\ \frac{1}{2} \\ 2\end{bmatrix}
+  \right) \\
+  &= span\left(
+    \begin{bmatrix}-\frac{2}{\sqrt{8}} \\ -\frac{2}{\sqrt{8}} \\ 0\end{bmatrix},
+    \begin{bmatrix}-\frac{\sqrt{2}}{6} \\ \frac{\sqrt{2}}{6} \\
+      \frac{2\sqrt{2}}{3}\end{bmatrix}
+  \right)
+\end{align*}
+
+\subsubsection*{Question 19}
+The given vectors form a basis for a subspace \( W \) of \( \R^3 \). Apply the
+Gram-Schmidt Process to obtain an orthogonal basis. Then normalize this basis
+to obtain an orthonormal basis.
+\begin{align*}
+  \vec{x_1} &= \begin{bmatrix}2 \\ -1 \\ 1 \\ 2\end{bmatrix} \quad
+    \vec{x_2} = \begin{bmatrix}3 \\ -1 \\ 0 \\ 4\end{bmatrix} \quad
+    \vec{x_3} = \begin{bmatrix}1 \\ 1 \\ 1 \\ 1\end{bmatrix} \\
+  \vec{v_1} &= \vec{x_1} \quad W_1 = span(\vec{v_1}) \\
+  \vec{v_2} &= \vec{x_2}-\text{proj}_{W_1}\vec{x_2} \\
+  &= \vec{x_2}-\sum_{i=1}^{1}
+    \left(\frac{\vec{u_i}\cdot\vec{x_2}}{\vec{u_i}\cdot\vec{u_i}}\right)
+    \vec{u_i} \\
+  &= \begin{bmatrix}0 \\ \frac{1}{2} \\ -\frac{3}{2} \\ 1\end{bmatrix} \quad
+    W_2 = span(\vec{v_2},\vec{v_2}) \\
+  \vec{v_3} &= \vec{x_3}-\text{proj}_{W_2}\vec{x_3} \\
+  &= \vec{x_3}-\sum_{i=1}^{2}
+    \left(\frac{\vec{u_i}\cdot\vec{x_3}}{\vec{u_i}\cdot\vec{u_i}}\right)
+    \vec{u_i} \\
+  &= \begin{bmatrix}\frac{1}{5} \\ \frac{7}{5} \\ \frac{3}{5} \\ \frac{1}{5}
+    \end{bmatrix} \\
+  \mathbb{B} &= span\left(
+    \begin{bmatrix}2 \\ -1 \\ 1 \\ 2\end{bmatrix},
+    \begin{bmatrix}0 \\ \frac{1}{2} \\ -\frac{3}{2} \\ 1\end{bmatrix},
+    \begin{bmatrix}\frac{1}{5} \\ \frac{7}{5} \\ \frac{3}{5} \\ \frac{1}{5}
+      \end{bmatrix}
+  \right)
+\end{align*}
+
+\subsubsection*{Question 20}
+Use the Gram-Schmidt Process to find an orthogonal basis for the column space
+of the matrix.
+\begin{align*}
+  A &= \begin{bmatrix}
+    0 & -1 & 1 \\
+    1 & 0 & 1 \\
+    1 & -1 & 0
+  \end{bmatrix} \\
+  \vec{v_1} &= \vec{x_1} \quad W_1 = span(\vec{v_1}) \\
+  \vec{v_2} &= \vec{x_2}-\text{proj}_{W_1}\vec{x_2} \\
+  &= \vec{x_2}-\sum_{i=1}^{1}
+    \left(\frac{\vec{u_i}\cdot\vec{x_2}}{\vec{u_i}\cdot\vec{u_i}}\right)
+    \vec{u_i} \\
+  &= \begin{bmatrix}-1 \\ \frac{1}{2} \\ -\frac{1}{2}\end{bmatrix} \quad
+    W_2 = span(\vec{v_2},\vec{v_2}) \\
+  \vec{v_3} &= \vec{x_3}-\text{proj}_{W_2}\vec{x_3} \\
+  &= \vec{x_3}-\sum_{i=1}^{2}
+    \left(\frac{\vec{u_i}\cdot\vec{x_3}}{\vec{u_i}\cdot\vec{u_i}}\right)
+    \vec{u_i} \\
+  &= \begin{bmatrix}\frac{2}{3} \\ \frac{2}{3} \\ -\frac{2}{3}\end{bmatrix} \\
+  \mathbb{B} &= span\left(
+    \begin{bmatrix}0 \\ 1 \\ 1\end{bmatrix},
+    \begin{bmatrix}-1 \\ \frac{1}{2} \\ -\frac{1}{2}\end{bmatrix},
+    \begin{bmatrix}\frac{2}{3} \\ \frac{2}{3} \\ -\frac{2}{3}\end{bmatrix}
+  \right)
+\end{align*}
+
+\subsubsection*{Question 21}
+Find an orthogonal basis for \( \R^4 \) that contains the following vectors.
+\[ \begin{bmatrix}1 \\ 3 \\ -1 \\ 0\end{bmatrix} \text{ and }
+  \begin{bmatrix}1 \\ 0 \\ 1 \\ 2\end{bmatrix} \]
+\begin{align*}
+  \vec{x_1} &= \begin{bmatrix}1 \\ 3 \\ -1 \\ 0\end{bmatrix} \quad
+    \vec{x_2} = \begin{bmatrix}1 \\ 0 \\ 1 \\ 2\end{bmatrix} \quad
+    \vec{x_3} = \begin{bmatrix}0 \\ 1 \\ 0 \\ 0\end{bmatrix} \quad
+    \vec{v_4} = \begin{bmatrix}0 \\ 0 \\ 0 \\ 1\end{bmatrix} \\
+\end{align*}
+If we apply the Gram-Schmidt process, we get a basis
+\[ \mathbb{B} = span\left(
+  \begin{bmatrix}1 \\ 3 \\ -1 \\ 0\end{bmatrix},
+  \begin{bmatrix}1 \\ 0 \\ 1 \\ 2\end{bmatrix},
+  \begin{bmatrix}-\frac{3}{11} \\ \frac{2}{11} \\ \frac{3}{11} \\
+    0\end{bmatrix},
+  \begin{bmatrix}-\frac{1}{3} \\ 0 \\ -\frac{1}{3} \\ \frac{1}{3}\end{bmatrix}
+\right) \]
+
+\subsubsection*{Question 22}
+Find a QR factorization of the matrix.
+\begin{align*}
+  A &= \begin{bmatrix}
+    0 & 5 & 3 \\
+    1 & 0 & 3 \\
+    1 & 5 & 0
+  \end{bmatrix} \\
+  Q &= \begin{bmatrix}
+    0 & 5 & 2 \\
+    1 & -\frac{5}{2} & 2 \\
+    1 & \frac{5}{2} & -2
+  \end{bmatrix} = \begin{bmatrix}
+    0 & \frac{\sqrt{6}}{3} & \frac{\sqrt{3}}{3} \\
+    \frac{\sqrt{2}}{2} & -\frac{\sqrt{6}}{6} & \frac{\sqrt{3}}{3} \\
+    \frac{\sqrt{2}}{2} & \frac{\sqrt{6}}{6} & -\frac{\sqrt{3}}{3}
+  \end{bmatrix} \\
+  R &= Q^TA = \begin{bmatrix}
+    \sqrt{2} & \frac{5}{\sqrt{2}} & \frac{3}{\sqrt{2}} \\
+    0 & \frac{5\sqrt{6}}{2} & \frac{\sqrt{6}}{2} \\
+    0 & 0 & 2\sqrt{3}
+  \end{bmatrix}
+\end{align*}
+
+\subsubsection*{Question 23}
+The columns of \( Q \) were obtained by applying the Gram-Schmidt Process to
+columns of \( A \). Find the upper triangular matrix \( R \) such that
+\( A = QR \).
+\begin{align*}
+  A &= \begin{bmatrix}
+    5 & 5 & 5 \\
+    10 & 4 & -1 \\
+    -10 & -7 & 6
+  \end{bmatrix} \\
+  Q &= \begin{bmatrix}
+    \frac{1}{3} & \frac{2}{3} & \frac{2}{3} \\
+    \frac{2}{3} & -\frac{2}{3} & \frac{1}{3} \\
+    -\frac{2}{3} & -\frac{1}{3} & \frac{2}{3}
+  \end{bmatrix} \\
+  R &= Q^TA = \begin{bmatrix}
+    15 & 9 & -3 \\
+    0 & 3 & 2 \\
+    0 & 0 & 7
+  \end{bmatrix}
+\end{align*}
+
+\subsubsection*{Question 24}
+Orthogonally diagonalize the matrix by finding an orthogonal matrix \( Q \) and
+a diagonal matrix \( D \) such that \( Q^TAQ = D \).
+\begin{align*}
+  A &= \begin{bmatrix}3 & 2 \\ 2 & 3\end{bmatrix} \\
+  D &= P^{-1}AP \\
+  \lambda_1 &= 1 \quad \lambda_2 = 5 \\
+  \vec{v_1} &= \begin{bmatrix}-1 \\ 1\end{bmatrix} \quad
+    \vec{v_2} = \begin{bmatrix}1 \\ 1\end{bmatrix} \\
+  D &= \begin{bmatrix}1 & 0 \\ 0 & 5\end{bmatrix} \\
+  \vec{u_1} &= \begin{bmatrix}
+    -\frac{1}{\sqrt{2}} \\
+    \frac{1}{\sqrt{2}}
+  \end{bmatrix} \quad \vec{u_2} = \begin{bmatrix}
+    \frac{1}{\sqrt{2}} \\
+    \frac{1}{\sqrt{2}}
+  \end{bmatrix} \\
+  Q &= \begin{bmatrix}
+    -\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\
+    \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}}
+  \end{bmatrix} \\
+\end{align*}
+
+\subsubsection*{Question 25}
+Orthogonally diagonalize the matrix by finding an orthogonal matrix \( Q \) and
+a diagonal matrix \( D \) such that \( Q^TAQ = D \).
+\begin{align*}
+  A &= \begin{bmatrix}
+    5 & 0 & 0 \\
+    0 & 1 & 3 \\
+    0 & 3 & 1
+  \end{bmatrix} \\
+  D &= P^{-1}AP \\
+  \lambda_1 &= -2 \quad \lambda_2 = 4 \quad \lambda_3 = 5 \\
+  D &= \begin{bmatrix}
+    -2 & 0 & 0 \\
+    0 & 4 & 0 \\
+    0 & 0 & 5
+  \end{bmatrix} \\
+  \vec{v_1} &= \begin{bmatrix}0 \\ -1 \\ 1\end{bmatrix} \quad
+    \vec{v_2} = \begin{bmatrix}0 \\ 1 \\ 1\end{bmatrix} \quad
+    \vec{v_3} = \begin{bmatrix}1 \\ 0 \\ 0\end{bmatrix} \\
+  \vec{u_1} &= \begin{bmatrix}
+    0 \\ -\frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}}
+  \end{bmatrix} \quad \vec{u_2} = \begin{bmatrix}
+    0 \\ \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}}
+  \end{bmatrix} \quad \vec{u_3} = \begin{bmatrix}
+    1 \\ 0 \\ 0
+  \end{bmatrix} \\
+  Q &= \begin{bmatrix}
+    0 & 0 & 1 \\
+    -\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} & 0 \\
+    \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} & 0
+  \end{bmatrix}
+\end{align*}
+
+\begin{center}
+  If you have any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}

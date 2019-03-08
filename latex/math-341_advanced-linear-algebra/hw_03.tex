@@ -213,7 +213,7 @@ subspace \( W \) of \( \R^n \) and let \( \vec{w} \) be any vector in \( W \).
 Then the unique scalars \( c_1,\dots,c_k \), such that
 \begin{align*}
   \vec{w} &= c_1\vec{v_1}+\dots+c_k\vec{v_k} \\
-  c_i &= \frac{\vec{w}\cdot\vec{w}}{\vec{v_i}\cdot\vec{v_i}} \quad
+  c_i &= \frac{\vec{w}\cdot\vec{v_i}}{\vec{v_i}\cdot\vec{v_i}} \quad
     i = 1,\dots,k
 \end{align*}
 Use the theorem to express \( \vec{w} \) as a linear combination of the above
@@ -245,7 +245,7 @@ subspace \( W \) of \( \R^n \) and let \( \vec{w} \) be any vector in \( W \).
 Then the unique scalars \( c_1,\dots,c_k \), such that
 \begin{align*}
   \vec{w} &= c_1\vec{v_1}+\dots+c_k\vec{v_k} \\
-  c_i &= \frac{\vec{w}\cdot\vec{w}}{\vec{v_i}\cdot\vec{v_i}} \quad
+  c_i &= \frac{\vec{w}\cdot\vec{v_i}}{\vec{v_i}\cdot\vec{v_i}} \quad
     i = 1,\dots,k
 \end{align*}
 Use the theorem to express \( \vec{w} \) as a linear combination of the above
@@ -253,13 +253,13 @@ basis vectors. Give the coordinate center \( [\vec{w}]_{\mathbb{B}} \) of
 \( \vec{w} \) with respect to the basis \( \vec{b} = \{\vec{v_1},\vec{v_2}\} \)
 of \( \R^3 \).
 \begin{align*}
-  \vec{w} = \begin{bmatrix}1 \\ 1 \\ 1\end{bmatrix} \\
-  c_1 &= \frac{\vec{w}\cdot\vec{v_1}}{\vec{v_1}\cdot\vec{v_1}} \\
-  &= \frac{0}{2} = 0 \\
-  c_2 &= \frac{\vec{w}\cdot\vec{v_2}}{\vec{v_2}\cdot\vec{v_2}} \\
-  &= \frac{12}{54} = \frac{2}{9} \\
-  c_3 &= \frac{\vec{w}\cdot\vec{v_3}}{\vec{v_3}\cdot\vec{v_3}} \\
-  &= \frac{3}{27} = \frac{1}{9} \\
+  \vec{w} &= \begin{bmatrix}1 \\ 1 \\ 1\end{bmatrix} \\
+  c_1 &= \frac{\vec{w}\cdot\vec{v_1}}{\vec{v_1}\cdot\vec{v_1}} =
+    \frac{0}{2} = 0 \\
+  c_2 &= \frac{\vec{w}\cdot\vec{v_2}}{\vec{v_2}\cdot\vec{v_2}} =
+    \frac{12}{54} = \frac{2}{9} \\
+  c_3 &= \frac{\vec{w}\cdot\vec{v_3}}{\vec{v_3}\cdot\vec{v_3}} =
+    \frac{3}{27} = \frac{1}{9} \\
   [\vec{w}]_{\mathbb{B}} &= \begin{bmatrix}
     0 \\ \frac{2}{9} \\ \frac{1}{9}
   \end{bmatrix}
