@@ -1,0 +1,154 @@
+\documentclass{math}
+
+\usepackage{enumerate}
+
+\title{University Astronomy: Homework 8}
+\author{Alvin Lin}
+\date{January 2019 - May 2019}
+
+\begin{document}
+
+\maketitle
+
+\subsubsection*{Question 13.1}
+What is the apparent magnitude of the Sun as seen from Mercury at perihelion?
+What is the apparent magnitude of the Sun as seen from Eris at perihelion?
+\begin{align*}
+  d_{Mercury} &= d_{major}\sqrt{1-e^2} \\
+  &= 0.378AU = 1.832\times10^{-6}pc \\
+  m_{Sun,mercury} &= M_{Sun,mercury}+5\log(d_{Mercury})-5 \\
+  &= -28.855 \\
+  d_{Eris} &= d_{major}\sqrt{1-e^2} \\
+  &= 67.90AU = 0.00029pc \\
+  m_{Sun,Eris} &= M_{Sun,Eris}+5\log(d_{Eris})-5 \\
+  &= -17.85
+\end{align*}
+
+\subsubsection*{Question 13.2}
+Considering absolute magnitude \( M \), apparent magnitude \( m \), and distance
+\( d \) or parallax \( \pi'' \), compute the unknown for each of these stars:
+\begin{enumerate}[(a)]
+  \item \( m = -1.6\text{ mag}, d = 4.3\text{ pc} \). What is \( M \)?
+  \[ M = m-5\log(d)+5 = 0.232\text{ mag} \]
+  \item \( M = 14.3\text{ mag}, m = 10.9\text{ mag} \). what is \( d \)?
+  \[ d = 10^{\frac{m-M+5}{5}} = 2.089\text{ pc} \]
+  \item \( m = 5.6\text{ mag}, d = 88\text{ pc} \). What is \( M \)?
+  \[ M = m-5\log(d)+5 = 0.877\text{ mag} \]
+  \item \( M = -0.9\text{ mag}, d = 220\text{ pc} \). What is \( m \)?
+  \[ m = M+5\log(d)-5 = 5.81\text{ mag} \]
+  \item \( m = 0.2\text{ mag}, M = -9.0\text{ mag} \). What is \( d \)?
+  \[ d = 10^{\frac{m-M+5}{5}} = 691.8 \]
+  \item \( m = 7.4\text{ mag}, \pi'' = 0.0043'' \). What is \( M \)?
+  \begin{align*}
+    d &= \frac{1}{\pi''} = 232.55\text{ pc} \\
+    M &= m-5\log(d)+5 = 0.567\text{ mag}
+  \end{align*}
+\end{enumerate}
+
+\subsubsection*{Question 13.3}
+What are the \textit{angular diameters} of the following, as seen from the
+Earth?
+\begin{enumerate}[(a)]
+  \item The Sun, with radius \( R = R_{\odot} = 7\times10^5km \)
+  \begin{align*}
+    d &= 2R_{\odot} = 14\times10^5km \\
+    D_{\theta} &\approx \arctan(\frac{d}{D}) \approx 0.009^{\circ} = 1930''
+  \end{align*}
+  \item Betelgeuse, with \( M_{V} = -5.5\text{ mag}, m_{V} = 0.8\text{ mag},
+    R = 650R_{\odot} \)
+  \begin{align*}
+    d &= 2R = 1300R_{\odot} \\
+    D &= 10^{\frac{m-M+5}{5}} = 181.97\text{ pc} = 5.62\times10^{15}km \\
+    D_{\theta} &\approx \arctan(\frac{d}{D}) \approx 0.033''
+  \end{align*}
+  \item The galaxy M31, with \( R \approx 30\text{ kpc} \) at a distance
+    \( D \approx 0.7\text{ Mpc} \)
+  \[ D_{\theta} \approx \arctan(\frac{d}{D}) = 4.899^{\circ} = 17636.7'' \]
+  \item The Coma cluster of galaxies, with \( R \approx 3\text{ Mpc} \) at a
+    distance \( D \approx 100\text{ Mpc} \)
+  \[ D_{\theta} \approx \arctan(\frac{d}{D}) = 3.43^{\circ} = 12361.1'' \]
+\end{enumerate}
+
+\subsubsection*{Question 13.4}
+The Lyten 726-8 star system contains two stars, one with apparent magnitude
+\( m = 12.5 \) and the other with \( m = 12.9 \). What is the combined
+apparent magnitude of the two stars?
+\begin{align*}
+  m_{Vega} &= 0 \\
+  m_{Vega}-m_1 &= 2.5\log(\frac{L_1}{L_{Vega}}) \\
+  -\frac{12,5}{2.5} &= \log(\frac{L_1}{L_{Vega}}) \\
+  \frac{L_1}{L_{Vega}} &= 10^{-\frac{12.5}{2.5}} \\
+  \frac{L_2}{L_{Vega}} &= 10^{-\frac{12.9}{2.5}} \\
+  \frac{L_{total}}{L_{Vega}} &= \frac{L_1+L_2}{L_{Vega}} \\
+  m_{Vega}-m_{total} &= 2.5\log(\frac{L_{total}}{L_{Vega}}) \\
+  -m_{total} &= -11.93 \\
+  m_{total} &= 11.93
+\end{align*}
+
+\subsubsection*{Question 13.5}
+A cluster of stars contains 100 stars with absolute magnitude \( M = 0.0 \),
+1000 stars with \( M = 3.0 \), and 10000 stars with \( M = 6.0 \). What is the
+absolute magnitude of the cluster taken as a whole?
+\begin{align*}
+  m_{Vega} &= 0 \\
+  m_{Vega}-m &= 2.5\log(\frac{L}{L_{Vega}}) \\
+  \frac{L_1}{L_{Vega}} &= 10^{-\frac{0}{2.5}} \\
+  \frac{L_2}{L_{Vega}} &= 10^{-\frac{3}{2.5}} \\
+  \frac{L_3}{L_{Vega}} &= 10^{-\frac{6}{2.5}} \\
+  \frac{L_{total}}{L_{Vega}} &= \frac{100L_1+1000L_2+10000L_3}{L_{Vega}} \\
+  -m_{total} &= 2.5\log(\frac{L_{total}}{L_{Vega}}) \\
+  &= -5.76
+\end{align*}
+
+\subsubsection*{Question 13.8}
+The star Procyon A has an effective temperature \( T_A = 6530K \) and a radius
+\( R_A = 2.06R_{\odot} \). Its companion Procyon B has a radius
+\( R_B = 0.0096R_{\odot} \) and an absolute bolometric magnitude
+\( M_{bol,B} = 12.9 \).
+\begin{enumerate}
+  \item What is the ratio of the two objects' luminosities?
+  \begin{align*}
+    L_A &= 4\pi R_A^2\sigma_{SB}T_A^4 \\
+    &= 2.659\times10^{27}W \\
+    L_B &= 10^{0.4(4.74-M_{bol,B})}L_{\odot} \\
+    &= 2.090\times10^{23}W \\
+    \frac{L_A}{L_B} &= 1.2722\times10^4
+  \end{align*}
+  \item What is the ratio of their surface temperatures?
+  \begin{align*}
+    T_B &= \sqrt[4]{\frac{L_B}{4\pi(R_B)^2\sigma_{SB}}} \\
+    &= 9006.5K \\
+    \frac{T_A}{T_B} &= 0.73
+  \end{align*}
+\end{enumerate}
+
+\subsubsection*{Question 14.7}
+Consider the two stars whose properties are described below:
+\begin{center}
+  \begin{tabular}{lcccccc}
+    Star & \( V \) & \( B-V \) & \( M_V \) & \( T_{eff}(K) \) & Spectral Class
+      & \( BC \) \\
+    \hline
+    Betelgeuse & 0.45 & 1.50 & -0.60 & 3370 & M2 Ib & -1.62 \\
+    Gliese 887 & 7.35 & 1.48 & 9.76 & 3520 & M2 V & -1.89
+  \end{tabular}
+\end{center}
+How much larger in radius is Betelgeuse than Gliese 887?
+\begin{align*}
+  M_{bol} &= BC+M_V \\
+  L &= 10^{0.4(4.74-M_{bol})}L_{\odot} \\
+  L_{Betelgeuse} &= 2.33\times10^{29} \\
+  L_{Gliese~877} &= 2.15\times10^{25} \\
+  \frac{R_{Betelgeuse}}{R_{Gliese~877}} &=
+    \sqrt{\frac{L_{Betelgeuse}}{L_{Gliese~877}}}
+    \left(\frac{T_{Gliese~877}}{T_{Betelgeuse}}\right)^2 \\
+  &= 113.6
+\end{align*}
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
