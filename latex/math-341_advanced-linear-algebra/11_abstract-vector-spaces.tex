@@ -1,0 +1,138 @@
+\documentclass{math}
+
+\title{Advanced Linear Algebra}
+\author{Alvin Lin}
+\date{January 2019 - May 2019}
+
+\begin{document}
+
+\maketitle
+
+\section*{Abstract Vector Spaces}
+Recall the definition of linear dependence:
+\begin{align*}
+  c_1v_1+\dots+c_nv_n &= 0 \\
+  c_1 = c_2 = \dots &= 0 \\
+  v_1,\dots,v_n &\text{ are linearly dependent}
+\end{align*}
+
+\subsubsection*{Example}
+\[ \{\sin^2(x),\cos^2(x),\cos(2x)\} \]
+Since \( \cos(2x) = \cos^2(x)-\sin^2(x) \), this set is linearly dependent.
+
+\subsubsection*{Example}
+\[ \{1+x,x+x^2,1+x^2\} \]
+If the equation
+\[ c_1(1+x)+c_2(x+x^2)+c_3(1+x^2) = 0 \]
+has a nontrivial solution for \( c_1,c_2,c_3 \), then one element can be
+written as a linear combination of the other elements, and thus the set is
+linearly dependent.
+\begin{align*}
+  (c_1+c-3)+(c_1+c_3)x+(c_2+c_3)x^2 &= 0 \\
+  c_1+c_3 &= 0 \\
+  c_1+c_2 &= 0 \\
+  c_2+c_3 &= 0
+\end{align*}
+We must examine this system of linear equations to determine if it has a
+nontrivial solution. We can so this using an augmented matrix.
+\[ \left[\begin{array}{ccc|c}
+  1 & 0 & 1 & 0 \\
+  1 & 1 & 0 & 0 \\
+  0 & 1 & 1 & 0
+\end{array}\right] \to \left[\begin{array}{ccc|c}
+  1 & 0 & 1 & 0 \\
+  0 & 1 & -1 & 0 \\
+  0 & 0 & 2 & 0
+\end{array}\right] \]
+Since this augmented matrix has only the trivial solution \( c_1 = c_2 = c_3 =
+0 \), the set is linearly independent. Recall that \( \mathbb{B} \) is a basis
+for \( V \) if \( \mathbb{B} \) spans \( V \) and \( \mathbb{B} \) is linearly
+independent. We know that \( \mathbb{B} \) spans \( V \) if
+\[ a+bx+cx^2 = c_1v_1+c_2v_2+c_3v_3 \]
+We can use the augmented matrix from before to construct the following matrix:
+\[ \left[\begin{array}{ccc|c}
+  1 & 0 & 1 & a \\
+  1 & 1 & 0 & b \\
+  0 & 1 & 1 & c
+\end{array}\right] \]
+Since the rank of the matrix is 3, the matrix is invertible, which means there
+exist a unique \( c_1,c_3,c_3 \) for any \( a,b,c \). Therefore, the set
+\( \{1+x,x+x^2,1+x^2\} \) is a basis for the polynomial space \( P_2 \).
+
+\subsubsection*{Example}
+Find a basis for \( W_2 = \{a+bx-bx^2+ax^3\} \) where \( a \) and \( b \) are
+arbitrary constants.
+\begin{align*}
+  a+bx-bx^2+ax^3 &= a(1+x^3)+b(x-x^2) \\
+  &= au+bv \\
+  u &= 1+x^3 \quad v = x-x^2 \\
+  W_2 &= span\{1+x^3,x-x^2\}
+\end{align*}
+
+\subsubsection*{Example}
+Find a basis for \( W_3 = \begin{bmatrix}a & b \\ -b & a\end{bmatrix} \).
+\begin{align*}
+  \begin{bmatrix}a & b \\ -b & a\end{bmatrix} &=
+    a\begin{bmatrix}1 & 0 \\ 0 & 1\end{bmatrix}+
+    b\begin{bmatrix}0 & 1 \\ -1 & 0\end{bmatrix} \\
+  W_2 &= span\left\{\begin{bmatrix}1 & 0 \\ 0 & 1\end{bmatrix},
+    \begin{bmatrix}0 & 1 \\ -1 & 0\end{bmatrix}\right\}
+\end{align*}
+
+\subsection*{Standard Basis}
+\begin{align*}
+  \R^n &= span\{\hat{e_1},\hat{e_2},\dots,\hat{e_n}\} \\
+  P^n &= span\{1,x,x^2,\dots,x^n\} \\
+  M_{mn} &=
+    span\{E_{11},\dots,E_{1n},E_{21},\dots,E_{2n},\dots,E_{m1},\dots,E_{mn}\}
+\end{align*}
+
+\subsection*{Coordinates}
+Let \( \mathbb{B} = \{v_1,\dots,v_n\} \) and let \( v = c_1v_2+\dots+c_nv_n \).
+Then the coordinate representation \( [v]_{\mathbb{B}} = \begin{bmatrix}
+c_1 \\ c_2 \\ \vdots \\ c_n\end{bmatrix} \). For example, if we have the
+space \( P_2 \) whose basis is \( \mathbb{B} = \{1,x,x^2\} \) and a polynomial
+\( p(x) = 2-3x+5x^2 \), then \( [p]_{\mathbb{B}} = \begin{bmatrix}2 \\ -3 \\ 5
+\end{bmatrix} \).
+
+\subsubsection*{Example}
+Suppose we have the space \( P_2 \) with basis \( \mathbb{B} =
+\{1+x,x+x^2,1+x^2\} \) and \( p = 1+2x-x^2 \). Find \( [p]_{\mathbb{B}} \).
+\begin{align*}
+  c_1(1+x)+c_2(x+x^2)+c_3(1+x^2) &= 1+2x-x^2 \\
+  (c_1+c_3)+(c_1+c_2)x+(c_2+c_3)x^2 &= 1+2x-x^2 \\
+  \left[\begin{array}{ccc|c}
+    1 & 0 & 1 & 1 \\
+    1 & 1 & 0 & 2 \\
+    0 & 1 & 1 & -1
+  \end{array}\right] &\to \left[\begin{array}{ccc|c}
+    1 & 0 & 0 & 2 \\
+    0 & 1 & 0 & 0 \\
+    0 & 0 & 1 & -1
+  \end{array}\right] \\
+  [p]_{\mathbb{B}} &= \begin{bmatrix}c_1 \\ c_2 \\ c_3\end{bmatrix} =
+    \begin{bmatrix}2 \\ 0 \\ -1\end{bmatrix}
+\end{align*}
+
+\subsubsection*{Example}
+Find the dimension of the vector space of symmetric \( 2\times2 \) matrices.
+\begin{align*}
+  \begin{bmatrix}a & b \\ b & c\end{bmatrix} &=
+    a\begin{bmatrix}1 & 0 \\ 0 & 0\end{bmatrix}+
+    b\begin{bmatrix}0 & 1 \\ 1 & 0\end{bmatrix}+
+    c\begin{bmatrix}0 & 0 \\ 0 & 1\end{bmatrix} \\
+  W &= span\left\{
+    \begin{bmatrix}1 & 0 \\ 0 & 0\end{bmatrix},
+    \begin{bmatrix}0 & 1 \\ 1 & 0\end{bmatrix},
+    \begin{bmatrix}0 & 0 \\ 0 & 1\end{bmatrix}
+  \right\} \\
+  \dim(W) &= 3
+\end{align*}
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
