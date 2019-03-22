@@ -1,0 +1,141 @@
+\documentclass{math}
+
+\title{Advanced Linear Algebra}
+\author{Alvin Lin}
+\date{January 2019 - May 2019}
+
+\begin{document}
+
+\maketitle
+
+\section*{Changes of Basis}
+Suppose we have two different bases:
+\begin{align*}
+  \vec{u_1} &= \begin{bmatrix}-1 \\ 2\end{bmatrix} \quad
+    \vec{u_2} = \begin{bmatrix}2 \\ -1\end{bmatrix} \\
+  B &= \{\vec{u_1},\vec{u_2}\} \\
+  \vec{v_1} &= \begin{bmatrix}1 \\ 0\end{bmatrix} \quad
+    \vec{v_2} = \begin{bmatrix}1 \\ 1\end{bmatrix} \\
+  C &= \{\vec{v_1},\vec{v_2}\}
+\end{align*}
+Suppose we have a vector \( \vec{x} \) represented in one basis:
+\[ [\vec{x}]_{B} = \begin{bmatrix}1 \\ 3\end{bmatrix} =
+  1\vec{u_1}+3\vec{u_2} = \begin{bmatrix}5 \\ -1\end{bmatrix} \]
+The same vector represented with respect to the basis \( C \) is:
+\[ [\vec{x}]_{C} = \begin{bmatrix}6 \\ -1\end{bmatrix} =
+  6\vec{v_1}-\vec{v_2} = \begin{bmatrix}5 \\ -1\end{bmatrix} \]
+In the standard basis, this vector is \( 5\i-\j \). In general, given a vector
+\( \vec{x} \) and a set of bases, how do we convert the vector between the
+different bases? We just need to know how to represent the basis vectors in
+terms of each other in order to convert between them.
+\begin{align*}
+  \vec{u_1} &= -3\vec{v_1}+2\vec{v_2} = \begin{bmatrix}-3 \\ 2\end{bmatrix}_C \\
+  \vec{u_2} &= 3\vec{v_1}-\vec{v_2} = \begin{bmatrix}3 \\ -1\end{bmatrix}_C \\
+  \vec{x} &= 1\vec{u_1}+3\vec{u_2} \\
+  &= 1(-3\vec{v_1}+2\vec{v_2})+3(3\vec{v_1}-\vec{v_2}) \\
+  &= 6\vec{v_1}-\vec{v_2}
+\end{align*}
+We can compactly represent this as:
+\begin{align*}
+  \begin{bmatrix}6 \\ -1\end{bmatrix}_C &= \begin{bmatrix}
+    -3 & 3 \\
+    2 & -1
+  \end{bmatrix}\begin{bmatrix}1 \\ 3\end{bmatrix}_B \\
+  \vec{x}_C &= \begin{bmatrix}\vec{u_1}_C & \vec{u_2}_C\end{bmatrix}
+    \begin{bmatrix}1 \\ 3\end{bmatrix}_B \\
+  [\vec{x}]_C &= P_{C\leftarrow B}[\vec{x}]_B
+\end{align*}
+
+\subsubsection*{Theorem}
+Let \( B = \{\vec{u_1},\dots,\vec{u_n}\} \) and \( C =
+\{\vec{v_1},\dots,\vec{v_n}\} \) be the bases for some vector space. Then
+\begin{align*}
+  P_{C\leftarrow B} &= \begin{bmatrix}
+    [\vec{u_1}]_C & \dots & [\vec{u_n}]_C
+  \end{bmatrix} \\
+  [\vec{x}]_C &= P_{C\leftarrow B}[\vec{x}]_B \\
+  [\vec{x}]_B &= (P_{C\leftarrow B})^{-1}[\vec{x}]_C \\
+  P_{B\leftarrow C} &= (P_{C\leftarrow B})^{-1}
+\end{align*}
+The change of basis matrix \( P_{C\leftarrow B} \) is unique and can be used
+to convert between the bases.
+
+\subsubsection*{Example}
+\begin{align*}
+  B &= \{1,x,x^2\} \\
+  C &= \{1+x,x+x^2,1+x^2\} \\
+  p &= 1+2x-x^2 = \begin{bmatrix}1 \\ 2 \\ -1\end{bmatrix}_B
+\end{align*}
+Represent \( p \) in the basis \( C \).
+\begin{align*}
+  [1+x]_B &= \begin{bmatrix}1 \\ 1 \\ 0\end{bmatrix}_B \\
+  [x+x^2]_B &= \begin{bmatrix}0 \\ 1 \\ 1\end{bmatrix}_B \\
+  [1+x^2]_B &= \begin{bmatrix}1 \\ 0 \\ 1\end{bmatrix}_B \\
+  P_{B\leftarrow C} &= \begin{bmatrix}
+    1 & 0 & 1 \\
+    1 & 1 & 0 \\
+    0 & 1 & 1
+  \end{bmatrix} \\
+  [p]_B &= (P_{B\leftarrow C})[p]_C \\
+  [p]_C &= (P_{B\leftarrow C})^{-1}[p]_B \\
+  &= \begin{bmatrix}
+    \frac{1}{2} & \frac{1}{2} & -\frac{1}{2} \\
+    -\frac{1}{2} & \frac{1}{2} & \frac{1}{2} \\
+    \frac{1}{2} & -\frac{1}{2} & \frac{1}{2} \\
+  \end{bmatrix}\begin{bmatrix}1 \\ 2 \\ -1\end{bmatrix}_B \\
+  &= \begin{bmatrix}2 \\ 0 \\ -1\end{bmatrix}_C
+\end{align*}
+
+\subsubsection*{Example}
+\begin{align*}
+  B &= \{E_{11},E_{21},E_{12},E_{22}\} \\
+  &= \left\{
+    \begin{bmatrix}1 & 0 \\ 0 & 0\end{bmatrix},
+    \begin{bmatrix}0 & 0 \\ 1 & 0\end{bmatrix},
+    \begin{bmatrix}0 & 1 \\ 0 & 0\end{bmatrix},
+    \begin{bmatrix}0 & 0 \\ 0 & 1\end{bmatrix}
+  \right\} \\
+  C &= \{A,B,D,E\} \\
+  &= \left\{
+    \begin{bmatrix}1 & 0 \\ 0 & 0\end{bmatrix},
+    \begin{bmatrix}1 & 1 \\ 0 & 0\end{bmatrix},
+    \begin{bmatrix}1 & 1 \\ 1 & 0\end{bmatrix},
+    \begin{bmatrix}1 & 1 \\ 1 & 1\end{bmatrix}
+  \right\}
+\end{align*}
+Find the change of basis matrix.
+\begin{align*}
+  E_{11} &= 1A \quad
+    [E_{11}]_C = \begin{bmatrix}1 \\ 0 \\ 0 \\ 0\end{bmatrix} \\
+  E_{21} &= -B+D \quad
+    [E_{21}]_C = \begin{bmatrix}0 \\ -1 \\ 1 \\ 0\end{bmatrix} \\
+  E_{12} &= -A+B \quad
+    [E_{12}]_C = \begin{bmatrix}-1 \\ 1 \\ 0 \\ 0\end{bmatrix} \\
+  E_{22} &= E-D \quad
+    [E_{22}]_C = \begin{bmatrix}0 \\ 0 \\ -1 \\ 1\end{bmatrix} \\
+  P_{C\leftarrow B} &= \begin{bmatrix}
+    1 & 0 & -1 & 0 \\
+    0 & -1 & 1 & 0 \\
+    0 & 1 & 0 & -1 \\
+    0 & 0 & 0 & 1
+  \end{bmatrix}
+\end{align*}
+Suppose we have the matrix
+\[ \vec{x} = \begin{bmatrix}1 & 2 \\ 3 & 4\end{bmatrix} =
+  1E_{11}+3E_{21}+2E_{12}+4E_{22} =
+  \begin{bmatrix}1 \\ 3 \\ 2 \\ 4\end{bmatrix}_B \]
+Find the coordinates of \( \vec{x} \) in terms of the basis \( C \).
+\begin{align*}
+  [\vec{x}]_C &= P_{C\leftarrow B}\begin{bmatrix}
+    1 \\ 3 \\ 2 \\ 4
+  \end{bmatrix}_B \\
+  &= \begin{bmatrix}-1 \\ -1 \\ -1 \\ 4\end{bmatrix}_C
+\end{align*}
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
