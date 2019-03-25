@@ -1,0 +1,103 @@
+\documentclass{math}
+
+\usepackage{enumerate}
+
+\title{University Astronomy: Homework 9}
+\author{Alvin Lin}
+\date{January 2019 - May 2019}
+
+\begin{document}
+
+\maketitle
+
+\subsubsection*{Question 15.1}
+What is the rate (in kilograms per second) at which the Sun is currently
+converting hydrogen to helium?
+\begin{align*}
+  \Delta m &= 4m_H-m_{He} \\
+  &= 4.83\times10^{-29}kg \\
+  E &= mc^2 \\
+  &= 4.347\times10^{-12}J \\
+  n_{reactions/s} &= \frac{L_{\odot}}{E} \\
+  &= 8.83\times10^{37}\frac{reactions}{s} \\
+  \delta M &= mn_{reactions/s} \\
+  &= 4.27\times10^9\frac{kg}{s}
+\end{align*}
+
+\subsubsection*{Question 15.2}
+How much energy, in MeV, is produced per proton in the PP chain?
+\begin{align*}
+  \Delta m &= 4m_p-(m_{He}+2m_{e^-}) \\
+  &= 4.26\times10^{-29}kg \\
+  E &= mc^2 \\
+  &= 3.83\times10^{-12}J = 23.92 MeV \\
+  \frac{23.92 MeV}{4p} &= 6.98\frac{MeV}{p}
+\end{align*}
+
+\subsubsection*{Question 15.3}
+Approximately half the original hydrogen in the Sun's core has now been
+converted to helium. Compute the mean molecular mass \( \mu \)
+\begin{enumerate}
+  \item at the surface of the sun, given standard abundances (\( X_{\odot} =
+    0.734, Y_{\odot} = 0.250, Z_{\odot} = 0.016 \))
+  \begin{align*}
+    \mu &= (2X+\frac{3}{4}Y+\frac{1}{2}Z)^{-1} \\
+    &= 0.6011
+  \end{align*}
+  \item at the center of the Sun
+  \begin{align*}
+    \mu &= (2X+\frac{3}{4}Y+\frac{1}{2}Z)^{-1} \\
+    X &= \frac{X_{\odot}}{2} \quad Y = Y_{\odot}+\frac{X_{\odot}}{2} \quad
+      Z = Z_{\odot} \\
+    \mu &= 0.825
+  \end{align*}
+\end{enumerate}
+
+\subsubsection*{Question 15.4}
+If a star has \( M = 100M_{\odot} \) and \( L = 10^6L_{\odot} \), how long can
+it shine at that luminosity if it started as pure hydrogen and is able to
+convert all its H to He? If a star has \( M = 0.5M_{\odot} \) and
+\( L = 0.1L_{\odot} \), how long can it shine under the same conditions?
+\begin{align*}
+  n_H &= \frac{100M_{\odot}}{m_p} \\
+  &= 3.055\times10^{55} \\
+  E &= n_H\Delta E \\
+  &= 1.2526\times10^{47}J \\
+  t &= \frac{E}{L} \\
+  &= 3.2628\times10^{14}s \approx 10.3MYr
+\end{align*}
+A star with \( M = 100M_{\odot} \) and \( L = 10^6L_{\odot} \) can shine for
+approximately 10 million years.
+\begin{align*}
+  E &= \frac{0.5M_{\odot}}{m_p}\Delta E \\
+  &= 6.2640\times10^{44}J \\
+  t &= \frac{E}{L} \\
+  &= 5.17\times10^{-11}\text{ years}
+\end{align*}
+
+\subsubsection*{Question 15.5}
+Consider the Sun to be a sphere of uniform density that derives its luminosity
+from steady contraction. What fractional decrease in the Sun's radius,
+\( \frac{\delta R}{R} \), would be required over historical times (say, the
+last 6000 years) to account for the Sun's constant luminosity over that period
+of time?
+
+\subsubsection*{Question 15.6}
+Suppose that the Sun is 100\% carbon (coal, for instance) and that burning this
+can extract 3 eV per carbon nucleus. How long, assuming an inexhaustible
+supply of oxygen from outside, could burning carbon maintain the Sun's current
+luminosity?
+\begin{align*}
+  E &= \frac{M_{\odot}}{12m_p}(3 eV) \\
+  &= 4.8948\times10^{37}J \\
+  t &= \frac{E}{L} \\
+  &= 1.2750\times10^{-11}s = 4043.1\text{ years}
+\end{align*}
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
