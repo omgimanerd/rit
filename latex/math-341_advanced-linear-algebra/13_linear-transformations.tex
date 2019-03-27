@@ -1,0 +1,106 @@
+\documentclass{math}
+
+\title{Advanced Linear Algebra}
+\author{Alvin Lin}
+\date{January 2019 - May 2019}
+
+\begin{document}
+
+\maketitle
+
+\section*{Linear Transformations}
+A linear transformation \( T:V\to W \) is a mapping such that
+\begin{enumerate}
+  \item \( T(u+v) = T(u)+T(v) \)
+  \item \( T(vu) = cT(u) \)
+\end{enumerate}
+In a more compressed form
+\[ T(c_1u_1+\dots+c_ku_k) = c_1T(u_1)+\dots+c_kT(u_k) \]
+For example, consider the transformation \( T:M_{mn}\to M_{mn} \)
+where \( T(A) = A^T \).
+\begin{enumerate}
+  \item \( T(A+B) = (A+B)^T = A^T+B^T = T(A)+T(B) \)
+  \item \( T(cA) = (cA)^T = cA^T = cT(A) \)
+\end{enumerate}
+This also applies for transformations in the space of functions. Suppose we have
+\( D:D\to F, D(f) = f' \).
+\begin{enumerate}
+  \item \( D(f+g) = (f+g)' = f'+g' = D(f)+D(g) \)
+  \item \( D(cf) = (cf)' = cf' = cD(f) \)
+\end{enumerate}
+As another example, consider the transformation \( S:C[a,b]\to\R \) where
+\( S(f) = \int_{a}^{b}f\diff{x} \).
+\begin{enumerate}
+  \item \( S(f+g) = \int_{a}^{b}(f+g)\diff{x} =
+    \int_{a}^{b}f\diff{x}+\int_{a}^{b}g\diff{x} \)
+  \item \( S(cf) = \int_{a}^{b}cf\diff{x} = cS(f) \)
+\end{enumerate}
+Now consider the transformation \( T:M_{22}\to\R, T(A) = \det(A) \).
+\begin{align*}
+  T(A+B) &= \det(A+B) \\
+  &\ne \det(A)+\det(B) \\
+  &\ne T(A)+T(B)
+\end{align*}
+Thus, this transformation is not a linear transformation.
+
+\subsection*{Zero and Identity Transformation}
+The zero and identity transformations are special transformations:
+\begin{itemize}
+  \item Zero transformation: \( T_0(A) = 0 \)
+  \item Identity transformation: \( T_I(A) = A \)
+\end{itemize}
+
+\subsubsection*{Example}
+Given the linear transformation \( T:\R^2\to P_2 \) and
+\begin{align*}
+  T\begin{bmatrix}1 \\ 1\end{bmatrix} &= 2-3x+x^2 \\
+  T\begin{bmatrix}2 \\ 3\end{bmatrix} &= 1-x^2
+\end{align*}
+Find \( T\begin{bmatrix}-1 \\ 2\end{bmatrix} \). \par
+Note that \( B = \left\{\begin{bmatrix}1 \\ 1\end{bmatrix}, \begin{bmatrix}2 \\
+3 \end{bmatrix}\right\} \) is a basis for \( \R^2 \).
+\begin{align*}
+  \begin{bmatrix}-1 \\ 2\end{bmatrix} &=
+    -7\begin{bmatrix}1 \\ 1\end{bmatrix}+
+    3\begin{bmatrix}2 \\ 3\end{bmatrix} \\
+  T\begin{bmatrix}-1 \\ 2\end{bmatrix} &=
+    -7T\begin{bmatrix}1 \\ 1\end{bmatrix}+
+    3T\begin{bmatrix}2 \\ 3\end{bmatrix} \\
+  &= -7(2-3x+x^2)+3(1-x^2) \\
+  &= -11+21x-10x^2
+\end{align*}
+
+\subsection*{Composition}
+Suppose we have the transformations \( T:U\to V \) and \( S:V\to W \). The
+composition of the transformations \( (S\circ T)u = S(T(u)) \). For example:
+\begin{align*}
+  T:\R^2\to P_1, T\begin{bmatrix}a \\ b\end{bmatrix} &= a+(a+b)x \\
+  S:P_1\to P_2, S(p) &= xp \\
+  (S\circ P)\begin{bmatrix}3 \\ -2\end{bmatrix} &=
+    S\left(T\begin{bmatrix}3 \\ -2\end{bmatrix}\right) \\
+  &= S(3+x) \\
+  &= x(3+x) \\
+  &= 3x+x^2
+\end{align*}
+
+\subsection*{Inverse Transformations}
+The definition of an inverse transformation \( T' \) is that
+\( T'\circ T = Iv \). For example:
+\begin{align*}
+  T:\R^2\to P_1, T\begin{bmatrix}a \\ b\end{bmatrix} &= a+(a+b)x \\
+  T':P_1\to\R_2, T'(c+dx) = \begin{bmatrix}c \\ d-c\end{bmatrix} \\
+  (T'\circ T)\begin{bmatrix}a \\ b\end{bmatrix} &\stackrel{?}{=}
+    \begin{bmatrix}a \\ b\end{bmatrix} \\
+  T'\left(T\begin{bmatrix}a \\ b\end{bmatrix}\right) &=
+    T'(a+(a+b)x) \\
+  &= \begin{bmatrix}a \\ a+b-a\end{bmatrix} \\
+  &= \begin{bmatrix}a \\ b\end{bmatrix}
+\end{align*}
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
