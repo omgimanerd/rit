@@ -88,7 +88,7 @@ The definition of an inverse transformation \( T' \) is that
 \( T'\circ T = Iv \). For example:
 \begin{align*}
   T:\R^2\to P_1, T\begin{bmatrix}a \\ b\end{bmatrix} &= a+(a+b)x \\
-  T':P_1\to\R_2, T'(c+dx) = \begin{bmatrix}c \\ d-c\end{bmatrix} \\
+  T':P_1\to\R_2, T'(c+dx) &= \begin{bmatrix}c \\ d-c\end{bmatrix} \\
   (T'\circ T)\begin{bmatrix}a \\ b\end{bmatrix} &\stackrel{?}{=}
     \begin{bmatrix}a \\ b\end{bmatrix} \\
   T'\left(T\begin{bmatrix}a \\ b\end{bmatrix}\right) &=
@@ -96,6 +96,87 @@ The definition of an inverse transformation \( T' \) is that
   &= \begin{bmatrix}a \\ a+b-a\end{bmatrix} \\
   &= \begin{bmatrix}a \\ b\end{bmatrix}
 \end{align*}
+
+\subsection*{Kernel and Range of \( T:V\to W \)}
+The kernel and range of a transformation \( T \) are defined as follows:
+\begin{align*}
+  ker(T) &= \{v\in V: T(v) = 0\} \\
+  range(T) &= \{T(v):v\in V\} \\
+  &= \{w\in W: w = T(v)\text{ for some }v\in V\}
+\end{align*}
+For example, given the transformation \( T:\R^n\to\R^m, T(v) = Av \):
+\begin{align*}
+  range(T) &= \{Av: v\in\R^n\} = col(A) \\
+  ker(T) &= \{v\in\R^n: Av = 0\} = null(A)
+\end{align*}
+The kernel and the range are generalizations of the null space and the column
+space.
+\begin{align*}
+  rank(T) &= dim(range(T)) \\
+  nullity(T) &= dim(ker(T)) \\
+  rank(T)+nullity(T) &= dim(V)
+\end{align*}
+
+\subsubsection*{Example}
+Suppose have the transformation \( D:P_3\to P_2, Dp = p' \). Find the kernel
+of the linear operator \( D \).
+\begin{align*}
+  ker(D) &= \{p\in P_3: Dp = 0 \} \\
+  &= \{a:a\in\R\}
+\end{align*}
+Since the derivative of any constant is 0, the kernel of the linear operator is
+the set of real numbers. \\
+Find the range of \( D \).
+\[ range(D) = \{Dp:p\in P_3\} = P_2 \]
+Find the rank and nullity of \( D \).
+\begin{align*}
+  rank(D) &= dim(P_2) = 3 \\
+  nullity(D) &= dim(ker(D)) = 1
+\end{align*}
+
+\subsubsection*{Example}
+Given the transformation \( S:P_1\to\R, S(p(x)) = \int_{0}^{1}p(x)\diff{x} \),
+find \( ker(S) \).
+\begin{align*}
+  Let: p &= a+bx \text{ in } P_1 \\
+  Sp &= \int_{0}^{1}(a+bx)\diff{x} \\
+  &= \left[ax+\frac{b}{2}x^2\right]_{0}^{1} \\
+  &= a+\frac{b}{2} \\
+  ker(s) &= \{p\in P_1: Sp = 0 \} \\
+  &= \left\{a+bx\in P_1: a+\frac{b}{2} = 0\right\} \\
+  &= \left\{-\frac{b}{2}+bx\right\}
+\end{align*}
+Find the rank and nullity of \( S \).
+\begin{align*}
+  basis(ker(S)) &= span\left(-\frac{1}{2}+x\right) \\
+  nullity(S) &= dim(ker(S)) = 1 \\
+  rank(S) &= dim(range(S)) = dim(\R) = 1
+\end{align*}
+
+\subsection*{One to One Mappings}
+\( T:V\to W \) is called ``one-to-one'' if it maps distinct vectors in \( V \)
+to distinct vectors in \( W \). If \( range(T) = W \), then \( T \) is
+``onto''.
+
+\subsubsection*{Example}
+Given the transformation \( T:\R^2\to\R^3, T\begin{bmatrix}x \\ y\end{bmatrix}
+= \begin{bmatrix}2x \\ x-y \\ 0\end{bmatrix} \), is \( T \) 1-1? Does
+\( T(u) = T(v) \) imply \( u = v \)?
+\begin{align*}
+  T\begin{bmatrix}x_1 \\ y_1\end{bmatrix} =
+    T\begin{bmatrix}x_2 \\ y_2\end{bmatrix} &\stackrel{?}{\Rightarrow}
+    \begin{bmatrix}x_1 \\ y_1\end{bmatrix} =
+    \begin{bmatrix}x_2 \\ y_2\end{bmatrix} \\
+  \begin{bmatrix}2x_1 \\ x_1-y_1 \\ 0\end{bmatrix} &=
+    \begin{bmatrix}2x_2 \\ x_2-y_2 \\ 0\end{bmatrix} \\
+  2x_1 = 2x_2 &\to x_1 = x_2 \\
+  x_1-y_1 = x_2-y_2 &\to y_1 = y_2 \\
+  \begin{bmatrix}x_1 \\ y_1\end{bmatrix} &=
+    \begin{bmatrix}x_2 \\ y_2\end{bmatrix}
+\end{align*}
+\( T \) is one to one, but not onto because
+\[ T\begin{bmatrix}x \\ y\end{bmatrix} \ne \begin{bmatrix}0 \\ 0 \\ 1
+\end{bmatrix} \text{ for any } \begin{bmatrix}x \\ y\end{bmatrix} \]
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
