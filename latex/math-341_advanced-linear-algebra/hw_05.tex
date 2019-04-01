@@ -1,0 +1,528 @@
+\documentclass{math}
+
+\usepackage{enumerate}
+
+\geometry{letterpaper, margin=0.5in}
+
+\title{Advanced Linear Algebra: Homework 4}
+\author{Alvin Lin}
+\date{August 2016 - December 2016}
+
+\begin{document}
+
+\maketitle
+
+\subsubsection*{Question 1}
+Orthogonally diagonalize the matrix by finding an orthogonal matrix \( Q \)
+and a diagonal matrix \( D \) such that \( Q^TAQ = D \).
+\begin{align*}
+  A &= \begin{bmatrix}3 & 1 \\ 1 & 3\end{bmatrix} \\
+  D &= P^{-1}AP \\
+  \begin{bmatrix}2 & 0 \\ 0 & 4\end{bmatrix} &=
+    \begin{bmatrix}-1 & 1 \\ 1 & 1\end{bmatrix}^{-1}
+    \begin{bmatrix}3 & 1 \\ 1 & 3\end{bmatrix}
+    \begin{bmatrix}-1 & 1 \\ 1 & 1\end{bmatrix} \\
+  \vec{v_1} &= \begin{bmatrix}-1 \\ 1\end{bmatrix} \quad
+    \vec{v_2} = \begin{bmatrix}1 \\ 1\end{bmatrix} \\
+  \vec{u_1} &= \begin{bmatrix}
+    -\frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}}
+  \end{bmatrix} \quad \vec{u_2} = \begin{bmatrix}
+    \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}}
+  \end{bmatrix} \\
+  Q &= \begin{bmatrix}
+    -\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\
+    \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}}
+  \end{bmatrix}
+\end{align*}
+
+\subsubsection*{Question 2}
+Orthogonally diagonalize the matrix by finding an orthogonal matrix \( Q \)
+and a diagonal matrix \( D \) such that \( Q^TAQ = D \).
+\begin{align*}
+  A &= \begin{bmatrix}
+    5 & 0 & 0 \\
+    0 & 1 & 3 \\
+    0 & 3 & 1
+  \end{bmatrix} \\
+  D &= P^{-1}AP \\
+  \begin{bmatrix}
+    -2 & 0 & 0 \\
+    0 & 4 & 0 \\
+    0 & 0 & 5
+  \end{bmatrix} &= \begin{bmatrix}
+    0 & 0 & 1 \\
+    -1 & 1 & 0 \\
+    1 & 1 & 0
+  \end{bmatrix}^{-1}\begin{bmatrix}
+    5 & 0 & 0 \\
+    0 & 1 & 3 \\
+    0 & 3 & 1
+  \end{bmatrix}\begin{bmatrix}
+    0 & 0 & 1 \\
+    -1 & 1 & 0 \\
+    1 & 1 & 0
+  \end{bmatrix} \\
+  \vec{v_1} &= \begin{bmatrix}0 \\ -1 \\ 1\end{bmatrix} \quad
+    \vec{v_2} = \begin{bmatrix}0 \\ 1 \\ 1\end{bmatrix} \quad
+    \vec{v_3} = \begin{bmatrix}1 \\ 0 \\ 0\end{bmatrix} \\
+  \vec{u_1} &= \begin{bmatrix}
+    0 \\ -\frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}}
+  \end{bmatrix} \quad \vec{u_2} = \begin{bmatrix}
+    0 \\ \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}}
+  \end{bmatrix} \quad \vec{u_3} = \vec{v_3} \\
+  Q &= \begin{bmatrix}
+    0 & 0 & 1 \\
+    -\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} & 0 \\
+    \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} & 0
+  \end{bmatrix}
+\end{align*}
+
+\subsubsection*{Question 3}
+Find a spectral decomposition of the matrix.
+\begin{align*}
+  A &= \begin{bmatrix}3 & 1 \\ 1 & 3\end{bmatrix} \\
+  \lambda_1 &= 2 \quad \lambda_2 = 4 \\
+  \vec{v_1} &= \begin{bmatrix}-1 \\ 1\end{bmatrix} \quad
+    \vec{v_2} = \begin{bmatrix}1 \\ 1\end{bmatrix} \\
+  \vec{q_1} &= \begin{bmatrix}
+    -\frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}}
+  \end{bmatrix} \quad \vec{q_2} = \begin{bmatrix}
+    \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}}
+  \end{bmatrix} \\
+  \lambda_1\vec{q_1}\vec{q_1}^T &=
+    \begin{bmatrix}1 & -1 \\ -1 & 1\end{bmatrix} \\
+  \lambda_2\vec{q_2}\vec{q_2}^T &=
+    \begin{bmatrix}2 & 2 \\ 2 & 2\end{bmatrix}
+\end{align*}
+
+\subsubsection*{Question 4}
+Find a spectral decomposition of the matrix.
+\begin{align*}
+  A &= \begin{bmatrix}
+    6 & 0 & 0 \\
+    0 & 1 & 3 \\
+    0 & 3 & 1
+  \end{bmatrix} \\
+  \lambda_1 &= -2 \quad \lambda_2 = 4 \quad \lambda_3 = 6 \\
+  \vec{v_1} &= \begin{bmatrix}0 \\ -1 \\ 1\end{bmatrix} \quad
+    \vec{v_2} = \begin{bmatrix}0 \\ 1 \\ 1\end{bmatrix} \quad
+    \vec{v_3} = \begin{bmatrix}1 \\ 0 \\ 0\end{bmatrix} \\
+  \vec{q_1} &= \begin{bmatrix}
+    0 \\ -\frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}}
+  \end{bmatrix} \quad \vec{q_2} = \begin{bmatrix}
+    0 \\ \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}}
+  \end{bmatrix} \quad \vec{q_3} = \vec{v_3} \\
+  \lambda_1\vec{q_1}\vec{q_1}^T &= \begin{bmatrix}
+    0 & 0 & 0 \\
+    0 & -1 & 1 \\
+    0 & 1 & -1
+  \end{bmatrix} \\
+  \lambda_2\vec{q_2}\vec{q_2}^T &= \begin{bmatrix}
+    0 & 0 & 0 \\
+    0 & 2 & 2 \\
+    0 & 2 & 2
+  \end{bmatrix} \\
+  \lambda_2\vec{q_3}\vec{q_3}^T &= \begin{bmatrix}
+    6 & 0 & 0 \\
+    0 & 0 & 0 \\
+    0 & 0 & 0
+  \end{bmatrix}
+\end{align*}
+
+\subsubsection*{Question 5}
+Find a symmetric \( 2\times2 \) matrix with eigenvalues \( \lambda_1 \) and
+\( \lambda_2 \) and corresponding orthogonal eigenvectors \( \vec{v_1} \) and
+\( \vec{v_2} \).
+\begin{align*}
+  \lambda_1 &= -1 \quad \lambda_2 = 4 \\
+  \vec{v_1} &= \begin{bmatrix}1 \\ 1\end{bmatrix} \quad
+    \vec{v_2} = \begin{bmatrix}1 \\ -1\end{bmatrix} \\
+  \vec{q_1} &= \begin{bmatrix}
+    \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}}
+  \end{bmatrix} \quad \vec{q_2} = \begin{bmatrix}
+    \frac{1}{\sqrt{2}} \\ -\frac{1}{\sqrt{2}}
+  \end{bmatrix} \\
+  \lambda_1\vec{q_1}\vec{q_1}^T &= \begin{bmatrix}
+    -\frac{1}{2} & -\frac{1}{2} \\ -\frac{1}{2} & -\frac{1}{2}
+  \end{bmatrix} \\
+  \lambda_2\vec{q_2}\vec{q_2}^T &= \begin{bmatrix}
+    2 & -2 \\ -2 & 2
+  \end{bmatrix} \\
+  A &= \begin{bmatrix}
+    \frac{3}{2} & -\frac{5}{2} \\ -\frac{5}{2} & \frac{3}{2}
+  \end{bmatrix}
+\end{align*}
+
+\subsubsection*{Question 6}
+Evaluate the quadratic form \( f(\vec{x}) = \vec{x}^TA\vec{x} \) for the given
+\( A \) and \( \vec{x} \).
+\begin{align*}
+  A &= \begin{bmatrix}3 & 1 \\ 1 & 4\end{bmatrix} \quad
+    \vec{x} = \begin{bmatrix}x \\ y\end{bmatrix} \\
+  f(\vec{x}) &= 3x^2+xy+xy+4y^2 \\
+  &= 3x^2+2xy+4y^2
+\end{align*}
+
+\subsubsection*{Question 7}
+Evaluate the quadratic form \( f(\vec{x}) = \vec{x}^TA\vec{x} \) for the given
+\( A \) and \( \vec{x} \).
+\begin{align*}
+  A &= \begin{bmatrix}3 & -2 \\ -2 & 4\end{bmatrix} \quad
+    \vec{x} = \begin{bmatrix}1 \\ 5\end{bmatrix}
+  A &= 3x^2-4xy+4y^2 \\
+  &= 3(1)^2-4(1)(5)+4(5)^2 \\
+  &= 83
+\end{align*}
+
+\subsubsection*{Question 8}
+Evaluate the quadratic form \( f(\vec{x}) = \vec{x}^TA\vec{x} \) for the given
+\( A \) and \( \vec{x} \).
+\begin{align*}
+  A &= \begin{bmatrix}
+    1 & 0 & -3 \\
+    0 & 2 & 1 \\
+    -3 & 1 & 3
+  \end{bmatrix} \quad \vec{x} = \begin{bmatrix}x \\ y \\ z\end{bmatrix} \\
+  f(\vec{x}) &= \begin{bmatrix}x & y & z\end{bmatrix}\begin{bmatrix}
+    x-3z \\ 2y+z \\ -3x+y+3z
+  \end{bmatrix} \\
+  &= x^2-3xz+2y^2+yz-3xz+yz+3z^2 \\
+  &= x^2+2y^2+3z^2+2yz-6xz
+\end{align*}
+
+\subsubsection*{Question 9}
+Find the symmetric matrix \( A \) associated with the given quadratic form.
+\[ x_1^2+4x_2^2+6x_1x_2 \]
+\[ \begin{bmatrix}1 & 3 \\ 3 & 4\end{bmatrix} \]
+
+\subsubsection*{Question 10}
+Diagonalize the quadratic form by finding an orthogonal matrix \( Q \) such that
+the change of variable \( \vec{x} = Q\vec{y} \) transforms the given form into
+one with no cross-product terms. Given \( Q \) and the new quadratic form
+\( f(\vec{y}) \).
+\begin{align*}
+  f(x_1,x_2) &= 4x_1^2+7x_2^2-4x_1x_2 \\
+  A &= \begin{bmatrix}4 & -2 \\ - 2 & 7\end{bmatrix} \\
+  \lambda_1 &= 3 \quad \lambda_2 = 8 \\
+  \vec{v_1} &= \begin{bmatrix}2 \\ 1\end{bmatrix} \quad
+    \vec{v_2} = \begin{bmatrix}-\frac{1}{2} \\ 1\end{bmatrix} =
+      \begin{bmatrix}-1 \\ 2\end{bmatrix} \\
+  \vec{q_1} &= \begin{bmatrix}
+    \frac{2}{\sqrt{5}} \\ \frac{1}{\sqrt{5}}
+  \end{bmatrix} \quad \vec{q_2} = \begin{bmatrix}
+    -\frac{1}{\sqrt{5}} \\ \frac{2}{\sqrt{5}}
+  \end{bmatrix} \\
+  Q &= \begin{bmatrix}
+    \frac{2}{\sqrt{5}} & -\frac{1}{\sqrt{5}} \\
+    \frac{1}{\sqrt{5}} & \frac{2}{\sqrt{5}}
+  \end{bmatrix} \\
+  D &= \begin{bmatrix}3 & 0 \\ 0 & 8\end{bmatrix} \\
+  f(y_1,y_2) &= 3y_1^2+8y_2^2
+\end{align*}
+
+\subsubsection*{Question 11}
+Use a rotation of axes to put the conic in standard position.
+\begin{align*}
+  x^2+xy+y^2 &= 9 \\
+  A &= \begin{bmatrix}
+    1 & \frac{1}{2} \\
+    \frac{1}{2} & 1
+  \end{bmatrix} \\
+  \lambda_1 &= \frac{1}{2} \quad \lambda_2 = \frac{3}{2} \\
+  D &= \begin{bmatrix}\frac{1}{2} & 0 \\ 0 & \frac{3}{2}\end{bmatrix} \\
+  \frac{1}{2}x'+\frac{3}{2}y' &= 9
+\end{align*}
+
+\subsubsection*{Question 12}
+Determine whether the given set, together with specified operations of addition
+and scalar multiplication, is a vector space. If it is not, select all of the
+axioms that fail to hold. \par
+The set of all vectors in \( \R^2 \) of the form \( \begin{bmatrix}-3x \\ -3x
+\end{bmatrix} \), with the usual vector addition and scalar multiplication. \par
+All of the axioms hold, so the given set is a vector space.
+
+\subsubsection*{Question 13}
+Determine whether the given set, together with specified operations of addition
+and scalar multiplication, is a vector space. If it is not, select all of the
+axioms that fail to hold. \par
+The set of all vectors in \( \begin{bmatrix}x \\ y\end{bmatrix} \) in \( \R^2 \)
+with \( x\ge0,y\ge0 \), with the usual vector addition and scalar
+multiplication. \par
+\begin{enumerate}
+  \item For each \( \vec{u} \) in \( V \), there is an element \( -\vec{u} \)
+    in \( V \) such that \( \vec{u}+(-\vec{u}) = \vec{0} \).
+  \item \( c\vec{u} \) is in \( V \).
+\end{enumerate}
+
+\subsubsection*{Question 14}
+Determine whether the given set, together with specified operations of addition
+and scalar multiplication, is a vector space. If it is not, select all of the
+axioms that fail to hold. \par
+\( \R^2 \), with the usual addition but scalar multiplication defined by
+\[ c\begin{bmatrix}x \\ y\end{bmatrix} = \begin{bmatrix}x \\ cy\end{bmatrix} \]
+?
+
+\subsubsection*{Question 15}
+Let \( V \) be a vector space and let \( W \) be a nonempty subset of \( V \).
+Then \( W \) is a subspace of \( V \) if and only if the following conditions
+hold.
+\begin{enumerate}[(a)]
+  \item If \( \vec{u} \) and \( \vec{v} \) are in \( W \), then \( \vec{u}+
+    \vec{v} \) is in \( W \).
+  \item If \( \vec{u} \) is in \( W \) and \( c \) is a scalar, then
+    \( c\vec{u} \) is in \( W \).
+\end{enumerate}
+Use the theorem above to determine whether \( W \) is a subspace of \( V \).
+\[ V = \R^3, W = \left\{\begin{bmatrix}a \\ b \\ |a|\end{bmatrix}\right\} \]
+\( W \) is not a subspace of \( V \).
+
+\subsubsection*{Question 16}
+Let \( V \) be a vector space and let \( W \) be a nonempty subset of \( V \).
+Then \( W \) is a subspace of \( V \) if and only if the following conditions
+hold.
+\begin{enumerate}[(a)]
+  \item If \( \vec{u} \) and \( \vec{v} \) are in \( W \), then \( \vec{u}+
+    \vec{v} \) is in \( W \).
+  \item If \( \vec{u} \) is in \( W \) and \( c \) is a scalar, then
+    \( c\vec{u} \) is in \( W \).
+\end{enumerate}
+Use the theorem above to determine whether \( W \) is a subspace of \( V \).
+\[ V = M_{22}, W = \left\{\begin{bmatrix}a & b \\ c & d\end{bmatrix}: ad\ge bc
+  \right\} \]
+\( W \) is not a subspace of \( V \).
+
+\subsubsection*{Question 17}
+Let \( V \) be a vector space and let \( W \) be a nonempty subset of \( V \).
+Then \( W \) is a subspace of \( V \) if and only if the following conditions
+hold.
+\begin{enumerate}[(a)]
+  \item If \( \vec{u} \) and \( \vec{v} \) are in \( W \), then \( \vec{u}+
+    \vec{v} \) is in \( W \).
+  \item If \( \vec{u} \) is in \( W \) and \( c \) is a scalar, then
+    \( c\vec{u} \) is in \( W \).
+\end{enumerate}
+Use the theorem above to determine whether \( W \) is a subspace of \( V \).
+\[ V = M_{nn}, W = \{A\text{ in }M_{nn}: \det(A) = 1\} \]
+\( W \) is not a subspace of \( V \).
+
+\subsubsection*{Question 18}
+Let \( V \) be a vector space and let \( W \) be a nonempty subset of \( V \).
+Then \( W \) is a subspace of \( V \) if and only if the following conditions
+hold.
+\begin{enumerate}[(a)]
+  \item If \( \vec{u} \) and \( \vec{v} \) are in \( W \), then \( \vec{u}+
+    \vec{v} \) is in \( W \).
+  \item If \( \vec{u} \) is in \( W \) and \( c \) is a scalar, then
+    \( c\vec{u} \) is in \( W \).
+\end{enumerate}
+Use the theorem above to determine whether \( W \) is a subspace of \( V \).
+\[ V = P_2, W = \{bx+cx^2\} \]
+\( W \) is a subspace of \( V \).
+
+\subsubsection*{Question 19}
+Let \( V \) be a vector space and let \( W \) be a nonempty subset of \( V \).
+Then \( W \) is a subspace of \( V \) if and only if the following conditions
+hold.
+\begin{enumerate}[(a)]
+  \item If \( \vec{u} \) and \( \vec{v} \) are in \( W \), then \( \vec{u}+
+    \vec{v} \) is in \( W \).
+  \item If \( \vec{u} \) is in \( W \) and \( c \) is a scalar, then
+    \( c\vec{u} \) is in \( W \).
+\end{enumerate}
+Use the theorem above to determine whether \( W \) is a subspace of \( V \).
+\[ V = P_2, W = \{a+bx+cx^2: abc = 0\} \]
+\( W \) is not a subspace of \( V \).
+
+\subsubsection*{Question 20}
+Let \( A = \begin{bmatrix}1 & 1 \\ -1 & 1\end{bmatrix} \) and \( B =
+\begin{bmatrix}1 & -1 \\ 1 & 0\end{bmatrix} \). Determine whether \( C \) is
+in \( span(A,B) \).
+\[ C = \begin{bmatrix}1 & 3 \\ 3 & 4\end{bmatrix} \]
+\( C \) is not in \( span(A,B) \).
+
+\subsubsection*{Question 21}
+Let \( p(x) = 1-2x, q(x) = x-x^2, r(x) = -2+3x+x^2 \). Determine whether
+\( s(x) \) is in \( span(p(x),q(x),r(x)) \).
+\begin{align*}
+  s(x) &= 4+x+x^2 \\
+  ap(x)+bq(x)+cr(x) &= s(x) \\
+  a-2ax+bx-bx^2-2c+3cx+cx^2 &= 4+x+x^2 \\
+  (a-2c)+(-2a+b+3c)x+(-b+c)x^2 &= 4+x+x^2 \\
+  \left[\begin{array}{ccc|c}
+    1 & 0 & -2 & 4 \\
+    -2 & 1 & 3 & 1 \\
+    0 & -1 & 1 & 1
+  \end{array}\right] &\to \text{inconsistent}
+\end{align*}
+Since the system is inconsistent, \( s(x) \) is not in the span.
+
+\subsubsection*{Question 22}
+Test the set of matrices for linear independence in \( M_{22} \). If it is
+linearly dependent, express one of the matrices as a linear combination of the
+others.
+\[ \left\{A = \begin{bmatrix}1 & 1 \\ 0 & -1\end{bmatrix},
+  B = \begin{bmatrix}1 & -1 \\ 1 & 0\end{bmatrix},
+  C = \begin{bmatrix}1 & 0 \\ 5 & 4\end{bmatrix}\right\} \]
+\begin{align*}
+  c_1A+c_2B+c_3C &= 0 \\
+  \left[\begin{array}{ccc|c}
+    1 & 1 & 1 & 0 \\
+    1 & -1 & 0 & 0 \\
+    0 & 1 & 5 & 0 \\
+    -1 & 0 & 4 & 0
+  \end{array}\right] &\to \text{trivial}
+\end{align*}
+This system has only the trivial solution, so the matrices are linearly
+independent.
+
+\subsubsection*{Question 23}
+Test the set of matrices for linear dependence in \( M_{22} \). If it is
+linearly dependent, express one of the matrices as a linear combination of the
+others.
+\[ \left\{A = \begin{bmatrix}-1 & 1 \\ -2 & 2\end{bmatrix},
+  B = \begin{bmatrix}3 & 0 \\ 1 & 1\end{bmatrix},
+  C = \begin{bmatrix}0 & 2 \\ -3 & 1\end{bmatrix},
+  D = \begin{bmatrix}-1 & 0 \\ -1 & 7\end{bmatrix}\right\} \]
+\begin{align*}
+  c_1A+c_2B+c_3C+c_3D &= 0 \\
+  \left[\begin{array}{cccc|c}
+    -1 & 3 & 0 & -1 & 0 \\
+    1 & 0 & 2 & 0 & 0 \\
+    -2 & 1 & -3 & -1 & 0 \\
+    2 & 1 & 1 & 7 & 0
+  \end{array}\right] &\to \left[\begin{array}{cccc|c}
+    1 & 0 & 0 & 4 & 0 \\
+    0 & 1 & 0 & 1 & 0 \\
+    0 & 0 & 1 & -2 & 0 \\
+    0 & 0 & 0 & 0 & 0
+  \end{array}\right] \\
+  c_1 &= -4c_4 \quad c_2 = -c_4 \quad c_3 = 2c_4 \\
+\end{align*}
+
+\subsubsection*{Question 24}
+Test the set of polynomials for linear independence. If it is linearly
+dependent, express one of the polynomials as a linear combination of the others.
+\[ \{f(x) = 3+x, g(x) = 3+x^2, h(x) = 3-x+x^2\} \]
+\begin{align*}
+  af(x)+bg(x)+ch(x) &= 0 \\
+  3a+ax+3b+bx^2+3c-cx+cx^2 &= 0 \\
+  (3a+3b+3c)+(a-c)x+(b+c)x^2 &= 0 \\
+  \left[\begin{array}{ccc|c}
+    3 & 3 & 3 & 0 \\
+    1 & 0 & -1 & 0 \\
+    0 & 1 & 1 & 0
+  \end{array}\right] &\to \text{trivial}
+\end{align*}
+This system has only the trivial solution, so the matrices are linearly
+independent.
+
+\subsubsection*{Question 25}
+Test the set of polynomials for linear independence. If it is linearly
+dependent, express one of the polynomials as a linear combination of the
+others.
+\[ \{f(x) = x, g(x) = 2x-x^2, h(x) = 2x+3x^2\} \]
+\begin{align*}
+  af(x)+bg(x)+ch(x) &= 0 \\
+  ax+2bx-bx^2+2cx+3cx^2 &= 0 \\
+  (a+2b+2c)x+(-b+3c)x^2 &= 0 \\
+  \left[\begin{array}{ccc|c}
+    1 & 2 & 2 & 0 \\
+    0 & -1 & 3 & 0
+  \end{array}\right] &\to \left[\begin{array}{ccc|c}
+    1 & 0 & 8 & 0 \\
+    0 & 1 & -3 & 0
+  \end{array}\right] \\
+  a &= -8c \quad b = 3c
+\end{align*}
+
+\subsubsection*{Question 26}
+Determine whether the set \( \mathbb{B} \) is a basis for the vector space
+\( V \).
+\begin{align*}
+  V &= M_{22}, \mathbb{B} = \left\{
+    \begin{bmatrix}1 & 0 \\ 0 & 1\end{bmatrix},
+    \begin{bmatrix}1 & 1 \\ 0 & 1\end{bmatrix},
+    \begin{bmatrix}-1 & 1 \\ 1 & -1\end{bmatrix}
+  \right\} \\
+  \left[\begin{array}{ccc|c}
+    1 & 1 & -1 & 0 \\
+    0 & 1 & 1 & 0 \\
+    0 & 0 & 1 & 0 \\
+    1 & 1 & -1 & 0
+  \end{array}\right] &\to \text{trivial}
+\end{align*}
+The set \( \mathbb{B} \) is linearly independent but does not span the vector
+space, so it is not a basis.
+
+\subsubsection*{Question 27}
+Determine whether the set \( \mathbb{B} \) is a basis for the vector space
+\( V \).
+\begin{align*}
+  V &= M_{22}, \mathbb{B} = \left\{
+    \begin{bmatrix}1 & 0 \\ 0 & 1\end{bmatrix},
+    \begin{bmatrix}0 & 1 \\ -1 & 0\end{bmatrix},
+    \begin{bmatrix}1 & -1 \\ -1 & 1\end{bmatrix},
+    \begin{bmatrix}-1 & 1 \\ 1 & 1\end{bmatrix}
+  \right\} \\
+  \left[\begin{array}{cccc|c}
+    1 & 0 & 1 & -1 & 0 \\
+    0 & 1 & -1 & 1 & 0 \\
+    0 & -1 & -1 & 1 & 0 \\
+    1 & 0 & 1 & 1 & 0
+  \end{array}\right] &\to \text{trivial}
+\end{align*}
+The set \( \mathbb{B} \) is linearly independent and spans the vector space
+(a solution exists), so it is a basis.
+
+\subsubsection*{Question 28}
+Determine whether the set \( \mathbb{B} \) is a basis for the vector space
+\( V \).
+\begin{align*}
+  V &= P_2, \mathbb{B} = \{x,4+x,x-x^2\} \\
+  (ax)+(4b+bx)+(cx-cx^2) &= 0 \\
+  (4b)+(a+b+c)x+(-c)x^2 &= 0 \\
+  \left[\begin{array}{ccc|c}
+    0 & 4 & 0 & 0 \\
+    1 & 1 & 1 & 0 \\
+    0 & 0 & -1 & 0
+  \end{array}\right]
+\end{align*}
+The set \( \mathbb{B} \) is linearly independent and spans the vector space
+(a solution exists), so it is a basis.
+
+\subsubsection*{Question 29}
+Find the coordinate vector of \( A = \begin{bmatrix}3 & 4 \\ 5 & 6\end{bmatrix}
+\) with respect to the basis \( \mathbb{B} = \{E_{22},E_{21},E_{12},E_{11}\} \)
+of \( M_{22} \).
+\[ A = 6E_{22}+5E_{21}+4E_{12}+3E_{11} \]
+
+\subsubsection*{Question 30}
+Find the coordinate vector of \( p(x)=6-x+5x^2 \) with respect to the basis
+\( \mathbb{B} = \{1,1+x,-1+x^2\} \) of \( P_2 \).
+\begin{align*}
+  (a)+(b+bx)+(-c+cx^2) &= 6-x+5x^2 \\
+  (a+b-c)+(b)x+(c)x^2 &= 6-x+5x^2 \\
+  \left[\begin{array}{ccc|c}
+    1 & 1 & -1 & 6 \\
+    0 & 1 & 0 & -1 \\
+    0 & 0 & 1 & 5
+  \end{array}\right] &\to \left[\begin{array}{ccc|c}
+    1 & 0 & 0 & 12 \\
+    0 & 1 & 0 & -1 \\
+    0 & 0 & 1 & 5
+  \end{array}\right] \\
+  [p]_{\mathbb{B}} &= \begin{bmatrix}12 \\ -1 \\ 5\end{bmatrix}
+\end{align*}
+
+\subsubsection*{Question 31}
+Find a formula for the dimension of the vector space \( V \) of symmetric
+\( n\times n \) matrices.
+\[ dim(V) = \frac{n(n+1)}{2} \]
+The basis of an \( n\times n \) matrix
+
+\begin{center}
+  If you have any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
