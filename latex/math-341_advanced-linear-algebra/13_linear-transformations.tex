@@ -156,7 +156,28 @@ Find the rank and nullity of \( S \).
 \subsection*{One to One Mappings}
 \( T:V\to W \) is called ``one-to-one'' if it maps distinct vectors in \( V \)
 to distinct vectors in \( W \). If \( range(T) = W \), then \( T \) is
-``onto''.
+``onto''. \\
+\textbf{Theorem:} A linear transformation \( T:V\to W \) is 1-1 if and only if
+\( ker(T) = \{0\} \). To prove this, assume \( T \) is 1-1 and that
+\( v\in ker(T) \).
+\begin{align*}
+  T(v) &= 0 \quad T(0) = 0 \\
+  \therefore T(v) &= T(0)
+\end{align*}
+Since \( T \) is 1-1, then \( v = 0 \). Conversely, assume \( ker(T) = \{0\} \).
+Let \( u,v \) in \( V \) with \( T(u) = T(v) \).
+\[ T(u-v) = T(u)-T(v) = 0 \]
+If this statement is true, then \( u-v \) is in \( ker(T) \), and since
+\( ker(T) = \{0\} \):
+\[ u-v = 0 \quad u = v \]
+Therefore, \( T \) is 1-1. \\
+\textbf{Theorem:} \( T:V\to W \). Let \( dim(V) = dim(W) = n \), then \( T \) is
+1-1 if and only if it is onto. \\
+\textbf{Theorem:} Let \( T:V\to W \) be 1-1. If \( S = \{v_1,\dots,v_n\} \) is
+linearly independent in \( V \) then \( T(s) = \{T(v_1),\dots,T(v_n)\} \) is
+linearly independent in \( W \). \\
+\textbf{Theorem:} \( T:V\to W \) is invertible if and only if it is 1-1 and
+onto.
 
 \subsubsection*{Example}
 Given the transformation \( T:\R^2\to\R^3, T\begin{bmatrix}x \\ y\end{bmatrix}
@@ -177,6 +198,38 @@ Given the transformation \( T:\R^2\to\R^3, T\begin{bmatrix}x \\ y\end{bmatrix}
 \( T \) is one to one, but not onto because
 \[ T\begin{bmatrix}x \\ y\end{bmatrix} \ne \begin{bmatrix}0 \\ 0 \\ 1
 \end{bmatrix} \text{ for any } \begin{bmatrix}x \\ y\end{bmatrix} \]
+
+\subsubsection*{Example}
+\( T:\R^2\to P_1, T\begin{bmatrix}a \\ b\end{bmatrix} = a+(a+b)x \). Show that
+\( T \) is 1-1 and onto. \\
+Let \( \begin{bmatrix}a \\ b\end{bmatrix} \) be in \( ker(T) \).
+\begin{align*}
+  T\begin{bmatrix}a \\ b\end{bmatrix} &= a+(a+b)x = 0 \\
+  a &= 0 \quad a+b = 0 \\
+  b &= -a \quad b = 0 \\
+  \begin{bmatrix}a \\ b\end{bmatrix} &= \begin{bmatrix}0 \\ 0\end{bmatrix} =
+    ker(T)
+\end{align*}
+Since \( T \) is in the kernel of \( T \), it is 1-1. We can prove \( T \) is
+onto using the rank theorem.
+\begin{align*}
+  rank(T)+nullity(T) &= dim(V) \\
+  rank(T)+0 &= 0 \\
+  dim(range(T)) &= 2
+\end{align*}
+Therefore, \( T \) is onto \( P_1 \).
+
+\subsection*{Isomorphism}
+\( T:V\to W \) is called an ``isomorphism'' if it is 1-1 and onto. If \( V \)
+and \( W \) are vector spaces such that there is an isomorphism from \( V \) to
+\( W \), then we say \( V \) and \( W \) are ``isomorphic'' (\( V\cong W \)).
+
+\subsubsection*{Example}
+Suppose \( P_{n-1} \) and \( \R^n \) are isomorphic.
+\[ T(a_0+a_1x+\dots+a_{n-1}x^{n-1}) = \begin{bmatrix}a_0 \\ a_1 \\ \vdots \\
+  a_{n-1}\end{bmatrix} \]
+Note that we know \( T \) is 1-1 since \( ker(T) = \{0\} \). Therefore,
+\( P_{n-1} \cong \R^n \).
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
