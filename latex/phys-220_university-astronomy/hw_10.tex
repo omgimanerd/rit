@@ -1,0 +1,83 @@
+\documentclass{math}
+
+\usepackage{enumerate}
+
+\title{University Astronomy: Homework 10}
+\author{Alvin Lin}
+\date{January 2019 - May 2019}
+
+\begin{document}
+
+\maketitle
+
+\subsubsection*{Question 17.1}
+A protostellar cloud starts as a sphere of radius \( R = 4000 AU \) and
+temperature \( T = 15K \). If it emits blackbody radiation, what is its total
+luminosity? What is the wavelength \( \lambda_p \) at which it emits the most
+radiation?
+\begin{align*}
+  L &= 4\pi R^2\sigma T^4 \\
+  &= 4\pi(5.9839\times10^{14}m)^2(5.67\times10^{-8}Wm^{-2}K^{-4})(15K)^4 \\
+  &= 1.29\times10^{28}W \\
+  \lambda_p &= \frac{(2.897\times10^{-3}\mu mK)}{T} \\
+  &= 182.33\mu m
+\end{align*}
+
+\subsubsection*{Question 17.3}
+Consider two clouds in the interstellar medium. A molecular (H\textsubscript{2})
+cloud has \( T = 10K \) and \( n = 10^{12}m^{-3} \); a neutral atomic (H) cloud
+has \( T = 120K \) and \( n = 10^7m^{-3} \). (\( \gamma = \frac{7}{5} \) for
+the molecular cloud and \( \gamma = \frac{5}{3} \) for the atomic cloud).
+\begin{enumerate}[(a)]
+  \item What is the Jeans mass for each of the two clouds? \\
+  Molecular hydrogen (H\textsubscript{2}):
+  \begin{align*}
+    \rho_{0} &= 2m_p(10^{12}m^{-3}) \\
+    M_j &= 0.2M_{\odot}\left(\frac{T}{10K}\right)^{\frac{3}{2}}
+      \left(\frac{\rho_0}{3\times10^{-15}kg~m^{-3}}\right)^{-\frac{1}{2}} \\
+    &= 3.767\times10^{29}kg
+  \end{align*}
+  Atomic hydrogen (H):
+  \begin{align*}
+    \rho_{0} &= m_p(10^7m^{-3}) \\
+    M_j &= 0.2M_{\odot}\left(\frac{T}{10K}\right)^{\frac{3}{2}}
+      \left(\frac{\rho_0}{3\times10^{-15}kg~m^{-3}}\right)^{-\frac{1}{2}} \\
+    &= 7.002\times10^{33}kg
+  \end{align*}
+  \item What is the minimum radius each cloud must have to collapse?
+  Molecular hydrogen (H\textsubscript{2}):
+  \begin{align*}
+    \rho_{0} &= 2m_p(10^{12}m^{-3}) \\
+    r_j &= \left(\frac{3\pi\gamma kT}{32G\rho_0\mu m_p}\right)^{\frac{1}{2}} \\
+    &= \left(\frac{3\pi\gamma kT}{32Gn(m_p)^2\mu}\right)^{\frac{1}{2}} \\
+    &= 3.904\times10^{14}m
+  \end{align*}
+  Atomic hydrogen (H):
+  \begin{align*}
+    \rho_{0} &= m_p(10^7m^{-3}) \\
+    r_j &= \left(\frac{3\pi\gamma kT}{32G\rho_0\mu m_p}\right)^{\frac{1}{2}} \\
+    &= \left(\frac{3\pi\gamma kT}{32Gn(m_p)^2\mu}\right)^{\frac{1}{2}} \\
+    &= 6.599\times10^{17}m
+  \end{align*}
+  \item What is the timescale for the gravitational collapse of each cloud?
+  Molecular hydrogen (H\textsubscript{2}):
+  \begin{align*}
+    \rho_{0} &= 2m_p(10^{12}m^{-3}) \\
+    t_{ff} &= \left(\frac{3\pi}{32G\rho_0}\right)^{\frac{1}{2}} \\
+    &= 1.149\times10^{12}s = 36419.2yr
+  \end{align*}
+  Atomic hydrogen (H):
+  \begin{align*}
+    \rho_{0} &= m_p(10^{7}m^{-3}) \\
+    t_{ff} &= \left(\frac{3\pi}{32G\rho_0}\right)^{\frac{1}{2}} \\
+    &= 5.136\times10^{14}s = 1.629\times10^7yr
+  \end{align*}
+\end{enumerate}
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
