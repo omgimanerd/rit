@@ -1,5 +1,7 @@
 \documentclass{math}
 
+\usepackage{tikz}
+
 \title{Advanced Linear Algebra}
 \author{Alvin Lin}
 \date{January 2019 - May 2019}
@@ -230,6 +232,107 @@ Suppose \( P_{n-1} \) and \( \R^n \) are isomorphic.
   a_{n-1}\end{bmatrix} \]
 Note that we know \( T \) is 1-1 since \( ker(T) = \{0\} \). Therefore,
 \( P_{n-1} \cong \R^n \).
+
+\subsection*{Matrix of Linear Transformation}
+\begin{center}
+  \begin{tikzpicture}
+    \draw (0,8) rectangle ++(2,2)
+      node[above left] {\( B = \{v_1,\dots,v_n\} \)};
+    \node[above] at (1,9) {\( V \)};
+
+    \draw[->] (2.5,9) -- (7.5,9) node[pos=0.5,above] {\( T \)};
+
+    \draw (8,8) rectangle ++(2,2)
+      node[above] {\( C = \{T(v_1),\dots,T(v_n)\} \)};
+    \node[above] at (9,9) {\( T(v) \)};
+
+    \draw[->] (0.5,3) -- (0.5,7) node[pos=0.5,left] {\( R^{-1} \)};
+    \draw[<-] (1.5,3) -- (1.5,7) node[pos=0.5,right] {\( R \)};
+
+    \draw (0,0) rectangle ++(2,2)
+      node[above] {Standard Basis: \( \{\hat{e_1},\dots,\hat{e_n}\} \)};
+    \node[above] at (1,1) {\( [v]_B \)};
+
+    \draw[->] (2.5,1) -- (7.5, 1) node[pos=0.5,above] {\( T_A \)};
+
+    \draw (8,0) rectangle ++(2,2)
+      node[above] {Standard Basis: \( \{\hat{e_1},\dots,\hat{e_m}\} \)};
+    \node[above] at (9,1) {\( [T(v)]_C \)};
+
+    \draw[<-] (9,3) -- (9,7) node[pos=0.5,right] {\( S \)};
+  \end{tikzpicture}
+\end{center}
+\begin{align*}
+  [T(v)]_C &= A[v]_B \\
+  &= (S\circ T\circ R^{-1})[v]_B \\
+  A &= \bigg[[T(v_1)]_C, T(v_2)_C, \dots, [T(v_n)]_C\bigg] \\
+  &= [T]_{C\leftarrow B}
+\end{align*}
+Every linear transformation can be represented as a matrix multiplication
+under some given bases.
+
+\subsubsection*{Example}
+Suppose we have the transformation \( T:\R^3\to\R^2, T\begin{bmatrix}x \\ y \\
+z\end{bmatrix} = \begin{bmatrix}x-2y \\ x+y-3z\end{bmatrix} \). Let
+\( B = \{\hat{e_1},\hat{e_2},\hat{e_3}\} \) and \( C = \{\hat{e_2},\hat{e_1}\}
+\).
+\begin{align*}
+  T(\hat{e_1}) &= T\begin{bmatrix}1 \\ 0 \\ 0\end{bmatrix} =
+    \begin{bmatrix}1 \\ 1\end{bmatrix} \quad
+    [T(\hat{e_1})]_C = \begin{bmatrix}1 \\ 1\end{bmatrix}_C \\
+  T(\hat{e_2}) &= T\begin{bmatrix}0 \\ 1 \\ 0\end{bmatrix} =
+    \begin{bmatrix}-2 \\ 1\end{bmatrix} \quad
+    [T(\hat{e_2})]_C = \begin{bmatrix}1 \\ -2\end{bmatrix}_C \\
+  T(\hat{e_3}) &= T\begin{bmatrix}0 \\ 0 \\ 1\end{bmatrix} =
+    \begin{bmatrix}0 \\ -3\end{bmatrix} \quad
+    [T(\hat{e_3})]_C = \begin{bmatrix}-3 \\ 0\end{bmatrix}_C \\
+  A &= \begin{bmatrix}
+    1 & 1 & -3 \\
+    1 & -2 & 0
+  \end{bmatrix}
+\end{align*}
+We can verify that this works for \( \vec{v} = \begin{bmatrix}1 \\ 3 \\ -2
+\end{bmatrix} \).
+\begin{align*}
+  T\begin{bmatrix}1 \\ 3 \\ -2\end{bmatrix} &=
+    \begin{bmatrix}-5 \\ 10\end{bmatrix} \\
+  [v]_B &= \begin{bmatrix}1 \\ 3 \\ -2\end{bmatrix} \\
+  A[v]_B &= [T(v)]_C \\
+  \begin{bmatrix}
+    1 & 1 & -3 \\
+    1 & -2 & 0
+  \end{bmatrix}\begin{bmatrix}1 \\ 3 \\ -2\end{bmatrix} &\stackrel{?}=
+    \begin{bmatrix}10 \\ -5\end{bmatrix} \\
+  \begin{bmatrix}10 \\ -5\end{bmatrix} &= \begin{bmatrix}10 \\ -5\end{bmatrix}
+\end{align*}
+
+\subsubsection*{Example}
+Suppose we have the transformation \( D:P_3\to P_2, D(p(x)) = p'(x) \). Let
+\( B = \{1,x,x^2,x^3\} \) and \( C = \{1,x,x^2\} \).
+\begin{align*}
+  D(1) &= 0 \quad [D(1)]_C = \begin{bmatrix}0 \\ 0 \\ 0\end{bmatrix} \\
+  D(x) &= 1 \quad [D(x)]_C = \begin{bmatrix}1 \\ 0 \\ 0\end{bmatrix} \\
+  D(x^2) &= 2x \quad [D(x)]_C = \begin{bmatrix}0 \\ 2 \\ 0\end{bmatrix} \\
+  D(x^3) &= 3x^2 \quad [D(x^3)]_C = \begin{bmatrix}0 \\ 0 \\ 3\end{bmatrix} \\
+  A &= \begin{bmatrix}
+    0 & 1 & 0 & 0 \\
+    0 & 0 & 2 & 0 \\
+    0 & 0 & 0 & 3
+  \end{bmatrix}
+\end{align*}
+Compute \( D(5-x+2x^3) \).
+\begin{align*}
+  D(5-x+2x^3) &= -1+6x^2 \\
+  &= \begin{bmatrix}-1 \\ 0 \\ 6\end{bmatrix}_C
+\end{align*}
+We can check that we get the same answer using the matrix \( A[v]_B = [D(v)]_C
+\).
+\[ \begin{bmatrix}
+  0 & 1 & 0 & 0 \\
+  0 & 0 & 2 & 0 \\
+  0 & 0 & 0 & 3
+\end{bmatrix}\begin{bmatrix}5 \\ -1 \\ 0 \\ 2\end{bmatrix} = \begin{bmatrix}
+  -1 \\ 0 \\ 6\end{bmatrix} \]
 
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
