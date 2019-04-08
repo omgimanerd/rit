@@ -212,14 +212,15 @@ Let \( \begin{bmatrix}a \\ b\end{bmatrix} \) be in \( ker(T) \).
   \begin{bmatrix}a \\ b\end{bmatrix} &= \begin{bmatrix}0 \\ 0\end{bmatrix} =
     ker(T)
 \end{align*}
-Since \( T \) is in the kernel of \( T \), it is 1-1. We can prove \( T \) is
-onto using the rank theorem.
+Since \( ker(T) = \left\{\begin{bmatrix}0 \\ 0\end{bmatrix}\right\} \), it is
+1-1. We can prove \( T \) is onto using the rank theorem.
 \begin{align*}
   rank(T)+nullity(T) &= dim(V) \\
-  rank(T)+0 &= 0 \\
-  dim(range(T)) &= 2
+  rank(T)+0 &= 2 \\
+  dim(range(T)) &= 2 \\
+  rank(T) &= dim(range(T))
 \end{align*}
-Therefore, \( T \) is onto \( P_1 \).
+Therefore, \( T \) is onto.
 
 \subsection*{Isomorphism}
 \( T:V\to W \) is called an ``isomorphism'' if it is 1-1 and onto. If \( V \)
