@@ -1,0 +1,77 @@
+\documentclass{math}
+
+\usepackage{enumerate}
+
+\title{University Astronomy: Homework 12}
+\author{Alvin Lin}
+\date{January 2019 - May 2019}
+
+\begin{document}
+
+\maketitle
+
+\subsubsection*{Question 17.2}
+A cepheid star in the Large Magellanic Cloud is observed to have an average
+apparent magnitude \( \bar{m}_V = 11.80 \) and a period \( P = 95 \) days.
+Compute the distance to the Large Magellanic Cloud, ignoring any effects due
+to dust.
+\begin{align*}
+  \bar{M}_V &= -2.76\log\left(\frac{P}{10}\right)-4.16 \\
+  &= -6.859 \\
+  \log\left(\frac{d}{10}\right) &= 0.2(\bar{m}_V-\bar{M}_v) \\
+  d &= 10\times10^{0.2(\bar{m}_V-\bar{M}_V)} \\
+  &= 10^{0.2(\bar{m}_V-\bar{M}_V)+1} \\
+  &= 53914.23pc
+\end{align*}
+
+\subsubsection*{Question 19.2}
+Suppose the Milky Way consisted of \( 2.7\times10^{11} \) stars, each of solar
+luminosity \( M_B = 4.7 \). What would be the absolute magnitude of the whole
+Galaxy?
+\begin{align*}
+  M_{\odot}-M_G &= 2.5log\left(\frac{L_G}{L_{\odot}}\right) \\
+  M_G &= M_{\odot}-2.5\log\left(\frac{2.7\times10^{11}M_B}{L_{\odot}}\right) \\
+  &= 41.03
+\end{align*}
+
+\subsubsection*{Question 19.5}
+Determine the proper motion relative to the LSR for a star in a circular orbit
+about the Galactic center, at a distance \( d = 5 \) kpc from the Sun and at
+galactic longitude \( l = 45^{\circ} \).
+\begin{align*}
+  \Theta(R) &= \omega_{max}R \\
+  d &= R_0\cos(l)\pm\sqrt{R^2-R_0^2\sin^2(l)} \\
+  R^2 &= (d-R_0\cos(l))^2+R_0^2\sin^2(l) \\
+  R &= 5.69~kpc \\
+  \Theta(R) &= 306\frac{km}{s} \\
+  \omega(R) &= \frac{\Theta(R)}{R} = 38.298\frac{km}{s\cdot kpc} \\
+  A &= \frac{v_r}{d\sin(2l)} \\
+  &= \frac{(\omega(R)-\omega_0)R_0\sin(l)}{d\sin(2l)} \\
+  &\approx 12.216\frac{km}{s\cdot kpc} \\
+  \mu &= \frac{v_t}{d} = \frac{d(A\cos(2l)+B)}{d} \\
+  &= A\cos(2l)+(A-\omega_0) \\
+  &= -15.283\frac{km}{s\cdot kpc} \approx -0.0032''yr^{-1}
+\end{align*}
+
+\subsubsection*{Slide Question 1}
+What would the Schwarzchild radius be for the Sun if it collapsed into a black
+hole?
+\begin{align*}
+  r_{Sch} &= 3km\left(\frac{M}{1M_{\odot}}\right) \\
+  &= 3km
+\end{align*}
+
+\subsubsection*{Slide Question 2}
+What is the ``rip'' radius for a black hole that has a mass of \( 10 M_{Sun} \)?
+\begin{align*}
+  r_{rip} &= 480km\left(\frac{M}{1M_{\odot}}\right)^{-\frac{1}{3}} \\
+  &= 222.796km
+\end{align*}
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
