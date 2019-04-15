@@ -1,0 +1,161 @@
+\documentclass{math}
+
+\usepackage{tikz}
+
+\title{Advanced Linear Algebra}
+\author{Alvin Lin}
+\date{January 2019 - May 2019}
+
+\begin{document}
+
+\maketitle
+
+\section*{Least Squares Approximation}
+\begin{center}
+  \begin{tikzpicture}
+    \draw[->] (0,0) -- (5,0) node[right]{\( x \)};
+    \draw[->] (0,0) -- (0,5) node[above]{\( y \)};
+    \draw (0,0.5) -- (4,4.5) node[right]{\( y = a+bx \)};
+    \fill[black] (1,2) circle[radius=0.1] node[above]{(1,2)};
+    \draw (1,1.5) -- (1,2) node[left,pos=0.5]{\( \epsilon_1 \)};
+    \fill[black] (2,2) circle[radius=0.1] node[below]{(2,2)};
+    \draw (2,2.5) -- (2,2) node[right,pos=0.5]{\( \epsilon_2 \)};
+    \fill[black] (3,4) circle[radius=0.1] node[above]{(3,4)};
+    \draw (3,3.5) -- (3,4) node[left,pos=0.5]{\( \epsilon_3 \)};
+  \end{tikzpicture}
+\end{center}
+Suppose we want to find the line that best fits the three points. We would want
+to minimize the errors \( \epsilon_1,\epsilon_2,\epsilon_3 \). There is no
+direct solution for the line since attempting to solve for it yields the
+following:
+\begin{align*}
+  A\vec{x} &= \vec{b} \\
+  \begin{bmatrix}
+    1 & 1 \\
+    1 & 2 \\
+    1 & 3
+  \end{bmatrix}\begin{bmatrix}a \\ b\end{bmatrix} &= \begin{bmatrix}
+    2 \\ 2 \\ 4
+  \end{bmatrix}
+\end{align*}
+This is an inconsistent system with no solution. We are more interested in
+minimizing the error vector \( \vec{\epsilon} = \begin{bmatrix}\epsilon_1 \\
+\epsilon_1 \\ \epsilon_3 \end{bmatrix} = \vec{b}-A\vec{x} \). To do this, we
+can minimize the ``least squares error'':
+\[ \|\vec{\epsilon}\| = \epsilon_1^2+\epsilon_2^2+\epsilon_3^2 \]
+In general, for \( n \) data points:
+\[ \begin{bmatrix}
+  1 & x_1 \\
+  1 & x_2 \\
+  \vdots & \vdots \\
+  1 & x_n
+\end{bmatrix}\begin{bmatrix}a & b\end{bmatrix} = \begin{bmatrix}
+  y_1 \\ y_2 \\ \vdots \\ y_n
+\end{bmatrix} \]
+The least squares solution is the \( \vec{x} \) in \( \R^2 \) that satisfies:
+\[ \|b-A\bar{x} \le \|b-Ax\|\forall x\in\R^2 \]
+We wish to find \( a \) and \( b \) to minimize \( \|\epsilon\|^2 \). As \( x \)
+varies over \( \R^n \), then \( Ax \) varies over \( col(A) \), so we want the
+closest vector in \( col(A) \) to \( \vec{b} \). Since \( \vec{b} \) is not on
+the subspace, the closest vector to \( \vec{b} \) is the orthogonal projection
+to the subspace.
+\begin{align*}
+  A\bar{x} &= \text{proj}_{col(A)}\vec{b} \\
+  \vec{b}-A\bar{x} &= \vec{b}-\text{proj}_{col(A)}\vec{b} \\
+  \vec{v}-A\bar{x} &= \text{perp}_{col(A)}\vec{b}
+\end{align*}
+\( \vec{b}-A\bar{x} \) is in \( (col(A))^T \) or \( null(A^T) \). Therefore,
+we can get the equations of the normal as:
+\begin{align*}
+  A^T(\vec{b}-A\bar{x}) &= \vec{0} \\
+  A^TA\bar{x} &= A^T\vec{b}
+\end{align*}
+
+\subsubsection*{Example}
+Find the least squares solution to the inconsistent system \( A\bar{x} =
+\vec{b} \) where
+\[ A = \begin{bmatrix}
+  1 & 5 \\
+  2 & -2 \\
+  -1 & 1
+\end{bmatrix} \quad \vec{b} = \begin{bmatrix}3 \\ 2 \\ 5\end{bmatrix} \]
+\begin{align*}
+  A^TA &= \begin{bmatrix}
+    1 & 2 & -1 \\
+    5 & -2 & 1
+  \end{bmatrix}\begin{bmatrix}
+    1 & 5 \\
+    2 & -2 \\
+    -1 & 1
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    6 & 0 \\
+    0 & 30
+  \end{bmatrix} \\
+  A^T\vec{b} &= \begin{bmatrix}
+    1 & 2 & -1 \\
+    5 & -2 & 1
+  \end{bmatrix}\begin{bmatrix}3 \\ 2 \\ 5\end{bmatrix} = \begin{bmatrix}
+    2 \\ 16
+  \end{bmatrix} \\
+  A^TA\bar{x} &= A^T\vec{b} \\
+  \begin{bmatrix}
+    6 & 0 \\
+    0 & 30
+  \end{bmatrix}\bar{x} &= \begin{bmatrix}2 \\ 16\end{bmatrix} \\
+  \bar{x} &= \begin{bmatrix}
+    \frac{1}{3} \\ \frac{8}{15}
+  \end{bmatrix}
+\end{align*}
+
+\subsubsection*{Example}
+Find the least squares approximating line \( y = a+bx \) for the data points
+(1,2), (2,2), (3,4).
+\begin{align*}
+  A\bar{x} &= \vec{b} \\
+  \begin{bmatrix}
+    1 & 1 \\
+    1 & 2 \\
+    1 & 3
+  \end{bmatrix}\begin{bmatrix}a \\ b\end{bmatrix} &= \begin{bmatrix}
+    2 \\ 2 \\ 4
+  \end{bmatrix} \\
+  A^TA &= \begin{bmatrix}
+    1 & 1 & 1 \\
+    1 & 2 & 3
+  \end{bmatrix}\begin{bmatrix}
+    1 & 1 \\
+    1 & 2 \\
+    1 & 3
+  \end{bmatrix} = \begin{bmatrix}
+    3 & 6 \\
+    6 & 14
+  \end{bmatrix} \\
+  A^T\vec{b} &= \begin{bmatrix}
+    1 & 1 & 1 \\
+    1 & 2 & 3
+  \end{bmatrix}\begin{bmatrix}2 \\ 2 \\ 4\end{bmatrix} = \begin{bmatrix}
+    8 \\ 18
+  \end{bmatrix} \\
+  A^TA\bar{x} &= A^T\vec{b} \\
+  \begin{bmatrix}
+    3 & 6 \\
+    6 & 14
+  \end{bmatrix}\begin{bmatrix}a \\ b\end{bmatrix} &= \begin{bmatrix}
+    8 \\ 18
+  \end{bmatrix} \\
+  \begin{bmatrix}
+    a \\ b
+  \end{bmatrix} &= \begin{bmatrix}
+    \frac{2}{3} \\ 1
+  \end{bmatrix} \\
+  y &= \frac{2}{3}+1x
+\end{align*}
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
