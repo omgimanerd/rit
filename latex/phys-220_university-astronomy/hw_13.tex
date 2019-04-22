@@ -1,0 +1,143 @@
+\documentclass{math}
+
+\usepackage{enumerate}
+
+\title{University Astronomy: Homework 13}
+\author{Alvin Lin}
+\date{January 2019 - May 2019}
+
+\begin{document}
+
+\maketitle
+
+\subsubsection*{Question 16.1}
+Compute \( R = \frac{A_V}{E(B-B)} \), the ratio fo total to selective
+absorption, for the case of Rayleigh scattering, \( \tau\propto\lambda^{-4} \).
+\begin{align*}
+  R &= \frac{A_V}{E(B-V)} \\
+  &= \frac{1}{(\frac{\tau_B}{\tau_B})-1} \\
+  &= \left(\frac{(\lambda_B)^{-4}}{(\lambda_V)^{-4}}-1\right)^{-1} \\
+  &= \left(\frac{4450^{-4}}{5500^{-1}}-1\right)^{-1} \\
+  &= 0.75
+\end{align*}
+
+\subsubsection*{Question 16.2}
+The Sun emits \( 5\times10^{23} \) photons per second with \( h\nu > 13.6 \) eV.
+If the density of hydrogen atoms in interplanetary space is \( n = 10^{9}m^{-3}
+\), what is the size of the Sun's Str\"{o}gren sphere? Assume a recombination
+coefficient \( \alpha = 2.6\times10^{-19}m^3s^{-1} \).
+\begin{align*}
+  R_S &= \left[\frac{3}{4\pi}\frac{Q_*}{\alpha(T_e)n_e^2}\right]^{
+    \frac{1}{3}} \\
+  &= \left[\frac{3}{4\pi}\frac{5\times10^{23}s^{-1}}
+    {2.6\times10^{-19}m^3s^{-1}(10^{9}m^{-3})^2}\right]^{\frac{1}{3}} \\
+  &= 77144093.9m = 7.71\times10^{7}m
+\end{align*}
+
+\subsubsection*{Question 16.3}
+An A0 V star is observed to have \( m_V = 14.0 \) and \( B-V = 1.5 \). What is
+the distance to the star?
+\begin{align*}
+  m-M &= 5\log(d)-5+A \\
+  &= 5\log(d)-5+R(B-V) \\
+  14.0-0.65 &= 5\log(d)-5+(3.1)(1.5) \\
+  13.7 &= 5\log(d) \\
+  d &= 10^{\frac{13.7}{5}} \\
+  &= 549.5pc
+\end{align*}
+
+\subsubsection*{Question 16.4}
+Dust grains made of graphite will sublime at a temperature \( T\approx1500K \).
+The albedo of graphite is \( A\approx0.04 \).
+\begin{enumerate}
+  \item How close to an O5 V star (\( T_{eff} = 42000K, R = 12R_{\odot}
+    \)) can graphite grains survive?
+  \begin{align*}
+    L_{star} &= 4\pi R_{star}^2\sigma_{SB}T_{star}^4 \\
+    E_{grain} &= \frac{L_{star}}{4\pi d^2}(4\pi R_{grain}^2)(1-A) \\
+    &= E_{radiated} = 4\pi R_{grain}^2\sigma_{SB}T_{grain}^4 \\
+    \frac{4\pi R_{star}^2\sigma_{SB}T_{star}^4}{4\pi d^2}(4\pi R_{grain}^2)
+    (1-A) &= 4\pi R_{grain}^2\sigma_{SB}T_{grain}^4 \\
+    \frac{R_{star}^2T_{star}^4}{d^2}(1-A) &= 4T_{grain}^4 \\
+    d &= \left(\frac{4T_{grain}^4}{R_{star}^2T_{star}^4(1-A)}\right)^{
+      -\frac{1}{2}} \\
+    &= 3.21\times10^{9}m
+  \end{align*}
+  \item How close to an M2 III star (\( T_{eff} = 3540K, R = 0.5R_{\odot} \))
+    can graphite grains survive?
+  \begin{align*}
+    d &= \left(\frac{4T_{grain}^4}{R_{star}^2T_{star}^4(1-A)}\right)^{
+      -\frac{1}{2}} \\
+    &= 9.49\times10^{5}m
+  \end{align*}
+\end{enumerate}
+
+\subsubsection*{Question 16.7}
+In general, an F0 main sequence star has absolute magnitude \( M_V = 2.7 \) and
+intrinsic color \( (B-V)_0 = 0.30 \). A specific F0 main sequence star is
+observed to have \( m_V = 12.00 \) and \( m_B = 12.56 \).
+\begin{enumerate}
+  \item What is the color excess \( E(B-V) \) for this star?
+  \begin{align*}
+    (B-V) &= (B-V)_0+E(B-V) \\
+    E(B-V) &= (B-V)-(B-V)_0 \\
+    &= (m_B-m_V)-(B-V)_0 \\
+    &= (12.56-12.00)-0.3 \\
+    &= 0.26
+  \end{align*}
+  \item What is the extinction \( A_V \) for this star? (Assume \( R = 3.1 \)).
+  \begin{align*}
+    R &= \frac{A_V}{E(B-V)} \\
+    A_V &= RE(B-V) \\
+    &= (3.1)(0.26) \\
+    &= 0.806
+  \end{align*}
+  \item What is the distance to this star?
+  \begin{align*}
+    m_V-M_V &= 5\log(d)-5+A_V \\
+    5\log(d) &= m_V-M_V+5-A_V \\
+    d &= 10^{\frac{m_V-M_V+5-A_V}{5}} \\
+    &= 499.80pc
+  \end{align*}
+  \item What distance would you have computed if you had ignored extinction?
+  \begin{align*}
+    m_V-M_V &= 5\log(d)-5 \\
+    d &= 10^{\frac{m_V-M_V+5}{5}} \\
+    &= 724.44pc
+  \end{align*}
+\end{enumerate}
+
+\subsubsection*{Question 19.8}
+Assume that a galaxy is spherical. What radial dependence of the mass density
+\( \rho(R) \) gives a flat rotation curve (that is, \( \Theta(R) =
+\text{constant} \))? In this case, how does the enclosed mass \( M(R) \) vary
+with radius \( R \)?
+\begin{align*}
+  \Theta(R) &= \sqrt{\frac{GM(R)}{R}} \\
+  M(R) &= \frac{\Theta(R)^2R}{G} \\
+  &= \left(\frac{\Theta(R)^2}{G}\right)R \\
+  &\propto R \\
+  \rho(R) &= \frac{M(R)}{V} \\
+  &= \left(\frac{\Theta(R)^2}{G}\right)R\times\frac{3}{4\pi R^3} \\
+  &\propto \frac{1}{R^2} \\
+\end{align*}
+
+\subsubsection*{Slide Question 1}
+What is the K-band extinction for a red giant that has observed
+\( H-K = 2.35 \)? Note that \( (H-K)_0 = 0.30 \).
+\begin{align*}
+  E(H-K) &= (H-K)-(H-K)_0 \\
+  &= 2.35-0.30 \\
+  &= 2.05 \\
+  A(K) &= \frac{E(H-K)}{\frac{A(H)}{A(K)}-1} \\
+  &= \frac{2.05}{(\frac{1.6}{2.2})^{-1.6}-1} \\
+  &= 3.085
+\end{align*}
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
