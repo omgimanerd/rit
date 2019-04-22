@@ -1,0 +1,112 @@
+\documentclass{math}
+
+\usepackage{enumerate}
+
+\title{Advanced Linear Algebra}
+\author{Alvin Lin}
+\date{January 2019 - May 2019}
+
+\begin{document}
+
+\maketitle
+
+\section*{Singular Values of a Matrix}
+Suppose we have an \( m\times n \) matrix \( A \), and we construct an
+\( n\times n \) symmetric matrix \( A^TA \). Let \( \lambda \) be an
+eigenvalue of \( A^TA \) with unit eigenvector \( \hat{v} \).
+\[ 0 \le \|A\hat{v}\|^2 = (A\hat{v})\cdot(A\hat{v}) = (A\hat{v})^T(A\hat{v}) =
+  \hat{v}^TA^TA\hat{v} = \hat{v}^T\lambda\hat{v} = \lambda\|\hat{v}\|^2 =
+  \lambda \]
+If \( A \) is an \( m\times n \) matrix, the ``singular values'' of \( A \) are
+the square roots of the eigenvalues of \( A^TA \) and are denoted
+\( \sigma_1 \ge \sigma_2 \ge \dots \ge \sigma_n \).
+Let \( \{\hat{v_1},\dots,\hat{v_n}\} \) be orthonormal eigenvectors of
+\( A^TA \) such that \( \lambda_1 \ge \lambda_2 \ge \dots \ge \lambda_n \).
+We know \( \lambda_i = \|A\hat{v_i}\|^2 \) and \( \sigma_i = \|A\hat{v_i}\| =
+\sqrt{\lambda_i} \).
+
+\subsubsection*{Example}
+Suppose we have the matrix:
+\begin{align*}
+  A &= \begin{bmatrix}
+    1 & 1 \\
+    1 & 0 \\
+    0 & 1
+  \end{bmatrix} \\
+  A^TA &= \begin{bmatrix}
+    1 & 1 & 0 \\
+    1 & 0 & 1
+  \end{bmatrix}\begin{bmatrix}
+    1 & 1 \\
+    1 & 0 \\
+    0 & 1
+  \end{bmatrix} = \begin{bmatrix}
+    2 & 1 \\
+    1 & 2
+  \end{bmatrix}
+\end{align*}
+The eigenvalues of \( A^TA \) are \( \lambda_1 = 3 \) and \( \lambda_2 = 1 \)
+and thus the singular values of \( A^TA \) are \( \sigma_1 = \sqrt{3} \) and
+\( \sigma_2 = \sqrt{1} = 1 \). The eigenvectors of \( A^TA \) are:
+\begin{align*}
+  \lambda_1 &= 3 \quad \hat{v_1} = \begin{bmatrix}
+    \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}}
+  \end{bmatrix} \\
+  \lambda_2 &= 1 \quad \hat{v_2} = \begin{bmatrix}
+    -\frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}}
+  \end{bmatrix}
+\end{align*}
+Consider a vector in \( \R^2 \)
+\[ \hat{x} = \begin{bmatrix}x_1 \\ x_2\end{bmatrix} \]
+such that \( \|\hat{x}\| = 1 \).
+\begin{align*}
+  \|A\hat{x}\|^2 &= (A\hat{x})\cdot(A\hat{x}) \\
+  &= (A\hat{x})^T(A\hat{x}) \\
+  &= \hat{x}^TA^TA\hat{x} \\
+  &= \begin{bmatrix}x_1 & x_2\end{bmatrix}
+    \begin{bmatrix}2 & 1 \\ 1 & 2\end{bmatrix}
+    \begin{bmatrix}x_1 \\ x_2\end{bmatrix} \\
+  &= 2x_1^2+2x_1x_2+2x_2^2
+\end{align*}
+We are interested in what the largest or smallest that the quadratic
+polynomial can become, which represents the largest or smallest amount that the
+matrix \( A \) can expand or shrink the vector.
+
+\subsection*{Facts}
+If \( \|\vec{x}\| = 1 \) and \( f(\vec{x}) = \vec{x}^TB\vec{x} \) where \( B \)
+is a symmetric matrix:
+\begin{enumerate}[1)]
+  \item The maximum \( f(\vec{x}) \) is \( \lambda_1 \) and occurs at
+    \( \vec{x} = \hat{v_1} \).
+  \item The minimum \( f(\vec{x}) \) is \( \lambda_n \) and occurs at
+    \( \vec{x} = \hat{v_n} \).
+\end{enumerate}
+Continuing the previous example, the maximum of \( \|A\hat{x}\|^2 = \lambda_1 =
+3 \). The max \( \|A\hat{x}\| = \sqrt{3} = \sigma_1 \), which occurs at
+\( \hat{v_1} \), and the min \( \|A\hat{x}\| = \sqrt{1} = \sigma_2 \), which
+occurs at \( \hat{v_2} \). If we consider \( A \) as a mapping from one
+space to another in \( \R^3 \):
+\[ \begin{bmatrix}x \\ y \\ z\end{bmatrix} = \begin{bmatrix}
+  1 & 1 \\
+  1 & 0 \\
+  0 & 1
+\end{bmatrix}\begin{bmatrix}x_1 \\ x_2\end{bmatrix} = \begin{bmatrix}
+  x_1+x_2 \\
+  x_1 \\
+  x_2
+\end{bmatrix} \]
+\( A \) maps all of \( \R^2 \) to the plane \( x-y-z = 0 \). In particular, the
+vectors on the unit circle get mapped to an ellipse on this plane. The maximum
+amount of stretching that \( A \) can do with respect to the previous example is
+\( \sqrt{3} \), occurring at the vector \( \hat{v_1} = \begin{bmatrix}
+\frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}}\end{bmatrix} \) on the unit circle.
+The minimum amount of stretching occurs at \( \hat{v_2} = \begin{bmatrix}
+-\frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}}\end{bmatrix} \).
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
