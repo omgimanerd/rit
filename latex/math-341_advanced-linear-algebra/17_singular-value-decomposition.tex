@@ -1,0 +1,160 @@
+\documentclass{math}
+
+\usepackage{enumerate}
+
+\title{Advanced Linear Algebra}
+\author{Alvin Lin}
+\date{January 2019 - May 2019}
+
+\begin{document}
+
+\maketitle
+
+\section*{Singular Value Decomposition}
+Recall that the diagonalizaton of \( A \) can be written as:
+\[ A = \begin{bmatrix}\vec{v_1} & \dots & \vec{v_n}\end{bmatrix}
+  \begin{bmatrix}
+    \lambda_1 & \vdots \\
+    \dots & \lambda_n
+  \end{bmatrix}\begin{bmatrix}\vec{v_1} & \dots & \vec{v_n}\end{bmatrix}^{-1} \]
+If \( A \) is symmetric, we can orthogonally diagonalize it as \( A = PDP^T \).
+\[ A = \begin{bmatrix}\hat{v_1} & \dots & \hat{v_n}\end{bmatrix}
+  \begin{bmatrix}
+    \lambda_1 & \vdots \\
+    \dots & \lambda_n
+  \end{bmatrix}\begin{bmatrix}
+    \dots & \vec{v_1}^T & \dots \\
+    \dots & \vec{v_n}^T & \dots
+  \end{bmatrix}^{-1} \]
+Recall from the definition of singular values of A:
+\[ (A^TA)\hat{v_i} = \lambda_i\hat{v_i} \quad
+  (\lambda_1\ge\lambda_2\ge\dots\ge\lambda_n) \]
+We define the singular values \( \sigma_i = \sqrt{\lambda_i} =
+\|A\hat{v_i}\| \).
+\begin{align*}
+  \|A\hat{v_i}\|^2 &= (A\hat{v_i})^T(A\hat{v_i}) \\
+  &= \hat{v_i}^TA^TA\hat{v_i} \\
+  &= \lambda(\hat{v_i}^T\hat{v_i}) = \lambda
+\end{align*}
+
+\subsection*{Singular Value Decomposition}
+\begin{align*}
+  A &= U\Sigma V^T \\
+  [A] &= \begin{bmatrix}\hat{u_1} & \dots & \hat{u_n}\end{bmatrix}
+    \begin{bmatrix}
+      \sigma_1 & \vdots \\
+      \dots & \sigma_n
+    \end{bmatrix}\begin{bmatrix}
+      \dots & \hat{v_1}^T & \dots \\
+      \dots & \hat{v_n}^T & \dots
+    \end{bmatrix} \\
+\end{align*}
+\begin{enumerate}
+  \item Find the eigenvalues \( \lambda_i \) and eigenvectors \( \hat{v_i} \)
+    of \( A^TA \).
+  \item Let \( \sigma_i = \sqrt{\lambda_i} \) and normalize \( \hat{v_i} \).
+  \item Let \( \hat{u_i} = \frac{1}{\sigma_i}A\hat{v_i} \)
+\end{enumerate}
+Why does this work?
+\begin{align*}
+  AV &= U\Sigma \\
+  A\begin{bmatrix}\hat{v_1} & \dots & \hat{v_n}\end{bmatrix} &\stackrel{?}{=}
+    \begin{bmatrix}\hat{u_1} & \dots & \hat{u_n}\end{bmatrix}\Sigma \\
+  \begin{bmatrix}A\hat{v_1} & \dots & A\hat{v_n}\end{bmatrix} &\stackrel{?}{=}
+    \begin{bmatrix}\sigma_1\hat{u_1} & \dots & \sigma_n\hat{u_n}\end{bmatrix} \\
+  \begin{bmatrix}
+    \sigma_1\hat{u_1} & \dots & \sigma_n\hat{u_n}
+  \end{bmatrix} &= \begin{bmatrix}
+    \sigma_1\hat{u_1} & \dots & \sigma_n\hat{u_n}
+  \end{bmatrix}
+\end{align*}
+Observations:
+\begin{itemize}
+  \item \( V \) is orthogonal because the columns are eigenvectors of the
+    symmetric matrix \( A^TA \).
+  \item \( U \) is orthogonal because the columns \( \hat{u_i} \) and
+    \( \hat{u_j} \) are orthogonal.
+  \begin{align*}
+    \hat{u_i}\cdot\hat{u_j} &= \left(\frac{1}{\sigma_i}A\hat{v_i}\right)\cdot
+      \left(\frac{1}{\sigma_j}A\hat{v_j}\right) \\
+    &= \frac{1}{\sigma_i\sigma_j}(A\hat{v_j})^T(A\hat{v_i}) \\
+    &= \frac{1}{\sigma_i\sigma_j}\hat{v_j}^T(A^TA\hat{v_i}) \\
+    &= \frac{\lambda_i}{\sigma_i\sigma_j}\hat{v_j}^T\hat{v_i} \\
+    &= 0
+  \end{align*}
+\end{itemize}
+In general, \( A = U\Sigma V^T \) where
+\begin{itemize}
+  \item \( A \) is an \( m\times n \) matrix
+  \item \( U \) is an \( m\times m \) orthogonal matrix
+  \item \( \Sigma \) is an \( m\times n \) matrix
+  \item \( V^T \) is an \( n\times n \) orthogonal matrix
+\end{itemize}
+
+\subsubsection*{Example}
+Find the singular value decomposition of \( A = \begin{bmatrix}1 & 1 & 0 \\
+0 & 0 & 1\end{bmatrix} \).
+\begin{align*}
+  A &= U\Sigma V^T \\
+  A^TA &= \begin{bmatrix}
+    1 & 1 & 0 \\
+    1 & 1 & 0 \\
+    0 & 0 & 1
+  \end{bmatrix} \\
+  \lambda_1 &= 2 \quad \sigma_1 = \sqrt{2} \quad \hat{v_1} = \begin{bmatrix}
+    \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \\ 0
+  \end{bmatrix} \\
+  \lambda_2 &= 1 \quad \sigma_2 = \sqrt{1} \quad \hat{v_2} = \begin{bmatrix}
+    0 \\ 0 \\ 1
+  \end{bmatrix} \\
+  \lambda_3 &= 0 \quad \sigma_3 = 0 \quad \hat{v_3} = \begin{bmatrix}
+    -\frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \\ 0
+  \end{bmatrix} \\
+  V &= \begin{bmatrix}
+    \frac{1}{\sqrt{2}} & 0 & -\frac{1}{\sqrt{2}} \\
+    \frac{1}{\sqrt{2}} & 0 & \frac{1}{\sqrt{2}} \\
+    0 & 1 & 1
+  \end{bmatrix} \\
+  \Sigma &= \begin{bmatrix}
+    \sqrt{2} & 0 & 0 \\
+    0 & 1 & 0
+  \end{bmatrix} \\
+  \hat{u_1} &= \frac{1}{\sigma_1}A\hat{v_1} = \frac{1}{\sqrt{2}}\begin{bmatrix}
+    1 & 1 & 0 \\
+    0 & 0 & 1
+  \end{bmatrix}\begin{bmatrix}
+    \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \\ 0
+  \end{bmatrix} = \begin{bmatrix}1 \\ 0\end{bmatrix} \\
+  \hat{u_2} &= \frac{1}{\sigma_2}A\hat{v_2} = \frac{1}{1}\begin{bmatrix}
+    1 & 1 & 0 \\
+    0 & 0 & 1
+  \end{bmatrix}\begin{bmatrix}0 \\ 0 \\ 1\end{bmatrix} = \begin{bmatrix}
+    0 \\ 1
+  \end{bmatrix} \\
+  U &= \begin{bmatrix}
+    1 & 0 \\
+    0 & 1
+  \end{bmatrix} \\
+  A &= \begin{bmatrix}
+    1 & 1 & 0 \\
+    0 & 0 & 1
+  \end{bmatrix} = \begin{bmatrix}
+    1 & 0 \\
+    0 & 1
+  \end{bmatrix}\begin{bmatrix}
+    \sqrt{2} & 0 & 0 \\
+    0 & 1 & 1
+  \end{bmatrix}\begin{bmatrix}
+    \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} & 0 \\
+    0 & 0 & 1 \\
+    -\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} & 0
+  \end{bmatrix}
+\end{align*}
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
