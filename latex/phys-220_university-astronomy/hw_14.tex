@@ -1,0 +1,99 @@
+\documentclass{math}
+
+\usepackage{enumerate}
+
+\title{University Astronomy: Homework 14}
+\author{Alvin Lin}
+\date{January 2019 - May 2019}
+
+\begin{document}
+
+\maketitle
+
+\subsubsection*{Question 20.1}
+At what distance (and at what redshift) does an object 1kpc across subtend
+an angle of 1 arcsecond?
+\begin{align*}
+  \theta'' &= \frac{206265d}{D} \\
+  1 &= \frac{206265\times1000}{D} \\
+  D &= 206265000pc \\
+  cz &= H_0d \\
+  z &= \frac{H_0d}{c} \\
+  &= 48128.5\times10^6
+\end{align*}
+
+\subsubsection*{Question 20.2}
+The \( \text{Ca}_{II} \) H and K lines have rest wavelengths of \( \lambda_0 =
+3968.5\textup{\AA} \) and \( 3933.6\textup{\AA} \), respectively. In the
+spectrum of a galaxy in the cluster Abell 2065 (aka the Corona Borealis
+Cluster), the observed wavelengths of the two lines are \( \lambda = 4255.0
+\textup{\AA} \) and \( 4217.6\textup{\AA} \).
+\begin{enumerate}[(a)]
+  \item What is the redshift \( z \) of the galaxy?
+  \begin{align*}
+    z &= \frac{\Delta\lambda}{\lambda} \\
+    &= \frac{4255\textup{\AA}-3968.5\textup{\AA}}{4255\textup{\AA}} \\
+    &= 0.0673
+  \end{align*}
+  \item What is the distance to the galaxy?
+  \begin{align*}
+    cz &= H_0d \\
+    d &= \frac{cz}{H_0} \\
+    &= 288.42 Mpc
+  \end{align*}
+  \item What is the distance modulus of the galaxy?
+  \begin{align*}
+    M &= 5\log\left(\frac{d}{10}\right) \\
+    &= 5\log\left(\frac{388.42\times10^6pc}{10pc}\right) \\
+    &= 37.3
+  \end{align*}
+\end{enumerate}
+
+\subsubsection*{Question 20.3}
+Rewrite the relation for the distance modulus (equation 13.25) in terms of the
+redshift \( z \) rather than the distance \( d \).
+\begin{align*}
+  M &= 5\log\left(\frac{d}{10}\right) \\
+  &= 5\log\left(\frac{cz}{H_0}\frac{1}{10}\right) \\
+  &= 5\log\left(\frac{cz}{10H_0}\right)
+\end{align*}
+
+\subsubsection*{Question 20.6}
+Consider a black hole of mass \( M = 10^8M_{\odot} \). What is the maximum
+distance at which its radius of influence could be resolved using the
+\textit{Hubble Space Telescope} at a wavelength \( \lambda \approx 1\mu m \)?
+\begin{align*}
+  \log(\sigma_*) &\approx 2.2 \\
+  \sigma_* &\approx 10^{2.2}\frac{km}{s} = 10^{5.2}\frac{m}{s} \\
+  r_{bh} &= \frac{GM_{bh}}{\sigma_*^2} \\
+  &= 5.284\times10^{17}m \\
+  \theta &= \frac{r}{d} = 1.22\frac{\lambda}{D} \\
+  d &= \frac{rD}{1.22\lambda} \\
+  &= 1.04\times10^{24}m
+\end{align*}
+
+\subsubsection*{Question 21.1}
+The quasar PDS 456 has a redshift \( z = 0.184 \) and an apparent magnitude
+\( m_V = 14.0 \).
+\begin{enumerate}[(a)]
+  \item What is the distance to this quasar?
+  \begin{align*}
+    cz &= H_0d \\
+    d &= \frac{cz}{H_0} \\
+    &= 788.57 Mpc
+  \end{align*}
+  \item What is its absolute magnitude, \( M_V \)?
+  \begin{align*}
+    m_V-M_V &= 5\log\left(\frac{d}{10}\right) \\
+    M_V &= m_V-5\log\left(\frac{d}{10}\right) \\
+    &= -25.5
+  \end{align*}
+\end{enumerate}
+
+\begin{center}
+  You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
+  any questions, comments, or concerns, please contact me at
+  alvin@omgimanerd.tech
+\end{center}
+
+\end{document}
