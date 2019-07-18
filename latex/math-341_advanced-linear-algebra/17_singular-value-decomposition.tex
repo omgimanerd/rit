@@ -151,6 +151,88 @@ Find the singular value decomposition of \( A = \begin{bmatrix}1 & 1 & 0 \\
   \end{bmatrix}
 \end{align*}
 
+\subsubsection*{Example}
+Find the singular value decomposition of \( A = \begin{bmatrix}
+  1 & 1 \\ 1 & 0 \\ 0 & 1\end{bmatrix} \)
+\begin{align*}
+  A &= \begin{bmatrix}
+    1 & 1 \\
+    1 & 0 \\
+    0 & 1
+  \end{bmatrix} = U\Sigma V^T \\
+  A^TA &= \begin{bmatrix}
+    2 & 1 \\
+    1 & 2
+  \end{bmatrix} \\
+  \lambda_1 &= 3 \quad \sigma_1 = \sqrt{3} \quad \hat{v_1} = \begin{bmatrix}
+    \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}}
+  \end{bmatrix} \\
+  \lambda_2 &= 1 \quad \sigma_1 = \sqrt{1} \quad \hat{v_2} = \begin{bmatrix}
+    -\frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}}
+  \end{bmatrix} \\
+  \Sigma &= \begin{bmatrix}
+    \sqrt{3} & 0 \\
+    0 & 1 \\
+    0 & 0
+  \end{bmatrix} \\
+  V &= \begin{bmatrix}
+    \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} \\
+    \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}}
+  \end{bmatrix} \\
+  \hat{u_1} &= \frac{1}{\sigma_1}A\hat{v_1} = \frac{1}{\sqrt{3}}\begin{bmatrix}
+    1 & 1 \\
+    1 & 0 \\
+    0 & 1
+  \end{bmatrix}\begin{bmatrix}
+    \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}}
+  \end{bmatrix} = \begin{bmatrix}
+    \frac{2}{\sqrt{6}} \\ \frac{1}{\sqrt{6}} \\ \frac{1}{\sqrt{6}}
+  \end{bmatrix} \\
+  \hat{u_2} &= \frac{1}{\sigma_2}A\hat{v_2} = \frac{1}{\sqrt{1}}\begin{bmatrix}
+    1 & 1 \\
+    1 & 0 \\
+    0 & 1
+  \end{bmatrix}\begin{bmatrix}
+    -\frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}}
+  \end{bmatrix} = \begin{bmatrix}
+    0 \\ -\frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}}
+  \end{bmatrix}
+\end{align*}
+The question now is, how do we find a \( \hat{u_3} \) such that it is an
+orthonormal vector to both \( \hat{u_1} \) and \( \hat{u_2} \). Let
+\[ \left\{\begin{bmatrix}
+  \frac{2}{\sqrt{6}} \\ \frac{1}{\sqrt{6}} \\ \frac{1}{\sqrt{6}}
+\end{bmatrix},\begin{bmatrix}
+  0 \\ -\frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}}
+\end{bmatrix},\begin{bmatrix}
+  0 \\ 0 \\ 1
+\end{bmatrix}\right\} \]
+be a basis for \( \R^3 \) and use the Gram-Schmidt process to get
+\( \hat{u_3} \) as
+\begin{align*}
+  \hat{u_3} &= \hat{e_3}-\text{proj}_W\hat{e_3} \quad
+    W = span(\hat{u_1},\hat{u_2}) \\
+  &= \hat{e_3}-\left(\frac{\hat{u_1}\cdot\hat{e_3}}{\hat{u_1}\cdot\hat{u_1}}
+    \right)\hat{u_1}-\left(\frac{\hat{u_2}\cdot\hat{e_3}}
+    {\hat{u_2}\cdot\hat{u_2}}\right)\hat{u_2}
+  = \begin{bmatrix}
+    -\frac{1}{\sqrt{3}} \\ \frac{1}{\sqrt{3}} \\ \frac{1}{\sqrt{3}}
+  \end{bmatrix} \\
+  U &= \begin{bmatrix}
+    \frac{2}{\sqrt{6}} & 0 & -\frac{1}{\sqrt{3}} \\
+    \frac{1}{\sqrt{6}} & -\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{3}} \\
+    \frac{1}{\sqrt{6}} & \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{3}}
+  \end{bmatrix}
+\end{align*}
+
+\subsection*{Projection form of a symmetrix matrix}
+\[ A = PDP^T = \lambda_1\hat{v_1}\hat{v_1}^T+\dots+
+  \lambda_n\hat{v_n}\hat{v_n}^T \]
+This can be analogously done for a singular value decomposition.
+\[ A = U\Sigma V^T = \sigma_1\hat{u_1}\hat{v_1}^T+\dots+
+  \sigma_r\hat{u_r}\hat{v_r}^T \quad (\sigma_1\ge\dots\ge\sigma_r,
+  \sigma_{r+1} = \dots = \sigma_n = 0) \]
+
 \begin{center}
   You can find all my notes at \url{http://omgimanerd.tech/notes}. If you have
   any questions, comments, or concerns, please contact me at
