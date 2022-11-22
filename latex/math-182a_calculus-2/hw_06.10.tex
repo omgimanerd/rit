@@ -10,6 +10,7 @@
 \title{Section 6.1}
 \author{Alvin Lin}
 \date{Calculus II: August 2016 - December 2016}
+\pgfplotsset{compat=1.18}
 
 \begin{document}
 
@@ -66,7 +67,7 @@
              domain={0:6.5}]{cos(deg(x))} node[pos=0.5, below]
              {\( g(x)=\cos(x) \)};
     \addplot[color=brown!30] fill between [
-             of=F and G, soft clip third={domain=0:6}];
+             of=F and G];
     \end{axis}
   \end{tikzpicture}
 \end{center}

@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{math}[2016/12/06 Custom Math Notes]
+\ProvidesClass{math}[Custom Math Notes]
 \LoadClass[letterpaper, 12pt]{article}
 
 \RequirePackage{amsmath}

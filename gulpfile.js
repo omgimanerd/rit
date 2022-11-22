@@ -3,15 +3,14 @@
  * @author Alvin Lin (alvin@omgimanerd.tech)
  */
 
-const del = require('del')
-const fs = require('fs')
-const glob = require('glob')
-const { src, dest, watch } = require('gulp')
-const changed = require('gulp-changed')
-const plumber = require('gulp-plumber')
-const pdflatex2 = require('gulp-pdflatex2')
-const rename = require('gulp-rename')
-const path = require('path')
+import del from 'del';
+import glob from 'glob';
+import gulp from 'gulp';
+import changed from 'gulp-changed';
+import plumber from 'gulp-plumber';
+import pdflatex2 from 'gulp-pdflatex2';
+import rename from 'gulp-rename';
+import path from 'path';
 
 const getOutputFile = texFile => {
   texFile = path.parse(texFile)
@@ -19,34 +18,35 @@ const getOutputFile = texFile => {
 }
 
 const compileChanged = () => {
-  return src('./latex/**/*.tex')
+  return gulp.src('./latex/**/*.tex')
     .pipe(plumber({
-      errorHandler: function() {
+      errorHandler: function () {
         this.emit('end')
       }
     }))
     .pipe(changed('./latex', { transformPath: getOutputFile }))
     .pipe(pdflatex2({
-      texInputs: ['./cls']
+      texInputs: ['./cls'],
+      separator: process.platform === 'win32' ? ';' : ':',
     }))
     .pipe(rename(path => {
       path.dirname += '/output'
       path.extname = '.pdf'
     }))
-    .pipe(dest('./latex'))
+    .pipe(gulp.dest('./latex'))
 }
 
 const compileAll = () => {
-  return src('./latex/**/*.tex')
+  return gulp.src('./latex/**/*.tex')
     .pipe(pdflatex2({
       cliOptions: ['-shell-escape'],
-      texInputs: ['./cls']
+      separator: process.platform === 'win32' ? ';' : ':',
     }))
     .pipe(rename(path => {
       path.dirname += '/output'
       path.extname = '.pdf'
     }))
-    .pipe(dest('./latex'))
+    .pipe(gulp.dest('./latex'))
 }
 
 const clean = done => {
@@ -71,14 +71,14 @@ const purge = () => {
 }
 
 const watchFiles = () => {
-  watch('./latex/**/*.tex', compileChanged)
+  gulp.watch('./latex/**/*.tex', compileChanged)
 }
 
-module.exports = {
-  default: compileChanged,
-  latex: compileChanged,
-  'latex-all': compileAll,
-  clean: clean,
-  purge: purge,
-  watch: watchFiles
+export {
+  compileChanged as default,
+  compileChanged as latex,
+  compileAll as latexAll,
+  clean as clean,
+  purge as purge,
+  watchFiles as watch,
 }
