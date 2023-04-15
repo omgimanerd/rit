@@ -85,7 +85,7 @@ a diode and measure its breakdown voltage. X: the measured breakdown voltage.
     Z\leq\frac{(\mu+\sigma)-\mu}{\sigma}) \\
   &= P(-1\leq Z\leq1) \\
   &= \Phi(1)-\Phi(-1) \\
-  &= 0.8413-0.1587
+  &= 0.8413-0.1587 \textrm{  (z-table lookup)}
 \end{align*}
 
 \subsection*{Relationship between two percentiles}
@@ -104,10 +104,16 @@ and standard deviation \( \sqrt{V(X)} = \sigma \).
 \begin{align*}
   0.95 &= P(\mu-0.1\leq X\leq\mu+0.1) \\
   &= P(\frac{(\mu-0.1)-\mu}{\sigma}\leq Z\leq\frac{(\mu+0.1)-\mu}{\sigma}) \\
-  &= P(-\frac{0.1}{\sigma}\leq Z\leq\frac{0.1}{\sigma}) \\
+  &= P\left(-\frac{0.1}{\sigma}\leq Z\leq\frac{0.1}{\sigma}\right) \\
+  &= \Phi\left(\frac{0.1}{\sigma}\right)-\Phi\left(\frac{-0.1}{\sigma}\right) \\
+  &= \Phi\left(\frac{0.1}{\sigma}\right)-
+    \left(1-\Phi\left(\frac{0.1}{\sigma}\right)\right) \\
+  &= 2\Phi\left(\frac{0.1}{\sigma}\right)-1 \\
+  \frac{0.95+1}{2} &= \Phi\left(\frac{0.1}{\sigma}\right) \\
   \Phi(\frac{0.1}{\sigma}) &= 0.975 \\
-  \frac{0.1}{\sigma} &= 1.96 \\
-  \sigma &= \frac{0.1}{1.96}
+  \frac{0.1}{\sigma} &= 1.96 (\textrm{  From z-table reverse lookup})\\
+  \sigma &= \frac{0.1}{1.96} \\
+  &= 0.05102
 \end{align*}
 
 \begin{center}
