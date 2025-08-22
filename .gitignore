@@ -1,4 +1,4 @@
-node_modules/
+.dockerfile
 *.aux
 *.log
 *.out

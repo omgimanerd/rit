@@ -1,8 +1,0 @@
-dist: trusty
-language: node_js
-node_js:
-  - "8"
-cache: yarn
-before_install:
-  - sudo apt update
-  - sudo apt install texlive texlive-pictures texlive-latex-extra -y
