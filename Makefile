@@ -54,6 +54,11 @@ build: $(PDF)
 	@docker run --rm -v $(PWD):/data -w /data $(IMAGE) \
 	make _build
 
+watch:
+	inotifywait -e modify -e create -m -r --include '.*\.tex$$' ./ | \
+	while read -r directory action file; do \
+		echo "$$directory $$action $$file"; \
+	done
 
 clean:
 	@find . -type d -wholename "*/output" -exec rm -rf {} +
