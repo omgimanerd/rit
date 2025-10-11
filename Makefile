@@ -49,15 +49,17 @@ $(foreach tex,$(TEX),$(eval $(call generate_pdf_rule,$(tex))))
 # Generally shouldn't be called outside the docker container.
 _build: $(PDF)
 
-# Invokes the _build rule inside a docker container.
+# Invokes the _build rule inside a docker container, mounting the contents of
+# this repo into the docker container as a volume mount.
 build: $(PDF)
-	@docker run --rm -v $(PWD):/data -w /data $(IMAGE) \
-	make _build
+	@docker run --rm -v $(PWD):/data -w /data $(IMAGE) make _build
 
+# File watcher
 watch:
 	inotifywait -e modify -e create -m -r --include '.*\.tex$$' ./ | \
 	while read -r directory action file; do \
 		echo "$$directory $$action $$file"; \
+	  make build; \
 	done
 
 clean:
