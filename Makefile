@@ -1,9 +1,6 @@
 # Makefile configuration for compiling this project.
 
 
-## Functions and variables
-IMAGE := omgimanerd/latex
-
 # Match input .tex files for dependencies
 TEX := $(shell find -type f -name '*.tex')
 
@@ -22,12 +19,7 @@ PDF := $(foreach tex,$(TEX),$(call generate_pdf_path,$(tex)))
 ## Recipes
 .PHONY: all clean _build build
 
-all: .dockerfile build
-
-# Docker image recipe
-.dockerfile: Dockerfile
-	docker build -t $(IMAGE) .
-	touch .dockerfile
+all: build
 
 # generate_pdf_rule($1)
 # $1: path to the .tex file to generate a makefile recipe for
@@ -52,7 +44,7 @@ _build: $(PDF)
 # Invokes the _build rule inside a docker container, mounting the contents of
 # this repo into the docker container as a volume mount.
 build: $(PDF)
-	@docker run --rm -v $(PWD):/data -w /data $(IMAGE) make _build
+	@docker run --rm -v $(PWD):/data -w /data blang/latex make _build
 
 # File watcher
 watch:
