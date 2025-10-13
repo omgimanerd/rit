@@ -1,4 +1,4 @@
-.dockerfile
+.vscode/
 *.aux
 *.log
 *.out

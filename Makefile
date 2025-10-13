@@ -1,6 +1,5 @@
 # Makefile configuration for compiling this project.
 
-
 # Match input .tex files for dependencies
 TEX := $(shell find -type f -name '*.tex')
 
@@ -15,9 +14,8 @@ endef
 # Build the target PDF patterns, to be used as recipe prerequisites
 PDF := $(foreach tex,$(TEX),$(call generate_pdf_path,$(tex)))
 
-
 ## Recipes
-.PHONY: all clean _build build
+.PHONY: all _build build clean reset
 
 all: build
 
@@ -29,7 +27,7 @@ define generate_pdf_rule
 $(call generate_pdf_path,$1): $1
 	@echo "Building: $$@ from $$<"
 	@mkdir -p $$(@D)
-	@TEXINPUTS=.//:: latexmk -f -pdf -outdir=$$(@D) $$< $(if $(VERBOSE),,> /dev/null)
+	@TEXINPUTS=.//:: latexmk -f -pdf -outdir=$$(@D) $$< > /dev/null 2> /dev/null
 	@find $$(@D) -type f ! -name "*.pdf" -delete
 endef
 
@@ -37,13 +35,13 @@ endef
 # output.
 $(foreach tex,$(TEX),$(eval $(call generate_pdf_rule,$(tex))))
 
-# Invokes the build rules to build all the outputs for changed files.
-# Generally shouldn't be called outside the docker container.
+# Build target that depends on all the generated PDFs to trigger their
+# compilation. Should not be called outside the docker container.
 _build: $(PDF)
 
 # Invokes the _build rule inside a docker container, mounting the contents of
 # this repo into the docker container as a volume mount.
-build: $(PDF)
+build:
 	@docker run --rm -v $(PWD):/data -w /data blang/latex make _build
 
 # File watcher
@@ -55,4 +53,7 @@ watch:
 	done
 
 clean:
-	@find . -type d -wholename "*/output" -exec rm -rf {} +
+	@find . -type f ! -name "*.pdf" -delete
+
+reset:
+	@find . -type d -wholename "*/output" -delete
